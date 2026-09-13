@@ -1,58 +1,32 @@
 [
  {
-  "behavior": "счётчик чипов вместо простыни",
-  "case": "Ant Design · Select",
-  "quote": "Max tag count to show.",
+  "situation": "Вставка из буфера: «Сыр, Соус, Хлеб» одним чипом",
+  "happens": "Что происходит: человек копирует список значений из другого приложения и вставляет его; на 375 px появляется один чип с запятыми внутри, и пять значений приходится набирать заново вручную.",
+  "systems": "Что делают системы: NN/g включает поддержку вставки в обязательный чек-лист мобильного поля — «Do you support copy & paste into the field?»; Ant Design держит для этого отдельный API разделителей — «Separator used to tokenize, only applies when mode=\"tags\" or mode=\"multiple\"».",
+  "us": "Что делать нам: в ДС задать разделители (запятая, точка с запятой, перенос строки) и разбирать вставленный текст на отдельные чипы; дубли отбрасывать, а число добавленных показывать в снекбаре («добавлено 5 меток»).",
+  "quote": "Do you support copy & paste into the field?",
+  "who": "Raluca Budiu · Nielsen Norman Group · A Checklist for Designing Mobile Input Fields",
+  "url": "https://www.nngroup.com/articles/mobile-input-checklist/",
+  "verified": true
+ },
+ {
+  "situation": "Набранный чип потерялся при закрытии шторки",
+  "happens": "Что происходит: в шторке меток человек набрал «бекон» и не нажал «Добавить»; свайп вниз закрывает шторку — текст исчезает, а в поле остаются только ранее добавленные чипы.",
+  "systems": "Что делают системы: NN/g отдельно разбирает потерю работы при закрытии слоя — «the mistake often results in lost work for users», и объясняет цену: «When they accidentally move farther back in the process than they mean to, users have to start all over again — or give up.»",
+  "us": "Что делать нам: неподтверждённый текст не теряем — при закрытии слоя ДС спрашивает «Сохранить метку?» либо превращает текст в чип автоматически; кнопка «Добавить» всегда видна над клавиатурой и не даёт молча уйти с непустым полем.",
+  "quote": "the mistake often results in lost work for users",
+  "who": "NN/g · Accidental Dismissal of Overlays",
+  "url": "https://www.nngroup.com/articles/accidental-overlay-dismissal/",
+  "verified": true
+ },
+ {
+  "situation": "Значения нет в справочнике — список подсказок пуст",
+  "happens": "Что происходит: человек вводит «Сыр козий», совпадений нет, выпадающий список пустой и без пояснения; непонятно, это опечатка, запрещённое значение или можно создать новое.",
+  "systems": "Что делают системы: Ant Design держит для этого отдельный слот — «Specify content to show when no result matches» (значение по умолчанию — No data), то есть пустой список остаётся текстом, который задаёт продукт.",
+  "us": "Что делать нам: пустое состояние списка пишем словами («Ничего не найдено — проверить написание или создать «Сыр козий»») с действием создания; тот же текст используем в шторке выбора значений и в пустом состоянии поля.",
+  "quote": "Specify content to show when no result matches",
+  "who": "Ant Design · Select (notFoundContent)",
   "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md",
-  "verified": true
- },
- {
-  "behavior": "заглушка «+N скрытых»",
-  "case": "Ant Design · Select",
-  "quote": "Placeholder for not showing tags",
-  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md",
-  "verified": true
- },
- {
-  "behavior": "ввод по разделителям",
-  "case": "Ant Design · Select",
-  "quote": "Separator used to tokenize, only applies when `mode=\"tags\"` or `mode=\"multiple\"`",
-  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md",
-  "verified": true
- },
- {
-  "behavior": "клавиатура: стрелки и пробел",
-  "case": "Angular Material · Chips",
-  "quote": "Users can move through the chips using the arrow keys and select/deselect them with the space.",
-  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md",
-  "verified": true
- },
- {
-  "behavior": "input-чип всегда снимаемый",
-  "case": "Material Web · Chip",
-  "quote": "All input chips are removable. If an input chip does not have an action",
-  "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md",
-  "verified": true
- },
- {
-  "behavior": "грид-контейнер для ввода",
-  "case": "Angular Material · Chips",
-  "quote": "To create chips connected to an input field, start by creating a `<mat-chip-grid>` as the container.",
-  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md",
-  "verified": true
- },
- {
-  "behavior": "долгое нажатие в списке получателей",
-  "case": "Gmail для Android — реальный продукт",
-  "quote": "To hide a suggested recipient, touch and hold their profile photo, and tap Hide suggestion",
-  "url": "https://support.google.com/mail/answer/2819488?hl=en&co=GENIE.Platform%3DAndroid",
-  "verified": true
- },
- {
-  "behavior": "чипы — grid-паттерн доступности",
-  "case": "Angular Material · Chips",
-  "quote": "`<mat-chip-grid>` and `<mat-chip-row>` : These elements implement a grid accessibility pattern. Use them as part of a free form input that allows users to enter text to add chips.",
-  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md",
   "verified": true
  }
 ]

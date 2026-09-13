@@ -1,65 +1,32 @@
 [
  {
-  "behavior": "масштаб иконки от кегля текста",
-  "case": "Apple HIG · SF Symbols",
-  "quote": "The scales are defined relative to the cap height of the San Francisco system font.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sf-symbols.json",
+  "situation": "Системный шрифт увеличен — иконка прежняя",
+  "happens": "Что происходит: человек включает крупный текст в настройках телефона; подписи в списке растут, а иконки остаются 24 px — строка превращается в «текст с точкой», и иконка со статусом перестаёт читаться.",
+  "systems": "Что делают системы: Apple требует масштабировать не только текст — «Support larger text sizes. Make sure people can adjust the size of your text or icons to make them more legible, visible, and comfortable to read.» и называет ориентир: «Ideally, give people the option to enlarge text by at least 200 percent».",
+  "us": "Что делать нам: размер иконки привязываем к кеглю строки (шкала 20/24/28 px, а не абсолют), на одном экране — один стиль иконок, и проверяем экран при крупном системном шрифте: строка не ломается, иконка не «тонет».",
+  "quote": "Support larger text sizes. Make sure people can adjust the size of your text or icons to make them more legible, visible, and comfortable to read. Ideally, give people the option to enlarge text by at least 200 percent (or 140 percent in watchOS apps).",
+  "who": "Apple HIG · Accessibility",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
   "verified": true
  },
  {
-  "behavior": "вес иконки = весу текста",
-  "case": "Apple HIG · Icons",
-  "quote": "In general, match the weights of interface icons and adjacent text.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json",
+  "situation": "Голая иконка без подложки — палец бьёт мимо",
+  "happens": "Что происходит: иконки статуса стоят в строке вплотную и без фона; на телефоне человек тапает по иконке и попадает по соседней иконке или по тексту рядом.",
+  "systems": "Что делают системы: Apple считает зазор таким же важным, как размер — «Consider spacing between controls as important as size. Include enough padding between elements to reduce the chance that someone taps the wrong control.» и даёт норму: «For elements without a bezel, about 24 points of padding works well around the element's visible edges.»",
+  "us": "Что делать нам: у интерактивной иконки в списке цель 44–48 px, у иконки без безеля — паддинг 24 pt вокруг видимого края, между соседними иконками не меньше 8 px; декоративные иконки не делаем интерактивными.",
+  "quote": "Consider spacing between controls as important as size. Include enough padding between elements to reduce the chance that someone taps the wrong control. In general, it works well to add about 12 points of padding around elements that include a bezel. For elements without a bezel, about 24 points of padding works well around the element's visible edges.",
+  "who": "Apple HIG · Accessibility",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
   "verified": true
  },
  {
-  "behavior": "один размер и вес у всех иконок",
-  "case": "Apple HIG · Icons",
-  "quote": "all interface icons in your app need to use a consistent size, level of detail, stroke thickness (or weight), and perspective",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json",
-  "verified": true
- },
- {
-  "behavior": "иконка внутри кнопки",
-  "case": "Angular Material · Icon",
-  "quote": "The `<mat-icon>` element should be a child of a `<button>` or `<a>` element.",
-  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md",
-  "verified": true
- },
- {
-  "behavior": "оптическое выравнивание",
-  "case": "Apple HIG · Icons",
-  "quote": "If necessary, add padding to a custom interface icon to achieve optical alignment.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json",
-  "verified": true
- },
- {
-  "behavior": "24 dp внутри 48 dp",
-  "case": "Google Android Accessibility / Material Design",
-  "quote": "An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target.",
-  "url": "https://support.google.com/accessibility/android/answer/7101858",
-  "verified": true
- },
- {
-  "behavior": "мелкие контролы не нажать",
-  "case": "Apple HIG · Accessibility",
-  "quote": "Controls that are too small are hard for many people to interact with and select.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/accessibility.json",
-  "verified": true
- },
- {
-  "behavior": "базовый размер иконки 24 px",
-  "case": "Material Web · Icon",
-  "quote": "`--md-icon-size` | `24px`",
+  "situation": "Иконку ужали до 16 px, и штрихи слились",
+  "happens": "Что происходит: в плотной строке иконку уменьшают до 16 px, чтобы рядом влезла подпись; на 375 px тонкие контурные штрихи сливаются, и вместо «принтера» на экране пятно.",
+  "systems": "Что делают системы: Material для этого держит отдельные стили — «Sharp symbols display corners with straight edges, for a crisp style that remains legible even at smaller scales.», а контурные описывает как вариант для плотных интерфейсов: «Outlined symbols use stroke and fill attributes for a light, clean style that works well in dense UIs.»",
+  "us": "Что делать нам: ниже 20 px иконки в мобильном слое не уменьшаем; для плотных строк берём залитые или чёткие варианты одного набора, тонкие контурные и «самодельные» смеси в одной строке не используем.",
+  "quote": "Sharp symbols display corners with straight edges, for a crisp style that remains legible even at smaller scales.",
+  "who": "Material Design 3 · Icon (Material Web docs)",
   "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md",
-  "verified": true
- },
- {
-  "behavior": "иконка — не подпись",
-  "case": "Angular Material · Icon",
-  "quote": "Icons alone are not interactive elements for screen-reader users",
-  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md",
   "verified": true
  }
 ]

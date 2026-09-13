@@ -1,44 +1,32 @@
 [
  {
-  "behavior": "иконка без подписи однозначна",
-  "case": "IBM Carbon · Button",
-  "quote": "In an icon only button, that has no label, the icon must accurately represent what the button does.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
+  "situation": "Иконка без фона: непонятно, куда попадать",
+  "happens": "Что происходит: в шапке иконочные кнопки без подложки («карандаш», «⋯»), видимый размер 24 px, границы нажатия ничем не показаны; палец бьёт в промежуток между иконками, и ничего не происходит.",
+  "systems": "Что делают системы: Apple описывает image button — «An image button's edges define its clickable area even when they aren't visible. Including padding ensures that a click registers correctly even if it's not precisely within the image.»",
+  "us": "Что делать нам: у иконочной кнопки в ДС жёсткая цель 48 × 48 px даже при прозрачном фоне, зазор между соседними кнопками не меньше 8 px, а при нажатии появляется заливка-подложка — тогда видно, что тап попал.",
+  "quote": "An image button's edges define its clickable area even when they aren't visible. Including padding ensures that a click registers correctly even if it's not precisely within the image.",
+  "who": "Apple HIG · Buttons (image buttons)",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/buttons",
   "verified": true
  },
  {
-  "behavior": "иконки без подписи — редко",
-  "case": "IBM Carbon · Button (опирается на Wiedenbeck, 1999)",
-  "quote": "Icon only buttons should be used sparingly. “For most situations, users learn correct interpretations better with text alone than with icons alone.”",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
+  "situation": "Кнопки в шапке переезжают при прокрутке",
+  "happens": "Что происходит: при прокрутке большая шапка сворачивается в компактную, иконочные кнопки съезжают на 30–50 px; человек, привыкший к их месту, попадает пальцем в другую иконку или в заголовок.",
+  "systems": "Что делают системы: Apple делает это осознанным приёмом и описывает его как ориентир для человека — «By default, a large title transitions to a standard title as people begin scrolling the content, and transitions back to large when people scroll to the top, reminding them of their current location.»",
+  "us": "Что делать нам: на экранах с действиями в шапке высоту шапки не меняем при скролле — либо фиксированная шапка, либо первым уезжает заголовок, а иконки остаются в той же точке; «разъезжающуюся» большую шапку в мобильном слое не используем.",
+  "quote": "By default, a large title transitions to a standard title as people begin scrolling the content, and transitions back to large when people scroll to the top, reminding them of their current location.",
+  "who": "Apple HIG · Toolbars",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/toolbars",
   "verified": true
  },
  {
-  "behavior": "иконка 24 внутри цели 48",
-  "case": "Google Android Accessibility — кейс реальных приложений Android",
-  "quote": "An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target.",
-  "url": "https://support.google.com/accessibility/android/answer/7101858",
-  "verified": true
- },
- {
-  "behavior": "мелкий крестик не нажать",
-  "case": "Instagram для iOS — реальный кейс, разбор NN/g",
-  "quote": "For example, on Instagram, the buttons to dismiss a follow suggestion were too small (only 2mm — 0.08in — wide), so even though they are far enough from the Follow buttons (about 2mm of spacing — the often-recommended minimum), they are still hard to select.",
-  "url": "https://www.nngroup.com/articles/touch-target-size/",
-  "verified": true
- },
- {
-  "behavior": "подсказка обязательна",
-  "case": "IBM Carbon · Button",
-  "quote": "Regardless of how recognizable an icon may or may not be, or whether that action lies within the universal actions list, a tooltip is always required with text explaining what the icon button would do if clicked.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "иконка без подписи не читается",
-  "case": "Angular Material · Icon",
-  "quote": "Similar to an `<img>` element, an icon alone does not convey any useful information for a screen-reader user.",
-  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md",
+  "situation": "Свайп от края вместо кнопки «назад»",
+  "happens": "Что происходит: видимую кнопку «назад» убрали, оставив системный свайп от левого края; в той же зоне начинается полоса чипов или карусель, и жест то возвращает назад, то прокручивает содержимое.",
+  "systems": "Что делают системы: Apple требует оставлять видимую кнопку — «people expect to find a Back button in a top toolbar that lets them return to the previous view with a single tap», и добавляет жест только как ускорение: «many apps also offer a shortcut gesture — such as swiping from the side of a window or touchscreen — while continuing to provide the Back button.»",
+  "us": "Что делать нам: иконочная кнопка «назад» остаётся в шапке всегда, свайп от края — только ускорение; интерактив (чипы, вкладки, карусель) не ставим в 20 px от левого края, иначе жест конфликтует.",
+  "quote": "people expect to find a Back button in a top toolbar that lets them return to the previous view with a single tap",
+  "who": "Apple HIG · Gestures",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/gestures",
   "verified": true
  }
 ]

@@ -1,128 +1,42 @@
 [
  {
-  "behavior": "Календарь уместен для ближних дат (в пределах года); для далёких дат лучше ввод с клавиатуры",
-  "case": "NN/g — Date-Input Form Fields: UX Design Guidelines (Angie Li, 2017)",
-  "quote": "Calendar pickers should be used for events close to the present time — within less than a year. However, they can be frustrating for users who choose dates far in advance because they require too much navigation to get to the desired input; for these users, it would be faster to simply type the year.",
+  "situation": "Нужна дата дальше года — и её приходится листать месяцами",
+  "happens": "Дата рождения гостя или срок брони на 14 месяцев вперёд: календарь открывается на текущем месяце, и пользователь тапает «вперёд» десятки раз по цели 32 px, промахиваясь мимо нужного месяца.",
+  "systems": "NN/g: «Calendar pickers should be used for events close to the present time — within less than a year.» и «they can be frustrating for users who choose dates far in advance because they require too much navigation to get to the desired input; for these users, it would be faster to simply type the year.» Carbon добавляет: «If a user needs to input a far distant or future date consider having the calendar default open to a more convenient day.»",
+  "us": "Дать ввод года руками/селект месяца-года в шапке календаря, а для далёких дат (ДР) по умолчанию открывать на релевантном месяце — не заставлять листать.",
+  "quote": "Calendar pickers should be used for events close to the present time — within less than a year.",
+  "who": "NN/g, Date-Input Form Fields — nngroup.com/articles/date-input; IBM Carbon, Date picker",
   "url": "https://www.nngroup.com/articles/date-input/",
   "verified": true
  },
  {
-  "behavior": "Календарь особенно хорош для выбора диапазона (например, две недели/месяца рядом)",
-  "case": "NN/g — Date-Input Form Fields",
-  "quote": "Calendar pickers are especially useful for selecting a date range. In those situations, they often display two months side by side.",
+  "situation": "Ввод даты руками отвергли — и не объяснили почему",
+  "happens": "Пользователь вводит «9-3-17» (или «1.09.26»), форма отвечает ошибкой, потому что ждёт «09/08/17»; подсказки о формате до отправки нет, и человек перебирает варианты.",
+  "systems": "NN/g описывает кейс Priceline: «Priceline rejected the date 9-3-17 without even providing suggestions on how to properly format it.» Требование: «Do not require users to enter special characters to format dates. Whatever format users chose for entering the date (dashes, spaces, slashes, dots between the month, day, and year components), their input should be recognized.»",
+  "us": "Принимать любой разделитель и порядок из понятных вариантов, показывать формат в подписи до ввода и объяснять ошибку словами («Формат: ДД.ММ.ГГГГ»).",
+  "quote": "Priceline rejected the date 9-3-17 without even providing suggestions on how to properly format it.",
+  "who": "NN/g, Date-Input Form Fields",
   "url": "https://www.nngroup.com/articles/date-input/",
   "verified": true
  },
  {
-  "behavior": "Скролл-пикеры дат на мобиле раздражают при большом числе дат — надо разрешать ручной ввод",
-  "case": "NN/g — Date-Input Form Fields",
-  "quote": "Scrolling date pickers on mobile devices are common, yet they can be annoying if the picker contains many dates. In those situations, scrolling in a small space is slow and unproductive; it’s better to allow users to type the date directly.",
-  "url": "https://www.nngroup.com/articles/date-input/",
+  "situation": "Недоступные даты серые — и непонятно почему",
+  "happens": "В календаре брони половина дней месяца серая: на 375 px пользователь не знает, это «занято», «закрыто» или ошибка загрузки, и уходит из календаря.",
+  "systems": "Carbon описывает механику и требует ставить границы осознанно: «Once set, only the dates that fall within the min/max range will be selectable with the dates outside of the range being disabled.» и «If a user cannot select dates in the past when scheduling, then set a min date to today.» (то есть для «нельзя в прошлое» достаточно min, а не отключения полей вручную).",
+  "us": "Занятые/закрытые дни отличать визуально от «вне диапазона» и подписывать причину под календарём («Кухня не работает по понедельникам»); «в прошлое» отсекать min-датой, а не серыми днями.",
+  "quote": "Once set, only the dates that fall within the min/max range will be selectable with the dates outside of the range being disabled.",
+  "who": "IBM Carbon, Date picker (usage) — raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/date-picker/usage.mdx",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/date-picker/usage.mdx",
   "verified": true
  },
  {
-  "behavior": "Разбивка даты на выпадающие списки месяц/день/год — антипаттерн (лишние шаги)",
-  "case": "NN/g — Date-Input Form Fields",
-  "quote": "Split date fields with drop-downs for month, day, and year require a lot of unnecessary steps. This method increases interaction cost by adding additional clicks and scrolling. We advise against using this pattern.",
-  "url": "https://www.nngroup.com/articles/date-input/",
-  "verified": true
- },
- {
-  "behavior": "Требовать спецсимволы для формата даты нельзя — любые разделители должны приниматься",
-  "case": "NN/g — Date-Input Form Fields",
-  "quote": "Do not require users to enter special characters to format dates.",
-  "url": "https://www.nngroup.com/articles/date-input/",
-  "verified": true
- },
- {
-  "behavior": "Для диапазона не сдвигать месяцы календаря между датой отправления и возврата",
-  "case": "NN/g — Date-Input Form Fields",
-  "quote": "Avoid shifting date ranges for departure and return pairs.",
-  "url": "https://www.nngroup.com/articles/date-input/",
-  "verified": true
- },
- {
-  "behavior": "Недопустимые даты (прошлое, возврат раньше отправления) должны блокироваться и быть серыми",
-  "case": "NN/g — Date-Input Form Fields",
+  "situation": "Диапазон: «возврат» раньше «выезда», месяцы прыгают после первого тапа",
+  "happens": "Пользователь выбирает период: тапает 16 августа, и календарь сам перескакивает на август–сентябрь, а вторую дату можно случайно поставить раньше первой — форма принимает бессмысленный диапазон и падает на сервере.",
+  "systems": "NN/g: «Users should be prevented from entering a return date that takes place before the departure date or that is in the past.» и «Avoid shifting date ranges for departure and return pairs. For example, if November—December is shown for departure, do not shift and show December—January for the return date range.» — с кейсом Southwest: «Southwest Airlines shifted the return date range based on the departure-date selection.»",
+  "us": "Вторую дату выбирать в том же месяце, где стоит первая; даты раньше первой — неактивны с объяснением; месяц календаря при выборе второй даты не двигать.",
   "quote": "Users should be prevented from entering a return date that takes place before the departure date or that is in the past.",
+  "who": "NN/g, Date-Input Form Fields",
   "url": "https://www.nngroup.com/articles/date-input/",
   "verified": true
- },
- {
-  "behavior": "Календарь применяют только для ближних дат/дня недели/сравнения, и всегда с возможностью ручного ввода",
-  "case": "GOV.UK Design System — Dates pattern",
-  "quote": "Only use a calendar control if users need to: pick a date in the near future or recent past / know the day of the week, or the week of the month, as well as the date / be able to see dates in relation to other dates",
-  "url": "https://design-system.service.gov.uk/patterns/dates/",
-  "verified": true
- },
- {
-  "behavior": "Календарь не должен быть только-JS: всегда оставлять ввод даты текстом",
-  "case": "GOV.UK Design System — Dates pattern",
-  "quote": "Never make a calendar control that depends on JavaScript as the only input option. Allow users to enter the date into a text input as well as use the control.",
-  "url": "https://design-system.service.gov.uk/patterns/dates/",
-  "verified": true
- },
- {
-  "behavior": "Памятные даты (дата рождения) — 3 отдельных поля день/месяц/год, а не календарь",
-  "case": "GOV.UK Design System — Date input",
-  "quote": "The date input component consists of 3 fields to let users enter a day, month and year.",
-  "url": "https://design-system.service.gov.uk/components/date-input/",
-  "verified": true
- },
- {
-  "behavior": "Модальный календарь на мобиле встраивается в диалог; навигация свайпом по месяцам, скроллом по годам",
-  "case": "Material Components for Android — Date pickers (Material Design)",
-  "quote": "Date pickers should be suitable for the context in which they appear and can be embedded into dialogs on mobile devices.",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/DatePicker.md",
-  "verified": true
- },
- {
-  "behavior": "Навигация модального календаря: свайп по месяцам, вертикальный скролл по годам, тап по году — выбор года",
-  "case": "Material Components for Android — Date pickers",
-  "quote": "Modal date pickers navigate across dates in several ways: * To navigate across months, swipe horizontally * To navigate across years, scroll vertically * To access the year picker, tap the year",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/DatePicker.md",
-  "verified": true
- },
- {
-  "behavior": "Когда места мало — компактный пикер: кнопка со значением, по тапу модальный календарь",
-  "case": "Apple Human Interface Guidelines — Pickers",
-  "quote": "Use a compact date picker when space is constrained. The compact style displays a button that shows the current value in your app’s accent color. When people tap the button, the date picker opens a modal view, providing access to a familiar calendar-style editor and time picker.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/pickers",
-  "verified": true
- },
- {
-  "behavior": "Пикер показывать в контексте — рядом с полем, а не переключать экраны",
-  "case": "Apple Human Interface Guidelines — Pickers",
-  "quote": "Avoid switching views to show a picker. A picker works well when displayed in context, below or in proximity to the field people are editing.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/pickers",
-  "verified": true
- },
- {
-  "behavior": "До открытия пикера сообщать, какие даты недоступны",
-  "case": "SAP Fiori Design (Android) — Date Picker usage",
-  "quote": "Inform the user which dates are and are not selectable before they invoke the picker.",
-  "url": "https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/date-picker/usage",
-  "verified": true
- },
- {
-  "behavior": "Ошибки выбора даты в input-режиме: out of bounds, end before start, invalid date",
-  "case": "SAP Fiori Design (Android) — Date Picker usage",
-  "quote": "This error triggers when the user inputs an end date that occurs before the start date.",
-  "url": "https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/date-picker/usage",
-  "verified": true
- },
- {
-  "behavior": "На устройствах с малой высотой экрана по умолчанию показывать input-режим (диалог ввода меньше по высоте)",
-  "case": "SAP Fiori Design (Android) — Date Picker usage",
-  "quote": "The input mode is displayed by default for devices with small heights since the input mode dialogs are smaller than the selection mode dialogs.",
-  "url": "https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/date-picker/usage",
-  "verified": true
- },
- {
-  "behavior": "Кейс мобильного календаря у American Airlines (Baymard, пример дизайна; текст по платному доступу)",
-  "case": "Baymard Institute — 75 'Date Picker' Design Examples, American Airlines' Mobile Date Picker",
-  "quote": "Get Baymard access This Page Design is part of Baymard’s premium UX research. (полный текст кейса доступен только по подписке)",
-  "url": "https://baymard.com/ecommerce-design-examples/date-picker/20200-american-airlines",
-  "verified": false
  }
 ]

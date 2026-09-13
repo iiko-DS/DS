@@ -1,65 +1,32 @@
 [
  {
-  "behavior": "На мобиле баннер живёт вверху экрана под app bar, при скролле закрепляется; показывать только один баннер за раз.",
-  "case": "Material Components for the Web (MDC), Banner",
-  "quote": "Banners should be displayed at the top of the screen, below a top app bar. They’re persistent and nonmodal, allowing the user to either ignore them or interact with them at any time. Only one banner should be shown at a time.",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/README.md",
-  "verified": true
- },
- {
-  "behavior": "Баннер не исчезает сам — закрытие требует действия пользователя (поэтому он не подходит для мелочей).",
-  "case": "Material Components for the Web (MDC), Banner",
-  "quote": "It requires a user action to be dismissed.",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/README.md",
-  "verified": true
- },
- {
-  "behavior": "В потоке: баннер ставится сразу перед h1 (не поверх контента), ширина — как у остального контента страницы.",
-  "case": "GOV.UK Design System, Notification banner",
-  "quote": "Position a notification banner immediately before the page h1",
+  "situation": "Зелёный баннер об успехе остался на следующем экране",
+  "happens": "Баннер «Заказ оплачен» висит и после перехода на другой экран: пользователь читает его как сообщение о том, что оплата только что прошла снова, и начинает проверять кассу.",
+  "systems": "GOV.UK Design System: «Remove a green notification banner when the user moves to a new page» и «Use a Confirmation page in a linear service to tell users that they've finished using the service instead of a notification banner». Зелёный вариант там же определён как «to confirm that something they're expecting to happen has happened».",
+  "us": "Зелёный баннер живёт на одном экране: убираем при уходе со страницы. Результат шага мастера показываем экраном подтверждения, а не плашкой, которая едет за пользователем.",
+  "quote": "Remove a green notification banner when the user moves to a new page.",
+  "who": "GOV.UK Design System · Notification banner",
   "url": "https://design-system.service.gov.uk/components/notification-banner/",
   "verified": true
  },
  {
-  "behavior": "Одновременно только один баннер на странице; несколько сообщений объединяются в один баннер.",
-  "case": "GOV.UK Design System, Notification banner",
-  "quote": "Avoid showing more than one notification banner on the same page. Instead, combine the messages in a single notification banner.",
-  "url": "https://design-system.service.gov.uk/components/notification-banner/",
+  "situation": "Плашка в самом верху экрана читается как реклама",
+  "happens": "Сообщение про обновление ставят наверх, добавляют анимацию появления и показывают каждую смену — и его перестают замечать: это ровно та зона экрана, где живёт реклама, а не рабочая информация.",
+  "systems": "NN/g (Kara Pernice): «Here are the traits that signal an ad: Ad-specific placement, like the top of page or the right rail; Ad-like visual treatment, such as animation; Proximity to actual ads or promotions» и на мобиле: «Anything that stands out from immediate surrounding context is likely to be considered an ad». GOV.UK добавляет: «Use notification banners sparingly. There's evidence that people often miss them».",
+  "us": "Баннер — редкий канал для того, что не относится к содержимому страницы; без анимации и без «рекламной» подачи. Что показывается регулярно — вообще не баннер, а элемент контента.",
+  "quote": "Anything that stands out from immediate surrounding context is likely to be considered an ad, although its presentation may be consistent with other elements on the page that are not visible at the time.",
+  "who": "Nielsen Norman Group · Banner Blindness Revisited: Users Dodge Ads on Mobile and Desktop (Kara Pernice)",
+  "url": "https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/",
   "verified": true
  },
  {
-  "behavior": "Если информация относится к тому, что пользователь делает на странице, — это не баннер, а контент страницы.",
-  "case": "GOV.UK Design System, Notification banner",
+  "situation": "В баннер уезжает то, что относится к самому экрану",
+  "happens": "Правило про доставку, лимит по столу или формат заказа показывают плашкой сверху, хотя пользователь работает именно с этим экраном: при прокрутке текст теряется, а 52 px остаются занятыми.",
+  "systems": "GOV.UK Design System отделяет это прямо: «If the information is directly relevant to the thing the user is doing on that page, put the information in the main page content instead. Use an Inset text component or Warning text component if it needs to stand out».",
+  "us": "В ДС разделяем каналы: баннер — только для того, что не относится к содержимому экрана (нет связи, работы на сервисе); всё про текущую задачу — в контенте (подсказка, инлайн-плашка, текст предупреждения).",
   "quote": "If the information is directly relevant to the thing the user is doing on that page, put the information in the main page content instead.",
+  "who": "GOV.UK Design System · Notification banner",
   "url": "https://design-system.service.gov.uk/components/notification-banner/",
-  "verified": true
- },
- {
-  "behavior": "Баннеры на мобиле игнорируют (banner blindness): то, что резко выделяется от окружения, пользователь принимает за рекламу.",
-  "case": "Nielsen Norman Group, Banner Blindness Revisited",
-  "quote": "Anything that stands out from immediate surrounding context is likely to be considered an ad",
-  "url": "https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/",
-  "verified": true
- },
- {
-  "behavior": "На узком экране крупный баннер невозможно проигнорировать взглядом — он перекрывает контент при скролле.",
-  "case": "Nielsen Norman Group, Banner Blindness Revisited (mobile)",
-  "quote": "A mobile inline ad is so large in proportion to the screen size that users cannot avert their eyes from it as they swipe down.",
-  "url": "https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/",
-  "verified": true
- },
- {
-  "behavior": "На мобильных экранах кнопка действия баннера переносится под его текст.",
-  "case": "Carbon Design System, Notification (Inline, actionable)",
-  "quote": "On mobile screens the action button wraps under the body content.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "Inline-баннеры не закрываются автоматически: держатся, пока пользователь их не закроет («x» в правом верхнем углу) или не выполнит действие.",
-  "case": "Carbon Design System, Notification (Inline)",
-  "quote": "Inline notifications do not dismiss automatically. They persist on the page until the user dismisses them or takes action that resolves the notification.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx",
   "verified": true
  }
 ]

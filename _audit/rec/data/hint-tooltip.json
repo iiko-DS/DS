@@ -276,6 +276,50 @@
    "src": "Источники: Nielsen Norman Group · Tooltip Guidelines (https://www.nngroup.com/articles/tooltip-guidelines/)",
    "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Причина списания</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Списание — это блюдо, отданное гостю без оплаты.</span></div></div><div style=\"font-size:12px;line-height:16px;color:#616161\">Обязательное поле</div></div>",
    "example_ru": "В подсказке только пояснение, а обязательность поля стоит постоянным текстом 12 px: критичное за тап не прячем."
+  },
+  {
+   "title": "Подсказка садится на сам элемент и под палец",
+   "items": [
+    "Что происходит: Долгое нажатие на «i» открывает пузырь поверх той же иконки и соседнего поля: палец закрывает часть текста, а поясняемое поле — целиком, и пользователя просят повторить действие.",
+    "Что делают системы: NN/g (Alita Kendrick): «Position Tooltips So They Don't Block Related Content. When tooltips block the content they're related to, they cause users to repeat steps (i.e. move their mouse to close the tooltip, read the information or field again, hover to reveal tooltip)». Apple HIG (Popovers): «Ideally, a popover doesn't cover the element that revealed it or any essential content people may need to see while using it». Carbon: «Do not cover related content that is essential to the user's tasks. Tooltips should not bleed off page or behind other content».",
+    "Что делать нам: Пузырь ставим по свободной стороне от пальца и никогда не накрываем поясняемое поле; отдельным правилом — не показывать подсказку над кнопкой, которую пользователь нажимает следующим действием."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tooltip Guidelines (Alita Kendrick) (https://www.nngroup.com/articles/tooltip-guidelines/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><div class=\"ds-hint-container ds-hint-container--up\"><span class=\"ds-hint-container__arrow\"></span><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Скидка считается от суммы блюд без сервисного сбора.</span></div></div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Скидка, %</div></div>",
+   "example_ru": "Пузырь с кареткой стоит над полем и не перекрывает его: поясняемое поле остаётся видимым, и палец его не закрывает."
+  },
+  {
+   "title": "Две иконки рядом — непонятно, чья подсказка открылась",
+   "items": [
+    "Что происходит: В строке формы три иконки подряд, подсказка появляется без стрелки: пользователь закрывает её и открывает по очереди все, потому что не понимает, к какому элементу она относится.",
+    "Что делают системы: NN/g: «Use tooltip arrows when multiple elements are nearby. Arrows are beneficial to clearly identify to which element the tooltip is associated. When there are several nearby elements, these arrows help avoid confusion» — пример с PowerPoint: «Without the tooltip arrows, it was difficult to know which tooltips correspond to which element». Carbon: «button and caret tip should be vertically centered with each other to associate the tooltip and the trigger. This is especially helpful when multiple elements are close to each other».",
+    "Что делать нам: В мобильной подсказке ДС всегда есть каретка и отступ от триггера; две подсказки на соседних элементах одной строки не размещаем — объединяем в один hint под строкой."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tooltip Guidelines (Alita Kendrick) (https://www.nngroup.com/articles/tooltip-guidelines/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><div style=\"display:flex;align-items:center;gap:8px\"><span class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span></div><div class=\"ds-hint-container ds-hint-container--down\"><span class=\"ds-hint-container__arrow\"></span><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Обе иконки поясняют одну строку — подсказка одна, с кареткой к строке.</span></div></div></div>",
+   "example_ru": "На строку с двумя иконками — одна подсказка с кареткой: видно, к какому элементу она относится, и второй пузырь рядом не открывается."
+  },
+  {
+   "title": "Тап мимо закрывает подсказку и заодно что-то нажимает",
+   "items": [
+    "Что происходит: Подсказка открылась по долгому нажатию, своего способа закрыть у неё нет: пользователь тапает мимо — и попадает по соседнему элементу или по своей же кнопке, которая выполняет действие.",
+    "Что делают системы: NN/g описывает тач-версию подсказки (popup tip): она открывается тапом и «Terminated when User taps to close or clicks another area of the screen». Apple HIG: «a popover generally closes when people click or tap outside its bounds or select an item in the popover» — то есть закрытие вынесено наружу подсказки.",
+    "Что делать нам: У подсказки на таче — свой способ закрытия (тап по пузырю, крестик, «Понятно»), а долгий текст уходит в шторку/toggletip с кнопкой; тап по триггеру закрывает подсказку, а не выполняет основное действие."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tooltip Guidelines (Alita Kendrick) (https://www.nngroup.com/articles/tooltip-guidelines/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-header\"><span class=\"ds-hint-header__title\">Подсказка</span><span class=\"ds-hint-header__close\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Списание — блюдо, отданное гостю без оплаты.</span></div></div></div>",
+   "example_ru": "У подсказки свой способ закрытия — «×» в шапке пузыря и тап по триггеру: закрытие не требует тапа мимо и не нажимает соседнюю кнопку."
+  },
+  {
+   "title": "В подсказку убрали предупреждение",
+   "items": [
+    "Что происходит: Предупреждение («Смена закроется автоматически в 04:00») кладут в пузырь подсказки: он исчезает сам или закрывается тапом мимо, и пользователь о предупреждении не знает.",
+    "Что делают системы: Apple HIG (Popovers): «Avoid using a popover to show a warning. People can miss a popover or accidentally close it. If you need to warn people, use an alert instead». Carbon тоже выводит критичное из подсказки: «Since a tooltip disappears when a user hovers away, do not include pertinent information for the user to complete their task».",
+    "Что делать нам: Предупреждение об ограничении по времени или лимиту — постоянная строка в контенте или диалог перед действием. В подсказку попадают только пояснения «что это такое»."
+   ],
+   "src": "Источники: Apple HIG · Popovers (https://developer.apple.com/design/human-interface-guidelines/popovers)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Смена — период работы одной кассы.</span></div></div><div class=\"ds-banner ds-banner--warning ds-banner--horizontal\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span><span class=\"ds-banner__row\">Смена закроется автоматически в 04:00</span></div></div>",
+   "example_ru": "В подсказке только пояснение «что это такое», а предупреждение о закрытии смены стоит постоянной строкой в контенте и не исчезнет вместе с пузырём."
   }
  ]
 }

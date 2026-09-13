@@ -1,72 +1,32 @@
 [
  {
-  "behavior": "Число больше порога → показывается «99+»; порог настраивается (overflowCount, по умолчанию 99).",
-  "case": "Ant Design, Badge (Overflow Count)",
-  "quote": "The default value of overflowCount is 99",
-  "url": "https://ant.design/components/badge",
+  "situation": "Счётчик непрочитанного не сбрасывается",
+  "happens": "В шапке горит «12» новых сообщений: пользователь открывает раздел и читает всё, а счётчик остаётся — цифра перестаёт что-либо значить, и её перестают замечать.",
+  "systems": "Apple HIG (Notifications): «Update your app's badge as soon as people open the corresponding notifications. You don't want people to think there are new notifications available, only to find that they've already viewed them all». NN/g: «To clear the indicator, the user had to view the message».",
+  "us": "Счётчик в ДС — производное от непрочитанных: обнуляется в момент просмотра списка, а не при следующей загрузке экрана; при нуле бейджа нет вовсе.",
+  "quote": "Update your app's badge as soon as people open the corresponding notifications. You don't want people to think there are new notifications available, only to find that they've already viewed them all.",
+  "who": "Apple HIG · Notifications",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/notifications",
   "verified": true
  },
  {
-  "behavior": "Ноль по умолчанию не показывается; показ нуля включается отдельным флагом.",
-  "case": "Ant Design, Badge (showZero, по умолчанию false)",
-  "quote": "Whether to show badge when count is zero",
-  "url": "https://ant.design/components/badge",
+  "situation": "Бейдж и всплывающее сообщение дублируют друг друга",
+  "happens": "Пользователь в приложении: приходит сообщение — одновременно меняется счётчик в шапке и всплывает плашка «Новое сообщение», хотя список обновляется прямо перед ним.",
+  "systems": "Apple HIG: «Handle notifications gracefully when your app is in the foreground. Your app's notifications don't appear when your app is in the front, but your app still receives the information. In this scenario, present the information in a way that's discoverable but not distracting or invasive, such as incrementing a badge or subtly inserting new data into the current view. For example, when a new message arrives in a mailbox that people are currently viewing, Mail simply adds it to the list of unread messages because sending a notification about it would be unnecessary and distracting».",
+  "us": "При открытом разделе — только изменение в списке (новый элемент, счётчик), без всплывающего сообщения; бейдж и снекбар про одно и то же событие не показываем вместе.",
+  "quote": "present the information in a way that's discoverable but not distracting or invasive, such as incrementing a badge",
+  "who": "Apple HIG · Notifications",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/notifications",
   "verified": true
  },
  {
-  "behavior": "Без числа — отдельный вариант «красная точка», когда количество неизвестно или неважно.",
-  "case": "Ant Design, Badge (dot)",
-  "quote": "Whether to display a red dot instead of count",
-  "url": "https://ant.design/components/badge",
-  "verified": true
- },
- {
-  "behavior": "Значок с числом использовать только для непрочитанных уведомлений, не для произвольных метрик.",
-  "case": "Apple Human Interface Guidelines, Notifications (Badges)",
-  "quote": "Use a badge only to show people how many unread notifications they have.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/notifications.json",
-  "verified": true
- },
- {
-  "behavior": "Не ставить в бейдж числа, не связанные с уведомлениями (погода, даты, курсы акций, счёт игры).",
-  "case": "Apple Human Interface Guidelines, Notifications (Badges)",
-  "quote": "Don’t use a badge to convey numeric information that isn’t related to notifications, such as weather-related data, dates and times, stock prices, or game scores.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/notifications.json",
-  "verified": true
- },
- {
-  "behavior": "Обнуление счётчика убирает сам бейдж и связанные уведомления — состояние нельзя «оставить нулём».",
-  "case": "Apple Human Interface Guidelines, Notifications (Badges)",
-  "quote": "Note that reducing a badge’s count to zero removes all related notifications from Notification Center.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/notifications.json",
-  "verified": true
- },
- {
-  "behavior": "Место в строке: бейдж навешивается на элемент навигации (вкладку/иконку) и указывает, что в разделе есть новое.",
-  "case": "Apple Human Interface Guidelines, Tab bars",
-  "quote": "You can display a badge — a red oval containing white text and either a number or an exclamation point — on a tab to indicate that there’s new or updated information in the section that warrants a person’s attention.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/tab-bars.json",
-  "verified": true
- },
- {
-  "behavior": "Бейдж — только для критичной информации, иначе его эффект размывается; часть вкладок может уезжать в «More».",
-  "case": "Apple Human Interface Guidelines, Tab bars",
-  "quote": "Reserve badges for critical information so you don’t dilute their impact and meaning.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/tab-bars.json",
-  "verified": true
- },
- {
-  "behavior": "Доступность: для скринридера предусмотрены отдельные строки описания — количество, «превышает максимум» (99+) и «без числа».",
-  "case": "Material Components for Android, Badges (content descriptions)",
-  "quote": "`setContentDescriptionExceedsMaxBadgeNumberStringResource(@StringRes int)` `setContentDescriptionNumberless(CharSequence)`",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/BadgeDrawable.md",
-  "verified": true
- },
- {
-  "behavior": "Бейдж показывает уведомления, счётчики или статус на элементах навигации и иконках; внутри может быть число или метка.",
-  "case": "Material Design 3, Badges (overview)",
-  "quote": "Badges show notifications, counts, or status information on navigation items and icons. A badge can include labels or numbers.",
-  "url": "https://m3.material.io/components/badges/overview",
+  "situation": "На одном экране несколько счётчиков сразу",
+  "happens": "Бейдж на уведомлениях в шапке, бейдж на «Заказах» в таббаре, статусные точки в списке: пользователь не понимает, куда идти и что важнее.",
+  "systems": "NN/g: «Indicators can introduce noise and clutter to your overall interface, and may distract users, so it is important to consider how many (if any) indicators to use in your design» — с чек-листом: «How important is the information to the user? Is it worth taking up space on the page to inform the user? How often is the information used? Would the user expect to see the information? Would it be missed if it weren't provided?».",
+  "us": "Один счётчик на экран: если бейдж есть на разделе, он не дублируется строкой в списке. Перед добавлением бейджа отвечаем на чек-лист NN/g.",
+  "quote": "Indicators can introduce noise and clutter to your overall interface, and may distract users",
+  "who": "Nielsen Norman Group · Indicators, Validations, and Notifications (Kim Flaherty)",
+  "url": "https://www.nngroup.com/articles/indicators-validations-notifications/",
   "verified": true
  }
 ]

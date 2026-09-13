@@ -235,6 +235,39 @@
    "src": "Источники: Baymard Institute · 'Touch Keyboard' Implementations (https://baymard.com/blog/mobile-touch-keyboards)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-textarea\"><span class=\"ds-textarea__label\">Адрес доставки</span><div class=\"ds-textarea__input-frame\"><div class=\"ds-textarea__input-content\"><textarea class=\"ds-textarea__field\" rows=\"3\" autocorrect=\"off\" spellcheck=\"false\">ул. Ленина 15, кв. 3</textarea></div></div><div class=\"ds-textarea__support\"><span class=\"ds-textarea__hint\">Автокоррекция выключена</span></div></div></div>",
    "example_ru": "Поле адреса с выключенной автокоррекцией: улица и аббревиатуры остаются такими, какими их набрали (Baymard)."
+  },
+  {
+   "title": "Свайп при прокрутке текста закрывает шторку — комментарий теряется",
+   "items": [
+    "Что происходит: Многострочный комментарий пишут в шторке; чтобы вернуться к началу текста, пользователь свайпает вниз внутри поля, жест уходит в шторку, она закрывается — введённое пропадает.",
+    "Что делают системы: NN/g разбирает это на кейсе Soundbrenner: «an accidental swipe downwards when scrolling through the content (3) sends the user back to the homepage (4)» — и добавляет, что жест ненадёжен по определению: «the vertical swipe is also prone to swipe ambiguity...». Apple признаёт, что у текстовой области своя прокрутка внутри: «Text views can be any height and allow scrolling when the content extends outside of the view.»",
+    "Что делать нам: В шторке с многострочным полем отключить закрытие свайпом (закрывать кнопкой/крестиком) и сохранять черновик при закрытии; прокрутку текста оставить внутри поля."
+   ],
+   "src": "Источники: NN/g, статья bottom-sheet (Bottom Sheets); Apple HIG, Text views (https://www.nngroup.com/articles/bottom-sheet/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-textarea\"><span class=\"ds-textarea__label\">Комментарий к заказу</span><div class=\"ds-textarea__input-frame\"><div class=\"ds-textarea__input-content\"><textarea class=\"ds-textarea__field\" rows=\"3\">Доставить к 11:00. Позвонить за 15 минут. Пропуск на территории.</textarea></div></div><div class=\"ds-textarea__support\"><span class=\"ds-textarea__hint\">Свайп по тексту прокручивает поле — шторку закрывает только крестик</span></div></div></div>",
+   "example_ru": "Свайп внутри многострочного поля прокручивает текст, а не закрывает шторку; закрытие — крестиком, черновик при закрытии сохраняется."
+  },
+  {
+   "title": "Многострочное поле под ответ в два слова",
+   "items": [
+    "Что происходит: Под «Комментарий к заказу» стоит поле на 5 строк во всю ширину экрана: на телефоне оно предлагает писать сочинение, съедает треть экрана и выталкивает кнопку сохранения, хотя типичный ответ — «без лука».",
+    "Что делают системы: Apple: «If you need to display a small amount of text, it’s simpler to use a label or — if the text is editable — a text field.» Carbon требует соразмерности содержимому: «The field widths of both text input and text area should reflect the intended length of the content while still aligning to the grid columns or mini unit grid.»",
+    "Что делать нам: Короткие примечания — однострочное поле; многострочное — 3 строки и только там, где текст действительно длинный; ширину поля не растягивать «на всю карточку»."
+   ],
+   "src": "Источники: IBM Carbon, Text input (usage, раздел Text area); Apple HIG, Text views (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-textarea\"><span class=\"ds-textarea__label\">Примечание к позиции</span><div class=\"ds-textarea__input-frame\"><div class=\"ds-textarea__input-content\"><textarea class=\"ds-textarea__field\" rows=\"1\" placeholder=\"Например, без лука\"></textarea></div></div><div class=\"ds-textarea__support\"><span class=\"ds-textarea__hint\">Короткий ответ — одна строка; многострочное поле растягиваем только под длинный текст</span></div></div></div>",
+   "example_ru": "Примечание в два слова живёт в поле высотой в одну строку: место в форме не съедает треть экрана, кнопка сохранения остаётся видна."
+  },
+  {
+   "title": "Длинный текст живёт в транзиентной шторке",
+   "items": [
+    "Что происходит: Комментарий на 300 знаков пишут в шторке, которая закрывается при уходе с экрана; пользователь отвлёкся на звонок, вернулся — шторки и текста нет, всё заново.",
+    "Что делают системы: NN/g: «A sheet is inherently a transient UI element — it is meant to support quick interactions, and it should not be used for displaying complex content.» — и в разделе про длинные взаимодействия: «we don’t recommend using a bottom sheet when users will likely spend significant time reviewing the information (or options) displayed inside it.»",
+    "Что делать нам: Долгий ввод (комментарий, описание) — на отдельном экране с сохранением черновика; в шторке оставлять только короткие ответы в 1–2 строки."
+   ],
+   "src": "Источники: NN/g, статья bottom-sheet (Bottom Sheets) (https://www.nngroup.com/articles/bottom-sheet/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-textarea\"><span class=\"ds-textarea__label\">Комментарий к заказу</span><div class=\"ds-textarea__input-frame\"><div class=\"ds-textarea__input-content\"><textarea class=\"ds-textarea__field\" rows=\"6\">Доставить к 11:00. Позвонить за 15 минут. Пропуск на территории. Соус отдельно, без лука.</textarea></div></div><div class=\"ds-textarea__support\"><span class=\"ds-textarea__hint\">Черновик сохраняется: длинный ввод — отдельный экран, а не транзиентная шторка</span></div></div></div>",
+   "example_ru": "Длинный комментарий набирают на отдельном экране, где сохраняется черновик: транзиентная шторка для такого ввода не используется."
   }
  ]
 }

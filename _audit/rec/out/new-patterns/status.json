@@ -1,58 +1,42 @@
 [
  {
-  "behavior": "Статус — только индикация: не делать его ссылкой/кнопкой и не использовать глаголы в подписи.",
-  "case": "GOV.UK Design System, Tag",
-  "quote": "Tags are only used to indicate a status. Do not make a tag interactive by making it into a link or button.",
-  "url": "https://design-system.service.gov.uk/components/tag/",
+  "situation": "Статус написан языком бэкенда",
+  "happens": "В строке заказа стоит «Fulfilled» или «Label created» — пользователь не понимает, заказ готов или только собирается, и звонит в поддержку, чтобы ему перевели.",
+  "systems": "NN/g (Maria Rosala): «Sometimes status trackers are plugged onto a backend database without ensuring that the terminology used makes sense to users. Backend codes and internal jargon, such as \"fulfilled\" or \"label created\", mean nothing to the user. Lack of clarity encourages users to contact the company. Each update should be written in plain language and should be free from jargon». Примеры бессмысленных статусов: «Processed Sort Facility, Pre-Advise Sent To Usps United Kingdom, Cert. of Posting Created».",
+  "us": "В ДС заводим словарь статусов из одного-двух бытовых слов («Готовим», «В пути», «Отдан гостю») и запрещаем выводить статусные коды бэкенда в интерфейс.",
+  "quote": "Backend codes and internal jargon, such as \"fulfilled\" or \"label created\", mean nothing to the user.",
+  "who": "Nielsen Norman Group · Status Trackers and Progress Updates: 16 Design Guidelines (Maria Rosala)",
+  "url": "https://www.nngroup.com/articles/status-tracker-progress-update/",
   "verified": true
  },
  {
-  "behavior": "Доступность: не передавать информацию только цветом — нужен текстовый дескриптор (WCAG 2.2 SC 1.4.1).",
-  "case": "GOV.UK Design System, Tag (Using colour with tags)",
-  "quote": "Do not use colour alone to convey information, because it’s not accessible.",
-  "url": "https://design-system.service.gov.uk/components/tag/",
+  "situation": "Статус не меняется неделями",
+  "happens": "Статус «В обработке» висит с одной и той же датой три недели: пользователь считает, что заказ потерян или система зависла, и звонит — хотя процесс идёт.",
+  "systems": "NN/g: «For processes that take a long time, provide regular updates, even if they are of low granularity... when there are long periods with no update, users start to think perhaps something went wrong, they lose trust in the status tracker, and begin to consider contacting the organization or company». Пример USCIS: «There was a long period of no update between the 19th September and the 3rd December».",
+  "us": "В строке статуса показываем, когда он менялся («обновлено 2 часа назад»), и обновляем статус при каждом событии, даже мелком («Принят в обработку»).",
+  "quote": "when there are long periods with no update, users start to think perhaps something went wrong, they lose trust in the status tracker, and begin to consider contacting the organization or company",
+  "who": "Nielsen Norman Group · Status Trackers and Progress Updates: 16 Design Guidelines (Maria Rosala)",
+  "url": "https://www.nngroup.com/articles/status-tracker-progress-update/",
   "verified": true
  },
  {
-  "behavior": "Статус на мобиле = цвет + короткий текстовый дескриптор, чтобы читалось с одного взгляда.",
-  "case": "GOV.UK Design System, Task list (Statuses)",
-  "quote": "Statuses use colour and a short descriptor to give users a quick overview of how much of the task list they have completed, and how much is left to do.",
-  "url": "https://design-system.service.gov.uk/components/task-list/",
+  "situation": "Текст статуса остался от прошлого состояния",
+  "happens": "У заказа статус «Ожидает оплаты», а под ним старая подсказка «Мы сообщим, если оплата не пройдёт», хотя оплата уже прошла — на телефоне это читается как противоречие и подрывает доверие к экрану.",
+  "systems": "NN/g разбирает такой случай у USCIS: «while the Next Steps panel is a useful concept, the content — We will notify you if your document cannot be produced – isn't relevant anymore, as the card has already been produced and dispatched». Там же требование держать и прошлые обновления: «Show previous updates, as well as the current update».",
+  "us": "Подпись и «следующий шаг» привязаны к текущему статусу и меняются вместе с ним; отработавшее сообщение уходит в историю, а не остаётся под статусом.",
+  "quote": "We will notify you if your document cannot be produced",
+  "who": "Nielsen Norman Group · Status Trackers and Progress Updates (Maria Rosala)",
+  "url": "https://www.nngroup.com/articles/status-tracker-progress-update/",
   "verified": true
  },
  {
-  "behavior": "Не использовать капс в статусах — на маленьком экране читается хуже.",
-  "case": "GOV.UK Design System, Task list (Formatting of statuses)",
-  "quote": "The use of uppercase in task statuses makes them harder to read.",
-  "url": "https://design-system.service.gov.uk/components/task-list/",
-  "verified": true
- },
- {
-  "behavior": "Статус точкой (dot) должен сопровождаться текстом — цвет точки не единственный носитель смысла.",
-  "case": "Ant Design, Badge (status + text)",
-  "quote": "If status is set, text sets the display text of the status dot",
-  "url": "https://ant.design/components/badge",
-  "verified": true
- },
- {
-  "behavior": "Пассивный статус легко пропустить: если информация критична, индикатора-бейджа недостаточно.",
-  "case": "Nielsen Norman Group, Indicators, Validations, and Notifications",
-  "quote": "Passive notifications can easily be missed, since they require no user action.",
-  "url": "https://www.nngroup.com/articles/indicators-validations-notifications/",
-  "verified": true
- },
- {
-  "behavior": "Статус-плашку могут принять за кнопку: светлый фон с тёмным текстом вместо тёмной плашки (результат исследований GOV.UK).",
-  "case": "GOV.UK Design System, Tag (Research on this component)",
-  "quote": "Research from multiple teams found that some users perceived these as buttons and tried to click on them.",
-  "url": "https://design-system.service.gov.uk/components/tag/",
-  "verified": true
- },
- {
-  "behavior": "Акцент на незавершённом: статус «выполнено» — без фона, чтобы внимание уходило к задачам, требующим действия.",
-  "case": "GOV.UK Design System, Task list (Formatting of statuses)",
-  "quote": "The ‘Completed’ task now uses black text with no background colour, which will draw more attention to tasks that require action.",
-  "url": "https://design-system.service.gov.uk/components/task-list/",
+  "situation": "Статус в строке таблицы ломается на узком экране",
+  "happens": "Статус с датой и временем пытаются вписать колонкой таблицы: колонки сжимаются, дата и время переносятся на вторую строку, список перестаёт сканироваться.",
+  "systems": "NN/g: «Where detailed tracking information is presented in a table format, ensure that the information is easily scannable. In the Echo tracker, the table columns are too narrow, causing the date and time to wrap. The result is that the information becomes difficult to scan» — как удачный пример приводится Royal Mail: «Each update is visually distinct, with a dated header. There are only two columns and they have adequate spacing».",
+  "us": "На 375 px статус с датой выводим не колонкой таблицы, а частью строки карточки: статус и относительное время («2 часа назад») одной строкой, полная дата — в деталях записи.",
+  "quote": "the table columns are too narrow, causing the date and time to wrap",
+  "who": "Nielsen Norman Group · Status Trackers and Progress Updates (Maria Rosala)",
+  "url": "https://www.nngroup.com/articles/status-tracker-progress-update/",
   "verified": true
  }
 ]

@@ -327,6 +327,50 @@
    "src": "Источники: Material Design 1 · Steppers (Editable steps) (https://m1.material.io/components/steppers.html)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-stepper ds-stepper--vertical\"><button class=\"ds-step\" type=\"button\"><span class=\"ds-step__icon\"><span class=\"material-icons\" style=\"font-size:24px;line-height:1\">check</span></span><span>Стол</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step ds-step--selected\" type=\"button\"><span class=\"ds-step__num\">2</span><span>Гости</span></button></div></div>",
    "example_ru": "Пройденный шаг «Стол» отмечен галочкой и остаётся нажимаемым: тап по нему возвращает в редактирование — editable step из MD1."
+  },
+  {
+   "title": "Системная «Назад» выбрасывает из мастера",
+   "items": [
+    "Что происходит: Мастер из четырёх шагов живёт на одном экране: пользователь на третьем шаге хочет вернуться ко второму, жмёт системную «Назад» — и оказывается на списке заказов, весь ввод пропал.",
+    "Что делают системы: Baymard Institute: «the majority of users perceive accordion checkouts as a multistep process with summaries. In practice, this can become problematic on sites where the accordion steps are technically implemented as a single page with one URL, as users wanting to go backwards to a previous checkout \"step\" (i.e., to edit previously entered information) will often be sent all the way back to the cart if using the browser \"Back\" button». Вывод: «it's key that accordion checkouts ensure that the browser \"Back\" button takes users back to the previously viewed step — regardless if it's technically the same or a separate page».",
+    "Что делать нам: В ДС фиксируем: «Назад» возвращает на предыдущий шаг, а не наружу из формы; каждый переход пишем в историю, а выход из мастера — отдельным действием с подтверждением и сохранением черновика."
+   ],
+   "src": "Источники: Baymard Institute · Always Collapse Completed Accordion Checkout Steps into Summaries (https://baymard.com/blog/accordion-checkout-usability)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-stepper-button\"><span class=\"ds-stepper-button__counter\">Шаг 3 из 4</span><div class=\"ds-stepper-button__group\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Назад</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Далее</span></button></div></div><div style=\"font-size:14px;line-height:20px\">Системная «Назад» возвращает на шаг 2, а не закрывает форму</div></div>",
+   "example_ru": "Переходы шагов пишутся в историю: системная «Назад» возвращает на предыдущий шаг, а не наружу из формы."
+  },
+  {
+   "title": "Не видно, сколько шагов всего и какая часть пути пройдена",
+   "items": [
+    "Что происходит: В вертикальном степпере на телефоне видны номера 1–2–3, но не сказано, сколько шагов всего и где общий прогресс: непонятно, форма только началась или позади большая часть.",
+    "Что делают системы: Carbon (Progress indicator): «Progress indicators help manage a user's expectations when completing a multistep process. They show which step the user is currently on, the total number of steps, and overall progress in completing a task». Про подписи: «You may also number each step to make the progression more obvious».",
+    "Что делать нам: В ДС шаг всегда подписывается текстом «Шаг 2 из 5» вместе с подписью действия; номера маркеров оставляем, но общее число показываем словом, а не долей полоски."
+   ],
+   "src": "Источники: IBM Carbon · Progress indicator (https://carbondesignsystem.com/components/progress-indicator/usage)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"font-size:16px;line-height:24px;font-weight:500\">Шаг 2 из 5</div><div class=\"ds-stepper ds-stepper--vertical\"><button class=\"ds-step\" type=\"button\"><span class=\"ds-step__icon\"><span class=\"material-icons\" style=\"font-size:24px;line-height:1\">check</span></span><span>Стол</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step ds-step--selected\" type=\"button\"><span class=\"ds-step__num\">2</span><span>Гости</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step ds-step--disabled\" type=\"button\"><span class=\"ds-step__num\">3</span><span>Оплата</span></button></div></div>",
+   "example_ru": "Вертикальный степпер подписан «Шаг 2 из 5»: общее число шагов и место в процессе видны словом, а не только по номерам."
+  },
+  {
+   "title": "Ошибка второго шага всплывает на последнем",
+   "items": [
+    "Что происходит: Проверка идёт при отправке: пользователь на последнем шаге, а ошибка — в поле второго шага, которое давно уехало с экрана. Он видит только «Проверьте форму» и не знает, куда возвращаться.",
+    "Что делают системы: GOV.UK (Error summary): «Always show an error summary when there is a validation error, even if there's only one» и требования: «link to each of the answers that have validation errors», «Put the error summary at the top of the main container. If your page includes breadcrumbs or a back link, place it below these, but above the <h1>». Smashing: «Most importantly, error summary probably shouldn't appear under the action button».",
+    "Что делать нам: Сводку ошибок показываем вверху содержимого с ссылками, которые возвращают на нужный шаг и ставят фокус в поле; заголовок «Проверьте форму» без ссылок не используем."
+   ],
+   "src": "Источники: GOV.UK Design System · Error summary (https://design-system.service.gov.uk/components/error-summary/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--negative ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">error</span></span><span>Проверьте форму — 2 ошибки</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Шаг 2: не указан стол</span></button><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Шаг 3: сумма оплаты</span></button></div></div></div>",
+   "example_ru": "Сводка ошибок стоит вверху экрана со ссылками на шаги: тап возвращает на нужный шаг и ставит фокус в поле."
+  },
+  {
+   "title": "На одном и том же месте кнопка делает разное",
+   "items": [
+    "Что происходит: В шторке-мастере внизу слева сначала «Отмена», на втором шаге там же «Назад», на последнем — «Готово»: пользователь нажимает привычное место и закрывает форму вместо возврата.",
+    "Что делают системы: Apple HIG (Sheets) описывает именно эту смену ролей в многошаговом листе: «On the first step, where there isn't a Back button, the Cancel button belongs on the leading edge... On subsequent steps, the Back button replaces the Cancel button to let people navigate back. On the final confirmation step, the Done button becomes active» — и запрещает собирать всё сразу: «Avoid showing all three buttons — Cancel, Done, and Back — together».",
+    "Что делать нам: На мобиле у шага не больше двух действий («Назад», «Далее»), они не меняют роль и место между шагами; закрыть мастер можно только явным «Закрыть» с подтверждением."
+   ],
+   "src": "Источники: Apple HIG · Sheets (https://developer.apple.com/design/human-interface-guidelines/sheets)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-stepper-button\"><span class=\"ds-stepper-button__counter\">Шаг 4 из 4</span><div class=\"ds-stepper-button__group\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Назад</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Далее</span></button></div></div><div style=\"font-size:14px;line-height:20px\">«Закрыть» мастер — отдельное действие с подтверждением</div></div>",
+   "example_ru": "У шага только «Назад» и «Далее», и они не меняют роль и место между шагами: закрыть мастер можно лишь явным действием с подтверждением."
   }
  ]
 }

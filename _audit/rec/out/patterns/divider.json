@@ -154,6 +154,39 @@
    "src": "Источники: Apple Human Interface Guidelines · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields)",
    "example_html": "<div class=\"pat__phone\"><div style=\"font-size:14px;line-height:20px\">Название</div><div style=\"height:4px\"></div><div style=\"height:48px;border:1px solid #BDBDBD;border-radius:8px\"></div><div style=\"height:16px\"></div><div style=\"font-size:14px;line-height:20px\">Комментарий гостя</div><div style=\"height:4px\"></div><div style=\"height:48px;border:1px solid #BDBDBD;border-radius:8px\"></div></div>",
    "example_ru": "Два поля разнесены на 16 px, и подпись «Комментарий гостя» однозначно относится ко второму полю."
+  },
+  {
+   "title": "Убрали линии — палец перестал различать нажимаемые строки",
+   "items": [
+    "Что происходит: Чтобы «очистить» мобильный список, разделители убрали: строки по 48 px со статусами и кнопками слились в один блок, и тап по «Отменить» попадает в «Оплатить».",
+    "Что делают системы: Material прямо называет эту роль разделителя: «Dividers can reinforce tapability, such as when used to separate list items or define tappable regions in an accordion.»",
+    "Что делать нам: Разделитель в мобильном списке — это граница цели нажатия: оставляем линию 1 px там, где строки нажимаемые; если линию убираем — компенсируем отступом/высотой строки, а не только «чистотой» макета."
+   ],
+   "src": "Источники: Material Web (MD3), Divider (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;align-items:center;justify-content:space-between;height:48px\"><span style=\"font-size:16px\">Оплатить</span><span class=\"material-icons\">chevron_right</span></div><hr class=\"ds-divider ds-divider--m\"><div style=\"display:flex;align-items:center;justify-content:space-between;height:48px\"><span style=\"font-size:16px\">Отменить заказ</span><span class=\"material-icons\">chevron_right</span></div></div>",
+   "example_ru": "Линия 1 px разделяет две нажимаемые строки по 48 px: палец видит, где кончается «Оплатить» и начинается «Отменить заказ», — без линий цели сливаются в один блок."
+  },
+  {
+   "title": "«Удалить» стоит вплотную к «Изменить»",
+   "items": [
+    "Что происходит: В шторке действий строки «Изменить», «Печатать», «Удалить» идут подряд без линии: единственная защита от удаления — 8 px отступа, и палец легко попадает в разрушительное действие.",
+    "Что делают системы: Carbon требует отделять такие действия визуально: «Actions that could cause a significant change to the user's data (delete app, delete service, etc.) are separated by a divider and live below the primary set of actions.»",
+    "Что делать нам: Перед разрушительным действием — разделитель, а не только отступ; в мобильном слое ДС закрепить: «деструктивное — ниже линии, последней строкой шторки»."
+   ],
+   "src": "Источники: IBM Carbon, Overflow menu (usage) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/overflow-menu/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;align-items:center;height:48px;font-size:16px\">Изменить</div><div style=\"display:flex;align-items:center;height:48px;font-size:16px\">Печатать</div><hr class=\"ds-divider ds-divider--m\"><div style=\"display:flex;align-items:center;height:48px;font-size:16px;color:#C62828\">Удалить</div></div>",
+   "example_ru": "Разрушительное «Удалить» стоит ниже линии, отдельно от основных действий строки: одного только отступа до него мало, линия отделяет действие с необратимым результатом."
+  },
+  {
+   "title": "Full-width линия между связанными строками рвёт блок",
+   "items": [
+    "Что происходит: В блоке «Итог заказа» строка «Скидка» отделена линией от края до края: на 375 px линия читается как граница карточки, и блок распадается на два смысловых куска.",
+    "Что делают системы: Material разводит два случая: «Use full width dividers to separate larger sections of unrelated content.» против «Use inset dividers to separate related content within a section.» — плюс «Inset dividers are equally indented from both sides of the screen by default.»",
+    "Что делать нам: Между связанными строками — inset 16 px, full-width — только между несвязанными секциями; запретить full-width внутри карточки/блока итогов."
+   ],
+   "src": "Источники: Material Web (MD3), Divider (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;justify-content:space-between;font-size:14px;line-height:20px\"><span>Сумма</span><span>2 480 ₽</span></div><hr class=\"ds-divider ds-divider--lite\" style=\"width:calc(100% - 32px);margin:8px auto\"><div style=\"display:flex;justify-content:space-between;font-size:14px;line-height:20px\"><span>Скидка</span><span>− 240 ₽</span></div><hr class=\"ds-divider ds-divider--m\"><div style=\"display:flex;justify-content:space-between;font-size:14px;line-height:20px\"><span>Оплата картой</span><span>2 240 ₽</span></div></div>",
+   "example_ru": "Внутри блока связанные строки «Сумма» и «Скидка» разделены линией с отступом 16 px от обеих сторон, а линия от края до края стоит только между несвязанными частями блока: блок не распадается."
   }
  ]
 }

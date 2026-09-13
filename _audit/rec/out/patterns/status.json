@@ -154,6 +154,50 @@
    "src": "Источники: GOV.UK Design System · Task list (Formatting of statuses) (https://design-system.service.gov.uk/components/task-list/)",
    "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:16px\"><span class=\"ds-status ds-status--neutral ds-status--text\"><span class=\"ds-status__label\">Выполнено</span></span><span class=\"ds-status ds-status--warning ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span><span class=\"ds-status__label\">Ждёт проверки</span></span></div></div>",
    "example_ru": "«Выполнено» — текстом без фона, цветная плашка достаётся тому, что требует действия: так внимание уходит к незавершённому."
+  },
+  {
+   "title": "Статус написан языком бэкенда",
+   "items": [
+    "Что происходит: В строке заказа стоит «Fulfilled» или «Label created» — пользователь не понимает, заказ готов или только собирается, и звонит в поддержку, чтобы ему перевели.",
+    "Что делают системы: NN/g (Maria Rosala): «Sometimes status trackers are plugged onto a backend database without ensuring that the terminology used makes sense to users. Backend codes and internal jargon, such as \"fulfilled\" or \"label created\", mean nothing to the user. Lack of clarity encourages users to contact the company. Each update should be written in plain language and should be free from jargon». Примеры бессмысленных статусов: «Processed Sort Facility, Pre-Advise Sent To Usps United Kingdom, Cert. of Posting Created».",
+    "Что делать нам: В ДС заводим словарь статусов из одного-двух бытовых слов («Готовим», «В пути», «Отдан гостю») и запрещаем выводить статусные коды бэкенда в интерфейс."
+   ],
+   "src": "Источники: Nielsen Norman Group · Status Trackers and Progress Updates: 16 Design Guidelines (Maria Rosala) (https://www.nngroup.com/articles/status-tracker-progress-update/)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><span style=\"font-size:14px;line-height:20px\">Заказ 1042</span><span class=\"ds-status ds-status--neutral ds-status--filled\"><span class=\"ds-status__label\">Готовим</span></span></div>",
+   "example_ru": "Статус — одно бытовое слово из словаря ДС («Готовим», «В пути»), а не код бэкенда: пользователю не нужен перевод."
+  },
+  {
+   "title": "Статус не меняется неделями",
+   "items": [
+    "Что происходит: Статус «В обработке» висит с одной и той же датой три недели: пользователь считает, что заказ потерян или система зависла, и звонит — хотя процесс идёт.",
+    "Что делают системы: NN/g: «For processes that take a long time, provide regular updates, even if they are of low granularity... when there are long periods with no update, users start to think perhaps something went wrong, they lose trust in the status tracker, and begin to consider contacting the organization or company». Пример USCIS: «There was a long period of no update between the 19th September and the 3rd December».",
+    "Что делать нам: В строке статуса показываем, когда он менялся («обновлено 2 часа назад»), и обновляем статус при каждом событии, даже мелком («Принят в обработку»)."
+   ],
+   "src": "Источники: Nielsen Norman Group · Status Trackers and Progress Updates: 16 Design Guidelines (Maria Rosala) (https://www.nngroup.com/articles/status-tracker-progress-update/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><span class=\"ds-status ds-status--warning ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span><span class=\"ds-status__label\">В обработке</span></span><div style=\"font-size:12px;line-height:16px;color:#616161\">Обновлено 2 часа назад</div></div>",
+   "example_ru": "Под статусом стоит время последнего обновления: видно, что процесс идёт, а не завис — пользователь не звонит в поддержку."
+  },
+  {
+   "title": "Текст статуса остался от прошлого состояния",
+   "items": [
+    "Что происходит: У заказа статус «Ожидает оплаты», а под ним старая подсказка «Мы сообщим, если оплата не пройдёт», хотя оплата уже прошла — на телефоне это читается как противоречие и подрывает доверие к экрану.",
+    "Что делают системы: NN/g разбирает такой случай у USCIS: «while the Next Steps panel is a useful concept, the content — We will notify you if your document cannot be produced – isn't relevant anymore, as the card has already been produced and dispatched». Там же требование держать и прошлые обновления: «Show previous updates, as well as the current update».",
+    "Что делать нам: Подпись и «следующий шаг» привязаны к текущему статусу и меняются вместе с ним; отработавшее сообщение уходит в историю, а не остаётся под статусом."
+   ],
+   "src": "Источники: Nielsen Norman Group · Status Trackers and Progress Updates (Maria Rosala) (https://www.nngroup.com/articles/status-tracker-progress-update/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><span class=\"ds-status ds-status--positive ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">check_circle</span></span><span class=\"ds-status__label\">Оплачен</span></span><div style=\"font-size:14px;line-height:20px\">Готовим заказ к выдаче — сообщим, когда можно забрать</div></div>",
+   "example_ru": "Подпись под статусом относится именно к текущему состоянию и меняется вместе с ним: отработавшее сообщение уходит в историю обновлений."
+  },
+  {
+   "title": "Статус в строке таблицы ломается на узком экране",
+   "items": [
+    "Что происходит: Статус с датой и временем пытаются вписать колонкой таблицы: колонки сжимаются, дата и время переносятся на вторую строку, список перестаёт сканироваться.",
+    "Что делают системы: NN/g: «Where detailed tracking information is presented in a table format, ensure that the information is easily scannable. In the Echo tracker, the table columns are too narrow, causing the date and time to wrap. The result is that the information becomes difficult to scan» — как удачный пример приводится Royal Mail: «Each update is visually distinct, with a dated header. There are only two columns and they have adequate spacing».",
+    "Что делать нам: На 375 px статус с датой выводим не колонкой таблицы, а частью строки карточки: статус и относительное время («2 часа назад») одной строкой, полная дата — в деталях записи."
+   ],
+   "src": "Источники: Nielsen Norman Group · Status Trackers and Progress Updates (Maria Rosala) (https://www.nngroup.com/articles/status-tracker-progress-update/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><div style=\"display:flex;align-items:center;justify-content:space-between;width:100%\"><span style=\"font-size:14px;line-height:20px\">Заказ 1042</span><span class=\"ds-status ds-status--positive ds-status--text\"><span class=\"ds-status__label\">Готов</span></span></div><div style=\"font-size:12px;line-height:16px;color:#616161\">2 часа назад</div></div>",
+   "example_ru": "На 375 px статус и время стоят строкой карточки, а не колонкой таблицы: подпись не переносится и список сканируется."
   }
  ]
 }

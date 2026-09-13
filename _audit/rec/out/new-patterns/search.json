@@ -1,51 +1,32 @@
 [
  {
-  "behavior": "Выдачу закрывает клавиатура — использовать поисковый экран, где результаты показываются под клавиатурой",
-  "case": "Apple HIG — Search fields (Search screen)",
-  "quote": "A search screen is a specialized keyboard screen that helps people enter search text, displaying search results beneath the keyboard in a fully customizable view.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json",
+  "situation": "Поиск ищет по всему каталогу, а человек ждёт поиска внутри открытой категории",
+  "happens": "Человек зашёл в раздел «Бар», вводит «мохито» и получает результаты со всего каталога: он не понимает, что поиск вышел за пределы раздела, теряет навигацию и часто уходит с экрана.",
+  "systems": "Baymard (mobile usability): более 50% участников пытались искать внутри текущей категории, и один из них сформулировал ожидание дословно: «When I search – when I am in a category – then to me it seems logical to search within that category.» При этом «94% of mobile e-commerce sites do not support such behavior».",
+  "us": "По умолчанию ищем в текущем разделе и подписываем это в поле или первой подсказкой («искать в: Бар»); расширение до всего каталога — отдельное осознанное действие, а не молчаливый переход.",
+  "quote": "When I search – when I am in a category – then to me it seems logical to search within that category.",
+  "who": "Baymard · Mobile Usability: Allow Users to 'Search Within' Their Current Category",
+  "url": "https://baymard.com/blog/search-within-current-category",
   "verified": true
  },
  {
-  "behavior": "Поле не должно само открывать клавиатуру, если это перекрывает выдачу (виртуальная клавиатура на iPad)",
-  "case": "Apple HIG — Search fields (Platform considerations)",
-  "quote": "An exception to this is on iPad when only a virtual keyboard is available, in which case it's better to leave the field unfocused to prevent the keyboard from unexpectedly covering the view.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json",
+  "situation": "Пустое поле поиска: недавние запросы на весь экран и без возможности убрать",
+  "happens": "Тап по поиску без ввода открывает список последних запросов на весь экран 375 px; человек передаёт телефон коллеге за столом и показывает свои рабочие запросы, а очистить список негде — крестика нет.",
+  "systems": "Apple HIG (Searching): «People might not appreciate having their search history appear where others might see it.» и «If you do show search history, provide a way for people to clear it if they want.»",
+  "us": "История запросов — выключенная по умолчанию опция с двумя уровнями очистки: крестик у запроса и «Очистить всё». На пустом поле показываем контекстные подсказки (что заказывали чаще), а не личную историю.",
+  "quote": "People might not appreciate having their search history appear where others might see it.",
+  "who": "Apple HIG · Searching",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/searching",
   "verified": true
  },
  {
-  "behavior": "Порядок результатов: самое релевантное — сверху, чтобы не приходилось прокручивать",
-  "case": "Apple HIG — Search fields (Simplify search results)",
-  "quote": "Provide the most relevant search results first to minimize the need for someone to scroll to find what they're looking for.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json",
-  "verified": true
- },
- {
-  "behavior": "Кнопка очистки появляется только после того, как пользователь начал печатать",
-  "case": "Carbon Design System (IBM) — Search, анатомия",
-  "quote": "Appears after the user has actively typed into the search field. Acts as a function to clear the search field.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/search/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "Не использовать поиск там, где данных мало",
-  "case": "Carbon Design System (IBM) — Search (When not to use)",
-  "quote": "Do not use when there is small or limited amounts of data.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/search/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "Фильтры области поиска: сначала широкий охват, потом сужение",
-  "case": "Apple HIG — Search fields (Scope bars)",
-  "quote": "Use a scope bar to filter among clearly defined search categories. A scope bar can help someone move from a broader scope to a narrower one.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json",
-  "verified": true
- },
- {
-  "behavior": "Пустой результат поиска — это осознанно спроектированное пустое состояние",
-  "case": "NN/g — Designing Empty States in Complex Applications",
-  "quote": "Search results lists when nothing is found, as well as other cases where a command creates empty output.",
-  "url": "https://www.nngroup.com/articles/empty-state-interface-design/",
+  "situation": "Непонятно, на каком уровне ищет поле",
+  "happens": "На одном экране живут три поиска: по всему меню, по странице зала и по списку внутри карточки. Человек вводит запрос в первый попавшийся, получает выдачу по всему каталогу и решает, что поиск «сломан».",
+  "systems": "Carbon (Search) различает ровно эти уровни: «Use at a global level when searching an entire site.» и «Use at a page level when searching through content on one page specifically.» Apple про то же — у выдачи должен быть назван контекст: «in the Mail app there is always a clear reference to the mailbox someone is searching».",
+  "us": "У каждой строки поиска есть подпись области («по всему меню», «в этом зале», «в этой карточке»); в шторке поиска контекст виден в шапке, и он не теряется при вводе.",
+  "quote": "Use at a global level when searching an entire site.",
+  "who": "Carbon Design System · Search · Usage; Apple HIG · Searching",
+  "url": "https://carbondesignsystem.com/components/search/usage/",
   "verified": true
  }
 ]

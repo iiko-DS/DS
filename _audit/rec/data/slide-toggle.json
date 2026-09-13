@@ -319,6 +319,39 @@
    "src": "Источники: Apple HIG · Toggles (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Печать</span><span class=\"ds-list-item__text\">Печатать чек на станции</span></div><div class=\"ds-list-container__element-right\"><label class=\"ds-slide-toggle\" id=\"pat2-st-9\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked aria-label=\"Печатать чек на станции\"><span class=\"ds-slide-toggle__track\"></span></span></label></div></div></div></div>",
    "example_ru": "Имя настройки даёт текст строки списка, у свитча только aria-label: отдельной подписи рядом нет."
+  },
+  {
+   "title": "Свитч «выключен», пока грузятся настройки",
+   "items": [
+    "Что происходит: при открытии настроек строки рисуются сразу, значения приезжают позже; человек успевает выключить свитч, который на самом деле был включён, — и меняет настройку в обратную сторону.",
+    "Что делают системы: IBM Carbon держит для свитча отдельное состояние загрузки — «Other interactive states are focus, disabled, read-only, and skeleton.», то есть пока значение неизвестно, переключатель не показывают как «on/off».",
+    "Что делать нам: до загрузки значения строка со свитчем стоит в состоянии skeleton и не нажимается; после ответа показываем реальное положение, а не «выключено» по умолчанию."
+   ],
+   "src": "Источники: IBM Carbon · Toggle (Behaviors. States) (https://carbondesignsystem.com/components/toggle/usage)",
+   "example_html": "<div class=\"pat__phone\" style=\"flex-direction:column;align-items:stretch;gap:8px\"><label class=\"ds-slide-toggle\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" disabled><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печать пречека</span></span><span class=\"ds-slide-toggle__support\">Значение загружается — переключать пока нельзя</span></label><label class=\"ds-slide-toggle\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Звук новых заказов</span></span></label></div>",
+   "example_ru": "Пока значение не приехало, строка со свитчем недоступна и подписана «Значение загружается»: «выключено» по умолчанию не показываем."
+  },
+  {
+   "title": "Главная настройка и подчинённые одного веса",
+   "items": [
+    "Что происходит: в группе «Печать» пять одинаковых свитчей; не видно, что «Печать чеков» управляет остальными, а при её выключении четыре подчинённых просто исчезают из списка.",
+    "Что делают системы: Apple предлагает ступенчатую иерархию — «Within a grouped form, consider using a mini switch to control the setting in a single row.» и «you can use a regular switch for the primary setting and mini switches for the subordinate settings», при этом высота строки остаётся одинаковой.",
+    "Что делать нам: главная настройка — обычным свитчем, подчинённые — мини-свитчами с отступом и одинаковой высотой строки; при выключении главной подчинённые не исчезают, а становятся недоступными с пояснением."
+   ],
+   "src": "Источники: Apple HIG · Toggles (Switches) (https://developer.apple.com/design/human-interface-guidelines/toggles)",
+   "example_html": "<div class=\"pat__phone\" style=\"flex-direction:column;align-items:stretch;gap:8px\"><label class=\"ds-slide-toggle\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печать чеков</span></span></label><label class=\"ds-slide-toggle\" style=\"margin-left:24px\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Пречек при закрытии</span></span></label><label class=\"ds-slide-toggle\" style=\"margin-left:24px\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\"><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Копия на кухню</span></span></label></div>",
+   "example_ru": "Главная настройка идёт первой, подчинённые — с отступом 24 px и той же высотой строки: вес виден, при выключении главной они не исчезают."
+  },
+  {
+   "title": "Переключил — не знаешь, сохранилось ли",
+   "items": [
+    "Что происходит: настройку меняют в шторке; свитч щёлкает мгновенно, шторку закрывают свайпом, и через минуту человек не может проверить, применилось ли изменение.",
+    "Что делают системы: NN/g объясняет ожидание человека — «Toggle switches should take immediate effect and should not require the user to click Save or Submit to apply the new state.», а Apple добавляет страховку на свайп по шторке с несохранёнными изменениями (подтверждение закрытия).",
+    "Что делать нам: мгновенное применение всегда сопровождаем обратной связью — снекбар с текстом изменения и действием «Отменить»; свитч не ставим в одну форму с кнопкой «Сохранить», а в шторке закрытие с изменениями подтверждаем."
+   ],
+   "src": "Источники: Alita Kendrick · Nielsen Norman Group · Toggle-Switch Guidelines (https://www.nngroup.com/articles/toggle-switch-guidelines/)",
+   "example_html": "<div class=\"pat__phone\" style=\"flex-direction:column;align-items:stretch;gap:8px\"><label class=\"ds-slide-toggle\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печать пречека</span></span></label><div class=\"ds-snackbar ds-snackbar--single ds-snackbar--light\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__label\">Печать пречека включена</span><span class=\"ds-snackbar__button\">Отменить</span></div></div></div>",
+   "example_ru": "Мгновенное переключение подтверждается снекбаром с текстом изменения и действием «Отменить»: видно, что настройка применилась."
   }
  ]
 }

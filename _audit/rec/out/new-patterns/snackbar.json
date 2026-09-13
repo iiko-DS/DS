@@ -1,86 +1,42 @@
 [
  {
-  "behavior": "Только одно сообщение на экране одновременно.",
-  "case": "Material Design 1, Snackbars & toasts",
-  "quote": "Show only one snackbar on screen at a time.",
-  "url": "https://m1.material.io/components/snackbars-toasts.html",
-  "verified": true
- },
- {
-  "behavior": "Второе сообщение вытесняет первое: предыдущий snackbar сворачивается вниз до того, как новый выезжает вверх (без наложения).",
-  "case": "Material Design 1, Snackbars & toasts (Consecutive snackbars)",
-  "quote": "There is only ever one snackbar displayed. When a second snackbar is triggered while the first is displayed, the first should start the contraction motion downwards before the second one animates upwards.",
-  "url": "https://m1.material.io/components/snackbars-toasts.html",
-  "verified": true
- },
- {
-  "behavior": "Текст — одна строка, прямо про выполненную операцию; на мобиле двухстрочный snackbar выше (80dp против 48dp).",
-  "case": "Material Design 1, Snackbars & toasts (Mobile specs)",
-  "quote": "Snackbars should contain a single line of text directly related to the operation performed.",
-  "url": "https://m1.material.io/components/snackbars-toasts.html",
-  "verified": true
- },
- {
-  "behavior": "Не перекрывать нижние действия: если snackbar накрывает FAB, кнопку нужно сместить вверх на его высоту.",
-  "case": "Material Design 1, Snackbars & toasts",
-  "quote": "Move your floating action button vertically to accommodate the snackbar height.",
-  "url": "https://m1.material.io/components/snackbars-toasts.html",
-  "verified": true
- },
- {
-  "behavior": "Кнопка «Отменить»: подтверждение удаления с undo остаётся на экране, пока пользователь не сделает другое действие (например, не начнёт скроллить).",
-  "case": "Material Design 1, Confirmation & acknowledgement (Android)",
-  "quote": "After the user deletes a conversation from the list view, an acknowledgment appears with an undo option. It remains until the user takes an unrelated action, such as scrolling the list.",
-  "url": "https://m1.material.io/patterns/confirmation-acknowledgement.html",
-  "verified": true
- },
- {
-  "behavior": "Сколько живёт: таймаут настраивается в диапазоне 4–10 секунд, значение по умолчанию — 5 секунд.",
-  "case": "Material Components for the Web (MDC), Snackbar (timeoutMs)",
-  "quote": "Value must be between `4000` and `10000` (or `-1` to disable the timeout completely) or an error will be thrown. Defaults to `5000` (5 seconds).",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-snackbar/README.md",
-  "verified": true
- },
- {
-  "behavior": "Одно действие максимум; если действий два и больше — это уже диалог, а не snackbar.",
-  "case": "Material Design 1, Snackbars & toasts",
-  "quote": "For two or more actions, use a dialog, not a snackbar, even when one of the actions is a dismiss action.",
-  "url": "https://m1.material.io/components/snackbars-toasts.html",
-  "verified": true
- },
- {
-  "behavior": "В Android-реализации новое сообщение сначала закрывает предыдущее — очередь сообщений не выстраивается.",
-  "case": "Material Components for Android, Snackbar",
-  "quote": "**Note**: Only one snackbar will be shown at a time. Showing a new snackbar will dismiss any previous ones first.",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Snackbar.md",
-  "verified": true
- },
- {
-  "behavior": "Длинный текст действия на мобиле переносится под текст сообщения (stacked-вариант).",
-  "case": "Material Components for the Web (MDC), Snackbar (stacked)",
-  "quote": "Action buttons with long text should be positioned _below_ the label instead of alongside it.",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-snackbar/README.md",
-  "verified": true
- },
- {
-  "behavior": "Сообщение внизу экрана легко не заметить (реальный кейс: пользователь 5 минут ждал загрузки, не увидев исчезнувшую через 5 секунд ошибку).",
-  "case": "Nielsen Norman Group, Indicators, Validations, and Notifications",
-  "quote": "one of our mobile users spent 5 minutes waiting for some content to load only because she hadn’t notice the little error message presented at the bottom of the screen that quickly faded away after 5 seconds.",
+  "situation": "Ошибка ушла вместе со снекбаром, а пользователь всё ещё ждёт",
+  "happens": "«Не удалось загрузить смену» показывают плашкой внизу, которая тает через 5 секунд. Пользователь в этот момент смотрит в середину экрана и продолжает ждать загрузки — экран пустой, и он считает, что грузится.",
+  "systems": "NN/g (Kim Flaherty) описывает ровно такой случай: «In fact, one of our mobile users spent 5 minutes waiting for some content to load only because she hadn't notice the little error message presented at the bottom of the screen that quickly faded away after 5 seconds» — тост как канал ошибки система и не признаёт: «From assessing the type of information delivered, we can determine the correct mechanism to use».",
+  "us": "Ошибку, из-за которой экран пустой, держим в контенте: состояние «Не удалось загрузить» с «Повторить». Снекбару оставляем подтверждения, где содержимое осталось на месте.",
+  "quote": "In fact, one of our mobile users spent 5 minutes waiting for some content to load only because she hadn't notice the little error message presented at the bottom of the screen that quickly faded away after 5 seconds.",
+  "who": "Nielsen Norman Group · Indicators, Validations, and Notifications: Pick the Correct Communication Option (Kim Flaherty)",
   "url": "https://www.nngroup.com/articles/indicators-validations-notifications/",
   "verified": true
  },
  {
-  "behavior": "Toast перекрывает контент и авто-скрывается через 5 секунд, поэтому должен легко закрываться вручную.",
-  "case": "Carbon Design System, Notification (Toast)",
-  "quote": "Toast notifications persist by default, but they can timeout and be coded to dismiss automatically after five seconds on the screen.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx",
+  "situation": "Ошибку формы показывают тостом внизу — поле не видно",
+  "happens": "Ошибку ввода показывают всплывающим сообщением внизу экрана, а само поле — в середине формы: прочитать и исправить одновременно нельзя, а когда сообщение исчезло, вернуть его нечем.",
+  "systems": "Smashing Magazine: «Users often don't get a chance to fully read or understand the error message before it has disappeared, and there is no way to restore it or keep it floating. Toast messages typically appear on the edges of the screen, and usually, it's quite far away from the problematic input that has caused the error. There is quite a disconnect between the error message and the input, and it's rarely possible to read the error message and correct the mistake simultaneously». Отдельно про длинный текст: «Lengthy toast messages usually block large areas of content that a user might be relying on».",
+  "us": "Ошибки ввода — у поля и в сводке над содержимым; снекбар не используем как канал ошибок формы и не показываем в нём текст длиннее двух строк.",
+  "quote": "There is quite a disconnect between the error message and the input, and it's rarely possible to read the error message and correct the mistake simultaneously.",
+  "who": "Smashing Magazine · Designing Better Error Messages UX (Vitaly Friedman)",
+  "url": "https://www.smashingmagazine.com/2022/08/error-messages-ux-design/",
   "verified": true
  },
  {
-  "behavior": "В веб-реализации сообщение по умолчанию живёт 3 секунды; одновременных сообщений может быть несколько с ограничением maxCount.",
-  "case": "Ant Design, Message (duration = 3, maxCount)",
-  "quote": "Time(seconds) before auto-dismiss, don't dismiss if set to 0",
-  "url": "https://ant.design/components/message",
+  "situation": "Подтверждение вне зоны внимания — действие повторили",
+  "happens": "Пользователь добавляет позицию и смотрит на кнопку внизу, а подтверждение всплывает сверху: сообщение не замечают и добавляют позицию второй раз, а иногда уходят проверять заказ.",
+  "systems": "NN/g про такие уведомления: «Such notifications sometimes cause issues for e-commerce shoppers who do not notice the message due to its location far away from the user's area of focus at the time (the add-to-cart button, which was further down the page). Users who miss the message may respond by adding an item to the cart multiple times or by disrupting their shopping flow to check the cart to see what items were added». NN/g про временную смену подписи кнопки: «This means that some users may miss the label change and will still add the item to cart multiple times».",
+  "us": "Подтверждение ставим у точки действия (рядом с кнопкой/строкой), а при повторяющихся действиях меняем саму кнопку («Добавлено · ещё») — не полагаемся на вспышку в углу экрана.",
+  "quote": "Users who miss the message may respond by adding an item to the cart multiple times or by disrupting their shopping flow to check the cart to see what items were added.",
+  "who": "Nielsen Norman Group · Indicators, Validations, and Notifications (Kim Flaherty) · Adding an Item to a Shopping Cart (Page Laubheimer)",
+  "url": "https://www.nngroup.com/articles/indicators-validations-notifications/",
+  "verified": true
+ },
+ {
+  "situation": "Сообщений много — их перестают читать",
+  "happens": "За смену проходят десятки плашек («Сохранено», «Отправлено на печать», «Гость добавлен»), и пользователь перестаёт читать их целиком — включая важное «Нет связи».",
+  "systems": "Smashing Magazine: «In many products, setting notification channels on mute is a default, rather than an exception. The reason for that is their high frequency, which creates disruptions and eventually notification fatigue, when any popping messages get dismissed instantly». И там же: «In usability testing, it's the most frequent complaint, yet every app desperately tries to capture a glimpse of our attention, sending more notifications our way».",
+  "us": "Рутинные подтверждения не озвучиваем снекбаром — состояние меняем тихо в самой строке. Снекбар в ДС остаётся редким событием для того, что требует внимания или решения.",
+  "quote": "setting notification channels on mute is a default, rather than an exception. The reason for that is their high frequency, which creates disruptions and eventually notification fatigue, when any popping messages get dismissed instantly.",
+  "who": "Smashing Magazine · Design Guidelines For Better Notifications UX (Vitaly Friedman)",
+  "url": "https://www.smashingmagazine.com/2025/07/design-guidelines-better-notifications-ux/",
   "verified": true
  }
 ]

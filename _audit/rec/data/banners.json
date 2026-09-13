@@ -268,6 +268,39 @@
    "src": "Источники: Carbon Design System · Notification (Inline) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">warning</span></span><span>Заказы за 8 августа не отправлены</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отправить ещё раз</span></button><span class=\"pat__hit\" style=\"margin:0\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Закрыть баннер\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></button></span></div></div></div>",
    "example_ru": "Баннер уходит только по «×» или после повторной отправки: пока заказы не ушли, он остаётся на экране."
+  },
+  {
+   "title": "Зелёный баннер об успехе остался на следующем экране",
+   "items": [
+    "Что происходит: Баннер «Заказ оплачен» висит и после перехода на другой экран: пользователь читает его как сообщение о том, что оплата только что прошла снова, и начинает проверять кассу.",
+    "Что делают системы: GOV.UK Design System: «Remove a green notification banner when the user moves to a new page» и «Use a Confirmation page in a linear service to tell users that they've finished using the service instead of a notification banner». Зелёный вариант там же определён как «to confirm that something they're expecting to happen has happened».",
+    "Что делать нам: Зелёный баннер живёт на одном экране: убираем при уходе со страницы. Результат шага мастера показываем экраном подтверждения, а не плашкой, которая едет за пользователем."
+   ],
+   "src": "Источники: GOV.UK Design System · Notification banner (https://design-system.service.gov.uk/components/notification-banner/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--positive ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">check_circle</span></span><span>Заказ оплачен</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">К списку заказов</span></button></div></div></div>",
+   "example_ru": "Зелёный баннер живёт на экране, где прошла оплата, и уходит вместе с ним: результат шага показываем здесь же, а не плашкой, которая едет на следующий экран."
+  },
+  {
+   "title": "Плашка в самом верху экрана читается как реклама",
+   "items": [
+    "Что происходит: Сообщение про обновление ставят наверх, добавляют анимацию появления и показывают каждую смену — и его перестают замечать: это ровно та зона экрана, где живёт реклама, а не рабочая информация.",
+    "Что делают системы: NN/g (Kara Pernice): «Here are the traits that signal an ad: Ad-specific placement, like the top of page or the right rail; Ad-like visual treatment, such as animation; Proximity to actual ads or promotions» и на мобиле: «Anything that stands out from immediate surrounding context is likely to be considered an ad». GOV.UK добавляет: «Use notification banners sparingly. There's evidence that people often miss them».",
+    "Что делать нам: Баннер — редкий канал для того, что не относится к содержимому страницы; без анимации и без «рекламной» подачи. Что показывается регулярно — вообще не баннер, а элемент контента."
+   ],
+   "src": "Источники: Nielsen Norman Group · Banner Blindness Revisited: Users Dodge Ads on Mobile and Desktop (Kara Pernice) (https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--neutral ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Приём заказов работает в обычном режиме</span></div></div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Список заказов</div></div>",
+   "example_ru": "Нейтральный баннер в контенте, без анимации и без «промо»-подачи: он читается как рабочее сообщение, а не как реклама в верхней зоне экрана."
+  },
+  {
+   "title": "В баннер уезжает то, что относится к самому экрану",
+   "items": [
+    "Что происходит: Правило про доставку, лимит по столу или формат заказа показывают плашкой сверху, хотя пользователь работает именно с этим экраном: при прокрутке текст теряется, а 52 px остаются занятыми.",
+    "Что делают системы: GOV.UK Design System отделяет это прямо: «If the information is directly relevant to the thing the user is doing on that page, put the information in the main page content instead. Use an Inset text component or Warning text component if it needs to stand out».",
+    "Что делать нам: В ДС разделяем каналы: баннер — только для того, что не относится к содержимому экрана (нет связи, работы на сервисе); всё про текущую задачу — в контенте (подсказка, инлайн-плашка, текст предупреждения)."
+   ],
+   "src": "Источники: GOV.UK Design System · Notification banner (https://design-system.service.gov.uk/components/notification-banner/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Доставка по этому заказу — до 14:00</div><div class=\"ds-banner ds-banner--negative ds-banner--horizontal\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">warning</span></span><span class=\"ds-banner__row\">Нет связи с сервером — работаем офлайн</span></div></div>",
+   "example_ru": "Правило про текущий заказ стоит текстом в контенте, а баннер оставлен для того, что не относится к экрану (нет связи): каналы разделены."
   }
  ]
 }

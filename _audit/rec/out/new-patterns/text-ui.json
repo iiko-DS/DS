@@ -1,72 +1,32 @@
 [
  {
-  "behavior": "Минимальные и дефолтные размеры текста на мобиле: iOS — 17 pt по умолчанию, минимум 11 pt",
-  "case": "Apple Human Interface Guidelines — Typography",
-  "quote": "Follow the recommended default and minimum text sizes for each platform — for both custom and system fonts — to ensure your text is legible on all devices.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+  "situation": "В строках списка «цена/статус/время» стоят каждый раз по-новому",
+  "happens": "В списке заказов цена то справа от названия, то под ним, статус то сверху, то снизу; на 375 px приходится читать всю строку целиком, чтобы найти цену, и сравнивать строки невозможно.",
+  "systems": "NN/g на примере Booking.com: «Booking.com's list entries for different hotels are inconsistent — hotel details change placement from one item to the next.» — требование сформулировано так: «the list entries should be predictable and consistent, with the same placement and visual treatment for corresponding attributes.»",
+  "us": "Зафиксировать мини-IA строки: название — первая строка, цена — всегда правая часть второй строки одним кеглем и одним начертанием; статус — всегда в одном слоте.",
+  "quote": "Booking.com's list entries for different hotels are inconsistent — hotel details change placement from one item to the next.",
+  "who": "NN/g, List Entries and Listing Pages — nngroup.com/articles/list-entries",
+  "url": "https://www.nngroup.com/articles/list-entries/",
   "verified": true
  },
  {
-  "behavior": "Избегать тонких начертаний — они плохо читаются в мелком тексте",
-  "case": "Apple Human Interface Guidelines — Typography",
-  "quote": "In general, avoid light font weights.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+  "situation": "Номер заказа/брони нельзя скопировать с телефона",
+  "happens": "Пользователь диктует номер заказа по телефону или пересылает его, а выделить текст нельзя: долгое нажатие открывает меню картинки/строки целиком, выделяется весь блок вместе с подписями — и номер переписывают руками, с ошибками.",
+  "systems": "Apple требует делать полезный текст выделяемым: «Make useful text selectable. If a text view contains useful information such as an error message, a serial number, or an IP address, consider letting people select and copy it for pasting elsewhere.» Ant Design для этого даёт отдельную настройку у текста: «copyable | Whether to be copyable, customize it via setting an object.»",
+  "us": "Технические значения (номер заказа, брони, телефон) выделяемы и/или с кнопкой «Копировать» с подтверждением; не оборачивать их в блок с selection: none.",
+  "quote": "Make useful text selectable. If a text view contains useful information such as an error message, a serial number, or an IP address, consider letting people select and copy it for pasting elsewhere.",
+  "who": "Apple HIG, Text views — developer.apple.com/tutorials/data/design/human-interface-guidelines/text-views.json; Ant Design Typography (copyable)",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/text-views.json",
   "verified": true
  },
  {
-  "behavior": "Обрезку текста при увеличенном шрифте сводить к минимуму",
-  "case": "Apple Human Interface Guidelines — Typography",
-  "quote": "Keep text truncation to a minimum as font size increases.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
-  "verified": true
- },
- {
-  "behavior": "При крупном шрифте на узком экране переходить к стопке: текст над вторичными элементами",
-  "case": "Apple Human Interface Guidelines — Typography",
-  "quote": "When font size increases in a horizontally constrained context, inline items (like glyphs and timestamps) and container boundaries can crowd text and cause truncation or overlapping. To improve readability, consider using a stacked layout where text appears above secondary items.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
-  "verified": true
- },
- {
-  "behavior": "Три и более строк текста при ограниченной высоте — не уменьшать межстрочный интервал",
-  "case": "Apple Human Interface Guidelines — Typography",
-  "quote": "If you need to display three or more lines of text, avoid tight leading even in areas where height is limited.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
-  "verified": true
- },
- {
-  "behavior": "Короткий и простой текст на мобиле читается так же хорошо; краткость и приоритизация всё равно критичны",
-  "case": "NN/g — Reading Content on Mobile Devices (Kate Moran, 2016)",
-  "quote": "For the majority of mobile content scenarios, the need for brevity and prioritization is still critical.",
-  "url": "https://www.nngroup.com/articles/mobile-content/",
-  "verified": true
- },
- {
-  "behavior": "Чем сложнее контент, тем тяжелее читать с телефона — читатель замедляется",
-  "case": "NN/g — Reading Content on Mobile Devices",
-  "quote": "reading on mobile becomes more difficult as the complexity of the content increases",
-  "url": "https://www.nngroup.com/articles/mobile-content/",
-  "verified": true
- },
- {
-  "behavior": "Число строк в строках/списках: короткий текст уменьшает обрезку и переносы",
-  "case": "Apple Human Interface Guidelines — Lists and tables",
-  "quote": "Short, succinct text can help minimize truncation and wrapping, making text easier to read and scan.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
-  "verified": true
- },
- {
-  "behavior": "При крупном шрифте уменьшать число колонок текста, чтобы избежать обрезки",
-  "case": "Apple Human Interface Guidelines — Typography",
-  "quote": "Multicolumn text can also be less readable at large sizes due to horizontal space constraints. Reduce the number of columns when the font size increases to avoid truncation and enhance readability.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
-  "verified": true
- },
- {
-  "behavior": "Обрезку в скроллируемых областях не допускать, если нет отдельного экрана для чтения целиком",
-  "case": "Apple Human Interface Guidelines — Typography",
-  "quote": "Avoid truncating text in scrollable regions unless people can open a separate view to read the rest of the content.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+  "situation": "Многоточие рассчитано на ширину макета и не пересчитывается под 375 px",
+  "happens": "Текст в строке обрезан многоточием, но ширина зафиксирована по первой строке: на телефоне обрезка происходит не там, где нужно, соседний элемент (цена/статус) остаётся за краем или текст ломается раньше, чем позволяет экран.",
+  "systems": "Ant Design описывает именно этот дефект: «Diff with Typography.Paragraph, Text do not have 100% width style which means it will fix width on the first ellipsis. If you want to have responsive ellipsis, please set width manually» — то есть адаптивное усечение требует явной ширины.",
+  "us": "Усекать текст только с явной шириной блока (flex-1/min-width: 0) и через `-webkit-line-clamp`; не задавать ширину текста значением из макета.",
+  "quote": "Diff with Typography.Paragraph, Text do not have 100% width style which means it will fix width on the first ellipsis. If you want to have responsive ellipsis, please set width manually",
+  "who": "Ant Design, Typography (ellipsis) — raw.githubusercontent.com/ant-design/ant-design/master/components/typography/index.en-US.md",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/typography/index.en-US.md",
   "verified": true
  }
 ]

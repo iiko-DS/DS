@@ -1,86 +1,42 @@
 [
  {
-  "behavior": "Степпер/кнопки «+/−» экономят ввод: одно нажатие вместо набора на клавиатуре",
-  "case": "NN/g — Design Guidelines for Input Steppers (Yuxuan (Tammy) Zhou, 2018)",
-  "quote": "For adjusting small values, steppers require fewer interactions than other input methods.",
-  "url": "https://www.nngroup.com/articles/input-steppers/",
-  "verified": true
- },
- {
-  "behavior": "Минимальный размер тач-цели для кнопок степпера — около 1 см × 1 см",
-  "case": "NN/g — Design Guidelines for Input Steppers",
-  "quote": "for touchscreens, we’ve long recommended a minimum target size of 1 cm by 1 cm",
-  "url": "https://www.nngroup.com/articles/input-steppers/",
-  "verified": true
- },
- {
-  "behavior": "На мобиле горизонтальный степпер предпочтительнее вертикального (вертикальный тесен, легко промахнуться)",
-  "case": "NN/g — Design Guidelines for Input Steppers",
-  "quote": "We recommend horizontal placement for steppers on mobile devices, considering the inherent precision challenges of using a fingertip.",
-  "url": "https://www.nngroup.com/articles/input-steppers/",
-  "verified": true
- },
- {
-  "behavior": "Степпер не годится для больших изменений значения (1 → 50) — нужен обычный ввод",
-  "case": "NN/g — Design Guidelines for Input Steppers",
-  "quote": "Steppers are not suitable for a large number adjustments. For example, when users need to change a value from 1 to 50, an input stepper is not a wise choice.",
-  "url": "https://www.nngroup.com/articles/input-steppers/",
-  "verified": true
- },
- {
-  "behavior": "Степпер стоит комбинировать с текстовым полем для точных/больших значений",
-  "case": "NN/g — Design Guidelines for Input Steppers",
-  "quote": "A text-field stepper is a UI component that enables quick entry of a number using a text field along with stepper buttons on the sides for adjustment.",
-  "url": "https://www.nngroup.com/articles/input-steppers/",
-  "verified": true
- },
- {
-  "behavior": "Шаг, единицы и границы диапазона должны быть явными; при достижении лимита кнопка становится серой",
-  "case": "NN/g — Design Guidelines for Input Steppers",
-  "quote": "Clarify the step value and the stepper range. ... Expedia used a grayed-out plus segment to signal when that the value had reached its limits.",
-  "url": "https://www.nngroup.com/articles/input-steppers/",
-  "verified": true
- },
- {
-  "behavior": "Значение обязано быть видно рядом со степпером — сам степпер его не показывает",
-  "case": "Apple Human Interface Guidelines — Steppers",
-  "quote": "A stepper sits next to a field that displays its current value, because the stepper itself doesn’t display a value.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/steppers",
-  "verified": true
- },
- {
-  "behavior": "Для широкого диапазона значений степпер дополняют текстовым полем",
-  "case": "Apple Human Interface Guidelines — Steppers",
-  "quote": "Consider pairing a stepper with a text field when large value changes are likely. ... people appreciate the option to use a field to enter specific values, especially when the values they use can vary widely.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/steppers",
-  "verified": true
- },
- {
-  "behavior": "Клавиатурный ввод (стрелки вверх/вниз) включён по умолчанию и управляет шагом",
-  "case": "Ant Design — InputNumber (keyboard)",
-  "quote": "keyboard | If keyboard behavior is enabled | boolean | true",
+  "situation": "Поле молча приводит введённое число к шагу и диапазону",
+  "happens": "Пользователь вводит 3,5 порции или 500 гостей, уходит с поля — значение молча становится 4 или 50. Ни подписи, ни ошибки: человек уверен, что ввёл одно, а в заказе стоит другое.",
+  "systems": "Ant Design описывает шаг как жёсткую сетку: «The number to which the current value is increased or decreased. It can be an integer or decimal» (по умолчанию 1), и в компоненте есть поведение «reset value in range by blur | boolean | true». Carbon требует показывать границы прямо в подписи/helper-тексте: «Indicates the input value if it has a maximum or minimum — Helper text is optional but if present will be replaced by warning and error messages when needed», а NN/g про шаг и диапазон: «Clarify the step value and the stepper range.»",
+  "us": "Если значение вне диапазона или не кратно шагу — не исправлять молча, а показать сообщение под полем («Кратко 1 шт: 3 или 4») и допустимые границы в helper-тексте.",
+  "quote": "The number to which the current value is increased or decreased. It can be an integer or decimal",
+  "who": "Ant Design InputNumber; IBM Carbon Number input; NN/g Design Guidelines for Input Steppers",
   "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/input-number/index.en-US.md",
   "verified": true
  },
  {
-  "behavior": "Кнопки «+/−» и шаг настраиваются явно; шаг может быть дробным",
-  "case": "Ant Design — InputNumber (controls / step)",
-  "quote": "controls | Whether to show `+-` controls, or set custom arrow icons | ... step | The number to which the current value is increased or decreased. It can be an integer or decimal",
-  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/input-number/index.en-US.md",
-  "verified": true
- },
- {
-  "behavior": "Для числовых полей обязательна цифровая клавиатура — 54% мобильных сайтов её не включают",
-  "case": "Baymard Institute — 'Touch Keyboard' Implementations",
-  "quote": "Yet an astonishing 54% of mobile sites fail to utilize all of the (relevant) mobile-optimized keyboards available to them!",
-  "url": "https://baymard.com/blog/mobile-touch-keyboards",
-  "verified": true
- },
- {
-  "behavior": "Числовой ввод с клавиатуры на телефоне ошибочен — степпер снижает число опечаток",
-  "case": "NN/g — Design Guidelines for Input Steppers",
-  "quote": "using a keyboard on a smartphone is error-prone ... input steppers are an appropriate design choice for supporting small adjustments of default values",
+  "situation": "Нет удержания кнопки: 12 порций — 12 тапов",
+  "happens": "Чтобы поставить количество 12, пользователь тапает «+» двенадцать раз по цели 32 px; при быстром повторном тапе палец срывается на «−».",
+  "systems": "NN/g рекомендует прямо: «Allow long press or click on the buttons for faster continuous increment or decrement.» Apple для больших диапазонов предлагает ускорение: «For large value ranges, consider supporting Shift-click to change the value quickly.»",
+  "us": "Долгое нажатие на «+»/«−» = непрерывное изменение с ускорением (мобильный аналог Shift-click); плюс поле ввода остаётся для точного значения.",
+  "quote": "Allow long press or click on the buttons for faster continuous increment or decrement.",
+  "who": "NN/g, Design Guidelines for Input Steppers — nngroup.com/articles/input-steppers; Apple HIG, Steppers",
   "url": "https://www.nngroup.com/articles/input-steppers/",
+  "verified": true
+ },
+ {
+  "situation": "Три степпера в строке — непонятно, что к чему относится",
+  "happens": "В карточке заказа рядом стоят «порций», «гостей» и «скидка»: у каждого свои «+» и «−» без подписи значения, и пользователь меняет не то число, думая, что правит количество.",
+  "systems": "NN/g: «Show clearly what field is controlled by the stepper.» Apple: «Make the value that a stepper affects obvious. A stepper itself doesn’t display any values, so make sure people know which value they’re changing when they use a stepper.»",
+  "us": "Степпер всегда в одной строке с подписью и значением («Гостей 2 −/+»), не более одного степпера в видимой строке; для нескольких чисел — разные строки или поле ввода с цифровой клавиатурой.",
+  "quote": "Make the value that a stepper affects obvious. A stepper itself doesn’t display any values, so make sure people know which value they’re changing when they use a stepper.",
+  "who": "Apple HIG, Steppers — developer.apple.com/tutorials/data/design/human-interface-guidelines/steppers.json; NN/g, Input Steppers",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/steppers.json",
+  "verified": true
+ },
+ {
+  "situation": "Пустое поле и ноль означают разное, а выглядят одинаково",
+  "happens": "Количество оставили пустым (или «0»), а на кухню уходит «0 порций»; на телефоне разницы между «не указано» и «ноль» не видно, и заказ уходит с нулём.",
+  "systems": "Carbon разводит эти состояния: «Sometimes, you will have input value defaulted to ‘0’.» против запрета «Do not leave value input blank» — и требует осмысленного значения по умолчанию.",
+  "us": "Числовое поле всегда имеет значение по умолчанию (для количества — 1), пустое состояние не допускать; при нуле — предупреждение под полем.",
+  "quote": "Sometimes, you will have input value defaulted to ‘0’.",
+  "who": "IBM Carbon, Number input (usage) — raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/number-input/usage.mdx",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/src/pages/components/number-input/usage.mdx",
   "verified": true
  }
 ]

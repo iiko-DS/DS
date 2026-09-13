@@ -219,6 +219,39 @@
    "src": "Источники: GOV.UK Service Manual · Making your service look like GOV.UK (https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><div class=\"ds-logo-syrve\"><span class=\"ds-logo-syrve__vector\" style=\"width:70.9px\"></span></div><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__card\"><p class=\"phone__card-title\">Стол 4</p><p class=\"phone__card-text\">Стейк рибай · 1 480 ₽</p></div></div>",
    "example_ru": "Знак syrve и заголовки одного продукта: чужая айдентика в шапке не появляется — правило GOV.UK про знак и шрифт своей организации."
+  },
+  {
+   "title": "Логотип на сплэш-экране, который тут же исчезает",
+   "items": [
+    "Что происходит: При запуске приложения на 375 px мелькает сплэш с логотипом, а через мгновение его сменяет список: логотип не запоминается, но занимает экран и отодвигает работу — заказ нельзя начать сразу.",
+    "Что делают системы: Apple HIG (Branding): «Avoid using a launch screen as a branding opportunity.» и объяснение: «A launch screen disappears too quickly to convey any information».",
+    "Что делать нам: Сплэш держим нейтральным под загрузку, брендирование переносим в онбординг и в контент; единственный постоянный носитель логотипа — шапка экрана."
+   ],
+   "src": "Источники: Apple HIG · Branding (https://developer.apple.com/design/human-interface-guidelines/branding)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div style=\"height:88px;display:flex;align-items:center;justify-content:center;background:#EDEFF3;border-radius:8px\"><span class=\"material-icons\" style=\"font-size:32px;color:#9E9E9E\">schedule</span></div><div class=\"phone__head\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><div class=\"phone__title\">Заказы · Зал 2</div><span class=\"material-icons\">more_vert</span></div></div>",
+   "example_ru": "Первый экран — нейтральная подложка загрузки без знака, а логотип живёт только в шапке: сплэш-экран в ДС не носитель бренда, он не отодвигает работу."
+  },
+  {
+   "title": "Шрифт логотипа ломается на мелком кегле и при крупном системном тексте",
+   "items": [
+    "Что происходит: Логотип-надпись в шапке стоит кеглем 14–16 px: на 375 px надпись теряет читаемость, а если человек включил крупный текст или жирный шрифт, она перестаёт влезать в шапку и обрезается.",
+    "Что делают системы: Apple HIG (Branding) про фирменный шрифт: «If your brand is strongly associated with a specific font, be sure that it's legible at all sizes and supports accessibility features like bold text and Dynamic Type.»",
+    "Что делать нам: В шапке — знак-графика, а не живой текст: надпись в логотипе не участвует в масштабировании интерфейса и не мельче 16 px, полная версия с названием живёт только там, где есть ширина."
+   ],
+   "src": "Источники: Apple HIG · Branding (https://developer.apple.com/design/human-interface-guidelines/branding)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div style=\"padding:12px 16px 0\"><div class=\"ds-logo-syrve\"><span class=\"ds-logo-syrve__vector\" style=\"width:150px\"></span></div><p style=\"font-size:14px;line-height:20px;margin:8px 0 0\">Полная версия знака — на широком экране</p></div></div>",
+   "example_ru": "В шапке — знак-графика 72 px, который не участвует в масштабировании системного текста, а полная надпись 150 px стоит только там, где есть ширина: кегль логотипа не ломается."
+  },
+  {
+   "title": "Логотип в шапке: куда ведёт и что рядом с ним ещё помещается",
+   "items": [
+    "Что происходит: На 375 px в шапке стоят логотип, название сервиса и ссылки разделов — всё сжимается, а тап по логотипу неочевиден: человек не понимает, вернёт ли его это на главную или сбросит выбранный зал.",
+    "Что делают системы: GOV.UK: «The GOV.UK header component tells users they're using a service on GOV.UK and lets them use GOV.UK-wide tools», знак обёрнут в ссылку на главную, и шапка обязательна на каждой странице — «You must use the GOV.UK header component at the top of every page.» При брендовом обновлении из шапки убрали лишнее: «You can no longer use the GOV.UK header to show service name or navigation links.»",
+    "Что делать нам: В шапке — знак и, если влезает, название зала; знак всегда ссылка на главную и не сбрасывает выбранный зал. Названия разделов и подпись сервиса из шапки с логотипом убираем в панель и отдельный компонент навигации."
+   ],
+   "src": "Источники: GOV.UK Design System · Header (https://design-system.service.gov.uk/components/header/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><a href=\"#\" style=\"display:flex;align-items:center\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div></a><div class=\"phone__title\">Заказы · Зал 2</div><span class=\"material-icons\">more_vert</span></div><div style=\"padding:12px 16px;font-size:14px;line-height:20px\">Знак ведёт на главную и не сбрасывает выбранный зал</div></div>",
+   "example_ru": "В шапке — только знак и заголовок с выбранным залом: знак обёрнут в ссылку на главную, рядом с ним нет названия сервиса и ссылок разделов, а выбранный зал при тапе не сбрасывается."
   }
  ]
 }

@@ -328,6 +328,50 @@
    "src": "Источники: Apple Human Interface Guidelines · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields)",
    "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:8px\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Гость</span><input class=\"ds-input__field\" type=\"text\" value=\"Иванов\"></div></div></div><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Телефон</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"tel\" value=\"+7 900 000-00-00\"></div></div></div><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Почта</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"email\" autocapitalize=\"none\" value=\"ivanov@iiko.ru\"></div></div></div></div></div>",
    "example_ru": "Три поля — в один столбик, одинаковой ширины и с одинаковым отступом: сетка формы читается сверху вниз (Apple HIG)."
+  },
+  {
+   "title": "Ошибка бьёт во время набора, а не после ухода из поля",
+   "items": [
+    "Что происходит: Пользователь набирает телефон, после третьей цифры поле уже красное и с ошибкой «неверный номер»: печатать неудобно, экран прыгает, а часть людей бросает поле, не дойдя до конца.",
+    "Что делают системы: NN/g: «It’s frustrating to see an error message before being given the opportunity to finish typing.» и «In most cases, avoid showing an error until the user has finished with the field and moved to the next field.» Apple разводит момент проверки по типу поля: «when entering an email address, it's best to validate when people switch to another field; when creating a user name or password, validation needs to happen before people switch to another field.»",
+    "Что делать нам: Проверять на выходе из поля (blur) и показывать ошибку под полем; мгновенно валидировать только те поля, где ошибку нельзя исправить потом (пароль, код)."
+   ],
+   "src": "Источники: NN/g, Errors in Forms: 12 Design Guidelines — nngroup.com/articles/errors-forms-design-guidelines; Apple HIG, Text fields (https://www.nngroup.com/articles/errors-forms-design-guidelines/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Телефон</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"tel\" value=\"+7 900 00\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Проверим, когда уйдёте из поля</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "Пока телефон набран наполовину, поле остаётся обычным: проверка срабатывает при уходе из поля, а не на третьей цифре."
+  },
+  {
+   "title": "Обязательность поля понятна только после отправки",
+   "items": [
+    "Что происходит: Обязательные поля не помечены; первая подпись «(необязательно)» находится ниже сгиба на 375 px, поэтому пользователь доходит до «Отправить», получает ошибку и возвращается к форме заново.",
+    "Что делают системы: NN/g: «the more-diligent users will look around trying to figure it out — they will scan the form and find a field that is marked optional (sometimes scrolling the page, like in the American Express example above, where the first optional field appears below the mobile fold); if they do find one, they will assume that anything not marked is required.» Вывод статьи: «The solution is simple: mark all the required fields.»",
+    "Что делать нам: Помечать обязательные поля в подписи (словом «Обязательно» или звёздочкой), а не инструкцией сверху; если помечаем только необязательные — следить, чтобы первая такая подпись была видна на первом экране."
+   ],
+   "src": "Источники: NN/g, Marking Required Fields in Forms — nngroup.com/articles/required-fields (https://www.nngroup.com/articles/required-fields/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Телефон · Обязательно</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"tel\" placeholder=\"+7 900 000-00-00\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Так помечены все обязательные поля формы</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "Пометка «Обязательно» стоит прямо в подписи и видна до отправки: пользователь не узнаёт об обязательности из ошибки."
+  },
+  {
+   "title": "Вставка из буфера не работает: поле с маской портит номер",
+   "items": [
+    "Что происходит: Номер заказа копируют из SMS и вставляют, а поле с маской вставляет «+7 (9» или теряет первую цифру — и 11 цифр приходится набирать вручную, с ошибками.",
+    "Что делают системы: NN/g включает это в чек-лист мобильного поля отдельным пунктом: «Do you support copy & paste into the field?» — рядом с «Can you make suggestions/autocomplete based on the first letters typed?»",
+    "Что делать нам: Вставка должна разбираться: вычищать нецифровые символы, форматировать содержимое после вставки; запретить маску, которая блокирует вставку или режет значение."
+   ],
+   "src": "Источники: NN/g, Mobile Input Field Checklist — nngroup.com/articles/mobile-input-checklist (https://www.nngroup.com/articles/mobile-input-checklist/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Телефон</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"tel\" value=\"+7 900 000-00-00\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Вставленный номер разобран и отформатирован целиком</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "Номер, вставленный из SMS, разбирается целиком и форматируется после вставки: маска не режет значение и не блокирует вставку."
+  },
+  {
+   "title": "Подписи и поля идут одной простыней: не понять, чья подпись",
+   "items": [
+    "Что происходит: Форма из 15 полей на 375 px: подпись «Телефон» отстоит от своего поля дальше, чем до чужого, пары сливаются; группы «Контакт», «Оплата» не разделены, и пользователь не знает, где заканчивается один смысловой блок.",
+    "Что делают системы: NN/g: «Place the label closer to the associated text field than to other text fields.» и «Grouping related fields together helps users make sense of the information that they must fill in.» Apple: «If your layout includes multiple text fields, leave enough space between them so people can easily see which input field belongs with each introductory label.»",
+    "Что делать нам: Подпись — сверху вплотную к полю (4–8 px), вертикальный отступ между парами больше, чем внутри пары; между группами 24–32 px и подзаголовок группы."
+   ],
+   "src": "Источники: NN/g, статья form-design-white-space (Form Design Quick Fix: Group Form Elements Strategically); Apple HIG, Text fields (https://www.nngroup.com/articles/form-design-white-space/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:24px\"><div style=\"display:flex;flex-direction:column;gap:4px\"><span class=\"ds-text-ui__label-up\" style=\"font:500 12px Roboto\">Контакт</span><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Телефон</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"tel\" value=\"+7 900 000-00-00\"></div></div></div><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Почта</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"email\" value=\"ivanov@iiko.ru\"></div></div></div></div><div style=\"display:flex;flex-direction:column;gap:4px\"><span class=\"ds-text-ui__label-up\" style=\"font:500 12px Roboto\">Заказ</span><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Стол</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"numeric\" value=\"7\"></div></div></div></div></div></div>",
+   "example_ru": "Подпись стоит вплотную к своему полю, а между группами «Контакт» и «Заказ» — 24 px и подзаголовок: пары «подпись + поле» не сливаются."
   }
  ]
 }

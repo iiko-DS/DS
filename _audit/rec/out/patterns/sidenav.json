@@ -176,6 +176,39 @@
    "src": "Источники: Carbon Design System (IBM) · Tree view (When not to use) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)",
    "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Заказы</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Аналитика и отчёты</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Склад и поставки</span></div></div></div></div>",
    "example_ru": "Разделы продукта живут в панели, а не в дереве: Carbon прямо выводит основную навигацию из области применения tree view."
+  },
+  {
+   "title": "Системный жест «назад» от края экрана конфликтует с вытягиванием панели",
+   "items": [
+    "Что происходит: На Android человек тянет пальцем от левого края, чтобы вытянуть панель, а система читает это как «назад» и закрывает экран. В другом приложении тот же жест закрывает панель, которую только что открыли: поведение края непредсказуемо.",
+    "Что делают системы: Android: «The new system gesture for back is an inward swipe from either the left or the right edge of the screen.» и «This might interfere with app navigation elements in those areas.»; исключения делаются точечно — «The DrawerLayout and SeekBar components support automatic opt-out behavior out of the box.»",
+    "Что делать нам: Не вешаем открытие панели на край экрана: открытие — кнопка в шапке, закрытие — тап вне панели, кнопка «Закрыть» и системный «Назад». Край оставляем системе, чтобы жест назад не превращался в лотерею."
+   ],
+   "src": "Источники: Android Developers · Gesture navigation (https://developer.android.com/develop/ui/views/touch-and-input/gestures/gesturenav)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">menu</span><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 7</span><span class=\"ds-list-item__text\">Заказ №1042</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:30</span></div></div><div class=\"ds-list-container__divider\"></div></div></div>",
+   "example_ru": "Панель открывается кнопкой в шапке: на Android краевой свайп отдан системному жесту «назад», поэтому вытягивание панели от края не используем — край остаётся системе."
+  },
+  {
+   "title": "Системная кнопка «Назад» закрывает панель и уводит со страницы",
+   "items": [
+    "Что происходит: Человек ушёл на второй уровень в панели и жмёт системную «Назад», чтобы подняться на уровень выше, — вместо этого панель закрывается, и он уезжает на предыдущий экран. Место в разделе потеряно, панель заново открывать вручную.",
+    "Что делают системы: NN/g: «often people are tempted to use the phone's physical Back button or the browser's Back button, and accidentally end up closing the menu and navigating to a different page instead of moving back to the higher-level menu» — из-за этого последовательные меню не рекомендуются для мобильной навигации.",
+    "Что делать нам: «Назад» внутри панели сначала поднимает на уровень выше, потом закрывает панель, и только потом уходит со страницы: уровни панели складываем в историю навигации, а не в один шаг до выхода."
+   ],
+   "src": "Источники: NN/g · Mobile Subnavigation (https://www.nngroup.com/articles/mobile-subnavigation/)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-view__header\"><span class=\"ds-sidenav-view__label\">Заказы</span><span class=\"ds-sidenav-header__close\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Активные</span></div><div class=\"ds-sidenav-header ds-sidenav-header--l2 ds-sidenav-header--expanded\"><span class=\"ds-sidenav-header__label\">Активные</span></div><div class=\"ds-sidenav-item\"><span class=\"ds-sidenav-item__l3\">Заказ №1042</span></div></div></div></div>",
+   "example_ru": "У панели свой крестик и два уровня («Активные» → «Заказ №1042»): системная «Назад» сначала поднимает на уровень выше, потом закрывает панель — и только затем уходит со страницы."
+  },
+  {
+   "title": "Панель открылась поверх прокрученного списка и случайно закрылась",
+   "items": [
+    "Что происходит: Человек проскроллил длинный список заказов до середины, открыл панель, случайно тапнул мимо — панель закрылась, и список вернулся к началу: место в списке потеряно, искать заказ заново.",
+    "Что делают системы: NN/g про частичные оверлеи: «You also make it more likely that they will lose their spot on the page if they accidentally close the overlay.»",
+    "Что делать нам: Фон под панелью не перезагружаем: позиция прокрутки списка сохраняется, тап вне закрывает панель без сброса; для длинных разделов панель живёт поверх страницы и не подменяет её собой."
+   ],
+   "src": "Источники: NN/g · Accidental Dismissal of Overlays: A Common Mobile Usability Problem (https://www.nngroup.com/articles/accidental-overlay-dismissal/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\" style=\"position:relative\"><div class=\"phone__body\"><div class=\"phone__row\">Заказ №1042 · 3 позиции</div><div class=\"phone__row\">Стол 7 · смена 12 сентября</div></div><div class=\"phone__scrim\"></div><div style=\"position:relative;width:280px;background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Активные</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">История</span></div></div></div></div>",
+   "example_ru": "Панель лежит поверх прокрученного списка, который остался на месте: тап вне панели закрывает её, но позиция прокрутки списка не сбрасывается."
   }
  ]
 }

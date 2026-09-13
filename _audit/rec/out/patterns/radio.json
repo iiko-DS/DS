@@ -143,6 +143,39 @@
    "src": "Источники: Nielsen Norman Group · Toggle-Switch Guidelines, кейс Chase Bank для iOS (https://www.nngroup.com/articles/toggle-switch-guidelines/)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-8\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">В зале</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-8\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Навынос</span></label></div></div>",
    "example_ru": "Выбор одного из двух способов — только радио: вкл/выкл рядом оставляем свитчу, а не второму компоненту."
+  },
+  {
+   "title": "Диалог скроллится — кнопка уезжает",
+   "items": [
+    "Что происходит: в диалоге выбора режима шесть опций с пояснениями; на 375 px текст не помещается, диалог прокручивается, и «ОК» оказывается за нижней кромкой — человек скроллит диалог, чтобы найти подтверждение.",
+    "Что делают системы: Apple предупреждает об этом прямо — «When possible, avoid displaying an alert that scrolls.» и просит сокращать текст: «Although an alert might scroll if the text size is large enough, be sure to minimize the potential for scrolling by keeping alert titles short and including a brief message only when necessary.»",
+    "Что делать нам: выбор из 5+ опций делаем в шторке на весь экран с закреплённой нижней кнопкой; в диалоге оставляем до трёх коротких опций и всегда фиксированные кнопки."
+   ],
+   "src": "Источники: Apple HIG · Alerts (https://developer.apple.com/design/human-interface-guidelines/alerts)",
+   "example_html": "<div class=\"pat__phone\" style=\"flex-direction:column;align-items:stretch;gap:8px\"><div class=\"ds-radio-wrap\" style=\"display:flex;flex-direction:column;gap:4px\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-r1\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Доставка</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-r1\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Самовывоз</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-r1\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">В зале</span></label></div><span class=\"ds-radio__support\">Выберите способ получения</span></div><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Применить</span></button></div>",
+   "example_ru": "Выбор из нескольких опций — в шторке с закреплённой нижней кнопкой: подтверждение не уезжает за кромку при прокрутке списка."
+  },
+  {
+   "title": "Ничего не выбрано — человек уходит",
+   "items": [
+    "Что происходит: группа радио «Тип оплаты» открывается без предвыбора; человек читает, не нажимает и уходит с экрана — данные не отправлены, ошибка появится только после нажатия «Далее».",
+    "Что делают системы: Jakob Nielsen формулирует правило жёстко — «Always offer a default selection for radio button lists.» и объясняет: «By definition, radio buttons always have exactly one option selected, and you therefore shouldn't display them without a default selection.»",
+    "Что делать нам: у группы радио всегда есть предвыбранное значение (самый частый вариант) либо явный пункт «Не выбрано»; пустой выбор не пропускаем молча — показываем ошибку у группы и прокручиваем к ней."
+   ],
+   "src": "Источники: Jakob Nielsen · Nielsen Norman Group · Checkboxes vs. Radio Buttons (https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-radio-wrap\" style=\"display:flex;flex-direction:column;gap:4px\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-r2\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Картой</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-r2\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Наличными</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-r2\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Не выбрано</span></label></div><span class=\"ds-radio__support\">Самый частый вариант выбран заранее — группа не открывается пустой</span></div></div>",
+   "example_ru": "У группы радио есть предвыбранное значение (или явный пункт «Не выбрано»): пустая группа, из-за которой человек уходит с экрана, не выпускается."
+  },
+  {
+   "title": "Свайп закрывает шторку вместе с выбором",
+   "items": [
+    "Что происходит: режим выбирают в нижней шторке, значение применяется сразу; человек тянет шторку вниз, чтобы досмотреть список, и закрывает её — значение поменялось, а отменять нечем.",
+    "Что делают системы: Apple считает свайп ожидаемым жестом и требует страховки на случай потери изменений — «People expect to swipe vertically to dismiss a sheet instead of tapping a dismiss button. If people have unsaved changes in the sheet when they begin swiping to dismiss it, use an action sheet to let them confirm their action.»",
+    "Что делать нам: в шторке с выбором либо применяем по кнопке, либо при свайпе-закрытии показываем подтверждение и даём «Отменить» в снекбаре; выбранная опция остаётся видимой до применения."
+   ],
+   "src": "Источники: Apple HIG · Sheets (https://developer.apple.com/design/human-interface-guidelines/sheets)",
+   "example_html": "<div class=\"pat__phone\" style=\"flex-direction:column;align-items:stretch;gap:8px\"><div class=\"ds-radio-wrap\" style=\"display:flex;flex-direction:column;gap:4px\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-r3\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Быстрый</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-r3\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Обычный</span></label></div></div><div class=\"pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\" style=\"flex:1 1 auto\"><span class=\"ds-btn__label\">Применить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отменить</span></button></div></div>",
+   "example_ru": "Режим применяется кнопкой «Применить», а «Отменить» рядом возвращает прежний: свайп по шторке не меняет выбор молча."
   }
  ]
 }

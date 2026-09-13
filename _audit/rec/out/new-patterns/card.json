@@ -1,86 +1,42 @@
 [
  {
-  "behavior": "Карточка на мобиле — короткая выжимка с переходом к деталям, а не полный контент",
-  "case": "NN/g — Cards: UI-Component Definition (Page Laubheimer, 2016)",
-  "quote": "A card is usually short and offers a linked entry point to further details, rather than the full details themselves.",
+  "situation": "Фото в карточке отжимает текст: название обрезано, кегль уменьшен",
+  "happens": "На 375 px карточка блюда с фото 112×112 px оставляет тексту ~200 px: название обрезается одной строкой, а чтобы влезло — кегль уменьшают до 13 px. Пользователь читает не название, а начало названия, и не видит состав, по которому выбирает.",
+  "systems": "NN/g разбирает кейс Hotel Tonight: «The thumbnails on Hotel Tonight are large enough to discern details, but the hotel names are truncated instead of wrapping to a new line.» и прямо предупреждает, что крупное фото вредит тексту: «a too large thumbnail can inappropriately distract the user from other relevant information, or cause problems for the associated text (for instance, the font size may need to be reduced to an illegible size or the description may need to be truncated — both significant dangers for the user experience).» Решение NN/g — сначала решить, помогает ли картинка выбору, и только потом её размер и сторону.",
+  "us": "В мобильной карточке изображение 64 px (или без него), название — переносом максимум на две строки; кегль текста не уменьшать ниже 16 px ради картинки.",
+  "quote": "a too large thumbnail can inappropriately distract the user from other relevant information, or cause problems for the associated text (for instance, the font size may need to be reduced to an illegible size or the description may need to be truncated — both significant dangers for the user experience).",
+  "who": "NN/g, Mobile List Thumbnails (Kate Moran) — nngroup.com/articles/mobile-list-thumbnail",
+  "url": "https://www.nngroup.com/articles/mobile-list-thumbnail/",
+  "verified": true
+ },
+ {
+  "situation": "В карточках не найти цену: у каждой своя раскладка",
+  "happens": "В списке карточек «цена, статус, время» стоят в каждом элементе на разной высоте: где-то цена под фото, где-то справа. На телефоне глаз ищет цену в каждой карточке отдельно, сравнить два блюда по цене невозможно.",
+  "systems": "NN/g по данным айтрекинга: «Scanning products in a card-based list is challenging to quickly find basic information such as price, since the layout is not predictably arranged, and a user can't easily anticipate where to look on the page to find that information.» — и советует обычный вертикальный список там, где позиция атрибута важна для сравнения.",
+  "us": "Зафиксировать слоты внутри карточки: цена — всегда одна и та же строка и один кегль, статус — всегда верхний правый угол; сравнение по цене должно работать без чтения остального.",
+  "quote": "Scanning products in a card-based list is challenging to quickly find basic information such as price, since the layout is not predictably arranged, and a user can't easily anticipate where to look on the page to find that information.",
+  "who": "NN/g, Cards: UI-Component Definition — nngroup.com/articles/cards-component",
   "url": "https://www.nngroup.com/articles/cards-component/",
   "verified": true
  },
  {
-  "behavior": "Тап по всей площади карточки — большая зона нажатия, это критично для пальца",
-  "case": "NN/g — Cards: UI-Component Definition",
-  "quote": "For most implementations, clicking or tapping anywhere on the card link to a details page ... This larger touch zone substantially improves usability on both touchscreen devices and mouse-based devices (due to Fitts' Law).",
+  "situation": "Карточки не показывают порядок: что первое — непонятно",
+  "happens": "Заказы выложены сеткой карточек, сортировка «сначала новые» есть в данных, но на 375 px из сетки не читается, какая карточка первая: пользователь не знает, смотреть ли сверху вниз или слева вправо.",
+  "systems": "NN/g: «Card layouts typically deemphasize the ranking of content.» — и добавляет, что карточки хотя и подчиняются общим законам страницы («content at the top and on the left of the page is more discoverable and perceived as more important»), но сильных сигналов иерархии, как у списка строк, не дают.",
+  "us": "Если важен порядок (очередь заказов, новые брони) — список строк или сетка с явным номером/временем в каждом элементе («12:40, только что»), а сетку карточек оставить для однотипных справочных сущностей.",
+  "quote": "Card layouts typically deemphasize the ranking of content.",
+  "who": "NN/g, Cards: UI-Component Definition",
   "url": "https://www.nngroup.com/articles/cards-component/",
   "verified": true
  },
  {
-  "behavior": "Карточка экономит место на телефоне: группировка рамкой/фоном вместо пустого пространства (важно на 375 px)",
-  "case": "NN/g — Cards: UI-Component Definition",
-  "quote": "Without the visual style of the card, grouping each item's ingredients together clearly in a way that separates them from other items on the page would require a lot more negative space and would waste valuable screen real estate on mobile phones and tablets.",
-  "url": "https://www.nngroup.com/articles/cards-component/",
-  "verified": true
- },
- {
-  "behavior": "Карточки плохо подходят, когда надо искать/сравнивать: на мобиле тогда лучше вертикальный список",
-  "case": "NN/g — Cards: UI-Component Definition",
-  "quote": "Card layouts are less scannable than lists. ... Thus, cards are not appropriate when users search for a specific item from a list or look for a particular piece of content.",
-  "url": "https://www.nngroup.com/articles/cards-component/",
-  "verified": true
- },
- {
-  "behavior": "На мобиле у карточек рекомендуются отступы 8 dp",
-  "case": "Material Components for Android — Cards (Material Design)",
-  "quote": "We recommend that cards on mobile have `8dp` margins.",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Card.md",
-  "verified": true
- },
- {
-  "behavior": "На мобиле outlined/filled карточка рисуется без тени (elevation 0dp)",
-  "case": "Material Components for Android — Cards (Material Design)",
-  "quote": "On mobile, an outlined or a filled card’s default elevation is `0dp`, with a raised dragged elevation of `8dp`.",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Card.md",
-  "verified": true
- },
- {
-  "behavior": "Длинный заголовок/текст карточки: короткий текст и уход в detail view вместо переполнения строки",
-  "case": "Apple Human Interface Guidelines — Lists and tables",
-  "quote": "Keep item text succinct so row content is comfortable to read. If each item consists of a large amount of text, consider alternatives that help you avoid displaying over-large table rows. For example, you could list item titles only, letting people choose an item to reveal its content in a detail view.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
-  "verified": true
- },
- {
-  "behavior": "Раскрытие карточки на мобиле делается аккордеоном на месте (progressive disclosure), а не новым экраном",
-  "case": "NN/g — Accordions on Mobile (Raluca Budiu, 2015)",
-  "quote": "While the use of accordions on desktop is debatable, on mobile, accordions are one of the most useful design elements, as they often solve the problem of displaying too much content in too little screen space.",
-  "url": "https://www.nngroup.com/articles/mobile-accordions/",
-  "verified": true
- },
- {
-  "behavior": "При раскрытии карточку НЕ надо прокручивать к верху экрана — иначе кажется, что открылся новый экран и ломается кнопка «Назад»",
-  "case": "NN/g — Accordions on Mobile",
-  "quote": "Another solution (that uses space in a less efficient way, however) is to prevent the illusion of a new page by not scrolling the page when the accordion is expanded.",
-  "url": "https://www.nngroup.com/articles/mobile-accordions/",
-  "verified": true
- },
- {
-  "behavior": "Действия в карточке: список действий выносится вниз карточки (Ant Design Card actions)",
-  "case": "Ant Design — Card",
-  "quote": "actions | The action list, shows at the bottom of the Card",
-  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/card/index.en-US.md",
-  "verified": true
- },
- {
-  "behavior": "Действия карточки: при 1–2 действиях оставлять их inline, при 3+ — прятать под overflow-меню «⋯»",
-  "case": "Carbon Design System — Data table, Inline actions / Overflow menu",
-  "quote": "When the overflow menu contains fewer than three options, keep the actions inline as icon buttons instead. This approach reduces a click and makes available actions visible at a glance.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "На тач-устройствах overflow-меню «⋯» нельзя показывать только по hover — оно должно быть видимым всегда",
-  "case": "Carbon Design System — Data table, Overflow menu",
-  "quote": "For mobile and touch devices the data table will detect if the user agent supports hover-over and persist the overflow menus even if the `overflowMenuOnHover` prop is enabled.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx",
+  "situation": "Вернулся из карточки — список сбросился в начало",
+  "happens": "Пользователь листает 40 карточек, открывает 12-ю, возвращается — и оказывается в начале списка: прокрутил и нашёл заново. На телефоне это самый частый сценарий («посмотрел — вернулся»).",
+  "systems": "NN/g описывает это прямо: «Imagine this: you scroll, scroll, scroll down a long list…click…read, and hit the Back button, only to land back at the top of the list instead of where you left off.» — с кейсом Spotify («Spotify did not preserve the user's scroll position when he was browsing podcast episodes») и выводом «In most cases, preserving scroll position is the right choice as it minimizes interaction cost.»",
+  "us": "Сохранять позицию прокрутки списка карточек при возврате из карточки (в пределах сессии, ориентир NN/g — 30–60 минут), и отдельно решать случай «данные обновились».",
+  "quote": "Imagine this: you scroll, scroll, scroll down a long list…click…read, and hit the Back button, only to land back at the top of the list instead of where you left off.",
+  "who": "NN/g, Saving Scroll Position — nngroup.com/articles/saving-scroll-position",
+  "url": "https://www.nngroup.com/articles/saving-scroll-position/",
   "verified": true
  }
 ]

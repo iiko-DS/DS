@@ -1,72 +1,42 @@
 [
  {
-  "behavior": "Сколько раскрывать сразу: разрешать открывать несколько секций одновременно, состояние не сбрасывать до действия пользователя.",
-  "case": "Nielsen Norman Group, Accordions Are Not Always the Answer for Complex Content",
-  "quote": "If you do use accordions, make sure to give people the capability to open multiple sections at a time so that different chunks of content are readily available. Items that are opened or closed should remain in that state until the user changes it.",
-  "url": "https://www.nngroup.com/articles/accordions-complex-content/",
+  "situation": "Раскрытие выглядит как новая страница, и «Назад» уносит с формы",
+  "happens": "Панель «Детали заказа» раскрывается и уезжает под верх экрана: пользователь считает, что перешёл на новую страницу, жмёт системную «Назад» — и теряет экран с заполненными полями.",
+  "systems": "NN/g (Raluca Budiu) разбирает это на WebMD: «When users expand an accordion, designers may move the accordion to the top of the screen... to maximize viewing of the accordion content. Unfortunately that has the disadvantage of making the users think that they navigated to a new page. As a result, they will often try to use the Back button to go back to the view with the closed accordion, but instead they will be taken away from the current page». Baymard видит то же в чекауте-аккордеоне: «users expect the \"Back\" button to take them back to what they perceive to be their previous page, regardless of whether it is technically a new page or not».",
+  "us": "При раскрытии не прокручиваем панель к верху экрана и не меняем вид шапки — раскрытие не должно выглядеть как переход. Системную «Назад» отдаём под сворачивание последнего раскрытия.",
+  "quote": "making the users think that they navigated to a new page",
+  "who": "Nielsen Norman Group · Accordions on Mobile (Raluca Budiu)",
+  "url": "https://www.nngroup.com/articles/mobile-accordions/",
   "verified": true
  },
  {
-  "behavior": "На мобиле аккордеон уместен именно из-за маленького экрана: длинную страницу не дочитывают до конца.",
-  "case": "Nielsen Norman Group, Accordions Are Not Always the Answer for Complex Content",
-  "quote": "when the information is restricted to very small spaces, such as on mobile devices",
-  "url": "https://www.nngroup.com/articles/accordions-complex-content/",
+  "situation": "Длинная раскрытая панель — нечем закрыть",
+  "happens": "Раскрытая панель занимает несколько экранов: чтобы свернуть её и дойти до следующей, надо прокрутить наверх, а кнопка «Свернуть» внизу непонятна и ей не пользуются.",
+  "systems": "NN/g: «The History accordion expanded to many screenfuls of content. Readers deciding to read for a while and then move on to another subtopic had to scroll up to close the History accordion or to scroll down to navigate to the other accordions in the list». Там же про Zappos: «Zappos for Android provided users with a Collapse button to let them easily collapse the accordion... Unfortunately, in testing, no users recognized what that button might do, so they did not use it». Удачное решение Amazon: «instead of introducing an unfamiliar button, it simply made the accordion control sticky at the top of the value list».",
+  "us": "Заголовок раскрытой панели закрепляем сверху (sticky) с тем же шевроном — один способ закрыть и свернуть; новую кнопку «Свернуть» в ДС не вводим.",
+  "quote": "Unfortunately, in testing, no users recognized what that button might do, so they did not use it.",
+  "who": "Nielsen Norman Group · Accordions on Mobile (Raluca Budiu)",
+  "url": "https://www.nngroup.com/articles/mobile-accordions/",
   "verified": true
  },
  {
-  "behavior": "Нельзя вкладывать аккордеон в аккордеон — контент становится трудно найти.",
-  "case": "GOV.UK Design System, Accordion",
-  "quote": "Do not put accordions within accordions, as it will make content difficult to find.",
-  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "situation": "Пройденная панель свернулась до заголовка — данные приходится перепроверять",
+  "happens": "После заполнения панель сворачивается до строки «Оплата»: чтобы проверить введённое, пользователь раскрывает её заново и попадает по мелким ссылкам «Изменить» на 375 px.",
+  "systems": "Baymard Institute: «When only the section header is provided, users must reopen completed steps in order to review their information. This adds friction to the accordion checkout, as users have to click \"Edit\" or a similar link for the step they want to review, wait for the step to open, review their information, and then exit the step to continue checking out. On mobile sites this process will be even more arduous, as users must avoid mistaps when trying to tap a link and the limited viewport often makes orientation difficult». Вывод: «it's key that accordion checkouts collapse the past checkout steps into summaries».",
+  "us": "У пройденной панели показываем короткую сводку введённого (2–3 значения) прямо в заголовке — тогда проверка не требует раскрытия.",
+  "quote": "When only the section header is provided, users must reopen completed steps in order to review their information.",
+  "who": "Baymard Institute · Always Collapse Completed Accordion Checkout Steps into Summaries",
+  "url": "https://baymard.com/blog/accordion-checkout-usability",
   "verified": true
  },
  {
-  "behavior": "Не прятать в аккордеон контент, который нужен всем пользователям.",
-  "case": "GOV.UK Design System, Accordion",
-  "quote": "Do not use an accordion for content that all users need to see.",
-  "url": "https://design-system.service.gov.uk/components/accordion/",
-  "verified": true
- },
- {
-  "behavior": "Запоминание состояния: при возврате на страницу ранее открытые секции должны остаться открытыми (session storage).",
-  "case": "GOV.UK Design System, Accordion",
-  "quote": "Users might need some sections to be open from the start. If they leave and then return to the page, they might also need sections they opened to stay open.",
-  "url": "https://design-system.service.gov.uk/components/accordion/",
-  "verified": true
- },
- {
-  "behavior": "Аккордеон применяют, когда места мало и длинный контент нельзя показать сразу — типично мобильный интерфейс.",
-  "case": "Carbon Design System, Accordion",
-  "quote": "When space is at a premium and long content cannot be displayed all at once, like on a mobile interface or in a side panel.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/accordion/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "Не использовать аккордеон, если пользователь, скорее всего, прочитает весь контент раздела.",
-  "case": "Carbon Design System, Accordion",
-  "quote": "If a user is likely to read all of the content, then don't use an accordion",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/accordion/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "На одном экране — не больше одного раскрывающегося контроля (disclosure button).",
-  "case": "Apple Human Interface Guidelines, Disclosure controls",
-  "quote": "Use no more than one disclosure button in a single view.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/disclosure-controls.json",
-  "verified": true
- },
- {
-  "behavior": "Состояние показывается иконкой: стрелка вниз у свёрнутого блока, вверх — у раскрытого; тап переключает состояние.",
-  "case": "Material Design 1, Expansion panels",
-  "quote": "An arrow that points down when collapsed and points up when expanded.",
-  "url": "https://m1.material.io/components/expansion-panels.html",
-  "verified": true
- },
- {
-  "behavior": "В режиме «аккордеон» одновременно раскрыт только один пункт (по умолчанию — первый).",
-  "case": "Ant Design, Collapse (accordion)",
-  "quote": "which allows only one panel to be expanded at a time.",
-  "url": "https://ant.design/components/collapse",
+  "situation": "Раскрывашка выглядит как уход со страницы, и её не нажимают",
+  "happens": "Строку «Подробнее о доставке» не нажимают: пользователи считают, что это ссылка на другую страницу, и уходят, не раскрыв содержимое.",
+  "systems": "GOV.UK Design System (Details): «There is evidence that some users avoid clicking the link to show more details, as they think it will take them away from the page». И правило области применения: «Do not use the details component to hide information that the majority of your users will need».",
+  "us": "Раскрытие в ДС выглядит как часть экрана (внутренняя строка с шевроном и фоном строки, без вида ссылки), а то, что нужно большинству пользователей, в свёрнутое не прячем.",
+  "quote": "There is evidence that some users avoid clicking the link to show more details, as they think it will take them away from the page.",
+  "who": "GOV.UK Design System · Details",
+  "url": "https://design-system.service.gov.uk/components/details/",
   "verified": true
  }
 ]

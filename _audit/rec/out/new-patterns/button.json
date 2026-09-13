@@ -1,72 +1,42 @@
 [
  {
-  "behavior": "одно главное действие на экран",
-  "case": "GOV.UK Design System · Button — правило для госуслуг",
-  "quote": "Avoid using multiple default buttons on a single page. Having more than one main call to action reduces their impact, and makes it harder for users to know what to do next.",
-  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/button/index.md",
+  "situation": "Кнопка «Сохранить» ушла под клавиатуру",
+  "happens": "Что происходит: на 375 px человек заполняет поле в нижней части формы, клавиатура открывается на половину высоты, и кнопка отправки вместе с футером оказывается под ней; чтобы нажать, нужно сначала закрыть клавиатуру, а после этого не видно, что форма изменилась.",
+  "systems": "Что делают системы: Android сам решает, как перерисовать экран над клавиатурой — «The system also decides how your UI and the text field appear above the input method. For example, when the vertical space on the screen is constrained, the text field might fill all space above the input method», а официальный способ оставить доступным всё содержимое — «to ensure that the system resizes your layout to the available space—which keeps all of your layout content accessible, even if it requires scrolling—use \"adjustResize\"»; Apple HIG требует не допускать скролла и в диалоге с кнопками: «When possible, avoid displaying an alert that scrolls».",
+  "us": "Что делать нам: главное действие не ставить в поток под полем — либо липкая нижняя кнопка, которая поднимается над клавиатурой, либо действие в шапке экрана; поле и кнопку держать в одном видимом окне, при фокусе на поле прокручивать к кнопке, а в формах с 3+ полями — «Далее» на каждом шаге.",
+  "quote": "The system also decides how your UI and the text field appear above the input method. For example, when the vertical space on the screen is constrained, the text field might fill all space above the input method.",
+  "who": "Google · Android Developers (Handle input method visibility)",
+  "url": "https://developer.android.com/develop/ui/views/touch-and-input/keyboard-input/visibility",
   "verified": true
  },
  {
-  "behavior": "кнопка на всю ширину",
-  "case": "Apple HIG · Buttons — правило (пример watchOS)",
-  "quote": "Full-width buttons look better and are easier for people to tap. If two buttons must share the same horizontal space, use the same height for both, and use images or short text titles for each button’s content.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json",
+  "situation": "Кнопка серая и не нажимается",
+  "happens": "Что происходит: пока обязательное поле не заполнено, кнопка отправки стоит приглушённой; человек тапает по ней, ничего не происходит, и он не понимает, чего не хватает — на телефоне к кнопке не подведёшь курсор, чтобы увидеть подсказку.",
+  "systems": "Что делают системы: GOV.UK Design System прямо просит избегать такого состояния — «Disabled buttons have poor contrast and can confuse some users, so avoid them if possible» и допускает его только с оговоркой «Only use disabled buttons if research shows it makes the user interface easier to understand».",
+  "us": "Что делать нам: в мобильном слое не выпускать недоступных кнопок отправки — кнопка активна всегда, а по нажатию подсвечивает незаполненные поля и прокручивает к первому; если недоступность обязательна (например, «Печать» без выбранных чеков), она остаётся видимой и приглушённой, но рядом стоит текст причины.",
+  "quote": "Disabled buttons have poor contrast and can confuse some users, so avoid them if possible. Only use disabled buttons if research shows it makes the user interface easier to understand.",
+  "who": "GOV.UK Design System · Button",
+  "url": "https://design-system.service.gov.uk/components/button/",
   "verified": true
  },
  {
-  "behavior": "зона нажатия минимум 44 pt",
-  "case": "Apple HIG · Buttons",
-  "quote": "As a general rule, a button needs a hit region of at least 44x44 pt — in visionOS, 60x60 pt — to ensure that people can select it easily, whether they use a fingertip, a pointer, their eyes, or a remote.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json",
+  "situation": "Кнопка исчезла вместе со свайпом шторки",
+  "happens": "Что происходит: кнопка «Применить» живёт в нижней шторке; человек тянет шторку пальцем, чтобы досмотреть список, и вместо этого закрывает её — кнопка исчезла вместе со всем выбором.",
+  "systems": "Что делают системы: исследование NN/g на Google Maps — «To go back to the list of restaurants, the participant used the swipe-down gesture (normally used to close a bottom sheet). But that resulted in closing all the sheets in the stack and taking the user back to the map view of the restaurants, which he did not recognize.»; Apple при этом считает свайп нормой и требует предупреждать о потере изменений: «People expect to swipe vertically to dismiss a sheet instead of tapping a dismiss button. If people have unsaved changes in the sheet when they begin swiping to dismiss it, use an action sheet to let them confirm their action.»",
+  "us": "Что делать нам: в шторке с настройками и действием кнопка дублируется сверху (видимый «Готово»), свайп вниз при несохранённых изменениях требует подтверждения, а высоту шторки не делаем равной экрану, чтобы жест закрытия не жил в зоне кнопки.",
+  "quote": "To go back to the list of restaurants, the participant used the swipe-down gesture (normally used to close a bottom sheet). But that resulted in closing all the sheets in the stack and taking the user back to the map view of the restaurants, which he did not recognize.",
+  "who": "NN/g · Raluca Budiu, Sana Behnam, Kate Moran (изучение мобильных приложений: Google Maps)",
+  "url": "https://www.nngroup.com/articles/accidental-overlay-dismissal/",
   "verified": true
  },
  {
-  "behavior": "длинная подпись переносится",
-  "case": "IBM Carbon · Button usage",
-  "quote": "When the button’s label is too long to fit within the available space of the button, the label should overflow and wrap to the second line. We do not recommend truncating a button label",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "fluid-ширина вместо фиксированной",
-  "case": "IBM Carbon · Button usage",
-  "quote": "Fluid width buttons are always preferable to fixed width default buttons in a layout. When possible, set the button container’s relative position to the responsive layout grid and match the button width to the width of other elements on the page",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "одна primary-кнопка на страницу",
-  "case": "IBM Carbon · Button usage",
-  "quote": "Each page should have only one primary button. Any remaining calls to action should be represented as lower emphasis buttons.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "загрузка вместо двойного нажатия",
-  "case": "Ant Design · Button",
-  "quote": "adds a loading spinner in button, avoids multiple submits too",
-  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/button/index.en-US.md",
-  "verified": true
- },
- {
-  "behavior": "разрушительное — не главное",
-  "case": "Apple HIG · Buttons",
-  "quote": "don’t assign the primary role to a button that performs a destructive action",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json",
-  "verified": true
- },
- {
-  "behavior": "warning-кнопка только для необратимого",
-  "case": "GOV.UK Design System · Button",
-  "quote": "Only use warning buttons for actions with serious destructive consequences that cannot be easily undone by a user.",
-  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/button/index.md",
-  "verified": true
- },
- {
-  "behavior": "отмена вместо подтверждения",
-  "case": "Gmail для Android — реальный продукт: после отправки даёт Undo",
-  "quote": "Right after you send a message, you’ll see the message “Sent” and the option to Undo.",
-  "url": "https://support.google.com/mail/answer/2819488?hl=en&co=GENIE.Platform%3DAndroid",
+  "situation": "Главное действие не достать одной рукой",
+  "happens": "Что происходит: главное действие экрана стоит в правом верхнем углу; при хвате одной рукой до него не дотянуться, человек перехватывает телефон или ищет то же действие ниже, а при прокрутке кнопка ещё и уезжает.",
+  "systems": "Что делают системы: NN/g разбирает это допущение по исследованиям хватов — «as users hold mobile devices in a variety of ways (one-handed, two-handed, and from a variety of different grip points), the bottom of the screen is often not the most easily reachable screen region (the middle of the screen represents the most easily tappable area for the wide variety of ways users hold mobile devices)».",
+  "us": "Что делать нам: главное действие экрана — в нижней зоне (кнопка на всю ширину или липкий футер), в шапке остаются только навигация и «⋯»; зону достижимости проверяем на 375 px одной рукой и не считаем нижний край «по умолчанию удобным».",
+  "quote": "as users hold mobile devices in a variety of ways (one-handed, two-handed, and from a variety of different grip points), the bottom of the screen is often not the most easily reachable screen region (the middle of the screen represents the most easily tappable area for the wide variety of ways users hold mobile devices)",
+  "who": "Page Laubheimer · Nielsen Norman Group · Bottom Sheets",
+  "url": "https://www.nngroup.com/articles/bottom-sheet/",
   "verified": true
  }
 ]

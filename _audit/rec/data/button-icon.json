@@ -296,6 +296,39 @@
    "src": "Источники: Angular Material · Icon (https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md)",
    "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Фильтр\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_list</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\" style=\"flex:0 0 auto\"><span class=\"ds-btn__icon material-icons\">filter_list</span><span class=\"ds-btn__label\">Фильтр</span></button></div>",
    "example_ru": "Слева — иконочная кнопка с именем «Фильтр», справа — та же функция с видимой подписью: без aria-label скринридер читает просто «кнопка»."
+  },
+  {
+   "title": "Иконка без фона: куда попадать",
+   "items": [
+    "Что происходит: в шапке иконочные кнопки без подложки («карандаш», «⋯»), видимый размер 24 px, границы нажатия ничем не показаны; палец бьёт в промежуток между иконками, и ничего не происходит.",
+    "Что делают системы: Apple описывает image button — «An image button's edges define its clickable area even when they aren't visible. Including padding ensures that a click registers correctly even if it's not precisely within the image.»",
+    "Что делать нам: у иконочной кнопки в ДС жёсткая цель 48 × 48 px даже при прозрачном фоне, зазор между соседними кнопками не меньше 8 px, а при нажатии появляется заливка-подложка — тогда видно, что тап попал."
+   ],
+   "src": "Источники: Apple HIG · Buttons (image buttons) (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Избранное, включено\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">star</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё действие\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span></div>",
+   "example_ru": "У иконочной кнопки без подложки цель всё равно 48 × 48 (пунктир) с зазором 8 px, а на нажатие отвечает заливка — видно, что тап попал."
+  },
+  {
+   "title": "Кнопки в шапке уезжают при прокрутке",
+   "items": [
+    "Что происходит: при прокрутке большая шапка сворачивается в компактную, иконочные кнопки съезжают на 30–50 px; человек, привыкший к их месту, попадает пальцем в другую иконку или в заголовок.",
+    "Что делают системы: Apple делает это осознанным приёмом и описывает его как ориентир для человека — «By default, a large title transitions to a standard title as people begin scrolling the content, and transitions back to large when people scroll to the top, reminding them of their current location.»",
+    "Что делать нам: на экранах с действиями в шапке высоту шапки не меняем при скролле — либо фиксированная шапка, либо первым уезжает заголовок, а иконки остаются в той же точке; «разъезжающуюся» большую шапку в мобильном слое не используем."
+   ],
+   "src": "Источники: Apple HIG · Toolbars (https://developer.apple.com/design/human-interface-guidelines/toolbars)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:space-between\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Назад\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_back</span></span></button></span><span style=\"font:500 16px Roboto\">Заказы смены</span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Остальные действия\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span></div>",
+   "example_ru": "Шапка фиксированной высоты: при прокрутке иконки остаются на своих местах, а не съезжают на 30–50 px вместе с большой шапкой."
+  },
+  {
+   "title": "Свайп от края вместо «назад»",
+   "items": [
+    "Что происходит: видимую кнопку «назад» убрали, оставив системный свайп от левого края; в той же зоне начинается полоса чипов или карусель, и жест то возвращает назад, то прокручивает содержимое.",
+    "Что делают системы: Apple требует оставлять видимую кнопку — «people expect to find a Back button in a top toolbar that lets them return to the previous view with a single tap», и добавляет жест только как ускорение: «many apps also offer a shortcut gesture — such as swiping from the side of a window or touchscreen — while continuing to provide the Back button.»",
+    "Что делать нам: иконочная кнопка «назад» остаётся в шапке всегда, свайп от края — только ускорение; интерактив (чипы, вкладки, карусель) не ставим в 20 px от левого края, иначе жест конфликтует."
+   ],
+   "src": "Источники: Apple HIG · Gestures (https://developer.apple.com/design/human-interface-guidelines/gestures)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:space-between\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Назад\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_back</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div>",
+   "example_ru": "Кнопка «назад» остаётся видимой в шапке, свайп от края — только ускорение; прокручиваемого ряда в 20 px от левого края нет."
   }
  ]
 }

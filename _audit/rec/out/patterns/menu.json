@@ -187,6 +187,39 @@
    "src": "Источники: Apple HIG · Menus · Menu layouts (https://developer.apple.com/design/human-interface-guidelines/menus)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Как есть</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Сворачивать</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">С собой</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Отменить</span></div></div></div></div>",
    "example_ru": "Компактная раскладка — четыре однотипных пункта по 48 px без иконок и подписей: одинаковый по смыслу выбор занимает меньше места на экране."
+  },
+  {
+   "title": "Меню раскрылось вверх от пальца — а порядок пунктов остался прежним",
+   "items": [
+    "Что происходит: Человек тапает по строке у самого низа экрана: меню раскрывается вверх, и первый пункт списка оказывается визуально дальше всего от пальца, а последний — прямо под ним. Читают меню от места касания, поэтому человек нажимает не то, что прочитал первым.",
+    "Что делают системы: Apple HIG (Context menus): «When a context menu opens, people often read it starting from the part that's closest to where their finger or pointer revealed it» и «Depending on the location of the selected content, a context menu might open above or below it, so you might also need to reverse the order of items to match the position of the menu.»",
+    "Что делать нам: В компоненте меню держим два правила: панель не выходит за края и раскрывается в свободную сторону, а порядок пунктов пересобирается под сторону раскрытия — самое частое действие всегда рядом с местом касания."
+   ],
+   "src": "Источники: Apple HIG · Context menus (https://developer.apple.com/design/human-interface-guidelines/context-menus)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-menu-item__text\">Изменить</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-menu-item__text\">Удалить</span></div></div><div class=\"ds-menu-container__divider\"></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">content_copy</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-menu-item__text\">Дублировать</span></div></div></div></div>",
+   "example_ru": "Меню у нижнего края раскрывается вверх, и порядок пересобран под сторону раскрытия: частое «Дублировать» стоит ближайшим к месту касания, панель не выходит за край экрана."
+  },
+  {
+   "title": "Меню по долгому нажатию: жест есть, а действий не находят",
+   "items": [
+    "Что происходит: Действия по строке заказа спрятаны за долгим нажатием: на телефоне нет ни многоточия, ни подсказки в строке, и человек идёт в карточку заказа за тем, что можно было сделать одним удержанием. Сам жест он либо не знает, либо уже забыл.",
+    "Что делают системы: NN/g (Contextual Menus): «Even if your app uses an initial tip to disclose gestures such as swipe-triggered actions, it is unlikely that people will naturally remember to use it later on in the app. Thus, the contextual actions may be never discovered.» Плюс требование о видимых признаках: «Include visual elements in the UI to indicate that a contextual menu is available.»",
+    "Что делать нам: Долгое нажатие оставляем как ускорение, но не как единственный вход: у строки есть видимая кнопка «…», а те же действия доступны в карточке. Действия, спрятанные только за жестом, считаем недоступными."
+   ],
+   "src": "Источники: NN/g · Contextual Menus: Delivering Relevant Tools for Tasks (https://www.nngroup.com/articles/contextual-menus/)",
+   "example_html": "<div class=\"pat__phone-row\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Заказ №1042</span></div><div class=\"ds-list-container__element-right\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral\" type=\"button\" aria-label=\"Действия по заказу\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></div></div></div></div>",
+   "example_ru": "Действия строки открываются видимой кнопкой «⋯», а не только долгим нажатием: у каждого заказа есть заметный вход в то же меню, что и по жесту."
+  },
+  {
+   "title": "Меню-шторка закрылось тапом вне — и вместе с ним уехал весь путь по подкатегориям",
+   "items": [
+    "Что происходит: Человек выбирает категорию, потом подкатегорию, потом блюдо в меню-шторке: случайный тап по тёмной области вне шторки закрывает её, и вся цепочка выбора теряется — заказ собирают заново.",
+    "Что делают системы: В исследовании NN/g разобран кейс Overstock: «if the user accidentally taps outside the modal overlay used for the sequential menu, all their selections of subcategories in that menu will be lost»; выводы статьи перечисляют это как типовые последствия — «Users pick the wrong overlay-dismissal method. Users' work is lost.»",
+    "Что делать нам: В меню-шторке выбор запоминаем: закрытие любым способом сохраняет путь и выбранное, при возврате шторка открывается на том же месте. Для длинных цепочек добавляем хлебные крошки внутри шторки и явную кнопку «Закрыть»."
+   ],
+   "src": "Источники: NN/g · Accidental Dismissal of Overlays: A Common Mobile Usability Problem (https://www.nngroup.com/articles/accidental-overlay-dismissal/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__label-up\">Меню / Пицца</span><span class=\"ds-menu-item__text\">Маргарита</span></div></div><div class=\"ds-menu-item\" style=\"width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__label-up\">Меню / Пицца</span><span class=\"ds-menu-item__text\">Карбонара</span></div></div><div class=\"ds-menu-container__divider\"></div><div class=\"ds-menu-container__button-group\"><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div></div></div>",
+   "example_ru": "В шторке видны хлебные крошки «Меню / Пицца» и явные «Отмена» с «Готово»: путь по подкатегориям сохранён, и случайный тап вне шторки выбор не теряет."
   }
  ]
 }

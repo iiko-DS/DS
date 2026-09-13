@@ -297,6 +297,50 @@
    "src": "Источники: Ant Design, Message (duration = 3, maxCount) (https://ant.design/components/message)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-snackbar ds-snackbar--complex ds-snackbar--light\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__label\">Заказ №1042 сохранён</span><span class=\"ds-snackbar__button\">Подробнее</span></div></div></div>",
    "example_ru": "Сообщение живёт в одном слоте и дольше трёх секунд: текст и действие успеваешь прочитать и нажать."
+  },
+  {
+   "title": "Ошибка ушла вместе со снекбаром, а пользователь всё ещё ждёт",
+   "items": [
+    "Что происходит: «Не удалось загрузить смену» показывают плашкой внизу, которая тает через 5 секунд; пользователь в этот момент смотрит в середину экрана, продолжает ждать загрузки и считает, что экран грузится.",
+    "Что делают системы: NN/g (Kim Flaherty) описывает ровно такой случай: «In fact, one of our mobile users spent 5 minutes waiting for some content to load only because she hadn't notice the little error message presented at the bottom of the screen that quickly faded away after 5 seconds.» и требует сначала выбирать механизм: «From assessing the type of information delivered, we can determine the correct mechanism to use.»",
+    "Что делать нам: ошибку, из-за которой экран пустой, держать в контенте — состояние «Не удалось загрузить» с кнопкой «Повторить»; снекбару оставлять подтверждения там, где содержимое осталось на месте."
+   ],
+   "src": "Источники: Nielsen Norman Group · Indicators, Validations, and Notifications: Pick the Correct Communication Option (Kim Flaherty) (https://www.nngroup.com/articles/indicators-validations-notifications/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:12px;padding:16px;border:1px solid #E0E0E0;border-radius:12px\"><span style=\"font-size:16px;line-height:24px;font-weight:500\">Смена не загрузилась</span><span style=\"font-size:14px;line-height:20px;color:#616161\">Ошибка остаётся в контенте, пока её не уберут: плашка на 5 секунд сообщением не считается.</span><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Повторить</span></button></div></div>",
+   "example_ru": "Ошибка живёт в контенте с кнопкой «Повторить»: пока экран пустой, сообщение остаётся на месте, а не тает через 5 секунд внизу экрана."
+  },
+  {
+   "title": "Ошибку формы показывают тостом внизу — поле не видно",
+   "items": [
+    "Что происходит: ошибку ввода показывают всплывающим сообщением внизу экрана, а само поле — в середине формы: прочитать сообщение и исправить значение одновременно нельзя, а когда плашка исчезла, вернуть её нечем.",
+    "Что делают системы: Smashing Magazine: «There is quite a disconnect between the error message and the input, and it's rarely possible to read the error message and correct the mistake simultaneously.» и отдельно про объём: «Lengthy toast messages usually block large areas of content that a user might be relying on».",
+    "Что делать нам: ошибки ввода показывать у поля и в сводке над содержимым, а снекбар не использовать как канал ошибок формы — в нём не больше двух строк текста."
+   ],
+   "src": "Источники: Smashing Magazine · Designing Better Error Messages UX (Vitaly Friedman) (https://www.smashingmagazine.com/2022/08/error-messages-ux-design/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m ds-input--error\" style=\"width:280px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Время доставки</span><input class=\"ds-input__field\" type=\"text\" value=\"25:80\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Формат ЧЧ:ММ — ошибка стоит у поля, а не плашкой внизу экрана</span><span class=\"ds-input__hint\"></span></div></div></div>",
+   "example_ru": "Ошибка показана у самого поля и подписана форматом: сообщение не улетает вниз экрана, где его нельзя сопоставить с полем, которое нужно исправить."
+  },
+  {
+   "title": "Подтверждение вне зоны внимания — действие повторили",
+   "items": [
+    "Что происходит: пользователь добавляет позицию и смотрит на кнопку внизу, а подтверждение всплывает сверху: сообщение не замечают и добавляют позицию второй раз, а иногда уходят проверять заказ.",
+    "Что делают системы: NN/g: «Users who miss the message may respond by adding an item to the cart multiple times or by disrupting their shopping flow to check the cart to see what items were added.» и про смену подписи кнопки: «This means that some users may miss the label change and will still add the item to cart multiple times».",
+    "Что делать нам: подтверждение ставить у точки действия (рядом с кнопкой или в самой строке), а при повторяющихся действиях менять саму кнопку («Добавлено · ещё») вместо вспышки в углу экрана."
+   ],
+   "src": "Источники: Nielsen Norman Group · Indicators, Validations, and Notifications (Kim Flaherty) (https://www.nngroup.com/articles/indicators-validations-notifications/) · Nielsen Norman Group · Adding an Item to a Shopping Cart: Provide Clear, Persistent Feedback (Page Laubheimer) (https://www.nngroup.com/articles/cart-feedback/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стейк рибай</span><span class=\"ds-list-item__text\">1 480 ₽</span></div><div class=\"ds-list-container__element-right\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Добавлено · ещё</span></button></div></div></div></div>",
+   "example_ru": "Подтверждение стоит у точки действия: подпись кнопки меняется на «Добавлено · ещё», поэтому второй тап не добавляет позицию повторно."
+  },
+  {
+   "title": "Сообщений много — их перестают читать",
+   "items": [
+    "Что происходит: за смену проходят десятки плашек («Сохранено», «Отправлено на печать», «Гость добавлен»), и пользователь перестаёт читать их целиком — включая важное «Нет связи».",
+    "Что делают системы: Smashing Magazine: «In many products, setting notification channels on mute is a default, rather than an exception. The reason for that is their high frequency, which creates disruptions and eventually notification fatigue, when any popping messages get dismissed instantly.» и там же: «In usability testing, it's the most frequent complaint, yet every app desperately tries to capture a glimpse of our attention, sending more notifications our way».",
+    "Что делать нам: рутинные подтверждения не озвучивать снекбаром — состояние менять тихо в самой строке; снекбар в ДС остаётся редким событием для того, что требует внимания или решения."
+   ],
+   "src": "Источники: Smashing Magazine · Design Guidelines For Better Notifications UX (Vitaly Friedman) (https://www.smashingmagazine.com/2025/07/design-guidelines-better-notifications-ux/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Заказ №1042</span><span class=\"ds-list-item__text\">Отправлено на печать</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:20</span></div></div></div></div>",
+   "example_ru": "Рутинное подтверждение живёт в самой строке («Отправлено на печать»), а не плашкой: когда снекбаров десятки, перестают читать и важное «Нет связи»."
   }
  ]
 }

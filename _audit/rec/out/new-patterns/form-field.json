@@ -1,135 +1,42 @@
 [
  {
-  "behavior": "Подпись поля должна стоять НАД полем, а не внутри или под ним",
-  "case": "NN/g — A Checklist for Designing Mobile Input Fields (Raluca Budiu, 2015)",
-  "quote": "Is the label above it? (Not inside, not below)",
+  "situation": "Ошибка бьёт во время набора, а не после ухода из поля",
+  "happens": "Пользователь набирает телефон, после третьей цифры поле уже красное и с ошибкой «неверный номер»: печатать неудобно, экран прыгает, а часть людей бросает поле, не дойдя до конца.",
+  "systems": "NN/g: «It’s frustrating to see an error message before being given the opportunity to finish typing.» и «In most cases, avoid showing an error until the user has finished with the field and moved to the next field.» Apple разводит момент проверки по типу поля: «when entering an email address, it's best to validate when people switch to another field; when creating a user name or password, validation needs to happen before people switch to another field.»",
+  "us": "Проверять на выходе из поля (blur) и показывать ошибку под полем; мгновенно валидировать только те поля, где ошибку нельзя исправить потом (пароль, код).",
+  "quote": "It’s frustrating to see an error message before being given the opportunity to finish typing.",
+  "who": "NN/g, Errors in Forms: 12 Design Guidelines — nngroup.com/articles/errors-forms-design-guidelines; Apple HIG, Text fields",
+  "url": "https://www.nngroup.com/articles/errors-forms-design-guidelines/",
+  "verified": true
+ },
+ {
+  "situation": "Обязательность поля понятна только после отправки",
+  "happens": "Обязательные поля не помечены; первая подпись «(необязательно)» находится ниже сгиба на 375 px, поэтому пользователь доходит до «Отправить», получает ошибку и возвращается к форме заново.",
+  "systems": "NN/g: «the more-diligent users will look around trying to figure it out — they will scan the form and find a field that is marked optional (sometimes scrolling the page, like in the American Express example above, where the first optional field appears below the mobile fold); if they do find one, they will assume that anything not marked is required.» Вывод статьи: «The solution is simple: mark all the required fields.»",
+  "us": "Помечать обязательные поля в подписи (словом «Обязательно» или звёздочкой), а не инструкцией сверху; если помечаем только необязательные — следить, чтобы первая такая подпись была видна на первом экране.",
+  "quote": "the more-diligent users will look around trying to figure it out — they will scan the form and find a field that is marked optional (sometimes scrolling the page, like in the American Express example above, where the first optional field appears below the mobile fold); if they do find one, they will assume that anything not marked is required.",
+  "who": "NN/g, Marking Required Fields in Forms — nngroup.com/articles/required-fields",
+  "url": "https://www.nngroup.com/articles/required-fields/",
+  "verified": true
+ },
+ {
+  "situation": "Вставка из буфера не работает: поле с маской портит номер",
+  "happens": "Номер заказа копируют из SMS и вставляют, а поле с маской вставляет «+7 (9» или теряет первую цифру — и 11 цифр приходится набирать вручную, с ошибками.",
+  "systems": "NN/g включает это в чек-лист мобильного поля отдельным пунктом: «Do you support copy & paste into the field?» — рядом с «Can you make suggestions/autocomplete based on the first letters typed?»",
+  "us": "Вставка должна разбираться: вычищать нецифровые символы, форматировать содержимое после вставки; запретить маску, которая блокирует вставку или режет значение.",
+  "quote": "Do you support copy & paste into the field?",
+  "who": "NN/g, Mobile Input Field Checklist — nngroup.com/articles/mobile-input-checklist",
   "url": "https://www.nngroup.com/articles/mobile-input-checklist/",
   "verified": true
  },
  {
-  "behavior": "При открытой клавиатуре поле должно оставаться видимым (клавиатура не должна закрывать поле)",
-  "case": "NN/g — A Checklist for Designing Mobile Input Fields",
-  "quote": "Is the field visible in both orientations when the keyboard is displayed?",
-  "url": "https://www.nngroup.com/articles/mobile-input-checklist/",
-  "verified": true
- },
- {
-  "behavior": "Плейсхолдер внутри поля надо убрать",
-  "case": "NN/g — A Checklist for Designing Mobile Input Fields",
-  "quote": "Have you removed any placeholder from inside the field?",
-  "url": "https://www.nngroup.com/articles/mobile-input-checklist/",
-  "verified": true
- },
- {
-  "behavior": "Высота поля должна показывать большую часть возможных значений",
-  "case": "NN/g — A Checklist for Designing Mobile Input Fields",
-  "quote": "Is the field big enough so that most possible field values are visible?",
-  "url": "https://www.nngroup.com/articles/mobile-input-checklist/",
-  "verified": true
- },
- {
-  "behavior": "Подписи полей выравниваются над полем, короткие, в sentence case, без двоеточий",
-  "case": "GOV.UK Design System — Text input",
-  "quote": "You should align labels above the text input they refer to. They should be short, direct and written in sentence case. Do not use colons at the end of labels",
-  "url": "https://design-system.service.gov.uk/components/text-input/",
-  "verified": true
- },
- {
-  "behavior": "Placeholder не заменяет подпись и не используется для подсказок — он исчезает при вводе",
-  "case": "GOV.UK Design System — Text input",
-  "quote": "Do not use placeholder text in place of a label, or for hints or examples, as: it vanishes when the user starts typing",
-  "url": "https://design-system.service.gov.uk/components/text-input/",
-  "verified": true
- },
- {
-  "behavior": "Поле должно запрашивать правильный тип клавиатуры (inputmode) под содержимое",
-  "case": "GOV.UK Design System — Text input (inputmode)",
-  "quote": "inputmode string Optional value for the inputmode attribute",
-  "url": "https://design-system.service.gov.uk/components/text-input/",
-  "verified": true
- },
- {
-  "behavior": "Неправильная клавиатура задерживает ввод и ведёт к опечаткам и ошибкам валидации",
-  "case": "Baymard Institute — Research Guideline #1100: Appropriate Mobile Keyboard Layouts",
-  "quote": "Inappropriate keyboard layouts slow users who are filling form fields and can lead to typos and validation errors",
-  "url": "https://baymard.com/guidelines/1100-appropriate-mobile-keyboard-layouts",
-  "verified": true
- },
- {
-  "behavior": "Цифровая клавиатура для числовых полей: цели клавиш на 521% больше — меньше опечаток",
-  "case": "Baymard Institute — 'Touch Keyboard' Implementations (Christian Holst, 2015)",
-  "quote": "On an iPhone 6S, the size and hitarea of the keys on the purpose-built numeric keyboard are 521% larger than on the traditional touch keyboard (257x109 vs 63x85 pts).",
-  "url": "https://baymard.com/blog/mobile-touch-keyboards",
-  "verified": true
- },
- {
-  "behavior": "Автокоррекцию отключать для имён, адресов, email",
-  "case": "Baymard Institute — 'Touch Keyboard' Implementations",
-  "quote": "Auto-correct often works very poorly for things like abbreviations, street names, e-mail addresses, person names, and similar words that are not in the dictionary.",
-  "url": "https://baymard.com/blog/mobile-touch-keyboards",
-  "verified": true
- },
- {
-  "behavior": "Автокапитализацию отключать для email и URL",
-  "case": "Baymard Institute — 'Touch Keyboard' Implementations",
-  "quote": "It is therefore recommended that auto-capitalization be disabled for email fields and other fields where appropriate (for example a website URL).",
-  "url": "https://baymard.com/blog/mobile-touch-keyboards",
-  "verified": true
- },
- {
-  "behavior": "Оптимизированную клавиатуру надо применять последовательно для всех числовых полей на странице",
-  "case": "Baymard Institute — 'Touch Keyboard' Implementations",
-  "quote": "Purpose-built keyboards should be invoked consistently for all inputs on the same page",
-  "url": "https://baymard.com/blog/mobile-touch-keyboards",
-  "verified": true
- },
- {
-  "behavior": "Ошибка поля: сообщение красным после вопроса и подсказки + красная рамка поля",
-  "case": "GOV.UK Design System — Error message",
-  "quote": "put the message in red after the question text and hint text ... use a red border to visually connect the message and the question it belongs to",
-  "url": "https://design-system.service.gov.uk/components/error-message/",
-  "verified": true
- },
- {
-  "behavior": "При ошибке НЕ очищать заполненные поля — сохранять введённые (в т.ч. ошибочные) значения",
-  "case": "GOV.UK Design System — Error message",
-  "quote": "Do not clear any form fields when showing the Error message component ... Keeping information that caused errors helps users to: see what went wrong, edit their previous answer, avoid re-entering information",
-  "url": "https://design-system.service.gov.uk/components/error-message/",
-  "verified": true
- },
- {
-  "behavior": "Сводка ошибок выводится наверху, фокус переводится на неё",
-  "case": "GOV.UK Design System — Error summary",
-  "quote": "Always show an error summary when there is a validation error, even if there’s only one. You must: move keyboard focus to the error summary ... include the heading ‘There is a problem’",
-  "url": "https://design-system.service.gov.uk/components/error-summary/",
-  "verified": true
- },
- {
-  "behavior": "Правильность поля проверяется в подходящий момент (email — при уходе с поля; username/password — до ухода)",
-  "case": "Apple Human Interface Guidelines — Text fields",
-  "quote": "when entering an email address, it’s best to validate when people switch to another field; when creating a user name or password, validation needs to happen before people switch to another field.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/text-fields",
-  "verified": true
- },
- {
-  "behavior": "Показывать подсказку (hint) под полем, чтобы объяснить назначение",
-  "case": "Apple Human Interface Guidelines — Text fields",
-  "quote": "Show a hint in a text field to help communicate its purpose.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/text-fields",
-  "verified": true
- },
- {
-  "behavior": "Подпись обязательна (label обязателен, кроме одобренного исключения по доступности)",
-  "case": "Carbon Design System — Text input / Text area",
-  "quote": "Label: Text that informs the user about the content they need to enter in the field. It is required unless you get an approved accessibility exemption.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "Несколько полей укладывать вертикально с одинаковой шириной",
-  "case": "Apple Human Interface Guidelines — Text fields",
-  "quote": "Stack multiple text fields vertically when possible, and use consistent widths to create a more organized layout.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/text-fields",
+  "situation": "Подписи и поля идут одной простыней: не понять, чья подпись",
+  "happens": "Форма из 15 полей на 375 px: подпись «Телефон» отстоит от своего поля дальше, чем до чужого, пары сливаются; группы «Контакт», «Оплата» не разделены, и пользователь не знает, где заканчивается один смысловой блок.",
+  "systems": "NN/g: «Place the label closer to the associated text field than to other text fields.» и «Grouping related fields together helps users make sense of the information that they must fill in.» Apple: «If your layout includes multiple text fields, leave enough space between them so people can easily see which input field belongs with each introductory label.»",
+  "us": "Подпись — сверху вплотную к полю (4–8 px), вертикальный отступ между парами больше, чем внутри пары; между группами 24–32 px и подзаголовок группы.",
+  "quote": "Place the label closer to the associated text field than to other text fields.",
+  "who": "NN/g, статья form-design-white-space (Form Design Quick Fix: Group Form Elements Strategically); Apple HIG, Text fields",
+  "url": "https://www.nngroup.com/articles/form-design-white-space/",
   "verified": true
  }
 ]

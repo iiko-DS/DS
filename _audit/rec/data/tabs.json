@@ -311,6 +311,39 @@
    "src": "Источники: Nielsen Norman Group · Touch Targets on Touchscreens (https://www.nngroup.com/articles/touch-target-size/)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Активные</button><button class=\"ds-tab\" type=\"button\">Закрытые</button></div><div style=\"display:flex;gap:8px;justify-content:center;padding:8px 0\"><span style=\"width:6px;height:6px;border-radius:50%;background:#333\"></span><span style=\"width:6px;height:6px;border-radius:50%;background:#BDBDBD\"></span><span style=\"width:6px;height:6px;border-radius:50%;background:#BDBDBD\"></span></div></div>",
    "example_ru": "Вкладки переключаются подписями, а точки 6 px под ними только показывают количество представлений — нажимать по ним нечего."
+  },
+  {
+   "title": "Вкладку закрыли вместе с несохранёнными данными",
+   "items": [
+    "Что происходит: у закрываемой вкладки крестик стоит рядом с подписью; человек промахивается и закрывает вкладку «Новый заказ» с уже введёнными позициями — содержимое исчезает вместе с вкладкой.",
+    "Что делают системы: IBM Carbon описывает ровно этот риск — «When dismissing a tab, an inline warning or modal may be used when information contained in a tab will no longer be accessible or difficult to retrieve.» и ограничивает предупреждение случаями потери данных: «only use when the dismissal causes errors, unintentional deletions, or unsaved changes».",
+    "Что делать нам: закрытие вкладки с несохранёнными данными требует предупреждения, крестик имеет цель 44 px и стоит справа с зазором от подписи, а после закрытия в снекбаре есть «Вернуть»."
+   ],
+   "src": "Источники: IBM Carbon · Tabs (Dismissible tabs) (https://carbondesignsystem.com/components/tabs/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Новый заказ<span class=\"ds-tab__icon\"><span class=\"material-icons\" style=\"font-size:20px\">close</span></span></button><button class=\"ds-tab\" type=\"button\">Меню</button></div><div class=\"ds-snackbar ds-snackbar--dark\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__label\">Вкладка «Новый заказ» закрыта · позиции не сохранены</span></div><button class=\"ds-snackbar__button\" type=\"button\">Вернуть</button></div></div>",
+   "example_ru": "Крестик съёма — отдельная цель 44 px внутри вкладки с зазором от подписи, а после закрытия вкладки в снекбаре есть «Вернуть»: вкладка с несохранёнными позициями не исчезает молча."
+  },
+  {
+   "title": "Полоса вкладок уезжает при прокрутке",
+   "items": [
+    "Что происходит: вкладки прокручиваются вместе с содержимым; человек уходит на третий экран, хочет сменить раздел, не находит полосу и выходит из экрана, теряя место в списке.",
+    "Что делают системы: Apple требует, чтобы полоса вкладок оставалась на экране, — «Make sure the tab bar is visible when people navigate to different sections of your app. If you hide the tab bar, people can forget which area of the app they're in.»",
+    "Что делать нам: полосу вкладок закрепляем сверху (sticky) и не скрываем при прокрутке; при возврате на экран активная вкладка подтягивается в видимую область."
+   ],
+   "src": "Источники: Apple HIG · Tab bars (https://developer.apple.com/design/human-interface-guidelines/tab-bars)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Заказы · Зал 2</div><span class=\"material-icons\">more_vert</span></div><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Активные</button><button class=\"ds-tab\" type=\"button\">Закрытые</button><button class=\"ds-tab\" type=\"button\">Отменённые</button></div><div style=\"height:96px;overflow-y:auto;padding:0 16px\"><p style=\"font-size:14px;line-height:20px;margin:0 0 8px\">Стол 4 · 12 позиций</p><p style=\"font-size:14px;line-height:20px;margin:0 0 8px\">Стол 7 · 5 позиций</p><p style=\"font-size:14px;line-height:20px;margin:0\">Стол 2 · 9 позиций</p></div></div>",
+   "example_ru": "Полоса вкладок остаётся на экране (сверху, под шапкой), пока содержимое под ней прокручивается: активная вкладка не уезжает вместе со списком."
+  },
+  {
+   "title": "Пустую вкладку отключили",
+   "items": [
+    "Что происходит: раздел «Смены» пуст, и вкладку делают недоступной; когда смена появляется, вкладка возникает в другом месте, и человек не понимает, куда пропала половина разделов.",
+    "Что делают системы: Apple прямо запрещает прятать и отключать вкладки — «Don't disable or hide tab bar buttons, even when their content is unavailable.» и даёт замену: «If a section is empty, explain why its content is unavailable.»",
+    "Что делать нам: пустая вкладка остаётся доступной и показывает пустое состояние с объяснением и действием («Смен пока нет — открыть смену»); состав и порядок вкладок на экране не меняем."
+   ],
+   "src": "Источники: Apple HIG · Tab bars (https://developer.apple.com/design/human-interface-guidelines/tab-bars)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab\" type=\"button\">Заказы</button><button class=\"ds-tab ds-tab--selected\" type=\"button\">Смены</button><button class=\"ds-tab\" type=\"button\">Отчёты</button></div><div style=\"padding:24px 16px;text-align:center\"><span class=\"material-icons\" style=\"font-size:40px;color:#9E9E9E\">event_busy</span><p style=\"font-size:14px;line-height:20px;margin:8px 0 16px\">Смен пока нет — закройте кассу, чтобы смена появилась</p><button class=\"ds-btn ds-btn--accent\" type=\"button\">Открыть смену</button></div></div>",
+   "example_ru": "Пустая вкладка «Смены» остаётся доступной и показывает пустое состояние с объяснением и действием: состав и порядок вкладок на экране не меняется, раздел не исчезает."
   }
  ]
 }

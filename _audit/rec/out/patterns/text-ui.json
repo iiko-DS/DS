@@ -132,6 +132,39 @@
   "src": "Источники: Apple Human Interface Guidelines · Typography (https://developer.apple.com/design/human-interface-guidelines/typography)",
   "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column;overflow-x:auto\"><span class=\"ds-text-ui__list-item\" style=\"white-space:nowrap\">Пицца «Маргарита» с двойным сыром и томатами черри</span><span class=\"ds-text-ui__label-down\">Полный текст — в раскрытии строки</span></div></div></div>",
   "example_ru": "В прокручиваемой области текст обрезан, но полный вариант открывается в раскрытии строки: обрезки без выхода не бывает (Apple)."
+ },
+ {
+  "title": "В строках списка «цена/статус/время» стоят каждый раз по-новому",
+  "items": [
+   "Что происходит: В списке заказов цена то справа от названия, то под ним, статус то сверху, то снизу; на 375 px приходится читать всю строку целиком, чтобы найти цену, и сравнивать строки невозможно.",
+   "Что делают системы: NN/g на примере Booking.com: «Booking.com's list entries for different hotels are inconsistent — hotel details change placement from one item to the next.» — требование сформулировано так: «the list entries should be predictable and consistent, with the same placement and visual treatment for corresponding attributes.»",
+   "Что делать нам: Зафиксировать мини-IA строки: название — первая строка, цена — всегда правая часть второй строки одним кеглем и одним начертанием; статус — всегда в одном слоте."
+  ],
+  "src": "Источники: NN/g, List Entries and Listing Pages — nngroup.com/articles/list-entries (https://www.nngroup.com/articles/list-entries/)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\">Пицца «Маргарита»</span><span class=\"ds-text-ui__label-down\">1 180 ₽ · Готовится</span></div><div style=\"display:flex;flex-direction:column;margin-top:8px\"><span class=\"ds-text-ui__list-item\">Салат «Цезарь»</span><span class=\"ds-text-ui__label-down\">540 ₽ · Готовится</span></div></div></div>",
+  "example_ru": "Цена и статус всегда стоят на второй строке и в одном и том же месте: строки читаются и сравниваются без разглядывания каждой."
+ },
+ {
+  "title": "Номер заказа/брони нельзя скопировать с телефона",
+  "items": [
+   "Что происходит: Пользователь диктует номер заказа по телефону или пересылает его, а выделить текст нельзя: долгое нажатие открывает меню картинки/строки целиком, выделяется весь блок вместе с подписями — и номер переписывают руками, с ошибками.",
+   "Что делают системы: Apple требует делать полезный текст выделяемым: «Make useful text selectable. If a text view contains useful information such as an error message, a serial number, or an IP address, consider letting people select and copy it for pasting elsewhere.» Ant Design для этого даёт отдельную настройку у текста: «copyable | Whether to be copyable, customize it via setting an object.»",
+   "Что делать нам: Технические значения (номер заказа, брони, телефон) выделяемы и/или с кнопкой «Копировать» с подтверждением; не оборачивать их в блок с selection: none."
+  ],
+  "src": "Источники: Apple HIG, Text views — developer.apple.com/tutorials/data/design/human-interface-guidelines/text-views.json; Ant Design Typography (copyable) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/text-views.json)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__label-up\">Заказ</span><span class=\"ds-text-ui__list-item\" style=\"user-select:text\">№1042 · Стол 7</span><span class=\"ds-text-ui__label-down\">Номер выделяется и копируется целиком</span></div></div><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\" style=\"width:auto\"><span class=\"ds-btn__label\">Копировать</span></button></div>",
+  "example_ru": "Номер заказа выделяется долгим нажатием и копируется кнопкой «Копировать»: диктовать и переписывать руками больше не нужно."
+ },
+ {
+  "title": "Многоточие рассчитано на ширину макета и не пересчитывается под 375 px",
+  "items": [
+   "Что происходит: Текст в строке обрезан многоточием, но ширина зафиксирована по первой строке: на телефоне обрезка происходит не там, где нужно, соседний элемент (цена/статус) остаётся за краем или текст ломается раньше, чем позволяет экран.",
+   "Что делают системы: Ant Design описывает именно этот дефект: «Diff with Typography.Paragraph, Text do not have 100% width style which means it will fix width on the first ellipsis. If you want to have responsive ellipsis, please set width manually» — то есть адаптивное усечение требует явной ширины.",
+   "Что делать нам: Усекать текст только с явной шириной блока (flex-1/min-width: 0) и через `-webkit-line-clamp`; не задавать ширину текста значением из макета."
+  ],
+  "src": "Источники: Ant Design, Typography (ellipsis) — raw.githubusercontent.com/ant-design/ant-design/master/components/typography/index.en-US.md (https://raw.githubusercontent.com/ant-design/ant-design/master/components/typography/index.en-US.md)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\" style=\"display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden\">Пицца «Маргарита» с двойным сыром и томатами черри, 32 см</span><span class=\"ds-text-ui__label-down\">1 180 ₽</span></div></div></div>",
+  "example_ru": "Обрезка считается от фактической ширины строки (flex-1 и min-width: 0) и держится двух строк: многоточие не залипает на ширине макета."
  }
  ]
 }

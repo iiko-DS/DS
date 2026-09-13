@@ -1,58 +1,32 @@
 [
  {
-  "behavior": "Второй уровень таблицы на мобиле реализуется раскрытием строки на месте, а не отдельной таблицей",
-  "case": "Carbon Design System — Data table, Expandable",
-  "quote": "The expandable data table helps present large amounts of data in a small space. Users can expand and collapse row panels to reveal and hide additional information.",
+  "situation": "Раскрыть строку можно только попав в шеврон 20 px",
+  "happens": "Состав заказа раскрывается тапом по маленькому шеврону в начале строки; тап по самой строке открывает карточку заказа, поэтому пользователь, «тыкая в строку», состав не видит и считает, что детали нет.",
+  "systems": "У Ant Design раскрытие по всей строке выключено по умолчанию — свойство `expandRowByClick`: «Whether to expand row by clicking anywhere in the whole row | boolean | false»; Carbon задаёт порядок и говорит, что раскрытие и выбор могут сосуществовать: «The expandable icon always appears first and to the left of the selection icon.» и «Data tables can be configured to have both expandable and selectable features.»",
+  "us": "Раскрывать второй уровень тапом по всей строке (шеврон — индикатор, а не единственная цель); если строка ещё и выбирается — разнести зоны выбора и раскрытия и не ставить их рядом.",
+  "quote": "The expandable icon always appears first and to the left of the selection icon.",
+  "who": "IBM Carbon, Data table (usage) — raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx; Ant Design Table (expandRowByClick)",
   "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx",
   "verified": true
  },
  {
-  "behavior": "В раскрытом втором уровне — только дополнительная информация; «развернуть всё» по умолчанию не показывают",
-  "case": "Carbon Design System — Data table, Expandable",
-  "quote": "the expand-all chevron is not shown by default in the expandable data table variant. Keeping detailed information in the expanded section saves user loading time by postponing some data queries until needed.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx",
+  "situation": "Раскрытый второй уровень длиннее экрана: непонятно, чей это блок",
+  "happens": "В раскрытой строке три абзаца и шесть подстрок: раскрытие занимает весь экран 375×667, родительская строка уезжает вверх, и через секунду непонятно, к какому заказу относятся данные.",
+  "systems": "Apple HIG ограничивает объём прямо: «If each item consists of a large amount of text, consider alternatives that help you avoid displaying over-large table rows. For example, you could list item titles only, letting people choose an item to reveal its content in a detail view.» Carbon ограничивает объём строки для простых данных: «A maximum of three paragraphs of text is recommended per row.»",
+  "us": "Второй уровень — 3–5 строк максимум (ключ: значение); всё длиннее — отдельный экран или шторка «Детали заказа», а шапку родителя держать видимой при раскрытии.",
+  "quote": "If each item consists of a large amount of text, consider alternatives that help you avoid displaying over-large table rows. For example, you could list item titles only, letting people choose an item to reveal its content in a detail view.",
+  "who": "Apple HIG, Lists and tables — developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json; IBM Carbon, Structured list",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json",
   "verified": true
  },
  {
-  "behavior": "Группировка данных таблицы по аккордеонам на мобиле: обзор + прямой доступ к нужной группе",
-  "case": "NN/g — Mobile Tables",
-  "quote": "If the table includes data that can be grouped into logical categories, use accordions to allow mobile users to: See an overview of the type of data that’s available in the table / Have direct access to information of interest",
-  "url": "https://www.nngroup.com/articles/mobile-tables/",
-  "verified": true
- },
- {
-  "behavior": "Раскрытие строки/группы конфигурируется (иконка раскрытия, рендер раскрытого контента)",
-  "case": "Ant Design — Table (expandable)",
-  "quote": "expandable | Config expandable content ... expandedRowRender | Expanded container render for each row",
-  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md",
-  "verified": true
- },
- {
-  "behavior": "Второй уровень через дочерние строки (tree data) в той же таблице",
-  "case": "Ant Design — Table (expandable.childrenColumnName)",
-  "quote": "childrenColumnName | The column contains children to display | string | children",
-  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md",
-  "verified": true
- },
- {
-  "behavior": "Иерархия — базовое назначение списков и таблиц: группы/уровни плюс взаимодействие",
-  "case": "Apple Human Interface Guidelines — Lists and tables",
-  "quote": "A table or list can represent data that’s organized in groups or hierarchies, and it can support user interactions like selecting, adding, deleting, and reordering.",
-  "url": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
-  "verified": true
- },
- {
-  "behavior": "Если раскрытый второй уровень длинный — нужен закреплённый заголовок строки для быстрого сворачивания",
-  "case": "NN/g — Accordions on Mobile",
-  "quote": "In situations like this, a persistent accordion header or another floating element that allows users to quickly close the accordion can speed up the interaction and save people some effort.",
-  "url": "https://www.nngroup.com/articles/mobile-accordions/",
-  "verified": true
- },
- {
-  "behavior": "Сворачивание уровня: пользователь ожидает, что «Назад»/тот же элемент вернёт закрытое состояние",
-  "case": "NN/g — Accordions on Mobile",
-  "quote": "consider using the Back browser button as an accordion-collapse button: if the last user action was expanding an accordion, then tapping Back should take the user to the closed-accordion page view.",
-  "url": "https://www.nngroup.com/articles/mobile-accordions/",
+  "situation": "«ⓘ» и «›» в строках означают не то, что происходит на самом деле",
+  "happens": "В конце строки заказа стоит «ⓘ», у состава — «›», но тап по «ⓘ» раскрывает состав, а по «›» открывается отдельный экран. Пользователь не может предсказать поведение и жмёт «наугад».",
+  "systems": "Apple HIG разводит смысл двух иконок жёстко: «A disclosure indicator reveals the next level in a hierarchy; it doesn't show details about the item.» и «An info button shows details about a list item; it doesn't support navigation.», а для вложенных уровней требует именно disclosure: «If you need to let people drill into a list or table row's subviews, use a disclosure indicator accessory control.»",
+  "us": "Одна иконка = одно поведение: «›» — раскрытие внутри строки, «ⓘ» в списке с раскрытием не использовать; отдельный экран открывается из раскрытого блока.",
+  "quote": "A disclosure indicator reveals the next level in a hierarchy; it doesn't show details about the item.",
+  "who": "Apple HIG, Lists and tables",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json",
   "verified": true
  }
 ]

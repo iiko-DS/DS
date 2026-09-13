@@ -263,6 +263,39 @@
    "src": "Источники: Angular Material · Chips (https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки, выбрано 3</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div></div>",
    "example_ru": "Поле меток с подписью, в которой названо назначение и число выбранных значений: набор меток читается как сетка, а не как текст абзаца."
+  },
+  {
+   "title": "Вставка из буфера: «Сыр, Соус, Хлеб» одним чипом",
+   "items": [
+    "Что происходит: человек копирует список значений из другого приложения и вставляет его; на 375 px появляется один чип с запятыми внутри, и пять значений приходится набирать заново вручную.",
+    "Что делают системы: NN/g включает поддержку вставки в обязательный чек-лист мобильного поля — «Do you support copy & paste into the field?»; Ant Design держит для этого отдельный API разделителей — «Separator used to tokenize, only applies when mode=\"tags\" or mode=\"multiple\"».",
+    "Что делать нам: в ДС задать разделители (запятая, точка с запятой, перенос строки) и разбирать вставленный текст на отдельные чипы; дубли отбрасывать, а число добавленных показывать в снекбаре («добавлено 5 меток»)."
+   ],
+   "src": "Источники: Raluca Budiu · Nielsen Norman Group · A Checklist for Designing Mobile Input Fields (https://www.nngroup.com/articles/mobile-input-checklist/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Хлеб</span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div></div>",
+   "example_ru": "Вставленный текст «Сыр, Соус, Хлеб» разобран по разделителям на три метки, курсор остался в поле: значения не приходится набирать заново по одному."
+  },
+  {
+   "title": "Набранный чип потерялся при закрытии шторки",
+   "items": [
+    "Что происходит: в шторке меток человек набрал «бекон» и не нажал «Добавить»; свайп вниз закрывает шторку — текст исчезает, а в поле остаются только ранее добавленные чипы.",
+    "Что делают системы: NN/g отдельно разбирает потерю работы при закрытии слоя — «the mistake often results in lost work for users», и объясняет цену: «When they accidentally move farther back in the process than they mean to, users have to start all over again — or give up.»",
+    "Что делать нам: неподтверждённый текст не теряем — при закрытии слоя ДС спрашивает «Сохранить метку?» либо превращает текст в чип автоматически; кнопка «Добавить» всегда видна над клавиатурой и не даёт молча уйти с непустым полем."
+   ],
+   "src": "Источники: NN/g · Accidental Dismissal of Overlays (https://www.nngroup.com/articles/accidental-overlay-dismissal/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Бекон</span></div><input type=\"text\" value=\"Сыр козий\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div><div style=\"display:flex;gap:8px\"><button class=\"ds-btn ds-btn--neutral ds-btn--text\" type=\"button\" style=\"flex:1\">Закрыть</button><button class=\"ds-btn ds-btn--accent\" type=\"button\" style=\"flex:1\">Добавить</button></div></div>",
+   "example_ru": "Набранное значение стоит в поле до нажатия «Добавить», и кнопка действия рядом с ним: закрытие слоя не выбрасывает текст молча."
+  },
+  {
+   "title": "Значения нет в справочнике — список подсказок пуст",
+   "items": [
+    "Что происходит: человек вводит «Сыр козий», совпадений нет, выпадающий список пустой и без пояснения; непонятно, это опечатка, запрещённое значение или можно создать новое.",
+    "Что делают системы: Ant Design держит для этого отдельный слот — «Specify content to show when no result matches» (значение по умолчанию — No data), то есть пустой список остаётся текстом, который задаёт продукт.",
+    "Что делать нам: пустое состояние списка пишем словами («Ничего не найдено — проверить написание или создать «Сыр козий»») с действием создания; тот же текст используем в шторке выбора значений и в пустом состоянии поля."
+   ],
+   "src": "Источники: Ant Design · Select (notFoundContent) (https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\"><input type=\"text\" value=\"Сыр козий\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div><div style=\"border-top:1px solid #E6E8EB;padding:12px 16px\"><p style=\"font-size:14px;line-height:20px;margin:0 0 8px\">Ничего не найдено — проверьте написание</p><button class=\"ds-btn ds-btn--neutral ds-btn--text\" type=\"button\">Создать метку «Сыр козий»</button></div></div>",
+   "example_ru": "Под полем — понятное пустое состояние с действием «Создать метку «Сыр козий»»: человек видит, что совпадений нет, и может завести новое значение вместо тупика."
   }
  ]
 }

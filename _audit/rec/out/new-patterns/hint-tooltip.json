@@ -1,79 +1,42 @@
 [
  {
-  "behavior": "Классический tooltip на телефоне недоступен: он вызывается ховером, а на тач-экранах вместо него нужен popup tip.",
-  "case": "Nielsen Norman Group, Tooltip Guidelines",
-  "quote": "Because tooltips are initiated by a hover gesture, they can be used only on devices with a mouse or keyboard. They are not normally available on touchscreens.",
+  "situation": "Подсказка садится на сам элемент и под палец",
+  "happens": "Долгое нажатие на «i» открывает пузырь поверх той же иконки и соседнего поля: палец закрывает часть текста, а поясняемое поле — целиком, и пользователя просят повторить действие.",
+  "systems": "NN/g (Alita Kendrick): «Position Tooltips So They Don't Block Related Content. When tooltips block the content they're related to, they cause users to repeat steps (i.e. move their mouse to close the tooltip, read the information or field again, hover to reveal tooltip)». Apple HIG (Popovers): «Ideally, a popover doesn't cover the element that revealed it or any essential content people may need to see while using it». Carbon: «Do not cover related content that is essential to the user's tasks. Tooltips should not bleed off page or behind other content».",
+  "us": "Пузырь ставим по свободной стороне от пальца и никогда не накрываем поясняемое поле; отдельным правилом — не показывать подсказку над кнопкой, которую пользователь нажимает следующим действием.",
+  "quote": "When tooltips block the content they're related to, they cause users to repeat steps (i.e. move their mouse to close the tooltip, read the information or field again, hover to reveal tooltip).",
+  "who": "Nielsen Norman Group · Tooltip Guidelines (Alita Kendrick)",
   "url": "https://www.nngroup.com/articles/tooltip-guidelines/",
   "verified": true
  },
  {
-  "behavior": "На мобиле подсказка вызывается тапом и закрывается тапом по другому месту экрана.",
-  "case": "Nielsen Norman Group, Tooltip Guidelines (popup tips)",
+  "situation": "Две иконки рядом — непонятно, чья подсказка открылась",
+  "happens": "В строке формы три иконки подряд, подсказка появляется без стрелки: пользователь закрывает её и открывает по очереди все, потому что не понимает, к какому элементу она относится.",
+  "systems": "NN/g: «Use tooltip arrows when multiple elements are nearby. Arrows are beneficial to clearly identify to which element the tooltip is associated. When there are several nearby elements, these arrows help avoid confusion» — пример с PowerPoint: «Without the tooltip arrows, it was difficult to know which tooltips correspond to which element». Carbon: «button and caret tip should be vertically centered with each other to associate the tooltip and the trigger. This is especially helpful when multiple elements are close to each other».",
+  "us": "В мобильной подсказке ДС всегда есть каретка и отступ от триггера; две подсказки на соседних элементах одной строки не размещаем — объединяем в один hint под строкой.",
+  "quote": "Without the tooltip arrows, it was difficult to know which tooltips correspond to which element.",
+  "who": "Nielsen Norman Group · Tooltip Guidelines (Alita Kendrick)",
+  "url": "https://www.nngroup.com/articles/tooltip-guidelines/",
+  "verified": true
+ },
+ {
+  "situation": "Тап мимо закрывает подсказку и заодно что-то нажимает",
+  "happens": "Подсказка открылась по долгому нажатию, своего способа закрыть у неё нет: пользователь тапает мимо — и попадает по соседнему элементу или по своей же кнопке, которая выполняет действие.",
+  "systems": "NN/g описывает тач-версию подсказки (popup tip): она открывается тапом и «Terminated when User taps to close or clicks another area of the screen». Apple HIG: «a popover generally closes when people click or tap outside its bounds or select an item in the popover» — то есть закрытие вынесено наружу подсказки.",
+  "us": "У подсказки на таче — свой способ закрытия (тап по пузырю, крестик, «Понятно»), а долгий текст уходит в шторку/toggletip с кнопкой; тап по триггеру закрывает подсказку, а не выполняет основное действие.",
   "quote": "User taps to close or clicks another area of the screen",
+  "who": "Nielsen Norman Group · Tooltip Guidelines (Alita Kendrick)",
   "url": "https://www.nngroup.com/articles/tooltip-guidelines/",
   "verified": true
  },
  {
-  "behavior": "Как вызывается на Android: долгое нажатие (tap and hold), подсказка остаётся, пока палец на элементе.",
-  "case": "Material Design 1, Tooltips (Interaction)",
-  "quote": "A tooltip is triggered by tapping and holding an item. Keep the tooltip displayed as long as the user continues to hold the element.",
-  "url": "https://m1.material.io/components/tooltips.html",
-  "verified": true
- },
- {
-  "behavior": "После отпускания подсказка живёт 1.5 секунды; любое действие на экране её закрывает.",
-  "case": "Material Design 1, Tooltips (Timing)",
-  "quote": "On lift, display the tooltip for 1.5 seconds.",
-  "url": "https://m1.material.io/components/tooltips.html",
-  "verified": true
- },
- {
-  "behavior": "Не мешать пальцу: на тач-UI подсказка крупнее десктопной — выше плитка (32dp) и больше боковые отступы (16dp).",
-  "case": "Material Design 1, Tooltips (mobile specs)",
-  "quote": "Touch UI tooltips",
-  "url": "https://m1.material.io/components/tooltips.html",
-  "verified": true
- },
- {
-  "behavior": "Подсказка появляется и по тапу — веб-реализация Material описывает три триггера: hover, focus и tap.",
-  "case": "Material Components for the Web (MDC), Tooltip",
-  "quote": "Tooltips display informative text when users hover over, focus on, or tap an element.",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-tooltip/README.md",
-  "verified": true
- },
- {
-  "behavior": "Carbon-тултип работает только по ховеру/фокусу, то есть на тач-устройстве требует альтернативного паттерна.",
-  "case": "Carbon Design System, Tooltip",
-  "quote": "Tooltips display additional information upon hover or focus that is contextual, helpful, and nonessential",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tooltip/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "На узком экране не показывать поповер/подсказку — использовать всё доступное пространство экрана.",
-  "case": "Apple Human Interface Guidelines, Popovers (iOS/iPadOS)",
-  "quote": "Avoid displaying popovers in compact views.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/popovers.json",
-  "verified": true
- },
- {
-  "behavior": "Подсказки-оверлеи на мобиле показывают по одному за раз и только про одно взаимодействие, иначе их не читают.",
-  "case": "Nielsen Norman Group, Instructional Overlays and Coach Marks for Mobile Apps",
-  "quote": "it is more effective to focus on a single interaction rather than attempting to explain every possible area of the user interface",
-  "url": "https://www.nngroup.com/articles/mobile-instructional-overlay/",
-  "verified": true
- },
- {
-  "behavior": "Пользователь должен сразу отличать подсказку от элементов интерфейса, иначе он пытается с ней взаимодействовать.",
-  "case": "Nielsen Norman Group, Instructional Overlays and Coach Marks for Mobile Apps",
-  "quote": "People must immediately be able to distinguish between hint screens and actual elements of the interface.",
-  "url": "https://www.nngroup.com/articles/mobile-instructional-overlay/",
-  "verified": true
- },
- {
-  "behavior": "В подсказке не может быть информации, критичной для выполнения задачи — всё важное должно быть на экране постоянно.",
-  "case": "Nielsen Norman Group, Tooltip Guidelines",
-  "quote": "Don’t use tooltips for information that is vital to task completion.",
-  "url": "https://www.nngroup.com/articles/tooltip-guidelines/",
+  "situation": "В подсказку убрали предупреждение",
+  "happens": "Предупреждение («Смена закроется автоматически в 04:00») кладут в пузырь подсказки: он исчезает сам или закрывается тапом мимо, и пользователь о предупреждении не знает.",
+  "systems": "Apple HIG (Popovers): «Avoid using a popover to show a warning. People can miss a popover or accidentally close it. If you need to warn people, use an alert instead». Carbon тоже выводит критичное из подсказки: «Since a tooltip disappears when a user hovers away, do not include pertinent information for the user to complete their task».",
+  "us": "Предупреждение об ограничении по времени или лимиту — постоянная строка в контенте или диалог перед действием. В подсказку попадают только пояснения «что это такое».",
+  "quote": "Avoid using a popover to show a warning. People can miss a popover or accidentally close it. If you need to warn people, use an alert instead.",
+  "who": "Apple HIG · Popovers",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/popovers",
   "verified": true
  }
 ]

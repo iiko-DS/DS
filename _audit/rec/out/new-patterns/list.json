@@ -1,72 +1,42 @@
 [
  {
-  "behavior": "Длинное название строки: текст переносится на несколько строк, обрезка не допускается",
-  "case": "Carbon Design System (IBM) — List, раздел Overflow content",
-  "quote": "Text in a list should wrap below the marker, keeping it top-aligned with the first list item to ensure readability. Truncation should be avoided and text should instead wrap to multiple lines.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/list/usage.mdx",
+  "situation": "Свайп по строке: действия спрятаны за жестом, а случайный свайп удаляет",
+  "happens": "На 375 px человек ведёт палец по строке заказа, чтобы просто пролистать список, и строка уезжает вбок: в Gmail свайп по письму влево-вправо настроен сразу на удаление, а в Apple Mail, чтобы вообще увидеть действия, строку надо медленно тянуть влево. Случайный свайп уносит запись без вопроса и без возможности вернуть.",
+  "systems": "Apple Mail — «Slowly drag a message to the left until the menu appears, then tap an item» (быстрое движение влево выполняет крайнее действие). Gmail — «By default, you can swipe messages to the left or right to delete them depending on which setting you chose as your default action», и отдельно, вручную включается «Action confirmations: Ask for confirmation before some actions». В исследованиях NN/g: «Swipe is a fairly easy-to-perform gesture, and every now and then people will accidentally remove an item unintendedly. To prevent such accidents, it's important to always ask for confirmation or provide an easy way to undo the swipe.»",
+  "us": "В нашем списке свайп отдаём только неразрушительным действиям (отложить, отметить, снять с продажи), удаление держим последним пунктом меню строки. Если свайп всё-таки удаляет — обязательно подтверждение или заметная отмена в снекбаре сразу после действия.",
+  "quote": "Swipe is a fairly easy-to-perform gesture, and every now and then people will accidentally remove an item unintendedly. To prevent such accidents, it's important to always ask for confirmation or provide an easy way to undo the swipe.",
+  "who": "NN/g · Using Swipe to Trigger Contextual Actions; Apple Support · Organize email in mailboxes on iPhone; Gmail Help (Android)",
+  "url": "https://www.nngroup.com/articles/contextual-swipe/",
   "verified": true
  },
  {
-  "behavior": "Сколько информации в строке: максимум 1–3 строки текста на строку списка",
-  "case": "Material Components for the web — List (single-line / two-line / three-line)",
-  "quote": "Single-line list items contain a maximum of one line of text. ... Two-line list items contain a maximum of two lines of text. ... Three-line list items contains a maximum of three lines of text.",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-list/README.md",
+  "situation": "Выделил одну строку — выделилась вся группа",
+  "happens": "В списке с категориями человек тапает один чекбокс, а выделяется вся категория: следующее «удалить» уносит пачку писем. На 375 px это видно только мелким счётчиком внизу, и до удаления человек не понимает, что выбрал больше одной строки.",
+  "systems": "В справке Apple Mail это вынесено отдельным предупреждением: «When you select a Transactions, Updates, or Promotions message, you're selecting all the messages in that category from the sender.»",
+  "us": "Если у нас есть группировка (категории, залы, склады), выделение строки не должно молча расширяться до группы: либо выделяется ровно строка, либо заголовок группы уходит в состояние «выбрано всё» и это написано словами рядом со счётчиком выбранного.",
+  "quote": "When you select a Transactions, Updates, or Promotions message, you're selecting all the messages in that category from the sender.",
+  "who": "Apple Support · Organize email in mailboxes on iPhone",
+  "url": "https://support.apple.com/en-us/guide/iphone/iph376ef8aa3/ios",
   "verified": true
  },
  {
-  "behavior": "Короткие подписи в строке — чтобы избежать обрезки и лишних переносов",
-  "case": "Apple HIG — Lists and tables (Content)",
-  "quote": "Keep item text succinct so row content is comfortable to read. Short, succinct text can help minimize truncation and wrapping, making text easier to read and scan.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json",
+  "situation": "Системный крупный шрифт — фиксированная высота строки обрезает текст",
+  "happens": "Человек включает крупный текст в настройках телефона: на 375 px название блюда перестаёт влезать, а высота строки задана числом — текст или обрезается, или налезает на соседнюю строку, и палец попадает не туда.",
+  "systems": "Apple HIG (Layout, раздел про масштаб текста) требует, чтобы контейнеры росли под текст: «table rows or other containers may need to grow in height so that text isn't cropped or doesn't overlap other content», и отдельно: «table rows with a single line of text by default might need to grow vertically to accommodate multiple lines».",
+  "us": "Высоту строки задаём как минимум (min-height 72 px по MD3 two-line), а не как фикс: строка растёт под текст и под крупный системный кегль, а цена и подписи уезжают на вторую строку, а не обрезаются.",
+  "quote": "table rows or other containers may need to grow in height so that text isn't cropped or doesn't overlap other content",
+  "who": "Apple HIG · Layout",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/layout",
   "verified": true
  },
  {
-  "behavior": "Свайп по строке настраивается пользователем; действие можно отключить (None)",
-  "case": "Gmail для iOS — Mail swipe actions (справка Google)",
-  "quote": "You can choose what happens when you swipe a message left or right: Archive Trash Mark as read/unread Snooze Move to... None",
-  "url": "https://support.google.com/mail/answer/6562?co=GENIE.Platform%3DiOS&hl=en",
-  "verified": true
- },
- {
-  "behavior": "Защита от случайного удаления: полный свайп выполняет первое действие по умолчанию, это можно отключить",
-  "case": "Apple (SwiftUI) — swipeActions(edge:allowsFullSwipe:content:)",
-  "quote": "Use this method to add swipe actions to a view that acts as a row in a list. ... By default, the user can perform the first action for a given swipe direction with a full swipe.",
-  "url": "https://developer.apple.com/tutorials/data/documentation/swiftui/view/swipeactions(edge:allowsfullswipe:content:).json",
-  "verified": true
- },
- {
-  "behavior": "Разрушительное действие строки защищено undo-действием в snackbar, а не подтверждающим диалогом",
-  "case": "Material Components for Android — Snackbar",
-  "quote": "Snackbars can also offer the ability to perform an action, such as undoing an action that was just taken, or retrying an action that had failed.",
-  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Snackbar.md",
-  "verified": true
- },
- {
-  "behavior": "Липкие заголовки: шапка списка фиксируется, строки прокручиваются под ней",
-  "case": "Carbon Design System (IBM) — Contained list, раздел Scrolling",
-  "quote": "Contained list header areas can be sticky and fixed in place while the list item rows scroll underneath.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/contained-list/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "Высота строк и шапки сокращается в узких местах, чтобы уменьшить вертикальную прокрутку",
-  "case": "Carbon Design System (IBM) — Contained list, раздел Sizing",
-  "quote": "The disclosed list header has a 32px height and the list item rows by default have a 48px height. The disclosed list often appears in small, restricted places so keeping a shorter height can save valuable space and reduce the amount of vertical scrolling.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/contained-list/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "Пустой список: пустое состояние должно объяснять статус системы, а не оставаться пустым",
-  "case": "NN/g — Designing Empty States in Complex Applications: 3 Guidelines",
-  "quote": "Totally empty states cause confusion about how and whether the system is working.",
-  "url": "https://www.nngroup.com/articles/empty-state-interface-design/",
-  "verified": true
- },
- {
-  "behavior": "Очень длинный список на маленьком экране: показывать самые релевантные элементы и давать способ увидеть остальное",
-  "case": "Apple HIG — Lists and tables (раздел watchOS, ограниченный экран)",
-  "quote": "You can help make a long list more manageable by listing the most relevant items and providing a way for people to view more.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json",
+  "situation": "Одно направление свайпа значит в одном списке три разные вещи",
+  "happens": "В списке блюд свайп влево то откладывает позицию, то удаляет, свайп вправо ставит в очередь: человек не может запомнить смысл жеста и либо боится свайпать, либо свайпает намеренно и получает не то действие.",
+  "systems": "Разбор NN/g на примере Spotify: «in Spotify, swiping could have 3 meanings» — «Swiping left on a song that was not part of the user's library revealed a Save option», «Swiping left on a song in the user's library revealed a Remove option», свайп вправо добавляет в очередь; вывод исследования: «Keep the behavior of contextual swipe consistent within an application.»",
+  "us": "Один жест — одно значение на всех экранах: влево = отложить, вправо = вернуть. Не меняем смысл свайпа в зависимости от состояния строки и не смешиваем свайп-действия с навигационным свайпом.",
+  "quote": "Swiping left on a song that was not part of the user's library revealed a Save option",
+  "who": "NN/g · Using Swipe to Trigger Contextual Actions",
+  "url": "https://www.nngroup.com/articles/contextual-swipe/",
   "verified": true
  }
 ]

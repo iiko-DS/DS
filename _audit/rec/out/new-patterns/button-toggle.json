@@ -1,44 +1,32 @@
 [
  {
-  "behavior": "не больше пяти сегментов на iPhone",
-  "case": "Apple HIG · Segmented controls",
-  "quote": "Aim for no more than about five to seven segments in a wide interface and no more than about five segments on iPhone",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json",
+  "situation": "В одном переключателе и иконка, и текст",
+  "happens": "Что происходит: один сегмент оформили иконкой, остальные — подписями; на 375 px иконочный сегмент выглядит крупнее и читается как отдельная кнопка, а ряд перестаёт читаться как один выбор.",
+  "systems": "Что делают системы: Apple запрещает смешение — «Prefer using either text or images — not a mix of both — in a single segmented control.» и объясняет причину: «mixing the two in a single control can lead to a disconnected and confusing interface».",
+  "us": "Что делать нам: в мобильном переключателе либо все сегменты текстовые, либо все иконочные с подписью под сегментом; смешанный ряд в ДС не выпускаем.",
+  "quote": "Prefer using either text or images — not a mix of both — in a single segmented control.",
+  "who": "Apple HIG · Segmented controls",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/segmented-controls",
   "verified": true
  },
  {
-  "behavior": "сегменты одного размера",
-  "case": "Apple HIG · Segmented controls",
-  "quote": "In general, keep segment size consistent",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json",
+  "situation": "Среди сегментов спряталось действие",
+  "happens": "Что происходит: рядом с «Все / Мои / Смена» в тот же ряд поставили сегмент «Экспорт»; человек тапает по нему, что-то скачивается, сегмент не подсвечивается — и он не понимает, переключился он или нет.",
+  "systems": "Что делают системы: Apple требует единый тип элементов в одном переключателе — «Keep control types consistent within a single segmented control.» и прямо перечисляет оба запрета: «Don't assign actions to segments in a control that otherwise represents selection state, and don't show a selection state for segments in a control that otherwise performs actions.»",
+  "us": "Что делать нам: действие внутри переключателя выборов запрещено — оно уходит в иконочную кнопку или «⋯» рядом; переключатель отвечает только за текущий выбор и всегда показывает, что выбрано.",
+  "quote": "Don't assign actions to segments in a control that otherwise represents selection state, and don't show a selection state for segments in a control that otherwise performs actions.",
+  "who": "Apple HIG · Segmented controls",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/segmented-controls",
   "verified": true
  },
  {
-  "behavior": "длинная подпись — многоточие или иконка",
-  "case": "IBM Carbon · Content switcher",
-  "quote": "If the label text is too long in a content tab, add an ellipsis and accompany it with a browser-based tooltip to show the full string of text. If a label is too long to fit within its control tabs, consider using the icon modifier.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "подпись в 2–3 слова",
-  "case": "IBM Carbon · Content switcher",
-  "quote": "limit label text to two to three words",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "переключатель — ряд кнопок",
-  "case": "Apple HIG · Segmented controls",
-  "quote": "A segmented control is a linear set of two or more segments, each of which functions as a button.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json",
-  "verified": true
- },
- {
-  "behavior": "один выбор подзадач в шторке",
-  "case": "Apple Calendar для iOS (New Event) — реальный продукт",
-  "quote": "the segmented control in Calendar’s New Event sheet switches between the subviews for creating a new event and a new reminder",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json",
+  "situation": "На узком экране подписи заменили иконками",
+  "happens": "Что происходит: чтобы пять сегментов влезли в 343 px, подписи убирают и оставляют только иконки; без подписей смысл сегментов («склад», «смена», «отчёты») угадывается, и чаще всего нажимают первый.",
+  "systems": "Что делают системы: IBM Carbon закладывает такое превращение как штатное адаптивное поведение — «Icon content switchers are compact and do not take up much screen space, therefore they often work in different screen sizes. Where necessary, icon content switchers can also be used as a responsive replacement for content switchers.» (в примере: «the text content switcher turns into the icon content switcher in a smaller screen size»).",
+  "us": "Что делать нам: при нехватке ширины переключатель не превращаем в иконки — сокращаем число сегментов до 3–4 или уводим выбор в шторку; иконочный сегмент допускаем только для общеизвестных иконок и с подписью под сегментом.",
+  "quote": "Icon content switchers are compact and do not take up much screen space, therefore they often work in different screen sizes. Where necessary, icon content switchers can also be used as a responsive replacement for content switchers.",
+  "who": "IBM Carbon · Content switcher (Responsive behavior)",
+  "url": "https://carbondesignsystem.com/components/content-switcher/usage",
   "verified": true
  }
 ]

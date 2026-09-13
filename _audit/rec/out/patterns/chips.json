@@ -165,6 +165,39 @@
    "src": "Источники: Nielsen Norman Group · Touch Targets on Touchscreens (https://www.nngroup.com/articles/touch-target-size/)",
    "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:4px;flex-wrap:wrap;min-height:48px;align-items:center\"><div class=\"ds-chips ds-chips--outlined ds-chips--s\"><span class=\"ds-chips__label\">Остро</span></div><div class=\"ds-chips ds-chips--outlined ds-chips--s\"><span class=\"ds-chips__label\">Веган</span></div><div class=\"ds-chips ds-chips--outlined ds-chips--s\"><span class=\"ds-chips__label\">Без лука</span></div><div class=\"ds-chips ds-chips--outlined ds-chips--s\"><span class=\"ds-chips__label\">Халяль</span></div></div>",
    "example_ru": "Мелкие чипы с зазором 4 px — так выглядят читаемые метки, но нажимать по ним нельзя: под фильтры в ДС отводится вариант 32 px с зазором 8 px."
+  },
+  {
+   "title": "Тап по чипу сразу перестраивает список",
+   "items": [
+    "Что происходит: чипы-фильтры применяются мгновенно; человек тапает по трём чипам подряд, список перезагружается трижды и прыгает вверх — палец в этот момент попадает по четвёртому чипу, который он не выбирал.",
+    "Что делают системы: NN/g рекомендует для мобильных именно пакетный режим — «This is the recommended approach on mobile devices, even with the new tray design pattern.» и добавляет: «on mobile devices, we recommend batch filtering», потому что «Let users tell you when they're done selecting filters.»",
+    "Что делать нам: на мобиле чипы-фильтры собираются пакетно — выбранные чипы только помечаются, а список перестраивается по кнопке «Показать N»; если фильтрация мгновенная, сохраняем позицию списка и не перезагружаем его во время серии тапов."
+   ],
+   "src": "Источники: Katie Sherwin · Nielsen Norman Group · User Intent Affects Filter Design (https://www.nngroup.com/articles/applying-filters/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-group\"><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Острое</span></div></div><button class=\"ds-btn ds-btn--accent\" type=\"button\">Показать 12</button></div>",
+   "example_ru": "Тап по чипу только помечает фильтр, а список перестраивается по кнопке «Показать 12»: серия тапов подряд больше не перезагружает список и не сдвигает его под пальцем."
+  },
+  {
+   "title": "Выбранные чипы пропали от тапа вне панели",
+   "items": [
+    "Что происходит: набор фильтров открыт слоем поверх списка; человеку кажется, что он тапает по фону, чтобы вернуться к списку, — слой закрывается вместе со всеми выбранными чипами.",
+    "Что делают системы: в исследовании NN/g это произошло на Overstock.com — «on Overstock.com, if the user accidentally taps outside the modal overlay used for the sequential menu, all their selections of subcategories in that menu will be lost.»",
+    "Что делать нам: выбор в панели фильтров применяем по кнопке и сохраняем при закрытии тапом по фону; тап вне слоя — «отмена» только для несохранённого, а при изменениях ДС показывает подтверждение (по образцу Apple: несохранённые изменения при закрытии слоя требуют подтверждения)."
+   ],
+   "src": "Источники: NN/g · изучение мобильных приложений (Overstock.com) (https://www.nngroup.com/articles/accidental-overlay-dismissal/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-group\"><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Хлеб</span></div></div><div style=\"display:flex;gap:8px\"><button class=\"ds-btn ds-btn--neutral ds-btn--outlined\" type=\"button\" style=\"flex:1\">Сбросить</button><button class=\"ds-btn ds-btn--accent\" type=\"button\" style=\"flex:1\">Показать 12</button></div></div>",
+   "example_ru": "Выбранные чипы сохраняются, пока панель фильтров открыта: набор применяется по кнопке, а закрытие слоя тапом по фону не выбрасывает выбранные значения."
+  },
+  {
+   "title": "Свайп по чипу: прокрутить полосу или снять фильтр",
+   "items": [
+    "Что происходит: чипы не влезают в строку и прокручиваются по горизонтали; если у чипа есть свайп-снятие, тот же жест иногда снимает фильтр вместо прокрутки, а вертикальный свайп рядом прокручивает список.",
+    "Что делают системы: NN/g фиксирует главную проблему таких жестов — «Lack of signifiers makes it unclear where the contextual swipe can be used.», а в приложении YouTube свайп-действие ещё и перекрывало содержимое: «swiping obscured the name of the channel and made it difficult to confirm that the right channel had been selected before taking action.»",
+    "Что делать нам: в полосе чипов свайп оставляем только для прокрутки; фильтр снимается по крестику внутри чипа (цель 44–48 px) или в шторке фильтров; свайп-в-сторону как способ снятия фильтра в ДС не используем."
+   ],
+   "src": "Источники: Angie Li · Nielsen Norman Group · Using Swipe to Trigger Contextual Actions (https://www.nngroup.com/articles/contextual-swipe/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"overflow-x:auto\"><div class=\"ds-chips-group\" style=\"flex-wrap:nowrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Хлеб</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Острое</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Веган</span></div></div></div><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Соус</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div></div>",
+   "example_ru": "Полоса чипов прокручивается свайпом по горизонтали, а снятие фильтра живёт на крестике внутри чипа: на один жест — одно действие, свайпа на снятие нет."
   }
  ]
 }

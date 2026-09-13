@@ -1,58 +1,32 @@
 [
  {
-  "behavior": "на мобиле радио в столбик",
-  "case": "GOV.UK Design System · Radios",
-  "quote": "Remember that on small screens such as mobile devices, the radios will still be ‘stacked’ on top of one another (vertically).",
-  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/radios/index.md",
+  "situation": "Список режимов в диалоге скроллится, кнопка уезжает",
+  "happens": "Что происходит: в диалоге выбора режима шесть опций с пояснениями; на 375 px текст не помещается, диалог прокручивается, и «ОК» оказывается за нижней кромкой — человек скроллит диалог, чтобы найти подтверждение.",
+  "systems": "Что делают системы: Apple предупреждает об этом прямо — «When possible, avoid displaying an alert that scrolls.» и просит сокращать текст: «Although an alert might scroll if the text size is large enough, be sure to minimize the potential for scrolling by keeping alert titles short and including a brief message only when necessary.»",
+  "us": "Что делать нам: выбор из 5+ опций делаем в шторке на весь экран с закреплённой нижней кнопкой; в диалоге оставляем до трёх коротких опций и всегда фиксированные кнопки.",
+  "quote": "When possible, avoid displaying an alert that scrolls. Although an alert might scroll if the text size is large enough, be sure to minimize the potential for scrolling by keeping alert titles short and including a brief message only when necessary.",
+  "who": "Apple HIG · Alerts",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/alerts",
   "verified": true
  },
  {
-  "behavior": "больше пяти — не радио",
-  "case": "Apple HIG · Toggles",
-  "quote": "Avoid listing too many radio buttons in a set",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json",
+  "situation": "Ничего не выбрано — и человек уходит",
+  "happens": "Что происходит: группа радио «Тип оплаты» открывается без предвыбора; человек читает, не нажимает и уходит с экрана — данные не отправлены, ошибка появится только после нажатия «Далее».",
+  "systems": "Что делают системы: Jakob Nielsen формулирует правило жёстко — «Always offer a default selection for radio button lists.» и объясняет: «By definition, radio buttons always have exactly one option selected, and you therefore shouldn't display them without a default selection.»",
+  "us": "Что делать нам: у группы радио всегда есть предвыбранное значение (самый частый вариант) либо явный пункт «Не выбрано»; пустой выбор не пропускаем молча — показываем ошибку у группы и прокручиваем к ней.",
+  "quote": "Always offer a default selection for radio button lists. By definition, radio buttons always have exactly one option selected, and you therefore shouldn't display them without a default selection.",
+  "who": "Jakob Nielsen · Nielsen Norman Group · Checkboxes vs. Radio Buttons",
+  "url": "https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/",
   "verified": true
  },
  {
-  "behavior": "горизонтальный ряд — ровный шаг",
-  "case": "Apple HIG · Toggles",
-  "quote": "Use consistent spacing when you display radio buttons horizontally. Measure the space needed to accommodate the longest button label, and use that measurement consistently.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json",
-  "verified": true
- },
- {
-  "behavior": "смешанного состояния нет",
-  "case": "Apple HIG · Toggles",
-  "quote": "If you need to show that a setting or item has a mixed state, consider using a checkbox instead.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json",
-  "verified": true
- },
- {
-  "behavior": "подпись не усекать",
-  "case": "IBM Carbon · Radio button",
-  "quote": "Do not truncate radio button label text with an ellipsis.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/radio-button/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "снять выбор нельзя — дать «никакой»",
-  "case": "GOV.UK Design System · Radios",
-  "quote": "Users cannot go back to having no option selected once they have selected one, without refreshing their browser window.",
-  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/radios/index.md",
-  "verified": true
- },
- {
-  "behavior": "меньше пяти опций — радио, больше — селект",
-  "case": "Ant Design · Select",
-  "quote": "Utilizing [Radio](/components/radio/) is recommended when there are fewer total options (less than 5).",
-  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md",
-  "verified": true
- },
- {
-  "behavior": "не смешивать радио и свитчи",
-  "case": "Chase Bank для iOS — реальный кейс, разбор NN/g",
-  "quote": "The Chase Bank iOS app uses toggles and radio buttons inconsistently.",
-  "url": "https://www.nngroup.com/articles/toggle-switch-guidelines/",
+  "situation": "Свайп закрывает шторку вместе с выбором",
+  "happens": "Что происходит: режим выбирают в нижней шторке, значение применяется сразу; человек тянет шторку вниз, чтобы досмотреть список, и закрывает её — значение поменялось, а отменять нечем.",
+  "systems": "Что делают системы: Apple считает свайп ожидаемым жестом и требует страховки на случай потери изменений — «People expect to swipe vertically to dismiss a sheet instead of tapping a dismiss button. If people have unsaved changes in the sheet when they begin swiping to dismiss it, use an action sheet to let them confirm their action.»",
+  "us": "Что делать нам: в шторке с выбором либо применяем по кнопке, либо при свайпе-закрытии показываем подтверждение и даём «Отменить» в снекбаре; выбранная опция остаётся видимой до применения.",
+  "quote": "People expect to swipe vertically to dismiss a sheet instead of tapping a dismiss button. If people have unsaved changes in the sheet when they begin swiping to dismiss it, use an action sheet to let them confirm their action.",
+  "who": "Apple HIG · Sheets",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/sheets",
   "verified": true
  }
 ]

@@ -176,6 +176,50 @@
    "src": "Источники: Apple HIG · Lists and tables · watchOS (https://developer.apple.com/design/human-interface-guidelines/lists-and-tables)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">ramen_dining</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div></div><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Показать все 48</span></button></div>",
    "example_ru": "Сначала 5–10 самых релевантных строк, ниже — «Показать все 48»: длинный список остаётся конечным, и до конца видно, что делать дальше."
+  },
+  {
+   "title": "Свайп по строке: действия спрятаны за жестом, а случайный свайп удаляет",
+   "items": [
+    "Что происходит: На 375 px человек ведёт палец по строке заказа, чтобы просто пролистать список, и строка уезжает вбок: в Gmail свайп по письму влево-вправо настроен сразу на удаление, а в Apple Mail, чтобы вообще увидеть действия, строку надо медленно тянуть влево. Случайный свайп уносит запись без вопроса и без возможности вернуть.",
+    "Что делают системы: Apple Mail — «Slowly drag a message to the left until the menu appears, then tap an item» (быстрое движение влево выполняет крайнее действие). Gmail — «By default, you can swipe messages to the left or right to delete them depending on which setting you chose as your default action», и отдельно, вручную включается «Action confirmations: Ask for confirmation before some actions». В исследованиях NN/g: «Swipe is a fairly easy-to-perform gesture, and every now and then people will accidentally remove an item unintendedly. To prevent such accidents, it's important to always ask for confirmation or provide an easy way to undo the swipe.»",
+    "Что делать нам: В нашем списке свайп отдаём только неразрушительным действиям (отложить, отметить, снять с продажи), удаление держим последним пунктом меню строки. Если свайп всё-таки удаляет — обязательно подтверждение или заметная отмена в снекбаре сразу после действия."
+   ],
+   "src": "Источники: NN/g · Using Swipe to Trigger Contextual Actions; Apple Support · Organize email in mailboxes on iPhone; Gmail Help (Android) (https://www.nngroup.com/articles/contextual-swipe/)",
+   "example_html": "<div class=\"pat__phone-row\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 7</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">Отложить</span><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></div></div></div></div>",
+   "example_ru": "Свайп отдан неразрушительному «Отложить», а удаление спрятано в меню строки под видимой кнопкой «⋯»: случайное движение по строке больше ничего не уносит без вопроса."
+  },
+  {
+   "title": "Выделил одну строку — выделилась вся группа",
+   "items": [
+    "Что происходит: В списке с категориями человек тапает один чекбокс, а выделяется вся категория: следующее «удалить» уносит пачку писем. На 375 px это видно только мелким счётчиком внизу, и до удаления человек не понимает, что выбрал больше одной строки.",
+    "Что делают системы: В справке Apple Mail это вынесено отдельным предупреждением: «When you select a Transactions, Updates, or Promotions message, you're selecting all the messages in that category from the sender.»",
+    "Что делать нам: Если у нас есть группировка (категории, залы, склады), выделение строки не должно молча расширяться до группы: либо выделяется ровно строка, либо заголовок группы уходит в состояние «выбрано всё» и это написано словами рядом со счётчиком выбранного."
+   ],
+   "src": "Источники: Apple Support · Organize email in mailboxes on iPhone (https://support.apple.com/en-us/guide/iphone/iph376ef8aa3/ios)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Категория</span><span class=\"ds-list-item__text\">Пицца</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__checkbox\"><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span></label></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">Выбрано: 1</span></div></div></div></div>",
+   "example_ru": "Тап по строке выбирает ровно одну позицию — счётчик показывает «Выбрано: 1», а строка категории стоит без чекбокса: молчаливого расширения выделения до всей группы нет."
+  },
+  {
+   "title": "Системный крупный шрифт — фиксированная высота строки обрезает текст",
+   "items": [
+    "Что происходит: Человек включает крупный текст в настройках телефона: на 375 px название блюда перестаёт влезать, а высота строки задана числом — текст или обрезается, или налезает на соседнюю строку, и палец попадает не туда.",
+    "Что делают системы: Apple HIG (Layout, раздел про масштаб текста) требует, чтобы контейнеры росли под текст: «table rows or other containers may need to grow in height so that text isn't cropped or doesn't overlap other content», и отдельно: «table rows with a single line of text by default might need to grow vertically to accommodate multiple lines».",
+    "Что делать нам: Высоту строки задаём как минимум (min-height 72 px по MD3 two-line), а не как фикс: строка растёт под текст и под крупный системный кегль, а цена и подписи уезжают на вторую строку, а не обрезаются."
+   ],
+   "src": "Источники: Apple HIG · Layout (https://developer.apple.com/design/human-interface-guidelines/layout)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 7</span><span class=\"ds-list-item__text\">Пицца «Маргарита» с тестом, соусом и моцареллой</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:30</span></div></div></div></div>",
+   "example_ru": "Высота строки задана как минимум (72 px, two-line), а не фикс: длинное название и крупный системный кегль переносят текст на вторую строку, строка растёт по высоте, время уезжает под текст, обрезки нет."
+  },
+  {
+   "title": "Одно направление свайпа значит в одном списке три разные вещи",
+   "items": [
+    "Что происходит: В списке блюд свайп влево то откладывает позицию, то удаляет, свайп вправо ставит в очередь: человек не может запомнить смысл жеста и либо боится свайпать, либо свайпает намеренно и получает не то действие.",
+    "Что делают системы: Разбор NN/g на примере Spotify: «in Spotify, swiping could have 3 meanings» — «Swiping left on a song that was not part of the user's library revealed a Save option», «Swiping left on a song in the user's library revealed a Remove option», свайп вправо добавляет в очередь; вывод исследования: «Keep the behavior of contextual swipe consistent within an application.»",
+    "Что делать нам: Один жест — одно значение на всех экранах: влево = отложить, вправо = вернуть. Не меняем смысл свайпа в зависимости от состояния строки и не смешиваем свайп-действия с навигационным свайпом."
+   ],
+   "src": "Источники: NN/g · Using Swipe to Trigger Contextual Actions (https://www.nngroup.com/articles/contextual-swipe/)",
+   "example_html": "<div class=\"pat__phone-row\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">Свайп влево — отложить</span></div></div></div></div>",
+   "example_ru": "Одно направление жеста означает одно и то же во всём списке: свайп влево подписан «отложить», и за тем же движением больше нет ни удаления, ни постановки в очередь."
   }
  ]
 }

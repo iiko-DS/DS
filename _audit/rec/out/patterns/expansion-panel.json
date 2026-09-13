@@ -176,6 +176,50 @@
    "src": "Источники: Ant Design · Collapse (accordion) (https://ant.design/components/collapse)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" style=\"height:64px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Заказы</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div><div class=\"ds-expansion\"><div class=\"ds-expansion__header\" style=\"height:48px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Гости</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
    "example_ru": "Открыта только первая панель «Заказы» — режим accordion у Ant Design: открытие следующей закрывает предыдущую."
+  },
+  {
+   "title": "Раскрытие выглядит как новая страница, и «Назад» уносит с формы",
+   "items": [
+    "Что происходит: Панель «Детали заказа» раскрывается и уезжает под верх экрана: пользователь считает, что перешёл на новую страницу, жмёт системную «Назад» — и теряет экран с заполненными полями.",
+    "Что делают системы: NN/g (Raluca Budiu) разбирает это на WebMD: «When users expand an accordion, designers may move the accordion to the top of the screen... to maximize viewing of the accordion content. Unfortunately that has the disadvantage of making the users think that they navigated to a new page. As a result, they will often try to use the Back button to go back to the view with the closed accordion, but instead they will be taken away from the current page». Baymard видит то же в чекауте-аккордеоне: «users expect the \"Back\" button to take them back to what they perceive to be their previous page, regardless of whether it is technically a new page or not».",
+    "Что делать нам: При раскрытии не прокручиваем панель к верху экрана и не меняем вид шапки — раскрытие не должно выглядеть как переход. Системную «Назад» отдаём под сворачивание последнего раскрытия."
+   ],
+   "src": "Источники: Nielsen Norman Group · Accordions on Mobile (Raluca Budiu) (https://www.nngroup.com/articles/mobile-accordions/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Стол 12</div><div class=\"ds-expansion\"><div class=\"ds-expansion__header\" style=\"height:48px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Детали заказа</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Гости</div></div>",
+   "example_ru": "Панель раскрывается на своём месте, между полями формы, и шапка экрана не меняется: раскрытие не выглядит переходом на новую страницу."
+  },
+  {
+   "title": "Длинная раскрытая панель — нечем закрыть",
+   "items": [
+    "Что происходит: Раскрытая панель занимает несколько экранов: чтобы свернуть её и дойти до следующей, надо прокрутить наверх, а кнопка «Свернуть» внизу непонятна и ей не пользуются.",
+    "Что делают системы: NN/g: «The History accordion expanded to many screenfuls of content. Readers deciding to read for a while and then move on to another subtopic had to scroll up to close the History accordion or to scroll down to navigate to the other accordions in the list». Там же про Zappos: «Zappos for Android provided users with a Collapse button to let them easily collapse the accordion... Unfortunately, in testing, no users recognized what that button might do, so they did not use it». Удачное решение Amazon: «instead of introducing an unfamiliar button, it simply made the accordion control sticky at the top of the value list».",
+    "Что делать нам: Заголовок раскрытой панели закрепляем сверху (sticky) с тем же шевроном — один способ закрыть и свернуть; новую кнопку «Свернуть» в ДС не вводим."
+   ],
+   "src": "Источники: Nielsen Norman Group · Accordions on Mobile (Raluca Budiu) (https://www.nngroup.com/articles/mobile-accordions/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" style=\"height:48px;position:sticky;top:0\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">История заказов</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\">Длинное содержимое на несколько экранов: шапка панели закреплена сверху и всегда доступна для сворачивания.</div></div></div>",
+   "example_ru": "Шапка раскрытой панели закреплена сверху с тем же шевроном: свернуть длинную панель можно, не прокручивая её до конца."
+  },
+  {
+   "title": "Пройденная панель свернулась до заголовка — данные приходится перепроверять",
+   "items": [
+    "Что происходит: После заполнения панель сворачивается до строки «Оплата»: чтобы проверить введённое, пользователь раскрывает её заново и попадает по мелким ссылкам «Изменить» на 375 px.",
+    "Что делают системы: Baymard Institute: «When only the section header is provided, users must reopen completed steps in order to review their information. This adds friction to the accordion checkout, as users have to click \"Edit\" or a similar link for the step they want to review, wait for the step to open, review their information, and then exit the step to continue checking out. On mobile sites this process will be even more arduous, as users must avoid mistaps when trying to tap a link and the limited viewport often makes orientation difficult». Вывод: «it's key that accordion checkouts collapse the past checkout steps into summaries».",
+    "Что делать нам: У пройденной панели показываем короткую сводку введённого (2–3 значения) прямо в заголовке — тогда проверка не требует раскрытия."
+   ],
+   "src": "Источники: Baymard Institute · Always Collapse Completed Accordion Checkout Steps into Summaries (https://baymard.com/blog/accordion-checkout-usability)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion\"><div class=\"ds-expansion__header\" style=\"height:48px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">check</span></span><span class=\"ds-expansion__title\">Стол 12 · 4 гостя · 14:30</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
+   "example_ru": "У пройденной панели в заголовке короткая сводка введённого: проверить заказ можно без раскрытия и без мелкой ссылки «Изменить»."
+  },
+  {
+   "title": "Раскрывашка выглядит как уход со страницы, и её не нажимают",
+   "items": [
+    "Что происходит: Строку «Подробнее о доставке» не нажимают: пользователи считают, что это ссылка на другую страницу, и уходят, не раскрыв содержимое.",
+    "Что делают системы: GOV.UK Design System (Details): «There is evidence that some users avoid clicking the link to show more details, as they think it will take them away from the page». И правило области применения: «Do not use the details component to hide information that the majority of your users will need».",
+    "Что делать нам: Раскрытие в ДС выглядит как часть экрана (внутренняя строка с шевроном и фоном строки, без вида ссылки), а то, что нужно большинству пользователей, в свёрнутое не прячем."
+   ],
+   "src": "Источники: GOV.UK Design System · Details (https://design-system.service.gov.uk/components/details/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><div class=\"ds-expansion\"><div class=\"ds-expansion__header\" style=\"height:48px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">local_shipping</span></span><span class=\"ds-expansion__title\">Подробнее о доставке</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
+   "example_ru": "Раскрытие выглядит частью экрана — внутренняя строка с иконкой, шевроном и своим фоном, а не ссылка: понятно, что со страницы не уходишь."
   }
  ]
 }

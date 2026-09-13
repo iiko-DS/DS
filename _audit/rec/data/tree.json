@@ -222,6 +222,39 @@
    "src": "Источники: Apple HIG · Lists and tables (Provide appropriate feedback when people select a list item) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json)",
    "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"background:#448AFF;color:#fff;padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div>",
    "example_ru": "Выбранный узел «Маргарита» подсвечен постоянно: Apple HIG требует держать подсветку выбранной строки, чтобы был виден путь в иерархии."
+  },
+  {
+   "title": "Дерево проваливает по уровням вместо раскрытия на месте",
+   "items": [
+    "Что происходит: Категория → подкатегория → группа → блюдо: чтобы дойти до позиции, нужно четыре осознанных тапа, и на каждом экране видно только названия уровней, без полезного содержимого. Вернуться назад так же долго.",
+    "Что делают системы: NN/g: «they amount to nested-doll navigation» — «Many mobile users hate this pattern because it forces them to make multiple decisions, without seeing any useful information.»",
+    "Что делать нам: По умолчанию дерево раскрывается на месте до двух-трёх уровней, а провал оставляем только для узлов с десятками детей; внутри провала всегда виден путь назад в одну строку, а не только системная «Назад»."
+   ],
+   "src": "Источники: NN/g · Mobile Subnavigation (https://www.nngroup.com/articles/mobile-subnavigation/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div>",
+   "example_ru": "Ветки раскрыты на месте одним списком (Меню → Пицца → Маргарита): до позиции доходим без провала по уровням, и содержимое видно сразу."
+  },
+  {
+   "title": "При возврате дерево открыто на прошлом узле — остального не видно",
+   "items": [
+    "Что происходит: Человек вернулся в раздел, а дерево раскрыто на той ветке, где он был: на экране четыре строки одной кухни, остальные кухни как будто исчезли, и он думает, что дерево пустое или сломалось.",
+    "Что делают системы: NN/g про меню, сохраняющие состояние: «When sequential menus preserve state, people sometimes find themselves lost or do not realize that they can navigate in a different area of the hierarchy», и пример Macy's: «a user who landed on the Find a store page will not see much content of interest when she opens the menu and may decide that the site is buggy or the menu is void of content».",
+    "Что делать нам: Сохраняем раскрытие ветки, но корень всегда на месте: при возврате дерево раскрыто по пути к текущему узлу начиная с верхнего уровня, и видно соседние ветки хотя бы названиями."
+   ],
+   "src": "Источники: NN/g · Mobile Subnavigation (https://www.nngroup.com/articles/mobile-subnavigation/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"background:#448AFF;color:#fff;padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Салаты</span></div></div></div>",
+   "example_ru": "Дерево раскрыто по пути к текущему узлу начиная с верхнего уровня, и рядом видна соседняя ветка («Салаты»): при возврате остальное не исчезает."
+  },
+  {
+   "title": "Дерево пытаются сделать основной навигацией приложения",
+   "items": [
+    "Что происходит: На телефоне дерево из панели превращают в главное меню: чтобы попасть на любой экран, человек каждый раз идёт по одним и тем же уровням, а текущее место в дереве не видно — непонятно, где он.",
+    "Что делают системы: Carbon (Tree view, When not to use) прямо запрещает это: «As the primary navigation in a product's UI. Instead, use the UI Shell left panel for product navigation.» и подсказывает замену: «A combination of the UI shell left panel and the breadcrumb component can support an information architecture several levels deep.»",
+    "Что делать нам: Основная навигация — панель или нижние табы; дерево оставляем для данных (кухни, склад, категории) и внутри него даём хлебные крошки пути, чтобы человек видел, где он."
+   ],
+   "src": "Источники: Carbon Design System · Tree view · Usage (https://carbondesignsystem.com/components/tree-view/usage/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Кухня</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:35px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Горячий цех</span></div></div></div>",
+   "example_ru": "Дерево показывает данные предметной области (кухни и цеха), а разделы продукта живут в панели: Carbon прямо выводит основную навигацию из области применения tree view."
   }
  ]
 }

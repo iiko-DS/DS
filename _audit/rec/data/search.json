@@ -248,6 +248,39 @@
    "src": "Источники: Nielsen Norman Group · Designing Empty States in Complex Applications (https://www.nngroup.com/articles/empty-state-interface-design/)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-search\"><span class=\"ds-search__icon\"><span class=\"material-icons\" style=\"font-size:24px\">search</span></span><span class=\"ds-search__text\" style=\"color:var(--ds-color-text-primary,#333333)\">маргарита</span><span class=\"ds-search__right-icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div><div class=\"phone__card\"><p class=\"phone__card-title\">Ничего не найдено</p><p class=\"phone__card-text\">По запросу «маргарита» позиций нет — измените запрос</p></div><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Очистить</span></button></div>",
    "example_ru": "Пустой результат — отдельное состояние: заголовок «Ничего не найдено», пояснение с самим запросом и кнопка «Очистить», а не белое поле."
+  },
+  {
+   "title": "Поиск ищет по всему каталогу, а человек ждёт поиска внутри открытой категории",
+   "items": [
+    "Что происходит: Человек зашёл в раздел «Бар», вводит «мохито» и получает результаты со всего каталога: он не понимает, что поиск вышел за пределы раздела, теряет навигацию и часто уходит с экрана.",
+    "Что делают системы: Baymard (mobile usability): более 50% участников пытались искать внутри текущей категории, и один из них сформулировал ожидание дословно: «When I search – when I am in a category – then to me it seems logical to search within that category.» При этом «94% of mobile e-commerce sites do not support such behavior».",
+    "Что делать нам: По умолчанию ищем в текущем разделе и подписываем это в поле или первой подсказкой («искать в: Бар»); расширение до всего каталога — отдельное осознанное действие, а не молчаливый переход."
+   ],
+   "src": "Источники: Baymard · Mobile Usability: Allow Users to 'Search Within' Their Current Category (https://baymard.com/blog/search-within-current-category)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-search\"><span class=\"ds-search__icon\"><span class=\"material-icons\" style=\"font-size:24px\">search</span></span><span class=\"ds-search__label\">Поиск в разделе «Бар»</span><span class=\"ds-search__right-icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div></div>",
+   "example_ru": "Область поиска названа прямо в поле — «Поиск в разделе «Бар»»: человек видит, что ищет внутри открытого раздела, а расширение до всего каталога становится отдельным осознанным действием."
+  },
+  {
+   "title": "Пустое поле поиска: недавние запросы на весь экран и без возможности убрать",
+   "items": [
+    "Что происходит: Тап по поиску без ввода открывает список последних запросов на весь экран 375 px; человек передаёт телефон коллеге за столом и показывает свои рабочие запросы, а очистить список негде — крестика нет.",
+    "Что делают системы: Apple HIG (Searching): «People might not appreciate having their search history appear where others might see it.» и «If you do show search history, provide a way for people to clear it if they want.»",
+    "Что делать нам: История запросов — выключенная по умолчанию опция с двумя уровнями очистки: крестик у запроса и «Очистить всё». На пустом поле показываем контекстные подсказки (что заказывали чаще), а не личную историю."
+   ],
+   "src": "Источники: Apple HIG · Searching (https://developer.apple.com/design/human-interface-guidelines/searching)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-search\"><span class=\"ds-search__icon\"><span class=\"material-icons\" style=\"font-size:24px\">search</span></span><span class=\"ds-search__label\">Поиск</span></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">мохито</span></div><div class=\"ds-list-container__element-right\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral\" type=\"button\" aria-label=\"Убрать запрос\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></button></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">маргарита</span></div><div class=\"ds-list-container__element-right\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral\" type=\"button\" aria-label=\"Убрать запрос\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></button></div></div></div><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Очистить всё</span></button></div>",
+   "example_ru": "У каждого запроса есть крестик, а ниже — «Очистить всё»: два уровня очистки, и история запросов не показывается, пока её не включат в настройках."
+  },
+  {
+   "title": "Непонятно, на каком уровне ищет поле",
+   "items": [
+    "Что происходит: На одном экране живут три поиска: по всему меню, по странице зала и по списку внутри карточки. Человек вводит запрос в первый попавшийся, получает выдачу по всему каталогу и решает, что поиск «сломан».",
+    "Что делают системы: Carbon (Search) различает ровно эти уровни: «Use at a global level when searching an entire site.» и «Use at a page level when searching through content on one page specifically.» Apple про то же — у выдачи должен быть назван контекст: «in the Mail app there is always a clear reference to the mailbox someone is searching».",
+    "Что делать нам: У каждой строки поиска есть подпись области («по всему меню», «в этом зале», «в этой карточке»); в шторке поиска контекст виден в шапке, и он не теряется при вводе."
+   ],
+   "src": "Источники: Carbon Design System · Search · Usage; Apple HIG · Searching (https://carbondesignsystem.com/components/search/usage/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-search\"><span class=\"ds-search__icon\"><span class=\"material-icons\" style=\"font-size:24px\">search</span></span><span class=\"ds-search__label\">Поиск по всему меню</span><span class=\"ds-search__right-icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div></div>",
+   "example_ru": "У поля названа область — «Поиск по всему меню»: на одном экране не остаётся двух безымянных поисков, и человек понимает, где именно ищет — по всему меню, в этом зале или внутри карточки."
   }
  ]
 }

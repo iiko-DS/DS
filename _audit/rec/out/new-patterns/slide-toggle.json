@@ -1,65 +1,32 @@
 [
  {
-  "behavior": "свитч — только в строке списка",
-  "case": "Apple HIG · Toggles",
-  "quote": "Use the switch toggle style only in a list row.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json",
+  "situation": "Настройки ещё грузятся, а свитч уже «выключен»",
+  "happens": "Что происходит: при открытии настроек строки рисуются сразу, значения приезжают позже; человек успевает выключить свитч, который на самом деле был включён, — и меняет настройку в обратную сторону.",
+  "systems": "Что делают системы: IBM Carbon держит для свитча отдельное состояние загрузки — «Other interactive states are focus, disabled, read-only, and skeleton.», то есть пока значение неизвестно, переключатель не показывают как «on/off».",
+  "us": "Что делать нам: до загрузки значения строка со свитчем стоит в состоянии skeleton и не нажимается; после ответа показываем реальное положение, а не «выключено» по умолчанию.",
+  "quote": "Other interactive states are focus, disabled, read-only, and skeleton.",
+  "who": "IBM Carbon · Toggle (Behaviors. States)",
+  "url": "https://carbondesignsystem.com/components/toggle/usage",
   "verified": true
  },
  {
-  "behavior": "вне списка — кнопка, а не свитч",
-  "case": "Apple HIG · Toggles",
-  "quote": "Outside of a list, use a button that behaves like a toggle, not a switch.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json",
+  "situation": "Главная настройка и подчинённые одного веса",
+  "happens": "Что происходит: в группе «Печать» пять одинаковых свитчей; не видно, что «Печать чеков» управляет остальными, а при её выключении четыре подчинённых просто исчезают из списка.",
+  "systems": "Что делают системы: Apple предлагает ступенчатую иерархию — «Within a grouped form, consider using a mini switch to control the setting in a single row.» и «you can use a regular switch for the primary setting and mini switches for the subordinate settings», при этом высота строки остаётся одинаковой.",
+  "us": "Что делать нам: главная настройка — обычным свитчем, подчинённые — мини-свитчами с отступом и одинаковой высотой строки; при выключении главной подчинённые не исчезают, а становятся недоступными с пояснением.",
+  "quote": "Within a grouped form, consider using a mini switch to control the setting in a single row.",
+  "who": "Apple HIG · Toggles (Switches)",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/toggles",
   "verified": true
  },
  {
-  "behavior": "не подменять чекбокс свитчем",
-  "case": "Apple HIG · Toggles",
-  "quote": "In general, don’t replace a checkbox with a switch.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json",
-  "verified": true
- },
- {
-  "behavior": "включение действует сразу",
-  "case": "Nielsen Norman Group · Alita Joyce, Toggle-Switch Guidelines",
+  "situation": "Переключил — и не знаешь, сохранилось ли",
+  "happens": "Что происходит: настройку меняют в шторке; свитч щёлкает мгновенно, шторку закрывают свайпом, и через минуту человек не может проверить, применилось ли изменение.",
+  "systems": "Что делают системы: NN/g объясняет ожидание человека — «Toggle switches should take immediate effect and should not require the user to click Save or Submit to apply the new state.», а Apple добавляет страховку на свайп по шторке с несохранёнными изменениями (подтверждение закрытия).",
+  "us": "Что делать нам: мгновенное применение всегда сопровождаем обратной связью — снекбар с текстом изменения и действием «Отменить»; свитч не ставим в одну форму с кнопкой «Сохранить», а в шторке закрытие с изменениями подтверждаем.",
   "quote": "Toggle switches should take immediate effect and should not require the user to click Save or Submit to apply the new state.",
+  "who": "Alita Kendrick · Nielsen Norman Group · Toggle-Switch Guidelines",
   "url": "https://www.nngroup.com/articles/toggle-switch-guidelines/",
-  "verified": true
- },
- {
-  "behavior": "свитч без эффекта = провал",
-  "case": "United Airlines для iOS — реальный кейс, разбор NN/g",
-  "quote": "In the United Airlines iOS app, other than the visual change, nothing happens when users tap the toggle switch.",
-  "url": "https://www.nngroup.com/articles/toggle-switch-guidelines/",
-  "verified": true
- },
- {
-  "behavior": "мгновенная видимая реакция",
-  "case": "Apple iOS, режим полёта — реальный кейс, разбор NN/g",
-  "quote": "When turning airplane mode on for iOS, Apple provides immediate results by changing the cellular bars in the upper left-hand corner to an airplane icon.",
-  "url": "https://www.nngroup.com/articles/toggle-switch-guidelines/",
-  "verified": true
- },
- {
-  "behavior": "не ставить свитч в форму с Save",
-  "case": "Nielsen Norman Group · Toggle-Switch Guidelines",
-  "quote": "If you’re considering including toggles in long forms where other types of form fields are present, and users will need to click a Submit button for other changes to take effect, don’t.",
-  "url": "https://www.nngroup.com/articles/toggle-switch-guidelines/",
-  "verified": true
- },
- {
-  "behavior": "свитч сразу, чекбокс — по кнопке",
-  "case": "Ant Design · Switch",
-  "quote": "`Switch` will trigger a state change directly when you toggle it, while `Checkbox` is generally used for state marking, which should work in conjunction with submit operation.",
-  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/switch/index.en-US.md",
-  "verified": true
- },
- {
-  "behavior": "подпись строки вместо лейбла свитча",
-  "case": "Apple HIG · Toggles",
-  "quote": "You don’t need to supply a label in this situation because the content in the row provides the context for the state the switch controls.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json",
   "verified": true
  }
 ]

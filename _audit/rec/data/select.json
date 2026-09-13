@@ -251,6 +251,50 @@
    "src": "Источники: IBM Carbon · Select · Select versus Dropdown (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/select/usage.mdx)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-select-form ds-select-form--populated\"><span class=\"ds-select-form__label\">Категория</span><div class=\"ds-select-form__input-frame\"><span>Пицца «Маргарита»</span><span class=\"ds-arrow-select\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div style=\"display:flex;gap:8px;overflow-x:auto\"><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Все</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Кухня</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Бар</span></div></div></div>",
    "example_ru": "Выбор значения — в селекте, фильтр — отдельными чипсами рядом: действие и выбор значения не живут в одном списке."
+  },
+  {
+   "title": "Форма на телефоне: кастомный список вместо нативного селекта",
+   "items": [
+    "Что происходит: На 375 px человек заполняет форму адреса и времени: кастомный список раскрывается поверх полей, его надо докручивать пальцем, а низ закрыт клавиатурой. Нативный системный выбор открывается сам, поверх своего контекста и не ломает форму.",
+    "Что делают системы: Carbon (Dropdown, раздел Form-based or mobile platform): «Consider using a select if most of your experience is form-based or frequently used on mobile platforms.» и «The native HTML select works more easily when submitting data and is also easier to use on a mobile platform.»",
+    "Что делать нам: В формах (адрес, время, комментарий) оставляем нативный select; кастомный список берём только там, где реально нужны поиск, иконки или группировка, и внутри него не воспроизводим системное колесо."
+   ],
+   "src": "Источники: Carbon Design System · Dropdown · Usage (https://carbondesignsystem.com/components/dropdown/usage/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-select-form\"><span class=\"ds-select-form__label\">Адрес доставки</span><div class=\"ds-select-form__input-frame\"><span>Ленина, 12</span><span class=\"ds-arrow-select\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div></div>",
+   "example_ru": "В форме — один нативный выбор: поле с подписью и стрелкой открывает системный список поверх своего контекста, а не кастомную панель, которую на телефоне пришлось бы докручивать под клавиатурой."
+  },
+  {
+   "title": "Два-три значения в селекте — лишний экран вместо радиокнопок",
+   "items": [
+    "Что происходит: Способ оплаты из двух вариантов спрятан в выпадающий список: человек тапает поле, ждёт раскрытия, попадает пальцем в другой пункт — вместо одного тапа по радиокнопке. На 375 px это полноценный лишний шаг ради двух строк.",
+    "Что делают системы: Carbon (Select): «It is best practice not to use a select if there are fewer than three options for selection. In this case, use a radio button group instead.» Apple HIG (Pickers): для коротких списков выбор через список/колесо — «it may add too much visual weight to a short list of items».",
+    "Что делать нам: До трёх вариантов — радиокнопки или сегменты прямо в форме; селект включаем от четырёх значений, а на короткий список селект в макете не ставим."
+   ],
+   "src": "Источники: Carbon Design System · Select · Usage; Apple HIG · Pickers (https://carbondesignsystem.com/components/select/usage/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pay\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Картой</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pay\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Наличными</span></label></div></div>",
+   "example_ru": "Способ оплаты из двух значений показан радиокнопками прямо в форме: один тап вместо раскрытия списка — селект включаем только от четырёх опций."
+  },
+  {
+   "title": "Панель селекта у нижнего края раскрывается вверх и накрывает своё поле",
+   "items": [
+    "Что происходит: Селект стоит внизу формы: раскрытая панель разворачивается вверх и закрывает само поле с подписью, поэтому человек уже не видит, что выбрал, и тапает по полю повторно — раскрывая список заново.",
+    "Что делают системы: Carbon (Dropdown, Direction): «A dropdown can open up or down depending on its position on the screen.» и «if the dropdown appears at the bottom and close to the edge of the interface, the menu expands upward to avoid being cropped». Про хвост списка там же: «Scroll bars may not always be enabled so we recommend showing 50% of the last option's container height to indicate there is more to see within the menu.»",
+    "Что делать нам: Панель раскрываем в свободную сторону, но она не закрывает триггер: минимум 8 px зазора и всегда видимая строка с выбранным значением; последний пункт показываем обрезанным наполовину, чтобы было видно, что список продолжается."
+   ],
+   "src": "Источники: Carbon Design System · Dropdown · Usage (https://carbondesignsystem.com/components/dropdown/usage/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-select-form\"><span class=\"ds-select-form__label\">Раздел меню</span><div class=\"ds-select-form__input-frame\"><span>Бар</span><span class=\"ds-arrow-select\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-select-container\"><div class=\"ds-select-item ds-select-item--false\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Кухня</span></div></div><div class=\"ds-select-item ds-select-item--false\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Бар</span></div></div></div></div>",
+   "example_ru": "Панель раскрывается в свободную сторону с зазором и не закрывает триггер: строка «Бар» с выбранным значением остаётся видна, а последний пункт показан наполовину — видно, что список продолжается."
+  },
+  {
+   "title": "Список выбора открыт шторкой: свайп вниз закрывает её без подтверждения",
+   "items": [
+    "Что происходит: Список кухонь открыт нижней шторкой: свайп вниз, начатый чуть выше ручки или сбоку, закрывает шторку — выбранное значение не применилось. На Android тот же жест может вытащить шторку уведомлений, и человек вообще теряет приложение.",
+    "Что делают системы: NN/g (Bottom Sheets): «the vertical swipe is also prone to swipe ambiguity: depending on where precisely it is initiated, the gesture may close the bottom sheet, may open up the notification drawer, or may display the phone's control panel», поэтому советуют видимую кнопку закрытия, а не только ручку.",
+    "Что делать нам: В шторке выбора — явные «Готово» и «Отмена»; закрытие свайпом сохраняет последнее подтверждённое значение, а не подсвеченный пункт, и не считается выбором."
+   ],
+   "src": "Источники: NN/g · Bottom Sheets: Definition and UX Guidelines (https://www.nngroup.com/articles/bottom-sheet/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-select-container\"><div class=\"ds-select-item ds-select-item--false\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Пицца</span></div></div><div class=\"ds-select-item ds-select-item--false\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Паста</span></div></div></div><div class=\"ds-menu-container\"><div class=\"ds-menu-container__button-group\"><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div></div></div>",
+   "example_ru": "В шторке выбора — явные «Отмена» и «Готово»: закрытие свайпом сохраняет последнее подтверждённое значение, а не подсвеченный пункт, и не считается выбором."
   }
  ]
 }

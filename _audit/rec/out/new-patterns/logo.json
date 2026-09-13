@@ -1,65 +1,32 @@
 [
  {
-  "behavior": "Логотип не должен отъедать место у контента — особенно на узком экране",
-  "case": "Apple HIG — Branding (Best practices)",
-  "quote": "Ensure branding always defers to content. Using screen space for an element that does nothing but display a brand asset can mean there's less room for the content people care about.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/branding.json",
+  "situation": "Логотип на сплэш-экране, который тут же исчезает",
+  "happens": "При запуске приложения на 375 px мелькает сплэш с логотипом, а через мгновение его сменяет список: логотип не запоминается, но занимает экран и отодвигает работу — заказ нельзя начать сразу.",
+  "systems": "Apple HIG (Branding): «Avoid using a launch screen as a branding opportunity.» и объяснение: «A launch screen disappears too quickly to convey any information».",
+  "us": "Сплэш держим нейтральным под загрузку, брендирование переносим в онбординг и в контент; единственный постоянный носитель логотипа — шапка экрана.",
+  "quote": "Avoid using a launch screen as a branding opportunity.",
+  "who": "Apple HIG · Branding",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/branding",
   "verified": true
  },
  {
-  "behavior": "Не раскидывать логотип по всему интерфейсу — место лучше отдать полезным элементам",
-  "case": "Apple HIG — Branding (Best practices)",
-  "quote": "Resist the temptation to display your logo throughout your app or game unless it's essential for providing context. People seldom need to be reminded which app they're using, and it's usually better to use the space to give people valuable information and controls.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/branding.json",
+  "situation": "Шрифт логотипа ломается на мелком кегле и при крупном системном тексте",
+  "happens": "Логотип-надпись в шапке стоит кеглем 14–16 px: на 375 px надпись теряет читаемость, а если человек включил крупный текст или жирный шрифт, она перестаёт влезать в шапку и обрезается.",
+  "systems": "Apple HIG (Branding) про фирменный шрифт: «If your brand is strongly associated with a specific font, be sure that it's legible at all sizes and supports accessibility features like bold text and Dynamic Type.»",
+  "us": "В шапке — знак-графика, а не живой текст: надпись в логотипе не участвует в масштабировании интерфейса и не мельче 16 px, полная версия с названием живёт только там, где есть ширина.",
+  "quote": "If your brand is strongly associated with a specific font, be sure that it's legible at all sizes and supports accessibility features like bold text and Dynamic Type.",
+  "who": "Apple HIG · Branding",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/branding",
   "verified": true
  },
  {
-  "behavior": "Логотип (масthead) — на каждой странице, и в шапке показывать только логотип и общесистемные ссылки",
-  "case": "GOV.UK Design System — GOV.UK header",
-  "quote": "You must use the GOV.UK header component at the top of every page. ... It should only show the GOV.UK logo and any GOV.UK-wide links and tools to help your users.",
-  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/header/index.md",
-  "verified": true
- },
- {
-  "behavior": "Название сервиса и навигацию в шапку к логотипу не добавлять",
-  "case": "GOV.UK Design System — GOV.UK header",
+  "situation": "Логотип в шапке: куда ведёт и что рядом с ним ещё помещается",
+  "happens": "На 375 px в шапке стоят логотип, название сервиса и ссылки разделов — всё сжимается, а тап по логотипу неочевиден: человек не понимает, вернёт ли его это на главную или сбросит выбранный зал.",
+  "systems": "GOV.UK: «The GOV.UK header component tells users they're using a service on GOV.UK and lets them use GOV.UK-wide tools», знак обёрнут в ссылку на главную, и шапка обязательна на каждой странице — «You must use the GOV.UK header component at the top of every page.» При брендовом обновлении из шапки убрали лишнее: «You can no longer use the GOV.UK header to show service name or navigation links.»",
+  "us": "В шапке — знак и, если влезает, название зала; знак всегда ссылка на главную и не сбрасывает выбранный зал. Названия разделов и подпись сервиса из шапки с логотипом убираем в панель и отдельный компонент навигации.",
   "quote": "You can no longer use the GOV.UK header to show service name or navigation links.",
-  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/header/index.md",
-  "verified": true
- },
- {
-  "behavior": "Если сервис не на домене gov.uk — логотип и айдентика должны быть свои",
-  "case": "GOV.UK Design System — Generic header / Making your service look like GOV.UK",
-  "quote": "use the crown or GOV.UK logotype in the header",
-  "url": "https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk",
-  "verified": true
- },
- {
-  "behavior": "Сервис вне GOV.UK: корону/GOV.UK-логотип в шапке не использовать, показывать свой бренд",
-  "case": "GOV.UK Design System — Generic header (When to use)",
-  "quote": "identify itself as being part of GOV.UK ... use the crown or GOV.UK logotype in the header",
-  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/generic-header/index.md",
-  "verified": true
- },
- {
-  "behavior": "На узком экране ссылки шапки рядом с логотипом уезжают в боковое меню",
-  "case": "Carbon Design System (IBM) — UI shell header (Header links)",
-  "quote": "Links in the header are supported as product navigation, if required. These links move to the side menu in narrow screen widths.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/UI-shell-header/usage.mdx",
-  "verified": true
- },
- {
-  "behavior": "Логотип в шапке без названия сервиса — только чтобы показать, чей это сервис",
-  "case": "NHS digital service manual — Header",
-  "quote": "Use the appropriate header at the top of every page to show users they are on an NHS service and help them get started in finding what they need.",
-  "url": "https://service-manual.nhs.uk/design-system/components/header",
-  "verified": true
- },
- {
-  "behavior": "Свой бренд = свой логотип и шрифт организации в шапке",
-  "case": "GOV.UK Service Manual — Making your service look like GOV.UK",
-  "quote": "You should also use the brand logo and font of your organisation.",
-  "url": "https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk",
+  "who": "GOV.UK Design System · Header",
+  "url": "https://design-system.service.gov.uk/components/header/",
   "verified": true
  }
 ]

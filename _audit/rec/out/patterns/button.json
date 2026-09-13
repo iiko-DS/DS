@@ -176,6 +176,50 @@
    "src": "Источники: Gmail для Android · Unsend a message (https://support.google.com/mail/answer/2819488?hl=en&co=GENIE.Platform%3DAndroid)",
    "example_html": "<div class=\"pat__phone\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Отправить в производство</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отменить отправку</span></button></div>",
    "example_ru": "Действие выполняется сразу, отмена — текстовой кнопкой рядом: подтверждение вместо диалога."
+  },
+  {
+   "title": "Кнопка ушла под клавиатуру",
+   "items": [
+    "Что происходит: на 375 px человек заполняет поле в нижней части формы, клавиатура открывается на половину высоты, и кнопка отправки вместе с футером оказывается под ней; чтобы нажать, нужно сначала закрыть клавиатуру, а после этого не видно, что форма изменилась.",
+    "Что делают системы: Android сам решает, как перерисовать экран над клавиатурой — «The system also decides how your UI and the text field appear above the input method. For example, when the vertical space on the screen is constrained, the text field might fill all space above the input method», а официальный способ оставить доступным всё содержимое — «to ensure that the system resizes your layout to the available space—which keeps all of your layout content accessible, even if it requires scrolling—use \"adjustResize\"»; Apple HIG требует не допускать скролла и в диалоге с кнопками: «When possible, avoid displaying an alert that scrolls».",
+    "Что делать нам: главное действие не ставить в поток под полем — либо липкая нижняя кнопка, которая поднимается над клавиатурой, либо действие в шапке экрана; поле и кнопку держать в одном видимом окне, при фокусе на поле прокручивать к кнопке, а в формах с 3+ полями — «Далее» на каждом шаге."
+   ],
+   "src": "Источники: Google · Android Developers (Handle input method visibility) (https://developer.android.com/develop/ui/views/touch-and-input/keyboard-input/visibility)",
+   "example_html": "<div class=\"pat__phone\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Далее</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Сохранить черновик</span></button></div>",
+   "example_ru": "Главное действие — отдельным блоком на всю ширину тела (343 px) и остаётся видимым над клавиатурой; в потоке формы под полем кнопки нет."
+  },
+  {
+   "title": "Кнопка серая и не нажимается",
+   "items": [
+    "Что происходит: пока обязательное поле не заполнено, кнопка отправки стоит приглушённой; человек тапает по ней, ничего не происходит, и он не понимает, чего не хватает — на телефоне к кнопке не подведёшь курсор, чтобы увидеть подсказку.",
+    "Что делают системы: GOV.UK Design System прямо просит избегать такого состояния — «Disabled buttons have poor contrast and can confuse some users, so avoid them if possible» и допускает его только с оговоркой «Only use disabled buttons if research shows it makes the user interface easier to understand».",
+    "Что делать нам: в мобильном слое не выпускать недоступных кнопок отправки — кнопка активна всегда, а по нажатию подсвечивает незаполненные поля и прокручивает к первому; если недоступность обязательна (например, «Печать» без выбранных чеков), она остаётся видимой и приглушённой, но рядом стоит текст причины."
+   ],
+   "src": "Источники: GOV.UK Design System · Button (https://design-system.service.gov.uk/components/button/)",
+   "example_html": "<div class=\"pat__phone\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\" disabled><span class=\"ds-btn__label\">Печать пречека</span></button></div>",
+   "example_ru": "Кнопка отправки всегда активна; недоступная кнопка остаётся видимой и приглушённой — молчаливо-серой кнопки «Сохранить» в ДС нет."
+  },
+  {
+   "title": "Кнопка исчезла при свайпе шторки",
+   "items": [
+    "Что происходит: кнопка «Применить» живёт в нижней шторке; человек тянет шторку пальцем, чтобы досмотреть список, и вместо этого закрывает её — кнопка исчезла вместе со всем выбором.",
+    "Что делают системы: исследование NN/g на Google Maps — «To go back to the list of restaurants, the participant used the swipe-down gesture (normally used to close a bottom sheet). But that resulted in closing all the sheets in the stack and taking the user back to the map view of the restaurants, which he did not recognize.»; Apple при этом считает свайп нормой и требует предупреждать о потере изменений: «People expect to swipe vertically to dismiss a sheet instead of tapping a dismiss button. If people have unsaved changes in the sheet when they begin swiping to dismiss it, use an action sheet to let them confirm their action.»",
+    "Что делать нам: в шторке с настройками и действием кнопка дублируется сверху (видимый «Готово»), свайп вниз при несохранённых изменениях требует подтверждения, а высоту шторки не делаем равной экрану, чтобы жест закрытия не жил в зоне кнопки."
+   ],
+   "src": "Источники: NN/g · Raluca Budiu, Sana Behnam, Kate Moran (изучение мобильных приложений: Google Maps) (https://www.nngroup.com/articles/accidental-overlay-dismissal/)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\" style=\"flex:1 1 auto\"><span class=\"ds-btn__label\">Применить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div>",
+   "example_ru": "В шторке действие — видимая кнопка «Применить» рядом с «Отменой»: свайп вниз не оставляет выбор без кнопки."
+  },
+  {
+   "title": "Действие не достать одной рукой",
+   "items": [
+    "Что происходит: главное действие экрана стоит в правом верхнем углу; при хвате одной рукой до него не дотянуться, человек перехватывает телефон или ищет то же действие ниже, а при прокрутке кнопка ещё и уезжает.",
+    "Что делают системы: NN/g разбирает это допущение по исследованиям хватов — «as users hold mobile devices in a variety of ways (one-handed, two-handed, and from a variety of different grip points), the bottom of the screen is often not the most easily reachable screen region (the middle of the screen represents the most easily tappable area for the wide variety of ways users hold mobile devices)».",
+    "Что делать нам: главное действие экрана — в нижней зоне (кнопка на всю ширину или липкий футер), в шапке остаются только навигация и «⋯»; зону достижимости проверяем на 375 px одной рукой и не считаем нижний край «по умолчанию удобным»."
+   ],
+   "src": "Источники: Page Laubheimer · Nielsen Norman Group · Bottom Sheets (https://www.nngroup.com/articles/bottom-sheet/)",
+   "example_html": "<div class=\"pat__phone\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Обновить список</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Создать заказ</span></button></div>",
+   "example_ru": "Главное действие — залитая кнопка на всю ширину в нижней зоне: до неё достаёт большой палец, в шапке остались только текстовые действия."
   }
  ]
 }

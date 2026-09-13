@@ -1,79 +1,42 @@
 [
  {
-  "behavior": "Индикатор прокрутки: появляется при начале прокрутки и показывает положение в контенте",
-  "case": "Apple HIG — Scroll views",
-  "quote": "The scroll view itself has no appearance, but it can display a translucent scroll indicator that typically appears after people begin scrolling the view's content",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json",
+  "situation": "Крупный заголовок сжимается при прокрутке — и шапка прыгает",
+  "happens": "На 375 px заголовок раздела занимает две строки; как только человек начинает прокручивать список, он схлопывается в мелкий заголовок в шапке, а при возврате наверх разворачивается обратно — и список под пальцем прыгает на высоту заголовка.",
+  "systems": "Apple HIG (Toolbars): «By default, a large title transitions to a standard title as people begin scrolling the content, and transitions back to large when people scroll to the top, reminding them of their current location.» Назначение: «Use a large title to help people stay oriented as they navigate and scroll.»",
+  "us": "У липкой шапки два состояния с фиксированной компактной высотой (56 px), переход — без изменения высоты всего списка, чтобы палец не терял строку; крупный заголовок возвращаем только на самом верху.",
+  "quote": "By default, a large title transitions to a standard title as people begin scrolling the content, and transitions back to large when people scroll to the top, reminding them of their current location.",
+  "who": "Apple HIG · Toolbars",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/toolbars",
   "verified": true
  },
  {
-  "behavior": "Индикатор не всегда виден — нужно явно намекать, что контент продолжается за краем экрана",
-  "case": "Apple HIG — Scroll views",
-  "quote": "Because scroll indicators aren't always visible, it can be helpful to make it obvious when content extends beyond the view",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json",
+  "situation": "Нижняя навигация и кнопки прячутся при прокрутке",
+  "happens": "Человек листает длинное меню — нижняя навигация исчезает, и вместе с ней пропадает вход в другие разделы; действие возвращается, только если проскроллить вверх, о чём человек не знает.",
+  "systems": "В Gmail это отдельная настройка: «When this setting is on, the bottom navigation bar is hidden when you scroll.» Apple про кнопку в тулбаре: «By default, a scrolling toolbar button remains hidden until people reveal it by scrolling up.»",
+  "us": "На прокрутке вниз скрываем только то, что дублируется жестом (нижнюю навигацию), и не прячем действия, за которыми человек иначе пойдёт наверх. Возвращаем панель и при прокрутке вверх, и при остановке.",
+  "quote": "When this setting is on, the bottom navigation bar is hidden when you scroll.",
+  "who": "Gmail Help (Android) · Change your Gmail settings; Apple HIG · Toolbars",
+  "url": "https://support.google.com/mail/answer/6562?co=GENIE.Platform%3DAndroid&hl=en",
   "verified": true
  },
  {
-  "behavior": "Своя прокрутка должна сохранять привычное «упругое» поведение и инерцию",
-  "case": "Apple HIG — Scroll views (Support default scrolling gestures)",
-  "quote": "If you build custom scrolling for a view, make sure your scroll indicators use the elastic behavior that people expect",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json",
+  "situation": "Контент шире экрана обрезан асимметрично — непонятно, есть ли продолжение",
+  "happens": "Горизонтальная лента карточек на 375 px обрезана вплотную к правому краю: не ясно, есть ли продолжение и в какую сторону листать, а если обрезана только одна сторона, лента выглядит законченной.",
+  "systems": "Apple HIG (Layout): «To help direct attention to the fully visible content, keep partially hidden offscreen content the same width on each side of the screen.» и «Make partially hidden content look symmetrical.»",
+  "us": "Оставляем «огрызок» следующей карточки одинаковой ширины справа и слева и делаем прокрутку очевидной обрезкой; одностороннюю обрезку в макете не оставляем.",
+  "quote": "To help direct attention to the fully visible content, keep partially hidden offscreen content the same width on each side of the screen.",
+  "who": "Apple HIG · Layout",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/layout",
   "verified": true
  },
  {
-  "behavior": "Не дублировать индикаторы на одной оси (скролл-индикатор + page control)",
-  "case": "Apple HIG — Scroll views",
-  "quote": "If you show a page control with a scroll view, don't show the scrolling indicator on the same axis to avoid confusing people with redundant controls.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json",
-  "verified": true
- },
- {
-  "behavior": "Липкие (pinned) заголовки требуют визуального отделения от прокручиваемого контента (scroll edge effect)",
-  "case": "Apple HIG — Scroll views (scroll edge effect)",
-  "quote": "This style provides a more opaque visual separation for top toolbars that contain a large number of controls, text that appears outside of Liquid Glass controls, and pinned table headers.",
-  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json",
-  "verified": true
- },
- {
-  "behavior": "Длинный список и производительность: следить за расходом памяти при виртуализации",
-  "case": "React Native — Optimizing FlatList Configuration",
-  "quote": "Memory consumption: How much information about your list is being stored in memory, which could lead to an app crash.",
-  "url": "https://reactnative.dev/docs/optimizing-flatlist-configuration",
-  "verified": true
- },
- {
-  "behavior": "Размер батча при прокрутке: больше элементов за раз = блокировка JS-потока и потеря отзывчивости на тап",
-  "case": "React Native — Optimizing FlatList Configuration (maxToRenderPerBatch)",
-  "quote": "More items per batch means longer periods of JavaScript execution potentially blocking other event processing, like presses, hurting responsiveness.",
-  "url": "https://reactnative.dev/docs/optimizing-flatlist-configuration",
-  "verified": true
- },
- {
-  "behavior": "Длинные списки — частый источник джанка (рывков) при прокрутке, проверять их в первую очередь",
-  "case": "Android Developers — Slow rendering / jank (Visual inspection)",
-  "quote": "Run through components that are common sources of jank, such as RecyclerView.",
-  "url": "https://developer.android.com/topic/performance/vitals/render",
-  "verified": true
- },
- {
-  "behavior": "Бесконечная прокрутка плоха для задач поиска конкретного элемента",
-  "case": "NN/g — Infinite Scrolling is Not for Every Website",
-  "quote": "locating a previously found item on an extremely long page is inefficient, especially if that item is placed many scrolling segments down.",
-  "url": "https://www.nngroup.com/articles/infinite-scrolling/",
-  "verified": true
- },
- {
-  "behavior": "Цена прокрутки: контент внизу длинной страницы просматривают реже",
-  "case": "NN/g — Scrolling and Attention",
-  "quote": "The interaction cost of scrolling reduces the likelihood that content will be viewed in lower parts of a longer page.",
-  "url": "https://www.nngroup.com/articles/scrolling-and-attention/",
-  "verified": true
- },
- {
-  "behavior": "При прокрутке шапка/заголовок группы остаётся липкой и с фоном, отделяющим её от строк",
-  "case": "Carbon Design System (IBM) — Contained list, Scrolling",
-  "quote": "If there are scrolling capabilities, the header will remain sticky and have a background layer to differentiate it from the list item rows scrolling beneath it.",
-  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/contained-list/usage.mdx",
+  "situation": "Свайп по детали ломается, если деталь прокручивается",
+  "happens": "В списке заказов человек свайпом листает карточки, открывает один заказ и пытается тем же свайпом уйти к следующему — но карточка длинная и прокручивается, поэтому жест листает текст внутри, а не переключает заказ.",
+  "systems": "Apple HIG (Lists and tables): «If your detail views scroll, people won't be able to use vertical page-based navigation to swipe among them.»",
+  "us": "Свайп-листание между деталями включаем только для коротких деталей; для длинных ставим в шапку явные «предыдущий/следующий» и не конкурируем со свайпом прокрутки внутри содержимого.",
+  "quote": "If your detail views scroll, people won't be able to use vertical page-based navigation to swipe among them.",
+  "who": "Apple HIG · Lists and tables",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
   "verified": true
  }
 ]

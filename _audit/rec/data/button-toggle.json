@@ -294,6 +294,39 @@
    "src": "Источники: Apple HIG · Segmented controls, пример Apple Calendar для iOS (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json)",
    "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Событие</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Напоминание</span></button></div></div>",
    "example_ru": "В шапке шторки сегменты «Событие / Напоминание» переключают подвид, как в Apple Calendar."
+  },
+  {
+   "title": "Иконка и текст в одном переключателе",
+   "items": [
+    "Что происходит: один сегмент оформили иконкой, остальные — подписями; на 375 px иконочный сегмент выглядит крупнее и читается как отдельная кнопка, а ряд перестаёт читаться как один выбор.",
+    "Что делают системы: Apple запрещает смешение — «Prefer using either text or images — not a mix of both — in a single segmented control.» и объясняет причину: «mixing the two in a single control can lead to a disconnected and confusing interface».",
+    "Что делать нам: в мобильном переключателе либо все сегменты текстовые, либо все иконочные с подписью под сегментом; смешанный ряд в ДС не выпускаем."
+   ],
+   "src": "Источники: Apple HIG · Segmented controls (https://developer.apple.com/design/human-interface-guidelines/segmented-controls)",
+   "example_html": "<div class=\"pat__phone\" style=\"flex-direction:column;align-items:stretch;gap:8px\"><div class=\"pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Все</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">В работе</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Закрытые</span></button></div></div><div class=\"pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__icon material-icons\" style=\"font-size:20px;line-height:1\">view_list</span><span class=\"ds-btn__label\">Список</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\" style=\"font-size:20px;line-height:1\">view_module</span><span class=\"ds-btn__label\">Плитка</span></button></div></div></div>",
+   "example_ru": "Два допустимых вида: все сегменты текстовые либо все с иконкой и подписью — «иконка рядом с текстовыми» в одном ряду не выпускаем."
+  },
+  {
+   "title": "Среди сегментов спряталось действие",
+   "items": [
+    "Что происходит: рядом с «Все / Мои / Смена» в тот же ряд поставили сегмент «Экспорт»; человек тапает по нему, что-то скачивается, сегмент не подсвечивается — и он не понимает, переключился он или нет.",
+    "Что делают системы: Apple требует единый тип элементов в одном переключателе — «Keep control types consistent within a single segmented control.» и прямо перечисляет оба запрета: «Don't assign actions to segments in a control that otherwise represents selection state, and don't show a selection state for segments in a control that otherwise performs actions.»",
+    "Что делать нам: действие внутри переключателя выборов запрещено — оно уходит в иконочную кнопку или «⋯» рядом; переключатель отвечает только за текущий выбор и всегда показывает, что выбрано."
+   ],
+   "src": "Источники: Apple HIG · Segmented controls (https://developer.apple.com/design/human-interface-guidelines/segmented-controls)",
+   "example_html": "<div class=\"pat__phone\" style=\"flex-direction:column;align-items:stretch;gap:8px\"><div class=\"pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Все</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Мои</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Смена</span></button></div></div><div class=\"pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">file_download</span><span class=\"ds-btn__label\">Экспорт в файл</span></button></div></div>",
+   "example_ru": "«Экспорт» вынесен из ряда сегментов отдельной кнопкой: переключатель отвечает только за выбор и всегда показывает, что выбрано."
+  },
+  {
+   "title": "На узком экране подписи заменили иконками",
+   "items": [
+    "Что происходит: чтобы пять сегментов влезли в 343 px, подписи убирают и оставляют только иконки; без подписей смысл сегментов («склад», «смена», «отчёты») угадывается, и чаще всего нажимают первый.",
+    "Что делают системы: IBM Carbon закладывает такое превращение как штатное адаптивное поведение — «Icon content switchers are compact and do not take up much screen space, therefore they often work in different screen sizes. Where necessary, icon content switchers can also be used as a responsive replacement for content switchers.» (в примере: «the text content switcher turns into the icon content switcher in a smaller screen size»).",
+    "Что делать нам: при нехватке ширины переключатель не превращаем в иконки — сокращаем число сегментов до 3–4 или уводим выбор в шторку; иконочный сегмент допускаем только для общеизвестных иконок и с подписью под сегментом."
+   ],
+   "src": "Источники: IBM Carbon · Content switcher (Responsive behavior) (https://carbondesignsystem.com/components/content-switcher/usage)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Открытые</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Мои</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Закрытые</span></button></div></div>",
+   "example_ru": "На узком экране остаются подписи, а сегментов стало три: иконочный ряд без слов на 343 px не выпускаем — выбор читается словами."
   }
  ]
 }
