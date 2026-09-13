@@ -1,0 +1,72 @@
+[
+ {
+  "behavior": "Число больше порога → показывается «99+»; порог настраивается (overflowCount, по умолчанию 99).",
+  "case": "Ant Design, Badge (Overflow Count)",
+  "quote": "The default value of overflowCount is 99",
+  "url": "https://ant.design/components/badge",
+  "verified": true
+ },
+ {
+  "behavior": "Ноль по умолчанию не показывается; показ нуля включается отдельным флагом.",
+  "case": "Ant Design, Badge (showZero, по умолчанию false)",
+  "quote": "Whether to show badge when count is zero",
+  "url": "https://ant.design/components/badge",
+  "verified": true
+ },
+ {
+  "behavior": "Без числа — отдельный вариант «красная точка», когда количество неизвестно или неважно.",
+  "case": "Ant Design, Badge (dot)",
+  "quote": "Whether to display a red dot instead of count",
+  "url": "https://ant.design/components/badge",
+  "verified": true
+ },
+ {
+  "behavior": "Значок с числом использовать только для непрочитанных уведомлений, не для произвольных метрик.",
+  "case": "Apple Human Interface Guidelines, Notifications (Badges)",
+  "quote": "Use a badge only to show people how many unread notifications they have.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/notifications.json",
+  "verified": true
+ },
+ {
+  "behavior": "Не ставить в бейдж числа, не связанные с уведомлениями (погода, даты, курсы акций, счёт игры).",
+  "case": "Apple Human Interface Guidelines, Notifications (Badges)",
+  "quote": "Don’t use a badge to convey numeric information that isn’t related to notifications, such as weather-related data, dates and times, stock prices, or game scores.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/notifications.json",
+  "verified": true
+ },
+ {
+  "behavior": "Обнуление счётчика убирает сам бейдж и связанные уведомления — состояние нельзя «оставить нулём».",
+  "case": "Apple Human Interface Guidelines, Notifications (Badges)",
+  "quote": "Note that reducing a badge’s count to zero removes all related notifications from Notification Center.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/notifications.json",
+  "verified": true
+ },
+ {
+  "behavior": "Место в строке: бейдж навешивается на элемент навигации (вкладку/иконку) и указывает, что в разделе есть новое.",
+  "case": "Apple Human Interface Guidelines, Tab bars",
+  "quote": "You can display a badge — a red oval containing white text and either a number or an exclamation point — on a tab to indicate that there’s new or updated information in the section that warrants a person’s attention.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/tab-bars.json",
+  "verified": true
+ },
+ {
+  "behavior": "Бейдж — только для критичной информации, иначе его эффект размывается; часть вкладок может уезжать в «More».",
+  "case": "Apple Human Interface Guidelines, Tab bars",
+  "quote": "Reserve badges for critical information so you don’t dilute their impact and meaning.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/tab-bars.json",
+  "verified": true
+ },
+ {
+  "behavior": "Доступность: для скринридера предусмотрены отдельные строки описания — количество, «превышает максимум» (99+) и «без числа».",
+  "case": "Material Components for Android, Badges (content descriptions)",
+  "quote": "`setContentDescriptionExceedsMaxBadgeNumberStringResource(@StringRes int)` `setContentDescriptionNumberless(CharSequence)`",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/BadgeDrawable.md",
+  "verified": true
+ },
+ {
+  "behavior": "Бейдж показывает уведомления, счётчики или статус на элементах навигации и иконках; внутри может быть число или метка.",
+  "case": "Material Design 3, Badges (overview)",
+  "quote": "Badges show notifications, counts, or status information on navigation items and icons. A badge can include labels or numbers.",
+  "url": "https://m3.material.io/components/badges/overview",
+  "verified": true
+ }
+]

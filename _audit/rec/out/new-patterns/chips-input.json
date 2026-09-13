@@ -1,0 +1,58 @@
+[
+ {
+  "behavior": "счётчик чипов вместо простыни",
+  "case": "Ant Design · Select",
+  "quote": "Max tag count to show.",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "заглушка «+N скрытых»",
+  "case": "Ant Design · Select",
+  "quote": "Placeholder for not showing tags",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "ввод по разделителям",
+  "case": "Ant Design · Select",
+  "quote": "Separator used to tokenize, only applies when `mode=\"tags\"` or `mode=\"multiple\"`",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "клавиатура: стрелки и пробел",
+  "case": "Angular Material · Chips",
+  "quote": "Users can move through the chips using the arrow keys and select/deselect them with the space.",
+  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md",
+  "verified": true
+ },
+ {
+  "behavior": "input-чип всегда снимаемый",
+  "case": "Material Web · Chip",
+  "quote": "All input chips are removable. If an input chip does not have an action",
+  "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md",
+  "verified": true
+ },
+ {
+  "behavior": "грид-контейнер для ввода",
+  "case": "Angular Material · Chips",
+  "quote": "To create chips connected to an input field, start by creating a `<mat-chip-grid>` as the container.",
+  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md",
+  "verified": true
+ },
+ {
+  "behavior": "долгое нажатие в списке получателей",
+  "case": "Gmail для Android — реальный продукт",
+  "quote": "To hide a suggested recipient, touch and hold their profile photo, and tap Hide suggestion",
+  "url": "https://support.google.com/mail/answer/2819488?hl=en&co=GENIE.Platform%3DAndroid",
+  "verified": true
+ },
+ {
+  "behavior": "чипы — grid-паттерн доступности",
+  "case": "Angular Material · Chips",
+  "quote": "`<mat-chip-grid>` and `<mat-chip-row>` : These elements implement a grid accessibility pattern. Use them as part of a free form input that allows users to enter text to add chips.",
+  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md",
+  "verified": true
+ }
+]

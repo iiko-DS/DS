@@ -1,0 +1,65 @@
+[
+ {
+  "behavior": "масштаб иконки от кегля текста",
+  "case": "Apple HIG · SF Symbols",
+  "quote": "The scales are defined relative to the cap height of the San Francisco system font.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sf-symbols.json",
+  "verified": true
+ },
+ {
+  "behavior": "вес иконки = весу текста",
+  "case": "Apple HIG · Icons",
+  "quote": "In general, match the weights of interface icons and adjacent text.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json",
+  "verified": true
+ },
+ {
+  "behavior": "один размер и вес у всех иконок",
+  "case": "Apple HIG · Icons",
+  "quote": "all interface icons in your app need to use a consistent size, level of detail, stroke thickness (or weight), and perspective",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json",
+  "verified": true
+ },
+ {
+  "behavior": "иконка внутри кнопки",
+  "case": "Angular Material · Icon",
+  "quote": "The `<mat-icon>` element should be a child of a `<button>` or `<a>` element.",
+  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md",
+  "verified": true
+ },
+ {
+  "behavior": "оптическое выравнивание",
+  "case": "Apple HIG · Icons",
+  "quote": "If necessary, add padding to a custom interface icon to achieve optical alignment.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json",
+  "verified": true
+ },
+ {
+  "behavior": "24 dp внутри 48 dp",
+  "case": "Google Android Accessibility / Material Design",
+  "quote": "An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target.",
+  "url": "https://support.google.com/accessibility/android/answer/7101858",
+  "verified": true
+ },
+ {
+  "behavior": "мелкие контролы не нажать",
+  "case": "Apple HIG · Accessibility",
+  "quote": "Controls that are too small are hard for many people to interact with and select.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/accessibility.json",
+  "verified": true
+ },
+ {
+  "behavior": "базовый размер иконки 24 px",
+  "case": "Material Web · Icon",
+  "quote": "`--md-icon-size` | `24px`",
+  "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md",
+  "verified": true
+ },
+ {
+  "behavior": "иконка — не подпись",
+  "case": "Angular Material · Icon",
+  "quote": "Icons alone are not interactive elements for screen-reader users",
+  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md",
+  "verified": true
+ }
+]

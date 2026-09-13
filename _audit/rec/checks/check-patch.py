@@ -149,8 +149,8 @@ def check(slug, known):
     if pats is None:
         problems.append("PAT-MISSING | %s | нет паттернов поведения" % slug)
     else:
-        if len(pats) < 3 or len(pats) > 6:
-            problems.append("PAT-COUNT | %s | паттернов %d (нужно 3–6)" % (slug, len(pats)))
+        if len(pats) < 3 or len(pats) > 24:
+            problems.append("PAT-COUNT | %s | паттернов %d (нужно 3–24: базовые 3–6 плюс дописанные)" % (slug, len(pats)))
         for i, g in enumerate(pats):
             if not g.get("title"):
                 problems.append("PAT-TITLE | %s | паттерн %d без заголовка" % (slug, i))

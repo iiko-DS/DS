@@ -1,0 +1,58 @@
+[
+ {
+  "behavior": "на мобиле радио в столбик",
+  "case": "GOV.UK Design System · Radios",
+  "quote": "Remember that on small screens such as mobile devices, the radios will still be ‘stacked’ on top of one another (vertically).",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/radios/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "больше пяти — не радио",
+  "case": "Apple HIG · Toggles",
+  "quote": "Avoid listing too many radio buttons in a set",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json",
+  "verified": true
+ },
+ {
+  "behavior": "горизонтальный ряд — ровный шаг",
+  "case": "Apple HIG · Toggles",
+  "quote": "Use consistent spacing when you display radio buttons horizontally. Measure the space needed to accommodate the longest button label, and use that measurement consistently.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json",
+  "verified": true
+ },
+ {
+  "behavior": "смешанного состояния нет",
+  "case": "Apple HIG · Toggles",
+  "quote": "If you need to show that a setting or item has a mixed state, consider using a checkbox instead.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json",
+  "verified": true
+ },
+ {
+  "behavior": "подпись не усекать",
+  "case": "IBM Carbon · Radio button",
+  "quote": "Do not truncate radio button label text with an ellipsis.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/radio-button/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "снять выбор нельзя — дать «никакой»",
+  "case": "GOV.UK Design System · Radios",
+  "quote": "Users cannot go back to having no option selected once they have selected one, without refreshing their browser window.",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/radios/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "меньше пяти опций — радио, больше — селект",
+  "case": "Ant Design · Select",
+  "quote": "Utilizing [Radio](/components/radio/) is recommended when there are fewer total options (less than 5).",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "не смешивать радио и свитчи",
+  "case": "Chase Bank для iOS — реальный кейс, разбор NN/g",
+  "quote": "The Chase Bank iOS app uses toggles and radio buttons inconsistently.",
+  "url": "https://www.nngroup.com/articles/toggle-switch-guidelines/",
+  "verified": true
+ }
+]

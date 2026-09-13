@@ -1,0 +1,86 @@
+[
+ {
+  "behavior": "Только одно сообщение на экране одновременно.",
+  "case": "Material Design 1, Snackbars & toasts",
+  "quote": "Show only one snackbar on screen at a time.",
+  "url": "https://m1.material.io/components/snackbars-toasts.html",
+  "verified": true
+ },
+ {
+  "behavior": "Второе сообщение вытесняет первое: предыдущий snackbar сворачивается вниз до того, как новый выезжает вверх (без наложения).",
+  "case": "Material Design 1, Snackbars & toasts (Consecutive snackbars)",
+  "quote": "There is only ever one snackbar displayed. When a second snackbar is triggered while the first is displayed, the first should start the contraction motion downwards before the second one animates upwards.",
+  "url": "https://m1.material.io/components/snackbars-toasts.html",
+  "verified": true
+ },
+ {
+  "behavior": "Текст — одна строка, прямо про выполненную операцию; на мобиле двухстрочный snackbar выше (80dp против 48dp).",
+  "case": "Material Design 1, Snackbars & toasts (Mobile specs)",
+  "quote": "Snackbars should contain a single line of text directly related to the operation performed.",
+  "url": "https://m1.material.io/components/snackbars-toasts.html",
+  "verified": true
+ },
+ {
+  "behavior": "Не перекрывать нижние действия: если snackbar накрывает FAB, кнопку нужно сместить вверх на его высоту.",
+  "case": "Material Design 1, Snackbars & toasts",
+  "quote": "Move your floating action button vertically to accommodate the snackbar height.",
+  "url": "https://m1.material.io/components/snackbars-toasts.html",
+  "verified": true
+ },
+ {
+  "behavior": "Кнопка «Отменить»: подтверждение удаления с undo остаётся на экране, пока пользователь не сделает другое действие (например, не начнёт скроллить).",
+  "case": "Material Design 1, Confirmation & acknowledgement (Android)",
+  "quote": "After the user deletes a conversation from the list view, an acknowledgment appears with an undo option. It remains until the user takes an unrelated action, such as scrolling the list.",
+  "url": "https://m1.material.io/patterns/confirmation-acknowledgement.html",
+  "verified": true
+ },
+ {
+  "behavior": "Сколько живёт: таймаут настраивается в диапазоне 4–10 секунд, значение по умолчанию — 5 секунд.",
+  "case": "Material Components for the Web (MDC), Snackbar (timeoutMs)",
+  "quote": "Value must be between `4000` and `10000` (or `-1` to disable the timeout completely) or an error will be thrown. Defaults to `5000` (5 seconds).",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-snackbar/README.md",
+  "verified": true
+ },
+ {
+  "behavior": "Одно действие максимум; если действий два и больше — это уже диалог, а не snackbar.",
+  "case": "Material Design 1, Snackbars & toasts",
+  "quote": "For two or more actions, use a dialog, not a snackbar, even when one of the actions is a dismiss action.",
+  "url": "https://m1.material.io/components/snackbars-toasts.html",
+  "verified": true
+ },
+ {
+  "behavior": "В Android-реализации новое сообщение сначала закрывает предыдущее — очередь сообщений не выстраивается.",
+  "case": "Material Components for Android, Snackbar",
+  "quote": "**Note**: Only one snackbar will be shown at a time. Showing a new snackbar will dismiss any previous ones first.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Snackbar.md",
+  "verified": true
+ },
+ {
+  "behavior": "Длинный текст действия на мобиле переносится под текст сообщения (stacked-вариант).",
+  "case": "Material Components for the Web (MDC), Snackbar (stacked)",
+  "quote": "Action buttons with long text should be positioned _below_ the label instead of alongside it.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-snackbar/README.md",
+  "verified": true
+ },
+ {
+  "behavior": "Сообщение внизу экрана легко не заметить (реальный кейс: пользователь 5 минут ждал загрузки, не увидев исчезнувшую через 5 секунд ошибку).",
+  "case": "Nielsen Norman Group, Indicators, Validations, and Notifications",
+  "quote": "one of our mobile users spent 5 minutes waiting for some content to load only because she hadn’t notice the little error message presented at the bottom of the screen that quickly faded away after 5 seconds.",
+  "url": "https://www.nngroup.com/articles/indicators-validations-notifications/",
+  "verified": true
+ },
+ {
+  "behavior": "Toast перекрывает контент и авто-скрывается через 5 секунд, поэтому должен легко закрываться вручную.",
+  "case": "Carbon Design System, Notification (Toast)",
+  "quote": "Toast notifications persist by default, but they can timeout and be coded to dismiss automatically after five seconds on the screen.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "В веб-реализации сообщение по умолчанию живёт 3 секунды; одновременных сообщений может быть несколько с ограничением maxCount.",
+  "case": "Ant Design, Message (duration = 3, maxCount)",
+  "quote": "Time(seconds) before auto-dismiss, don't dismiss if set to 0",
+  "url": "https://ant.design/components/message",
+  "verified": true
+ }
+]

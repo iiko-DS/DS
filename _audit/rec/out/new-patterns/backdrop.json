@@ -1,0 +1,44 @@
+[
+ {
+  "behavior": "Затемнение — сигнал, что фон заблокирован: полупрозрачный тёмный scrim поверх недоступного контента.",
+  "case": "Nielsen Norman Group, Bottom Sheets: Definition and UX Guidelines",
+  "quote": "A translucent dark scrim is usually placed over the locked-out background content as a signal that it is currently unavailable.",
+  "url": "https://www.nngroup.com/articles/bottom-sheet/",
+  "verified": true
+ },
+ {
+  "behavior": "Модальный bottom sheet: при появлении остальной экран затемняется, чтобы сфокусировать внимание на листе.",
+  "case": "Material Design 1 (Modal bottom sheets)",
+  "quote": "When a modal bottom sheet slides into the screen, the rest of the screen dims, giving focus to the bottom sheet.",
+  "url": "https://m1.material.io/components/bottom-sheets.html",
+  "verified": true
+ },
+ {
+  "behavior": "Поверх затемнённого фона взаимодействовать нельзя, пока лист/диалог не будет закрыт.",
+  "case": "Material Design 1 (Modal bottom sheets)",
+  "quote": "They appear above other UI elements and must be dismissed in order to interact with the underlying content.",
+  "url": "https://m1.material.io/components/bottom-sheets.html",
+  "verified": true
+ },
+ {
+  "behavior": "Затемнённый фон — платформенная норма для шита на телефоне: контент шита центрируется поверх dimmed background.",
+  "case": "Apple Human Interface Guidelines, Sheets",
+  "quote": "centering its content on top of a dimmed background view",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sheets.json",
+  "verified": true
+ },
+ {
+  "behavior": "В анатомии модального окна затемнение — отдельный элемент «Overlay»: экранный слой, который перекрывает контент страницы.",
+  "case": "Carbon Design System, Modal (anatomy)",
+  "quote": "Screen overlay that obscures the on-page content.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/modal/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Клик по scrim — штатный способ отмены без действия; это же делает затемнение источником случайных закрытий.",
+  "case": "Material Components for the Web (MDC), Dialog (scrimClickAction)",
+  "quote": "clicking the scrim or pressing the Escape key, allowing all interactions involving dismissal without taking an action",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-dialog/README.md",
+  "verified": true
+ }
+]

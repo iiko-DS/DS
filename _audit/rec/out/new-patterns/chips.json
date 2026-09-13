@@ -1,0 +1,65 @@
+[
+ {
+  "behavior": "8 px между чипами",
+  "case": "IBM Carbon · Tag",
+  "quote": "When tags are placed in groups, it is recommended to have 8px of space between them on the top, bottom, left, and right.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "группа чипов переносится",
+  "case": "IBM Carbon · Tag",
+  "quote": "Tags should wrap to form another line if there are too many to arrange horizontally on one line.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "цель 48 dp с зазором 8 dp",
+  "case": "Google Android Accessibility / Material Design",
+  "quote": "Consider making touch targets at least 48x48dp, separated by 8dp of space or more, to ensure balanced information density and usability.",
+  "url": "https://support.google.com/accessibility/android/answer/7101858",
+  "verified": true
+ },
+ {
+  "behavior": "длинный заголовок не переносить",
+  "case": "IBM Carbon · Tag",
+  "quote": "Avoid having long tag titles wrap to multiple lines within the tag container.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "переполнение — в поповер или шторку",
+  "case": "IBM Carbon · Tag",
+  "quote": "Use to view an overflow of multiple tags, like in a popover, modal, or detail view",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "одна функция на чип",
+  "case": "IBM Carbon · Tag",
+  "quote": "Avoid using tags with multiple functions to prevent confusion and reduce accidental clicks",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "снимаемый чип",
+  "case": "Material Web · Chip",
+  "quote": "Filter chips can optionally be removable from the chip set.",
+  "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md",
+  "verified": true
+ },
+ {
+  "behavior": "минимальная цель чипа 48 dp",
+  "case": "Material Components for Android · Chip",
+  "quote": "Min touch target",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Chip.md",
+  "verified": true
+ },
+ {
+  "behavior": "плотные мелкие чипы не нажать",
+  "case": "Nielsen Norman Group · Touch Targets on Touchscreens",
+  "quote": "too small or densely packed to select without struggling",
+  "url": "https://www.nngroup.com/articles/touch-target-size/",
+  "verified": true
+ }
+]

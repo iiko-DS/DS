@@ -1,0 +1,86 @@
+[
+ {
+  "behavior": "переполнение → вкладка «More»",
+  "case": "Apple HIG · Tab bars (iOS, iPadOS)",
+  "quote": "If horizontal space limits the number of visible tabs, the trailing tab becomes a More tab in iOS and iPadOS, revealing the remaining items in a separate list.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/tab-bars.json",
+  "verified": true
+ },
+ {
+  "behavior": "горизонтальная прокрутка, не перенос",
+  "case": "IBM Carbon · Tabs",
+  "quote": "In responsive situations, horizontal tabs should not wrap to multiple lines or stack on top of each other; instead, they should scroll horizontally.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tabs/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "не переносить на две строки",
+  "case": "GOV.UK Design System · Tabs",
+  "quote": "If you use too many tabs or they have long labels then they may wrap over more than one line. This makes it harder for users to see the connection between the selected tab and its content.",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/tabs/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "карусель снижает находимость",
+  "case": "Nielsen Norman Group · Tabs, Used Right",
+  "quote": "When the number of tabs overflows the tab list, the tab bar often becomes a carousel. As a result, the hidden tabs become less discoverable, and the interaction cost needed to access them increases, as users need to manipulate secondary controls to reveal those tabs. The fewer tabs, the better.",
+  "url": "https://www.nngroup.com/articles/tabs-used-right/",
+  "verified": true
+ },
+ {
+  "behavior": "кнопка прокрутки вкладок",
+  "case": "Patagonia — реальный кейс на узком экране, разбор NN/g",
+  "quote": "Patagonia: A button appeared when the viewport was smaller than the tab list. Clicking the button horizontally scrolled the tab list to reveal additional tabs.",
+  "url": "https://www.nngroup.com/articles/tabs-used-right/",
+  "verified": true
+ },
+ {
+  "behavior": "короткие подписи вкладок",
+  "case": "Nielsen Norman Group · Tabs, Used Right",
+  "quote": "Short tab labels work best, as they conserve horizontal space in the tab list and avoid horizontal scrolling.",
+  "url": "https://www.nngroup.com/articles/tabs-used-right/",
+  "verified": true
+ },
+ {
+  "behavior": "на мобиле аккордеон часто лучше",
+  "case": "Nielsen Norman Group · Tabs, Used Right",
+  "quote": "Accordions are particularly useful on mobile devices, where they work better than tabs due to the limited screen space",
+  "url": "https://www.nngroup.com/articles/tabs-used-right/",
+  "verified": true
+ },
+ {
+  "behavior": "первая вкладка — самая нужная",
+  "case": "SpotHero (мобильное приложение) — реальный кейс, разбор NN/g",
+  "quote": "This in-page tab organized parking-spot reservations by status.",
+  "url": "https://www.nngroup.com/articles/tabs-used-right/",
+  "verified": true
+ },
+ {
+  "behavior": "свайп между вкладками",
+  "case": "Material Components for Android · Tabs",
+  "quote": "Synchronize the selected tab and tab indicator position with page swipes",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Tabs.md",
+  "verified": true
+ },
+ {
+  "behavior": "переполнение → стрелки пагинации",
+  "case": "Angular Material · Tabs",
+  "quote": "When the list of tab labels exceeds the width of the header, pagination controls appear to let the user scroll left and right across the labels.",
+  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/tabs/tabs.md",
+  "verified": true
+ },
+ {
+  "behavior": "больше пяти опций не влезает",
+  "case": "Nielsen Norman Group · Basic Patterns for Mobile Navigation",
+  "quote": "If your site has more than 5 options, it’s hard to fit them in a tab or navigation bar and still keep an optimum touch-target size",
+  "url": "https://www.nngroup.com/articles/mobile-navigation-patterns/",
+  "verified": true
+ },
+ {
+  "behavior": "точки-индикаторы не нажать",
+  "case": "iOS-карусель точек — реальный кейс, разбор NN/g",
+  "quote": "you can (sometimes) see that the dots are present, but they are far too small to tap individually to navigate.",
+  "url": "https://www.nngroup.com/articles/touch-target-size/",
+  "verified": true
+ }
+]

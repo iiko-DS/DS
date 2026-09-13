@@ -1,0 +1,72 @@
+[
+ {
+  "behavior": "Минимальные и дефолтные размеры текста на мобиле: iOS — 17 pt по умолчанию, минимум 11 pt",
+  "case": "Apple Human Interface Guidelines — Typography",
+  "quote": "Follow the recommended default and minimum text sizes for each platform — for both custom and system fonts — to ensure your text is legible on all devices.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+  "verified": true
+ },
+ {
+  "behavior": "Избегать тонких начертаний — они плохо читаются в мелком тексте",
+  "case": "Apple Human Interface Guidelines — Typography",
+  "quote": "In general, avoid light font weights.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+  "verified": true
+ },
+ {
+  "behavior": "Обрезку текста при увеличенном шрифте сводить к минимуму",
+  "case": "Apple Human Interface Guidelines — Typography",
+  "quote": "Keep text truncation to a minimum as font size increases.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+  "verified": true
+ },
+ {
+  "behavior": "При крупном шрифте на узком экране переходить к стопке: текст над вторичными элементами",
+  "case": "Apple Human Interface Guidelines — Typography",
+  "quote": "When font size increases in a horizontally constrained context, inline items (like glyphs and timestamps) and container boundaries can crowd text and cause truncation or overlapping. To improve readability, consider using a stacked layout where text appears above secondary items.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+  "verified": true
+ },
+ {
+  "behavior": "Три и более строк текста при ограниченной высоте — не уменьшать межстрочный интервал",
+  "case": "Apple Human Interface Guidelines — Typography",
+  "quote": "If you need to display three or more lines of text, avoid tight leading even in areas where height is limited.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+  "verified": true
+ },
+ {
+  "behavior": "Короткий и простой текст на мобиле читается так же хорошо; краткость и приоритизация всё равно критичны",
+  "case": "NN/g — Reading Content on Mobile Devices (Kate Moran, 2016)",
+  "quote": "For the majority of mobile content scenarios, the need for brevity and prioritization is still critical.",
+  "url": "https://www.nngroup.com/articles/mobile-content/",
+  "verified": true
+ },
+ {
+  "behavior": "Чем сложнее контент, тем тяжелее читать с телефона — читатель замедляется",
+  "case": "NN/g — Reading Content on Mobile Devices",
+  "quote": "reading on mobile becomes more difficult as the complexity of the content increases",
+  "url": "https://www.nngroup.com/articles/mobile-content/",
+  "verified": true
+ },
+ {
+  "behavior": "Число строк в строках/списках: короткий текст уменьшает обрезку и переносы",
+  "case": "Apple Human Interface Guidelines — Lists and tables",
+  "quote": "Short, succinct text can help minimize truncation and wrapping, making text easier to read and scan.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+  "verified": true
+ },
+ {
+  "behavior": "При крупном шрифте уменьшать число колонок текста, чтобы избежать обрезки",
+  "case": "Apple Human Interface Guidelines — Typography",
+  "quote": "Multicolumn text can also be less readable at large sizes due to horizontal space constraints. Reduce the number of columns when the font size increases to avoid truncation and enhance readability.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+  "verified": true
+ },
+ {
+  "behavior": "Обрезку в скроллируемых областях не допускать, если нет отдельного экрана для чтения целиком",
+  "case": "Apple Human Interface Guidelines — Typography",
+  "quote": "Avoid truncating text in scrollable regions unless people can open a separate view to read the rest of the content.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+  "verified": true
+ }
+]

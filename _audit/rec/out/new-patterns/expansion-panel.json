@@ -1,0 +1,72 @@
+[
+ {
+  "behavior": "Сколько раскрывать сразу: разрешать открывать несколько секций одновременно, состояние не сбрасывать до действия пользователя.",
+  "case": "Nielsen Norman Group, Accordions Are Not Always the Answer for Complex Content",
+  "quote": "If you do use accordions, make sure to give people the capability to open multiple sections at a time so that different chunks of content are readily available. Items that are opened or closed should remain in that state until the user changes it.",
+  "url": "https://www.nngroup.com/articles/accordions-complex-content/",
+  "verified": true
+ },
+ {
+  "behavior": "На мобиле аккордеон уместен именно из-за маленького экрана: длинную страницу не дочитывают до конца.",
+  "case": "Nielsen Norman Group, Accordions Are Not Always the Answer for Complex Content",
+  "quote": "when the information is restricted to very small spaces, such as on mobile devices",
+  "url": "https://www.nngroup.com/articles/accordions-complex-content/",
+  "verified": true
+ },
+ {
+  "behavior": "Нельзя вкладывать аккордеон в аккордеон — контент становится трудно найти.",
+  "case": "GOV.UK Design System, Accordion",
+  "quote": "Do not put accordions within accordions, as it will make content difficult to find.",
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "verified": true
+ },
+ {
+  "behavior": "Не прятать в аккордеон контент, который нужен всем пользователям.",
+  "case": "GOV.UK Design System, Accordion",
+  "quote": "Do not use an accordion for content that all users need to see.",
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "verified": true
+ },
+ {
+  "behavior": "Запоминание состояния: при возврате на страницу ранее открытые секции должны остаться открытыми (session storage).",
+  "case": "GOV.UK Design System, Accordion",
+  "quote": "Users might need some sections to be open from the start. If they leave and then return to the page, they might also need sections they opened to stay open.",
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "verified": true
+ },
+ {
+  "behavior": "Аккордеон применяют, когда места мало и длинный контент нельзя показать сразу — типично мобильный интерфейс.",
+  "case": "Carbon Design System, Accordion",
+  "quote": "When space is at a premium and long content cannot be displayed all at once, like on a mobile interface or in a side panel.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/accordion/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Не использовать аккордеон, если пользователь, скорее всего, прочитает весь контент раздела.",
+  "case": "Carbon Design System, Accordion",
+  "quote": "If a user is likely to read all of the content, then don't use an accordion",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/accordion/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "На одном экране — не больше одного раскрывающегося контроля (disclosure button).",
+  "case": "Apple Human Interface Guidelines, Disclosure controls",
+  "quote": "Use no more than one disclosure button in a single view.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/disclosure-controls.json",
+  "verified": true
+ },
+ {
+  "behavior": "Состояние показывается иконкой: стрелка вниз у свёрнутого блока, вверх — у раскрытого; тап переключает состояние.",
+  "case": "Material Design 1, Expansion panels",
+  "quote": "An arrow that points down when collapsed and points up when expanded.",
+  "url": "https://m1.material.io/components/expansion-panels.html",
+  "verified": true
+ },
+ {
+  "behavior": "В режиме «аккордеон» одновременно раскрыт только один пункт (по умолчанию — первый).",
+  "case": "Ant Design, Collapse (accordion)",
+  "quote": "which allows only one panel to be expanded at a time.",
+  "url": "https://ant.design/components/collapse",
+  "verified": true
+ }
+]

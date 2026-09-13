@@ -1,0 +1,58 @@
+[
+ {
+  "behavior": "Статус — только индикация: не делать его ссылкой/кнопкой и не использовать глаголы в подписи.",
+  "case": "GOV.UK Design System, Tag",
+  "quote": "Tags are only used to indicate a status. Do not make a tag interactive by making it into a link or button.",
+  "url": "https://design-system.service.gov.uk/components/tag/",
+  "verified": true
+ },
+ {
+  "behavior": "Доступность: не передавать информацию только цветом — нужен текстовый дескриптор (WCAG 2.2 SC 1.4.1).",
+  "case": "GOV.UK Design System, Tag (Using colour with tags)",
+  "quote": "Do not use colour alone to convey information, because it’s not accessible.",
+  "url": "https://design-system.service.gov.uk/components/tag/",
+  "verified": true
+ },
+ {
+  "behavior": "Статус на мобиле = цвет + короткий текстовый дескриптор, чтобы читалось с одного взгляда.",
+  "case": "GOV.UK Design System, Task list (Statuses)",
+  "quote": "Statuses use colour and a short descriptor to give users a quick overview of how much of the task list they have completed, and how much is left to do.",
+  "url": "https://design-system.service.gov.uk/components/task-list/",
+  "verified": true
+ },
+ {
+  "behavior": "Не использовать капс в статусах — на маленьком экране читается хуже.",
+  "case": "GOV.UK Design System, Task list (Formatting of statuses)",
+  "quote": "The use of uppercase in task statuses makes them harder to read.",
+  "url": "https://design-system.service.gov.uk/components/task-list/",
+  "verified": true
+ },
+ {
+  "behavior": "Статус точкой (dot) должен сопровождаться текстом — цвет точки не единственный носитель смысла.",
+  "case": "Ant Design, Badge (status + text)",
+  "quote": "If status is set, text sets the display text of the status dot",
+  "url": "https://ant.design/components/badge",
+  "verified": true
+ },
+ {
+  "behavior": "Пассивный статус легко пропустить: если информация критична, индикатора-бейджа недостаточно.",
+  "case": "Nielsen Norman Group, Indicators, Validations, and Notifications",
+  "quote": "Passive notifications can easily be missed, since they require no user action.",
+  "url": "https://www.nngroup.com/articles/indicators-validations-notifications/",
+  "verified": true
+ },
+ {
+  "behavior": "Статус-плашку могут принять за кнопку: светлый фон с тёмным текстом вместо тёмной плашки (результат исследований GOV.UK).",
+  "case": "GOV.UK Design System, Tag (Research on this component)",
+  "quote": "Research from multiple teams found that some users perceived these as buttons and tried to click on them.",
+  "url": "https://design-system.service.gov.uk/components/tag/",
+  "verified": true
+ },
+ {
+  "behavior": "Акцент на незавершённом: статус «выполнено» — без фона, чтобы внимание уходило к задачам, требующим действия.",
+  "case": "GOV.UK Design System, Task list (Formatting of statuses)",
+  "quote": "The ‘Completed’ task now uses black text with no background colour, which will draw more attention to tasks that require action.",
+  "url": "https://design-system.service.gov.uk/components/task-list/",
+  "verified": true
+ }
+]

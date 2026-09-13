@@ -1,0 +1,65 @@
+[
+ {
+  "behavior": "Textarea — только для многострочного ввода; для одной строки — текстовое поле",
+  "case": "GOV.UK Design System — Textarea",
+  "quote": "Use the textarea component when you need to let users enter an amount of text that’s longer than a single line.",
+  "url": "https://design-system.service.gov.uk/components/textarea/",
+  "verified": true
+ },
+ {
+  "behavior": "Textarea обязательно должна иметь подпись; placeholder не заменяет её",
+  "case": "GOV.UK Design System — Textarea",
+  "quote": "You must label textareas. ... Placeholder text is not a suitable substitute for a label, as it disappears when users click inside the textarea.",
+  "url": "https://design-system.service.gov.uk/components/textarea/",
+  "verified": true
+ },
+ {
+  "behavior": "Открытые вопросы в textarea на мобиле тяжелы — лучше разбить на простые с выбором вариантов",
+  "case": "GOV.UK Design System — Textarea",
+  "quote": "Users can find open-ended questions difficult to answer. It might be better to break up one complex question into a series of simple ones, for example where users can select from options using a Radios component.",
+  "url": "https://design-system.service.gov.uk/components/textarea/",
+  "verified": true
+ },
+ {
+  "behavior": "Высота textarea — переменная, с ресайз-хендлом; минимум 40px, максимума по умолчанию нет",
+  "case": "Carbon Design System — Text input / Text area",
+  "quote": "By default, text area has a minimum height of 40px/2.5rem but no maximum height.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Показывать счётчик символов (введено / допустимо) для длинного текста",
+  "case": "Carbon Design System — Text input / Text area",
+  "quote": "Character counter: Indicate the number of characters being entered and the total number of characters allowed.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Подпись textarea выравнивается над полем",
+  "case": "GOV.UK Design System — Textarea",
+  "quote": "Labels must be aligned above the textarea they refer to.",
+  "url": "https://design-system.service.gov.uk/components/textarea/",
+  "verified": true
+ },
+ {
+  "behavior": "Для больших объёмов текста — отдельный компонент text view, а не text field",
+  "case": "Apple Human Interface Guidelines — Text fields",
+  "quote": "To let people input larger amounts of text, use a text view instead.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/text-fields",
+  "verified": true
+ },
+ {
+  "behavior": "Размер поля подбирается под ожидаемый объём текста",
+  "case": "Apple Human Interface Guidelines — Text fields",
+  "quote": "To the extent possible, match the size of a text field to the quantity of anticipated text. The size of a text field helps people visually gauge the amount of information to provide.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/text-fields",
+  "verified": true
+ },
+ {
+  "behavior": "Автокоррекцию отключать и для многострочного ввода произвольных данных (имена, адреса)",
+  "case": "Baymard Institute — 'Touch Keyboard' Implementations",
+  "quote": "Auto-correct often works very poorly for things like abbreviations, street names, e-mail addresses, person names, and similar words that are not in the dictionary.",
+  "url": "https://baymard.com/blog/mobile-touch-keyboards",
+  "verified": true
+ }
+]

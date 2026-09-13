@@ -1,0 +1,44 @@
+[
+ {
+  "behavior": "Глубина и узкий экран: для сложной вложенности брать уменьшенный размер узла, чтобы больше влезло",
+  "case": "Carbon Design System (IBM) — Tree view, Sizing (extra small node)",
+  "quote": "If you have a tree structure with complex nesting levels, use the extra small node size to keep as much information in view as possible.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Раскрытие/сворачивание: тап по всей области иконки-каре (отдельная тач-зона от выбора узла)",
+  "case": "Carbon Design System (IBM) — Tree view, Expanding and collapsing",
+  "quote": "To expand or collapse a branch node the user can click anywhere within the caret icon bounding box.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Не строить дерево на один уровень — для этого аккордеон или таблица",
+  "case": "Carbon Design System (IBM) — Tree view (When not to use)",
+  "quote": "When you only need one level of nested information.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Дерево создаёт иерархию для навигации по большим объёмам информации",
+  "case": "Carbon Design System (IBM) — Tree view (Overview)",
+  "quote": "A tree view consists of nested heading levels that create a content hierarchy for users and assist with navigating large amounts of information.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "На мобиле раскрытие-сворачивание в месте (accordion-паттерн) решает проблему нехватки места",
+  "case": "NN/g — Accordions on Mobile",
+  "quote": "on mobile, accordions are one of the most useful design elements, as they often solve the problem of displaying too much content in too little screen space",
+  "url": "https://www.nngroup.com/articles/mobile-accordions/",
+  "verified": true
+ },
+ {
+  "behavior": "Выбранный узел/строку подсвечивать постоянно, чтобы был виден путь в иерархии",
+  "case": "Apple HIG — Lists and tables (Provide appropriate feedback when people select a list item)",
+  "quote": "a table that helps people navigate through a hierarchy persistently highlights the selected row to clarify the path people are taking",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json",
+  "verified": true
+ }
+]

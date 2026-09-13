@@ -1,0 +1,65 @@
+[
+ {
+  "behavior": "На мобиле баннер живёт вверху экрана под app bar, при скролле закрепляется; показывать только один баннер за раз.",
+  "case": "Material Components for the Web (MDC), Banner",
+  "quote": "Banners should be displayed at the top of the screen, below a top app bar. They’re persistent and nonmodal, allowing the user to either ignore them or interact with them at any time. Only one banner should be shown at a time.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/README.md",
+  "verified": true
+ },
+ {
+  "behavior": "Баннер не исчезает сам — закрытие требует действия пользователя (поэтому он не подходит для мелочей).",
+  "case": "Material Components for the Web (MDC), Banner",
+  "quote": "It requires a user action to be dismissed.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/README.md",
+  "verified": true
+ },
+ {
+  "behavior": "В потоке: баннер ставится сразу перед h1 (не поверх контента), ширина — как у остального контента страницы.",
+  "case": "GOV.UK Design System, Notification banner",
+  "quote": "Position a notification banner immediately before the page h1",
+  "url": "https://design-system.service.gov.uk/components/notification-banner/",
+  "verified": true
+ },
+ {
+  "behavior": "Одновременно только один баннер на странице; несколько сообщений объединяются в один баннер.",
+  "case": "GOV.UK Design System, Notification banner",
+  "quote": "Avoid showing more than one notification banner on the same page. Instead, combine the messages in a single notification banner.",
+  "url": "https://design-system.service.gov.uk/components/notification-banner/",
+  "verified": true
+ },
+ {
+  "behavior": "Если информация относится к тому, что пользователь делает на странице, — это не баннер, а контент страницы.",
+  "case": "GOV.UK Design System, Notification banner",
+  "quote": "If the information is directly relevant to the thing the user is doing on that page, put the information in the main page content instead.",
+  "url": "https://design-system.service.gov.uk/components/notification-banner/",
+  "verified": true
+ },
+ {
+  "behavior": "Баннеры на мобиле игнорируют (banner blindness): то, что резко выделяется от окружения, пользователь принимает за рекламу.",
+  "case": "Nielsen Norman Group, Banner Blindness Revisited",
+  "quote": "Anything that stands out from immediate surrounding context is likely to be considered an ad",
+  "url": "https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/",
+  "verified": true
+ },
+ {
+  "behavior": "На узком экране крупный баннер невозможно проигнорировать взглядом — он перекрывает контент при скролле.",
+  "case": "Nielsen Norman Group, Banner Blindness Revisited (mobile)",
+  "quote": "A mobile inline ad is so large in proportion to the screen size that users cannot avert their eyes from it as they swipe down.",
+  "url": "https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/",
+  "verified": true
+ },
+ {
+  "behavior": "На мобильных экранах кнопка действия баннера переносится под его текст.",
+  "case": "Carbon Design System, Notification (Inline, actionable)",
+  "quote": "On mobile screens the action button wraps under the body content.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Inline-баннеры не закрываются автоматически: держатся, пока пользователь их не закроет («x» в правом верхнем углу) или не выполнит действие.",
+  "case": "Carbon Design System, Notification (Inline)",
+  "quote": "Inline notifications do not dismiss automatically. They persist on the page until the user dismisses them or takes action that resolves the notification.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx",
+  "verified": true
+ }
+]

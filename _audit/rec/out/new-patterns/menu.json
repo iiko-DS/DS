@@ -1,0 +1,79 @@
+[
+ {
+  "behavior": "Много пунктов: ограничение количества, чтобы не приходилось прокручивать меню",
+  "case": "Carbon Design System (IBM) — Menu, раздел Number of items within a menu",
+  "quote": "Expansive lists of options in menus can overwhelm users. With context menu and overflow menu, keep the list length manageable by including no more than 12 items to help users scan through items easily without having to scroll.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Для меню-кнопок список ещё короче — меньше 5 пунктов",
+  "case": "Carbon Design System (IBM) — Menu",
+  "quote": "keep the menu list smaller with under 5 items",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Длинное меню: не заставлять читать длинный список — разбивать на несколько меню",
+  "case": "Apple HIG — Menus (Best practices)",
+  "quote": "People need more time and attention to read a long menu, which means they may miss the command they want. If a menu is too long, consider dividing it into separate menus.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/menus.json",
+  "verified": true
+ },
+ {
+  "behavior": "Вложенность: глубину и длину подменю ограничивать, подменю предпочитать отступам",
+  "case": "Apple HIG — Menus (Submenus)",
+  "quote": "Limit the depth and length of submenus. ... Prefer using a submenu to indenting menu items. Using indentation is inconsistent with the system and doesn't clearly express the relationships between the menu items.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/menus.json",
+  "verified": true
+ },
+ {
+  "behavior": "Меню выше экрана — прокручивается внутри себя, а не уходит за границы",
+  "case": "MUI (Material UI) — Menu, раздел Max height menu",
+  "quote": "If the height of a menu prevents all menu items from being displayed, the menu can scroll internally.",
+  "url": "https://mui.com/material-ui/react-menu/",
+  "verified": true
+ },
+ {
+  "behavior": "Меню у края экрана: позиционирование корректируется, чтобы пункты не обрезались",
+  "case": "MUI (Material UI) — Menu, Basic menu",
+  "quote": "When close to a screen edge, a basic menu vertically realigns to make sure that all menu items are completely visible.",
+  "url": "https://mui.com/material-ui/react-menu/",
+  "verified": true
+ },
+ {
+  "behavior": "Длинные пункты и длинный список: плотный (dense) вариант меню уменьшает padding и кегль",
+  "case": "MUI (Material UI) — Menu, Dense menu",
+  "quote": "For the menu that has long list and long text, you can use the dense prop to reduce the padding and text size.",
+  "url": "https://mui.com/material-ui/react-menu/",
+  "verified": true
+ },
+ {
+  "behavior": "Разрушительный пункт в общем списке выделяется отдельным danger-состоянием",
+  "case": "Carbon Design System (IBM) — Menu, состояния пунктов (Danger)",
+  "quote": "When an action could have destructive effects on the user's data (for example, delete or remove).",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Длинные пункты меню обрезаются, полный текст раскрывается только тултипом при наведении (на тач-экране не работает — сигнал делать подписи короче)",
+  "case": "Carbon Design System (IBM) — Menu, раздел Overflow",
+  "quote": "Consider using short and precise labels for menu items. However, when deciding to truncate long menu items, a browser rendered title tooltip will reveal the full text on hover.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Подпись пункта — короткая и однозначная, глагол/глагольная фраза для действия",
+  "case": "Apple HIG — Menus (Labeling menu items)",
+  "quote": "For each menu item, write a label that clearly and succinctly describes it. In general, label a menu item that initiates an action using a verb or verb phrase that describes the action, such as View, Close, or Select.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/menus.json",
+  "verified": true
+ },
+ {
+  "behavior": "Компактные раскладки меню (small/medium) для сокращения числа видимых пунктов",
+  "case": "Apple HIG — Menus (Menu layouts)",
+  "quote": "Choose a small or medium menu layout when it can help streamline people's choices.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/menus.json",
+  "verified": true
+ }
+]

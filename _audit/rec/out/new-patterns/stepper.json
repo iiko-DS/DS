@@ -1,0 +1,86 @@
+[
+ {
+  "behavior": "Сколько шагов видно: если шагов немного — точки (dots) как компактная индикация на телефоне.",
+  "case": "Material Design 1, Steppers (Mobile step dots)",
+  "quote": "Use dots when the number of steps isn’t large.",
+  "url": "https://m1.material.io/components/steppers.html",
+  "verified": true
+ },
+ {
+  "behavior": "Если шагов много или шаги добавляются по ходу процесса — прогресс-бар вместо точек.",
+  "case": "Material Design 1, Steppers (Mobile step progress bar)",
+  "quote": "Use a progress bar when there are many steps, or if there are steps that need to be inserted during the process (based on responses to earlier steps).",
+  "url": "https://m1.material.io/components/steppers.html",
+  "verified": true
+ },
+ {
+  "behavior": "Подписи при узком экране: вертикальный степпер — решение для мобилы.",
+  "case": "Material Design 1, Steppers (Vertical steppers)",
+  "quote": "Vertical steppers are designed for narrow screen sizes. They are ideal for mobile.",
+  "url": "https://m1.material.io/components/steppers.html",
+  "verified": true
+ },
+ {
+  "behavior": "Длинные названия шагов в горизонтальном степпере не использовать — не влезают на мобиле.",
+  "case": "Material Design 1, Steppers (Horizontal steppers)",
+  "quote": "Avoid using long step names in horizontal steppers.",
+  "url": "https://m1.material.io/components/steppers.html",
+  "verified": true
+ },
+ {
+  "behavior": "Не вкладывать степперы друг в друга и не размещать несколько степперов на одной странице.",
+  "case": "Material Design 1, Steppers",
+  "quote": "Don’t embed steppers within steppers or use multiple steppers on one page.",
+  "url": "https://m1.material.io/components/steppers.html",
+  "verified": true
+ },
+ {
+  "behavior": "Авто-адаптация: при ширине экрана меньше 532px степпер автоматически становится вертикальным.",
+  "case": "Ant Design, Steps (responsive по умолчанию true)",
+  "quote": "Change to vertical direction when screen width smaller than 532px",
+  "url": "https://ant.design/components/steps",
+  "verified": true
+ },
+ {
+  "behavior": "Возврат назад: нужны явные кнопки перехода с содержательными подписями (не просто Next/Previous).",
+  "case": "Nielsen Norman Group, Wizards: Definition and Design Recommendations",
+  "quote": "Include buttons for navigating to the next and previous steps and label the steps descriptively",
+  "url": "https://www.nngroup.com/articles/wizards/",
+  "verified": true
+ },
+ {
+  "behavior": "Потеря данных при выходе: визарды плохо прерываются — при выходе на середине пользователь теряет работу и должен заново пройти предыдущие шаги.",
+  "case": "Nielsen Norman Group, Wizards: Definition and Design Recommendations",
+  "quote": "If users quit the process midway, they might not only lose their work, but may need to click again through the preceding steps.",
+  "url": "https://www.nngroup.com/articles/wizards/",
+  "verified": true
+ },
+ {
+  "behavior": "Показывать список/схему шагов и подсвечивать текущий — иначе на маленьком экране теряется контекст и неизвестно, сколько шагов впереди.",
+  "case": "Nielsen Norman Group, Wizards: Definition and Design Recommendations",
+  "quote": "Communicate a clear mental model of the process by displaying a list or a diagram of the steps involved and highlighting the current step.",
+  "url": "https://www.nngroup.com/articles/wizards/",
+  "verified": true
+ },
+ {
+  "behavior": "Не использовать степпер для процессов короче трёх шагов и для процессов, которые можно пройти в любом порядке.",
+  "case": "Carbon Design System, Progress indicator (When not to use)",
+  "quote": "When a process or form has fewer than three steps.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/progress-indicator/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Многосессионные шаги: разрешать сохранять прогресс и продолжать с того же места при возврате.",
+  "case": "GOV.UK Design System, Task list",
+  "quote": "If it needs to be completed over multiple sessions, consider allowing users to save their progress, and then to continue where they left off when they return.",
+  "url": "https://design-system.service.gov.uk/components/task-list/",
+  "verified": true
+ },
+ {
+  "behavior": "Редактируемость: шаг можно сделать editable, чтобы пользователь вернулся к нему в рамках сессии.",
+  "case": "Material Design 1, Steppers (Editable steps)",
+  "quote": "Editable steps allow users to return later to edit a step.",
+  "url": "https://m1.material.io/components/steppers.html",
+  "verified": true
+ }
+]

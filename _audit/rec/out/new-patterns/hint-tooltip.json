@@ -1,0 +1,79 @@
+[
+ {
+  "behavior": "Классический tooltip на телефоне недоступен: он вызывается ховером, а на тач-экранах вместо него нужен popup tip.",
+  "case": "Nielsen Norman Group, Tooltip Guidelines",
+  "quote": "Because tooltips are initiated by a hover gesture, they can be used only on devices with a mouse or keyboard. They are not normally available on touchscreens.",
+  "url": "https://www.nngroup.com/articles/tooltip-guidelines/",
+  "verified": true
+ },
+ {
+  "behavior": "На мобиле подсказка вызывается тапом и закрывается тапом по другому месту экрана.",
+  "case": "Nielsen Norman Group, Tooltip Guidelines (popup tips)",
+  "quote": "User taps to close or clicks another area of the screen",
+  "url": "https://www.nngroup.com/articles/tooltip-guidelines/",
+  "verified": true
+ },
+ {
+  "behavior": "Как вызывается на Android: долгое нажатие (tap and hold), подсказка остаётся, пока палец на элементе.",
+  "case": "Material Design 1, Tooltips (Interaction)",
+  "quote": "A tooltip is triggered by tapping and holding an item. Keep the tooltip displayed as long as the user continues to hold the element.",
+  "url": "https://m1.material.io/components/tooltips.html",
+  "verified": true
+ },
+ {
+  "behavior": "После отпускания подсказка живёт 1.5 секунды; любое действие на экране её закрывает.",
+  "case": "Material Design 1, Tooltips (Timing)",
+  "quote": "On lift, display the tooltip for 1.5 seconds.",
+  "url": "https://m1.material.io/components/tooltips.html",
+  "verified": true
+ },
+ {
+  "behavior": "Не мешать пальцу: на тач-UI подсказка крупнее десктопной — выше плитка (32dp) и больше боковые отступы (16dp).",
+  "case": "Material Design 1, Tooltips (mobile specs)",
+  "quote": "Touch UI tooltips",
+  "url": "https://m1.material.io/components/tooltips.html",
+  "verified": true
+ },
+ {
+  "behavior": "Подсказка появляется и по тапу — веб-реализация Material описывает три триггера: hover, focus и tap.",
+  "case": "Material Components for the Web (MDC), Tooltip",
+  "quote": "Tooltips display informative text when users hover over, focus on, or tap an element.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-tooltip/README.md",
+  "verified": true
+ },
+ {
+  "behavior": "Carbon-тултип работает только по ховеру/фокусу, то есть на тач-устройстве требует альтернативного паттерна.",
+  "case": "Carbon Design System, Tooltip",
+  "quote": "Tooltips display additional information upon hover or focus that is contextual, helpful, and nonessential",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tooltip/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "На узком экране не показывать поповер/подсказку — использовать всё доступное пространство экрана.",
+  "case": "Apple Human Interface Guidelines, Popovers (iOS/iPadOS)",
+  "quote": "Avoid displaying popovers in compact views.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/popovers.json",
+  "verified": true
+ },
+ {
+  "behavior": "Подсказки-оверлеи на мобиле показывают по одному за раз и только про одно взаимодействие, иначе их не читают.",
+  "case": "Nielsen Norman Group, Instructional Overlays and Coach Marks for Mobile Apps",
+  "quote": "it is more effective to focus on a single interaction rather than attempting to explain every possible area of the user interface",
+  "url": "https://www.nngroup.com/articles/mobile-instructional-overlay/",
+  "verified": true
+ },
+ {
+  "behavior": "Пользователь должен сразу отличать подсказку от элементов интерфейса, иначе он пытается с ней взаимодействовать.",
+  "case": "Nielsen Norman Group, Instructional Overlays and Coach Marks for Mobile Apps",
+  "quote": "People must immediately be able to distinguish between hint screens and actual elements of the interface.",
+  "url": "https://www.nngroup.com/articles/mobile-instructional-overlay/",
+  "verified": true
+ },
+ {
+  "behavior": "В подсказке не может быть информации, критичной для выполнения задачи — всё важное должно быть на экране постоянно.",
+  "case": "Nielsen Norman Group, Tooltip Guidelines",
+  "quote": "Don’t use tooltips for information that is vital to task completion.",
+  "url": "https://www.nngroup.com/articles/tooltip-guidelines/",
+  "verified": true
+ }
+]

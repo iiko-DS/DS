@@ -1,0 +1,65 @@
+[
+ {
+  "behavior": "Логотип не должен отъедать место у контента — особенно на узком экране",
+  "case": "Apple HIG — Branding (Best practices)",
+  "quote": "Ensure branding always defers to content. Using screen space for an element that does nothing but display a brand asset can mean there's less room for the content people care about.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/branding.json",
+  "verified": true
+ },
+ {
+  "behavior": "Не раскидывать логотип по всему интерфейсу — место лучше отдать полезным элементам",
+  "case": "Apple HIG — Branding (Best practices)",
+  "quote": "Resist the temptation to display your logo throughout your app or game unless it's essential for providing context. People seldom need to be reminded which app they're using, and it's usually better to use the space to give people valuable information and controls.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/branding.json",
+  "verified": true
+ },
+ {
+  "behavior": "Логотип (масthead) — на каждой странице, и в шапке показывать только логотип и общесистемные ссылки",
+  "case": "GOV.UK Design System — GOV.UK header",
+  "quote": "You must use the GOV.UK header component at the top of every page. ... It should only show the GOV.UK logo and any GOV.UK-wide links and tools to help your users.",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/header/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "Название сервиса и навигацию в шапку к логотипу не добавлять",
+  "case": "GOV.UK Design System — GOV.UK header",
+  "quote": "You can no longer use the GOV.UK header to show service name or navigation links.",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/header/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "Если сервис не на домене gov.uk — логотип и айдентика должны быть свои",
+  "case": "GOV.UK Design System — Generic header / Making your service look like GOV.UK",
+  "quote": "use the crown or GOV.UK logotype in the header",
+  "url": "https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk",
+  "verified": true
+ },
+ {
+  "behavior": "Сервис вне GOV.UK: корону/GOV.UK-логотип в шапке не использовать, показывать свой бренд",
+  "case": "GOV.UK Design System — Generic header (When to use)",
+  "quote": "identify itself as being part of GOV.UK ... use the crown or GOV.UK logotype in the header",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/generic-header/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "На узком экране ссылки шапки рядом с логотипом уезжают в боковое меню",
+  "case": "Carbon Design System (IBM) — UI shell header (Header links)",
+  "quote": "Links in the header are supported as product navigation, if required. These links move to the side menu in narrow screen widths.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/UI-shell-header/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Логотип в шапке без названия сервиса — только чтобы показать, чей это сервис",
+  "case": "NHS digital service manual — Header",
+  "quote": "Use the appropriate header at the top of every page to show users they are on an NHS service and help them get started in finding what they need.",
+  "url": "https://service-manual.nhs.uk/design-system/components/header",
+  "verified": true
+ },
+ {
+  "behavior": "Свой бренд = свой логотип и шрифт организации в шапке",
+  "case": "GOV.UK Service Manual — Making your service look like GOV.UK",
+  "quote": "You should also use the brand logo and font of your organisation.",
+  "url": "https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk",
+  "verified": true
+ }
+]

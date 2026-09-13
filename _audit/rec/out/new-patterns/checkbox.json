@@ -1,0 +1,51 @@
+[
+ {
+  "behavior": "зона нажатия 48 dp, а не квадратик",
+  "case": "Google Android Accessibility / Material Design",
+  "quote": "In Jetpack Compose, Material components like Checkbox or Switch automatically add padding to make sure they’re at least 48x48dp.",
+  "url": "https://support.google.com/accessibility/android/answer/7101858",
+  "verified": true
+ },
+ {
+  "behavior": "подпись не усекать",
+  "case": "IBM Carbon · Checkbox",
+  "quote": "Do not truncate checkbox label text with an ellipsis.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/checkbox/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "подпись переносится под квадратик",
+  "case": "IBM Carbon · Checkbox",
+  "quote": "Text should wrap beneath the checkbox so the control and label are top aligned.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/checkbox/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "ничего не предвыбирать",
+  "case": "GOV.UK Design System · Checkboxes",
+  "quote": "Do not pre-select checkbox options as this makes it more likely that users will:",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/checkboxes/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "сколько можно выбрать — словами",
+  "case": "GOV.UK Design System · Checkboxes",
+  "quote": "Do not assume that users will know how many options they can select based on the visual difference between radios and checkboxes alone.",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/checkboxes/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "долгое нажатие = выбор",
+  "case": "Gmail для Android — реальный продукт (выбор письма)",
+  "quote": "When this setting is off, touch and hold a message to select it.",
+  "url": "https://support.google.com/mail/answer/6562?hl=en&co=GENIE.Platform%3DAndroid",
+  "verified": true
+ },
+ {
+  "behavior": "по умолчанию пусто",
+  "case": "Nielsen Norman Group · Jakob Nielsen, Checkboxes vs. Radio Buttons",
+  "quote": "The recommendation from user testing of ecommerce sites is to leave the checkbox blank by default",
+  "url": "https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/",
+  "verified": true
+ }
+]

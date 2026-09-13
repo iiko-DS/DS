@@ -1,0 +1,58 @@
+[
+ {
+  "behavior": "Разделитель на мобиле отделяет тапабельные элементы списка и очерчивает зоны нажатия",
+  "case": "Material Web — Divider (Material Design)",
+  "quote": "Dividers can reinforce tapability, such as when used to separate list items or define tappable regions in an accordion.",
+  "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md",
+  "verified": true
+ },
+ {
+  "behavior": "Full-width разделитель — между несвязанными секциями; inset — между связанным контентом внутри секции",
+  "case": "Material Design — Divider",
+  "quote": "Use full width dividers to separate larger sections of unrelated content. ... Use inset dividers to separate related content within a section.",
+  "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md",
+  "verified": true
+ },
+ {
+  "behavior": "Inset-разделитель на мобиле по умолчанию отступает с обеих сторон экрана",
+  "case": "Material Components for Android — Dividers (Material Design)",
+  "quote": "Inset dividers separate related content within a section. They are equally indented from both sides of the screen by default.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Divider.md",
+  "verified": true
+ },
+ {
+  "behavior": "На телефоне разделитель может быть невидимой линией — только отступом между блоками",
+  "case": "GOV.UK Design System — Section break",
+  "quote": "By default govuk-section-break is only visible by its margin. You can add the govuk-section-break--visible class to make it visible with a separator line.",
+  "url": "https://design-system.service.gov.uk/styles/section-break/",
+  "verified": true
+ },
+ {
+  "behavior": "Линии создают подрегионы внутри общей области и передают группировку контролов",
+  "case": "NN/g — The Principle of Common Region: Containers Create Groupings",
+  "quote": "Within that dark background, lines further create other common subregions, that communicate the grouping of the various controls",
+  "url": "https://www.nngroup.com/articles/common-region/",
+  "verified": true
+ },
+ {
+  "behavior": "Группировка отступами/границами важнее, чем сам разделитель: близкие элементы воспринимаются как связанные",
+  "case": "NN/g — Form Design Quick Fix: Group Form Elements Effectively Using White Space",
+  "quote": "Just remember this principle: items near each other appear related.",
+  "url": "https://www.nngroup.com/articles/form-design-white-space/",
+  "verified": true
+ },
+ {
+  "behavior": "Связанные поля формы объединяются в группы (разделитель/отступ между группами)",
+  "case": "NN/g — Form Design Quick Fix",
+  "quote": "Tip #2: Group together related fields.",
+  "url": "https://www.nngroup.com/articles/form-design-white-space/",
+  "verified": true
+ },
+ {
+  "behavior": "Поля формы равномерно разнесены друг от друга, чтобы было понятно, какая подпись к какому полю",
+  "case": "Apple Human Interface Guidelines — Text fields",
+  "quote": "If your layout includes multiple text fields, leave enough space between them so people can easily see which input field belongs with each introductory label.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/text-fields",
+  "verified": true
+ }
+]

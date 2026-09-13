@@ -1,0 +1,79 @@
+[
+ {
+  "behavior": "Индикатор прокрутки: появляется при начале прокрутки и показывает положение в контенте",
+  "case": "Apple HIG — Scroll views",
+  "quote": "The scroll view itself has no appearance, but it can display a translucent scroll indicator that typically appears after people begin scrolling the view's content",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json",
+  "verified": true
+ },
+ {
+  "behavior": "Индикатор не всегда виден — нужно явно намекать, что контент продолжается за краем экрана",
+  "case": "Apple HIG — Scroll views",
+  "quote": "Because scroll indicators aren't always visible, it can be helpful to make it obvious when content extends beyond the view",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json",
+  "verified": true
+ },
+ {
+  "behavior": "Своя прокрутка должна сохранять привычное «упругое» поведение и инерцию",
+  "case": "Apple HIG — Scroll views (Support default scrolling gestures)",
+  "quote": "If you build custom scrolling for a view, make sure your scroll indicators use the elastic behavior that people expect",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json",
+  "verified": true
+ },
+ {
+  "behavior": "Не дублировать индикаторы на одной оси (скролл-индикатор + page control)",
+  "case": "Apple HIG — Scroll views",
+  "quote": "If you show a page control with a scroll view, don't show the scrolling indicator on the same axis to avoid confusing people with redundant controls.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json",
+  "verified": true
+ },
+ {
+  "behavior": "Липкие (pinned) заголовки требуют визуального отделения от прокручиваемого контента (scroll edge effect)",
+  "case": "Apple HIG — Scroll views (scroll edge effect)",
+  "quote": "This style provides a more opaque visual separation for top toolbars that contain a large number of controls, text that appears outside of Liquid Glass controls, and pinned table headers.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json",
+  "verified": true
+ },
+ {
+  "behavior": "Длинный список и производительность: следить за расходом памяти при виртуализации",
+  "case": "React Native — Optimizing FlatList Configuration",
+  "quote": "Memory consumption: How much information about your list is being stored in memory, which could lead to an app crash.",
+  "url": "https://reactnative.dev/docs/optimizing-flatlist-configuration",
+  "verified": true
+ },
+ {
+  "behavior": "Размер батча при прокрутке: больше элементов за раз = блокировка JS-потока и потеря отзывчивости на тап",
+  "case": "React Native — Optimizing FlatList Configuration (maxToRenderPerBatch)",
+  "quote": "More items per batch means longer periods of JavaScript execution potentially blocking other event processing, like presses, hurting responsiveness.",
+  "url": "https://reactnative.dev/docs/optimizing-flatlist-configuration",
+  "verified": true
+ },
+ {
+  "behavior": "Длинные списки — частый источник джанка (рывков) при прокрутке, проверять их в первую очередь",
+  "case": "Android Developers — Slow rendering / jank (Visual inspection)",
+  "quote": "Run through components that are common sources of jank, such as RecyclerView.",
+  "url": "https://developer.android.com/topic/performance/vitals/render",
+  "verified": true
+ },
+ {
+  "behavior": "Бесконечная прокрутка плоха для задач поиска конкретного элемента",
+  "case": "NN/g — Infinite Scrolling is Not for Every Website",
+  "quote": "locating a previously found item on an extremely long page is inefficient, especially if that item is placed many scrolling segments down.",
+  "url": "https://www.nngroup.com/articles/infinite-scrolling/",
+  "verified": true
+ },
+ {
+  "behavior": "Цена прокрутки: контент внизу длинной страницы просматривают реже",
+  "case": "NN/g — Scrolling and Attention",
+  "quote": "The interaction cost of scrolling reduces the likelihood that content will be viewed in lower parts of a longer page.",
+  "url": "https://www.nngroup.com/articles/scrolling-and-attention/",
+  "verified": true
+ },
+ {
+  "behavior": "При прокрутке шапка/заголовок группы остаётся липкой и с фоном, отделяющим её от строк",
+  "case": "Carbon Design System (IBM) — Contained list, Scrolling",
+  "quote": "If there are scrolling capabilities, the header will remain sticky and have a background layer to differentiate it from the list item rows scrolling beneath it.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/contained-list/usage.mdx",
+  "verified": true
+ }
+]

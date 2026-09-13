@@ -1,0 +1,107 @@
+[
+ {
+  "behavior": "Сколько столбцов терпимо на телефоне: для текстовых данных — только 2, для числовых — больше",
+  "case": "NN/g — Mobile Tables: Comparisons and Other Data Tables (Amy Schade, 2017)",
+  "quote": "For complex or wordy entries, such as those in comparison tables, only 2 columns may fit legibly on a narrow mobile screen. For a number-heavy table, narrower columns may work, allowing more columns to be visible.",
+  "url": "https://www.nngroup.com/articles/mobile-tables/",
+  "verified": true
+ },
+ {
+  "behavior": "Заголовки столбцов закрепляются при вертикальной прокрутке длинной таблицы",
+  "case": "NN/g — Mobile Tables",
+  "quote": "For any table that fills more than a single vertical screen, sticky column headers help users know what they are looking at.",
+  "url": "https://www.nngroup.com/articles/mobile-tables/",
+  "verified": true
+ },
+ {
+  "behavior": "Наличие горизонтальной прокрутки должно быть явно видно (обрезанный столбец или стрелки)",
+  "case": "NN/g — Mobile Tables",
+  "quote": "However, for such scrolling to work, it must be apparent that there is more data beyond the horizontal fold. Like for carousels, arrows or cut-off elements convey this information best.",
+  "url": "https://www.nngroup.com/articles/mobile-tables/",
+  "verified": true
+ },
+ {
+  "behavior": "Первый (левый) столбец закрепляется при горизонтальном скролле широкой таблицы",
+  "case": "NN/g — Mobile Tables",
+  "quote": "If users must scroll horizontally to see all the data, the leftmost column, which is typically a column of row headers, should be locked in place, so users can see the necessary labels at all times.",
+  "url": "https://www.nngroup.com/articles/mobile-tables/",
+  "verified": true
+ },
+ {
+  "behavior": "Поворот телефона — крайняя мера, а не основной способ показать широкую таблицу",
+  "case": "NN/g — Mobile Tables",
+  "quote": "Rotating the phone allows more columns of information to be visible at once. However, what you gain in column space, you lose in row space. In addition, it can be an annoyance to users if you dictate how they must hold their phone.",
+  "url": "https://www.nngroup.com/articles/mobile-tables/",
+  "verified": true
+ },
+ {
+  "behavior": "Управление набором данных: дать пользователю выбрать нужные столбцы/строки вместо показа всего",
+  "case": "NN/g — Mobile Tables",
+  "quote": "The ability to select what rows or columns are shown on the screen lets users focus on the subset of data that is of interest to them.",
+  "url": "https://www.nngroup.com/articles/mobile-tables/",
+  "verified": true
+ },
+ {
+  "behavior": "Адаптивность: столбцы скрываются по breakpoint на узких экранах",
+  "case": "Ant Design — Table (responsive columns)",
+  "quote": "responsive | The list of breakpoints at which to display this column. Always visible if not set",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "Горизонтальный скролл таблицы задаётся явно, включая ширину области прокрутки",
+  "case": "Ant Design — Table (scroll)",
+  "quote": "x | Set horizontal scrolling, can also be used to specify the width of the scroll area, could be number, percent value, true and ['max-content']",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "Закрепление столбца (start/end) — штатное поведение широкой таблицы",
+  "case": "Ant Design — Table (column.fixed)",
+  "quote": "fixed | (IE not support) Set column to be fixed: `true`(same as `'start'`) `'start'` `'end'`",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "Таблицу нельзя зажимать в тесный контейнер — ей нужна максимальная ширина страницы",
+  "case": "Carbon Design System — Data table, Placement",
+  "quote": "Data tables should be placed in a page's main content area and given plenty of space to display data without truncation. Avoid placing data tables inside data tables or smaller containers where the information can feel cramped or needs truncation.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Длинный заголовок столбца: перенос на 2 строки, дальше — обрезка + tooltip",
+  "case": "Carbon Design System — Data table, Column titles",
+  "quote": "In cases where a column title is too long, wrap the text to two lines and then truncate the rest of the text. The full text should be shown in a tooltip on hover.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "В узкой таблице текст должен оставаться узнаваемым: многоточие в середине сохраняет начало и конец значения",
+  "case": "Apple Human Interface Guidelines — Lists and tables",
+  "quote": "Sometimes, an ellipsis in the middle of text can make an item easier to distinguish because it preserves both the beginning and the end of the content.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+  "verified": true
+ },
+ {
+  "behavior": "Заголовки столбцов — существительные из 1–2 слов, без завершающей точки",
+  "case": "Apple Human Interface Guidelines — Lists and tables",
+  "quote": "Use nouns or short noun phrases with ... and don’t add ending punctuation.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+  "verified": true
+ },
+ {
+  "behavior": "Пустое состояние таблицы — это возможность объяснить статус и дать путь к действию",
+  "case": "NN/g — Designing Empty States in Complex Applications: 3 Guidelines",
+  "quote": "Empty states provide opportunities for designers to communicate system status, increase learnability of the system, and deliver direct pathways for key tasks.",
+  "url": "https://www.nngroup.com/articles/empty-state-interface-design/",
+  "verified": true
+ },
+ {
+  "behavior": "Таблица не для вёрстки: только для сравнения данных в строках и столбцах",
+  "case": "GOV.UK Design System — Table",
+  "quote": "Use the table component to let users compare information in rows and columns. ... Never use the table component to layout content on a page.",
+  "url": "https://design-system.service.gov.uk/components/table/",
+  "verified": true
+ }
+]

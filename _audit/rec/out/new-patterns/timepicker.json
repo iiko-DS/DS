@@ -1,0 +1,86 @@
+[
+ {
+  "behavior": "Мобильный выбор времени — аналоговый циферблат (dial), вращение стрелки пальцем",
+  "case": "SAP Fiori Design (Android) — Time Picker usage",
+  "quote": "To select an hour or minute value, the user may rotate the clock hand around the analog clock.",
+  "url": "https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage",
+  "verified": true
+ },
+ {
+  "behavior": "Для устройств с малой высотой экрана рекомендован input-режим вместо циферблата",
+  "case": "SAP Fiori Design (Android) — Time Picker usage",
+  "quote": "It is recommended to show the input mode for devices with small heights as the input-mode dialogs are smaller than the selection mode dialogs.",
+  "url": "https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage",
+  "verified": true
+ },
+ {
+  "behavior": "Время можно вводить и с клавиатуры; переход между полем часа и минут доступен с клавиатуры",
+  "case": "SAP Fiori Design (Android) — Time Picker usage",
+  "quote": "The hour and minute values may be updated using the keyboard. The user may also navigate between them using the keyboard for accessibility.",
+  "url": "https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage",
+  "verified": true
+ },
+ {
+  "behavior": "Пикер времени адаптируется к размеру окна: компакт — портрет, средние/расширенные — ландшафт",
+  "case": "SAP Fiori Design (Android) — Time Picker usage",
+  "quote": "For compact windows, the picker is shown in portrait mode. For medium and expanded windows, picker is shown in landscape.",
+  "url": "https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage",
+  "verified": true
+ },
+ {
+  "behavior": "Для длительности — скролл-список, где выбранным считается центральное значение",
+  "case": "SAP Fiori Design (Android) — Time Picker usage",
+  "quote": "To select a time, users may scroll through a list of values. The value in the center is the selected value.",
+  "url": "https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage",
+  "verified": true
+ },
+ {
+  "behavior": "Подтверждение/отмена: OK сохраняет, Cancel отменяет изменения и закрывает диалог",
+  "case": "SAP Fiori Design (Android) — Time Picker usage",
+  "quote": "Tapping on the “Cancel” label button cancels any changes made to the time or duration selection and closes the picker dialog. Tapping on the “OK” label button saves any changes made to the time or duration selection and closes the picker dialog.",
+  "url": "https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage",
+  "verified": true
+ },
+ {
+  "behavior": "Ввод времени с клавиатуры доступен из любого мобильного пикера через иконку клавиатуры",
+  "case": "Material Components for Android — Time pickers (Material Design)",
+  "quote": "Input time pickers allow people to set a time using a keyboard. This option is accessible from any mobile time picker interface via the keyboard icon.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/TimePicker.md",
+  "verified": true
+ },
+ {
+  "behavior": "Пикеры времени — модальные диалоги выбора времени",
+  "case": "Material Components for Android — Time pickers",
+  "quote": "Time pickers help users select and set a specific time. There are two variants of time pickers. 1. Time picker dial 2. Time picker input",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/TimePicker.md",
+  "verified": true
+ },
+ {
+  "behavior": "Стиль wheels (барабаны) подходит для времени; поддерживает ввод с клавиатуры",
+  "case": "Apple Human Interface Guidelines — Pickers",
+  "quote": "Wheels — A set of scrolling wheels that also supports data entry through built-in or external keyboards.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/pickers",
+  "verified": true
+ },
+ {
+  "behavior": "Для времени уменьшать гранулярность минут (например, шаг 15 минут вместо 60 значений)",
+  "case": "Apple Human Interface Guidelines — Pickers",
+  "quote": "Consider providing less granularity when specifying minutes in a date picker. By default, a minute list includes 60 values (0 to 59). You can optionally increase the minute interval as long as it divides evenly into 60. For example, you might want quarter-hour intervals (0, 15, 30, and 45).",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/pickers",
+  "verified": true
+ },
+ {
+  "behavior": "При выборе времени/даты подсвечивать именно ту часть, которую меняет пользователь",
+  "case": "NN/g — Design Guidelines for Input Steppers",
+  "quote": "if a stepper control is used for changing time and date, the part of time or date being adjusted should clearly highlighted, so that users are aware of exactly what are they changing.",
+  "url": "https://www.nngroup.com/articles/input-steppers/",
+  "verified": true
+ },
+ {
+  "behavior": "Проверять, что у выбранного времени нет неверного периода (AM/PM) — явный селектор периода",
+  "case": "SAP Fiori Design (Android) — Time Picker usage",
+  "quote": "To select whether the time is AM or PM, the user may tap on AM or PM in the AM/PM selector.",
+  "url": "https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage",
+  "verified": true
+ }
+]

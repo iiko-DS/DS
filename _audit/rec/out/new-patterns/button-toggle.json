@@ -1,0 +1,44 @@
+[
+ {
+  "behavior": "не больше пяти сегментов на iPhone",
+  "case": "Apple HIG · Segmented controls",
+  "quote": "Aim for no more than about five to seven segments in a wide interface and no more than about five segments on iPhone",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json",
+  "verified": true
+ },
+ {
+  "behavior": "сегменты одного размера",
+  "case": "Apple HIG · Segmented controls",
+  "quote": "In general, keep segment size consistent",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json",
+  "verified": true
+ },
+ {
+  "behavior": "длинная подпись — многоточие или иконка",
+  "case": "IBM Carbon · Content switcher",
+  "quote": "If the label text is too long in a content tab, add an ellipsis and accompany it with a browser-based tooltip to show the full string of text. If a label is too long to fit within its control tabs, consider using the icon modifier.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "подпись в 2–3 слова",
+  "case": "IBM Carbon · Content switcher",
+  "quote": "limit label text to two to three words",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "переключатель — ряд кнопок",
+  "case": "Apple HIG · Segmented controls",
+  "quote": "A segmented control is a linear set of two or more segments, each of which functions as a button.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json",
+  "verified": true
+ },
+ {
+  "behavior": "один выбор подзадач в шторке",
+  "case": "Apple Calendar для iOS (New Event) — реальный продукт",
+  "quote": "the segmented control in Calendar’s New Event sheet switches between the subviews for creating a new event and a new reminder",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json",
+  "verified": true
+ }
+]

@@ -1,0 +1,58 @@
+[
+ {
+  "behavior": "Когда искать: поиск «по мере ввода» — запрос на каждое нажатие, поэтому запросы надо троттлить",
+  "case": "MUI (Material UI) — Autocomplete, Asynchronous requests",
+  "quote": "Search as you type: a new request is made for each keystroke. ... If your logic is fetching new options on each keystroke and using the current value of the textbox to filter on the server, you may want to consider throttling requests.",
+  "url": "https://mui.com/material-ui/react-autocomplete/",
+  "verified": true
+ },
+ {
+  "behavior": "Сколько подсказок показывать: ограничивать число предлагаемых опций (напр. 100), если нет виртуализации",
+  "case": "MUI (Material UI) — Autocomplete, createFilterOptions(config.limit)",
+  "quote": "Limit the number of suggested options to be shown. For example, if config.limit is 100, only the first 100 matching options are shown. It can be useful if a lot of options match and virtualization wasn't set up.",
+  "url": "https://mui.com/material-ui/react-autocomplete/",
+  "verified": true
+ },
+ {
+  "behavior": "Сколько подсказок в поле показывать вне фокуса — ограничение через limitTags",
+  "case": "MUI (Material UI) — Autocomplete, Limit tags",
+  "quote": "You can use the limitTags prop to limit the number of displayed options when not focused.",
+  "url": "https://mui.com/material-ui/react-autocomplete/",
+  "verified": true
+ },
+ {
+  "behavior": "Показывать подсказки до начала ввода (недавние запросы / предиктивные подсказки)",
+  "case": "Apple HIG — Search fields (Provide suggestions to make searching easier)",
+  "quote": "Consider showing suggested search terms. For example, you can display recent searches before search begins, or predictive search suggestions as a person types.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json",
+  "verified": true
+ },
+ {
+  "behavior": "Искать, пока пользователь печатает, — выдача должна уточняться по мере ввода",
+  "case": "Apple HIG — Search fields (Best practices)",
+  "quote": "Searching while someone types makes the search experience feel more responsive because it provides results that are continuously refined as the text becomes more specific.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json",
+  "verified": true
+ },
+ {
+  "behavior": "Автокомплит = подсказки для ввода, select = выбор из готовых вариантов",
+  "case": "Ant Design — AutoComplete (When To Use)",
+  "quote": "AutoComplete is an input box with text hints, and users can type freely. ... Select is selecting among given choices.",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/auto-complete/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "Не полагаться только на подсказки: в исследовании их выбирали лишь в 23% случаев, когда они показывались",
+  "case": "NN/g — Site Search Suggestions",
+  "quote": "suggested queries were selected by users in only 23% of the instances where they were offered",
+  "url": "https://www.nngroup.com/articles/site-search-suggestions/",
+  "verified": true
+ },
+ {
+  "behavior": "Подсказки рядом с токенами-фильтрами — чтобы пользователь узнал, что можно фильтровать",
+  "case": "Apple HIG — Search fields (Scope bars and tokens)",
+  "quote": "Consider pairing tokens with search suggestions. People may not know which tokens are available, so pairing them with search suggestions can help people learn how to use them.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json",
+  "verified": true
+ }
+]

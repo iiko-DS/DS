@@ -1,0 +1,86 @@
+[
+ {
+  "behavior": "Карточка на мобиле — короткая выжимка с переходом к деталям, а не полный контент",
+  "case": "NN/g — Cards: UI-Component Definition (Page Laubheimer, 2016)",
+  "quote": "A card is usually short and offers a linked entry point to further details, rather than the full details themselves.",
+  "url": "https://www.nngroup.com/articles/cards-component/",
+  "verified": true
+ },
+ {
+  "behavior": "Тап по всей площади карточки — большая зона нажатия, это критично для пальца",
+  "case": "NN/g — Cards: UI-Component Definition",
+  "quote": "For most implementations, clicking or tapping anywhere on the card link to a details page ... This larger touch zone substantially improves usability on both touchscreen devices and mouse-based devices (due to Fitts' Law).",
+  "url": "https://www.nngroup.com/articles/cards-component/",
+  "verified": true
+ },
+ {
+  "behavior": "Карточка экономит место на телефоне: группировка рамкой/фоном вместо пустого пространства (важно на 375 px)",
+  "case": "NN/g — Cards: UI-Component Definition",
+  "quote": "Without the visual style of the card, grouping each item's ingredients together clearly in a way that separates them from other items on the page would require a lot more negative space and would waste valuable screen real estate on mobile phones and tablets.",
+  "url": "https://www.nngroup.com/articles/cards-component/",
+  "verified": true
+ },
+ {
+  "behavior": "Карточки плохо подходят, когда надо искать/сравнивать: на мобиле тогда лучше вертикальный список",
+  "case": "NN/g — Cards: UI-Component Definition",
+  "quote": "Card layouts are less scannable than lists. ... Thus, cards are not appropriate when users search for a specific item from a list or look for a particular piece of content.",
+  "url": "https://www.nngroup.com/articles/cards-component/",
+  "verified": true
+ },
+ {
+  "behavior": "На мобиле у карточек рекомендуются отступы 8 dp",
+  "case": "Material Components for Android — Cards (Material Design)",
+  "quote": "We recommend that cards on mobile have `8dp` margins.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Card.md",
+  "verified": true
+ },
+ {
+  "behavior": "На мобиле outlined/filled карточка рисуется без тени (elevation 0dp)",
+  "case": "Material Components for Android — Cards (Material Design)",
+  "quote": "On mobile, an outlined or a filled card’s default elevation is `0dp`, with a raised dragged elevation of `8dp`.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Card.md",
+  "verified": true
+ },
+ {
+  "behavior": "Длинный заголовок/текст карточки: короткий текст и уход в detail view вместо переполнения строки",
+  "case": "Apple Human Interface Guidelines — Lists and tables",
+  "quote": "Keep item text succinct so row content is comfortable to read. If each item consists of a large amount of text, consider alternatives that help you avoid displaying over-large table rows. For example, you could list item titles only, letting people choose an item to reveal its content in a detail view.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+  "verified": true
+ },
+ {
+  "behavior": "Раскрытие карточки на мобиле делается аккордеоном на месте (progressive disclosure), а не новым экраном",
+  "case": "NN/g — Accordions on Mobile (Raluca Budiu, 2015)",
+  "quote": "While the use of accordions on desktop is debatable, on mobile, accordions are one of the most useful design elements, as they often solve the problem of displaying too much content in too little screen space.",
+  "url": "https://www.nngroup.com/articles/mobile-accordions/",
+  "verified": true
+ },
+ {
+  "behavior": "При раскрытии карточку НЕ надо прокручивать к верху экрана — иначе кажется, что открылся новый экран и ломается кнопка «Назад»",
+  "case": "NN/g — Accordions on Mobile",
+  "quote": "Another solution (that uses space in a less efficient way, however) is to prevent the illusion of a new page by not scrolling the page when the accordion is expanded.",
+  "url": "https://www.nngroup.com/articles/mobile-accordions/",
+  "verified": true
+ },
+ {
+  "behavior": "Действия в карточке: список действий выносится вниз карточки (Ant Design Card actions)",
+  "case": "Ant Design — Card",
+  "quote": "actions | The action list, shows at the bottom of the Card",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/card/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "Действия карточки: при 1–2 действиях оставлять их inline, при 3+ — прятать под overflow-меню «⋯»",
+  "case": "Carbon Design System — Data table, Inline actions / Overflow menu",
+  "quote": "When the overflow menu contains fewer than three options, keep the actions inline as icon buttons instead. This approach reduces a click and makes available actions visible at a glance.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "На тач-устройствах overflow-меню «⋯» нельзя показывать только по hover — оно должно быть видимым всегда",
+  "case": "Carbon Design System — Data table, Overflow menu",
+  "quote": "For mobile and touch devices the data table will detect if the user agent supports hover-over and persist the overflow menus even if the `overflowMenuOnHover` prop is enabled.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx",
+  "verified": true
+ }
+]

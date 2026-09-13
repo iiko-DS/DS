@@ -1,0 +1,72 @@
+[
+ {
+  "behavior": "одно главное действие на экран",
+  "case": "GOV.UK Design System · Button — правило для госуслуг",
+  "quote": "Avoid using multiple default buttons on a single page. Having more than one main call to action reduces their impact, and makes it harder for users to know what to do next.",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/button/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "кнопка на всю ширину",
+  "case": "Apple HIG · Buttons — правило (пример watchOS)",
+  "quote": "Full-width buttons look better and are easier for people to tap. If two buttons must share the same horizontal space, use the same height for both, and use images or short text titles for each button’s content.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json",
+  "verified": true
+ },
+ {
+  "behavior": "зона нажатия минимум 44 pt",
+  "case": "Apple HIG · Buttons",
+  "quote": "As a general rule, a button needs a hit region of at least 44x44 pt — in visionOS, 60x60 pt — to ensure that people can select it easily, whether they use a fingertip, a pointer, their eyes, or a remote.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json",
+  "verified": true
+ },
+ {
+  "behavior": "длинная подпись переносится",
+  "case": "IBM Carbon · Button usage",
+  "quote": "When the button’s label is too long to fit within the available space of the button, the label should overflow and wrap to the second line. We do not recommend truncating a button label",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "fluid-ширина вместо фиксированной",
+  "case": "IBM Carbon · Button usage",
+  "quote": "Fluid width buttons are always preferable to fixed width default buttons in a layout. When possible, set the button container’s relative position to the responsive layout grid and match the button width to the width of other elements on the page",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "одна primary-кнопка на страницу",
+  "case": "IBM Carbon · Button usage",
+  "quote": "Each page should have only one primary button. Any remaining calls to action should be represented as lower emphasis buttons.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "загрузка вместо двойного нажатия",
+  "case": "Ant Design · Button",
+  "quote": "adds a loading spinner in button, avoids multiple submits too",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/button/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "разрушительное — не главное",
+  "case": "Apple HIG · Buttons",
+  "quote": "don’t assign the primary role to a button that performs a destructive action",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json",
+  "verified": true
+ },
+ {
+  "behavior": "warning-кнопка только для необратимого",
+  "case": "GOV.UK Design System · Button",
+  "quote": "Only use warning buttons for actions with serious destructive consequences that cannot be easily undone by a user.",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/button/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "отмена вместо подтверждения",
+  "case": "Gmail для Android — реальный продукт: после отправки даёт Undo",
+  "quote": "Right after you send a message, you’ll see the message “Sent” and the option to Undo.",
+  "url": "https://support.google.com/mail/answer/2819488?hl=en&co=GENIE.Platform%3DAndroid",
+  "verified": true
+ }
+]

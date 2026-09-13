@@ -1,0 +1,1203 @@
+# Кандидаты в паттерны поведения (из сборов)
+
+
+## button  (10)
+- **одно главное действие на экран**
+  - цитата: «Avoid using multiple default buttons on a single page. Having more than one main call to action reduces their impact, and makes it harder for users to know what to do next.»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/button/index.md
+- **кнопка на всю ширину**
+  - цитата: «Full-width buttons look better and are easier for people to tap. If two buttons must share the same horizontal space, use the same height for both, and use images or short text titles for each button’s content.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json
+- **зона нажатия минимум 44 pt**
+  - цитата: «As a general rule, a button needs a hit region of at least 44x44 pt — in visionOS, 60x60 pt — to ensure that people can select it easily, whether they use a fingertip, a pointer, their eyes, or a remote.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json
+- **длинная подпись переносится**
+  - цитата: «When the button’s label is too long to fit within the available space of the button, the label should overflow and wrap to the second line. We do not recommend truncating a button label»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx
+- **fluid-ширина вместо фиксированной**
+  - цитата: «Fluid width buttons are always preferable to fixed width default buttons in a layout. When possible, set the button container’s relative position to the responsive layout grid and match the button width to the width of other elements on the page»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx
+- **одна primary-кнопка на страницу**
+  - цитата: «Each page should have only one primary button. Any remaining calls to action should be represented as lower emphasis buttons.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx
+- **загрузка вместо двойного нажатия**
+  - цитата: «adds a loading spinner in button, avoids multiple submits too»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/button/index.en-US.md
+- **разрушительное — не главное**
+  - цитата: «don’t assign the primary role to a button that performs a destructive action»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json
+- **warning-кнопка только для необратимого**
+  - цитата: «Only use warning buttons for actions with serious destructive consequences that cannot be easily undone by a user.»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/button/index.md
+- **отмена вместо подтверждения**
+  - цитата: «Right after you send a message, you’ll see the message “Sent” and the option to Undo.»
+  - источник: https://support.google.com/mail/answer/2819488?hl=en&co=GENIE.Platform%3DAndroid
+
+## button-icon  (6)
+- **иконка без подписи однозначна**
+  - цитата: «In an icon only button, that has no label, the icon must accurately represent what the button does.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx
+- **иконки без подписи — редко**
+  - цитата: «Icon only buttons should be used sparingly. “For most situations, users learn correct interpretations better with text alone than with icons alone.”»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx
+- **иконка 24 внутри цели 48**
+  - цитата: «An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target.»
+  - источник: https://support.google.com/accessibility/android/answer/7101858
+- **мелкий крестик не нажать**
+  - цитата: «For example, on Instagram, the buttons to dismiss a follow suggestion were too small (only 2mm — 0.08in — wide), so even though they are far enough from the Follow buttons (about 2mm of spacing — the often-recommended minimum), they are still hard to select.»
+  - источник: https://www.nngroup.com/articles/touch-target-size/
+- **подсказка обязательна**
+  - цитата: «Regardless of how recognizable an icon may or may not be, or whether that action lies within the universal actions list, a tooltip is always required with text explaining what the icon button would do if clicked.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx
+- **иконка без подписи не читается**
+  - цитата: «Similar to an `<img>` element, an icon alone does not convey any useful information for a screen-reader user.»
+  - источник: https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md
+
+## button-toggle  (6)
+- **не больше пяти сегментов на iPhone**
+  - цитата: «Aim for no more than about five to seven segments in a wide interface and no more than about five segments on iPhone»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json
+- **сегменты одного размера**
+  - цитата: «In general, keep segment size consistent»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json
+- **длинная подпись — многоточие или иконка**
+  - цитата: «If the label text is too long in a content tab, add an ellipsis and accompany it with a browser-based tooltip to show the full string of text. If a label is too long to fit within its control tabs, consider using the icon modifier.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx
+- **подпись в 2–3 слова**
+  - цитата: «limit label text to two to three words»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx
+- **переключатель — ряд кнопок**
+  - цитата: «A segmented control is a linear set of two or more segments, each of which functions as a button.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json
+- **один выбор подзадач в шторке**
+  - цитата: «the segmented control in Calendar’s New Event sheet switches between the subviews for creating a new event and a new reminder»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json
+
+## checkbox  (7)
+- **зона нажатия 48 dp, а не квадратик**
+  - цитата: «In Jetpack Compose, Material components like Checkbox or Switch automatically add padding to make sure they’re at least 48x48dp.»
+  - источник: https://support.google.com/accessibility/android/answer/7101858
+- **подпись не усекать**
+  - цитата: «Do not truncate checkbox label text with an ellipsis.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/checkbox/usage.mdx
+- **подпись переносится под квадратик**
+  - цитата: «Text should wrap beneath the checkbox so the control and label are top aligned.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/checkbox/usage.mdx
+- **ничего не предвыбирать**
+  - цитата: «Do not pre-select checkbox options as this makes it more likely that users will:»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/checkboxes/index.md
+- **сколько можно выбрать — словами**
+  - цитата: «Do not assume that users will know how many options they can select based on the visual difference between radios and checkboxes alone.»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/checkboxes/index.md
+- **долгое нажатие = выбор**
+  - цитата: «When this setting is off, touch and hold a message to select it.»
+  - источник: https://support.google.com/mail/answer/6562?hl=en&co=GENIE.Platform%3DAndroid
+- **по умолчанию пусто**
+  - цитата: «The recommendation from user testing of ecommerce sites is to leave the checkbox blank by default»
+  - источник: https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/
+
+## radio  (8)
+- **на мобиле радио в столбик**
+  - цитата: «Remember that on small screens such as mobile devices, the radios will still be ‘stacked’ on top of one another (vertically).»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/radios/index.md
+- **больше пяти — не радио**
+  - цитата: «Avoid listing too many radio buttons in a set»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json
+- **горизонтальный ряд — ровный шаг**
+  - цитата: «Use consistent spacing when you display radio buttons horizontally. Measure the space needed to accommodate the longest button label, and use that measurement consistently.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json
+- **смешанного состояния нет**
+  - цитата: «If you need to show that a setting or item has a mixed state, consider using a checkbox instead.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json
+- **подпись не усекать**
+  - цитата: «Do not truncate radio button label text with an ellipsis.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/radio-button/usage.mdx
+- **снять выбор нельзя — дать «никакой»**
+  - цитата: «Users cannot go back to having no option selected once they have selected one, without refreshing their browser window.»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/radios/index.md
+- **меньше пяти опций — радио, больше — селект**
+  - цитата: «Utilizing [Radio](/components/radio/) is recommended when there are fewer total options (less than 5).»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md
+- **не смешивать радио и свитчи**
+  - цитата: «The Chase Bank iOS app uses toggles and radio buttons inconsistently.»
+  - источник: https://www.nngroup.com/articles/toggle-switch-guidelines/
+
+## slide-toggle  (9)
+- **свитч — только в строке списка**
+  - цитата: «Use the switch toggle style only in a list row.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json
+- **вне списка — кнопка, а не свитч**
+  - цитата: «Outside of a list, use a button that behaves like a toggle, not a switch.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json
+- **не подменять чекбокс свитчем**
+  - цитата: «In general, don’t replace a checkbox with a switch.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json
+- **включение действует сразу**
+  - цитата: «Toggle switches should take immediate effect and should not require the user to click Save or Submit to apply the new state.»
+  - источник: https://www.nngroup.com/articles/toggle-switch-guidelines/
+- **свитч без эффекта = провал**
+  - цитата: «In the United Airlines iOS app, other than the visual change, nothing happens when users tap the toggle switch.»
+  - источник: https://www.nngroup.com/articles/toggle-switch-guidelines/
+- **мгновенная видимая реакция**
+  - цитата: «When turning airplane mode on for iOS, Apple provides immediate results by changing the cellular bars in the upper left-hand corner to an airplane icon.»
+  - источник: https://www.nngroup.com/articles/toggle-switch-guidelines/
+- **не ставить свитч в форму с Save**
+  - цитата: «If you’re considering including toggles in long forms where other types of form fields are present, and users will need to click a Submit button for other changes to take effect, don’t.»
+  - источник: https://www.nngroup.com/articles/toggle-switch-guidelines/
+- **свитч сразу, чекбокс — по кнопке**
+  - цитата: «`Switch` will trigger a state change directly when you toggle it, while `Checkbox` is generally used for state marking, which should work in conjunction with submit operation.»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/switch/index.en-US.md
+- **подпись строки вместо лейбла свитча**
+  - цитата: «You don’t need to supply a label in this situation because the content in the row provides the context for the state the switch controls.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json
+
+## tabs  (12)
+- **переполнение → вкладка «More»**
+  - цитата: «If horizontal space limits the number of visible tabs, the trailing tab becomes a More tab in iOS and iPadOS, revealing the remaining items in a separate list.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/tab-bars.json
+- **горизонтальная прокрутка, не перенос**
+  - цитата: «In responsive situations, horizontal tabs should not wrap to multiple lines or stack on top of each other; instead, they should scroll horizontally.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tabs/usage.mdx
+- **не переносить на две строки**
+  - цитата: «If you use too many tabs or they have long labels then they may wrap over more than one line. This makes it harder for users to see the connection between the selected tab and its content.»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/tabs/index.md
+- **карусель снижает находимость**
+  - цитата: «When the number of tabs overflows the tab list, the tab bar often becomes a carousel. As a result, the hidden tabs become less discoverable, and the interaction cost needed to access them increases, as users need to manipulate secondary controls to reveal those tabs. The fewer tabs, the better.»
+  - источник: https://www.nngroup.com/articles/tabs-used-right/
+- **кнопка прокрутки вкладок**
+  - цитата: «Patagonia: A button appeared when the viewport was smaller than the tab list. Clicking the button horizontally scrolled the tab list to reveal additional tabs.»
+  - источник: https://www.nngroup.com/articles/tabs-used-right/
+- **короткие подписи вкладок**
+  - цитата: «Short tab labels work best, as they conserve horizontal space in the tab list and avoid horizontal scrolling.»
+  - источник: https://www.nngroup.com/articles/tabs-used-right/
+- **на мобиле аккордеон часто лучше**
+  - цитата: «Accordions are particularly useful on mobile devices, where they work better than tabs due to the limited screen space»
+  - источник: https://www.nngroup.com/articles/tabs-used-right/
+- **первая вкладка — самая нужная**
+  - цитата: «This in-page tab organized parking-spot reservations by status.»
+  - источник: https://www.nngroup.com/articles/tabs-used-right/
+- **свайп между вкладками**
+  - цитата: «Synchronize the selected tab and tab indicator position with page swipes»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Tabs.md
+- **переполнение → стрелки пагинации**
+  - цитата: «When the list of tab labels exceeds the width of the header, pagination controls appear to let the user scroll left and right across the labels.»
+  - источник: https://raw.githubusercontent.com/angular/components/main/src/material/tabs/tabs.md
+- **больше пяти опций не влезает**
+  - цитата: «If your site has more than 5 options, it’s hard to fit them in a tab or navigation bar and still keep an optimum touch-target size»
+  - источник: https://www.nngroup.com/articles/mobile-navigation-patterns/
+- **точки-индикаторы не нажать**
+  - цитата: «you can (sometimes) see that the dots are present, but they are far too small to tap individually to navigate.»
+  - источник: https://www.nngroup.com/articles/touch-target-size/
+
+## chips  (9)
+- **8 px между чипами**
+  - цитата: «When tags are placed in groups, it is recommended to have 8px of space between them on the top, bottom, left, and right.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx
+- **группа чипов переносится**
+  - цитата: «Tags should wrap to form another line if there are too many to arrange horizontally on one line.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx
+- **цель 48 dp с зазором 8 dp**
+  - цитата: «Consider making touch targets at least 48x48dp, separated by 8dp of space or more, to ensure balanced information density and usability.»
+  - источник: https://support.google.com/accessibility/android/answer/7101858
+- **длинный заголовок не переносить**
+  - цитата: «Avoid having long tag titles wrap to multiple lines within the tag container.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx
+- **переполнение — в поповер или шторку**
+  - цитата: «Use to view an overflow of multiple tags, like in a popover, modal, or detail view»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx
+- **одна функция на чип**
+  - цитата: «Avoid using tags with multiple functions to prevent confusion and reduce accidental clicks»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx
+- **снимаемый чип**
+  - цитата: «Filter chips can optionally be removable from the chip set.»
+  - источник: https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md
+- **минимальная цель чипа 48 dp**
+  - цитата: «Min touch target»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Chip.md
+- **плотные мелкие чипы не нажать**
+  - цитата: «too small or densely packed to select without struggling»
+  - источник: https://www.nngroup.com/articles/touch-target-size/
+
+## chips-input  (8)
+- **счётчик чипов вместо простыни**
+  - цитата: «Max tag count to show.»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md
+- **заглушка «+N скрытых»**
+  - цитата: «Placeholder for not showing tags»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md
+- **ввод по разделителям**
+  - цитата: «Separator used to tokenize, only applies when `mode="tags"` or `mode="multiple"`»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md
+- **клавиатура: стрелки и пробел**
+  - цитата: «Users can move through the chips using the arrow keys and select/deselect them with the space.»
+  - источник: https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md
+- **input-чип всегда снимаемый**
+  - цитата: «All input chips are removable. If an input chip does not have an action»
+  - источник: https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md
+- **грид-контейнер для ввода**
+  - цитата: «To create chips connected to an input field, start by creating a `<mat-chip-grid>` as the container.»
+  - источник: https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md
+- **долгое нажатие в списке получателей**
+  - цитата: «To hide a suggested recipient, touch and hold their profile photo, and tap Hide suggestion»
+  - источник: https://support.google.com/mail/answer/2819488?hl=en&co=GENIE.Platform%3DAndroid
+- **чипы — grid-паттерн доступности**
+  - цитата: «`<mat-chip-grid>` and `<mat-chip-row>` : These elements implement a grid accessibility pattern. Use them as part of a free form input that allows users to enter text to add chips.»
+  - источник: https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md
+
+## icon-size  (9)
+- **масштаб иконки от кегля текста**
+  - цитата: «The scales are defined relative to the cap height of the San Francisco system font.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sf-symbols.json
+- **вес иконки = весу текста**
+  - цитата: «In general, match the weights of interface icons and adjacent text.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json
+- **один размер и вес у всех иконок**
+  - цитата: «all interface icons in your app need to use a consistent size, level of detail, stroke thickness (or weight), and perspective»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json
+- **иконка внутри кнопки**
+  - цитата: «The `<mat-icon>` element should be a child of a `<button>` or `<a>` element.»
+  - источник: https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md
+- **оптическое выравнивание**
+  - цитата: «If necessary, add padding to a custom interface icon to achieve optical alignment.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json
+- **24 dp внутри 48 dp**
+  - цитата: «An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target.»
+  - источник: https://support.google.com/accessibility/android/answer/7101858
+- **мелкие контролы не нажать**
+  - цитата: «Controls that are too small are hard for many people to interact with and select.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/accessibility.json
+- **базовый размер иконки 24 px**
+  - цитата: «`--md-icon-size` | `24px`»
+  - источник: https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md
+- **иконка — не подпись**
+  - цитата: «Icons alone are not interactive elements for screen-reader users»
+  - источник: https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md
+
+## list  (10)
+- **Длинное название строки: текст переносится на несколько строк, обрезка не допускается**
+  - цитата: «Text in a list should wrap below the marker, keeping it top-aligned with the first list item to ensure readability. Truncation should be avoided and text should instead wrap to multiple lines.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/list/usage.mdx
+- **Сколько информации в строке: максимум 1–3 строки текста на строку списка**
+  - цитата: «Single-line list items contain a maximum of one line of text. ... Two-line list items contain a maximum of two lines of text. ... Three-line list items contains a maximum of three lines of text.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-list/README.md
+- **Короткие подписи в строке — чтобы избежать обрезки и лишних переносов**
+  - цитата: «Keep item text succinct so row content is comfortable to read. Short, succinct text can help minimize truncation and wrapping, making text easier to read and scan.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json
+- **Свайп по строке настраивается пользователем; действие можно отключить (None)**
+  - цитата: «You can choose what happens when you swipe a message left or right: Archive Trash Mark as read/unread Snooze Move to... None»
+  - источник: https://support.google.com/mail/answer/6562?co=GENIE.Platform%3DiOS&hl=en
+- **Защита от случайного удаления: полный свайп выполняет первое действие по умолчанию, это можно отключить**
+  - цитата: «Use this method to add swipe actions to a view that acts as a row in a list. ... By default, the user can perform the first action for a given swipe direction with a full swipe.»
+  - источник: https://developer.apple.com/tutorials/data/documentation/swiftui/view/swipeactions(edge:allowsfullswipe:content:).json
+- **Разрушительное действие строки защищено undo-действием в snackbar, а не подтверждающим диалогом**
+  - цитата: «Snackbars can also offer the ability to perform an action, such as undoing an action that was just taken, or retrying an action that had failed.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Snackbar.md
+- **Липкие заголовки: шапка списка фиксируется, строки прокручиваются под ней**
+  - цитата: «Contained list header areas can be sticky and fixed in place while the list item rows scroll underneath.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/contained-list/usage.mdx
+- **Высота строк и шапки сокращается в узких местах, чтобы уменьшить вертикальную прокрутку**
+  - цитата: «The disclosed list header has a 32px height and the list item rows by default have a 48px height. The disclosed list often appears in small, restricted places so keeping a shorter height can save valuable space and reduce the amount of vertical scrolling.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/contained-list/usage.mdx
+- **Пустой список: пустое состояние должно объяснять статус системы, а не оставаться пустым**
+  - цитата: «Totally empty states cause confusion about how and whether the system is working.»
+  - источник: https://www.nngroup.com/articles/empty-state-interface-design/
+- **Очень длинный список на маленьком экране: показывать самые релевантные элементы и давать способ увидеть остальное**
+  - цитата: «You can help make a long list more manageable by listing the most relevant items and providing a way for people to view more.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json
+
+## menu  (11)
+- **Много пунктов: ограничение количества, чтобы не приходилось прокручивать меню**
+  - цитата: «Expansive lists of options in menus can overwhelm users. With context menu and overflow menu, keep the list length manageable by including no more than 12 items to help users scan through items easily without having to scroll.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx
+- **Для меню-кнопок список ещё короче — меньше 5 пунктов**
+  - цитата: «keep the menu list smaller with under 5 items»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx
+- **Длинное меню: не заставлять читать длинный список — разбивать на несколько меню**
+  - цитата: «People need more time and attention to read a long menu, which means they may miss the command they want. If a menu is too long, consider dividing it into separate menus.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/menus.json
+- **Вложенность: глубину и длину подменю ограничивать, подменю предпочитать отступам**
+  - цитата: «Limit the depth and length of submenus. ... Prefer using a submenu to indenting menu items. Using indentation is inconsistent with the system and doesn't clearly express the relationships between the menu items.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/menus.json
+- **Меню выше экрана — прокручивается внутри себя, а не уходит за границы**
+  - цитата: «If the height of a menu prevents all menu items from being displayed, the menu can scroll internally.»
+  - источник: https://mui.com/material-ui/react-menu/
+- **Меню у края экрана: позиционирование корректируется, чтобы пункты не обрезались**
+  - цитата: «When close to a screen edge, a basic menu vertically realigns to make sure that all menu items are completely visible.»
+  - источник: https://mui.com/material-ui/react-menu/
+- **Длинные пункты и длинный список: плотный (dense) вариант меню уменьшает padding и кегль**
+  - цитата: «For the menu that has long list and long text, you can use the dense prop to reduce the padding and text size.»
+  - источник: https://mui.com/material-ui/react-menu/
+- **Разрушительный пункт в общем списке выделяется отдельным danger-состоянием**
+  - цитата: «When an action could have destructive effects on the user's data (for example, delete or remove).»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx
+- **Длинные пункты меню обрезаются, полный текст раскрывается только тултипом при наведении (на тач-экране не работает — сигнал делать подписи короче)**
+  - цитата: «Consider using short and precise labels for menu items. However, when deciding to truncate long menu items, a browser rendered title tooltip will reveal the full text on hover.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx
+- **Подпись пункта — короткая и однозначная, глагол/глагольная фраза для действия**
+  - цитата: «For each menu item, write a label that clearly and succinctly describes it. In general, label a menu item that initiates an action using a verb or verb phrase that describes the action, such as View, Close, or Select.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/menus.json
+- **Компактные раскладки меню (small/medium) для сокращения числа видимых пунктов**
+  - цитата: «Choose a small or medium menu layout when it can help streamline people's choices.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/menus.json
+
+## select  (7)
+- **Select — крайняя мера: длинные выпадающие списки плохо работают, сначала пробовать уменьшить число вариантов**
+  - цитата: «The select component should only be used as a last resort in public-facing services because research shows that some users find selects very difficult to use. ... Before using the select component, try asking users questions which will allow you to present them with fewer options.»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/select/index.md
+- **Известные проблемы на мобильных: не могут закрыть список, пытаются печатать, не понимают, что список прокручивается, пинч-зумят опции**
+  - цитата: «Research shows that users can struggle with selects, particularly when users have: ... tried to pinch zoom select options on smaller devices ... not understood that they can scroll down to see more items, or how to»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/select/index.md
+- **Длинные селекты на мобиле: маленькие тач-зоны, тяжёлая прокрутка, скрытые варианты**
+  - цитата: «they are difficult to use on mobile devices ... the expanded list cannot be styled so touch areas are small»
+  - источник: https://service-manual.ons.gov.uk/design-system/components/select
+- **Select — только для длинного списка и в последнюю очередь**
+  - цитата: «Use select to let users choose an option from a long list but only use it as a last resort.»
+  - источник: https://service-manual.nhs.uk/design-system/components/select
+- **Меню селекта не должно уходить за нижний край экрана**
+  - цитата: «Menus are positioned under their emitting elements, unless they are close to the bottom of the viewport.»
+  - источник: https://mui.com/material-ui/react-select/
+- **В стеснённом пространстве (узкий экран, длинная форма) брать уменьшенный размер селекта**
+  - цитата: «Use when space is constricted or when placing a select in a form that is long and complex.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/select/usage.mdx
+- **Разделять селект (выбор значения) и dropdown (действие/фильтр) — не смешивать в мобильном списке**
+  - цитата: «A dropdown presents a list of options that users can select one or several options from that list. Dropdown options are used for taking an action, filtering, or sorting existing content.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/select/usage.mdx
+
+## autocomplete  (8)
+- **Когда искать: поиск «по мере ввода» — запрос на каждое нажатие, поэтому запросы надо троттлить**
+  - цитата: «Search as you type: a new request is made for each keystroke. ... If your logic is fetching new options on each keystroke and using the current value of the textbox to filter on the server, you may want to consider throttling requests.»
+  - источник: https://mui.com/material-ui/react-autocomplete/
+- **Сколько подсказок показывать: ограничивать число предлагаемых опций (напр. 100), если нет виртуализации**
+  - цитата: «Limit the number of suggested options to be shown. For example, if config.limit is 100, only the first 100 matching options are shown. It can be useful if a lot of options match and virtualization wasn't set up.»
+  - источник: https://mui.com/material-ui/react-autocomplete/
+- **Сколько подсказок в поле показывать вне фокуса — ограничение через limitTags**
+  - цитата: «You can use the limitTags prop to limit the number of displayed options when not focused.»
+  - источник: https://mui.com/material-ui/react-autocomplete/
+- **Показывать подсказки до начала ввода (недавние запросы / предиктивные подсказки)**
+  - цитата: «Consider showing suggested search terms. For example, you can display recent searches before search begins, or predictive search suggestions as a person types.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json
+- **Искать, пока пользователь печатает, — выдача должна уточняться по мере ввода**
+  - цитата: «Searching while someone types makes the search experience feel more responsive because it provides results that are continuously refined as the text becomes more specific.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json
+- **Автокомплит = подсказки для ввода, select = выбор из готовых вариантов**
+  - цитата: «AutoComplete is an input box with text hints, and users can type freely. ... Select is selecting among given choices.»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/auto-complete/index.en-US.md
+- **Не полагаться только на подсказки: в исследовании их выбирали лишь в 23% случаев, когда они показывались**
+  - цитата: «suggested queries were selected by users in only 23% of the instances where they were offered»
+  - источник: https://www.nngroup.com/articles/site-search-suggestions/
+- **Подсказки рядом с токенами-фильтрами — чтобы пользователь узнал, что можно фильтровать**
+  - цитата: «Consider pairing tokens with search suggestions. People may not know which tokens are available, so pairing them with search suggestions can help people learn how to use them.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json
+
+## search  (7)
+- **Выдачу закрывает клавиатура — использовать поисковый экран, где результаты показываются под клавиатурой**
+  - цитата: «A search screen is a specialized keyboard screen that helps people enter search text, displaying search results beneath the keyboard in a fully customizable view.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json
+- **Поле не должно само открывать клавиатуру, если это перекрывает выдачу (виртуальная клавиатура на iPad)**
+  - цитата: «An exception to this is on iPad when only a virtual keyboard is available, in which case it's better to leave the field unfocused to prevent the keyboard from unexpectedly covering the view.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json
+- **Порядок результатов: самое релевантное — сверху, чтобы не приходилось прокручивать**
+  - цитата: «Provide the most relevant search results first to minimize the need for someone to scroll to find what they're looking for.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json
+- **Кнопка очистки появляется только после того, как пользователь начал печатать**
+  - цитата: «Appears after the user has actively typed into the search field. Acts as a function to clear the search field.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/search/usage.mdx
+- **Не использовать поиск там, где данных мало**
+  - цитата: «Do not use when there is small or limited amounts of data.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/search/usage.mdx
+- **Фильтры области поиска: сначала широкий охват, потом сужение**
+  - цитата: «Use a scope bar to filter among clearly defined search categories. A scope bar can help someone move from a broader scope to a narrower one.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/search-fields.json
+- **Пустой результат поиска — это осознанно спроектированное пустое состояние**
+  - цитата: «Search results lists when nothing is found, as well as other cases where a command creates empty output.»
+  - источник: https://www.nngroup.com/articles/empty-state-interface-design/
+
+## tree  (6)
+- **Глубина и узкий экран: для сложной вложенности брать уменьшенный размер узла, чтобы больше влезло**
+  - цитата: «If you have a tree structure with complex nesting levels, use the extra small node size to keep as much information in view as possible.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx
+- **Раскрытие/сворачивание: тап по всей области иконки-каре (отдельная тач-зона от выбора узла)**
+  - цитата: «To expand or collapse a branch node the user can click anywhere within the caret icon bounding box.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx
+- **Не строить дерево на один уровень — для этого аккордеон или таблица**
+  - цитата: «When you only need one level of nested information.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx
+- **Дерево создаёт иерархию для навигации по большим объёмам информации**
+  - цитата: «A tree view consists of nested heading levels that create a content hierarchy for users and assist with navigating large amounts of information.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx
+- **На мобиле раскрытие-сворачивание в месте (accordion-паттерн) решает проблему нехватки места**
+  - цитата: «on mobile, accordions are one of the most useful design elements, as they often solve the problem of displaying too much content in too little screen space»
+  - источник: https://www.nngroup.com/articles/mobile-accordions/
+- **Выбранный узел/строку подсвечивать постоянно, чтобы был виден путь в иерархии**
+  - цитата: «a table that helps people navigate through a hierarchy persistently highlights the selected row to clarify the path people are taking»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json
+
+## sidenav  (11)
+- **Модальный drawer — основной паттерн для мобилы; на планшете/десктопе его заменяет standard**
+  - цитата: «They are primarily used for mobile devices where screen space is limited, and can be replaced by standard drawers on tablet and desktop.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/NavigationDrawer.md
+- **Постоянный (standard) drawer на маленьком экране не использовать**
+  - цитата: «They can be used on tablet and desktop, but they aren't suitable for mobile devices due to limited screen size.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/NavigationDrawer.md
+- **Закрытие при выборе пункта: модальное меню само закрывается после действия**
+  - цитата: «Close the drawer when an item is activated in order to dismiss the modal as soon as the user performs an action.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-drawer/README.md
+- **Затемнение (scrim) обязательно и блокирует взаимодействие с контентом под меню**
+  - цитата: «The `mdc-drawer-scrim` next sibling element is required, to protect the app's UI from interactions while the modal drawer is open.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-drawer/README.md
+- **Закрытие тапом по затемнению (клик по overlay / Esc) и по выбору пункта**
+  - цитата: «The Drawer can be cancelled by clicking the overlay or pressing the Esc key. It closes when an item is selected, handled by controlling the open prop.»
+  - источник: https://mui.com/material-ui/react-drawer/
+- **Свайп для открытия конфликтует с системным «свайп назад» на iOS — discovery надо отключать; на слабых устройствах свайп не держит 60 FPS**
+  - цитата: «iOS has a "swipe to go back" feature that interferes with the discovery feature, so discovery has to be disabled. ... Some low-end mobile devices won't be able to follow the fingers at 60 FPS.»
+  - источник: https://mui.com/material-ui/react-drawer/
+- **Много пунктов и вложенность на телефоне: не больше двух уровней иерархии в боковом меню**
+  - цитата: «In general, show no more than two levels of hierarchy in a sidebar. When a data hierarchy is deeper than two levels, consider using a split view interface that includes a content list between the sidebar items and detail view.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sidebars.json
+- **Закрытие свайпом от края — привычный жест на планшете (iPadOS), его стоит поддерживать вместе с кнопкой**
+  - цитата: «in iPadOS, people expect to use the built-in edge swipe gesture»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sidebars.json
+- **Много пунктов в шапке на узком экране: ссылки сворачиваются в бургер бокового меню**
+  - цитата: «As a header scales down to fit smaller screen sizes, header links and menus should collapse into a left-panel hamburger menu.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/UI-shell-header/usage.mdx
+- **Скрытая навигация (бургер) хуже по метрикам, чем видимая или частично видимая**
+  - цитата: «Hidden navigation is less discoverable than visible or partially visible navigation.»
+  - источник: https://www.nngroup.com/articles/hamburger-menus/
+- **Дерево не использовать как основную навигацию продукта — для этого боковая панель (UI shell left panel)**
+  - цитата: «As the primary navigation in a product's UI. Instead, use the UI Shell left panel for product navigation.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx
+
+## scroll  (11)
+- **Индикатор прокрутки: появляется при начале прокрутки и показывает положение в контенте**
+  - цитата: «The scroll view itself has no appearance, but it can display a translucent scroll indicator that typically appears after people begin scrolling the view's content»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json
+- **Индикатор не всегда виден — нужно явно намекать, что контент продолжается за краем экрана**
+  - цитата: «Because scroll indicators aren't always visible, it can be helpful to make it obvious when content extends beyond the view»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json
+- **Своя прокрутка должна сохранять привычное «упругое» поведение и инерцию**
+  - цитата: «If you build custom scrolling for a view, make sure your scroll indicators use the elastic behavior that people expect»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json
+- **Не дублировать индикаторы на одной оси (скролл-индикатор + page control)**
+  - цитата: «If you show a page control with a scroll view, don't show the scrolling indicator on the same axis to avoid confusing people with redundant controls.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json
+- **Липкие (pinned) заголовки требуют визуального отделения от прокручиваемого контента (scroll edge effect)**
+  - цитата: «This style provides a more opaque visual separation for top toolbars that contain a large number of controls, text that appears outside of Liquid Glass controls, and pinned table headers.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json
+- **Длинный список и производительность: следить за расходом памяти при виртуализации**
+  - цитата: «Memory consumption: How much information about your list is being stored in memory, which could lead to an app crash.»
+  - источник: https://reactnative.dev/docs/optimizing-flatlist-configuration
+- **Размер батча при прокрутке: больше элементов за раз = блокировка JS-потока и потеря отзывчивости на тап**
+  - цитата: «More items per batch means longer periods of JavaScript execution potentially blocking other event processing, like presses, hurting responsiveness.»
+  - источник: https://reactnative.dev/docs/optimizing-flatlist-configuration
+- **Длинные списки — частый источник джанка (рывков) при прокрутке, проверять их в первую очередь**
+  - цитата: «Run through components that are common sources of jank, such as RecyclerView.»
+  - источник: https://developer.android.com/topic/performance/vitals/render
+- **Бесконечная прокрутка плоха для задач поиска конкретного элемента**
+  - цитата: «locating a previously found item on an extremely long page is inefficient, especially if that item is placed many scrolling segments down.»
+  - источник: https://www.nngroup.com/articles/infinite-scrolling/
+- **Цена прокрутки: контент внизу длинной страницы просматривают реже**
+  - цитата: «The interaction cost of scrolling reduces the likelihood that content will be viewed in lower parts of a longer page.»
+  - источник: https://www.nngroup.com/articles/scrolling-and-attention/
+- **При прокрутке шапка/заголовок группы остаётся липкой и с фоном, отделяющим её от строк**
+  - цитата: «If there are scrolling capabilities, the header will remain sticky and have a background layer to differentiate it from the list item rows scrolling beneath it.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/contained-list/usage.mdx
+
+## logo  (9)
+- **Логотип не должен отъедать место у контента — особенно на узком экране**
+  - цитата: «Ensure branding always defers to content. Using screen space for an element that does nothing but display a brand asset can mean there's less room for the content people care about.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/branding.json
+- **Не раскидывать логотип по всему интерфейсу — место лучше отдать полезным элементам**
+  - цитата: «Resist the temptation to display your logo throughout your app or game unless it's essential for providing context. People seldom need to be reminded which app they're using, and it's usually better to use the space to give people valuable information and controls.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/branding.json
+- **Логотип (масthead) — на каждой странице, и в шапке показывать только логотип и общесистемные ссылки**
+  - цитата: «You must use the GOV.UK header component at the top of every page. ... It should only show the GOV.UK logo and any GOV.UK-wide links and tools to help your users.»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/header/index.md
+- **Название сервиса и навигацию в шапку к логотипу не добавлять**
+  - цитата: «You can no longer use the GOV.UK header to show service name or navigation links.»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/header/index.md
+- **Если сервис не на домене gov.uk — логотип и айдентика должны быть свои**
+  - цитата: «use the crown or GOV.UK logotype in the header»
+  - источник: https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk
+- **Сервис вне GOV.UK: корону/GOV.UK-логотип в шапке не использовать, показывать свой бренд**
+  - цитата: «identify itself as being part of GOV.UK ... use the crown or GOV.UK logotype in the header»
+  - источник: https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/generic-header/index.md
+- **На узком экране ссылки шапки рядом с логотипом уезжают в боковое меню**
+  - цитата: «Links in the header are supported as product navigation, if required. These links move to the side menu in narrow screen widths.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/UI-shell-header/usage.mdx
+- **Логотип в шапке без названия сервиса — только чтобы показать, чей это сервис**
+  - цитата: «Use the appropriate header at the top of every page to show users they are on an NHS service and help them get started in finding what they need.»
+  - источник: https://service-manual.nhs.uk/design-system/components/header
+- **Свой бренд = свой логотип и шрифт организации в шапке**
+  - цитата: «You should also use the brand logo and font of your organisation.»
+  - источник: https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk
+
+## dialog  (10)
+- **Короткое подтверждение — обычный модальный диалог; полноэкранный диалог на мобиле нужен только для сложной задачи с вводом данных (несколько полей/IME).**
+  - цитата: «Full-screen dialogs are best suited to complex tasks, or require an input method editor, as they group a series of tasks together before they can be saved.»
+  - источник: https://m1.material.io/components/dialogs.html
+- **Диалог не должен быть перекрыт другими элементами или показан частично; нельзя открывать диалог поверх диалога и нельзя класть в него прокручиваемый контент.**
+  - цитата: «Dialogs should never be obscured by other elements or appear partially on screen.»
+  - источник: https://m1.material.io/components/dialogs.html
+- **Порядок кнопок: подтверждающее действие — справа (trailing) или сверху в стопке; отменяющее — слева (leading) или снизу.**
+  - цитата: «In general, place the button people are most likely to choose on the trailing side in a row of buttons or at the top in a stack of buttons. Always place the default button on the trailing side of a row or at the top of a stack. Cancel buttons are typically on the leading side of a row or at the bottom of a stack.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/alerts.json
+- **Разрушительное действие: кнопка со стилем destructive + обязательная кнопка Cancel, и никогда не делать Cancel кнопкой по умолчанию.**
+  - цитата: «If there’s a destructive action, include a Cancel button to give people a clear, safe way to avoid the action.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/alerts.json
+- **Длинный текст в диалоге: прокрутки в диалоге избегать, заголовок короткий, сообщение — только когда нужно.**
+  - цитата: «Although an alert might scroll if the text size is large enough, be sure to minimize the potential for scrolling by keeping alert titles short and including a brief message only when necessary.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/alerts.json
+- **Свайп-закрытие при несохранённых изменениях: сначала подтверждение, а не молчаливое закрытие.**
+  - цитата: «People expect to swipe vertically to dismiss a sheet instead of tapping a dismiss button. If people have unsaved changes in the sheet when they begin swiping to dismiss it, use an action sheet to let them confirm their action.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sheets.json
+- **Случайное закрытие: у оверлея должно быть два способа закрытия — явная кнопка Close и системная кнопка/жест Back, иначе пользователи запутываются и теряют работу.**
+  - цитата: «For all overlays (including bottom sheets), support the following two methods for dismissing the overlay: a clear Close button and the built-in (phone’s or browser’s) Back button or Back gesture.»
+  - источник: https://www.nngroup.com/articles/accidental-overlay-dismissal/
+- **Случайный тап вне частичного оверлея закрывает его и уничтожает уже введённые данные (кейс Overstock).**
+  - цитата: «Another situation where it’s easy for users to lose work is if they accidentally tap outside of a partial overlay, thus dismissing it.»
+  - источник: https://www.nngroup.com/articles/accidental-overlay-dismissal/
+- **Тап по маске (вне модалки) закрывает диалог по умолчанию — это поведение нужно осознанно выключать для форм с вводом.**
+  - цитата: «Whether to close the modal dialog when the mask (area outside the modal) is clicked»
+  - источник: https://ant.design/components/modal
+- **Разрушительные и необратимые действия выносятся в отдельный вариант диалога (danger modal); заголовок и кнопка называют само действие.**
+  - цитата: «If the action is destructive or irreversible, then use a transactional danger modal.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/modal/usage.mdx
+
+## backdrop  (6)
+- **Затемнение — сигнал, что фон заблокирован: полупрозрачный тёмный scrim поверх недоступного контента.**
+  - цитата: «A translucent dark scrim is usually placed over the locked-out background content as a signal that it is currently unavailable.»
+  - источник: https://www.nngroup.com/articles/bottom-sheet/
+- **Модальный bottom sheet: при появлении остальной экран затемняется, чтобы сфокусировать внимание на листе.**
+  - цитата: «When a modal bottom sheet slides into the screen, the rest of the screen dims, giving focus to the bottom sheet.»
+  - источник: https://m1.material.io/components/bottom-sheets.html
+- **Поверх затемнённого фона взаимодействовать нельзя, пока лист/диалог не будет закрыт.**
+  - цитата: «They appear above other UI elements and must be dismissed in order to interact with the underlying content.»
+  - источник: https://m1.material.io/components/bottom-sheets.html
+- **Затемнённый фон — платформенная норма для шита на телефоне: контент шита центрируется поверх dimmed background.**
+  - цитата: «centering its content on top of a dimmed background view»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sheets.json
+- **В анатомии модального окна затемнение — отдельный элемент «Overlay»: экранный слой, который перекрывает контент страницы.**
+  - цитата: «Screen overlay that obscures the on-page content.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/modal/usage.mdx
+- **Клик по scrim — штатный способ отмены без действия; это же делает затемнение источником случайных закрытий.**
+  - цитата: «clicking the scrim or pressing the Escape key, allowing all interactions involving dismissal without taking an action»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-dialog/README.md
+
+## snackbar  (12)
+- **Только одно сообщение на экране одновременно.**
+  - цитата: «Show only one snackbar on screen at a time.»
+  - источник: https://m1.material.io/components/snackbars-toasts.html
+- **Второе сообщение вытесняет первое: предыдущий snackbar сворачивается вниз до того, как новый выезжает вверх (без наложения).**
+  - цитата: «There is only ever one snackbar displayed. When a second snackbar is triggered while the first is displayed, the first should start the contraction motion downwards before the second one animates upwards.»
+  - источник: https://m1.material.io/components/snackbars-toasts.html
+- **Текст — одна строка, прямо про выполненную операцию; на мобиле двухстрочный snackbar выше (80dp против 48dp).**
+  - цитата: «Snackbars should contain a single line of text directly related to the operation performed.»
+  - источник: https://m1.material.io/components/snackbars-toasts.html
+- **Не перекрывать нижние действия: если snackbar накрывает FAB, кнопку нужно сместить вверх на его высоту.**
+  - цитата: «Move your floating action button vertically to accommodate the snackbar height.»
+  - источник: https://m1.material.io/components/snackbars-toasts.html
+- **Кнопка «Отменить»: подтверждение удаления с undo остаётся на экране, пока пользователь не сделает другое действие (например, не начнёт скроллить).**
+  - цитата: «After the user deletes a conversation from the list view, an acknowledgment appears with an undo option. It remains until the user takes an unrelated action, such as scrolling the list.»
+  - источник: https://m1.material.io/patterns/confirmation-acknowledgement.html
+- **Сколько живёт: таймаут настраивается в диапазоне 4–10 секунд, значение по умолчанию — 5 секунд.**
+  - цитата: «Value must be between `4000` and `10000` (or `-1` to disable the timeout completely) or an error will be thrown. Defaults to `5000` (5 seconds).»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-snackbar/README.md
+- **Одно действие максимум; если действий два и больше — это уже диалог, а не snackbar.**
+  - цитата: «For two or more actions, use a dialog, not a snackbar, even when one of the actions is a dismiss action.»
+  - источник: https://m1.material.io/components/snackbars-toasts.html
+- **В Android-реализации новое сообщение сначала закрывает предыдущее — очередь сообщений не выстраивается.**
+  - цитата: «**Note**: Only one snackbar will be shown at a time. Showing a new snackbar will dismiss any previous ones first.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Snackbar.md
+- **Длинный текст действия на мобиле переносится под текст сообщения (stacked-вариант).**
+  - цитата: «Action buttons with long text should be positioned _below_ the label instead of alongside it.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-snackbar/README.md
+- **Сообщение внизу экрана легко не заметить (реальный кейс: пользователь 5 минут ждал загрузки, не увидев исчезнувшую через 5 секунд ошибку).**
+  - цитата: «one of our mobile users spent 5 minutes waiting for some content to load only because she hadn’t notice the little error message presented at the bottom of the screen that quickly faded away after 5 seconds.»
+  - источник: https://www.nngroup.com/articles/indicators-validations-notifications/
+- **Toast перекрывает контент и авто-скрывается через 5 секунд, поэтому должен легко закрываться вручную.**
+  - цитата: «Toast notifications persist by default, but they can timeout and be coded to dismiss automatically after five seconds on the screen.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx
+- **В веб-реализации сообщение по умолчанию живёт 3 секунды; одновременных сообщений может быть несколько с ограничением maxCount.**
+  - цитата: «Time(seconds) before auto-dismiss, don't dismiss if set to 0»
+  - источник: https://ant.design/components/message
+
+## banners  (9)
+- **На мобиле баннер живёт вверху экрана под app bar, при скролле закрепляется; показывать только один баннер за раз.**
+  - цитата: «Banners should be displayed at the top of the screen, below a top app bar. They’re persistent and nonmodal, allowing the user to either ignore them or interact with them at any time. Only one banner should be shown at a time.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/README.md
+- **Баннер не исчезает сам — закрытие требует действия пользователя (поэтому он не подходит для мелочей).**
+  - цитата: «It requires a user action to be dismissed.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/README.md
+- **В потоке: баннер ставится сразу перед h1 (не поверх контента), ширина — как у остального контента страницы.**
+  - цитата: «Position a notification banner immediately before the page h1»
+  - источник: https://design-system.service.gov.uk/components/notification-banner/
+- **Одновременно только один баннер на странице; несколько сообщений объединяются в один баннер.**
+  - цитата: «Avoid showing more than one notification banner on the same page. Instead, combine the messages in a single notification banner.»
+  - источник: https://design-system.service.gov.uk/components/notification-banner/
+- **Если информация относится к тому, что пользователь делает на странице, — это не баннер, а контент страницы.**
+  - цитата: «If the information is directly relevant to the thing the user is doing on that page, put the information in the main page content instead.»
+  - источник: https://design-system.service.gov.uk/components/notification-banner/
+- **Баннеры на мобиле игнорируют (banner blindness): то, что резко выделяется от окружения, пользователь принимает за рекламу.**
+  - цитата: «Anything that stands out from immediate surrounding context is likely to be considered an ad»
+  - источник: https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/
+- **На узком экране крупный баннер невозможно проигнорировать взглядом — он перекрывает контент при скролле.**
+  - цитата: «A mobile inline ad is so large in proportion to the screen size that users cannot avert their eyes from it as they swipe down.»
+  - источник: https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/
+- **На мобильных экранах кнопка действия баннера переносится под его текст.**
+  - цитата: «On mobile screens the action button wraps under the body content.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx
+- **Inline-баннеры не закрываются автоматически: держатся, пока пользователь их не закроет («x» в правом верхнем углу) или не выполнит действие.**
+  - цитата: «Inline notifications do not dismiss automatically. They persist on the page until the user dismisses them or takes action that resolves the notification.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx
+
+## hint-tooltip  (11)
+- **Классический tooltip на телефоне недоступен: он вызывается ховером, а на тач-экранах вместо него нужен popup tip.**
+  - цитата: «Because tooltips are initiated by a hover gesture, they can be used only on devices with a mouse or keyboard. They are not normally available on touchscreens.»
+  - источник: https://www.nngroup.com/articles/tooltip-guidelines/
+- **На мобиле подсказка вызывается тапом и закрывается тапом по другому месту экрана.**
+  - цитата: «User taps to close or clicks another area of the screen»
+  - источник: https://www.nngroup.com/articles/tooltip-guidelines/
+- **Как вызывается на Android: долгое нажатие (tap and hold), подсказка остаётся, пока палец на элементе.**
+  - цитата: «A tooltip is triggered by tapping and holding an item. Keep the tooltip displayed as long as the user continues to hold the element.»
+  - источник: https://m1.material.io/components/tooltips.html
+- **После отпускания подсказка живёт 1.5 секунды; любое действие на экране её закрывает.**
+  - цитата: «On lift, display the tooltip for 1.5 seconds.»
+  - источник: https://m1.material.io/components/tooltips.html
+- **Не мешать пальцу: на тач-UI подсказка крупнее десктопной — выше плитка (32dp) и больше боковые отступы (16dp).**
+  - цитата: «Touch UI tooltips»
+  - источник: https://m1.material.io/components/tooltips.html
+- **Подсказка появляется и по тапу — веб-реализация Material описывает три триггера: hover, focus и tap.**
+  - цитата: «Tooltips display informative text when users hover over, focus on, or tap an element.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-tooltip/README.md
+- **Carbon-тултип работает только по ховеру/фокусу, то есть на тач-устройстве требует альтернативного паттерна.**
+  - цитата: «Tooltips display additional information upon hover or focus that is contextual, helpful, and nonessential»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tooltip/usage.mdx
+- **На узком экране не показывать поповер/подсказку — использовать всё доступное пространство экрана.**
+  - цитата: «Avoid displaying popovers in compact views.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/popovers.json
+- **Подсказки-оверлеи на мобиле показывают по одному за раз и только про одно взаимодействие, иначе их не читают.**
+  - цитата: «it is more effective to focus on a single interaction rather than attempting to explain every possible area of the user interface»
+  - источник: https://www.nngroup.com/articles/mobile-instructional-overlay/
+- **Пользователь должен сразу отличать подсказку от элементов интерфейса, иначе он пытается с ней взаимодействовать.**
+  - цитата: «People must immediately be able to distinguish between hint screens and actual elements of the interface.»
+  - источник: https://www.nngroup.com/articles/mobile-instructional-overlay/
+- **В подсказке не может быть информации, критичной для выполнения задачи — всё важное должно быть на экране постоянно.**
+  - цитата: «Don’t use tooltips for information that is vital to task completion.»
+  - источник: https://www.nngroup.com/articles/tooltip-guidelines/
+
+## expansion-panel  (10)
+- **Сколько раскрывать сразу: разрешать открывать несколько секций одновременно, состояние не сбрасывать до действия пользователя.**
+  - цитата: «If you do use accordions, make sure to give people the capability to open multiple sections at a time so that different chunks of content are readily available. Items that are opened or closed should remain in that state until the user changes it.»
+  - источник: https://www.nngroup.com/articles/accordions-complex-content/
+- **На мобиле аккордеон уместен именно из-за маленького экрана: длинную страницу не дочитывают до конца.**
+  - цитата: «when the information is restricted to very small spaces, such as on mobile devices»
+  - источник: https://www.nngroup.com/articles/accordions-complex-content/
+- **Нельзя вкладывать аккордеон в аккордеон — контент становится трудно найти.**
+  - цитата: «Do not put accordions within accordions, as it will make content difficult to find.»
+  - источник: https://design-system.service.gov.uk/components/accordion/
+- **Не прятать в аккордеон контент, который нужен всем пользователям.**
+  - цитата: «Do not use an accordion for content that all users need to see.»
+  - источник: https://design-system.service.gov.uk/components/accordion/
+- **Запоминание состояния: при возврате на страницу ранее открытые секции должны остаться открытыми (session storage).**
+  - цитата: «Users might need some sections to be open from the start. If they leave and then return to the page, they might also need sections they opened to stay open.»
+  - источник: https://design-system.service.gov.uk/components/accordion/
+- **Аккордеон применяют, когда места мало и длинный контент нельзя показать сразу — типично мобильный интерфейс.**
+  - цитата: «When space is at a premium and long content cannot be displayed all at once, like on a mobile interface or in a side panel.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/accordion/usage.mdx
+- **Не использовать аккордеон, если пользователь, скорее всего, прочитает весь контент раздела.**
+  - цитата: «If a user is likely to read all of the content, then don't use an accordion»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/accordion/usage.mdx
+- **На одном экране — не больше одного раскрывающегося контроля (disclosure button).**
+  - цитата: «Use no more than one disclosure button in a single view.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/disclosure-controls.json
+- **Состояние показывается иконкой: стрелка вниз у свёрнутого блока, вверх — у раскрытого; тап переключает состояние.**
+  - цитата: «An arrow that points down when collapsed and points up when expanded.»
+  - источник: https://m1.material.io/components/expansion-panels.html
+- **В режиме «аккордеон» одновременно раскрыт только один пункт (по умолчанию — первый).**
+  - цитата: «which allows only one panel to be expanded at a time.»
+  - источник: https://ant.design/components/collapse
+
+## stepper  (12)
+- **Сколько шагов видно: если шагов немного — точки (dots) как компактная индикация на телефоне.**
+  - цитата: «Use dots when the number of steps isn’t large.»
+  - источник: https://m1.material.io/components/steppers.html
+- **Если шагов много или шаги добавляются по ходу процесса — прогресс-бар вместо точек.**
+  - цитата: «Use a progress bar when there are many steps, or if there are steps that need to be inserted during the process (based on responses to earlier steps).»
+  - источник: https://m1.material.io/components/steppers.html
+- **Подписи при узком экране: вертикальный степпер — решение для мобилы.**
+  - цитата: «Vertical steppers are designed for narrow screen sizes. They are ideal for mobile.»
+  - источник: https://m1.material.io/components/steppers.html
+- **Длинные названия шагов в горизонтальном степпере не использовать — не влезают на мобиле.**
+  - цитата: «Avoid using long step names in horizontal steppers.»
+  - источник: https://m1.material.io/components/steppers.html
+- **Не вкладывать степперы друг в друга и не размещать несколько степперов на одной странице.**
+  - цитата: «Don’t embed steppers within steppers or use multiple steppers on one page.»
+  - источник: https://m1.material.io/components/steppers.html
+- **Авто-адаптация: при ширине экрана меньше 532px степпер автоматически становится вертикальным.**
+  - цитата: «Change to vertical direction when screen width smaller than 532px»
+  - источник: https://ant.design/components/steps
+- **Возврат назад: нужны явные кнопки перехода с содержательными подписями (не просто Next/Previous).**
+  - цитата: «Include buttons for navigating to the next and previous steps and label the steps descriptively»
+  - источник: https://www.nngroup.com/articles/wizards/
+- **Потеря данных при выходе: визарды плохо прерываются — при выходе на середине пользователь теряет работу и должен заново пройти предыдущие шаги.**
+  - цитата: «If users quit the process midway, they might not only lose their work, but may need to click again through the preceding steps.»
+  - источник: https://www.nngroup.com/articles/wizards/
+- **Показывать список/схему шагов и подсвечивать текущий — иначе на маленьком экране теряется контекст и неизвестно, сколько шагов впереди.**
+  - цитата: «Communicate a clear mental model of the process by displaying a list or a diagram of the steps involved and highlighting the current step.»
+  - источник: https://www.nngroup.com/articles/wizards/
+- **Не использовать степпер для процессов короче трёх шагов и для процессов, которые можно пройти в любом порядке.**
+  - цитата: «When a process or form has fewer than three steps.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/progress-indicator/usage.mdx
+- **Многосессионные шаги: разрешать сохранять прогресс и продолжать с того же места при возврате.**
+  - цитата: «If it needs to be completed over multiple sessions, consider allowing users to save their progress, and then to continue where they left off when they return.»
+  - источник: https://design-system.service.gov.uk/components/task-list/
+- **Редактируемость: шаг можно сделать editable, чтобы пользователь вернулся к нему в рамках сессии.**
+  - цитата: «Editable steps allow users to return later to edit a step.»
+  - источник: https://m1.material.io/components/steppers.html
+
+## status  (8)
+- **Статус — только индикация: не делать его ссылкой/кнопкой и не использовать глаголы в подписи.**
+  - цитата: «Tags are only used to indicate a status. Do not make a tag interactive by making it into a link or button.»
+  - источник: https://design-system.service.gov.uk/components/tag/
+- **Доступность: не передавать информацию только цветом — нужен текстовый дескриптор (WCAG 2.2 SC 1.4.1).**
+  - цитата: «Do not use colour alone to convey information, because it’s not accessible.»
+  - источник: https://design-system.service.gov.uk/components/tag/
+- **Статус на мобиле = цвет + короткий текстовый дескриптор, чтобы читалось с одного взгляда.**
+  - цитата: «Statuses use colour and a short descriptor to give users a quick overview of how much of the task list they have completed, and how much is left to do.»
+  - источник: https://design-system.service.gov.uk/components/task-list/
+- **Не использовать капс в статусах — на маленьком экране читается хуже.**
+  - цитата: «The use of uppercase in task statuses makes them harder to read.»
+  - источник: https://design-system.service.gov.uk/components/task-list/
+- **Статус точкой (dot) должен сопровождаться текстом — цвет точки не единственный носитель смысла.**
+  - цитата: «If status is set, text sets the display text of the status dot»
+  - источник: https://ant.design/components/badge
+- **Пассивный статус легко пропустить: если информация критична, индикатора-бейджа недостаточно.**
+  - цитата: «Passive notifications can easily be missed, since they require no user action.»
+  - источник: https://www.nngroup.com/articles/indicators-validations-notifications/
+- **Статус-плашку могут принять за кнопку: светлый фон с тёмным текстом вместо тёмной плашки (результат исследований GOV.UK).**
+  - цитата: «Research from multiple teams found that some users perceived these as buttons and tried to click on them.»
+  - источник: https://design-system.service.gov.uk/components/tag/
+- **Акцент на незавершённом: статус «выполнено» — без фона, чтобы внимание уходило к задачам, требующим действия.**
+  - цитата: «The ‘Completed’ task now uses black text with no background colour, which will draw more attention to tasks that require action.»
+  - источник: https://design-system.service.gov.uk/components/task-list/
+
+## badge  (10)
+- **Число больше порога → показывается «99+»; порог настраивается (overflowCount, по умолчанию 99).**
+  - цитата: «The default value of overflowCount is 99»
+  - источник: https://ant.design/components/badge
+- **Ноль по умолчанию не показывается; показ нуля включается отдельным флагом.**
+  - цитата: «Whether to show badge when count is zero»
+  - источник: https://ant.design/components/badge
+- **Без числа — отдельный вариант «красная точка», когда количество неизвестно или неважно.**
+  - цитата: «Whether to display a red dot instead of count»
+  - источник: https://ant.design/components/badge
+- **Значок с числом использовать только для непрочитанных уведомлений, не для произвольных метрик.**
+  - цитата: «Use a badge only to show people how many unread notifications they have.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/notifications.json
+- **Не ставить в бейдж числа, не связанные с уведомлениями (погода, даты, курсы акций, счёт игры).**
+  - цитата: «Don’t use a badge to convey numeric information that isn’t related to notifications, such as weather-related data, dates and times, stock prices, or game scores.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/notifications.json
+- **Обнуление счётчика убирает сам бейдж и связанные уведомления — состояние нельзя «оставить нулём».**
+  - цитата: «Note that reducing a badge’s count to zero removes all related notifications from Notification Center.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/notifications.json
+- **Место в строке: бейдж навешивается на элемент навигации (вкладку/иконку) и указывает, что в разделе есть новое.**
+  - цитата: «You can display a badge — a red oval containing white text and either a number or an exclamation point — on a tab to indicate that there’s new or updated information in the section that warrants a person’s attention.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/tab-bars.json
+- **Бейдж — только для критичной информации, иначе его эффект размывается; часть вкладок может уезжать в «More».**
+  - цитата: «Reserve badges for critical information so you don’t dilute their impact and meaning.»
+  - источник: https://developer.apple.com/tutorials/data/design/human-interface-guidelines/tab-bars.json
+- **Доступность: для скринридера предусмотрены отдельные строки описания — количество, «превышает максимум» (99+) и «без числа».**
+  - цитата: «`setContentDescriptionExceedsMaxBadgeNumberStringResource(@StringRes int)` `setContentDescriptionNumberless(CharSequence)`»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/BadgeDrawable.md
+- **Бейдж показывает уведомления, счётчики или статус на элементах навигации и иконках; внутри может быть число или метка.**
+  - цитата: «Badges show notifications, counts, or status information on navigation items and icons. A badge can include labels or numbers.»
+  - источник: https://m3.material.io/components/badges/overview
+
+## card  (12)
+- **Карточка на мобиле — короткая выжимка с переходом к деталям, а не полный контент**
+  - цитата: «A card is usually short and offers a linked entry point to further details, rather than the full details themselves.»
+  - источник: https://www.nngroup.com/articles/cards-component/
+- **Тап по всей площади карточки — большая зона нажатия, это критично для пальца**
+  - цитата: «For most implementations, clicking or tapping anywhere on the card link to a details page ... This larger touch zone substantially improves usability on both touchscreen devices and mouse-based devices (due to Fitts' Law).»
+  - источник: https://www.nngroup.com/articles/cards-component/
+- **Карточка экономит место на телефоне: группировка рамкой/фоном вместо пустого пространства (важно на 375 px)**
+  - цитата: «Without the visual style of the card, grouping each item's ingredients together clearly in a way that separates them from other items on the page would require a lot more negative space and would waste valuable screen real estate on mobile phones and tablets.»
+  - источник: https://www.nngroup.com/articles/cards-component/
+- **Карточки плохо подходят, когда надо искать/сравнивать: на мобиле тогда лучше вертикальный список**
+  - цитата: «Card layouts are less scannable than lists. ... Thus, cards are not appropriate when users search for a specific item from a list or look for a particular piece of content.»
+  - источник: https://www.nngroup.com/articles/cards-component/
+- **На мобиле у карточек рекомендуются отступы 8 dp**
+  - цитата: «We recommend that cards on mobile have `8dp` margins.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Card.md
+- **На мобиле outlined/filled карточка рисуется без тени (elevation 0dp)**
+  - цитата: «On mobile, an outlined or a filled card’s default elevation is `0dp`, with a raised dragged elevation of `8dp`.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Card.md
+- **Длинный заголовок/текст карточки: короткий текст и уход в detail view вместо переполнения строки**
+  - цитата: «Keep item text succinct so row content is comfortable to read. If each item consists of a large amount of text, consider alternatives that help you avoid displaying over-large table rows. For example, you could list item titles only, letting people choose an item to reveal its content in a detail view.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/lists-and-tables
+- **Раскрытие карточки на мобиле делается аккордеоном на месте (progressive disclosure), а не новым экраном**
+  - цитата: «While the use of accordions on desktop is debatable, on mobile, accordions are one of the most useful design elements, as they often solve the problem of displaying too much content in too little screen space.»
+  - источник: https://www.nngroup.com/articles/mobile-accordions/
+- **При раскрытии карточку НЕ надо прокручивать к верху экрана — иначе кажется, что открылся новый экран и ломается кнопка «Назад»**
+  - цитата: «Another solution (that uses space in a less efficient way, however) is to prevent the illusion of a new page by not scrolling the page when the accordion is expanded.»
+  - источник: https://www.nngroup.com/articles/mobile-accordions/
+- **Действия в карточке: список действий выносится вниз карточки (Ant Design Card actions)**
+  - цитата: «actions | The action list, shows at the bottom of the Card»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/card/index.en-US.md
+- **Действия карточки: при 1–2 действиях оставлять их inline, при 3+ — прятать под overflow-меню «⋯»**
+  - цитата: «When the overflow menu contains fewer than three options, keep the actions inline as icon buttons instead. This approach reduces a click and makes available actions visible at a glance.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx
+- **На тач-устройствах overflow-меню «⋯» нельзя показывать только по hover — оно должно быть видимым всегда**
+  - цитата: «For mobile and touch devices the data table will detect if the user agent supports hover-over and persist the overflow menus even if the `overflowMenuOnHover` prop is enabled.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx
+
+## table  (15)
+- **Сколько столбцов терпимо на телефоне: для текстовых данных — только 2, для числовых — больше**
+  - цитата: «For complex or wordy entries, such as those in comparison tables, only 2 columns may fit legibly on a narrow mobile screen. For a number-heavy table, narrower columns may work, allowing more columns to be visible.»
+  - источник: https://www.nngroup.com/articles/mobile-tables/
+- **Заголовки столбцов закрепляются при вертикальной прокрутке длинной таблицы**
+  - цитата: «For any table that fills more than a single vertical screen, sticky column headers help users know what they are looking at.»
+  - источник: https://www.nngroup.com/articles/mobile-tables/
+- **Наличие горизонтальной прокрутки должно быть явно видно (обрезанный столбец или стрелки)**
+  - цитата: «However, for such scrolling to work, it must be apparent that there is more data beyond the horizontal fold. Like for carousels, arrows or cut-off elements convey this information best.»
+  - источник: https://www.nngroup.com/articles/mobile-tables/
+- **Первый (левый) столбец закрепляется при горизонтальном скролле широкой таблицы**
+  - цитата: «If users must scroll horizontally to see all the data, the leftmost column, which is typically a column of row headers, should be locked in place, so users can see the necessary labels at all times.»
+  - источник: https://www.nngroup.com/articles/mobile-tables/
+- **Поворот телефона — крайняя мера, а не основной способ показать широкую таблицу**
+  - цитата: «Rotating the phone allows more columns of information to be visible at once. However, what you gain in column space, you lose in row space. In addition, it can be an annoyance to users if you dictate how they must hold their phone.»
+  - источник: https://www.nngroup.com/articles/mobile-tables/
+- **Управление набором данных: дать пользователю выбрать нужные столбцы/строки вместо показа всего**
+  - цитата: «The ability to select what rows or columns are shown on the screen lets users focus on the subset of data that is of interest to them.»
+  - источник: https://www.nngroup.com/articles/mobile-tables/
+- **Адаптивность: столбцы скрываются по breakpoint на узких экранах**
+  - цитата: «responsive | The list of breakpoints at which to display this column. Always visible if not set»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md
+- **Горизонтальный скролл таблицы задаётся явно, включая ширину области прокрутки**
+  - цитата: «x | Set horizontal scrolling, can also be used to specify the width of the scroll area, could be number, percent value, true and ['max-content']»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md
+- **Закрепление столбца (start/end) — штатное поведение широкой таблицы**
+  - цитата: «fixed | (IE not support) Set column to be fixed: `true`(same as `'start'`) `'start'` `'end'`»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md
+- **Таблицу нельзя зажимать в тесный контейнер — ей нужна максимальная ширина страницы**
+  - цитата: «Data tables should be placed in a page's main content area and given plenty of space to display data without truncation. Avoid placing data tables inside data tables or smaller containers where the information can feel cramped or needs truncation.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx
+- **Длинный заголовок столбца: перенос на 2 строки, дальше — обрезка + tooltip**
+  - цитата: «In cases where a column title is too long, wrap the text to two lines and then truncate the rest of the text. The full text should be shown in a tooltip on hover.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx
+- **В узкой таблице текст должен оставаться узнаваемым: многоточие в середине сохраняет начало и конец значения**
+  - цитата: «Sometimes, an ellipsis in the middle of text can make an item easier to distinguish because it preserves both the beginning and the end of the content.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/lists-and-tables
+- **Заголовки столбцов — существительные из 1–2 слов, без завершающей точки**
+  - цитата: «Use nouns or short noun phrases with ... and don’t add ending punctuation.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/lists-and-tables
+- **Пустое состояние таблицы — это возможность объяснить статус и дать путь к действию**
+  - цитата: «Empty states provide opportunities for designers to communicate system status, increase learnability of the system, and deliver direct pathways for key tasks.»
+  - источник: https://www.nngroup.com/articles/empty-state-interface-design/
+- **Таблица не для вёрстки: только для сравнения данных в строках и столбцах**
+  - цитата: «Use the table component to let users compare information in rows and columns. ... Never use the table component to layout content on a page.»
+  - источник: https://design-system.service.gov.uk/components/table/
+
+## table-2-lvl  (8)
+- **Второй уровень таблицы на мобиле реализуется раскрытием строки на месте, а не отдельной таблицей**
+  - цитата: «The expandable data table helps present large amounts of data in a small space. Users can expand and collapse row panels to reveal and hide additional information.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx
+- **В раскрытом втором уровне — только дополнительная информация; «развернуть всё» по умолчанию не показывают**
+  - цитата: «the expand-all chevron is not shown by default in the expandable data table variant. Keeping detailed information in the expanded section saves user loading time by postponing some data queries until needed.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx
+- **Группировка данных таблицы по аккордеонам на мобиле: обзор + прямой доступ к нужной группе**
+  - цитата: «If the table includes data that can be grouped into logical categories, use accordions to allow mobile users to: See an overview of the type of data that’s available in the table / Have direct access to information of interest»
+  - источник: https://www.nngroup.com/articles/mobile-tables/
+- **Раскрытие строки/группы конфигурируется (иконка раскрытия, рендер раскрытого контента)**
+  - цитата: «expandable | Config expandable content ... expandedRowRender | Expanded container render for each row»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md
+- **Второй уровень через дочерние строки (tree data) в той же таблице**
+  - цитата: «childrenColumnName | The column contains children to display | string | children»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md
+- **Иерархия — базовое назначение списков и таблиц: группы/уровни плюс взаимодействие**
+  - цитата: «A table or list can represent data that’s organized in groups or hierarchies, and it can support user interactions like selecting, adding, deleting, and reordering.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/lists-and-tables
+- **Если раскрытый второй уровень длинный — нужен закреплённый заголовок строки для быстрого сворачивания**
+  - цитата: «In situations like this, a persistent accordion header or another floating element that allows users to quickly close the accordion can speed up the interaction and save people some effort.»
+  - источник: https://www.nngroup.com/articles/mobile-accordions/
+- **Сворачивание уровня: пользователь ожидает, что «Назад»/тот же элемент вернёт закрытое состояние**
+  - цитата: «consider using the Back browser button as an accordion-collapse button: if the last user action was expanding an accordion, then tapping Back should take the user to the closed-accordion page view.»
+  - источник: https://www.nngroup.com/articles/mobile-accordions/
+
+## divider  (8)
+- **Разделитель на мобиле отделяет тапабельные элементы списка и очерчивает зоны нажатия**
+  - цитата: «Dividers can reinforce tapability, such as when used to separate list items or define tappable regions in an accordion.»
+  - источник: https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md
+- **Full-width разделитель — между несвязанными секциями; inset — между связанным контентом внутри секции**
+  - цитата: «Use full width dividers to separate larger sections of unrelated content. ... Use inset dividers to separate related content within a section.»
+  - источник: https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md
+- **Inset-разделитель на мобиле по умолчанию отступает с обеих сторон экрана**
+  - цитата: «Inset dividers separate related content within a section. They are equally indented from both sides of the screen by default.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Divider.md
+- **На телефоне разделитель может быть невидимой линией — только отступом между блоками**
+  - цитата: «By default govuk-section-break is only visible by its margin. You can add the govuk-section-break--visible class to make it visible with a separator line.»
+  - источник: https://design-system.service.gov.uk/styles/section-break/
+- **Линии создают подрегионы внутри общей области и передают группировку контролов**
+  - цитата: «Within that dark background, lines further create other common subregions, that communicate the grouping of the various controls»
+  - источник: https://www.nngroup.com/articles/common-region/
+- **Группировка отступами/границами важнее, чем сам разделитель: близкие элементы воспринимаются как связанные**
+  - цитата: «Just remember this principle: items near each other appear related.»
+  - источник: https://www.nngroup.com/articles/form-design-white-space/
+- **Связанные поля формы объединяются в группы (разделитель/отступ между группами)**
+  - цитата: «Tip #2: Group together related fields.»
+  - источник: https://www.nngroup.com/articles/form-design-white-space/
+- **Поля формы равномерно разнесены друг от друга, чтобы было понятно, какая подпись к какому полю**
+  - цитата: «If your layout includes multiple text fields, leave enough space between them so people can easily see which input field belongs with each introductory label.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/text-fields
+
+## form-field  (19)
+- **Подпись поля должна стоять НАД полем, а не внутри или под ним**
+  - цитата: «Is the label above it? (Not inside, not below)»
+  - источник: https://www.nngroup.com/articles/mobile-input-checklist/
+- **При открытой клавиатуре поле должно оставаться видимым (клавиатура не должна закрывать поле)**
+  - цитата: «Is the field visible in both orientations when the keyboard is displayed?»
+  - источник: https://www.nngroup.com/articles/mobile-input-checklist/
+- **Плейсхолдер внутри поля надо убрать**
+  - цитата: «Have you removed any placeholder from inside the field?»
+  - источник: https://www.nngroup.com/articles/mobile-input-checklist/
+- **Высота поля должна показывать большую часть возможных значений**
+  - цитата: «Is the field big enough so that most possible field values are visible?»
+  - источник: https://www.nngroup.com/articles/mobile-input-checklist/
+- **Подписи полей выравниваются над полем, короткие, в sentence case, без двоеточий**
+  - цитата: «You should align labels above the text input they refer to. They should be short, direct and written in sentence case. Do not use colons at the end of labels»
+  - источник: https://design-system.service.gov.uk/components/text-input/
+- **Placeholder не заменяет подпись и не используется для подсказок — он исчезает при вводе**
+  - цитата: «Do not use placeholder text in place of a label, or for hints or examples, as: it vanishes when the user starts typing»
+  - источник: https://design-system.service.gov.uk/components/text-input/
+- **Поле должно запрашивать правильный тип клавиатуры (inputmode) под содержимое**
+  - цитата: «inputmode string Optional value for the inputmode attribute»
+  - источник: https://design-system.service.gov.uk/components/text-input/
+- **Неправильная клавиатура задерживает ввод и ведёт к опечаткам и ошибкам валидации**
+  - цитата: «Inappropriate keyboard layouts slow users who are filling form fields and can lead to typos and validation errors»
+  - источник: https://baymard.com/guidelines/1100-appropriate-mobile-keyboard-layouts
+- **Цифровая клавиатура для числовых полей: цели клавиш на 521% больше — меньше опечаток**
+  - цитата: «On an iPhone 6S, the size and hitarea of the keys on the purpose-built numeric keyboard are 521% larger than on the traditional touch keyboard (257x109 vs 63x85 pts).»
+  - источник: https://baymard.com/blog/mobile-touch-keyboards
+- **Автокоррекцию отключать для имён, адресов, email**
+  - цитата: «Auto-correct often works very poorly for things like abbreviations, street names, e-mail addresses, person names, and similar words that are not in the dictionary.»
+  - источник: https://baymard.com/blog/mobile-touch-keyboards
+- **Автокапитализацию отключать для email и URL**
+  - цитата: «It is therefore recommended that auto-capitalization be disabled for email fields and other fields where appropriate (for example a website URL).»
+  - источник: https://baymard.com/blog/mobile-touch-keyboards
+- **Оптимизированную клавиатуру надо применять последовательно для всех числовых полей на странице**
+  - цитата: «Purpose-built keyboards should be invoked consistently for all inputs on the same page»
+  - источник: https://baymard.com/blog/mobile-touch-keyboards
+- **Ошибка поля: сообщение красным после вопроса и подсказки + красная рамка поля**
+  - цитата: «put the message in red after the question text and hint text ... use a red border to visually connect the message and the question it belongs to»
+  - источник: https://design-system.service.gov.uk/components/error-message/
+- **При ошибке НЕ очищать заполненные поля — сохранять введённые (в т.ч. ошибочные) значения**
+  - цитата: «Do not clear any form fields when showing the Error message component ... Keeping information that caused errors helps users to: see what went wrong, edit their previous answer, avoid re-entering information»
+  - источник: https://design-system.service.gov.uk/components/error-message/
+- **Сводка ошибок выводится наверху, фокус переводится на неё**
+  - цитата: «Always show an error summary when there is a validation error, even if there’s only one. You must: move keyboard focus to the error summary ... include the heading ‘There is a problem’»
+  - источник: https://design-system.service.gov.uk/components/error-summary/
+- **Правильность поля проверяется в подходящий момент (email — при уходе с поля; username/password — до ухода)**
+  - цитата: «when entering an email address, it’s best to validate when people switch to another field; when creating a user name or password, validation needs to happen before people switch to another field.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/text-fields
+- **Показывать подсказку (hint) под полем, чтобы объяснить назначение**
+  - цитата: «Show a hint in a text field to help communicate its purpose.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/text-fields
+- **Подпись обязательна (label обязателен, кроме одобренного исключения по доступности)**
+  - цитата: «Label: Text that informs the user about the content they need to enter in the field. It is required unless you get an approved accessibility exemption.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx
+- **Несколько полей укладывать вертикально с одинаковой шириной**
+  - цитата: «Stack multiple text fields vertically when possible, and use consistent widths to create a more organized layout.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/text-fields
+
+## textarea  (9)
+- **Textarea — только для многострочного ввода; для одной строки — текстовое поле**
+  - цитата: «Use the textarea component when you need to let users enter an amount of text that’s longer than a single line.»
+  - источник: https://design-system.service.gov.uk/components/textarea/
+- **Textarea обязательно должна иметь подпись; placeholder не заменяет её**
+  - цитата: «You must label textareas. ... Placeholder text is not a suitable substitute for a label, as it disappears when users click inside the textarea.»
+  - источник: https://design-system.service.gov.uk/components/textarea/
+- **Открытые вопросы в textarea на мобиле тяжелы — лучше разбить на простые с выбором вариантов**
+  - цитата: «Users can find open-ended questions difficult to answer. It might be better to break up one complex question into a series of simple ones, for example where users can select from options using a Radios component.»
+  - источник: https://design-system.service.gov.uk/components/textarea/
+- **Высота textarea — переменная, с ресайз-хендлом; минимум 40px, максимума по умолчанию нет**
+  - цитата: «By default, text area has a minimum height of 40px/2.5rem but no maximum height.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx
+- **Показывать счётчик символов (введено / допустимо) для длинного текста**
+  - цитата: «Character counter: Indicate the number of characters being entered and the total number of characters allowed.»
+  - источник: https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx
+- **Подпись textarea выравнивается над полем**
+  - цитата: «Labels must be aligned above the textarea they refer to.»
+  - источник: https://design-system.service.gov.uk/components/textarea/
+- **Для больших объёмов текста — отдельный компонент text view, а не text field**
+  - цитата: «To let people input larger amounts of text, use a text view instead.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/text-fields
+- **Размер поля подбирается под ожидаемый объём текста**
+  - цитата: «To the extent possible, match the size of a text field to the quantity of anticipated text. The size of a text field helps people visually gauge the amount of information to provide.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/text-fields
+- **Автокоррекцию отключать и для многострочного ввода произвольных данных (имена, адреса)**
+  - цитата: «Auto-correct often works very poorly for things like abbreviations, street names, e-mail addresses, person names, and similar words that are not in the dictionary.»
+  - источник: https://baymard.com/blog/mobile-touch-keyboards
+
+## text-ui  (10)
+- **Минимальные и дефолтные размеры текста на мобиле: iOS — 17 pt по умолчанию, минимум 11 pt**
+  - цитата: «Follow the recommended default and minimum text sizes for each platform — for both custom and system fonts — to ensure your text is legible on all devices.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/typography
+- **Избегать тонких начертаний — они плохо читаются в мелком тексте**
+  - цитата: «In general, avoid light font weights.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/typography
+- **Обрезку текста при увеличенном шрифте сводить к минимуму**
+  - цитата: «Keep text truncation to a minimum as font size increases.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/typography
+- **При крупном шрифте на узком экране переходить к стопке: текст над вторичными элементами**
+  - цитата: «When font size increases in a horizontally constrained context, inline items (like glyphs and timestamps) and container boundaries can crowd text and cause truncation or overlapping. To improve readability, consider using a stacked layout where text appears above secondary items.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/typography
+- **Три и более строк текста при ограниченной высоте — не уменьшать межстрочный интервал**
+  - цитата: «If you need to display three or more lines of text, avoid tight leading even in areas where height is limited.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/typography
+- **Короткий и простой текст на мобиле читается так же хорошо; краткость и приоритизация всё равно критичны**
+  - цитата: «For the majority of mobile content scenarios, the need for brevity and prioritization is still critical.»
+  - источник: https://www.nngroup.com/articles/mobile-content/
+- **Чем сложнее контент, тем тяжелее читать с телефона — читатель замедляется**
+  - цитата: «reading on mobile becomes more difficult as the complexity of the content increases»
+  - источник: https://www.nngroup.com/articles/mobile-content/
+- **Число строк в строках/списках: короткий текст уменьшает обрезку и переносы**
+  - цитата: «Short, succinct text can help minimize truncation and wrapping, making text easier to read and scan.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/lists-and-tables
+- **При крупном шрифте уменьшать число колонок текста, чтобы избежать обрезки**
+  - цитата: «Multicolumn text can also be less readable at large sizes due to horizontal space constraints. Reduce the number of columns when the font size increases to avoid truncation and enhance readability.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/typography
+- **Обрезку в скроллируемых областях не допускать, если нет отдельного экрана для чтения целиком**
+  - цитата: «Avoid truncating text in scrollable regions unless people can open a separate view to read the rest of the content.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/typography
+
+## input-number  (12)
+- **Степпер/кнопки «+/−» экономят ввод: одно нажатие вместо набора на клавиатуре**
+  - цитата: «For adjusting small values, steppers require fewer interactions than other input methods.»
+  - источник: https://www.nngroup.com/articles/input-steppers/
+- **Минимальный размер тач-цели для кнопок степпера — около 1 см × 1 см**
+  - цитата: «for touchscreens, we’ve long recommended a minimum target size of 1 cm by 1 cm»
+  - источник: https://www.nngroup.com/articles/input-steppers/
+- **На мобиле горизонтальный степпер предпочтительнее вертикального (вертикальный тесен, легко промахнуться)**
+  - цитата: «We recommend horizontal placement for steppers on mobile devices, considering the inherent precision challenges of using a fingertip.»
+  - источник: https://www.nngroup.com/articles/input-steppers/
+- **Степпер не годится для больших изменений значения (1 → 50) — нужен обычный ввод**
+  - цитата: «Steppers are not suitable for a large number adjustments. For example, when users need to change a value from 1 to 50, an input stepper is not a wise choice.»
+  - источник: https://www.nngroup.com/articles/input-steppers/
+- **Степпер стоит комбинировать с текстовым полем для точных/больших значений**
+  - цитата: «A text-field stepper is a UI component that enables quick entry of a number using a text field along with stepper buttons on the sides for adjustment.»
+  - источник: https://www.nngroup.com/articles/input-steppers/
+- **Шаг, единицы и границы диапазона должны быть явными; при достижении лимита кнопка становится серой**
+  - цитата: «Clarify the step value and the stepper range. ... Expedia used a grayed-out plus segment to signal when that the value had reached its limits.»
+  - источник: https://www.nngroup.com/articles/input-steppers/
+- **Значение обязано быть видно рядом со степпером — сам степпер его не показывает**
+  - цитата: «A stepper sits next to a field that displays its current value, because the stepper itself doesn’t display a value.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/steppers
+- **Для широкого диапазона значений степпер дополняют текстовым полем**
+  - цитата: «Consider pairing a stepper with a text field when large value changes are likely. ... people appreciate the option to use a field to enter specific values, especially when the values they use can vary widely.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/steppers
+- **Клавиатурный ввод (стрелки вверх/вниз) включён по умолчанию и управляет шагом**
+  - цитата: «keyboard | If keyboard behavior is enabled | boolean | true»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/input-number/index.en-US.md
+- **Кнопки «+/−» и шаг настраиваются явно; шаг может быть дробным**
+  - цитата: «controls | Whether to show `+-` controls, or set custom arrow icons | ... step | The number to which the current value is increased or decreased. It can be an integer or decimal»
+  - источник: https://raw.githubusercontent.com/ant-design/ant-design/master/components/input-number/index.en-US.md
+- **Для числовых полей обязательна цифровая клавиатура — 54% мобильных сайтов её не включают**
+  - цитата: «Yet an astonishing 54% of mobile sites fail to utilize all of the (relevant) mobile-optimized keyboards available to them!»
+  - источник: https://baymard.com/blog/mobile-touch-keyboards
+- **Числовой ввод с клавиатуры на телефоне ошибочен — степпер снижает число опечаток**
+  - цитата: «using a keyboard on a smartphone is error-prone ... input steppers are an appropriate design choice for supporting small adjustments of default values»
+  - источник: https://www.nngroup.com/articles/input-steppers/
+
+## datepicker  (18)
+- **Календарь уместен для ближних дат (в пределах года); для далёких дат лучше ввод с клавиатуры**
+  - цитата: «Calendar pickers should be used for events close to the present time — within less than a year. However, they can be frustrating for users who choose dates far in advance because they require too much navigation to get to the desired input; for these users, it would be faster to simply type the year.»
+  - источник: https://www.nngroup.com/articles/date-input/
+- **Календарь особенно хорош для выбора диапазона (например, две недели/месяца рядом)**
+  - цитата: «Calendar pickers are especially useful for selecting a date range. In those situations, they often display two months side by side.»
+  - источник: https://www.nngroup.com/articles/date-input/
+- **Скролл-пикеры дат на мобиле раздражают при большом числе дат — надо разрешать ручной ввод**
+  - цитата: «Scrolling date pickers on mobile devices are common, yet they can be annoying if the picker contains many dates. In those situations, scrolling in a small space is slow and unproductive; it’s better to allow users to type the date directly.»
+  - источник: https://www.nngroup.com/articles/date-input/
+- **Разбивка даты на выпадающие списки месяц/день/год — антипаттерн (лишние шаги)**
+  - цитата: «Split date fields with drop-downs for month, day, and year require a lot of unnecessary steps. This method increases interaction cost by adding additional clicks and scrolling. We advise against using this pattern.»
+  - источник: https://www.nngroup.com/articles/date-input/
+- **Требовать спецсимволы для формата даты нельзя — любые разделители должны приниматься**
+  - цитата: «Do not require users to enter special characters to format dates.»
+  - источник: https://www.nngroup.com/articles/date-input/
+- **Для диапазона не сдвигать месяцы календаря между датой отправления и возврата**
+  - цитата: «Avoid shifting date ranges for departure and return pairs.»
+  - источник: https://www.nngroup.com/articles/date-input/
+- **Недопустимые даты (прошлое, возврат раньше отправления) должны блокироваться и быть серыми**
+  - цитата: «Users should be prevented from entering a return date that takes place before the departure date or that is in the past.»
+  - источник: https://www.nngroup.com/articles/date-input/
+- **Календарь применяют только для ближних дат/дня недели/сравнения, и всегда с возможностью ручного ввода**
+  - цитата: «Only use a calendar control if users need to: pick a date in the near future or recent past / know the day of the week, or the week of the month, as well as the date / be able to see dates in relation to other dates»
+  - источник: https://design-system.service.gov.uk/patterns/dates/
+- **Календарь не должен быть только-JS: всегда оставлять ввод даты текстом**
+  - цитата: «Never make a calendar control that depends on JavaScript as the only input option. Allow users to enter the date into a text input as well as use the control.»
+  - источник: https://design-system.service.gov.uk/patterns/dates/
+- **Памятные даты (дата рождения) — 3 отдельных поля день/месяц/год, а не календарь**
+  - цитата: «The date input component consists of 3 fields to let users enter a day, month and year.»
+  - источник: https://design-system.service.gov.uk/components/date-input/
+- **Модальный календарь на мобиле встраивается в диалог; навигация свайпом по месяцам, скроллом по годам**
+  - цитата: «Date pickers should be suitable for the context in which they appear and can be embedded into dialogs on mobile devices.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/DatePicker.md
+- **Навигация модального календаря: свайп по месяцам, вертикальный скролл по годам, тап по году — выбор года**
+  - цитата: «Modal date pickers navigate across dates in several ways: * To navigate across months, swipe horizontally * To navigate across years, scroll vertically * To access the year picker, tap the year»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/DatePicker.md
+- **Когда места мало — компактный пикер: кнопка со значением, по тапу модальный календарь**
+  - цитата: «Use a compact date picker when space is constrained. The compact style displays a button that shows the current value in your app’s accent color. When people tap the button, the date picker opens a modal view, providing access to a familiar calendar-style editor and time picker.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/pickers
+- **Пикер показывать в контексте — рядом с полем, а не переключать экраны**
+  - цитата: «Avoid switching views to show a picker. A picker works well when displayed in context, below or in proximity to the field people are editing.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/pickers
+- **До открытия пикера сообщать, какие даты недоступны**
+  - цитата: «Inform the user which dates are and are not selectable before they invoke the picker.»
+  - источник: https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/date-picker/usage
+- **Ошибки выбора даты в input-режиме: out of bounds, end before start, invalid date**
+  - цитата: «This error triggers when the user inputs an end date that occurs before the start date.»
+  - источник: https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/date-picker/usage
+- **На устройствах с малой высотой экрана по умолчанию показывать input-режим (диалог ввода меньше по высоте)**
+  - цитата: «The input mode is displayed by default for devices with small heights since the input mode dialogs are smaller than the selection mode dialogs.»
+  - источник: https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/date-picker/usage
+- **Кейс мобильного календаря у American Airlines (Baymard, пример дизайна; текст по платному доступу)**
+  - цитата: «Get Baymard access This Page Design is part of Baymard’s premium UX research. (полный текст кейса доступен только по подписке)»
+  - источник: https://baymard.com/ecommerce-design-examples/date-picker/20200-american-airlines  (НЕ ПОДТВЕРЖДЕНО)
+
+## timepicker  (12)
+- **Мобильный выбор времени — аналоговый циферблат (dial), вращение стрелки пальцем**
+  - цитата: «To select an hour or minute value, the user may rotate the clock hand around the analog clock.»
+  - источник: https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage
+- **Для устройств с малой высотой экрана рекомендован input-режим вместо циферблата**
+  - цитата: «It is recommended to show the input mode for devices with small heights as the input-mode dialogs are smaller than the selection mode dialogs.»
+  - источник: https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage
+- **Время можно вводить и с клавиатуры; переход между полем часа и минут доступен с клавиатуры**
+  - цитата: «The hour and minute values may be updated using the keyboard. The user may also navigate between them using the keyboard for accessibility.»
+  - источник: https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage
+- **Пикер времени адаптируется к размеру окна: компакт — портрет, средние/расширенные — ландшафт**
+  - цитата: «For compact windows, the picker is shown in portrait mode. For medium and expanded windows, picker is shown in landscape.»
+  - источник: https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage
+- **Для длительности — скролл-список, где выбранным считается центральное значение**
+  - цитата: «To select a time, users may scroll through a list of values. The value in the center is the selected value.»
+  - источник: https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage
+- **Подтверждение/отмена: OK сохраняет, Cancel отменяет изменения и закрывает диалог**
+  - цитата: «Tapping on the “Cancel” label button cancels any changes made to the time or duration selection and closes the picker dialog. Tapping on the “OK” label button saves any changes made to the time or duration selection and closes the picker dialog.»
+  - источник: https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage
+- **Ввод времени с клавиатуры доступен из любого мобильного пикера через иконку клавиатуры**
+  - цитата: «Input time pickers allow people to set a time using a keyboard. This option is accessible from any mobile time picker interface via the keyboard icon.»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/TimePicker.md
+- **Пикеры времени — модальные диалоги выбора времени**
+  - цитата: «Time pickers help users select and set a specific time. There are two variants of time pickers. 1. Time picker dial 2. Time picker input»
+  - источник: https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/TimePicker.md
+- **Стиль wheels (барабаны) подходит для времени; поддерживает ввод с клавиатуры**
+  - цитата: «Wheels — A set of scrolling wheels that also supports data entry through built-in or external keyboards.»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/pickers
+- **Для времени уменьшать гранулярность минут (например, шаг 15 минут вместо 60 значений)**
+  - цитата: «Consider providing less granularity when specifying minutes in a date picker. By default, a minute list includes 60 values (0 to 59). You can optionally increase the minute interval as long as it divides evenly into 60. For example, you might want quarter-hour intervals (0, 15, 30, and 45).»
+  - источник: https://developer.apple.com/design/human-interface-guidelines/pickers
+- **При выборе времени/даты подсвечивать именно ту часть, которую меняет пользователь**
+  - цитата: «if a stepper control is used for changing time and date, the part of time or date being adjusted should clearly highlighted, so that users are aware of exactly what are they changing.»
+  - источник: https://www.nngroup.com/articles/input-steppers/
+- **Проверять, что у выбранного времени нет неверного периода (AM/PM) — явный селектор периода**
+  - цитата: «To select whether the time is AM or PM, the user may tap on AM or PM in the AM/PM selector.»
+  - источник: https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage

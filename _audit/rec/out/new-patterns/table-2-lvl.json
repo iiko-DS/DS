@@ -1,0 +1,58 @@
+[
+ {
+  "behavior": "Второй уровень таблицы на мобиле реализуется раскрытием строки на месте, а не отдельной таблицей",
+  "case": "Carbon Design System — Data table, Expandable",
+  "quote": "The expandable data table helps present large amounts of data in a small space. Users can expand and collapse row panels to reveal and hide additional information.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "В раскрытом втором уровне — только дополнительная информация; «развернуть всё» по умолчанию не показывают",
+  "case": "Carbon Design System — Data table, Expandable",
+  "quote": "the expand-all chevron is not shown by default in the expandable data table variant. Keeping detailed information in the expanded section saves user loading time by postponing some data queries until needed.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Группировка данных таблицы по аккордеонам на мобиле: обзор + прямой доступ к нужной группе",
+  "case": "NN/g — Mobile Tables",
+  "quote": "If the table includes data that can be grouped into logical categories, use accordions to allow mobile users to: See an overview of the type of data that’s available in the table / Have direct access to information of interest",
+  "url": "https://www.nngroup.com/articles/mobile-tables/",
+  "verified": true
+ },
+ {
+  "behavior": "Раскрытие строки/группы конфигурируется (иконка раскрытия, рендер раскрытого контента)",
+  "case": "Ant Design — Table (expandable)",
+  "quote": "expandable | Config expandable content ... expandedRowRender | Expanded container render for each row",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "Второй уровень через дочерние строки (tree data) в той же таблице",
+  "case": "Ant Design — Table (expandable.childrenColumnName)",
+  "quote": "childrenColumnName | The column contains children to display | string | children",
+  "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md",
+  "verified": true
+ },
+ {
+  "behavior": "Иерархия — базовое назначение списков и таблиц: группы/уровни плюс взаимодействие",
+  "case": "Apple Human Interface Guidelines — Lists and tables",
+  "quote": "A table or list can represent data that’s organized in groups or hierarchies, and it can support user interactions like selecting, adding, deleting, and reordering.",
+  "url": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+  "verified": true
+ },
+ {
+  "behavior": "Если раскрытый второй уровень длинный — нужен закреплённый заголовок строки для быстрого сворачивания",
+  "case": "NN/g — Accordions on Mobile",
+  "quote": "In situations like this, a persistent accordion header or another floating element that allows users to quickly close the accordion can speed up the interaction and save people some effort.",
+  "url": "https://www.nngroup.com/articles/mobile-accordions/",
+  "verified": true
+ },
+ {
+  "behavior": "Сворачивание уровня: пользователь ожидает, что «Назад»/тот же элемент вернёт закрытое состояние",
+  "case": "NN/g — Accordions on Mobile",
+  "quote": "consider using the Back browser button as an accordion-collapse button: if the last user action was expanding an accordion, then tapping Back should take the user to the closed-accordion page view.",
+  "url": "https://www.nngroup.com/articles/mobile-accordions/",
+  "verified": true
+ }
+]

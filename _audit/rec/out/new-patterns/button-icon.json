@@ -1,0 +1,44 @@
+[
+ {
+  "behavior": "иконка без подписи однозначна",
+  "case": "IBM Carbon · Button",
+  "quote": "In an icon only button, that has no label, the icon must accurately represent what the button does.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "иконки без подписи — редко",
+  "case": "IBM Carbon · Button (опирается на Wiedenbeck, 1999)",
+  "quote": "Icon only buttons should be used sparingly. “For most situations, users learn correct interpretations better with text alone than with icons alone.”",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "иконка 24 внутри цели 48",
+  "case": "Google Android Accessibility — кейс реальных приложений Android",
+  "quote": "An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target.",
+  "url": "https://support.google.com/accessibility/android/answer/7101858",
+  "verified": true
+ },
+ {
+  "behavior": "мелкий крестик не нажать",
+  "case": "Instagram для iOS — реальный кейс, разбор NN/g",
+  "quote": "For example, on Instagram, the buttons to dismiss a follow suggestion were too small (only 2mm — 0.08in — wide), so even though they are far enough from the Follow buttons (about 2mm of spacing — the often-recommended minimum), they are still hard to select.",
+  "url": "https://www.nngroup.com/articles/touch-target-size/",
+  "verified": true
+ },
+ {
+  "behavior": "подсказка обязательна",
+  "case": "IBM Carbon · Button",
+  "quote": "Regardless of how recognizable an icon may or may not be, or whether that action lies within the universal actions list, a tooltip is always required with text explaining what the icon button would do if clicked.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "иконка без подписи не читается",
+  "case": "Angular Material · Icon",
+  "quote": "Similar to an `<img>` element, an icon alone does not convey any useful information for a screen-reader user.",
+  "url": "https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md",
+  "verified": true
+ }
+]

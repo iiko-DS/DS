@@ -1,0 +1,51 @@
+[
+ {
+  "behavior": "Select — крайняя мера: длинные выпадающие списки плохо работают, сначала пробовать уменьшить число вариантов",
+  "case": "GOV.UK Design System — Select (When to use / When not to use)",
+  "quote": "The select component should only be used as a last resort in public-facing services because research shows that some users find selects very difficult to use. ... Before using the select component, try asking users questions which will allow you to present them with fewer options.",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/select/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "Известные проблемы на мобильных: не могут закрыть список, пытаются печатать, не понимают, что список прокручивается, пинч-зумят опции",
+  "case": "GOV.UK Design System — Select (Known issues and gaps)",
+  "quote": "Research shows that users can struggle with selects, particularly when users have: ... tried to pinch zoom select options on smaller devices ... not understood that they can scroll down to see more items, or how to",
+  "url": "https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/select/index.md",
+  "verified": true
+ },
+ {
+  "behavior": "Длинные селекты на мобиле: маленькие тач-зоны, тяжёлая прокрутка, скрытые варианты",
+  "case": "ONS Service Manual (Office for National Statistics) — Select",
+  "quote": "they are difficult to use on mobile devices ... the expanded list cannot be styled so touch areas are small",
+  "url": "https://service-manual.ons.gov.uk/design-system/components/select",
+  "verified": true
+ },
+ {
+  "behavior": "Select — только для длинного списка и в последнюю очередь",
+  "case": "NHS digital service manual — Select",
+  "quote": "Use select to let users choose an option from a long list but only use it as a last resort.",
+  "url": "https://service-manual.nhs.uk/design-system/components/select",
+  "verified": true
+ },
+ {
+  "behavior": "Меню селекта не должно уходить за нижний край экрана",
+  "case": "MUI (Material UI) — Select",
+  "quote": "Menus are positioned under their emitting elements, unless they are close to the bottom of the viewport.",
+  "url": "https://mui.com/material-ui/react-select/",
+  "verified": true
+ },
+ {
+  "behavior": "В стеснённом пространстве (узкий экран, длинная форма) брать уменьшенный размер селекта",
+  "case": "Carbon Design System (IBM) — Select, размеры",
+  "quote": "Use when space is constricted or when placing a select in a form that is long and complex.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/select/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Разделять селект (выбор значения) и dropdown (действие/фильтр) — не смешивать в мобильном списке",
+  "case": "Carbon Design System (IBM) — Select versus Dropdown",
+  "quote": "A dropdown presents a list of options that users can select one or several options from that list. Dropdown options are used for taking an action, filtering, or sorting existing content.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/select/usage.mdx",
+  "verified": true
+ }
+]

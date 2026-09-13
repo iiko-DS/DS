@@ -1,0 +1,79 @@
+[
+ {
+  "behavior": "Модальный drawer — основной паттерн для мобилы; на планшете/десктопе его заменяет standard",
+  "case": "Material Components for Android — Navigation drawer, Modal navigation drawer",
+  "quote": "They are primarily used for mobile devices where screen space is limited, and can be replaced by standard drawers on tablet and desktop.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/NavigationDrawer.md",
+  "verified": true
+ },
+ {
+  "behavior": "Постоянный (standard) drawer на маленьком экране не использовать",
+  "case": "Material Components for Android — Navigation drawer, Standard navigation drawer",
+  "quote": "They can be used on tablet and desktop, but they aren't suitable for mobile devices due to limited screen size.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/NavigationDrawer.md",
+  "verified": true
+ },
+ {
+  "behavior": "Закрытие при выборе пункта: модальное меню само закрывается после действия",
+  "case": "Material Components for the web — Drawer, Modal drawer",
+  "quote": "Close the drawer when an item is activated in order to dismiss the modal as soon as the user performs an action.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-drawer/README.md",
+  "verified": true
+ },
+ {
+  "behavior": "Затемнение (scrim) обязательно и блокирует взаимодействие с контентом под меню",
+  "case": "Material Components for the web — Drawer, Modal drawer",
+  "quote": "The `mdc-drawer-scrim` next sibling element is required, to protect the app's UI from interactions while the modal drawer is open.",
+  "url": "https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-drawer/README.md",
+  "verified": true
+ },
+ {
+  "behavior": "Закрытие тапом по затемнению (клик по overlay / Esc) и по выбору пункта",
+  "case": "MUI (Material UI) — Drawer",
+  "quote": "The Drawer can be cancelled by clicking the overlay or pressing the Esc key. It closes when an item is selected, handled by controlling the open prop.",
+  "url": "https://mui.com/material-ui/react-drawer/",
+  "verified": true
+ },
+ {
+  "behavior": "Свайп для открытия конфликтует с системным «свайп назад» на iOS — discovery надо отключать; на слабых устройствах свайп не держит 60 FPS",
+  "case": "MUI (Material UI) — SwipeableDrawer",
+  "quote": "iOS has a \"swipe to go back\" feature that interferes with the discovery feature, so discovery has to be disabled. ... Some low-end mobile devices won't be able to follow the fingers at 60 FPS.",
+  "url": "https://mui.com/material-ui/react-drawer/",
+  "verified": true
+ },
+ {
+  "behavior": "Много пунктов и вложенность на телефоне: не больше двух уровней иерархии в боковом меню",
+  "case": "Apple HIG — Sidebars (Best practices)",
+  "quote": "In general, show no more than two levels of hierarchy in a sidebar. When a data hierarchy is deeper than two levels, consider using a split view interface that includes a content list between the sidebar items and detail view.",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sidebars.json",
+  "verified": true
+ },
+ {
+  "behavior": "Закрытие свайпом от края — привычный жест на планшете (iPadOS), его стоит поддерживать вместе с кнопкой",
+  "case": "Apple HIG — Sidebars (Hide/show the sidebar)",
+  "quote": "in iPadOS, people expect to use the built-in edge swipe gesture",
+  "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sidebars.json",
+  "verified": true
+ },
+ {
+  "behavior": "Много пунктов в шапке на узком экране: ссылки сворачиваются в бургер бокового меню",
+  "case": "Carbon Design System (IBM) — UI shell header, Responsive behavior",
+  "quote": "As a header scales down to fit smaller screen sizes, header links and menus should collapse into a left-panel hamburger menu.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/UI-shell-header/usage.mdx",
+  "verified": true
+ },
+ {
+  "behavior": "Скрытая навигация (бургер) хуже по метрикам, чем видимая или частично видимая",
+  "case": "NN/g — Hamburger Menus and Hidden Navigation Hurt UX Metrics",
+  "quote": "Hidden navigation is less discoverable than visible or partially visible navigation.",
+  "url": "https://www.nngroup.com/articles/hamburger-menus/",
+  "verified": true
+ },
+ {
+  "behavior": "Дерево не использовать как основную навигацию продукта — для этого боковая панель (UI shell left panel)",
+  "case": "Carbon Design System (IBM) — Tree view (When not to use)",
+  "quote": "As the primary navigation in a product's UI. Instead, use the UI Shell left panel for product navigation.",
+  "url": "https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx",
+  "verified": true
+ }
+]
