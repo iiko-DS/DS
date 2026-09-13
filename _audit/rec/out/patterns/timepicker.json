@@ -66,6 +66,127 @@
    "src": "Источники: Material Design 3 · токены Time picker (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-time-picker.scss) · Angular Material · Timepicker (raw.githubusercontent.com/angular/components/main/src/material/timepicker/timepicker.md) · Ant Design · TimePicker (ant.design/components/time-picker) · Apple HIG · Pickers (developer.apple.com/design/human-interface-guidelines/pickers)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-timepicker\"><div class=\"ds-control-panel-2 ds-control-panel-2--time\"><span class=\"ds-control-panel-2__month\">Время · шаг 30 минут</span></div><div class=\"ds-timepicker__scroll\" style=\"display:flex;flex-direction:column;gap:4px;padding:4px\"><span class=\"ds-elements-2 ds-elements-2--default\"><span>09:00</span></span><span class=\"ds-elements-2 ds-elements-2--selected\" style=\"background:#448AFF;border-radius:9999px\"><span class=\"ds-elements-2__label\">09:30</span></span><span class=\"ds-elements-2 ds-elements-2--default\"><span>10:00</span></span><span class=\"ds-elements-2 ds-elements-2--default\"><span>10:30</span></span></div></div></div>",
    "example_ru": "Шаг 30 минут подписан прямо в панели списка: у MD3 шага нет вовсе, у Angular по умолчанию 30 минут, у Ant Design 1 минута, у Apple 1 минута — значит, выбрали мы."
+  },
+  {
+   "title": "Циферблат: вращение стрелки пальцем",
+   "items": [
+    "Что происходит: аналоговый циферблат требует попасть пальцем в дорожку часа, а потом ещё раз — в дорожку минут, и промах меняет значение.",
+    "Что делают системы: SAP Fiori Design (Android) · Time Picker usage — «To select an hour or minute value, the user may rotate the clock hand around the analog clock.».",
+    "Что делать нам: на 375 px вместо вращения стрелки давать список времени и ввод цифрами — это два точных нажатия вместо попадания в дорожку."
+   ],
+   "src": "Источники: SAP Fiori Design (Android) · Time Picker usage (https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-timepicker\"><div class=\"ds-control-panel-2 ds-control-panel-2--time\"><span class=\"ds-control-panel-2__month\">Время · шаг 30 минут</span></div><div class=\"ds-timepicker__scroll\" style=\"display:flex;flex-direction:column;gap:4px;padding:4px\"><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:00</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:15</span></span><span class=\"ds-elements-2 ds-elements-2--selected\" style=\"background:#448AFF;border-radius:9999px\"><span class=\"ds-elements-2__label\">09:30</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:45</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">10:00</span></span></div></div></div>",
+   "example_ru": "Вместо вращения стрелки по циферблату — список времени с шагом 30 минут: значение выбирается точным нажатием, а не промахом по дорожке."
+  },
+  {
+   "title": "Малая высота — режим ввода",
+   "items": [
+    "Что происходит: на экране с малой высотой циферблат не помещается: диалог выбора выше диалога ввода и упирается в края шторки.",
+    "Что делают системы: SAP Fiori Design (Android) · Time Picker usage — «It is recommended to show the input mode for devices with small heights as the input-mode dialogs are smaller than the selection mode dialogs.».",
+    "Что делать нам: на низких экранах по умолчанию открывать режим ввода, а выбор из списка оставлять альтернативой по тапу."
+   ],
+   "src": "Источники: SAP Fiori Design (Android) · Time Picker usage (https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-timepicker\" style=\"width:343px\"><span class=\"ds-input-timepicker__label\">Время</span><div class=\"ds-input-timepicker__frame\"><input type=\"text\" value=\"09:30\" inputmode=\"numeric\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-input-timepicker__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span></div><span class=\"ds-input-timepicker__support\" style=\"font-size:12px;line-height:16px\">Режим ввода открыт по умолчанию</span></div></div>",
+   "example_ru": "По умолчанию показан ввод времени в поле: он ниже диалога выбора и целиком помещается на экране с малой высотой."
+  },
+  {
+   "title": "Час и минуты — с клавиатуры",
+   "items": [
+    "Что происходит: минутную дорожку циферблата нельзя выставить точно, а перейти с часа на минуты с внешней клавиатуры не получится.",
+    "Что делают системы: SAP Fiori Design (Android) · Time Picker usage — «The hour and minute values may be updated using the keyboard. The user may also navigate between them using the keyboard for accessibility.».",
+    "Что делать нам: давать ввод времени с клавиатуры и переход Tab между часом и минутами — это и точнее, и доступнее для скринридера."
+   ],
+   "src": "Источники: SAP Fiori Design (Android) · Time Picker usage (https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-timepicker\" style=\"width:343px\"><span class=\"ds-input-timepicker__label\">Время</span><div class=\"ds-input-timepicker__frame\"><input type=\"text\" value=\"09:30\" inputmode=\"numeric\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-input-timepicker__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span></div><span class=\"ds-input-timepicker__support\" style=\"font-size:12px;line-height:16px\">Tab переводит с часа на минуты</span></div></div>",
+   "example_ru": "Поле времени доступно с клавиатуры: «09:30» набирается цифрами, а Tab переводит с часа на минуты без циферблата."
+  },
+  {
+   "title": "Компакт — портрет, шире — ландшафт",
+   "items": [
+    "Что происходит: одна и та же раскладка пикера на узком и широком окне: в компакте список уезжает вниз, на широком окне остаётся пустая половина.",
+    "Что делают системы: SAP Fiori Design (Android) · Time Picker usage — «For compact windows, the picker is shown in portrait mode. For medium and expanded windows, picker is shown in landscape.».",
+    "Что делать нам: в компактном окне держать портретную раскладку списка, на средних и широких — горизонтальную, со списком сбоку."
+   ],
+   "src": "Источники: SAP Fiori Design (Android) · Time Picker usage (https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"align-items:flex-start\"><div class=\"ds-input-timepicker\" style=\"width:160px\"><span class=\"ds-input-timepicker__label\">Время</span><div class=\"ds-input-timepicker__frame\"><input type=\"text\" value=\"09:30\" inputmode=\"numeric\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-input-timepicker__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span></div></div><div class=\"ds-timepicker\" style=\"width:175px\"><div class=\"ds-timepicker__scroll\" style=\"display:flex;flex-direction:column;gap:4px;padding:4px\"><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:00</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:15</span></span><span class=\"ds-elements-2 ds-elements-2--selected\" style=\"background:#448AFF;border-radius:9999px\"><span class=\"ds-elements-2__label\">09:30</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:45</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">10:00</span></span></div></div></div>",
+   "example_ru": "На широком окне поле времени и список стоят рядом: та же раскладка в компакте уходит в портрет, со списком под полем."
+  },
+  {
+   "title": "В списке выбран центр",
+   "items": [
+    "Что происходит: в прокручиваемом списке сбивается отметка: пока список движется, непонятно, какое значение считается выбранным.",
+    "Что делают системы: SAP Fiori Design (Android) · Time Picker usage — «To select a time, users may scroll through a list of values. The value in the center is the selected value.».",
+    "Что делать нам: считать выбранным центральное значение и подсвечивать полосу в середине списка, а не строку под пальцем."
+   ],
+   "src": "Источники: SAP Fiori Design (Android) · Time Picker usage (https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-timepicker\"><div class=\"ds-control-panel-2 ds-control-panel-2--time\"><span class=\"ds-control-panel-2__month\">Время · шаг 30 минут</span></div><div class=\"ds-timepicker__scroll\" style=\"display:flex;flex-direction:column;gap:4px;padding:4px\"><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">08:30</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:00</span></span><span style=\"background:#F0F5FF;border-radius:8px;display:flex;justify-content:center;padding:4px 0\"><span class=\"ds-elements-2 ds-elements-2--selected\" style=\"background:#448AFF;border-radius:9999px\"><span class=\"ds-elements-2__label\">09:30</span></span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">10:00</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">10:30</span></span></div></div></div>",
+   "example_ru": "Полоса в середине списка показывает, что выбранным станет центральное значение «09:30», а не строка, на которой остановился палец."
+  },
+  {
+   "title": "OK сохраняет, «Отмена» отменяет",
+   "items": [
+    "Что происходит: без кнопок подтверждения выбор в списке применяется сразу, поэтому промах по соседнему значению молча меняет время брони.",
+    "Что делают системы: SAP Fiori Design (Android) · Time Picker usage — «Tapping on the “Cancel” label button cancels any changes made to the time or duration selection and closes the picker dialog. Tapping on the “OK” label button saves any changes made to the time or duration selection and closes the picker dialog.».",
+    "Что делать нам: под списком держать «OK» акцентом и «Отмена» текстом: время фиксируется только по подтверждению."
+   ],
+   "src": "Источники: SAP Fiori Design (Android) · Time Picker usage (https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-timepicker\"><div class=\"ds-control-panel-2 ds-control-panel-2--time\"><span class=\"ds-control-panel-2__month\">Время · шаг 30 минут</span></div><div class=\"ds-timepicker__scroll\" style=\"display:flex;flex-direction:column;gap:4px;padding:4px\"><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:00</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:15</span></span><span class=\"ds-elements-2 ds-elements-2--selected\" style=\"background:#448AFF;border-radius:9999px\"><span class=\"ds-elements-2__label\">09:30</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:45</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">10:00</span></span></div></div><div style=\"display:flex;gap:8px;justify-content:flex-end\"><button class=\"ds-btn ds-btn--m ds-btn--neutral\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent\" type=\"button\" style=\"width:auto\"><span class=\"ds-btn__label\">OK</span></button></div></div>",
+   "example_ru": "Под списком времени стоят «OK» и «Отмена»: новое значение применяется только по «OK», отмена закрывает пикер без изменений."
+  },
+  {
+   "title": "Иконка клавиатуры в пикере",
+   "items": [
+    "Что происходит: из циферблата нельзя переключиться на ввод цифрами — надо закрыть пикер и возвращаться к полю.",
+    "Что делают системы: Material Components for Android · Time pickers (Material Design) — «Input time pickers allow people to set a time using a keyboard. This option is accessible from any mobile time picker interface via the keyboard icon.».",
+    "Что делать нам: в шапке мобильного пикера времени держать иконку клавиатуры, чтобы ввод цифрами был доступен из самого пикера."
+   ],
+   "src": "Источники: Material Components for Android · Time pickers (Material Design) (https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/TimePicker.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-timepicker\" style=\"width:343px\"><span class=\"ds-input-timepicker__label\">Время</span><div class=\"ds-input-timepicker__frame\"><input type=\"text\" value=\"09:30\" inputmode=\"numeric\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-input-timepicker__icon\"><span class=\"material-icons\" style=\"font-size:24px\">keyboard</span></span></div><span class=\"ds-input-timepicker__support\" style=\"font-size:12px;line-height:16px\">Иконка клавиатуры — ввод из пикера</span></div></div>",
+   "example_ru": "В поле времени стоит иконка клавиатуры: переключиться на ввод цифрами можно прямо из пикера, закрывать его не нужно."
+  },
+  {
+   "title": "Две модели: циферблат и ввод",
+   "items": [
+    "Что происходит: в системе живёт один способ выбора времени, поэтому список и ввод цифрами конкурируют за одно и то же место.",
+    "Что делают системы: Material Components for Android · Time pickers — «Time pickers help users select and set a specific time. There are two variants of time pickers. 1. Time picker dial 2. Time picker input».",
+    "Что делать нам: держать в ДС обе модели — выбор из списка и ввод цифрами, и не заставлять всех пользоваться одной."
+   ],
+   "src": "Источники: Material Components for Android · Time pickers (https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/TimePicker.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-timepicker\"><div class=\"ds-control-panel-2 ds-control-panel-2--time\"><span class=\"ds-control-panel-2__month\">Время · шаг 30 минут</span></div><div class=\"ds-timepicker__scroll\" style=\"display:flex;flex-direction:column;gap:4px;padding:4px\"><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:00</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:15</span></span><span class=\"ds-elements-2 ds-elements-2--selected\" style=\"background:#448AFF;border-radius:9999px\"><span class=\"ds-elements-2__label\">09:30</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">09:45</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">10:00</span></span></div></div></div>",
+   "example_ru": "Показан вариант выбора из списка; вариант ввода цифрами живёт рядом с ним — пикер времени всегда модальный, но вход в него разный."
+  },
+  {
+   "title": "Барабаны тоже принимают ввод",
+   "items": [
+    "Что происходит: барабаны часов и минут крутятся только пальцем, поэтому точное значение набирается вслепую и медленно.",
+    "Что делают системы: Apple Human Interface Guidelines · Pickers — «Wheels — A set of scrolling wheels that also supports data entry through built-in or external keyboards.».",
+    "Что делать нам: колёсикам времени оставлять и ввод с клавиатуры — барабан не должен быть единственным способом выставить время."
+   ],
+   "src": "Источники: Apple Human Interface Guidelines · Pickers (https://developer.apple.com/design/human-interface-guidelines/pickers)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"align-items:flex-start\"><div class=\"ds-timepicker\" style=\"width:84px\"><div class=\"ds-control-panel-2 ds-control-panel-2--time\"><span class=\"ds-control-panel-2__month\">Час</span></div><div class=\"ds-timepicker__scroll\" style=\"display:flex;flex-direction:column;gap:4px;padding:4px\"><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">08</span></span><span class=\"ds-elements-2 ds-elements-2--selected\" style=\"background:#448AFF;border-radius:9999px\"><span class=\"ds-elements-2__label\">09</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">10</span></span></div></div><div class=\"ds-timepicker\" style=\"width:84px\"><div class=\"ds-control-panel-2 ds-control-panel-2--time\"><span class=\"ds-control-panel-2__month\">Мин</span></div><div class=\"ds-timepicker__scroll\" style=\"display:flex;flex-direction:column;gap:4px;padding:4px\"><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">15</span></span><span class=\"ds-elements-2 ds-elements-2--selected\" style=\"background:#448AFF;border-radius:9999px\"><span class=\"ds-elements-2__label\">30</span></span><span class=\"ds-elements-2 ds-elements-2--default\" style=\"\"><span class=\"\">45</span></span></div></div></div>",
+   "example_ru": "Барабаны часа и минут: значение из колёс можно и впечатать — ввод с клавиатуры у барабанов сохраняется."
+  },
+  {
+   "title": "Подсвечена та часть, что меняем",
+   "items": [
+    "Что происходит: курсор стоит в значении «09:30», но по экрану не понять, меняется сейчас час или минуты.",
+    "Что делают системы: NN/g · Design Guidelines for Input Steppers — «if a stepper control is used for changing time and date, the part of time or date being adjusted should clearly highlighted, so that users are aware of exactly what are they changing.».",
+    "Что делать нам: подсвечивать активную часть значения — час или минуты, как у степпера, чтобы было видно, что именно правится."
+   ],
+   "src": "Источники: NN/g · Design Guidelines for Input Steppers (https://www.nngroup.com/articles/input-steppers/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-timepicker\" style=\"width:200px\"><span class=\"ds-input-timepicker__label\">Время</span><div class=\"ds-input-timepicker__frame\"><span style=\"background:#448AFF;border-radius:4px;color:#FFFFFF;padding:0 4px\">09</span><span>:</span><span style=\"color:#616161\">30</span><span class=\"ds-input-timepicker__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span></div></div></div>",
+   "example_ru": "В поле подсвечен час «09», минуты стоят серыми: видно, какая часть значения меняется прямо сейчас."
+  },
+  {
+   "title": "Период AM/PM — явно",
+   "items": [
+    "Что происходит: по значению «09:30» без подписи не понять, чем заканчивается время — утром или вечером, — а переключателя периода нет.",
+    "Что делают системы: SAP Fiori Design (Android) · Time Picker usage — «To select whether the time is AM or PM, the user may tap on AM or PM in the AM/PM selector.».",
+    "Что делать нам: держать 24-часовой формат и подписывать период словами у значения; селектор AM/PM добавлять только там, где формат 12-часовой."
+   ],
+   "src": "Источники: SAP Fiori Design (Android) · Time Picker usage (https://www.sap.com/design-system/fiori-design-android/v25-4/components/input-and-selection/time-picker/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-timepicker\" style=\"width:343px\"><span class=\"ds-input-timepicker__label\">Время</span><div class=\"ds-input-timepicker__frame\"><input type=\"text\" value=\"09:30\" inputmode=\"numeric\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-input-timepicker__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span></div><span class=\"ds-input-timepicker__support\" style=\"font-size:12px;line-height:16px\">09:30 — это утро · формат 24 часа</span></div></div>",
+   "example_ru": "Рядом со значением «09:30» подписан период: 24-часовой формат снимает неоднозначность AM/PM без отдельного переключателя."
   }
  ]
 }

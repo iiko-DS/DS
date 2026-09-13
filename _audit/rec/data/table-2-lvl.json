@@ -132,6 +132,61 @@
    "src": "Источники: IBM Carbon · Loading pattern (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/patterns/loading-pattern/index.mdx) и Data table usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx) · Ant Design · Table (ant.design/components/table) и Empty (ant.design/components/empty)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-table-2-lvl\" style=\"display:flex;flex-direction:column;gap:8px\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;padding:12px\"><div style=\"font:500 16px Roboto\">Заказ №1042</div><div style=\"font:400 12px Roboto;color:#616161\">3 позиции · 1 920 ₽</div></div><div style=\"border:1px dashed #448AFF;border-radius:12px;padding:12px;color:#616161;font:400 12px Roboto\">Раскрытие строки: позиции заказа, статусы, платежи — без второй таблицы</div></div></div>",
    "example_ru": "Раскрытие сразу говорит, что внутри (позиции, статусы, платежи), а не оставляет пустую рамку: скелет держим до пары секунд, дальше — данные или «нет данных»."
+  },
+  {
+   "title": "Группировка строк по аккордеонам",
+   "items": [
+    "Что происходит: когда строк в таблице несколько десятков, на 375 px плоский список одинаковых строк читать невозможно — пользователь листает его без ориентира и не понимает, где какая группа данных.",
+    "Что делают системы: NN/g советует собирать строки в группы и раскрывать их аккордеонами: «If the table includes data that can be grouped into logical categories, use accordions to allow mobile users to: See an overview of the type of data that’s available in the table / Have direct access to information of interest».",
+    "Что делать нам: на мобиле группировать строки по логическим категориям (зал, статус, смена) и раскрывать группу аккордеоном: сверху видно состав данных таблицы, а нужная группа открывается одним тапом."
+   ],
+   "src": "Источники: Nielsen Norman Group · Mobile Tables, аккордеоны (https://www.nngroup.com/articles/mobile-tables/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-table-2-lvl\" style=\"display:flex;flex-direction:column;gap:8px\"><div class=\"ds-table-2-lvl__header-row\" style=\"display:flex;background:#FAFAFA;border-radius:12px;padding:8px\"><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:2;font:500 12px Roboto\">Группа</span><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:1;font:500 12px Roboto;text-align:right\">Заказы</span></div><div class=\"ds-table-2-lvl--table-row-2-lvl\" style=\"display:flex;border:1px solid #E0E0E0;border-radius:12px;padding:12px\"><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:2;font:400 16px Roboto\">Зал</span><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:1;font:400 16px Roboto;text-align:right\">12</span></div><div style=\"border:1px dashed #448AFF;border-radius:12px;padding:12px;color:#616161;font:400 12px Roboto\">Группа раскрыта аккордеоном: внутри 12 заказов</div></div></div>",
+   "example_ru": "Строки собраны в группы, а группы раскрываются аккордеонами: сверху обзор состава данных, нужная группа открывается одним тапом (NN/g, Mobile Tables)."
+  },
+  {
+   "title": "Раскрытие строки настраивается",
+   "items": [
+    "Что происходит: раскрытие строки делают одним жёстко зашитым способом на все таблицы, и там, где нужны платежи или история, одно и то же содержимое раскрытия перестаёт подходить экрану.",
+    "Что делают системы: Ant Design отдаёт в настройки и содержимое, и аффорданс раскрытия — «expandable | Config expandable content ... expandedRowRender | Expanded container render for each row».",
+    "Что делать нам: в мобильном ДС оставить раскрытие конфигурируемым — что именно рисуется внутри (позиции, платежи, история) и как выглядит шеврон раскрытия, вместо одной фиксированной разметки на все таблицы."
+   ],
+   "src": "Источники: Ant Design · Table, expandable (https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-table-2-lvl\" style=\"display:flex;flex-direction:column;gap:8px\"><div class=\"ds-table-2-lvl--table-row-2-lvl\" style=\"display:flex;align-items:center;gap:8px;border:1px solid #E0E0E0;border-radius:12px;padding:12px\"><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:1;font:400 16px Roboto\">Заказ №1042</span><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"font:400 12px Roboto;color:#616161\">Раскрыть</span><span class=\"material-icons\" style=\"font-size:20px\">expand_more</span></div><div style=\"border:1px dashed #448AFF;border-radius:12px;padding:12px;color:#616161;font:400 12px Roboto\">Содержимое раскрытия задаётся параметром: позиции, платежи или история</div></div></div>",
+   "example_ru": "Содержимое раскрытия и шеврон настраиваются под конкретную таблицу, а не зашиты в одну разметку (Ant Design, `expandable` / `expandedRowRender`)."
+  },
+  {
+   "title": "Второй уровень дочерними строками",
+   "items": [
+    "Что происходит: для второго уровня заводят отдельные колонки или ещё одну таблицу внутри ячейки, и строка перестаёт совпадать сама с собой: у верхнего уровня один набор колонок, у вложенного — другой.",
+    "Что делают системы: Ant Design держит второй уровень прямо в данных строки — «childrenColumnName | The column contains children to display | string | children»: иерархия это поле данных, а не отдельная разметка.",
+    "Что делать нам: описывать второй уровень дочерними строками в тех же колонках (поле children), а не заводить для него новые колонки или вложенную таблицу внутри ячейки."
+   ],
+   "src": "Источники: Ant Design · Table, childrenColumnName (https://raw.githubusercontent.com/ant-design/ant-design/master/components/table/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-table-2-lvl\" style=\"display:flex;flex-direction:column;gap:8px\"><div class=\"ds-table-2-lvl--table-row-2-lvl\" style=\"display:flex;border:1px solid #E0E0E0;border-radius:12px;padding:12px\"><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:2;font:500 16px Roboto\">Заказ №1042</span><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:1;font:500 16px Roboto;text-align:right\">1 920 ₽</span></div><div class=\"ds-table-2-lvl--table-row-2-lvl\" style=\"display:flex;margin-left:16px;border:1px solid #E0E0E0;border-radius:12px;padding:12px\"><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:2;font:400 16px Roboto\">Пицца «Маргарита»</span><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:1;font:400 16px Roboto;text-align:right\">1 180 ₽</span></div><div style=\"border:1px dashed #448AFF;border-radius:12px;padding:12px;color:#616161;font:400 12px Roboto\">Второй уровень — дочерняя строка в тех же колонках, с отступом 16 px</div></div></div>",
+   "example_ru": "Второй уровень приходит дочерней строкой в тех же колонках «позиция / сумма»: иерархия задана данными (children), отдельных колонок для вложенного уровня нет."
+  },
+  {
+   "title": "Длинное раскрытие: закреплённая шапка",
+   "items": [
+    "Что происходит: раскрытый второй уровень оказывается длиннее экрана, и чтобы свернуть строку, пользователь листает раскрытие вверх до самого его начала — это несколько экранов прокрутки на телефоне.",
+    "Что делают системы: NN/g для аккордеонов на мобиле предлагает держать шапку на виду — «In situations like this, a persistent accordion header or another floating element that allows users to quickly close the accordion can speed up the interaction and save people some effort».",
+    "Что делать нам: если раскрытие выше экрана, заголовок строки с шевроном закрепляем и держим видимым во время прокрутки раскрытия, чтобы свернуть уровень можно было одним тапом."
+   ],
+   "src": "Источники: Nielsen Norman Group · Accordions on Mobile (https://www.nngroup.com/articles/mobile-accordions/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-table-2-lvl\" style=\"display:flex;flex-direction:column;gap:8px\"><div class=\"ds-table-2-lvl--table-row-2-lvl\" style=\"display:flex;align-items:center;gap:8px;position:sticky;top:0;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:12px;padding:12px\"><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:1;font:500 16px Roboto\">Заказ №1042</span><span class=\"material-icons\" style=\"font-size:20px\">expand_less</span></div><div style=\"border:1px dashed #448AFF;border-radius:12px;padding:12px;color:#616161;font:400 12px Roboto\">Длинное раскрытие: позиции, платежи, история — шапка строки остаётся на экране</div></div></div>",
+   "example_ru": "Заголовок строки закреплён над длинным раскрытием: свернуть уровень можно тапом по шеврону, не прокручивая раскрытие до начала (NN/g, Accordions on Mobile)."
+  },
+  {
+   "title": "«Назад» сворачивает раскрытие",
+   "items": [
+    "Что происходит: после раскрытия строки тап по «Назад» уводит пользователя с экрана целиком, и вся работа со списком теряется вместо простого сворачивания раскрытого уровня.",
+    "Что делают системы: NN/g предлагает трактовать «Назад» как сворачивание — «consider using the Back browser button as an accordion-collapse button: if the last user action was expanding an accordion, then tapping Back should take the user to the closed-accordion page view».",
+    "Что делать нам: если последним действием было раскрытие строки, «Назад» и системный жест сначала сворачивают раскрытие, и только следующий шаг уводит с экрана."
+   ],
+   "src": "Источники: Nielsen Norman Group · Accordions on Mobile (https://www.nngroup.com/articles/mobile-accordions/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-table-2-lvl\" style=\"display:flex;flex-direction:column;gap:8px\"><div class=\"ds-table-2-lvl--table-row-2-lvl\" style=\"display:flex;align-items:center;gap:8px;border:1px solid #E0E0E0;border-radius:12px;padding:12px\"><span class=\"material-icons\" style=\"font-size:20px\">arrow_back</span><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"flex:1;font:500 16px Roboto\">Заказы</span><span class=\"ds-table-2-lvl--table-cell-2-lvl\" style=\"font:400 12px Roboto;color:#616161\">Назад сворачивает</span></div><div style=\"border:1px dashed #448AFF;border-radius:12px;padding:12px;color:#616161;font:400 12px Roboto\">Первый «Назад» сворачивает раскрытие, второй — уводит со списка</div></div></div>",
+   "example_ru": "«Назад» сначала сворачивает раскрытую строку и лишь потом уводит со списка: раскрытие ведёт себя как шаг навигации (NN/g, Accordions on Mobile)."
   }
  ]
 }

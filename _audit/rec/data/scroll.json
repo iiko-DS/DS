@@ -128,6 +128,127 @@
    "src": "Источники: Nielsen Norman Group · Infinite Scrolling (nngroup.com/articles/infinite-scrolling-tips) · Apple HIG · Lists and tables (developer.apple.com/design/human-interface-guidelines/lists-and-tables) · Angular CDK · virtual-scroll-viewport (raw.githubusercontent.com/angular/components/main/src/cdk/scrolling/virtual-scroll-viewport.ts)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div></div><div class=\"phone__row\">Показано 20 из 240</div><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Показать ещё 20</span></button></div>",
    "example_ru": "Вместо бесконечной ленты — счётчик «Показано 20 из 240» и кнопка «Показать ещё»: конец списка достижим, футер с итогами на месте, позиция прокрутки сохраняется при возврате."
+  },
+  {
+   "title": "Индикатор появляется при прокрутке",
+   "items": [
+    "Что происходит: полосу прокрутки держат видимой постоянно, и она занимает ширину контента даже в покое.",
+    "Что делают системы: Apple HIG — Scroll views: «The scroll view itself has no appearance, but it can display a translucent scroll indicator that typically appears after people begin scrolling the view's content».",
+    "Что делать нам: индикатор прокрутки показываем полупрозрачным и только после начала движения, а не постоянно."
+   ],
+   "src": "Источники: Apple HIG · Scroll views (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json)",
+   "example_html": "<div class=\"ds-scroll\"><div class=\"ds-scroll__background\"><span class=\"ds-scroll__knob\"></span></div></div>",
+   "example_ru": "Полоса ДС показана отдельным элементом: Apple HIG описывает индикатор как полупрозрачный, появляющийся уже после начала прокрутки."
+  },
+  {
+   "title": "Контент за краем надо показать",
+   "items": [
+    "Что происходит: в покое полосы не видно, и человек не понимает, что список продолжается ниже края экрана.",
+    "Что делают системы: Apple HIG — Scroll views: «Because scroll indicators aren't always visible, it can be helpful to make it obvious when content extends beyond the view».",
+    "Что делать нам: край списка слегка обрезаем у границы экрана — по обрезке видно, что контент продолжается."
+   ],
+   "src": "Источники: Apple HIG · Scroll views (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\" style=\"height:168px;overflow:hidden\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Меню</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Десерт</span><span class=\"ds-list-item__text\">Тирамису</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">480 ₽</span></div></div></div></div></div>",
+   "example_ru": "Нижняя строка обрезана у границы тела экрана: обрезка подсказывает, что контент продолжается, — ведь индикатор прокрутки виден не всегда."
+  },
+  {
+   "title": "Своя прокрутка: упругость и инерция",
+   "items": [
+    "Что происходит: свою прокрутку пишут с нуля и ломают привычную упругость и инерцию — жест ощущается чужим.",
+    "Что делают системы: Apple HIG — Scroll views (Support default scrolling gestures): «If you build custom scrolling for a view, make sure your scroll indicators use the elastic behavior that people expect».",
+    "Что делать нам: в своей прокрутке сохраняем упругую остановку у края и системную инерцию — индикатор ведёт себя как в платформе."
+   ],
+   "src": "Источники: Apple HIG · Scroll views (Support default scrolling gestures) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\" style=\"height:168px;overflow:hidden\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Меню</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Десерт</span><span class=\"ds-list-item__text\">Тирамису</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">480 ₽</span></div></div></div></div></div>",
+   "example_ru": "Прокрутка списка сохраняет упругую остановку и инерцию: Apple HIG просит не подменять привычное поведение своей реализацией."
+  },
+  {
+   "title": "Два индикатора на одной оси",
+   "items": [
+    "Что происходит: на одном экране рядом живут полоса прокрутки и точки-индикатор страниц, и оба показывают положение по одной оси.",
+    "Что делают системы: Apple HIG — Scroll views: «If you show a page control with a scroll view, don't show the scrolling indicator on the same axis to avoid confusing people with redundant controls.».",
+    "Что делать нам: по одной оси оставляем один индикатор: либо полоса, либо точки страниц, а не оба сразу."
+   ],
+   "src": "Источники: Apple HIG · Scroll views (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json)",
+   "example_html": "<div class=\"ds-scroll\"><div class=\"ds-scroll__background\"><span class=\"ds-scroll__knob\"></span></div></div>",
+   "example_ru": "Показан один индикатор по вертикальной оси: второй индикатор на той же оси дублировал бы положение и путал пользователя."
+  },
+  {
+   "title": "Липкий заголовок отделяем фоном",
+   "items": [
+    "Что происходит: липкая шапка при прокрутке сливается со строками под ней, и непонятно, где кончается сама шапка.",
+    "Что делают системы: Apple HIG — Scroll views (scroll edge effect): «This style provides a more opaque visual separation for top toolbars that contain a large number of controls, text that appears outside of Liquid Glass controls, and pinned table headers.».",
+    "Что делать нам: у липкой шапки и закреплённых заголовков таблицы делаем непрозрачную подложку, отделяющую их от прокручиваемого контента."
+   ],
+   "src": "Источники: Apple HIG · Scroll views (scroll edge effect) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/scroll-views.json)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\" style=\"height:168px;overflow:hidden\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Меню</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Десерт</span><span class=\"ds-list-item__text\">Тирамису</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">480 ₽</span></div></div></div></div></div>",
+   "example_ru": "Шапка отделена от прокручиваемых строк непрозрачной подложкой — так решается отделение закреплённых элементов, о котором говорит Apple HIG."
+  },
+  {
+   "title": "Память на длинном списке",
+   "items": [
+    "Что происходит: длинный список держит в памяти все элементы сразу, и на слабом телефоне приложение падает по памяти.",
+    "Что делают системы: React Native — Optimizing FlatList Configuration: «Memory consumption: How much information about your list is being stored in memory, which could lead to an app crash.».",
+    "Что делать нам: для длинных списков задаём окно виртуализации и не храним в памяти данные за пределами видимых элементов."
+   ],
+   "src": "Источники: React Native · Optimizing FlatList Configuration (https://reactnative.dev/docs/optimizing-flatlist-configuration)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div></div><div class=\"phone__row\">itemSize = 72 px · буфер 100 / 250 px</div></div>",
+   "example_ru": "Список показан со строками фиксированной высоты: при виртуализации нужно следить за расходом памяти, иначе приложение падает."
+  },
+  {
+   "title": "Батч больше — тап запаздывает",
+   "items": [
+    "Что происходит: за раз отрисовывают слишком много элементов, и нажатия по списку обрабатываются с задержкой.",
+    "Что делают системы: React Native — Optimizing FlatList Configuration (maxToRenderPerBatch): «More items per batch means longer periods of JavaScript execution potentially blocking other event processing, like presses, hurting responsiveness.».",
+    "Что делать нам: размер батча при прокрутке держим небольшим, чтобы обработка нажатий не ждала отрисовки."
+   ],
+   "src": "Источники: React Native · Optimizing FlatList Configuration (maxToRenderPerBatch) (https://reactnative.dev/docs/optimizing-flatlist-configuration)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div></div><div class=\"phone__row\">itemSize = 72 px · буфер 100 / 250 px</div></div>",
+   "example_ru": "Строки отрисовываются порциями: слишком большой батч блокирует поток, и тап по строке запаздывает."
+  },
+  {
+   "title": "Джанк при прокрутке списка",
+   "items": [
+    "Что происходит: прокрутка длинного списка рвётся рывками, а причину просадок ищут где угодно, кроме самого списка.",
+    "Что делают системы: Android Developers — Slow rendering / jank (Visual inspection): «Run through components that are common sources of jank, such as RecyclerView.».",
+    "Что делать нам: просадки кадров проверяем в первую очередь на длинных списках и таблицах, а не на статичных экранах."
+   ],
+   "src": "Источники: Android Developers · Slow rendering / jank (Visual inspection) (https://developer.android.com/topic/performance/vitals/render)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div></div><div class=\"phone__row\">itemSize = 72 px · буфер 100 / 250 px</div></div>",
+   "example_ru": "Длинный список — типичный источник рывков при прокрутке: Android Developers советует начинать проверку производительности именно с него."
+  },
+  {
+   "title": "Бесконечная лента и поиск",
+   "items": [
+    "Что происходит: в бесконечной ленте нельзя вернуться к уже найденной позиции — она осталась на много экранов выше.",
+    "Что делают системы: Nielsen Norman Group — Infinite Scrolling is Not for Every Website: «locating a previously found item on an extremely long page is inefficient, especially if that item is placed many scrolling segments down.».",
+    "Что делать нам: вместо бесконечной ленты — порции позиций и кнопка «Показать ещё», а позиция прокрутки сохраняется при возврате."
+   ],
+   "src": "Источники: NN/g · Infinite Scrolling is Not for Every Website (https://www.nngroup.com/articles/infinite-scrolling/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div></div><div class=\"phone__row\">Показано 20 из 240</div><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Показать ещё 20</span></button></div>",
+   "example_ru": "Вместо бесконечной ленты — счётчик и кнопка «Показать ещё»: разыскивать прежнюю позицию в бесконечной странице неэффективно."
+  },
+  {
+   "title": "Ниже экрана смотрят реже",
+   "items": [
+    "Что происходит: важный блок ставят в самый низ длинной страницы, и до него почти никто не доходит.",
+    "Что делают системы: Nielsen Norman Group — Scrolling and Attention: «The interaction cost of scrolling reduces the likelihood that content will be viewed in lower parts of a longer page.».",
+    "Что делать нам: важное поднимаем в начало страницы, а длинный хвост сокращаем — сама прокрутка снижает внимание к низу страницы."
+   ],
+   "src": "Источники: NN/g · Scrolling and Attention (https://www.nngroup.com/articles/scrolling-and-attention/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\" style=\"height:168px;overflow:hidden\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Меню</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Десерт</span><span class=\"ds-list-item__text\">Тирамису</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">480 ₽</span></div></div></div></div></div>",
+   "example_ru": "Список показан коротким: чем длиннее страница, тем реже смотрят её нижнюю часть — цена прокрутки снижает внимание."
+  },
+  {
+   "title": "Шапка группы липкая",
+   "items": [
+    "Что происходит: при прокрутке длинного списка заголовки групп уезжают вместе со строками, и строки теряют подпись.",
+    "Что делают системы: Carbon Design System (IBM) — Contained list (Scrolling): «If there are scrolling capabilities, the header will remain sticky and have a background layer to differentiate it from the list item rows scrolling beneath it.».",
+    "Что делать нам: заголовок группы остаётся липким и получает фоновую подложку, отделяющую его от прокручиваемых строк."
+   ],
+   "src": "Источники: Carbon Design System (IBM) · Contained list, Scrolling (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/contained-list/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\" style=\"height:168px;overflow:hidden\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Меню</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Десерт</span><span class=\"ds-list-item__text\">Тирамису</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">480 ₽</span></div></div></div></div></div>",
+   "example_ru": "Заголовок группы закреплён над прокручиваемыми строками и отделён фоновой подложкой — так советует Carbon для contained list."
   }
  ]
 }

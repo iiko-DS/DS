@@ -66,6 +66,94 @@
    "src": "Источники: Apple HIG · Progress indicators (developer.apple.com/design/human-interface-guidelines/progress-indicators) · Angular Material · progress-spinner (raw.githubusercontent.com/angular/components/main/src/material/progress-spinner/progress-spinner.scss) · Material Design 3 · токены linear progress (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-linear-progress-indicator.scss) · IBM Carbon · Inline loading (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/inline-loading/usage.mdx)",
    "example_html": "<div class=\"pat__phone\"><span class=\"ds-status ds-status--accent ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">sync</span></span><span class=\"ds-status__label\">Обновляем данные</span></span></div>",
    "example_ru": "Цвет статуса — из темы (accent), а не белый на белом: круговой индикатор в MD3 — 48 px при толщине 4 px, у нас его роль пока играет текстовый статус."
+  },
+  {
+   "title": "Статус не кнопка и не ссылка",
+   "items": [
+    "Что происходит: плашку статуса делают кликабельной, и пользователь жмёт её в ожидании фильтра или перехода в раздел.",
+    "Что делают системы: GOV.UK Design System · Tag — «Tags are only used to indicate a status. Do not make a tag interactive by making it into a link or button.»",
+    "Что делать нам: оставлять статус неинтерактивным: если нужен переход, рядом ставить отдельную ссылку или кнопку."
+   ],
+   "src": "Источники: GOV.UK Design System · Tag (https://design-system.service.gov.uk/components/tag/)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><span class=\"ds-status ds-status--warning ds-status--filled\"><span class=\"ds-status__label\">Ждёт проверки</span></span><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Проверить</span></button></div>",
+   "example_ru": "Статус «Ждёт проверки» — неинтерактивная плашка, а переход даёт отдельная кнопка «Проверить» рядом."
+  },
+  {
+   "title": "Смысл статуса не только в цвете",
+   "items": [
+    "Что происходит: статусы различают только цветом, и пользователь с нарушением цветовосприятия не отличает «Готово» от «Ошибки».",
+    "Что делают системы: GOV.UK Design System · Tag (Using colour with tags) — «Do not use colour alone to convey information, because it’s not accessible.»",
+    "Что делать нам: подписывать статус текстом и знаком, а цвет оставлять усилением, а не единственным различием."
+   ],
+   "src": "Источники: GOV.UK Design System · Tag (Using colour with tags) (https://design-system.service.gov.uk/components/tag/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:16px\"><span class=\"ds-status ds-status--positive ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">check_circle</span></span><span class=\"ds-status__label\">Готово</span></span><span class=\"ds-status ds-status--negative ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">error</span></span><span class=\"ds-status__label\">Ошибка</span></span></div></div>",
+   "example_ru": "У «Готово» и «Ошибки» свой знак и своя подпись: смысл читается и без цвета — иначе информация теряется для части пользователей."
+  },
+  {
+   "title": "Цвет плюс короткий дескриптор",
+   "items": [
+    "Что происходит: в статус пишут длинную формулировку, и на телефоне плашка переносится на две строки и ломает строку списка.",
+    "Что делают системы: GOV.UK Design System · Task list (Statuses) — «Statuses use colour and a short descriptor to give users a quick overview of how much of the task list they have completed, and how much is left to do.»",
+    "Что делать нам: держать в подписи одно-два слова плюс цвет, чтобы статус читался одним взглядом в строке списка."
+   ],
+   "src": "Источники: GOV.UK Design System · Task list (Statuses) (https://design-system.service.gov.uk/components/task-list/)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><span style=\"font-size:14px;line-height:20px\">Печать чека</span><span class=\"ds-status ds-status--positive ds-status--filled\"><span class=\"ds-status__label\">Готово</span></span></div>",
+   "example_ru": "Короткий дескриптор «Готово» в одну строку со знаком и цветом: статус читается быстрым взглядом по списку."
+  },
+  {
+   "title": "Капс в статусе читается хуже",
+   "items": [
+    "Что происходит: подпись статуса пишут капсом, и на маленьком экране слово теряет узнаваемость и различается только по длине.",
+    "Что делают системы: GOV.UK Design System · Task list (Formatting of statuses) — «The use of uppercase in task statuses makes them harder to read.»",
+    "Что делать нам: писать подписи обычным регистром с заглавной буквы, без капса даже для коротких слов."
+   ],
+   "src": "Источники: GOV.UK Design System · Task list (Formatting of statuses) (https://design-system.service.gov.uk/components/task-list/)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><span style=\"font-size:14px;line-height:20px\">Отправка отчёта</span><span class=\"ds-status ds-status--negative ds-status--filled\"><span class=\"ds-status__label\">Ошибка</span></span></div>",
+   "example_ru": "Подпись «Ошибка» набрана обычным регистром: капс GOV.UK называет причиной худшей читаемости статусов."
+  },
+  {
+   "title": "Точка статуса не без текста",
+   "items": [
+    "Что происходит: статус показывают цветной точкой без подписи, и цвет становится единственным носителем смысла.",
+    "Что делают системы: Ant Design · Badge — «If status is set, text sets the display text of the status dot», то есть при статусе точка сопровождается текстом.",
+    "Что делать нам: всегда подписывать точку статуса коротким текстом, а не оставлять цветной маркер без пояснения."
+   ],
+   "src": "Источники: Ant Design · Badge (status + text) (https://ant.design/components/badge)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><span style=\"width:8px;height:8px;border-radius:50%;background:#2E7D32\"></span><span class=\"ds-status ds-status--positive ds-status--text\"><span class=\"ds-status__label\">Смена закрыта</span></span></div>",
+   "example_ru": "Точка статуса идёт вместе с текстом «Смена закрыта»: цветной маркер без подписи ничего не сообщает — так у Ant Design."
+  },
+  {
+   "title": "Пассивный статус легко пропустить",
+   "items": [
+    "Что происходит: критичное изменение показывают только статусом в строке, и пользователь его не замечает, потому что действия не требуется.",
+    "Что делают системы: Nielsen Norman Group · Indicators, Validations, and Notifications — «Passive notifications can easily be missed, since they require no user action.»",
+    "Что делать нам: критичное дублировать активным сигналом — баннером, шторкой или счётчиком на иконке, а не только плашкой статуса."
+   ],
+   "src": "Источники: Nielsen Norman Group · Indicators · Validations · and Notifications (https://www.nngroup.com/articles/indicators-validations-notifications/)",
+   "example_html": "<div class=\"pat__phone\"><span class=\"ds-status ds-status--negative ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">error</span></span><span class=\"ds-status__label\">Ошибка синхронизации</span></span><div class=\"ds-banner ds-banner--neutral ds-banner--horizontal\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span class=\"ds-banner__row\">Заказы за 8 августа не ушли на кухню</span></div></div>",
+   "example_ru": "Тот же статус продублирован баннером: пассивную плашку легко пропустить, критичное состояние требует заметного сигнала."
+  },
+  {
+   "title": "Плашку принимают за кнопку",
+   "items": [
+    "Что происходит: тёмная плашка с белым текстом выглядит как кнопка, и пользователь пытается по ней нажать.",
+    "Что делают системы: GOV.UK Design System · Tag (Research on this component) — «Research from multiple teams found that some users perceived these as buttons and tried to click on them.»",
+    "Что делать нам: делать плашку светлой с тёмным текстом, чтобы она не выглядела как кнопка действия."
+   ],
+   "src": "Источники: GOV.UK Design System · Tag (Research on this component) (https://design-system.service.gov.uk/components/tag/)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><span style=\"font-size:14px;line-height:20px\">Заказ 1042</span><span class=\"ds-status ds-status--positive ds-status--text\"><span class=\"ds-status__label\">Готово</span></span></div>",
+   "example_ru": "Светлая плашка с тёмным текстом вместо тёмной заливки: исследование GOV.UK показало, что тёмные статусы принимают за кнопки."
+  },
+  {
+   "title": "Выполненное — без заливки",
+   "items": [
+    "Что происходит: завершённые задачи подсвечены ярче незавершённых, и внимание уходит не туда, где нужны действия.",
+    "Что делают системы: GOV.UK Design System · Task list (Formatting of statuses) — «The ‘Completed’ task now uses black text with no background colour, which will draw more attention to tasks that require action.»",
+    "Что делать нам: «выполнено» оставлять текстом без фона, а цветную плашку резервировать под то, что требует действия."
+   ],
+   "src": "Источники: GOV.UK Design System · Task list (Formatting of statuses) (https://design-system.service.gov.uk/components/task-list/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:16px\"><span class=\"ds-status ds-status--neutral ds-status--text\"><span class=\"ds-status__label\">Выполнено</span></span><span class=\"ds-status ds-status--warning ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span><span class=\"ds-status__label\">Ждёт проверки</span></span></div></div>",
+   "example_ru": "«Выполнено» — текстом без фона, цветная плашка достаётся тому, что требует действия: так внимание уходит к незавершённому."
   }
  ]
 }

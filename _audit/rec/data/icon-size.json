@@ -168,6 +168,105 @@
    "src": "Источники: Angular Material · icon.md (https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
    "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:16px;align-items:center\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\" role=\"img\" aria-label=\"Настройки\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\" aria-hidden=\"true\"><span class=\"material-icons\" style=\"font-size:24px\">chevron_right</span></span></div>",
    "example_ru": "Смысловая иконка 24 px несёт aria-label «Настройки», декоративная помечена aria-hidden: скринридер не читает имя глифа вместо назначения."
+  },
+  {
+   "title": "Масштаб иконки от кегля текста",
+   "items": [
+    "Что происходит: иконка 24 px стоит рядом с подписью 13 px, и в строке списка иконка выглядит крупнее самого текста.",
+    "Что делают системы: Apple для SF Symbols задаёт шкалу относительно текста — «The scales are defined relative to the cap height of the San Francisco system font.»",
+    "Что делать нам: размер иконки в строке берём от кегля подписи (24 px к тексту 16 px, 20 px к тексту 14 px), а не от свободного места в строке."
+   ],
+   "src": "Источники: Apple HIG · SF Symbols (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sf-symbols.json)",
+   "example_html": "<div class=\"pat__phone\" style=\"gap:12px\"><div class=\"ds-icon-group\" style=\"width:100%\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span style=\"font-size:16px;line-height:24px\">Название процесса</span></div><div class=\"ds-icon-group\" style=\"width:100%\"><span class=\"ds-icon-group__icon\" style=\"width:20px;height:20px\"><span class=\"material-icons\" style=\"font-size:20px\">settings</span></span><span style=\"font-size:14px;line-height:20px\">Подпись строки</span></div><div class=\"ds-icon-group\" style=\"width:100%\"><span class=\"ds-icon-group__icon\" style=\"width:16px;height:16px\"><span class=\"material-icons\" style=\"font-size:16px\">settings</span></span><span style=\"font-size:13px;line-height:18px\">Мелкая сноска</span></div></div>",
+   "example_ru": "Иконка уменьшается вместе с кеглем строки: 24 px к тексту 16 px, 20 px к 14 px и 16 px к 13 px — как масштабы SF Symbols относительно текста."
+  },
+  {
+   "title": "Вес иконки равен весу текста",
+   "items": [
+    "Что происходит: полужирный заголовок «Смена закрыта» стоит рядом с тонкой иконкой — иконка читается как недоступная.",
+    "Что делают системы: Apple HIG формулирует правило для иконок рядом с текстом — «In general, match the weights of interface icons and adjacent text.»",
+    "Что делать нам: у иконки в строке тот же вес, что у подписи рядом (не жирнее и не тоньше); разных весов у иконок одного экрана в ДС нет."
+   ],
+   "src": "Источники: Apple HIG · Icons (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json)",
+   "example_html": "<div class=\"pat__phone\" style=\"gap:12px\"><div class=\"ds-icon-group\" style=\"width:100%\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span style=\"font-size:16px;line-height:24px;font-weight:500\">Смена закрыта</span></div><div class=\"ds-icon-group\" style=\"width:100%\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span style=\"font-size:16px;line-height:24px\">Смена идёт</span></div></div>",
+   "example_ru": "Иконка в строке с полужирной подписью и в строке с обычной — одного начертания: вес знака не расходится с весом текста рядом."
+  },
+  {
+   "title": "Один размер у всех иконок",
+   "items": [
+    "Что происходит: в одном списке иконки 16, 20 и 24 px, и строки выглядят собранными из разных продуктов.",
+    "Что делают системы: Apple требует единообразия сразу по четырём признакам — «all interface icons in your app need to use a consistent size, level of detail, stroke thickness (or weight), and perspective».",
+    "Что делать нам: на одном экране иконки одного размера и одного начертания; размер меняется целым экраном (в шапке, в списке, на пустом состоянии), а не внутри одного списка."
+   ],
+   "src": "Источники: Apple HIG · Icons (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:16px;align-items:center\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></div>",
+   "example_ru": "Три иконки одного размера и начертания рядом — единообразие из четырёх требований Apple HIG (размер, детализация, толщина, перспектива)."
+  },
+  {
+   "title": "Иконка внутри кнопки",
+   "items": [
+    "Что происходит: иконка лежит в строке сама по себе и выглядит как кнопка, но тап по ней ничего не делает.",
+    "Что делают системы: Angular Material требует обёртку — «The `<mat-icon>` element should be a child of a `<button>` or `<a>` element.»",
+    "Что делать нам: нажимаемая иконка всегда внутри кнопки — у нас это ds-btn-icon с целью 48 px; иконка без действия остаётся декоративной и состояния нажатия не получает."
+   ],
+   "src": "Источники: Angular Material · Icon (https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:16px;align-items:center\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">chevron_right</span></span></div>",
+   "example_ru": "Слева нажимаемая иконка внутри кнопки с подписью для скринридера, справа — декоративный знак без действия: так разводятся эти два случая."
+  },
+  {
+   "title": "Оптическое выравнивание иконки",
+   "items": [
+    "Что происходит: иконка-шеврон с полями внутри глифа сдвинута влево относительно текста, и строка выглядит кривой.",
+    "Что делают системы: Apple допускает ручную правку знака — «If necessary, add padding to a custom interface icon to achieve optical alignment.»",
+    "Что делать нам: в строке иконка выравнивается по оптическому центру, а не по рамке глифа; отступы для этого задаются в спецификации знака, а не правкой разметки экрана."
+   ],
+   "src": "Источники: Apple HIG · Icons (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/icons.json)",
+   "example_html": "<div class=\"pat__phone\" style=\"gap:12px\"><div class=\"ds-icon-group\" style=\"width:100%\"><span class=\"ds-icon-group__icon\" style=\"width:20px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">chevron_right</span></span><span style=\"font-size:14px;line-height:20px\">Шеврон выровнен по оптическому центру</span></div><div class=\"ds-icon-group\" style=\"width:100%\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span><span style=\"font-size:14px;line-height:20px\">Симметричный знак</span></div></div>",
+   "example_ru": "Узкий знак получает по краям по 2 px внутри рамки 24 px, чтобы встать на одну ось с текстом — правка самой иконки, а не отступа строки."
+  },
+  {
+   "title": "Паддинг вокруг иконки — часть цели",
+   "items": [
+    "Что происходит: иконка 24 px нажимается только собой, и палец попадает в соседнюю строку списка.",
+    "Что делают системы: Google объясняет, из чего складывается цель — «An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target.»",
+    "Что делать нам: иконка 24 px всегда стоит в контейнере 48 × 48 px, и нажимается весь контейнер, а не глиф."
+   ],
+   "src": "Источники: Google Android Accessibility / Material Design (https://support.google.com/accessibility/android/answer/7101858)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:16px;align-items:center\"><span class=\"pat__hit\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span></span><span class=\"pat__hit\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></span></div>",
+   "example_ru": "Рисунок иконки 24 px, а пунктиром показана цель 48 × 48 px вокруг неё — она и принимает нажатие."
+  },
+  {
+   "title": "Мелкие контролы не нажать",
+   "items": [
+    "Что происходит: в карточке блюда три иконки по 16 px стоят вплотную, и правку вместо удаления с первого раза сделать не удаётся.",
+    "Что делают системы: Apple HIG в разделе доступности пишет прямо — «Controls that are too small are hard for many people to interact with and select.»",
+    "Что делать нам: интерактивных иконок мельче 24 px в мобильном слое нет, и цель у них 48 px; 16 px остаётся только у декора рядом с текстом."
+   ],
+   "src": "Источники: Apple HIG · Accessibility (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/accessibility.json)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:16px;align-items:center\"><span class=\"pat__hit\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></span><span class=\"pat__hit\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></span><span class=\"ds-icon-group__icon\" style=\"width:16px;height:16px\"><span class=\"material-icons\" style=\"font-size:16px\">info</span></span></div>",
+   "example_ru": "Две нажимаемые иконки 24 px с целью 48 px и один декоративный знак 16 px без действия: мелких нажимаемых иконок в мобильном слое нет."
+  },
+  {
+   "title": "Размер иконки задаёт токен",
+   "items": [
+    "Что происходит: в разметке экрана размер иконки задан руками (кегль 21 px), и он не совпадает с остальными экранами.",
+    "Что делают системы: Material Web держит размер в переменной — «`--md-icon-size` | `24px`» — и меняет его темой, а не правкой разметки.",
+    "Что делать нам: размер иконки берётся только из токена ДС (24 px по умолчанию, 20 px в полях); чисел в разметке экрана не пишем."
+   ],
+   "src": "Источники: Material Web · Icon (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:16px;align-items:center\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span class=\"ds-icon-group__icon\" style=\"width:20px;height:20px\"><span class=\"material-icons\" style=\"font-size:20px\">info</span></span></div>",
+   "example_ru": "Два размера из токенов ДС — 24 px и 20 px в полях; произвольных значений вроде 21 px в разметке нет."
+  },
+  {
+   "title": "Иконка не заменяет подпись",
+   "items": [
+    "Что происходит: строка списка содержит только иконку без подписи, и скринридер читает имя глифа вместо назначения действия.",
+    "Что делают системы: Angular Material предупреждает — «Icons alone are not interactive elements for screen-reader users».",
+    "Что делать нам: иконочная кнопка всегда получает текстовую подпись действия («Удалить»), декоративный знак — пометку о том, что он декоративный; иконка не заменяет подпись строки."
+   ],
+   "src": "Источники: Angular Material · Icon (https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:16px;align-items:center\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--negative ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\" aria-hidden=\"true\"><span class=\"material-icons\" style=\"font-size:24px\">chevron_right</span></span></div>",
+   "example_ru": "У нажимаемой иконки есть подпись действия для скринридера, у декоративного шеврона — пометка декоративности: одна иконка вместо подписи не работает."
   }
  ]
 }

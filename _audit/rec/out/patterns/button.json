@@ -66,6 +66,116 @@
    "src": "Источники: IBM Carbon · Button usage (carbondesignsystem.com/components/button/usage) · Ant Design · Button (ant.design/components/button) · Apple HIG · Buttons (developer.apple.com/design/human-interface-guidelines/buttons)",
    "example_html": "<span class=\"ds-btn-group ds-btn-group--horizontal\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\" disabled><span class=\"ds-btn__label\">Сохранить</span></button></span>",
    "example_ru": "Слева — обычная кнопка, справа — та же кнопка, пока идёт запрос: она недоступна, повторное нажатие не проходит. Спиннера внутри кнопки в ДС нет — это находка для библиотеки."
+  },
+  {
+   "title": "Один главный призыв на странице",
+   "items": [
+    "Что происходит: на 375 px рядом оказываются две-три залитые кнопки — «Создать», «Сохранить» и «Отправить»: человек читает все три, дольше выбирает, а главное действие теряет вес.",
+    "Что делают системы: GOV.UK Design System, по которому сделаны госуслуги Великобритании, держит правило: «Avoid using multiple default buttons on a single page. Having more than one main call to action reduces their impact, and makes it harder for users to know what to do next.»",
+    "Что делать нам: одна заливка (accent filled) на экран, остальные действия — обводкой, текстом или под «⋯»; в шторке и в футере формы правило то же."
+   ],
+   "src": "Источники: GOV.UK Design System · Button (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/button/index.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Далее</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div>",
+   "example_ru": "Три действия, но залито только одно: «Сохранить» — главное, «Далее» и «Отмена» — обводкой и текстом."
+  },
+  {
+   "title": "Кнопка на всю ширину экрана",
+   "items": [
+    "Что происходит: главное действие стоит по ширине подписи и жмётся к краю — на 375 px его зона нажатия меньше, чем у поля ввода над ним.",
+    "Что делают системы: Apple HIG показывает это на примере watchOS: «Full-width buttons look better and are easier for people to tap. If two buttons must share the same horizontal space, use the same height for both, and use images or short text titles for each button’s content.»",
+    "Что делать нам: в футере формы и в шторке главное действие — на всю ширину тела (343 px при экране 375); двум кнопкам в одной строке даём одну высоту и короткие подписи."
+   ],
+   "src": "Источники: Apple HIG · Buttons (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json)",
+   "example_html": "<div class=\"pat__phone\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить заказ</span></button></div>",
+   "example_ru": "Обе кнопки — на всю ширину тела и одной высоты: 343 px на 375 px, палец попадает в любую."
+  },
+  {
+   "title": "Зона нажатия минимум 44 pt",
+   "items": [
+    "Что происходит: у кнопок S и XS высота 32–40 px, и на телефоне палец промахивается мимо — особенно когда рядом стоит поле или вторая кнопка.",
+    "Что делают системы: Apple HIG задаёт минимум: «As a general rule, a button needs a hit region of at least 44x44 pt — in visionOS, 60x60 pt — to ensure that people can select it easily, whether they use a fingertip, a pointer, their eyes, or a remote.»",
+    "Что делать нам: на мобиле высота кнопки 44–48 px; у размеров S и XS зону нажатия расширяем паддингом до 44–48 px, кегль ради компактности не уменьшаем."
+   ],
+   "src": "Источники: Apple HIG · Buttons (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--outlined\" type=\"button\" style=\"flex:0 0 auto;width:auto\"><span class=\"ds-btn__label\">Да</span></button></span><span class=\"pat__hit\"><button class=\"ds-btn ds-btn--xs ds-btn--neutral ds-btn--outlined\" type=\"button\" style=\"flex:0 0 auto;width:auto\"><span class=\"ds-btn__label\">Нет</span></button></span></div>",
+   "example_ru": "Кнопки S и XS, пунктиром — зона нажатия 48 × 48: палец попадает, хотя сама кнопка ниже."
+  },
+  {
+   "title": "Длинная подпись переносится",
+   "items": [
+    "Что происходит: подпись «Сохранить и отправить на кухню» не влезает в кнопку: текст усекают многоточием или уменьшают кегль, чтобы удержать одну строку, и подпись перестаёт читаться.",
+    "Что делают системы: IBM Carbon: «When the button’s label is too long to fit within the available space of the button, the label should overflow and wrap to the second line. We do not recommend truncating a button label»",
+    "Что делать нам: подпись — глагол плюс короткое дополнение; при нехватке места она переносится на вторую строку и кнопка растёт по высоте, усечения и уменьшения кегля нет."
+   ],
+   "src": "Источники: IBM Carbon · Button usage (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
+   "example_html": "<div class=\"pat__narrow\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить и отправить на кухню</span></button></div>",
+   "example_ru": "Подпись переносится на вторую строку, кнопка растёт по высоте — усечения «Сохранить и отпр…» нет."
+  },
+  {
+   "title": "Ширина по колонке, не по подписи",
+   "items": [
+    "Что происходит: кнопка свёрстана фиксированной шириной из макета 1440 px; на 375 px она либо вылезает за тело экрана, либо выглядит случайно узкой рядом с полем.",
+    "Что делают системы: IBM Carbon: «Fluid width buttons are always preferable to fixed width default buttons in a layout. When possible, set the button container’s relative position to the responsive layout grid and match the button width to the width of other elements on the page»",
+    "Что делать нам: ширину берём от колонки — тело экрана или строка группы; фиксированные px остаются десктопу, группа кнопок тянется на ту же ширину, что поле над ней."
+   ],
+   "src": "Источники: IBM Carbon · Button usage (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><span class=\"ds-btn-group ds-btn-group--horizontal\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></span></div>",
+   "example_ru": "Группа кнопок растянута на 343 px — по ширине тела экрана, как и поле над ней."
+  },
+  {
+   "title": "Одна primary-кнопка на страницу",
+   "items": [
+    "Что происходит: на экране несколько равных по весу действий («Удалить позицию», «Добавить комментарий», «Сохранить»), и непонятно, какое из них основное.",
+    "Что делают системы: IBM Carbon формулирует прямо: «Each page should have only one primary button. Any remaining calls to action should be represented as lower emphasis buttons.»",
+    "Что делать нам: одна заливка на страницу — accent filled; всё остальное идёт текстовыми и обводочными кнопками или иконкой в шапке."
+   ],
+   "src": "Источники: IBM Carbon · Button usage (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Удалить позицию</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Добавить комментарий</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div>",
+   "example_ru": "Даже когда действий три, залито одно — «Сохранить», а удаление и комментарий стоят текстом."
+  },
+  {
+   "title": "Загрузка вместо двойного нажатия",
+   "items": [
+    "Что происходит: после нажатия «Отправить» кнопка выглядит рабочей, человек жмёт второй раз и получает два заказа.",
+    "Что делают системы: Ant Design описывает своё решение так: «loading: adds a loading spinner in button, avoids multiple submits too» — спиннер внутри кнопки гасит повторные отправки.",
+    "Что делать нам: пока идёт запрос, кнопка disabled (состояния загрузки в ДС нет), повторный тап не проходит; после ответа показываем результат отдельным сообщением, а не просто снимаем блокировку."
+   ],
+   "src": "Источники: Ant Design · Button (https://raw.githubusercontent.com/ant-design/ant-design/master/components/button/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Отправить</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\" disabled><span class=\"ds-btn__label\">Отправить</span></button></div>",
+   "example_ru": "Справа — кнопка на время запроса: недоступна, повторная отправка не проходит; спиннера внутри кнопки в ДС нет."
+  },
+  {
+   "title": "Разрушительное действие не главное",
+   "items": [
+    "Что происходит: «Удалить» оформлено той же заливкой, что «Сохранить», и человек по привычке жмёт главную кнопку — удаляя данные.",
+    "Что делают системы: Apple HIG отдельно просит не давать разрушительному действию главную роль: «don’t assign the primary role to a button that performs a destructive action»",
+    "Что делать нам: разрушительное — negative-кнопкой и никогда заливкой accent; главная кнопка экрана всегда одна и никогда ничего не удаляет."
+   ],
+   "src": "Источники: Apple HIG · Buttons (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div>",
+   "example_ru": "«Удалить» — negative и текстом, «Сохранить» — заливкой: разрушительное действие не выглядит главным."
+  },
+  {
+   "title": "Warning-кнопка только для необратимого",
+   "items": [
+    "Что происходит: красной кнопкой помечают всё подряд — и удаление, и «закрыть без сохранения», и выход; красный перестают читать как предупреждение.",
+    "Что делают системы: GOV.UK Design System ограничивает её прямым правилом: «Only use warning buttons for actions with serious destructive consequences that cannot be easily undone by a user.»",
+    "Что делать нам: negative-заливка — только на необратимом (удаление заказа, закрытие смены без отчёта); всё, что отменяется или восстанавливается, делаем нейтральной кнопкой."
+   ],
+   "src": "Источники: GOV.UK Design System · Button (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/button/index.md)",
+   "example_html": "<div class=\"pat__phone\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить заказ</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div>",
+   "example_ru": "Negative-заливка стоит только на необратимом «Удалить заказ», отменяемое действие рядом — текстом."
+  },
+  {
+   "title": "Отмена вместо подтверждения",
+   "items": [
+    "Что происходит: после отправки заказа экран просто закрывается, отменить действие нельзя, и при ошибке остаётся звонить в ресторан.",
+    "Что делают системы: Gmail для Android на необратимое действие отвечает отменой: «Right after you send a message, you’ll see the message \"Sent\" and the option to Undo.»",
+    "Что делать нам: необратимое действие выполняем сразу и показываем текстовое подтверждение с кнопкой «Отменить» на 5–10 секунд; удаление смены и другие тяжёлые случаи оставляем на диалог подтверждения."
+   ],
+   "src": "Источники: Gmail для Android · Unsend a message (https://support.google.com/mail/answer/2819488?hl=en&co=GENIE.Platform%3DAndroid)",
+   "example_html": "<div class=\"pat__phone\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Отправить в производство</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отменить отправку</span></button></div>",
+   "example_ru": "Действие выполняется сразу, отмена — текстовой кнопкой рядом: подтверждение вместо диалога."
   }
  ]
 }

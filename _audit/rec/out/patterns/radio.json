@@ -55,6 +55,94 @@
    "src": "Источники: Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles) · IBM Carbon · Radio button usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/radio-button/usage.mdx)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\" id=\"pat-radio-4-1\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-4\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Доставка</span></label><label class=\"ds-radio\" id=\"pat-radio-4-2\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-4\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Самовывоз</span></label></div></div>",
    "example_ru": "По умолчанию — столбик с шагом 8 px при высоте строки 48 px (это больше тач-минимума): в одну строку ставим только две короткие опции и с отступом по самой длинной подписи."
+  },
+  {
+   "title": "На мобиле радио в столбик",
+   "items": [
+    "Что происходит: радио ставят в одну строку, подписи сжимаются и обрезаются, и на 375 px непонятно, к какому маркеру относится текст.",
+    "Что делают системы: GOV.UK Design System: «Remember that on small screens such as mobile devices, the radios will still be ‘stacked’ on top of one another (vertically).»",
+    "Что делать нам: на мобиле группа радио — всегда столбик, строка 48 px, подпись справа от маркера; в строку оставляем только две короткие опции."
+   ],
+   "src": "Источники: GOV.UK Design System · Radios (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/radios/index.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-1\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Карта</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-1\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Наличные</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-1\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Перевод</span></label></div></div>",
+   "example_ru": "Три опции в столбик при 375 px: подписи не сжимаются, маркер стоит рядом со своей подписью."
+  },
+  {
+   "title": "Больше пяти — не радио",
+   "items": [
+    "Что происходит: в группе радио десять вариантов, экран превращается в простыню, а при прокрутке теряется заголовок группы.",
+    "Что делают системы: Apple HIG прямо просит этого не делать: «Avoid listing too many radio buttons in a set.»",
+    "Что делать нам: 2–5 опций — радиокнопками; больше — селект или шторка со списком, где видно выбранное значение."
+   ],
+   "src": "Источники: Apple HIG · Toggles (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-2\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Пицца</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-2\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Суши</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-2\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Бургеры</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-2\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Салаты</span></label></div></div>",
+   "example_ru": "Четыре опции — предел для радио на телефоне: с пятой опцией переходим на селект или шторку."
+  },
+  {
+   "title": "Горизонтальный ряд — ровный шаг",
+   "items": [
+    "Что происходит: горизонтальный ряд радио собирают по ширине подписи, и группа выглядит рваной: отступы между опциями разные.",
+    "Что делают системы: Apple HIG: «Use consistent spacing when you display radio buttons horizontally. Measure the space needed to accommodate the longest button label, and use that measurement consistently.»",
+    "Что делать нам: в горизонтальном ряду шаг считаем по самой длинной подписи и держим его одинаковым; длинные подписи переводим в столбик."
+   ],
+   "src": "Источники: Apple HIG · Toggles (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-3\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Утро</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-3\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">День</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-3\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Вечер</span></label></div></div>",
+   "example_ru": "Три коротких опции в ряд с одним и тем же шагом, посчитанным по самой длинной подписи."
+  },
+  {
+   "title": "Смешанного состояния нет",
+   "items": [
+    "Что происходит: у радио пытаются показать «выбрано частично» штрихом в маркере, и состояние путают с чекбоксом.",
+    "Что делают системы: Apple HIG отсылает к другому компоненту: «If you need to show that a setting or item has a mixed state, consider using a checkbox instead.»",
+    "Что делать нам: у радио в ДС четыре состояния (снят, выбран, ошибка, недоступен), «частично» показываем только чекбоксом с indeterminate."
+   ],
+   "src": "Источники: Apple HIG · Toggles (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json)",
+   "example_html": "<div class=\"pat__phone\" style=\"display:flex;flex-direction:column;gap:8px\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-4\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Выбран</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-4\" disabled><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Недоступный</span></label></div>",
+   "example_ru": "У радио нет третьего состояния: снят, выбран, ошибка, недоступен — «частично» показываем чекбоксом."
+  },
+  {
+   "title": "Подпись радио не усекать",
+   "items": [
+    "Что происходит: длинную подпись опции («Оплата картой при получении заказа») обрезают многоточием, и две опции становятся неразличимыми.",
+    "Что делают системы: IBM Carbon: «Do not truncate radio button label text with an ellipsis.»",
+    "Что делать нам: подпись переносится на вторую строку с выравниванием по верхнему краю, обрезка запрещена; если текст не влезает — сокращаем формулировку."
+   ],
+   "src": "Источники: IBM Carbon · Radio button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/radio-button/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\" style=\"align-items:flex-start\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-5\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\" style=\"white-space:normal\">Оплата картой при получении заказа</span></label></div></div>",
+   "example_ru": "Длинная подпись переносится под маркер и выровнена по верхнему краю: усечения нет."
+  },
+  {
+   "title": "Снять выбор нельзя — дать «никакой»",
+   "items": [
+    "Что происходит: человек выбрал вариант случайно и вернуться к «ничего не выбрано» уже не может — пока не перезагрузит экран.",
+    "Что делают системы: GOV.UK Design System честно называет это свойством компонента: «Users cannot go back to having no option selected once they have selected one, without refreshing their browser window.»",
+    "Что делать нам: если «не выбрано» — допустимое состояние, последней опцией ставим пункт «Никакой из» (или «Сбросить»), а обязательность выбора показываем подсказкой."
+   ],
+   "src": "Источники: GOV.UK Design System · Radios (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/radios/index.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-6\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Доставка</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-6\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Самовывоз</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-6\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Никакой из</span></label></div></div>",
+   "example_ru": "Последняя опция «Никакой из» возвращает группу в пустое состояние: снять выбор иначе нельзя."
+  },
+  {
+   "title": "До пяти опций — радио, дальше селект",
+   "items": [
+    "Что происходит: для списка из двадцати городов берут радиокнопки, и группа занимает три экрана прокрутки.",
+    "Что делают системы: Ant Design держит порог по числу опций: «Utilizing [Radio](/components/radio/) is recommended when there are fewer total options (less than 5).» — на длинном списке он советует Select.",
+    "Что делать нам: порог в ДС — пять опций: меньше — радио, больше — селект; длинный список в шторке фильтруем поиском."
+   ],
+   "src": "Источники: Ant Design · Select (https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-7\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Доставка</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-7\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Самовывоз</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-7\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">В зале</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-7\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Навынос</span></label></div></div>",
+   "example_ru": "Четыре короткие опции — ещё радио; с пятой-шестой и дальше берём селект или шторку со списком."
+  },
+  {
+   "title": "Не смешивать радио и свитчи",
+   "items": [
+    "Что происходит: одно и то же решение («какой вариант» и «включено») показывают то свитчем, то радио, и пользователь каждый раз заново учится, как это работает.",
+    "Что делают системы: разбор NN/g приводит приложение Chase Bank для iOS как ошибку продукта: «The Chase Bank iOS app uses toggles and radio buttons inconsistently.»",
+    "Что делать нам: разводим роли — свитч это «включено / выключено» и применяется сразу, радио — выбор одного из нескольких; одно решение не показываем двумя компонентами."
+   ],
+   "src": "Источники: Nielsen Norman Group · Toggle-Switch Guidelines, кейс Chase Bank для iOS (https://www.nngroup.com/articles/toggle-switch-guidelines/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-8\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">В зале</span></label><label class=\"ds-radio\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat2-radio-8\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Навынос</span></label></div></div>",
+   "example_ru": "Выбор одного из двух способов — только радио: вкл/выкл рядом оставляем свитчу, а не второму компоненту."
   }
  ]
 }

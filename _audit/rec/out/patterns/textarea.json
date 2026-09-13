@@ -66,6 +66,39 @@
    "src": "Источники: Material Design 3 · токены Filled text field (raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-filled-text-field.scss) · Google Material Components Web · Touch target (raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-touch-target/_touch-target.scss) · Angular Material · Input docs (raw.githubusercontent.com/angular/components/main/src/material/input/input.md) · Apple HIG · Text views (developer.apple.com/design/human-interface-guidelines/text-views) и Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-textarea ds-textarea--disabled\"><div class=\"ds-textarea__input-frame\"><div class=\"ds-textarea__input-content\"><textarea class=\"ds-textarea__field\" rows=\"3\" placeholder=\"Текст\" disabled>Поле заблокировано</textarea></div></div></div></div>",
    "example_ru": "Поле в заблокированном виде: кегль 16 px (1 rem у MD3 и Angular), зона нажатия — не меньше 44 pt; недоступное состояние отличается цветом и подписью, а не размером текста."
-  }
+  },
+ {
+  "title": "Только для текста длиннее строки",
+  "items": [
+   "Что происходит: в textarea пишут фамилию или город: на телефоне многострочное поле выше нужного, а перенос строки человек вставляет сам, и значение уезжает с лишним символом.",
+   "Что делают системы: GOV.UK ограничивает область применения компонента — «Use the textarea component when you need to let users enter an amount of text that’s longer than a single line».",
+   "Что делать нам: textarea ставить только там, где ожидается текст длиннее строки (комментарий, адрес доставки целиком); для одного-двух слов — однострочное поле."
+  ],
+  "src": "Источники: GOV.UK Design System · Textarea (https://design-system.service.gov.uk/components/textarea/)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-textarea\"><span class=\"ds-textarea__label\">Комментарий к заказу</span><div class=\"ds-textarea__input-frame\"><div class=\"ds-textarea__input-content\"><textarea class=\"ds-textarea__field\" rows=\"6\" placeholder=\"Без лука, разрезать на 8 частей\"></textarea></div></div><div class=\"ds-textarea__support\"><span class=\"ds-textarea__hint\">Многострочное поле — для текста длиннее одной строки</span></div></div></div>",
+  "example_ru": "Textarea стоит там, где текст длиннее строки — в комментарии к заказу; для имени или города остаётся однострочное поле (GOV.UK)."
+ },
+ {
+  "title": "Открытый вопрос тяжело заполнять",
+  "items": [
+   "Что происходит: экран оценивает заказ вопросом «Что можно улучшить?» в пустом поле, и на телефоне пользователь либо пишет «всё ок», либо пропускает поле вовсе.",
+   "Что делают системы: GOV.UK советует разбивать такие вопросы — «Users can find open-ended questions difficult to answer. It might be better to break up one complex question into a series of simple ones, for example where users can select from options using a Radios component».",
+   "Что делать нам: длинный открытый вопрос дробить на короткие с выбором вариантов (радио, чипсы), а textarea оставлять для свободного пояснения в конце и делать его необязательным."
+  ],
+  "src": "Источники: GOV.UK Design System · Textarea (https://design-system.service.gov.uk/components/textarea/)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-textarea\"><span class=\"ds-textarea__label\">Комментарий (необязательно)</span><div class=\"ds-textarea__input-frame\"><div class=\"ds-textarea__input-content\"><textarea class=\"ds-textarea__field\" rows=\"3\" placeholder=\"Что-то ещё?\"></textarea></div></div><div class=\"ds-textarea__support\"><span class=\"ds-textarea__hint\">Оценка и причины выбраны выше — здесь только свободное пояснение</span></div></div></div>",
+  "example_ru": "Открытый вопрос сведён к необязательному пояснению после выбора вариантов: свободное поле больше не единственный способ ответить (GOV.UK)."
+ },
+ {
+  "title": "Автокоррекция мешает свободному тексту",
+  "items": [
+   "Что происходит: телефон правит комментарий сам — меняет название блюда и аббревиатуры, и в заказе появляется текст, которого никто не писал.",
+   "Что делают системы: Baymard отмечает, где автокоррекция ошибается чаще всего — «Auto-correct often works very poorly for things like abbreviations, street names, e-mail addresses, person names, and similar words that are not in the dictionary».",
+   "Что делать нам: у textarea со свободными данными (комментарий, адрес, имена) ставить autocorrect=\"off\" и spellcheck=\"false\", оставляя автокоррекцию только для обычного связного текста."
+  ],
+  "src": "Источники: Baymard Institute · 'Touch Keyboard' Implementations (https://baymard.com/blog/mobile-touch-keyboards)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-textarea\"><span class=\"ds-textarea__label\">Адрес доставки</span><div class=\"ds-textarea__input-frame\"><div class=\"ds-textarea__input-content\"><textarea class=\"ds-textarea__field\" rows=\"3\" autocorrect=\"off\" spellcheck=\"false\">ул. Ленина 15, кв. 3</textarea></div></div><div class=\"ds-textarea__support\"><span class=\"ds-textarea__hint\">Автокоррекция выключена</span></div></div></div>",
+  "example_ru": "Поле адреса с выключенной автокоррекцией: улица и аббревиатуры остаются такими, какими их набрали (Baymard)."
+ }
  ]
 }

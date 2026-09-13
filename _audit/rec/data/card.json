@@ -186,6 +186,138 @@
    "src": "Источники: IBM Carbon · Tile (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tile/usage.mdx) · Ant Design · Card (https://raw.githubusercontent.com/ant-design/ant-design/master/components/card/index.en-US.md)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-card ds-card--outlined\"><div style=\"aspect-ratio:2/1;background:#F0F0F0;border-radius:8px 8px 0 0\"></div><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div></div><div class=\"ds-card ds-card--outlined\"><div style=\"aspect-ratio:2/1;background:#F0F0F0;border-radius:8px 8px 0 0\"></div><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 7</span><h3 class=\"ds-card__title\">Заказ №129</h3><span class=\"ds-card__label-down\">20:52 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Пепперони, 1 шт.</span></div></div></div>",
    "example_ru": "Пропорция изображения 2:1 и одна и та же высота карточки до и после загрузки картинки: список из 20–30 карточек прокручивается без «скачков»."
+  },
+  {
+   "title": "Карточка — выжимка, детали внутри",
+   "items": [
+    "Что происходит: в карточку складывают весь контент позиции, и список превращается в длинные простыни.",
+    "Что делают системы: Nielsen Norman Group — Cards: UI-Component Definition: «A card is usually short and offers a linked entry point to further details, rather than the full details themselves.».",
+    "Что делать нам: в карточке держим короткую выжимку и переход к деталям, а не полный текст."
+   ],
+   "src": "Источники: NN/g · Cards: UI-Component Definition (Page Laubheimer, 2016) (https://www.nngroup.com/articles/cards-component/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div></div></div>",
+   "example_ru": "Карточка заказа — короткая выжимка («Маргарита, 2 шт. · Цезарь, 1 шт.») с переходом к деталям, а не полный состав."
+  },
+  {
+   "title": "Тап по всей карточке",
+   "items": [
+    "Что происходит: карточка открывается только по ссылке в заголовке, а тап по её пустому месту ничего не делает.",
+    "Что делают системы: Nielsen Norman Group — Cards: UI-Component Definition: «For most implementations, clicking or tapping anywhere on the card link to a details page ... This larger touch zone substantially improves usability on both touchscreen devices and mouse-based devices (due to Fitts' Law).».",
+    "Что делать нам: тап по любой точке карточки ведёт к деталям — вся площадь карточки работает как одна зона нажатия."
+   ],
+   "src": "Источники: NN/g · Cards: UI-Component Definition (https://www.nngroup.com/articles/cards-component/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div></div></div>",
+   "example_ru": "Карточка целиком — одна зона нажатия: большая площадь заметно улучшает попадание, особенно на тач-экране."
+  },
+  {
+   "title": "Карточка экономит место на 375 px",
+   "items": [
+    "Что происходит: позиции разделяют пустым пространством вместо карточек, и на телефоне экран быстро кончается.",
+    "Что делают системы: Nielsen Norman Group — Cards: UI-Component Definition: «Without the visual style of the card, grouping each item's ingredients together clearly in a way that separates them from other items on the page would require a lot more negative space and would waste valuable screen real estate on mobile phones and tablets.».",
+    "Что делать нам: группируем позиции карточкой (рамкой и фоном), а не пустым воздухом — на 375 px это экономит экран."
+   ],
+   "src": "Источники: NN/g · Cards: UI-Component Definition (https://www.nngroup.com/articles/cards-component/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div></div></div>",
+   "example_ru": "Позиции сгруппированы карточкой с рамкой: без неё разделение тех же данных потребовало бы много пустого места и съело экран."
+  },
+  {
+   "title": "Карточки не для сравнения",
+   "items": [
+    "Что происходит: позиции, которые надо сравнить по цене и весу, показывают карточками — глазами по ним не просканировать.",
+    "Что делают системы: Nielsen Norman Group — Cards: UI-Component Definition: «Card layouts are less scannable than lists. ... Thus, cards are not appropriate when users search for a specific item from a list or look for a particular piece of content.».",
+    "Что делать нам: для поиска и сравнения используем список, а карточки — там, где важны визуальные признаки позиции."
+   ],
+   "src": "Источники: NN/g · Cards: UI-Component Definition (https://www.nngroup.com/articles/cards-component/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div></div></div>",
+   "example_ru": "Карточка подходит для визуальных признаков позиции; для поиска и сравнения нужен список — карточки сканируются хуже."
+  },
+  {
+   "title": "Отступ карточек на мобиле 8 dp",
+   "items": [
+    "Что происходит: карточки на телефоне жмут друг к другу вплотную или расходятся слишком широко, и список выглядит разным.",
+    "Что делают системы: Material Components for Android — Cards (Material Design): «We recommend that cards on mobile have `8dp` margins.».",
+    "Что делать нам: на мобиле держим отступ карточек 8 dp (у нас — 8 px), чтобы интервал между карточками был единым."
+   ],
+   "src": "Источники: Material Components for Android · Cards (Material Design) (https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Card.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-card ds-card--outlined\"><div style=\"aspect-ratio:2/1;background:#F0F0F0;border-radius:8px 8px 0 0\"></div><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div></div><div class=\"ds-card ds-card--outlined\"><div style=\"aspect-ratio:2/1;background:#F0F0F0;border-radius:8px 8px 0 0\"></div><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 7</span><h3 class=\"ds-card__title\">Заказ №129</h3><span class=\"ds-card__label-down\">20:52 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Пепперони, 1 шт.</span></div></div></div>",
+   "example_ru": "Две карточки подряд с одинаковым интервалом: на мобиле Material Components for Android рекомендует отступ 8 dp."
+  },
+  {
+   "title": "Карточка на мобиле без тени",
+   "items": [
+    "Что происходит: outlined-карточке на телефоне оставляют тень, и список начинает выглядеть как набор приподнятых плашек.",
+    "Что делают системы: Material Components for Android — Cards (Material Design): «On mobile, an outlined or a filled card’s default elevation is `0dp`, with a raised dragged elevation of `8dp`.».",
+    "Что делать нам: на мобиле outlined-карточка рисуется без тени (elevation 0), тень появляется только при перетаскивании."
+   ],
+   "src": "Источники: Material Components for Android · Cards (Material Design) (https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Card.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div></div></div>",
+   "example_ru": "Outlined-карточка без тени: на мобиле Material Components for Android держит elevation 0 dp, а подъём до 8 dp — только при перетаскивании."
+  },
+  {
+   "title": "Длинный текст карточки",
+   "items": [
+    "Что происходит: в строку карточки кладут большой абзац, строка раздувается и перестаёт читаться как элемент списка.",
+    "Что делают системы: Apple HIG — Lists and tables: «Keep item text succinct so row content is comfortable to read. If each item consists of a large amount of text, consider alternatives that help you avoid displaying over-large table rows. For example, you could list item titles only, letting people choose an item to reveal its content in a detail view.».",
+    "Что делать нам: в карточке — короткий текст и только заголовок, а полный текст открывается в деталях."
+   ],
+   "src": "Источники: Apple HIG · Lists and tables (https://developer.apple.com/design/human-interface-guidelines/lists-and-tables)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div></div></div>",
+   "example_ru": "Короткий текст карточки: длинный абзац в строке раздувает карточку, поэтому полный текст уходит в детали."
+  },
+  {
+   "title": "Раскрытие карточки на месте",
+   "items": [
+    "Что происходит: детали карточки открывают новым экраном, хотя на телефоне хватило бы раскрытия прямо в списке.",
+    "Что делают системы: Nielsen Norman Group — Accordions on Mobile: «While the use of accordions on desktop is debatable, on mobile, accordions are one of the most useful design elements, as they often solve the problem of displaying too much content in too little screen space.».",
+    "Что делать нам: детали карточки на мобиле раскрываем на месте (progressive disclosure), а не отдельным экраном."
+   ],
+   "src": "Источники: NN/g · Accordions on Mobile (Raluca Budiu, 2015) (https://www.nngroup.com/articles/mobile-accordions/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div></div></div>",
+   "example_ru": "Карточка раскрывает детали на месте: на телефоне аккордеон решает проблему нехватки экрана лучше нового экрана."
+  },
+  {
+   "title": "Раскрыл карточку — не прыгай вверх",
+   "items": [
+    "Что происходит: при раскрытии карточки список прокручивается к её верху, и кажется, что открылся новый экран.",
+    "Что делают системы: Nielsen Norman Group — Accordions on Mobile: «Another solution (that uses space in a less efficient way, however) is to prevent the illusion of a new page by not scrolling the page when the accordion is expanded.».",
+    "Что делать нам: при раскрытии карточки прокрутку не сбрасываем — позиция остаётся на месте, чтобы не ломать кнопку «Назад»."
+   ],
+   "src": "Источники: NN/g · Accordions on Mobile (https://www.nngroup.com/articles/mobile-accordions/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div></div></div>",
+   "example_ru": "Карточка раскрывается без прыжка списка к верху: так сохраняется ощущение того же экрана, а не новой страницы."
+  },
+  {
+   "title": "Действия карточки — внизу",
+   "items": [
+    "Что происходит: кнопки действий ставят в шапку карточки, и они спорят с заголовком позиции за место и внимание.",
+    "Что делают системы: Ant Design — Card: «actions | The action list, shows at the bottom of the Card».",
+    "Что делать нам: действия карточки держим в нижней полосе, а шапку оставляем под заголовок и подписи."
+   ],
+   "src": "Источники: Ant Design · Card (https://raw.githubusercontent.com/ant-design/ant-design/master/components/card/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"flex-direction:column;align-items:stretch\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div><div class=\"ds-card__footer\"><div class=\"ds-card__divider\"></div><div class=\"ds-card__footer__action\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Отправить на кухню</span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё: печать, отменить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_horiz</span></span></button></div></div></div></div>",
+   "example_ru": "Действия («Отправить на кухню», «⋯») стоят в нижней полосе карточки — именно так их размещает Ant Design."
+  },
+  {
+   "title": "Одно действие inline, много — в «⋯»",
+   "items": [
+    "Что происходит: в карточке оставляют три-четыре иконки действий, и они переносятся на вторую строку.",
+    "Что делают системы: Carbon Design System — Data table (Inline actions / Overflow menu): «When the overflow menu contains fewer than three options, keep the actions inline as icon buttons instead. This approach reduces a click and makes available actions visible at a glance.».",
+    "Что делать нам: одно-два действия показываем inline, а три и больше — прячем под «⋯»."
+   ],
+   "src": "Источники: Carbon Design System · Data table, Inline actions / Overflow menu (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"flex-direction:column;align-items:stretch\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div><div class=\"ds-card__footer\"><div class=\"ds-card__divider\"></div><div class=\"ds-card__footer__action\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Отправить на кухню</span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё: печать, отменить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_horiz</span></span></button></div></div></div></div>",
+   "example_ru": "Одно действие плюс «⋯»: при трёх и больше вариантах Carbon советует убирать действия в overflow-меню, а не держать их inline."
+  },
+  {
+   "title": "«⋯» всегда видно на тач-экране",
+   "items": [
+    "Что происходит: меню «⋯» показывается только при наведении, и на телефоне его просто нет.",
+    "Что делают системы: Carbon Design System — Data table (Overflow menu): «For mobile and touch devices the data table will detect if the user agent supports hover-over and persist the overflow menus even if the `overflowMenuOnHover` prop is enabled.».",
+    "Что делать нам: на тач-устройствах «⋯» показываем всегда, а hover-режим включаем только для мыши."
+   ],
+   "src": "Источники: Carbon Design System · Data table, Overflow menu (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"flex-direction:column;align-items:stretch\"><div class=\"ds-card ds-card--outlined\"><div class=\"ds-card__header\"><span class=\"ds-card__label-up\">Стол 12</span><h3 class=\"ds-card__title\">Заказ №128</h3><span class=\"ds-card__label-down\">20:40 · зал</span></div><div class=\"ds-card__content\"><span class=\"ds-card__label-up\">Маргарита, 2 шт. · Цезарь, 1 шт.</span></div><div class=\"ds-card__footer\"><div class=\"ds-card__divider\"></div><div class=\"ds-card__footer__action\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Отправить на кухню</span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё: печать, отменить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_horiz</span></span></button></div></div></div></div>",
+   "example_ru": "Меню «⋯» видно постоянно: на тач-устройствах Carbon не прячет overflow-меню за наведением."
   }
  ]
 }

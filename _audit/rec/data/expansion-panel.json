@@ -179,6 +179,116 @@
    "src": "Источники: Angular Material · expansion.md (https://raw.githubusercontent.com/angular/components/main/src/material/expansion/expansion.md) · IBM Carbon · Accordion (https://carbondesignsystem.com/components/accordion/usage) · GOV.UK Design System · Accordion (https://design-system.service.gov.uk/components/accordion)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" role=\"button\" tabindex=\"0\" aria-expanded=\"true\" aria-controls=\"exp-content-1\" style=\"height:64px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Заголовок панели</span><span class=\"ds-expansion__arrow\" aria-hidden=\"true\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
    "example_ru": "Шапка — роль кнопки с aria-expanded и aria-controls, шеврон помечен aria-hidden: скринридер сообщает, что панель раскрыта, и её можно открыть тапом по всей строке 48 px или с клавиатуры."
+  },
+  {
+   "title": "Несколько секций открыты разом",
+   "items": [
+    "Что происходит: панели разрешают открывать по одной, и пользователю приходится бегать между секциями, чтобы сравнить их содержимое.",
+    "Что делают системы: Nielsen Norman Group · Accordions Are Not Always the Answer for Complex Content — «If you do use accordions, make sure to give people the capability to open multiple sections at a time so that different chunks of content are readily available. Items that are opened or closed should remain in that state until the user changes it.»",
+    "Что делать нам: разрешать открывать несколько секций сразу и не сбрасывать их состояние до действия пользователя."
+   ],
+   "src": "Источники: Nielsen Norman Group · Accordions Are Not Always the Answer for Complex Content (https://www.nngroup.com/articles/accordions-complex-content/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" style=\"height:64px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Заказы за смену</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" style=\"height:64px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Оплаты за смену</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
+   "example_ru": "Обе панели раскрыты одновременно: секции можно сравнивать, и состояние держится, пока пользователь сам его не поменяет."
+  },
+  {
+   "title": "Аккордеон для тесного экрана",
+   "items": [
+    "Что происходит: длинную страницу настроек на телефоне показывают целиком, и до конца списка пользователь не доходит.",
+    "Что делают системы: Nielsen Norman Group · Accordions Are Not Always the Answer for Complex Content — аккордеон уместен, «when the information is restricted to very small spaces, such as on mobile devices».",
+    "Что делать нам: на мобиле группировать длинный набор настроек в панели, чтобы шапки помещались на экран и состав страницы был виден."
+   ],
+   "src": "Источники: Nielsen Norman Group · Accordions Are Not Always the Answer for Complex Content (https://www.nngroup.com/articles/accordions-complex-content/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion\"><div class=\"ds-expansion__header\" style=\"height:48px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span class=\"ds-expansion__title\">Настройки печати</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div><div class=\"ds-expansion\"><div class=\"ds-expansion__header\" style=\"height:48px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span class=\"ds-expansion__title\">Настройки смены</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
+   "example_ru": "Две свёрнутые панели по 48 px: на телефоне виден состав длинной страницы, а не бесконечный список настроек."
+  },
+  {
+   "title": "Никакой вложенности панелей",
+   "items": [
+    "Что происходит: панель вкладывают в панель, и пользователь не понимает, где нужный блок и сколько раз придётся раскрывать экран.",
+    "Что делают системы: GOV.UK Design System · Accordion — «Do not put accordions within accordions, as it will make content difficult to find.»",
+    "Что делать нам: не вкладывать панель в панель: на втором уровне раскрытия держать обычный текст, поля или отдельный экран."
+   ],
+   "src": "Источники: GOV.UK Design System · Accordion (https://design-system.service.gov.uk/components/accordion/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" style=\"height:64px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Доставка</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\"><div style=\"min-height:20px;font-size:14px;line-height:20px\">Внутри — обычный текст и поля, а не вторая панель.</div><div style=\"min-height:20px;font-size:14px;line-height:20px\">Вложенных раскрывающихся блоков нет.</div></div></div></div>",
+   "example_ru": "Внутри раскрытой панели текст и поля без второй панели: вложенность GOV.UK запрещает — иначе контент трудно найти."
+  },
+  {
+   "title": "Не прятать обязательное в панель",
+   "items": [
+    "Что происходит: в свёрнутую панель убирают условия и обязательные к прочтению сведения, и пользователь их не открывает.",
+    "Что делают системы: GOV.UK Design System · Accordion — «Do not use an accordion for content that all users need to see.»",
+    "Что делать нам: обязательное и то, что нужно всем, показывать вне панели, а в панель прятать только дополнительное."
+   ],
+   "src": "Источники: GOV.UK Design System · Accordion (https://design-system.service.gov.uk/components/accordion/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"min-height:20px;font-size:14px;line-height:20px\">Оферта и тарифы показаны всегда — они нужны каждому</div><div class=\"ds-expansion\"><div class=\"ds-expansion__header\" style=\"height:48px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Как считается скидка</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
+   "example_ru": "Обязательные условия стоят над панелью открытым текстом, а под раскрытием — только дополнительное «как считается скидка»."
+  },
+  {
+   "title": "Состояние секций помнят",
+   "items": [
+    "Что происходит: после возврата на экран все секции снова свёрнуты, и пользователь заново раскрывает то, с чем работал.",
+    "Что делают системы: GOV.UK Design System · Accordion — «Users might need some sections to be open from the start. If they leave and then return to the page, they might also need sections they opened to stay open.»",
+    "Что делать нам: запоминать раскрытые секции (session storage) и открывать нужные по умолчанию при входе на экран."
+   ],
+   "src": "Источники: GOV.UK Design System · Accordion (https://design-system.service.gov.uk/components/accordion/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" style=\"height:64px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Гости</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div><div class=\"ds-expansion\"><div class=\"ds-expansion__header\" style=\"height:48px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Оплата</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
+   "example_ru": "Панель «Гости» открыта при входе на экран и остаётся открытой после возврата: состояние секций хранится в session storage."
+  },
+  {
+   "title": "Carbon: панель при дефиците места",
+   "items": [
+    "Что происходит: разбор длинного объекта уводят на отдельный экран или в модальное окно, хотя места не хватает и контекст теряется.",
+    "Что делают системы: Carbon Design System · Accordion — аккордеон применяют, «When space is at a premium and long content cannot be displayed all at once, like on a mobile interface or in a side panel.»",
+    "Что делать нам: длинное содержание внутри одного экрана раскладывать по панелям, а не уводить на отдельный экран."
+   ],
+   "src": "Источники: Carbon Design System · Accordion (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/accordion/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" style=\"height:64px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Состав заказа</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\"><div style=\"min-height:20px;font-size:14px;line-height:20px\">Длинное содержание живёт в панели на том же экране, а не на отдельной странице.</div></div></div></div>",
+   "example_ru": "Длинный состав заказа раскрывается панелью прямо на экране: при дефиците места Carbon советует аккордеон, а не отдельный экран."
+  },
+  {
+   "title": "Не прятать то, что читают всё",
+   "items": [
+    "Что происходит: содержание, которое пользователь и так читает целиком, убирают под раскрытие и добавляют ему лишний тап.",
+    "Что делают системы: Carbon Design System · Accordion — «If a user is likely to read all of the content, then don’t use an accordion».",
+    "Что делать нам: если содержание читают полностью, показывать его сразу открытым и обходиться без панели."
+   ],
+   "src": "Источники: Carbon Design System · Accordion (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/accordion/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" style=\"height:64px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Итоги смены</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\">Панель открыта по умолчанию: содержание читают целиком, лишний тап не нужен.</div></div></div>",
+   "example_ru": "Итоги смены открыты сразу: то, что пользователь читает полностью, аккордеоном не прячем — иначе добавляется лишний тап."
+  },
+  {
+   "title": "Один раскрывающийся блок на экран",
+   "items": [
+    "Что происходит: на экране ставят несколько раскрывающихся контролов, и пользователь теряет понимание, какой блок к чему относится.",
+    "Что делают системы: Apple Human Interface Guidelines · Disclosure controls — «Use no more than one disclosure button in a single view.»",
+    "Что делать нам: держать на одном экране не больше одного раскрывающегося блока, остальное выносить на отдельные экраны."
+   ],
+   "src": "Источники: Apple Human Interface Guidelines · Disclosure controls (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/disclosure-controls.json)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion\"><div class=\"ds-expansion__header\" style=\"height:48px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Подробности заказа</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
+   "example_ru": "На экране один раскрывающийся блок с шевроном вниз: по HIG больше одного disclosure-контрола в одном виде не используют."
+  },
+  {
+   "title": "Стрелка показывает состояние",
+   "items": [
+    "Что происходит: состояние панели никак не показано, и по шапке нельзя понять, открыта она сейчас или закрыта.",
+    "Что делают системы: Material Design 1 · Expansion panels — «An arrow that points down when collapsed and points up when expanded.»",
+    "Что делать нам: у свёрнутой панели держать стрелку вниз, у раскрытой — вверх, и переключать состояние тапом по всей шапке."
+   ],
+   "src": "Источники: Material Design 1 · Expansion panels (https://m1.material.io/components/expansion-panels.html)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" style=\"height:64px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Скидки смены</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
+   "example_ru": "У раскрытой панели стрелка смотрит вверх, у свёрнутой — вниз (expand_more): тап по шапке переключает состояние."
+  },
+  {
+   "title": "Режим аккордеона: одна панель",
+   "items": [
+    "Что происходит: режимы «несколько панелей» и «аккордеон» путают, и экран с формой ведёт себя то как список, то как гармошка.",
+    "Что делают системы: Ant Design · Collapse — в режиме accordion «which allows only one panel to be expanded at a time», по умолчанию открыта первая панель.",
+    "Что делать нам: выбирать режим осознанно: один раскрытый блок для компактных экранов, несколько — когда блоки нужно сравнивать."
+   ],
+   "src": "Источники: Ant Design · Collapse (accordion) (https://ant.design/components/collapse)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\" style=\"height:64px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Заказы</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div><div class=\"ds-expansion\"><div class=\"ds-expansion__header\" style=\"height:48px\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Гости</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Содержимое панели: текст, поля, любые компоненты ДС.</div></div></div>",
+   "example_ru": "Открыта только первая панель «Заказы» — режим accordion у Ant Design: открытие следующей закрывает предыдущую."
   }
  ]
 }

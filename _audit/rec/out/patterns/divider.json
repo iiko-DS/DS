@@ -66,6 +66,94 @@
    "src": "Источники: Apple HIG · Lists and tables (https://developer.apple.com/design/human-interface-guidelines/lists-and-tables) · UIKit · UITableView.separatorInset (https://developer.apple.com/documentation/uikit/uitableview/separatorinset) · Material Web · divider.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md)",
    "example_html": "<div class=\"pat__phone\"><hr class=\"ds-divider ds-divider--m\" style=\"height:1px;margin:0 16px\"><div style=\"height:16px\"></div><hr class=\"ds-divider ds-divider--dashed\"></div>",
    "example_ru": "За основу взяты проверяемые 1 px и inset 16 px; у iOS HIG числа для разделителя нет, поэтому «hairline 1 pt» в примере не выдумывается."
+  },
+  {
+   "title": "Линия очерчивает зоны нажатия",
+   "items": [
+    "Что происходит: в аккордеоне между заголовками стоит линия во всю ширину, и тап по самой линии не открывает соседнюю панель.",
+    "Что делают системы: Material Web описывает эту роль линии — «Dividers can reinforce tapability, such as when used to separate list items or define tappable regions in an accordion.»",
+    "Что делать нам: между строками списка линия показывает границу цели нажатия (строка 48 px), а сама линия отдельной кликабельной областью не становится."
+   ],
+   "src": "Источники: Material Web · Divider (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Заказ №1024 · стол 4</div><hr class=\"ds-divider ds-divider--m\" style=\"margin:0\"><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Заказ №1025 · стол 7</div></div>",
+   "example_ru": "Линия во всю ширину разделяет две цели нажатия по 48 px: она показывает, где кончается одна строка, и нажимаемыми остаются сами строки."
+  },
+  {
+   "title": "Full-width против inset",
+   "items": [
+    "Что происходит: между двумя несвязанными блоками («Заказы» и «Отчёты») стоит короткая линия с отступом, и блоки выглядят как одна группа.",
+    "Что делают системы: Material Design разводит два случая прямо — «Use full width dividers to separate larger sections of unrelated content. ... Use inset dividers to separate related content within a section.»",
+    "Что делать нам: между разными секциями — линия во всю ширину 343 px, внутри секции между связанными строками — inset с отступом 16 px."
+   ],
+   "src": "Источники: Material Design · Divider (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md)",
+   "example_html": "<div class=\"pat__phone\"><hr class=\"ds-divider ds-divider--m\" style=\"margin:0\"><div class=\"ds-list-item\"><div class=\"ds-list-item__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-item__content\"><span class=\"ds-list-item__label-up\">Заказ №1024</span><span class=\"ds-list-item__text\">Стол 4 · 1 480 ₽</span></div></div><hr class=\"ds-divider ds-divider--m\" style=\"margin:0 16px\"><div class=\"ds-list-item\"><div class=\"ds-list-item__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-item__content\"><span class=\"ds-list-item__label-up\">Заказ №1025</span><span class=\"ds-list-item__text\">Стол 7 · 420 ₽</span></div></div></div>",
+   "example_ru": "Сверху линия во всю ширину отделяет секцию, ниже линия с отступом 16 px разделяет связанные строки одного списка."
+  },
+  {
+   "title": "Inset отступает с обеих сторон",
+   "items": [
+    "Что происходит: линия в списке заказов начинается у текста, но упирается в правый край экрана, и строки выглядят сдвинутыми.",
+    "Что делают системы: у Android inset-разделитель по умолчанию отступает симметрично — «Inset dividers separate related content within a section. They are equally indented from both sides of the screen by default.»",
+    "Что делать нам: inset-разделитель получает отступ 16 px с обеих сторон, чтобы линия шла по одной направляющей с текстом строки."
+   ],
+   "src": "Источники: Material Components for Android · Divider (https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Divider.md)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Заказ №1024 · стол 4</div><hr class=\"ds-divider ds-divider--m\" style=\"margin:0 16px\"><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Заказ №1025 · стол 7</div></div>",
+   "example_ru": "Линия отступает по 16 px и слева, и справа: она начинается и заканчивается на одной оси с текстом строк."
+  },
+  {
+   "title": "Разделитель-отступ без линии",
+   "items": [
+    "Что происходит: между блоками формы стоит линия, и форма превращается в частокол из линий, где непонятно, что к чему относится.",
+    "Что делают системы: GOV.UK держит раздел без линии по умолчанию — «By default govuk-section-break is only visible by its margin. You can add the govuk-section-break--visible class to make it visible with a separator line.»",
+    "Что делать нам: внутри группы полей разделяем отступом 16 px без линии; линия появляется только между разными группами и секциями."
+   ],
+   "src": "Источники: GOV.UK Design System · Section break (https://design-system.service.gov.uk/styles/section-break/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Название</div><div style=\"height:16px\"></div><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Комментарий</div><hr class=\"ds-divider ds-divider--m\" style=\"margin:0\"><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Стоп-лист</div></div>",
+   "example_ru": "Связанные поля разделены отступом 16 px без линии, а между секциями стоит видимая линия — так раздел GOV.UK работает видимым только по отступу."
+  },
+  {
+   "title": "Линии создают подрегионы",
+   "items": [
+    "Что происходит: блок настроек без линий читается одним куском, и человек не понимает, где кончается «Печать» и начинается «Оплата».",
+    "Что делают системы: NN/g про линии внутри области — «Within that dark background, lines further create other common subregions, that communicate the grouping of the various controls».",
+    "Что делать нам: на одном экране не больше одной-двух линий, и каждая отделяет подрегион с собственной группой контролов, а не отдельную строку."
+   ],
+   "src": "Источники: NN/g · The Principle of Common Region (https://www.nngroup.com/articles/common-region/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Печать чеков</div><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Печать пречеков</div><hr class=\"ds-divider ds-divider--m\" style=\"margin:0\"><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Оплата картой</div><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Оплата наличными</div></div>",
+   "example_ru": "Одна линия делит экран настроек на два подрегиона — «Печать» и «Оплата»: подрегион собирает группу контролов, а не одну строку."
+  },
+  {
+   "title": "Близкие элементы кажутся связанными",
+   "items": [
+    "Что происходит: подпись поля стоит ближе к предыдущему полю, чем к своему, и человек заполняет не то поле.",
+    "Что делают системы: NN/g напоминает принцип — «Just remember this principle: items near each other appear related.»",
+    "Что делать нам: отступ между подписью и её полем — 4 px, между разными полями — 16 px: связь задаётся расстоянием, а не цветом и не линией."
+   ],
+   "src": "Источники: NN/g · Form Design Quick Fix: Group Form Elements Effectively Using White Space (https://www.nngroup.com/articles/form-design-white-space/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"font-size:14px;line-height:20px\">Название блюда</div><div style=\"height:4px\"></div><div style=\"height:48px;border:1px solid #BDBDBD;border-radius:8px\"></div><div style=\"height:16px\"></div><div style=\"font-size:14px;line-height:20px\">Цена, ₽</div><div style=\"height:4px\"></div><div style=\"height:48px;border:1px solid #BDBDBD;border-radius:8px\"></div></div>",
+   "example_ru": "Подпись прижата к своему полю на 4 px, а поля разнесены на 16 px — расстояние само показывает, какая подпись к какому полю относится."
+  },
+  {
+   "title": "Связанные поля — в группу",
+   "items": [
+    "Что происходит: одиннадцать полей формы идут подряд, и человек не видит, где заканчивается адрес и начинается оплата.",
+    "Что делают системы: NN/g советует группировать — «Tip #2: Group together related fields.»",
+    "Что делать нам: форму собираем из групп по три-пять связанных полей, между группами — заголовок группы и разделитель, внутри группы — только отступы."
+   ],
+   "src": "Источники: NN/g · Form Design Quick Fix: Group Form Elements Effectively Using White Space (https://www.nngroup.com/articles/form-design-white-space/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"font-size:16px;line-height:24px;font-weight:500\">В помещении</div><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Зал · Основной</div><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Стол · 4</div><hr class=\"ds-divider ds-divider--m\" style=\"margin:0\"><div style=\"font-size:16px;line-height:24px;font-weight:500\">Гость</div><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Имя</div><div style=\"height:48px;display:flex;align-items:center;font-size:14px;line-height:20px\">Телефон</div></div>",
+   "example_ru": "Две группы — «В помещении» и «Гость» — разведены заголовком и линией, внутри группы только строки без линий."
+  },
+  {
+   "title": "Отступ между полями формы",
+   "items": [
+    "Что происходит: два поля ввода стоят вплотную, и подпись второго поля читается как часть первого.",
+    "Что делают системы: Apple HIG для полей ввода — «If your layout includes multiple text fields, leave enough space between them so people can easily see which input field belongs with each introductory label.»",
+    "Что делать нам: между полями формы 16 px, и подпись всегда прижата к своему полю; вплотную друг к другу поля в ДС не ставим."
+   ],
+   "src": "Источники: Apple Human Interface Guidelines · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"font-size:14px;line-height:20px\">Название</div><div style=\"height:4px\"></div><div style=\"height:48px;border:1px solid #BDBDBD;border-radius:8px\"></div><div style=\"height:16px\"></div><div style=\"font-size:14px;line-height:20px\">Комментарий гостя</div><div style=\"height:4px\"></div><div style=\"height:48px;border:1px solid #BDBDBD;border-radius:8px\"></div></div>",
+   "example_ru": "Два поля разнесены на 16 px, и подпись «Комментарий гостя» однозначно относится ко второму полю."
   }
  ]
 }

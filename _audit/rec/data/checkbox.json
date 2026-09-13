@@ -224,6 +224,83 @@
    "src": "Источники: GOV.UK Design System · Checkboxes (https://design-system.service.gov.uk/components/checkboxes/)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-checkbox-group ds-checkbox-group--vertical\"><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Ничего из перечисленного</span></label><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Приправа</span></label><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Соус</span></label><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Сыр</span></label></div><span class=\"ds-checkbox__support\">По умолчанию ни один пункт не отмечен</span></div>",
    "example_ru": "Ни один пункт не отмечен заранее, порядок по алфавиту и есть отдельный взаимоисключающий пункт «Ничего из перечисленного»: случайный выбор не отправится."
+  },
+  {
+   "title": "Зона нажатия 48 dp, не квадратик",
+   "items": [
+    "Что происходит: в списке фильтров чекбокс жмут по квадратику 18–20 px, половина тапов уходит в соседнюю строку.",
+    "Что делают системы: справочник Google по доступности Android: «In Jetpack Compose, Material components like Checkbox or Switch automatically add padding to make sure they’re at least 48x48dp.»",
+    "Что делать нам: строка чекбокса на мобиле минимум 48 px, нажатие — по всей строке вместе с подписью, а не по квадратику."
+   ],
+   "src": "Источники: Google Android Accessibility · Touch target size, Material Design (https://support.google.com/accessibility/android/answer/7101858)",
+   "example_html": "<div class=\"pat__phone\"><label class=\"ds-checkbox\" style=\"min-height:48px\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Стоп-лист</span></label><label class=\"ds-checkbox\" style=\"min-height:48px\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Общий стол</span></label></div>",
+   "example_ru": "Строка чекбокса 48 px и нажимается целиком: квадратик 20 × 20 остаётся только рисунком."
+  },
+  {
+   "title": "Подпись не усекать многоточием",
+   "items": [
+    "Что происходит: длинную подпись «Учитывать стоп-лист при продаже навынос» обрезают в одну строку, и два разных пункта выглядят одинаково.",
+    "Что делают системы: IBM Carbon запрещает обрезку прямо: «Do not truncate checkbox label text with an ellipsis.»",
+    "Что делать нам: подпись переносится, а не режется; если и две строки не помещаются — переписываем формулировку короче."
+   ],
+   "src": "Источники: IBM Carbon · Checkbox (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/checkbox/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><label class=\"ds-checkbox\" style=\"min-height:48px;align-items:flex-start\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"white-space:normal\">Учитывать стоп-лист при продаже навынос</span></label></div>",
+   "example_ru": "Подпись переносится на вторую строку: обрезки «Учитывать стоп-лист при прод…» нет."
+  },
+  {
+   "title": "Подпись переносится под квадратик",
+   "items": [
+    "Что происходит: длинная подпись уезжает вправо одной строкой и обрезается у края, а маркер оказывается по центру двух строк текста.",
+    "Что делают системы: IBM Carbon задаёт выравнивание: «Text should wrap beneath the checkbox so the control and label are top aligned.»",
+    "Что делать нам: при переносе подпись идёт под маркер и выравнивается по верхнему краю (align-items: flex-start), а не по центру блока."
+   ],
+   "src": "Источники: IBM Carbon · Checkbox (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/checkbox/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap\"><label class=\"ds-checkbox\" style=\"align-items:flex-start\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Сыр</span></label><label class=\"ds-checkbox\" style=\"align-items:flex-start\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"white-space:normal\">Добавлять сыр в каждую пиццу заказа</span></label></div></div>",
+   "example_ru": "Длинная подпись уходит под маркер и выровнена по верхнему краю, а не по центру двух строк."
+  },
+  {
+   "title": "Ничего не предвыбирать",
+   "items": [
+    "Что происходит: часть пунктов включена заранее, и заказ уходит с фильтрами, которых пользователь не выбирал.",
+    "Что делают системы: GOV.UK Design System предупреждает: «Do not pre-select checkbox options as this makes it more likely that users will: not realise they’ve missed a question, submit the wrong answer.»",
+    "Что делать нам: по умолчанию ни один пункт не отмечен; предвыбор допустим только там, где он словами описан рядом с пунктом."
+   ],
+   "src": "Источники: GOV.UK Design System · Checkboxes (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/checkboxes/index.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-checkbox-group ds-checkbox-group--vertical\"><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Приправа</span></label><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Соус</span></label><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Сыр</span></label></div></div>",
+   "example_ru": "Три пункта, и ни один не отмечен заранее: случайный фильтр в заказ не уйдёт."
+  },
+  {
+   "title": "Сколько можно выбрать — словами",
+   "items": [
+    "Что происходит: чекбоксы и радио выглядят похоже, и человек не понимает, разрешено ли ему выбрать несколько пунктов или только один.",
+    "Что делают системы: GOV.UK Design System: «Do not assume that users will know how many options they can select based on the visual difference between radios and checkboxes alone.» — и советует подсказку вида «Select all that apply».",
+    "Что делать нам: у группы — подсказка словами («Можно выбрать несколько»), связанная с группой, а у радио — обратная подсказка, что вариант один."
+   ],
+   "src": "Источники: GOV.UK Design System · Checkboxes (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/checkboxes/index.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-checkbox-wrap\"><div class=\"ds-checkbox-group ds-checkbox-group--vertical\"><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Подавать сразу</span></label><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Подавать с горячим</span></label></div><span class=\"ds-checkbox__support\">Можно выбрать несколько</span></div></div>",
+   "example_ru": "Подсказка «Можно выбрать несколько» стоит у группы: пользователь не угадывает по внешнему виду."
+  },
+  {
+   "title": "Долгое нажатие включает выбор",
+   "items": [
+    "Что происходит: в списке заказов нужно отметить сразу несколько строк, а рядом с каждой уже стоит чекбокс — экран превращается в частокол.",
+    "Что делают системы: в Gmail для Android выбор включается долгим нажатием — «When this setting is off, touch and hold a message to select it.»",
+    "Что делать нам: для списков с массовым выбором используем долгое нажатие: оно включает режим выбора и выделяет первую строку, а чекбоксы показываем только в этом режиме."
+   ],
+   "src": "Источники: Gmail для Android · выбор письма, долгое нажатие (https://support.google.com/mail/answer/6562?hl=en&co=GENIE.Platform%3DAndroid)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-checkbox-wrap\"><label class=\"ds-checkbox\" style=\"min-height:48px\"><input class=\"ds-checkbox__input\" type=\"checkbox\" checked><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1042</span></label><label class=\"ds-checkbox\" style=\"min-height:48px\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1041</span></label><span class=\"ds-checkbox__support\">Долгое нажатие по строке включает выбор заказов</span></div></div>",
+   "example_ru": "Чекбоксы появляются в режиме выбора: долгое нажатие по строке включает выбор заказов."
+  },
+  {
+   "title": "По умолчанию — пусто",
+   "items": [
+    "Что происходит: подписка или согласие включены заранее, и пользователь отправляет форму, не заметив этого выбора.",
+    "Что делают системы: Jakob Nielsen и NN/g по итогам тестов интернет-магазинов советуют обратное: «The recommendation from user testing of ecommerce sites is to leave the checkbox blank by default»",
+    "Что делать нам: пустой чекбокс по умолчанию — правило ДС; «выбрано» появляется только действием человека, предвключённых подписок у нас нет."
+   ],
+   "src": "Источники: Nielsen Norman Group · Jakob Nielsen, Checkboxes vs. Radio Buttons (https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-checkbox-wrap\"><label class=\"ds-checkbox\" style=\"min-height:48px\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Подписаться на новости</span></label><span class=\"ds-checkbox__support\">Пункт остаётся пустым, пока его не отметят</span></div></div>",
+   "example_ru": "Чекбокс пуст, пока человек сам его не отметил: подписка по умолчанию не включается."
   }
  ]
 }

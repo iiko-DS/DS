@@ -66,6 +66,116 @@
    "src": "Источники: Angular Material · _m3-list.scss (raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss) · MD3-токены списка (_md-comp-list.scss, raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss) · Material Design 3 · Lists specs (m3.material.io/components/lists/specs)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div></div></div>",
    "example_ru": "Однострочная строка — 56 dp, двухстрочная — 72 dp по MD3 (Angular в M3-теме держит 48 / 64 px): контейнер и паддинги 8 px сверху и снизу, 16 px по бокам между режимами не меняются."
+  },
+  {
+   "title": "Перенос длинного названия в строке",
+   "items": [
+    "Что происходит: длинное название блюда или адреса не влезает в одну строку, и его обрезают многоточием «на полуслове» — по обрывку нельзя понять, о какой позиции речь.",
+    "Что делают системы: IBM Carbon в разделе про переполнение прямо запрещает обрезку и требует переноса с выравниванием по первой строке: «Text in a list should wrap below the marker, keeping it top-aligned with the first list item to ensure readability. Truncation should be avoided and text should instead wrap to multiple lines.»",
+    "Что делать нам: название в строке переносится максимум на две строки (14 / 20 px), иконка выравнивается по первой строке (align-items: flex-start), а обрезка с многоточием включается только с третьей строки; кегль ради «чтобы влезло» не уменьшаем."
+   ],
+   "src": "Источники: IBM Carbon · List · Overflow content (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/list/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-item\" style=\"align-items:flex-start\"><div class=\"ds-list-item__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-item__content\"><span class=\"ds-list-item__label-up\">Кухня · горячее</span><span class=\"ds-list-item__text\" style=\"max-width:200px;white-space:normal\">Пицца «Маргарита» с томатами черри, моцареллой и базиликом</span></div><div class=\"ds-list-item__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div></div>",
+   "example_ru": "Название переносится на две строки (14 / 20 px), иконка выровнена по первой строке переноса, поэтому название читается целиком, а не обрезается «на полуслове»."
+  },
+  {
+   "title": "Сколько строк текста в строке",
+   "items": [
+    "Что происходит: в одну строку списка пытаются уместить подпись, название и пояснение — строка вырастает до четырёх-пяти строк текста, и список перестаёт сканироваться глазами.",
+    "Что делают системы: Material Components for the web фиксирует ровно три допустимых формата и дальше не растёт: «Single-line list items contain a maximum of one line of text. ... Two-line list items contain a maximum of two lines of text. ... Three-line list items contains a maximum of three lines of text.»",
+    "Что делать нам: в строке списка максимум две строки текста — подпись 12 / 16 px и название 14 / 20 px, высота строки 72 px; пояснение (состав, адрес) живёт на карточке позиции, а не третьей строкой в списке."
+   ],
+   "src": "Источники: Material Components for the web · List · single-line / two-line / three-line (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-list/README.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">ramen_dining</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div></div></div>",
+   "example_ru": "В строке ровно две строки текста — подпись 12 / 16 px и название 14 / 20 px при высоте 72 px: пояснения уходят на карточку позиции, а не в третью строку списка."
+  },
+  {
+   "title": "Короткие подписи вместо обрезки",
+   "items": [
+    "Что происходит: подписи в строках пишут длинными формулировками, из-за этого половина строк уходит в многоточие, а список читается как столбик одинаковых начал.",
+    "Что делают системы: Apple HIG требует следить за длиной текста строки: «Keep item text succinct so row content is comfortable to read. Short, succinct text can help minimize truncation and wrapping, making text easier to read and scan.»",
+    "Что делать нам: в названии позиции держим до 40 знаков, в подписи — до 24; если формулировка длиннее, сокращаем текст, а не строку и не кегль; проверяем это на реальных названиях из меню ресторана."
+   ],
+   "src": "Источники: Apple HIG · Lists and tables · Content (https://developer.apple.com/design/human-interface-guidelines/lists-and-tables)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Маргарита</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">ramen_dining</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Карбонара</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Десерт</span><span class=\"ds-list-item__text\">Тирамису</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">480 ₽</span></div></div></div></div>",
+   "example_ru": "Короткие подписи (до 40 знаков) влезают в строку целиком: многоточие в списке не появляется, строки читаются и сканируются одинаково быстро."
+  },
+  {
+   "title": "Свайп по строке — жест по выбору",
+   "items": [
+    "Что происходит: свайп по строке на разных экранах делает разное — архив, удаление, «прочитано», и результат жеста невозможно предсказать заранее.",
+    "Что делают системы: Gmail для iOS выносит действие свайпа в настройки и разрешает его отключить: «You can choose what happens when you swipe a message left or right: Archive Trash Mark as read/unread Snooze Move to... None».",
+    "Что делать нам: в ДС свайп — необязательный жест: действие по свайпу задаётся настройкой, вариант «нет действия» предусмотрен, а основное действие строки всегда доступно в меню «⋯» — свайп ускоряет, но не остаётся единственным путём."
+   ],
+   "src": "Источники: Gmail для iOS · Mail swipe actions, справка Google (https://support.google.com/mail/answer/6562?co=GENIE.Platform%3DiOS&hl=en)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">swipe_left</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Свайп влево</span><span class=\"ds-list-item__text\">Архивировать</span></div><div class=\"ds-list-container__element-right\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_forward</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">swipe_right</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Свайп вправо</span><span class=\"ds-list-item__text\">Нет действия</span></div><div class=\"ds-list-container__element-right\"><span class=\"material-icons\" style=\"font-size:24px\">block</span></div></div></div></div>",
+   "example_ru": "Действие свайпа задаётся настройкой — «влево: Архивировать», «вправо: Нет действия»: жест можно отключить, и его результат предсказуем до нажатия."
+  },
+  {
+   "title": "Полный свайп и защита от промаха",
+   "items": [
+    "Что происходит: доведённый до конца свайп сразу выполняет действие, и на телефоне это легко сделать случайно, особенно когда строки стоят плотно друг под другом.",
+    "Что делают системы: Apple в SwiftUI описывает это поведение явно, чтобы его можно было выключить: «Use this method to add swipe actions to a view that acts as a row in a list. ... By default, the user can perform the first action for a given swipe direction with a full swipe.»",
+    "Что делать нам: полный свайп оставляем только для неразрушительного действия (например «Отправить на кухню»); для удаления полный свайп выключаем и требуем подтверждения или отмены в снекбаре."
+   ],
+   "src": "Источники: Apple Developer · SwiftUI swipeActions(edge:allowsFullSwipe:content:) (https://developer.apple.com/tutorials/data/documentation/swiftui/view/swipeactions(edge:allowsfullswipe:content:).json)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 7</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div></div><div class=\"ds-snackbar ds-snackbar--single ds-snackbar--dark\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__label\">Позиция удалена</span><span class=\"ds-snackbar__button\">Отменить</span></div></div></div>",
+   "example_ru": "Полный свайп доводит только до безопасного действия, а удаление строки идёт через снекбар с «Отменить» — случайный промах отменяется одним тапом."
+  },
+  {
+   "title": "Удаление строки через «Отменить»",
+   "items": [
+    "Что происходит: на удаление строки выводится подтверждающий диалог, человек жмёт «Удалить» не читая, а лишний экран замедляет работу на линии.",
+    "Что делают системы: Material Components for Android называет этот сценарий прямо в описании снекбара: «Snackbars can also offer the ability to perform an action, such as undoing an action that was just taken, or retrying an action that had failed.»",
+    "Что делать нам: одиночное удаление из списка делаем без диалога — строка исчезает, и 5 секунд висит снекбар «Удалено · Отменить»; диалог подтверждения оставляем только для групповых и необратимых операций."
+   ],
+   "src": "Источники: Material Components for Android · Snackbar (https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Snackbar.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-snackbar ds-snackbar--single ds-snackbar--light\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__label\">Заказ №1042 удалён</span><span class=\"ds-snackbar__button\">Отменить</span></div></div></div>",
+   "example_ru": "После удаления строки 5 секунд виден снекбар с действием «Отменить»: подтверждающего диалога на одиночное удаление в ДС нет."
+  },
+  {
+   "title": "Липкая шапка раздела списка",
+   "items": [
+    "Что происходит: в длинном списке шапка раздела уезжает вместе с прокруткой, и после нескольких свайпов непонятно, в каком разделе находится человек.",
+    "Что делают системы: IBM Carbon в описании contained list фиксирует шапку: «Contained list header areas can be sticky and fixed in place while the list item rows scroll underneath.»",
+    "Что делать нам: шапку раздела делаем липкой внутри контейнера списка (ds-list-container__label), строки прокручиваются под ней, а отделять шапку от строк — разделителем, а не отступом; шапка остаётся в одном положении и в шторке."
+   ],
+   "src": "Источники: IBM Carbon · Contained list · Scrolling (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/contained-list/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container ds-list-container--container\"><div class=\"ds-list-container__label\">Кухня · 12 позиций</div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">ramen_dining</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div></div></div>",
+   "example_ru": "Шапка «Кухня · 12 позиций» закреплена внутри контейнера, строки прокручиваются под ней: раздел понятен с любой позиции списка."
+  },
+  {
+   "title": "Компактные высоты в тесном месте",
+   "items": [
+    "Что происходит: список ставят в тесный блок — шторку или панель над клавиатурой, где строк высотой 72 px помещается всего две-три и всё время приходится скроллить.",
+    "Что делают системы: Carbon держит в таких местах уменьшенные числа: «The disclosed list header has a 32px height and the list item rows by default have a 48px height. The disclosed list often appears in small, restricted places so keeping a shorter height can save valuable space and reduce the amount of vertical scrolling.»",
+    "Что делать нам: для тесных мест вводим компактный режим списка — шапка 32 px, строка 48 px, боковые паддинги 16 px остаются теми же; обычный список (строки 72 px) в этом режиме не меняется."
+   ],
+   "src": "Источники: IBM Carbon · Contained list · Sizing (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/contained-list/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container ds-list-container--container\"><div class=\"ds-list-container__label\" style=\"min-height:32px\">Кухня · 12 позиций</div><div class=\"ds-list-container__item\" style=\"min-height:48px\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\" style=\"min-height:48px\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">ramen_dining</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\" style=\"min-height:48px\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Тирамису</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">480 ₽</span></div></div></div></div>",
+   "example_ru": "Компактный режим: шапка 32 px, строки 48 px вместо 72 px — в тесном блоке помещается больше строк при тех же паддингах 16 px по бокам."
+  },
+  {
+   "title": "Пустой список объясняет статус",
+   "items": [
+    "Что происходит: пустой список оставляют пустым белым блоком, и человек не понимает, чего он ждёт: данных нет, фильтр слишком узкий или список не загрузился.",
+    "Что делают системы: NN/g в правилах пустых состояний называет это первой ошибкой: «Totally empty states cause confusion about how and whether the system is working.»",
+    "Что делать нам: пустое состояние — обязательная часть компонента: заголовок 14 / 20 px, пояснение 12 / 16 px и действие («Добавить позицию»); при фильтре без результата подпись меняется на «Ничего не найдено по фильтру» и добавляется «Сбросить»."
+   ],
+   "src": "Источники: Nielsen Norman Group · Designing Empty States in Complex Applications (https://www.nngroup.com/articles/empty-state-interface-design/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__card\"><p class=\"phone__card-title\">Позиций нет</p><p class=\"phone__card-text\">Добавьте первую позицию — она появится в этом списке</p></div><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Добавить позицию</span></button></div>",
+   "example_ru": "Пустой список показывает заголовок, пояснение и действие, а не остаётся белым блоком: у пустого результата по фильтру текст другой и есть «Сбросить»."
+  },
+  {
+   "title": "Длинный список: релевантные и «ещё»",
+   "items": [
+    "Что происходит: на маленьком экране длинный список нельзя пролистать целиком, а когда спрятано всё, до нужной позиции — сотни строк прокрутки.",
+    "Что делают системы: Apple HIG для ограниченного экрана советует показывать главное и давать путь к остальному: «You can help make a long list more manageable by listing the most relevant items and providing a way for people to view more.»",
+    "Что делать нам: в компоненте держим режим «сначала релевантные» — 5–10 строк и кнопку «Показать все 48» внизу, счётчик позиций в шапке списка; бесконечную прокрутку без конца для этого не используем."
+   ],
+   "src": "Источники: Apple HIG · Lists and tables · watchOS (https://developer.apple.com/design/human-interface-guidelines/lists-and-tables)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Пицца «Маргарита»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__divider\"></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">ramen_dining</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Паста «Карбонара»</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 120 ₽</span></div></div></div><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Показать все 48</span></button></div>",
+   "example_ru": "Сначала 5–10 самых релевантных строк, ниже — «Показать все 48»: длинный список остаётся конечным, и до конца видно, что делать дальше."
   }
  ]
 }

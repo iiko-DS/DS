@@ -66,6 +66,138 @@
    "src": "Источники: IBM Carbon · Tooltip (https://carbondesignsystem.com/components/tooltip/usage) · Apple HIG · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Дата брони</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"12.05.2026\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Обязательное поле · формат ДД.ММ.ГГГГ</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
    "example_ru": "Обязательность и формат — постоянным helper-текстом под полем (12 px), а не тултипом по наведению: требование остаётся видимым и на тач-экране."
-  }
+  },
+ {
+  "title": "Подпись над полем, не внутри",
+  "items": [
+   "Что происходит: подпись ставят внутрь рамки поля или мелким текстом под ним; при вводе подпись уезжает или теряется, и на 375 px пользователь уже не видит, какое поле заполняет.",
+   "Что делают системы: NN/g в чек-листе мобильных полей спрашивает ровно об этом — «Is the label above it? (Not inside, not below)».",
+   "Что делать нам: в мобильном слое ДС подпись всегда отдельной строкой над рамкой поля — не float-label внутри рамки и не подпись под полем."
+  ],
+  "src": "Источники: Nielsen Norman Group · A Checklist for Designing Mobile Input Fields (https://www.nngroup.com/articles/mobile-input-checklist/)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Название процесса</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"Например, Кухня\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+  "example_ru": "Подпись «Название процесса» — отдельной строкой над рамкой поля: ни внутри рамки, ни под полем (NN/g: label above it, not inside, not below)."
+ },
+ {
+  "title": "Подпись коротко и без двоеточий",
+  "items": [
+   "Что происходит: в подпись пишут длинную фразу с двоеточием на конце, строка не влезает в 375 px и переносится на вторую строку — ровная сетка формы ломается.",
+   "Что делают системы: GOV.UK требует короткой подписи над полем — «You should align labels above the text input they refer to. They should be short, direct and written in sentence case. Do not use colons at the end of labels».",
+   "Что делать нам: подпись — одна короткая фраза в sentence case, без двоеточия в конце и без переноса; всё, что не влезло, уходит в helper-текст под полем."
+  ],
+  "src": "Источники: GOV.UK Design System · Text input (https://design-system.service.gov.uk/components/text-input/)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Название</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"Кухня\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Так поле назовут в отчётах</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+  "example_ru": "Подпись «Название» — короткая, в sentence case и без двоеточия; пояснение ушло строкой helper-текста под поле (GOV.UK)."
+ },
+ {
+  "title": "Клавиатура по типу содержимого",
+  "items": [
+   "Что происходит: поле открывает алфавитную клавиатуру там, где нужны только цифры или телефон: пользователь переключает раскладку вручную, теряет время и путает символы.",
+   "Что делают системы: GOV.UK отдаёт тип клавиатуры атрибутом — «inputmode string Optional value for the inputmode attribute», а Baymard фиксирует последствия: «Inappropriate keyboard layouts slow users who are filling form fields and can lead to typos and validation errors».",
+   "Что делать нам: задавать inputmode и type под содержимое поля (numeric, tel, email) прямо в разметке ДС, чтобы поле само открывало нужную клавиатуру."
+  ],
+  "src": "Источники: GOV.UK Design System · Text input, inputmode (https://design-system.service.gov.uk/components/text-input/) · Baymard Institute · Appropriate Mobile Keyboard Layouts (https://baymard.com/guidelines/1100-appropriate-mobile-keyboard-layouts)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Количество гостей</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"numeric\" value=\"4\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+  "example_ru": "Поле «Количество гостей» с inputmode=\"numeric\": открывается цифровая клавиатура, а не буквенная (GOV.UK; Baymard — про опечатки и ошибки валидации)."
+ },
+ {
+  "title": "Цифровая клавиатура вместо буквенной",
+  "items": [
+   "Что происходит: числовое поле открывает обычную буквенную клавиатуру, где цифры стоят в третьем ряду: палец промахивается, и значение вводится с опечатками.",
+   "Что делают системы: Baymard измерил разницу в целях — «On an iPhone 6S, the size and hitarea of the keys on the purpose-built numeric keyboard are 521% larger than on the traditional touch keyboard (257x109 vs 63x85 pts)».",
+   "Что делать нам: у всех числовых полей на мобиле цифровая клавиатура (inputmode numeric); буквенную не оставлять даже там, где значение вводят редко."
+  ],
+  "src": "Источники: Baymard Institute · 'Touch Keyboard' Implementations (https://baymard.com/blog/mobile-touch-keyboards)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Стол</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"numeric\" value=\"7\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Цифровая клавиатура: цели клавиш на 521% больше</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+  "example_ru": "Числовое поле зовёт цифровую клавиатуру: цели клавиш на 521% больше, чем на обычной, — опечаток меньше (Baymard)."
+ },
+ {
+  "title": "Автокоррекцию выключить для имён",
+  "items": [
+   "Что происходит: автокоррекция подменяет введённое — фамилию гостя, улицу, почту; пользователь не замечает правки, и заказ уезжает на чужое имя.",
+   "Что делают системы: Baymard предупреждает, где автокоррекция работает плохо — «Auto-correct often works very poorly for things like abbreviations, street names, e-mail addresses, person names, and similar words that are not in the dictionary».",
+   "Что делать нам: у полей имени, адреса и почты ставить autocorrect=\"off\" и spellcheck=\"false\" в разметке ДС по умолчанию."
+  ],
+  "src": "Источники: Baymard Institute · 'Touch Keyboard' Implementations (https://baymard.com/blog/mobile-touch-keyboards)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Гость</span><input class=\"ds-input__field\" type=\"text\" autocorrect=\"off\" spellcheck=\"false\" value=\"Иванов\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Автокоррекция выключена: имя не подменяется</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+  "example_ru": "Поле имени с выключенной автокоррекцией: телефон не подменяет фамилию и адрес словами из словаря (Baymard)."
+ },
+ {
+  "title": "Автокапитализацию выключить в почте",
+  "items": [
+   "Что происходит: телефон сам поднимает первую букву в адресе почты, и значение вида Ivanov@… не проходит проверку — пользователь правит то, чего не вводил.",
+   "Что делают системы: Baymard рекомендует прямо это — «It is therefore recommended that auto-capitalization be disabled for email fields and other fields where appropriate (for example a website URL)».",
+   "Что делать нам: у полей почты и URL ставить autocapitalize=\"none\" вместе с autocorrect=\"off\", чтобы регистр остался таким, каким его набрал пользователь."
+  ],
+  "src": "Источники: Baymard Institute · 'Touch Keyboard' Implementations (https://baymard.com/blog/mobile-touch-keyboards)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Почта</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"email\" autocapitalize=\"none\" autocorrect=\"off\" value=\"ivanov@iiko.ru\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Первая буква не поднимается автоматически</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+  "example_ru": "Поле почты с autocapitalize=\"none\": адрес остаётся в том регистре, в котором его набрали (Baymard)."
+ },
+ {
+  "title": "Одна клавиатура на всю форму",
+  "items": [
+   "Что происходит: на одной странице часть числовых полей зовёт цифровую клавиатуру, часть — буквенную, и пользователь не может предугадать, какая раскладка появится в следующем поле.",
+   "Что делают системы: Baymard требует последовательности — «Purpose-built keyboards should be invoked consistently for all inputs on the same page».",
+   "Что делать нам: проверять тип клавиатуры по всей форме сразу: одинаковые по смыслу поля открывают одну и ту же раскладку, а не зависят от того, кто верстал конкретное поле."
+  ],
+  "src": "Источники: Baymard Institute · 'Touch Keyboard' Implementations (https://baymard.com/blog/mobile-touch-keyboards)",
+  "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:8px\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Гости</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"numeric\" value=\"4\"></div></div></div><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Стол</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"numeric\" value=\"7\"></div></div></div><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Порций</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"numeric\" value=\"12\"></div></div></div></div></div>",
+  "example_ru": "Три числовых поля формы зовут одну и ту же цифровую клавиатуру: раскладка не меняется от поля к полю (Baymard)."
+ },
+ {
+  "title": "Ошибка красным после подсказки",
+  "items": [
+   "Что происходит: сообщение об ошибке уезжает в шапку формы или печатается серым, а поле остаётся визуально обычным — пользователь не связывает текст с конкретным полем.",
+   "Что делают системы: GOV.UK требует ставить текст ошибки сразу после вопроса и подсказки и связывать его цветом с полем — «put the message in red after the question text and hint text ... use a red border to visually connect the message and the question it belongs to».",
+   "Что делать нам: текст ошибки — красным сразу под подсказкой поля, рамка поля тоже красная; сообщение всегда рядом с полем, а не в шапке формы."
+  ],
+  "src": "Источники: GOV.UK Design System · Error message (https://design-system.service.gov.uk/components/error-message/)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m ds-input--error\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Количество гостей</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"numeric\" value=\"0\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\" style=\"color:#FF5252\">Введите число от 1 до 50</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+  "example_ru": "Ошибка красным под подсказкой поля и красная рамка: текст и проблемное поле связаны между собой (GOV.UK)."
+ },
+ {
+  "title": "Ошибка не очищает заполненное",
+  "items": [
+   "Что происходит: после неудачной отправки форма обнуляется, и пользователь заново вбивает двадцать полей вместо того, чтобы поправить одно, где ошибся.",
+   "Что делают системы: GOV.UK запрещает очистку — «Do not clear any form fields when showing the Error message component ... Keeping information that caused errors helps users to: see what went wrong, edit their previous answer, avoid re-entering information».",
+   "Что делать нам: при ошибке сохранять все введённые значения, включая ошибочные, и подсвечивать только проблемное поле; форма не должна обнуляться."
+  ],
+  "src": "Источники: GOV.UK Design System · Error message (https://design-system.service.gov.uk/components/error-message/)",
+  "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:8px\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Название</span><input class=\"ds-input__field\" type=\"text\" value=\"Кухня\"></div></div></div><div class=\"ds-input ds-input--m ds-input--error\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Количество гостей</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"numeric\" value=\"0\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\" style=\"color:#FF5252\">Введите число от 1 до 50</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div></div>",
+  "example_ru": "После ошибки оба поля сохранили введённое («Кухня» и ошибочный 0): править нужно только проблемное значение (GOV.UK)."
+ },
+ {
+  "title": "Сводка ошибок наверху формы",
+  "items": [
+   "Что происходит: ошибка появляется у поля, которое ниже экрана, а фокус остаётся на кнопке «Сохранить»: пользователь жмёт ещё раз и решает, что форма не работает.",
+   "Что делают системы: GOV.UK требует и сводку, и перевод фокуса — «Always show an error summary when there is a validation error, even if there’s only one. You must: move keyboard focus to the error summary ... include the heading ‘There is a problem’».",
+   "Что делать нам: при валидации показывать сводку ошибок над формой с заголовком «Есть проблема» и переводить фокус на неё, а не оставлять пользователя у кнопки сохранения."
+  ],
+  "src": "Источники: GOV.UK Design System · Error summary (https://design-system.service.gov.uk/components/error-summary/)",
+  "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:8px\"><div style=\"border:1px solid #FF5252;border-radius:8px;padding:12px\"><div class=\"ds-text-ui__list-item\" style=\"font:500 16px Roboto;color:#FF5252\">Есть проблема</div><div class=\"ds-text-ui__label-down\">Количество гостей: введите число от 1 до 50</div></div><div class=\"ds-input ds-input--m ds-input--error\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Количество гостей</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"numeric\" value=\"0\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\" style=\"color:#FF5252\">Введите число от 1 до 50</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div></div>",
+  "example_ru": "Сводка «Есть проблема» стоит над формой и получает фокус; под ней — то же проблемное поле с текстом ошибки (GOV.UK)."
+ },
+ {
+  "title": "Валидация в подходящий момент",
+  "items": [
+   "Что происходит: почту проверяют на каждом символе, и поле ругается, пока адрес ещё не дописан; пользователь бросает форму, не дойдя до кнопки.",
+   "Что делают системы: Apple разводит поля по моменту проверки — «when entering an email address, it’s best to validate when people switch to another field; when creating a user name or password, validation needs to happen before people switch to another field».",
+   "Что делать нам: почту и адрес проверять при уходе с поля, а логин и пароль — сразу, до перехода к следующему полю; по незавершённому вводу ошибку не показывать."
+  ],
+  "src": "Источники: Apple Human Interface Guidelines · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Почта</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"email\" value=\"ivanov@\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Проверим, когда перейдёте к следующему полю</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+  "example_ru": "Незаконченная почта «ivanov@» ошибкой не помечается: проверка сработает при уходе с поля (Apple HIG)."
+ },
+ {
+  "title": "Поля формы — столбиком",
+  "items": [
+   "Что происходит: поля ставят в два столбца или делают разной ширины, и на 375 px получается лестница: подписи не выравниваются, а поля прыгают по горизонтали.",
+   "Что делают системы: Apple советует собирать форму вертикально и держать одинаковую ширину — «Stack multiple text fields vertically when possible, and use consistent widths to create a more organized layout».",
+   "Что делать нам: поля мобильной формы — в один столбик, одинаковой ширины и с одинаковым шагом, кроме полей известной длины (день, месяц, год)."
+  ],
+  "src": "Источники: Apple Human Interface Guidelines · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields)",
+  "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:8px\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Гость</span><input class=\"ds-input__field\" type=\"text\" value=\"Иванов\"></div></div></div><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Телефон</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"tel\" value=\"+7 900 000-00-00\"></div></div></div><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Почта</span><input class=\"ds-input__field\" type=\"text\" inputmode=\"email\" autocapitalize=\"none\" value=\"ivanov@iiko.ru\"></div></div></div></div></div>",
+  "example_ru": "Три поля — в один столбик, одинаковой ширины и с одинаковым отступом: сетка формы читается сверху вниз (Apple HIG)."
+ }
  ]
 }

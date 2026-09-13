@@ -55,6 +55,94 @@
    "src": "Источники: Apple HIG · Pickers (https://developer.apple.com/design/human-interface-guidelines/pickers) · Material Design 3 · Autocomplete (локальная выгрузка _audit/platform/autocomplete.json, https://m3.material.io/components)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-autocomplete-form\" style=\"width:100%\"><span class=\"ds-autocomplete-form__label\">Блюдо</span><div class=\"ds-autocomplete-form__input-frame\"><input type=\"text\" value=\"Пиц\" placeholder=\"Начните вводить\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-autocomplete-form__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-menu-container\" style=\"width:100%;min-height:0\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">search_off</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-menu-item__text\" style=\"background:none\">Ничего не найдено</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-menu-item__text\" style=\"background:none\">Создать «Пицца»</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">list</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-menu-item__text\" style=\"background:none\">Показать все 500 вариантов</span></div></div></div></div>",
    "example_ru": "Три состояния вместо пустой панели: «Ничего не найдено», «Создать» и «Показать все 500 вариантов» — каждое строкой 48 px."
+  },
+  {
+   "title": "Запрос на каждое нажатие",
+   "items": [
+    "Что происходит: подсказки подгружаются с сервера на каждый введённый символ — на медленной сети выдача мигает и отстаёт от ввода на два-три символа.",
+    "Что делают системы: MUI описывает это как поиск по мере ввода и советует троттлинг: «Search as you type: a new request is made for each keystroke. ... If your logic is fetching new options on each keystroke and using the current value of the textbox to filter on the server, you may want to consider throttling requests.»",
+    "Что делать нам: запрос отправляем не раньше третьего символа и не чаще одного раза в 300 мс, ответ на устаревший запрос отбрасываем; пока ответа нет, показываем строку «Ищем…», а не пустую панель."
+   ],
+   "src": "Источники: MUI · Autocomplete · Asynchronous requests (https://mui.com/material-ui/react-autocomplete/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-autocomplete-form\"><span class=\"ds-autocomplete-form__label\">Блюдо</span><div class=\"ds-autocomplete-form__input-frame\"><input type=\"text\" value=\"Мар\" placeholder=\"Начните вводить\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-autocomplete-form__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">autorenew</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Ищем…</span></div></div></div></div>",
+   "example_ru": "Пока идёт запрос, под полем стоит «Ищем…»: запрос уходит после третьего символа и не чаще раза в 300 мс, поэтому выдача не мигает на каждый символ."
+  },
+  {
+   "title": "Ограничить число подсказок",
+   "items": [
+    "Что происходит: по запросу совпадают сотни позиций, и панель подсказок пытается нарисовать их все — список тяжелеет и тормозит прямо во время ввода.",
+    "Что делают системы: MUI ограничивает выдачу параметром фильтра: «Limit the number of suggested options to be shown. For example, if config.limit is 100, only the first 100 matching options are shown. It can be useful if a lot of options match and virtualization wasn't set up.»",
+    "Что делать нам: в ДС показываем первые 10 подсказок и строку «Показать все 148» со счётчиком; от 50 совпадений включаем виртуализацию, но больше 100 строк в панель не отдаём."
+   ],
+   "src": "Источники: MUI · Autocomplete · createFilterOptions (https://mui.com/material-ui/react-autocomplete/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-autocomplete-form\"><span class=\"ds-autocomplete-form__label\">Блюдо</span><div class=\"ds-autocomplete-form__input-frame\"><input type=\"text\" value=\"Пиц\" placeholder=\"Начните вводить\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-autocomplete-form__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><span style=\"font-size:12px;line-height:16px;color:#616161\">Найдено 148</span><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Пицца «Маргарита»</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Пицца «Пепперони»</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">list</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Показать все 148</span></div></div></div></div>",
+   "example_ru": "В панели первые десять подсказок и строка «Показать все 148»: совпавших позиций много, но список в панели остаётся конечным и быстрым."
+  },
+  {
+   "title": "Сколько чипсов показывать",
+   "items": [
+    "Что происходит: выбранные значения растут в поле и выталкивают ввод за границу строки — поле разъезжается на несколько строк прямо во время работы.",
+    "Что делают системы: MUI ограничивает показ вне фокуса: «You can use the limitTags prop to limit the number of displayed options when not focused.»",
+    "Что делать нам: вне фокуса в поле показываем два чипса и «+N», в фокусе поле разворачивается и показывает все выбранные значения; высота поля до фокуса не превышает 56 px."
+   ],
+   "src": "Источники: MUI · Autocomplete · Limit tags (https://mui.com/material-ui/react-autocomplete/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-autocomplete-form\"><span class=\"ds-autocomplete-form__label\">Категории</span><div class=\"ds-autocomplete-form__input-frame\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Пицца</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Паста</span></div><span class=\"ds-text-body-s-14-normal-regular\">+3</span><input type=\"text\" placeholder=\"Добавить\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-autocomplete-form__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div></div>",
+   "example_ru": "Вне фокуса в поле два чипса и «+3», в фокусе показываются все выбранные: строка не разъезжается на несколько строк, ввод остаётся на месте."
+  },
+  {
+   "title": "Подсказки до начала ввода",
+   "items": [
+    "Что происходит: до первого символа панель пустая, хотя по недавним запросам и смене уже понятно, что человек ищет.",
+    "Что делают системы: Apple предлагает показывать подсказки заранее: «Consider showing suggested search terms. For example, you can display recent searches before search begins, or predictive search suggestions as a person types.»",
+    "Что делать нам: до ввода показываем «Недавние» — до пяти последних запросов этой смены, ниже — популярное; если истории нет, панель не раскрываем, чтобы не показывать пустоту."
+   ],
+   "src": "Источники: Apple HIG · Search fields · Provide suggestions to make searching easier (https://developer.apple.com/design/human-interface-guidelines/search-fields)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-autocomplete-form\"><span class=\"ds-autocomplete-form__label\">Блюдо</span><div class=\"ds-autocomplete-form__input-frame\"><input type=\"text\" placeholder=\"Начните вводить\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-autocomplete-form__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><span style=\"font-size:12px;line-height:16px;color:#616161\">Недавние</span><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">history</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Маргарита</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">history</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Карбонара</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">trending_up</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Тирамису · часто в смене</span></div></div></div></div>",
+   "example_ru": "До первого символа панель показывает «Недавние» запросы и популярное: подсказка появляется сразу при фокусе, а не после ввода."
+  },
+  {
+   "title": "Выдача уточняется по мере ввода",
+   "items": [
+    "Что происходит: подсказки появляются только после нажатия кнопки поиска, и до этого панель пустая — непонятно, работает ли поле вообще.",
+    "Что делают системы: Apple просит искать сразу по мере ввода: «Searching while someone types makes the search experience feel more responsive because it provides results that are continuously refined as the text becomes more specific.»",
+    "Что делать нам: подсказки обновляем на каждый уточняющий символ и подсвечиваем совпавшую часть в строке; список не сбрасываем в пустоту между ответами — старая выдача остаётся до прихода новой."
+   ],
+   "src": "Источники: Apple HIG · Search fields · Best practices (https://developer.apple.com/design/human-interface-guidelines/search-fields)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-autocomplete-form\"><span class=\"ds-autocomplete-form__label\">Блюдо</span><div class=\"ds-autocomplete-form__input-frame\"><input type=\"text\" value=\"Мар\" placeholder=\"Начните вводить\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-autocomplete-form__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Маргарита</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Марсала</span></div></div></div></div>",
+   "example_ru": "Подсказки уточняются на каждый символ: при вводе «Мар» видно две строки совпадения, кнопку «Найти» для этого нажимать не нужно."
+  },
+  {
+   "title": "Автокомплит — ввод, селект — выбор",
+   "items": [
+    "Что происходит: автокомплит ставят там, где выбор ограничен готовыми вариантами: человек пытается ввести своё, а подсказки не дают сохранить значение.",
+    "Что делают системы: Ant Design разводит эти компоненты: «AutoComplete is an input box with text hints, and users can type freely. ... Select is selecting among given choices.»",
+    "Что делать нам: правило ДС — нужен свободный ввод с подсказкой, значит автокомплит; выбор только из готовых вариантов, значит селект; в автокомплите значение, которого нет в подсказках, сохраняется без ошибки."
+   ],
+   "src": "Источники: Ant Design · AutoComplete · When To Use (https://raw.githubusercontent.com/ant-design/ant-design/master/components/auto-complete/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-autocomplete-form\"><span class=\"ds-autocomplete-form__label\">Блюдо</span><div class=\"ds-autocomplete-form__input-frame\"><input type=\"text\" value=\"Пицца с грибами\" placeholder=\"Начните вводить\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-autocomplete-form__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Создать «Пицца с грибами»</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">search</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Искать в справочнике</span></div></div></div></div>",
+   "example_ru": "Свободный ввод сохраняется: панель предлагает «Создать «Пицца с грибами»» — это автокомплит, а не выбор из готовых вариантов."
+  },
+  {
+   "title": "Подсказки выбирают редко",
+   "items": [
+    "Что происходит: подсказки считают основным способом ввода, и на них строится весь сценарий, хотя ими пользуется меньшинство.",
+    "Что делают системы: NN/g приводит измеренную долю: «suggested queries were selected by users in only 23% of the instances where they were offered».",
+    "Что делать нам: сценарий обязан работать без подсказок: запрос понятен по плейсхолдеру, результат достижим обычным списком и кнопкой «Показать все 148», а подсказки остаются ускорителем, а не единственным путём к данным."
+   ],
+   "src": "Источники: Nielsen Norman Group · Site Search Suggestions (https://www.nngroup.com/articles/site-search-suggestions/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-autocomplete-form\"><span class=\"ds-autocomplete-form__label\">Блюдо</span><div class=\"ds-autocomplete-form__input-frame\"><input type=\"text\" placeholder=\"Название или категория\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-autocomplete-form__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">list</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Показать все 148 вариантов</span></div></div></div></div>",
+   "example_ru": "Без подсказок путь тоже есть: строка «Показать все 148 вариантов» и понятный плейсхолдер — сценарий не разваливается, если подсказкой не воспользовались."
+  },
+  {
+   "title": "Подсказки рядом с токенами-фильтрами",
+   "items": [
+    "Что происходит: фильтры-токены (по кухне, по статусу заказа) есть, но в подсказках они не встречаются — человек не узнаёт, что фильтровать можно.",
+    "Что делают системы: Apple советует показывать их вместе: «Consider pairing tokens with search suggestions. People may not know which tokens are available, so pairing them with search suggestions can help people learn how to use them.»",
+    "Что делать нам: в подсказках автокомплита первыми идут токены теми же словами, что и чипсы под полем: «Найти: по кухне», «Найти: по статусу» — так набор фильтров видно там, где человек печатает."
+   ],
+   "src": "Источники: Apple HIG · Search fields · Scope bars and tokens (https://developer.apple.com/design/human-interface-guidelines/search-fields)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-autocomplete-form\"><span class=\"ds-autocomplete-form__label\">Поиск по заказам</span><div class=\"ds-autocomplete-form__input-frame\"><input type=\"text\" placeholder=\"Начните вводить\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"><span class=\"ds-autocomplete-form__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_alt</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Найти: по кухне</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_alt</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Найти: по статусу заказа</span></div></div></div></div>",
+   "example_ru": "В подсказках первыми стоят те же токены, что и чипсы-фильтры под полем: человек узнаёт про фильтры по кухне и статусу прямо во время ввода."
   }
  ]
 }

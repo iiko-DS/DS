@@ -66,6 +66,138 @@
    "src": "Источники: GOV.UK Design System · Tabs (design-system.service.gov.uk/components/tabs/) · Material Design 3 · Tabs (m3.material.io/components/tabs/specs) · IBM Carbon · Tabs usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tabs/usage.mdx)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Активные</button><button class=\"ds-tab\" type=\"button\">Закрытые</button></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 4</span><span class=\"ds-list-item__text\">Стейк рибай · 1 480 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:20</span></div></div></div></div>",
    "example_ru": "Вкладки переключают два представления одного списка («Активные» и «Закрытые»), а не разделы приложения: содержимое под ними — те же строки заказов."
+  },
+  {
+   "title": "Переполнение: лишние вкладки в «Ещё»",
+   "items": [
+    "Что происходит: на 375 px в полосу помещаются четыре вкладки, шестая уезжает за край — и человек не догадывается, что раздел «Отчёты» вообще есть на экране.",
+    "Что делают системы: Apple HIG уводит лишние вкладки в отдельный слот — «If horizontal space limits the number of visible tabs, the trailing tab becomes a More tab in iOS and iPadOS, revealing the remaining items in a separate list» — и держит по умолчанию «a default list of five or fewer».",
+    "Что делать нам: при шести и более разделах последнюю вкладку полосы отдаём под «Ещё» (иконка more_horiz), она открывает шторку со списком остальных; экран при этом проектируем на пять вкладок."
+   ],
+   "src": "Источники: Apple HIG · Tab bars (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/tab-bars.json)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Заказы</button><button class=\"ds-tab\" type=\"button\">Стоп-лист</button><button class=\"ds-tab\" type=\"button\">Склад</button><button class=\"ds-tab\" type=\"button\">Смены</button><button class=\"ds-tab\" type=\"button\">Ещё</button></div></div>",
+   "example_ru": "Пятая вкладка — «Ещё»: она не показывает содержимое, а открывает список остальных разделов, как More tab у Apple."
+  },
+  {
+   "title": "Четыре вкладки в узкой полосе: скролл",
+   "items": [
+    "Что происходит: четыре вкладки «Заказы», «Стоп-лист», «Склад», «Отчёты» не укладываются в 343 px, и полоса переезжает на вторую строку — вкладки выглядят как два разных блока интерфейса.",
+    "Что делают системы: Carbon перенос запрещает прямо — «In responsive situations, horizontal tabs should not wrap to multiple lines or stack on top of each other; instead, they should scroll horizontally», добавляя, что «Left and right arrows appear to help navigate the user through tabs that might be off-page».",
+    "Что делать нам: полоса вкладок всегда одна строка высотой 48 px; при нехватке места она прокручивается по горизонтали, а активная вкладка подтягивается в видимую часть."
+   ],
+   "src": "Источники: IBM Carbon · Tabs usage (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tabs/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"width:260px;overflow-x:auto\"><div class=\"ds-tabs\" style=\"flex-wrap:nowrap\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Заказы</button><button class=\"ds-tab\" type=\"button\">Стоп-лист</button><button class=\"ds-tab\" type=\"button\">Склад</button><button class=\"ds-tab\" type=\"button\">Отчёты</button></div></div></div>",
+   "example_ru": "Четыре вкладки в полосе 260 px идут одной строкой с горизонтальной прокруткой: переноса на вторую строку Carbon не допускает."
+  },
+  {
+   "title": "Две строки вкладок путают выбор",
+   "items": [
+    "Что происходит: подпись «Стоп-лист и техкарты» выдавливает вкладки на вторую строку, и выбранная вкладка визуально отрывается от содержимого под ней.",
+    "Что делают системы: GOV.UK описывает последствие дословно — «If you use too many tabs or they have long labels then they may wrap over more than one line. This makes it harder for users to see the connection between the selected tab and its content».",
+    "Что делать нам: подпись сокращаем до одного-двух слов, а не растягиваем полосу; если подписи всё равно не влезают в 343 px — уменьшаем число вкладок или заменяем их списком разделов."
+   ],
+   "src": "Источники: GOV.UK Design System · Tabs (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/tabs/index.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Стоп-лист</button><button class=\"ds-tab\" type=\"button\">Склад</button><button class=\"ds-tab\" type=\"button\">Отчёты</button></div><div class=\"ds-tabs ds-tabs--lvl2\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Техкарты</button><button class=\"ds-tab\" type=\"button\">Списания</button></div></div>",
+   "example_ru": "Длинное «Стоп-лист и техкарты» разводится на короткую подпись вкладки и второй уровень под ней: полоса остаётся однострочной, а связь подписи с содержимым не теряется."
+  },
+  {
+   "title": "Карусель прячет вкладки",
+   "items": [
+    "Что происходит: часть вкладок уходит за край экрана, и по виду полосы нельзя понять, что она прокручивается — раздел «Смены» просто не находят.",
+    "Что делают системы: NN/g описывает, что происходит при переполнении полосы: «When the number of tabs overflows the tab list, the tab bar often becomes a carousel. As a result, the hidden tabs become less discoverable, and the interaction cost needed to access them increases, as users need to manipulate secondary controls to reveal those tabs. The fewer tabs, the better.»",
+    "Что делать нам: у правого края прокручиваемой полосы всегда оставляем видимый фрагмент следующей вкладки, а число вкладок на мобильном экране держим минимальным."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tabs, Used Right (https://www.nngroup.com/articles/tabs-used-right/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"width:200px;overflow:hidden\"><div class=\"ds-tabs\" style=\"flex-wrap:nowrap\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Заказы</button><button class=\"ds-tab\" type=\"button\">Стоп-лист</button><button class=\"ds-tab\" type=\"button\">Склад</button><button class=\"ds-tab\" type=\"button\">Отчёты</button><button class=\"ds-tab\" type=\"button\">Смены</button></div></div></div>",
+   "example_ru": "Пять вкладок в полосе 200 px: видна часть пятой вкладки — это и есть подсказка «дальше есть ещё», без которой вкладка остаётся незамеченной."
+  },
+  {
+   "title": "Кнопка прокрутки в полосе вкладок",
+   "items": [
+    "Что происходит: из шести вкладок видно три, и человек листает полосу пальцем вслепую, каждый раз промахиваясь мимо подписи.",
+    "Что делают системы: NN/g разбирает реальный продукт — «Patagonia: A button appeared when the viewport was smaller than the tab list. Clicking the button horizontally scrolled the tab list to reveal additional tabs.»",
+    "Что делать нам: в мобильном слое кнопку-стрелку в полосе не ставим — полоса прокручивается пальцем и сама подтягивает активную вкладку; явные стрелки остаются только в десктопной версии, где мышиная прокрутка неудобна."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tabs, Used Right · кейс Patagonia (https://www.nngroup.com/articles/tabs-used-right/)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:12px;align-items:center\"><div style=\"width:220px;overflow:hidden\"><div class=\"ds-tabs\" style=\"flex-wrap:nowrap\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Заказы</button><button class=\"ds-tab\" type=\"button\">Стоп-лист</button><button class=\"ds-tab\" type=\"button\">Склад</button></div></div><span class=\"ds-arrow\" style=\"width:48px;height:48px\"><span class=\"material-icons\" style=\"font-size:24px\">chevron_right</span></span></div>",
+   "example_ru": "Полоса обрезана, справа от неё — отдельная кнопка прокрутки, как в кейсе Patagonia; в мобильном слое её роль выполняет палец по самой полосе."
+  },
+  {
+   "title": "Короткая подпись экономит прокрутку",
+   "items": [
+    "Что происходит: подписи «Заказы на сегодня» и «Стоп-лист и техкарты» занимают по половине экрана, и в полосу влезают две вкладки вместо четырёх.",
+    "Что делают системы: NN/g связывает длину подписи с прокруткой напрямую — «Short tab labels work best, as they conserve horizontal space in the tab list and avoid horizontal scrolling.»",
+    "Что делать нам: подпись вкладки — одно-два слова («Заказы», «Стоп-лист», «Склад»); длинное название раздела остаётся заголовком внутри вкладки, а не в её подписи."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tabs, Used Right (https://www.nngroup.com/articles/tabs-used-right/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Заказы</button><button class=\"ds-tab\" type=\"button\">Склад</button><button class=\"ds-tab\" type=\"button\">Смены</button></div></div>",
+   "example_ru": "Три вкладки с подписями в одно слово укладываются в 343 px без прокрутки — NN/g советует короткие подписи именно из-за этого."
+  },
+  {
+   "title": "На мобиле аккордеон вместо вкладок",
+   "items": [
+    "Что происходит: вкладки занимают верхние 48 px экрана, а содержимое под ними всё равно прокручивается — на 375 px место расходуется дважды.",
+    "Что делают системы: NN/g советует для узкого экрана другой компонент — «Accordions are particularly useful on mobile devices, where they work better than tabs due to the limited screen space».",
+    "Что делать нам: два-три независимых блока (например, «Активные заказы» и «Закрытые») на мобиле показываем аккордеоном с заголовками, а вкладки оставляем только для однотипных представлений одного списка."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tabs, Used Right (https://www.nngroup.com/articles/tabs-used-right/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-expansion ds-expansion--open\"><div class=\"ds-expansion__header\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><span class=\"ds-expansion__title\">Активные заказы</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></div><div class=\"ds-expansion__content\">Стол 4 · 1 480 ₽ · 12:20</div></div><div class=\"ds-expansion\"><div class=\"ds-expansion__header\"><span class=\"ds-expansion__icon\"><span class=\"material-icons\" style=\"font-size:24px\">history</span></span><span class=\"ds-expansion__title\">Закрытые заказы</span><span class=\"ds-expansion__arrow\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></div><div class=\"ds-expansion__content\">Смена закрыта 11 сентября</div></div></div>",
+   "example_ru": "Те же два представления заказов показаны аккордеоном, а не вкладками: на телефоне NN/g советует именно аккордеон из-за нехватки места."
+  },
+  {
+   "title": "Вкладки делят один список по статусу",
+   "items": [
+    "Что происходит: вкладки «Активные», «Готовятся», «Закрытые» читаются как три разных экрана, хотя под ними один и тот же список заказов.",
+    "Что делают системы: NN/g разбирает реальный продукт — «This in-page tab organized parking-spot reservations by status.» — и в том же разборе напоминает: «The fewer tabs, the better.»",
+    "Что делать нам: вкладки ставим только на однотипные представления одного списка (по статусу или по смене) и открываем на самом частом — «Активные»; архив и отчёты вкладками не оформляем."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tabs, Used Right · кейс SpotHero (https://www.nngroup.com/articles/tabs-used-right/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Активные</button><button class=\"ds-tab\" type=\"button\">Закрытые</button></div><div class=\"ds-list-item\"><div class=\"ds-list-item__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-item__content\"><span class=\"ds-list-item__label-up\">Стол 4</span><span class=\"ds-list-item__text\">Стейк рибай · 1 480 ₽</span></div><div class=\"ds-list-item__element-right\"><span class=\"ds-list-item__label-down\">12:20</span></div></div><div class=\"ds-list-item\"><div class=\"ds-list-item__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">local_cafe</span></span></div><div class=\"ds-list-item__content\"><span class=\"ds-list-item__label-up\">Стол 7</span><span class=\"ds-list-item__text\">Капучино × 2 · 420 ₽</span></div><div class=\"ds-list-item__element-right\"><span class=\"ds-list-item__label-down\">12:35</span></div></div></div>",
+   "example_ru": "Вкладка делит один список заказов по статусу — открыт самый частый, «Активные»; в разборе SpotHero вкладка работает так же."
+  },
+  {
+   "title": "Свайп и вкладка не расходятся",
+   "items": [
+    "Что происходит: человек свайпает содержимое влево, индикатор уезжает, а активная подпись вкладки остаётся прежней — непонятно, какое представление открыто.",
+    "Что делают системы: Material Components for Android требует держать их синхронно — «Synchronize the selected tab and tab indicator position with page swipes».",
+    "Что делать нам: в мобильном слое активная вкладка и её индикатор переставляются вместе со свайпом содержимого; если синхронизировать нечем — свайп между вкладками не включаем вовсе."
+   ],
+   "src": "Источники: Material Components for Android · Tabs (https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Tabs.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Активные</button><button class=\"ds-tab\" type=\"button\">Закрытые</button></div><div class=\"ds-list-item\"><div class=\"ds-list-item__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-item__content\"><span class=\"ds-list-item__label-up\">Стол 4</span><span class=\"ds-list-item__text\">Стейк рибай · 1 480 ₽</span></div><div class=\"ds-list-item__element-right\"><span class=\"ds-list-item__label-down\">12:20</span></div></div></div>",
+   "example_ru": "Содержимое под вкладкой сдвигается свайпом вместе с активной вкладкой и её индикатором — расхождения между подписью и тем, что открыто, быть не должно."
+  },
+  {
+   "title": "Переполнение: стрелки пагинации",
+   "items": [
+    "Что происходит: когда подписи не влезают в 343 px, часть вкладок пропадает, и человек не знает, что справа есть ещё две.",
+    "Что делают системы: Angular Material добавляет к полосе управление — «When the list of tab labels exceeds the width of the header, pagination controls appear to let the user scroll left and right across the labels», причём кнопка-стрелка не уже min-width: 32px.",
+    "Что делать нам: в мобильном слое берём одну прокручиваемую полосу с подтягиванием активной вкладки, а не две стрелки: на 375 px две кнопки по 32 px съедают 64 px из 343 px."
+   ],
+   "src": "Источники: Angular Material · Tabs (https://raw.githubusercontent.com/angular/components/main/src/material/tabs/tabs.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:8px;align-items:center\"><span class=\"ds-arrow\" style=\"width:32px;height:32px\"><span class=\"material-icons\" style=\"font-size:24px\">chevron_left</span></span><div style=\"width:200px;overflow:hidden\"><div class=\"ds-tabs\" style=\"flex-wrap:nowrap\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Заказы</button><button class=\"ds-tab\" type=\"button\">Склад</button><button class=\"ds-tab\" type=\"button\">Отчёты</button></div></div><span class=\"ds-arrow\" style=\"width:32px;height:32px\"><span class=\"material-icons\" style=\"font-size:24px\">chevron_right</span></span></div>",
+   "example_ru": "Полоса со стрелками по 32 px с двух сторон, как у Angular Material: в мобильном слое вместо них работает прокрутка самой полосы."
+  },
+  {
+   "title": "Пятая вкладка съедает цель нажатия",
+   "items": [
+    "Что происходит: шесть вкладок в 343 px дают по 57 px на каждую, подписи сжимаются до «Ст», «Ск», и пальцем не попасть ни в одну.",
+    "Что делают системы: NN/g связывает число опций с размером цели — «If your site has more than 5 options, it’s hard to fit them in a tab or navigation bar and still keep an optimum touch-target size».",
+    "Что делать нам: в полосе мобильного экрана не больше пяти вкладок и не меньше 90 px на вкладку; шестая и дальше уходят в «Ещё» или в список разделов."
+   ],
+   "src": "Источники: Nielsen Norman Group · Basic Patterns for Mobile Navigation (https://www.nngroup.com/articles/mobile-navigation-patterns/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\" style=\"flex-wrap:nowrap\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Заказы</button><button class=\"ds-tab\" type=\"button\">Стоп-лист</button><button class=\"ds-tab\" type=\"button\">Склад</button><button class=\"ds-tab\" type=\"button\">Смены</button><button class=\"ds-tab\" type=\"button\">Отчёты</button></div></div>",
+   "example_ru": "Пять вкладок — предел для 343 px: каждая шире минимума 90 px, поэтому цель нажатия остаётся не меньше 48 px и подписи не сжимаются."
+  },
+  {
+   "title": "Точки-индикаторы не нажать",
+   "items": [
+    "Что происходит: вместо полосы вкладок — точки-индикаторы 6–8 px, по которым предлагают попадать пальцем, чтобы перейти к другому представлению.",
+    "Что делают системы: NN/g описывает результат прямо — «you can (sometimes) see that the dots are present, but they are far too small to tap individually to navigate».",
+    "Что делать нам: точками только показываем, сколько всего представлений, а переключают вкладки подписи (или свайп) с целью не меньше 48 px; кликабельных точек 6 px в ДС нет."
+   ],
+   "src": "Источники: Nielsen Norman Group · Touch Targets on Touchscreens (https://www.nngroup.com/articles/touch-target-size/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Активные</button><button class=\"ds-tab\" type=\"button\">Закрытые</button></div><div style=\"display:flex;gap:8px;justify-content:center;padding:8px 0\"><span style=\"width:6px;height:6px;border-radius:50%;background:#333\"></span><span style=\"width:6px;height:6px;border-radius:50%;background:#BDBDBD\"></span><span style=\"width:6px;height:6px;border-radius:50%;background:#BDBDBD\"></span></div></div>",
+   "example_ru": "Вкладки переключаются подписями, а точки 6 px под ними только показывают количество представлений — нажимать по ним нечего."
   }
  ]
 }

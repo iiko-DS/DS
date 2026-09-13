@@ -66,6 +66,105 @@
    "src": "Источники: IBM Carbon · Tag (https://carbondesignsystem.com/components/tag/usage) · Material Web · chip.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-group\" style=\"flex-wrap:nowrap;overflow-x:auto;min-height:48px;height:48px\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span></div></div><div style=\"height:160px;background:#F5F5F5;border-radius:8px\"></div></div>",
    "example_ru": "Строка фильтров держит фиксированные 48 px и не растёт, при открытой клавиатуре сжимается список под ней — 160 px против 216 px клавиатуры."
+  },
+  {
+   "title": "Зазор между чипами 8 px",
+   "items": [
+    "Что происходит: чипы-фильтры стоят вплотную, и палец снимает соседний фильтр вместо нужного — особенно когда видимая высота чипа 32 px, а цель нажатия 48 px.",
+    "Что делают системы: IBM Carbon задаёт зазор в группе числом — «When tags are placed in groups, it is recommended to have 8px of space between them on the top, bottom, left, and right.»",
+    "Что делать нам: зазор между чипами — 8 px по всем четырём сторонам (и в строке фильтров, и в сетке шторки); чипы вплотную в ДС не ставим."
+   ],
+   "src": "Источники: IBM Carbon · Tag usage (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-group\" style=\"gap:8px;flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span></div></div></div>",
+   "example_ru": "Три чипа с зазором 8 px по всем сторонам — рекомендованное расстояние внутри группы тегов у IBM Carbon."
+  },
+  {
+   "title": "Набор переносится на вторую строку",
+   "items": [
+    "Что происходит: в сетке фильтров шторки чипы переносятся на вторую и третью строку, и последний ряд подписей уже не читается как фильтры.",
+    "Что делают системы: Carbon для группы тегов считает перенос нормальным — «Tags should wrap to form another line if there are too many to arrange horizontally on one line.»",
+    "Что делать нам: в строке фильтров над списком переноса нет (одна строка 48 px с прокруткой), а в шторке «Все фильтры» набор переносится сеткой с зазором 8 px — там перенос допустим, потому что ничего не сжимает."
+   ],
+   "src": "Источники: IBM Carbon · Tag usage (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-group\" style=\"flex-wrap:wrap;gap:8px;width:100%\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Бекон</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Томаты</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Базилик</span></div></div></div>",
+   "example_ru": "В шторке набор фильтров переносится сеткой: Carbon прямо разрешает тегам переноситься на новую строку, если они не помещаются в одну."
+  },
+  {
+   "title": "Цель 48 dp и зазор 8 dp",
+   "items": [
+    "Что происходит: два выбранных чипа стоят рядом с зазором 4 px, и вместо нужного фильтра палец выключает соседний.",
+    "Что делают системы: Google Accessibility задаёт оба числа сразу — «Consider making touch targets at least 48x48dp, separated by 8dp of space or more, to ensure balanced information density and usability.»",
+    "Что делать нам: цель 48 × 48 dp у чипа и не меньше 8 dp между целями; видимую высоту чипа 32 px оставляем, недостающее добираем прозрачным слоем и зазором."
+   ],
+   "src": "Источники: Google Android Accessibility / Material Design (https://support.google.com/accessibility/android/answer/7101858)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:8px;min-height:48px;align-items:center\"><span class=\"pat__hit\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div></span><span class=\"pat__hit\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div></span></div>",
+   "example_ru": "Два чипа с зазором 8 px: пунктиром показана цель 48 × 48 dp вокруг каждого чипа, как требует Google Accessibility."
+  },
+  {
+   "title": "Подпись не переносится внутри чипа",
+   "items": [
+    "Что происходит: подпись «Оплата картой, наличные» переносится внутри чипа на две строки, чип превращается в квадрат и ломает всю строку фильтров.",
+    "Что делают системы: Carbon это запрещает — «Avoid having long tag titles wrap to multiple lines within the tag container.»",
+    "Что делать нам: подпись чипа обрезается по max-width с многоточием, двух строк внутри чипа не появляется; полный текст значения показываем в шторке фильтров."
+   ],
+   "src": "Источники: IBM Carbon · Tag usage (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:8px;min-height:48px;align-items:center\"><div class=\"ds-chips ds-chips--outlined\" style=\"max-width:140px\"><span class=\"ds-chips__label\" style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">Оплата картой, наличные</span></div></div>",
+   "example_ru": "Длинное значение обрезано многоточием по max-width 140 px: подпись остаётся одной строкой, как требует Carbon."
+  },
+  {
+   "title": "Лишние чипы — за «Ещё»",
+   "items": [
+    "Что происходит: активные фильтры уезжают за правый край прокрутки, и человек не видит, что фильтр включён — список выглядит отфильтрованным без причины.",
+    "Что делают системы: Carbon отводит переполнение тегов в отдельный вид — «Use to view an overflow of multiple tags, like in a popover, modal, or detail view».",
+    "Что делать нам: последним чипом в строке ставим «Ещё» с иконкой tune, он открывает шторку со всем набором и снятием фильтров; активные фильтры дублируем строкой над списком."
+   ],
+   "src": "Источники: IBM Carbon · Tag usage (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-group\" style=\"gap:8px;flex-wrap:nowrap;overflow-x:auto\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__icon\"><span class=\"material-icons\" style=\"font-size:24px\">tune</span></span><span class=\"ds-chips__label\">Ещё</span></div></div></div>",
+   "example_ru": "Полоса фильтров заканчивается чипом «Ещё» с иконкой tune: он открывает шторку со всеми фильтрами, а не показывает ещё одно значение."
+  },
+  {
+   "title": "Одна функция на чип",
+   "items": [
+    "Что происходит: чип с подписью «Сыр» одновременно фильтр, кнопка удаления и переход в карточку ингредиента — случайные нажатия снимают фильтр.",
+    "Что делают системы: Carbon предупреждает об этом прямо — «Avoid using tags with multiple functions to prevent confusion and reduce accidental clicks».",
+    "Что делать нам: у чипа одна роль — либо выбор значения (фильтр), либо снятие; переход в карточку и удаление живут в шторке фильтров, а не в теле чипа."
+   ],
+   "src": "Источники: IBM Carbon · Tag usage (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tag/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-group\" style=\"gap:8px;flex-wrap:wrap\"><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__icon\"><span class=\"material-icons\" style=\"font-size:24px\">check</span></span><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div></div></div>",
+   "example_ru": "Слева чип-фильтр с галочкой (только выбор), справа чип со съёмом (только удаление): двух функций у одного чипа нет."
+  },
+  {
+   "title": "Съём у фильтра не обязателен",
+   "items": [
+    "Что происходит: у каждого чипа-фильтра стоит крестик, и вместо выбора значения человек снимает фильтр целиком.",
+    "Что делают системы: Material Web разрешает оба варианта — «Filter chips can optionally be removable from the chip set.»",
+    "Что делать нам: у невыбранного фильтра крестика нет (тап по чипу выбирает), крестик появляется только у выбранного; в поле ввода меток чип всегда снимаемый."
+   ],
+   "src": "Источники: Material Web · Chip (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-group\" style=\"gap:8px;flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Соус</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div></div></div>",
+   "example_ru": "У невыбранного фильтра «Сыр» крестика нет, у выбранного «Соус» он появился: снимаемость — опция чипа, а не постоянная его часть."
+  },
+  {
+   "title": "Минимальная цель чипа",
+   "items": [
+    "Что происходит: чип 32 px стоит отдельно от остальных, и палец уходит мимо него на соседний элемент списка.",
+    "Что делают системы: у чипа Material Components for Android в разделе размеров отдельной строкой стоит ограничение цели — «Min touch target», то есть минимум задан самим компонентом, а не только платформой.",
+    "Что делать нам: минимум цели чипа фиксируем в спецификации ДС числом 48 px — независимо от визуального размера варианта."
+   ],
+   "src": "Источники: Material Components for Android · Chip (https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/Chip.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"min-height:48px;align-items:center\"><span class=\"pat__hit\"><div class=\"ds-chips ds-chips--outlined ds-chips--s\"><span class=\"ds-chips__label\">Малый</span></div></span><span class=\"pat__hit\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Обычный</span></div></span></div>",
+   "example_ru": "Малый и обычный варианты чипа нажимаются одной и той же целью 48 px — пунктир на обоих: минимальный размер цели у Android-чипа задан компонентом."
+  },
+  {
+   "title": "Плотные мелкие чипы не нажать",
+   "items": [
+    "Что происходит: строка из восьми мелких чипов-тегов в карточке блюда: между подписями 4 px, попасть в нужный тег пальцем не получается.",
+    "Что делают системы: NN/g описывает состояние такой цели прямо — элементы становятся «too small or densely packed to select without struggling».",
+    "Что делать нам: мелкий вариант чипа допускаем только там, где чип не нажимают (метка-статус в строке), а интерактивные фильтры всегда 32 px с зазором 8 px и целью 48 px."
+   ],
+   "src": "Источники: Nielsen Norman Group · Touch Targets on Touchscreens (https://www.nngroup.com/articles/touch-target-size/)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:4px;flex-wrap:wrap;min-height:48px;align-items:center\"><div class=\"ds-chips ds-chips--outlined ds-chips--s\"><span class=\"ds-chips__label\">Остро</span></div><div class=\"ds-chips ds-chips--outlined ds-chips--s\"><span class=\"ds-chips__label\">Веган</span></div><div class=\"ds-chips ds-chips--outlined ds-chips--s\"><span class=\"ds-chips__label\">Без лука</span></div><div class=\"ds-chips ds-chips--outlined ds-chips--s\"><span class=\"ds-chips__label\">Халяль</span></div></div>",
+   "example_ru": "Мелкие чипы с зазором 4 px — так выглядят читаемые метки, но нажимать по ним нельзя: под фильтры в ДС отводится вариант 32 px с зазором 8 px."
   }
  ]
 }

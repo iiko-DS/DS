@@ -156,6 +156,72 @@
    "src": "Источники: Angular Material · Tree (raw.githubusercontent.com/angular/components/main/src/material/tree/tree.md) · Ant Design · Tree (ant.design/components/tree)",
    "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div>",
    "example_ru": "Раскрытая ветка (Меню → Пицца → Маргарита) остаётся раскрытой при возврате: у Ant Design для этого есть `expandedKeys` и `autoExpandParent`, у Angular — уровень узла для диктора."
+  },
+  {
+   "title": "Сложная вложенность: узел меньше",
+   "items": [
+    "Что происходит: на 375 px четыре уровня дерева съедают ширину, и в кадре помещается меньше позиций, чем хотелось бы.",
+    "Что делают системы: Carbon Design System (IBM) — Tree view, Sizing (extra small node): «If you have a tree structure with complex nesting levels, use the extra small node size to keep as much information in view as possible.».",
+    "Что делать нам: для деревьев с глубокой вложенностью берём уменьшенный размер узла (extra small по Carbon), чтобы в кадр попадало больше уровней и позиций."
+   ],
+   "src": "Источники: Carbon Design System (IBM) · Tree view, Sizing (extra small node) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:35px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Пицца</span></div></div></div>",
+   "example_ru": "Два уровня с уменьшенным узлом: при сложной вложенности Carbon советует extra small, чтобы в кадре помещалось больше информации."
+  },
+  {
+   "title": "Раскрытие: тап по всей каре",
+   "items": [
+    "Что происходит: пользователь целится в тонкий треугольник раскрытия и промахивается мимо него: ветка не раскрывается, зато выделяется соседний узел.",
+    "Что делают системы: Carbon Design System (IBM) — Tree view, Expanding and collapsing: «To expand or collapse a branch node the user can click anywhere within the caret icon bounding box.».",
+    "Что делать нам: раскрытие срабатывает по всей площади каре, а выделение узла — по остальной строке; зоны раскрытия и выбора не пересекаются."
+   ],
+   "src": "Источники: Carbon Design System (IBM) · Tree view, Expanding and collapsing (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><span class=\"pat__hit\"><span class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></span></span></div>",
+   "example_ru": "Пунктиром показана отдельная зона нажатия вокруг узла: раскрытием управляет вся область каре, а выбор узла — остальная строка."
+  },
+  {
+   "title": "Один уровень — не дерево",
+   "items": [
+    "Что происходит: дерево строят на одну ступень вложенности, и его шевроны раскрывают по сути один и тот же список категорий.",
+    "Что делают системы: Carbon Design System (IBM) — Tree view (When not to use): «When you only need one level of nested information.».",
+    "Что делать нам: один уровень вложенности закрываем аккордеоном или таблицей, а дерево оставляем для двух и больше уровней."
+   ],
+   "src": "Источники: Carbon Design System (IBM) · Tree view (When not to use) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__label-up\">Категория</span><span class=\"ds-text-ui__list-item\">Пицца</span><span class=\"ds-text-ui__label-down\">24 позиции</span></div></div></div>",
+   "example_ru": "Один уровень показан плоской строкой («Категория / Пицца / 24 позиции») вместо дерева: для одного уровня Carbon советует аккордеон или таблицу."
+  },
+  {
+   "title": "Дерево — навигация по объёму",
+   "items": [
+    "Что происходит: сотни позиций отдают плоским перечнем, и найти в нём нужный узел можно только прокруткой до конца.",
+    "Что делают системы: Carbon Design System (IBM) — Tree view (Overview): «A tree view consists of nested heading levels that create a content hierarchy for users and assist with navigating large amounts of information.».",
+    "Что делать нам: большие объёмы группируем в дерево и даём по нему навигацию, а плоский список оставляем коротким."
+   ],
+   "src": "Источники: Carbon Design System (IBM) · Tree view (Overview) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div>",
+   "example_ru": "Три уровня (Меню → Пицца → Маргарита) дают иерархию для навигации по большому объёму — именно так назначение дерева описано в Carbon."
+  },
+  {
+   "title": "Тесно на телефоне: раскрытие на месте",
+   "items": [
+    "Что происходит: на 375 px дерево держат раскрытым целиком, и до нижних уровней приходится долго скроллить.",
+    "Что делают системы: Nielsen Norman Group — Accordions on Mobile: «on mobile, accordions are one of the most useful design elements, as they often solve the problem of displaying too much content in too little screen space».",
+    "Что делать нам: на мобиле ветки дерева раскрываются на месте и по одной, чтобы длинный список не приходилось проматывать целиком."
+   ],
+   "src": "Источники: NN/g · Accordions on Mobile (https://www.nngroup.com/articles/mobile-accordions/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:35px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Пицца</span></div></div></div>",
+   "example_ru": "Две ветки раскрываются на месте: на телефоне раскрытие-сворачивание прямо в списке решает проблему нехватки экрана."
+  },
+  {
+   "title": "Выбранный узел всегда подсвечен",
+   "items": [
+    "Что происходит: после перехода вглубь подсветка выбранного узла пропадает, и теряется след, откуда пользователь пришёл.",
+    "Что делают системы: Apple HIG — Lists and tables (Provide appropriate feedback when people select a list item): «a table that helps people navigate through a hierarchy persistently highlights the selected row to clarify the path people are taking».",
+    "Что делать нам: выбранный узел подсвечиваем постоянно на всех уровнях, чтобы путь в иерархии оставался виден."
+   ],
+   "src": "Источники: Apple HIG · Lists and tables (Provide appropriate feedback when people select a list item) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"background:#448AFF;color:#fff;padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div>",
+   "example_ru": "Выбранный узел «Маргарита» подсвечен постоянно: Apple HIG требует держать подсветку выбранной строки, чтобы был виден путь в иерархии."
   }
  ]
 }

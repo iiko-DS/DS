@@ -55,6 +55,105 @@
    "src": "Источники: GOV.UK Design System · Notification banner (https://design-system.service.gov.uk/components/notification-banner/)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\" style=\"align-items:flex-start\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Заказы за 8 августа не отправлены: нет связи с принтером. Проверьте кабель и повторите отправку.</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Подробнее</span></button></div></div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Ошибка поля показана у поля: «Адрес доставки обязателен»</div></div>",
    "example_ru": "Текст баннера — до трёх строк и одно действие «Подробнее»; ошибки валидации баннером не показываем, они стоят у полей."
+  },
+  {
+   "title": "Баннер под шапкой, один на экран",
+   "items": [
+    "Что происходит: баннер ставят внизу экрана или над шапкой, и на 375 px он перекрывает первые строки списка либо уезжает из виду вместе со скроллом.",
+    "Что делают системы: Material Components for the Web (MDC) · Banner — «Banners should be displayed at the top of the screen, below a top app bar. They’re persistent and nonmodal, allowing the user to either ignore them or interact with them at any time. Only one banner should be shown at a time.»",
+    "Что делать нам: держать баннер вверху под шапкой в потоке, не поверх контента, и не заводить на экране второй баннер: остальные сообщения — строкой в списке или в шторке."
+   ],
+   "src": "Источники: Material Components for the Web (MDC) · Banner (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/README.md)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"height:48px;display:flex;align-items:center;padding:0 16px;background:#FFFFFF;border-bottom:1px solid #E0E0E0;font-size:16px;font-weight:500\">Заказы</div><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Печать чеков недоступна — заказы за 8 августа не отправлены</span></div></div></div>",
+   "example_ru": "Баннер стоит вверху под шапкой «Заказы» и не накладывается на список: на экране он один."
+  },
+  {
+   "title": "Баннер сам не исчезает",
+   "items": [
+    "Что происходит: баннер закрывают по таймеру через 3 секунды, и важное сообщение пропадает раньше, чем пользователь дочитал его до конца.",
+    "Что делают системы: Material Components for the Web (MDC) · Banner — «It requires a user action to be dismissed.»",
+    "Что делать нам: убирать баннер только по явному действию — «×» с зоной нажатия 48 × 48 или кнопкой «Понятно»; автоскрытия у баннера нет."
+   ],
+   "src": "Источники: Material Components for the Web (MDC) · Banner (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/README.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">warning</span></span><span>Кассир не вошёл в смену — заказы не принимаются</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><span class=\"pat__hit\" style=\"margin:0\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Закрыть баннер\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></button></span></div></div></div>",
+   "example_ru": "Баннер висит, пока пользователь не нажмёт «×» (зона 48 × 48, пунктир): по таймеру он не закрывается."
+  },
+  {
+   "title": "Баннер перед заголовком страницы",
+   "items": [
+    "Что происходит: баннер приклеивают поверх страницы или убирают в конец, и пользователь либо не видит его при входе, либо закрывает, чтобы добраться до контента.",
+    "Что делают системы: GOV.UK Design System · Notification banner — «Position a notification banner immediately before the page h1».",
+    "Что делать нам: ставить баннер первым блоком тела экрана — сразу перед заголовком страницы и во всю ширину контента (343 px при 375 px), а не fixed и не поверх контента."
+   ],
+   "src": "Источники: GOV.UK Design System · Notification banner (https://design-system.service.gov.uk/components/notification-banner/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Данные за август ещё уточняются</span></div></div><div style=\"font-size:20px;line-height:28px;font-weight:500;padding:12px 0\">Отчёты</div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Заголовок страницы идёт после баннера</div></div>",
+   "example_ru": "Баннер стоит первым блоком экрана, а заголовок «Отчёты» — сразу под ним: ширина баннера равна ширине контента."
+  },
+  {
+   "title": "Несколько сообщений — один баннер",
+   "items": [
+    "Что происходит: на экране собирается стопка из трёх баннеров, она занимает половину высоты, и пользователь закрывает всё подряд не читая.",
+    "Что делают системы: GOV.UK Design System · Notification banner — «Avoid showing more than one notification banner on the same page. Instead, combine the messages in a single notification banner.»",
+    "Что делать нам: склеивать сообщения в один баннер (при необходимости — списком внутри), а не ставить второй и третий баннер друг под другом."
+   ],
+   "src": "Источники: GOV.UK Design System · Notification banner (https://design-system.service.gov.uk/components/notification-banner/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\" style=\"align-items:flex-start\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Заказы за 8 августа не отправлены и печать чеков недоступна: проверьте связь с принтером.</span></div></div></div>",
+   "example_ru": "Два сообщения объединены в одну плашку: на экране один баннер, а не стопка из трёх."
+  },
+  {
+   "title": "Не баннер, а контент страницы",
+   "items": [
+    "Что происходит: пояснение про текущую форму показывают баннером сверху, и пользователь не связывает его с полем, которое заполняет прямо сейчас.",
+    "Что делают системы: GOV.UK Design System · Notification banner — «If the information is directly relevant to the thing the user is doing on that page, put the information in the main page content instead.»",
+    "Что делать нам: всё, что относится к текущему действию, писать в теле экрана рядом с объектом; баннер оставлять для новостей уровня страницы или аккаунта."
+   ],
+   "src": "Источники: GOV.UK Design System · Notification banner (https://design-system.service.gov.uk/components/notification-banner/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">warning</span></span><span>Тариф меняется с 1 сентября</span></div></div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Про поле «Адрес» написано в теле экрана, а не баннером</div></div>",
+   "example_ru": "Баннер занят новостью по аккаунту, а сообщение про текущую форму стоит в теле экрана — там же, где поле."
+  },
+  {
+   "title": "Баннер принимают за рекламу",
+   "items": [
+    "Что происходит: яркая плашка с крупной цветной заливкой на телефоне читается как рекламный баннер, и важное сообщение пропускают.",
+    "Что делают системы: Nielsen Norman Group · Banner Blindness Revisited — «Anything that stands out from immediate surrounding context is likely to be considered an ad».",
+    "Что делать нам: держать спокойный фон и обычный кегль, выделять знаком и рамкой, а не крупной цветной заливкой во всю ширину экрана."
+   ],
+   "src": "Источники: Nielsen Norman Group · Banner Blindness Revisited (https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--neutral ds-banner--horizontal\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span class=\"ds-banner__row\">Заказы за 8 августа ещё не отправлены</span></div></div>",
+   "example_ru": "Спокойный фон и обычная строка вместо цветной заливки: такой баннер не похож на рекламу и читается."
+  },
+  {
+   "title": "Крупный баннер перекрывает скролл",
+   "items": [
+    "Что происходит: баннер занимает треть экрана и при прокрутке перекрывает список — контент нельзя смотреть, не закрыв плашку.",
+    "Что делают системы: Nielsen Norman Group · Banner Blindness Revisited (mobile) — «A mobile inline ad is so large in proportion to the screen size that users cannot avert their eyes from it as they swipe down.»",
+    "Что делать нам: ограничивать баннер двумя-тремя строками (52 px на одну строку) и не делать его фиксированным поверх прокручиваемого списка."
+   ],
+   "src": "Источники: Nielsen Norman Group · Banner Blindness Revisited (mobile) (https://www.nngroup.com/articles/banner-blindness-old-and-new-findings/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\" style=\"align-items:flex-start\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Печать чеков недоступна — до двух строк и одно действие, плашка не растёт на пол-экрана.</span></div></div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Список заказов прокручивается под баннером: плашка не fixed.</div></div>",
+   "example_ru": "Баннер не больше двух строк и не закреплён поверх списка: прокрутка списка остаётся доступной."
+  },
+  {
+   "title": "Кнопка действия под текстом",
+   "items": [
+    "Что происходит: кнопку действия ставят справа от текста, и на 375 px подпись и текст жмутся в одну строку и обрезаются.",
+    "Что делают системы: Carbon Design System · Notification (Inline, actionable) — «On mobile screens the action button wraps under the body content.»",
+    "Что делать нам: на телефоне располагать действия баннера под текстом отдельной строкой с выравниванием вправо, а не сбоку от текста."
+   ],
+   "src": "Источники: Carbon Design System · Notification (Inline · actionable) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\" style=\"align-items:flex-start\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">warning</span></span><span>Черновик заказа не отправлен на кухню</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отправить</span></button></div></div></div>",
+   "example_ru": "Кнопка «Отправить» стоит под текстом отдельной строкой справа: текст и кнопка не соперничают за одну строку."
+  },
+  {
+   "title": "Inline-баннер держится до действия",
+   "items": [
+    "Что происходит: баннер про ошибку синхронизации исчезает сам, и пользователь не успевает понять, что делать с данными, которые не ушли.",
+    "Что делают системы: Carbon Design System · Notification (Inline) — «Inline notifications do not dismiss automatically. They persist on the page until the user dismisses them or takes action that resolves the notification.»",
+    "Что делать нам: не закрывать баннер по таймеру: он уходит либо по «×», либо после того, как действие (повторная отправка) выполнено."
+   ],
+   "src": "Источники: Carbon Design System · Notification (Inline) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">warning</span></span><span>Заказы за 8 августа не отправлены</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отправить ещё раз</span></button><span class=\"pat__hit\" style=\"margin:0\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Закрыть баннер\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></button></span></div></div></div>",
+   "example_ru": "Баннер уходит только по «×» или после повторной отправки: пока заказы не ушли, он остаётся на экране."
   }
  ]
 }

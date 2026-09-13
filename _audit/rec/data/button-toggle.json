@@ -228,6 +228,72 @@
    "src": "Источники: Apple HIG · Segmented controls (https://developer.apple.com/design/human-interface-guidelines/segmented-controls) · Angular Material · Button toggle (https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/button-toggle.md)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--active\" type=\"button\">Заказы</button><button class=\"ds-tab\" type=\"button\">Меню</button></div><div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Список</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Таблица</span></button></div></div></div>",
    "example_ru": "Экран меняют табы («Заказы / Меню»), вид внутри экрана — переключатель («Список / Таблица»): что применено, а что просто выбрано, видно сразу."
+  },
+  {
+   "title": "Не больше пяти сегментов",
+   "items": [
+    "Что происходит: в переключатель ставят шесть-семь сегментов, подписи сжимаются и обрезаются, а часть уезжает за край экрана.",
+    "Что делают системы: Apple HIG для segmented control задаёт предел: «Aim for no more than about five to seven segments in a wide interface and no more than about five segments on iPhone»",
+    "Что делать нам: на мобиле держим 3–5 сегментов; больше — часть уходит под «⋯» или переключатель заменяется списком либо селектом."
+   ],
+   "src": "Источники: Apple HIG · Segmented controls (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Все</span></button><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Мои</span></button><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Смена</span></button><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Зал</span></button><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Печать</span></button></div></div>",
+   "example_ru": "Пять сегментов на 343 px — предел для iPhone; дальше вариант уходит в список или селект."
+  },
+  {
+   "title": "Сегменты одного размера",
+   "items": [
+    "Что происходит: сегмент «Все» узкий, «Не назначенные» растянут на пол-экрана, группа выглядит сломанной, а тап попадает между сегментами.",
+    "Что делают системы: Apple HIG держит ровный размер сегментов: «In general, keep segment size consistent»",
+    "Что делать нам: сегменты равной ширины по самой длинной подписи, одинаковый кегль во всех, переносов внутри сегмента нет."
+   ],
+   "src": "Источники: Apple HIG · Segmented controls (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">День</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Неделя</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Месяц</span></button></div></div>",
+   "example_ru": "Три сегмента равной ширины по самой длинной подписи: группа не плывёт и не расползается."
+  },
+  {
+   "title": "Длинная подпись — иконка или многоточие",
+   "items": [
+    "Что происходит: подпись «Неназначенные» не влезает в сегмент, её обрезают многоточием без пояснения, и два сегмента после этого выглядят одинаково.",
+    "Что делают системы: IBM Carbon предлагает выход: «If the label text is too long in a content tab, add an ellipsis and accompany it with a browser-based tooltip to show the full string of text. If a label is too long to fit within its control tabs, consider using the icon modifier.»",
+    "Что делать нам: усечение — только вместе с полной подписью (title и aria), а если места мало, сегмент переводим на иконку без текста."
+   ],
+   "src": "Источники: IBM Carbon · Content switcher (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__icon material-icons\" style=\"font-size:20px;line-height:1\">edit</span><span class=\"ds-btn__label\">Правка</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\" style=\"font-size:20px;line-height:1\">add</span><span class=\"ds-btn__label\">Добавить</span></button></div></div>",
+   "example_ru": "Сегменты с иконками: вместо обрезки «Не назнач…» вариант переводится на иконку без текста."
+  },
+  {
+   "title": "Подпись в 2–3 слова",
+   "items": [
+    "Что происходит: в сегмент пытаются вписать фразу «Только мои заказы за смену», она не влезает и ломает всю строку переключателя.",
+    "Что делают системы: IBM Carbon ограничивает подпись по длине: «limit label text to two to three words»",
+    "Что делать нам: подписи сегментов — одно-три коротких слова, подробность уходит в заголовок над переключателем или в подсказку."
+   ],
+   "src": "Источники: IBM Carbon · Content switcher (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Список</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Таблица</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Плитка</span></button></div></div>",
+   "example_ru": "Подписи в одно-два слова: «Список / Таблица / Плитка» вместо фразы, которая не влезает в сегмент."
+  },
+  {
+   "title": "Переключатель — ряд кнопок",
+   "items": [
+    "Что происходит: сегментам дают вид табов с подчёркиванием, и человек путает смену вида внутри экрана с переходом на другой экран.",
+    "Что делают системы: Apple HIG описывает природу компонента: «A segmented control is a linear set of two or more segments, each of which functions as a button.»",
+    "Что делать нам: активный сегмент — залитая кнопка, остальные текстовые; смену экрана отдаём табам, переключателю оставляем вид внутри экрана."
+   ],
+   "src": "Источники: Apple HIG · Segmented controls (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--filled\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Все</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Мои</span></button></div></div>",
+   "example_ru": "Активный сегмент залит, остальные текстом: это кнопки в ряду, а не табы с подчёркиванием."
+  },
+  {
+   "title": "Переключатель в шторке",
+   "items": [
+    "Что происходит: в шторке создания события два родственных режима показывают отдельными экранами, и человек теряет текущий выбор.",
+    "Что делают системы: Apple показывает это на живом примере: «the segmented control in Calendar’s New Event sheet switches between the subviews for creating a new event and a new reminder»",
+    "Что делать нам: два-три родственных режима внутри шторки переключаем сегментами в её шапке, а не вторым экраном; выбор сохраняется при закрытии шторки."
+   ],
+   "src": "Источники: Apple HIG · Segmented controls, пример Apple Calendar для iOS (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Событие</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Напоминание</span></button></div></div>",
+   "example_ru": "В шапке шторки сегменты «Событие / Напоминание» переключают подвид, как в Apple Calendar."
   }
  ]
 }

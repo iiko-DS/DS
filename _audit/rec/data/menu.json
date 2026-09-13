@@ -168,6 +168,127 @@
    "src": "Источники: Apple HIG · Menus (developer.apple.com/design/human-interface-guidelines/menus) · Apple HIG · Context menus (developer.apple.com/design/human-interface-guidelines/context-menus)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Изменить</span></div></div><div class=\"ds-menu-item ds-menu-item--disabled\" style=\"width:auto\" aria-disabled=\"true\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">content_copy</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Дублировать</span></div></div><div class=\"ds-menu-item\" style=\"width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">send</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Отправить на кухню</span></div></div></div></div>",
    "example_ru": "Недоступный пункт остаётся на месте — приглушённый и не кликается, поэтому список не перестраивается под пальцем в момент нажатия; скрываем пункты только в контекстном меню."
+  },
+  {
+   "title": "Не больше 12 пунктов в меню",
+   "items": [
+    "Что происходит: в меню «⋯» сваливают все команды экрана, и до нужной строки приходится прокручивать список внутри шторки.",
+    "Что делают системы: IBM Carbon ограничивает длину контекстного и overflow-меню: «Expansive lists of options in menus can overwhelm users. With context menu and overflow menu, keep the list length manageable by including no more than 12 items to help users scan through items easily without having to scroll.»",
+    "Что делать нам: в меню «⋯» держим до 12 пунктов и без внутренней прокрутки; если команд больше — группируем их по смыслу делителями, а редкие уводим на экран настроек раздела."
+   ],
+   "src": "Источники: IBM Carbon · Menu · Number of items within a menu (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__label-up\">Заказ №1042</span><span class=\"ds-menu-item__text\">Изменить</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">content_copy</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Дублировать</span></div></div><div class=\"ds-menu-container__divider\"></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">send</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Отправить на кухню</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Распечатать</span></div></div><div class=\"ds-menu-container__divider\"></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__label-up\">Опасно</span><span class=\"ds-menu-item__text\">Закрыть заказ</span></div></div></div></div>",
+   "example_ru": "Пять пунктов в трёх группах — список читается без прокрутки: предел меню в ДС 12 пунктов, дальше команды уходят на отдельные экраны."
+  },
+  {
+   "title": "Меню-кнопка — до пяти пунктов",
+   "items": [
+    "Что происходит: у меню, открытого по кнопке (а не по долгому нажатию), список длиннее самой кнопки: пункты мелкие, и палец промахивается мимо нужного.",
+    "Что делают системы: Carbon для таких меню требует ещё более короткий список: «keep the menu list smaller with under 5 items».",
+    "Что делать нам: меню, открытое по кнопке в ДС, — до 5 пунктов без прокрутки; всё, что длиннее, открывается шторкой действий или отдельным экраном, а не растягивается вниз от кнопки."
+   ],
+   "src": "Источники: IBM Carbon · Menu · Number of items within a menu (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">send</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Отправить на кухню</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Распечатать</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">content_copy</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Дублировать</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__label-up\">Опасно</span><span class=\"ds-menu-item__text\">Удалить заказ</span></div></div></div></div>",
+   "example_ru": "Меню по кнопке — четыре пункта без прокрутки: предел для меню-кнопки в ДС пять, всё длиннее открывается шторкой действий."
+  },
+  {
+   "title": "Длинное меню делим на несколько",
+   "items": [
+    "Что происходит: меню на 20 строк читают долго, и нужная команда теряется среди похожих подписей — человек просто закрывает список.",
+    "Что делают системы: Apple предлагает делить меню: «People need more time and attention to read a long menu, which means they may miss the command they want. If a menu is too long, consider dividing it into separate menus.»",
+    "Что делать нам: больше 12 пунктов — не один длинный список, а два меню «Действия» и «Ещё»; на мобиле это две шторки со своими заголовками, а не одна прокручиваемая до конца."
+   ],
+   "src": "Источники: Apple HIG · Menus · Best practices (https://developer.apple.com/design/human-interface-guidelines/menus)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-container__title\">Действия</div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Изменить</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">send</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Отправить на кухню</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Распечатать</span></div></div></div></div>",
+   "example_ru": "Меню разбито по смыслу: в первой шторке три частых действия и свой заголовок, остальные команды уходят во вторую шторку — длинного списка нет."
+  },
+  {
+   "title": "Подменю вместо отступов",
+   "items": [
+    "Что происходит: связь команды с её подпунктами показывают отступом справа, и в длинном меню вложенность теряется — непонятно, к чему относится строка.",
+    "Что делают системы: Apple просит ограничивать глубину и предпочитать подменю отступам: «Limit the depth and length of submenus. ... Prefer using a submenu to indenting menu items. Using indentation is inconsistent with the system and doesn't clearly express the relationships between the menu items.»",
+    "Что делать нам: вложенность показываем подменю с шевроном в конце строки, а не отступом; глубина — один уровень, и подменю открывается на месте, не сдвигая соседние пункты."
+   ],
+   "src": "Источники: Apple HIG · Menus · Submenus (https://developer.apple.com/design/human-interface-guidelines/menus)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__label-up\">Меню</span><span class=\"ds-menu-item__text\">Добавить блюдо</span></div><div class=\"ds-menu-item__element-right\"><span class=\"material-icons\" style=\"font-size:24px\">chevron_right</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">local_printshop</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Распечатать пречек</span></div></div></div></div>",
+   "example_ru": "Подпункты помечены шевроном 24 px, а не сдвигом строки вправо: связь команды и подменю читается, глубина ограничена одним уровнем."
+  },
+  {
+   "title": "Меню выше экрана прокручивается внутри",
+   "items": [
+    "Что происходит: меню из 14 пунктов выше экрана телефона, нижние строки уезжают за границу, и до них не добраться вообще.",
+    "Что делают системы: MUI описывает поведение меню так: «If the height of a menu prevents all menu items from being displayed, the menu can scroll internally.»",
+    "Что делать нам: высоту меню-шторки ограничиваем 80 % экрана и включаем прокрутку внутри контейнера (ds-menu-container__scroll), заголовок и кнопка «Отмена» остаются на месте — последний пункт всегда достижим."
+   ],
+   "src": "Источники: MUI · Menu · Max height menu (https://mui.com/material-ui/react-menu/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\" style=\"max-height:400px;overflow:auto\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Изменить</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">content_copy</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Дублировать</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">send</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Отправить на кухню</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Распечатать</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__label-up\">Опасно</span><span class=\"ds-menu-item__text\">Закрыть заказ</span></div></div></div></div>",
+   "example_ru": "Шторка меню выше экрана прокручивается внутри себя и не выходит за границу: заголовок и «Отмена» на месте, последний пункт достижим."
+  },
+  {
+   "title": "Меню у края экрана не обрезается",
+   "items": [
+    "Что происходит: меню, открытое у нижнего края экрана, обрезается рамкой, и часть пунктов просто не видно.",
+    "Что делают системы: MUI пересчитывает положение панели: «When close to a screen edge, a basic menu vertically realigns to make sure that all menu items are completely visible.»",
+    "Что делать нам: на мобиле у края экрана меню не позиционируем у нажатия вовсе — открываем его шторкой снизу, где обрезки нет; на десктопе оставляем пересчёт положения панели у границы окна."
+   ],
+   "src": "Источники: MUI · Menu · Basic menu (https://mui.com/material-ui/react-menu/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Действия с заказом</p><p class=\"phone__sheet-text\">Открыто у нижнего края · все пункты видны</p><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Изменить</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">send</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Отправить на кухню</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Распечатать</span></div></div></div></div></div>",
+   "example_ru": "У нижнего края меню раскрывается шторкой снизу: ни один пункт не обрезается краем экрана, в отличие от панели, привязанной к нажатию."
+  },
+  {
+   "title": "Плотный вариант для длинных пунктов",
+   "items": [
+    "Что происходит: длинные подписи вместе с длинным списком растягивают шторку на несколько экранов, и структура меню перестаёт читаться.",
+    "Что делают системы: MUI даёт для этого отдельный режим: «For the menu that has long list and long text, you can use the dense prop to reduce the padding and text size.»",
+    "Что делать нам: в ДС плотный режим — это только уменьшение вертикальных паддингов (8 px вместо 16 px) и высоты пункта до 48 px; кегль подписи 14 / 20 px не уменьшаем, чтобы текст не мельчал."
+   ],
+   "src": "Источники: MUI · Menu · Dense menu (https://mui.com/material-ui/react-menu/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Отправить заказ на кухню и закрыть смену</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Распечатать пречек и закрыть стол</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Перенести заказ на другой стол</span></div></div></div></div>",
+   "example_ru": "Плотный режим: высота пункта 48 px и паддинги 8 px вместо 16 px, кегль подписи остаётся 14 / 20 px — список короче, но текст не мельчает."
+  },
+  {
+   "title": "Опасный пункт отдельным состоянием",
+   "items": [
+    "Что происходит: «Удалить» и «Отправить» стоят в одном ряду одинаковыми строками, и разрушительный пункт нажимается по инерции.",
+    "Что делают системы: Carbon помечает такие действия отдельным состоянием: «When an action could have destructive effects on the user's data (for example, delete or remove).»",
+    "Что делать нам: разрушительный пункт — последним, за делителем и красным текстом (negative-цвет ДС), отдельной подписью со смыслом; действием по умолчанию и действием полного свайпа он быть не может."
+   ],
+   "src": "Источники: IBM Carbon · Menu · состояния пунктов, Danger (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Распечатать</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">content_copy</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Дублировать</span></div></div><div class=\"ds-menu-container__divider\"></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__label-up\">Опасно</span><span class=\"ds-menu-item__text\"><span style=\"color:#FF5252\">Удалить заказ</span></span></div></div></div></div>",
+   "example_ru": "«Удалить заказ» стоит последним пунктом за делителем и красным текстом: опасное действие отличается от остальных строк и не нажимается по инерции."
+  },
+  {
+   "title": "Обрезка пункта и тултип",
+   "items": [
+    "Что происходит: длинную подпись пункта обрезают и прячут полный текст в подсказку при наведении — на телефоне наведения нет, и текст не прочитать.",
+    "Что делают системы: Carbon честно называет цену решения: «Consider using short and precise labels for menu items. However, when deciding to truncate long menu items, a browser rendered title tooltip will reveal the full text on hover.»",
+    "Что делать нам: в мобильном меню полный текст не прячем в тултип: подпись до 32 знаков, при необходимости — вторая строка (label-up + text), а совсем длинное название показываем в шапке шторки целиком."
+   ],
+   "src": "Источники: IBM Carbon · Menu · Overflow (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/menu/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__label-up\">Заказ №1042</span><span class=\"ds-menu-item__text\">Пицца «Маргарита», 2 шт.</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__label-up\">Заказ №1042</span><span class=\"ds-menu-item__text\">Паста «Карбонара», 1 шт.</span></div></div></div></div>",
+   "example_ru": "Полный текст — второй строкой пункта 12 / 16 px, а не в тултипе при наведении: на телефоне подпись читается целиком без дополнительного жеста."
+  },
+  {
+   "title": "Подпись пункта — глагол действия",
+   "items": [
+    "Что происходит: пункты меню подписаны существительными («Повтор заказа», «Дублирование»), и по подписи непонятно, что произойдёт после нажатия.",
+    "Что делают системы: Apple требует формулировать действие глаголом: «For each menu item, write a label that clearly and succinctly describes it. In general, label a menu item that initiates an action using a verb or verb phrase that describes the action, such as View, Close, or Select.»",
+    "Что делать нам: подписи в меню — глагол или глагольная фраза: «Отправить на кухню», «Распечатать», «Закрыть заказ»; отглагольные существительные («Печать», «Отправка») в меню не используем."
+   ],
+   "src": "Источники: Apple HIG · Menus · Labeling menu items (https://developer.apple.com/design/human-interface-guidelines/menus)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">send</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Отправить на кухню</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Распечатать пречек</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Закрыть заказ</span></div></div></div></div>",
+   "example_ru": "Каждый пункт назван глаголом — «Отправить», «Распечатать», «Закрыть»: человек понимает результат нажатия до тапа, а не после."
+  },
+  {
+   "title": "Компактные раскладки меню",
+   "items": [
+    "Что происходит: меню из четырёх однотипных команд занимает пол-экрана обычными строками по 72 px, хотя выбор между ними однозначен.",
+    "Что делают системы: Apple перечисляет готовые раскладки и советует выбирать меньшую: «Choose a small or medium menu layout when it can help streamline people's choices.»",
+    "Что делать нам: для однотипных команд — компактная раскладка: до четырёх пунктов по 48 px без иконок и вторичных подписей; обычный список оставляем для разных по смыслу действий."
+   ],
+   "src": "Источники: Apple HIG · Menus · Menu layouts (https://developer.apple.com/design/human-interface-guidelines/menus)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-menu-container\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Как есть</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Сворачивать</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">С собой</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><div style=\"display:flex;flex-direction:column;gap:2px\"><span class=\"ds-menu-item__text\">Отменить</span></div></div></div></div>",
+   "example_ru": "Компактная раскладка — четыре однотипных пункта по 48 px без иконок и подписей: одинаковый по смыслу выбор занимает меньше места на экране."
   }
  ]
 }

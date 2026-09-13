@@ -230,6 +230,72 @@
    "src": "Источники: Material Design 3 · Icon button (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon-button.md) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
    "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Избранное, включено\" aria-pressed=\"true\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">star</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Загрузка\" disabled><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">refresh</span></span></button></div>",
    "example_ru": "Включённое состояние — заливка плюс aria-pressed, во время загрузки иконка недоступна (имя «Загрузка»): контейнер того же размера 40 px, кнопка не прыгает."
+  },
+  {
+   "title": "Иконка без подписи читается однозначно",
+   "items": [
+    "Что происходит: иконка «карандаш» на 375 px означает то правку, то «составить заказ», подписи нет, и человек не знает, что произойдёт после тапа.",
+    "Что делают системы: IBM Carbon требует однозначности: «In an icon only button, that has no label, the icon must accurately represent what the button does.»",
+    "Что делать нам: допускаем только иконочные кнопки из утверждённого набора ДС, у каждой обязательное доступное имя (aria-label); спорный смысл получает кнопку с подписью."
+   ],
+   "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё: остальные действия\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></div>",
+   "example_ru": "Только однозначные иконки из набора ДС: «карандаш» — правка, «корзина» — удаление, «⋯» — остальное, у каждой есть aria-label."
+  },
+  {
+   "title": "Иконочные кнопки — редкость",
+   "items": [
+    "Что происходит: на одном экране пять иконок без текста, и человек не помнит их значений — особенно в шапке и в строке списка.",
+    "Что делают системы: IBM Carbon, опираясь на исследование Wiedenbeck (1999), просит не увлекаться: «Icon only buttons should be used sparingly. “For most situations, users learn correct interpretations better with text alone than with icons alone.”»",
+    "Что делать нам: иконочными оставляем 1–2 действия с общеизвестным смыслом (закрыть, ещё, избранное), остальным в шапке и в списках даём подпись."
+   ],
+   "src": "Источники: IBM Carbon · Button, по исследованию Wiedenbeck (1999) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button></div><div class=\"pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">edit</span><span class=\"ds-btn__label\">Редактировать</span></button></div></div>",
+   "example_ru": "Две иконки-кнопки в строке и та же правка кнопкой с подписью: где смысл не очевиден, подпись обязательна."
+  },
+  {
+   "title": "Иконка 24 внутри цели 48",
+   "items": [
+    "Что происходит: рисунок иконки 24 px, и человек целится ровно в него — при работе одной рукой тап уходит в соседний элемент.",
+    "Что делают системы: справочник Google по доступности Android описывает это так: «An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target.»",
+    "Что делать нам: рисунок остаётся 24 px, а нажимаемая область — 48 × 48 dp / 44 × 44 pt за счёт паддинга контейнера; между соседними иконками не меньше 8 px."
+   ],
+   "src": "Источники: Google Android Accessibility · Touch target size (https://support.google.com/accessibility/android/answer/7101858)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Добавить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button></span></div>",
+   "example_ru": "Рисунок иконки 24 px внутри зоны нажатия 48 × 48 (пунктир): палец попадает в кнопку, а не в соседнюю."
+  },
+  {
+   "title": "Мелкий крестик не нажать",
+   "items": [
+    "Что происходит: у подсказки крестик-закрытие нарисован мелким, а рядом стоит основное действие — промах по крестику попадает в соседнюю кнопку.",
+    "Что делают системы: разбор NN/g приводит это на примере Instagram для iOS: «For example, on Instagram, the buttons to dismiss a follow suggestion were too small (only 2mm — 0.08in — wide), so even though they are far enough from the Follow buttons (about 2mm of spacing — the often-recommended minimum), they are still hard to select.»",
+    "Что делать нам: у закрывающей иконки цель не меньше 48 px, между ней и соседним действием минимум 8 px, компактные размеры S и XS для крестика на телефоне не берём."
+   ],
+   "src": "Источники: Nielsen Norman Group · Touch Targets on Touchscreens, кейс Instagram для iOS (https://www.nngroup.com/articles/touch-target-size/)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Закрыть подсказку\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\" style=\"flex:0 0 auto\"><span class=\"ds-btn__label\">Подписаться</span></button></div>",
+   "example_ru": "Крестик получает зону 48 × 48 и отступ от «Подписаться»: как в разборе Instagram, 2 мм на палец не хватает."
+  },
+  {
+   "title": "Подсказка обязательна для иконки",
+   "items": [
+    "Что происходит: иконочная кнопка без подписи и без подсказки — значение угадывается, а на тач-экране hover-подсказки нет вовсе.",
+    "Что делают системы: IBM Carbon настаивает на подсказке всегда: «Regardless of how recognizable an icon may or may not be, or whether that action lies within the universal actions list, a tooltip is always required with text explaining what the icon button would do if clicked.»",
+    "Что делать нам: у каждой иконочной кнопки — доступное имя и текст подсказки (в ДС это aria-label плюс title), причём на мобиле текст должен быть доступен и без наведения."
+   ],
+   "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Печать пречека\" title=\"Печать пречека\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Отправить заказ\" title=\"Отправить заказ\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">send</span></span></button></span></div>",
+   "example_ru": "У иконочных кнопок есть и title, и aria-label: что произойдёт по нажатию, понятно и без наведения."
+  },
+  {
+   "title": "Иконка молчит для скринридера",
+   "items": [
+    "Что происходит: иконочная кнопка объявляется скринридером без имени — просто «кнопка», и незрячий пользователь не знает, что она делает.",
+    "Что делают системы: Angular Material формулирует это про иконки: «Similar to an `<img>` element, an icon alone does not convey any useful information for a screen-reader user.»",
+    "Что делать нам: имя задаём на самой кнопке (aria-label), а не только на рисунке; декоративную иконку внутри кнопки с подписью скрываем от скринридера как aria-hidden."
+   ],
+   "src": "Источники: Angular Material · Icon (https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Фильтр\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_list</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\" style=\"flex:0 0 auto\"><span class=\"ds-btn__icon material-icons\">filter_list</span><span class=\"ds-btn__label\">Фильтр</span></button></div>",
+   "example_ru": "Слева — иконочная кнопка с именем «Фильтр», справа — та же функция с видимой подписью: без aria-label скринридер читает просто «кнопка»."
   }
  ]
 }

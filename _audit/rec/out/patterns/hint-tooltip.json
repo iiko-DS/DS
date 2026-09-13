@@ -66,6 +66,127 @@
    "src": "Источники: IBM Carbon · Tooltip (https://carbondesignsystem.com/components/tooltip/usage) · Google Accessibility (https://support.google.com/accessibility/android/answer/7101858) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons) · Angular Material · tooltip.md (https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.md)",
    "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><span class=\"pat__hit\"><span class=\"ds-hint-container__icon\"><span class=\"material-icons\" style=\"font-size:24px\">help_outline</span></span></span><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Пояснение без ссылок и кнопок внутри: интерактив уходит в шторку.</span></div></div></div>",
    "example_ru": "Иконка-подсказка 24 px внутри цели 48 × 48 px, интерактивных элементов внутри нет — ссылки и кнопки для тача недоступны и уходят в шторку."
+  },
+  {
+   "title": "Подсказка по ховеру не работает",
+   "items": [
+    "Что происходит: в макет кладут классический тултип по наведению, и на телефоне подсказку невозможно вызвать — элемент выглядит как без пояснения.",
+    "Что делают системы: Nielsen Norman Group · Tooltip Guidelines — «Because tooltips are initiated by a hover gesture, they can be used only on devices with a mouse or keyboard. They are not normally available on touchscreens.»",
+    "Что делать нам: на мобиле вместо ховер-подсказки использовать popup tip по тапу, а ховер оставлять как поведение десктопной версии."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tooltip Guidelines (https://www.nngroup.com/articles/tooltip-guidelines/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Как считаем скидку</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Скидка — 5 % при заказе от 3000 ₽.</span></div></div></div>",
+   "example_ru": "Подсказка открыта тапом под элементом: ховер, на который рассчитан десктопный тултип, на тач-экране недоступен."
+  },
+  {
+   "title": "Закрытие тапом по экрану",
+   "items": [
+    "Что происходит: подсказка не закрывается: пользователь тапает по другому месту экрана, но пузырь остаётся и перекрывает соседние строки.",
+    "Что делают системы: Nielsen Norman Group · Tooltip Guidelines (popup tips) — «User taps to close or clicks another area of the screen».",
+    "Что делать нам: закрывать подсказку тапом по любому месту вне неё и повторным тапом по элементу, а не только отдельной кнопкой закрытия."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tooltip Guidelines (popup tips) (https://www.nngroup.com/articles/tooltip-guidelines/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><span class=\"pat__hit\"><span class=\"ds-hint-container__icon\"><span class=\"material-icons\" style=\"font-size:24px\">help_outline</span></span></span><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Тап по другому месту экрана закрывает подсказку.</span></div></div></div>",
+   "example_ru": "Подсказка открыта тапом по иконке и закрывается тапом в любом месте вне неё — кнопки «Закрыть» внутри нет."
+  },
+  {
+   "title": "Долгое нажатие вместо наведения",
+   "items": [
+    "Что происходит: поведение подсказки на Android описывают через долгое нажатие, а в мобильной версии макета этот жест не заложен.",
+    "Что делают системы: Material Design 1 · Tooltips (Interaction) — «A tooltip is triggered by tapping and holding an item. Keep the tooltip displayed as long as the user continues to hold the element.»",
+    "Что делать нам: поддержать долгое нажатие как один из триггеров подсказки и не гасить её, пока палец остаётся на элементе."
+   ],
+   "src": "Источники: Material Design 1 · Tooltips (Interaction) (https://m1.material.io/components/tooltips.html)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Зачем предчек</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Предчек печатается до оплаты: гость проверяет состав заказа.</span></div></div></div>",
+   "example_ru": "Подсказка открыта долгим нажатием и держится, пока палец на элементе — так MD1 описывает тач-триггер."
+  },
+  {
+   "title": "1,5 секунды после отпускания",
+   "items": [
+    "Что происходит: после отпускания подсказка исчезает мгновенно или висит до тапа, и короткое пояснение не успевают дочитать.",
+    "Что делают системы: Material Design 1 · Tooltips (Timing) — «On lift, display the tooltip for 1.5 seconds.»",
+    "Что делать нам: показывать подсказку ещё 1500 мс после отпускания, а любое действие на экране пусть закрывает её раньше."
+   ],
+   "src": "Источники: Material Design 1 · Tooltips (Timing) (https://m1.material.io/components/tooltips.html)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Печать</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">На кухонный принтер</span></div></div></div>",
+   "example_ru": "Короткая подсказка из двух слов живёт 1500 мс после отпускания — этот тайминг берём из MD1."
+  },
+  {
+   "title": "Тач-подсказка крупнее десктопной",
+   "items": [
+    "Что происходит: на телефоне подсказку оставляют того же размера, что на десктопе, и она оказывается мелкой и прижатой к пальцу.",
+    "Что делают системы: Material Design 1 · Tooltips (mobile specs) — раздел «Touch UI tooltips»: у тач-варианта плитка выше (32 dp) и боковые отступы больше (16 dp), чем у десктопного.",
+    "Что делать нам: задавать тач-подсказке отдельные размеры: высоту плитки 32 dp и боковые отступы 16 dp, а не десктопные значения."
+   ],
+   "src": "Источники: Material Design 1 · Tooltips (mobile specs) (https://m1.material.io/components/tooltips.html)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Чаевые</span></button><div class=\"ds-hint-container ds-hint-container--default\" style=\"min-height:32px;padding:0 16px\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Чаевые из кассы не входят в выручку смены.</span></div></div></div>",
+   "example_ru": "Плитка подсказки 32 dp и боковые отступы 16 dp: размеры тач-варианта, а не десктопные."
+  },
+  {
+   "title": "Триггеры: ховер, фокус, тап",
+   "items": [
+    "Что происходит: подсказку в веб-версии вешают только на ховер, и по фокусу с клавиатуры или по тапу она не открывается.",
+    "Что делают системы: MDC Web · Tooltip — «Tooltips display informative text when users hover over, focus on, or tap an element.»",
+    "Что делать нам: заводить три триггера: ховер и фокус для указателя и клавиатуры, тап для тач-экрана."
+   ],
+   "src": "Источники: Material Components for the Web (MDC) · Tooltip (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-tooltip/README.md)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">ИНН контрагента</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">10 цифр у юрлица, 12 — у ИП.</span></div></div></div>",
+   "example_ru": "Подсказку можно вызвать ховером, фокусом с клавиатуры и тапом: в примере она открыта тапом по элементу."
+  },
+  {
+   "title": "Carbon: только ховер и фокус",
+   "items": [
+    "Что происходит: тултип Carbon берут за основу мобильной подсказки, не замечая, что он рассчитан на указатель и клавиатуру.",
+    "Что делают системы: Carbon Design System · Tooltip — «Tooltips display additional information upon hover or focus that is contextual, helpful, and nonessential».",
+    "Что делать нам: брать из Carbon только правило «подсказка необязательна», а триггер на телефоне описывать своим тапом."
+   ],
+   "src": "Источники: Carbon Design System · Tooltip (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tooltip/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Зона доставки</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Зона считается по адресу: центр, район, пригород.</span></div></div></div>",
+   "example_ru": "Подсказка поясняет, но ничего не заменяет: Carbon описывает тултип как необязательную информацию по ховеру и фокусу."
+  },
+  {
+   "title": "Поповер не показывать на узком экране",
+   "items": [
+    "Что происходит: на телефоне подсказку рисуют поповером с привязкой к элементу, и в компактной ширине она закрывает содержимое экрана.",
+    "Что делают системы: Apple Human Interface Guidelines · Popovers (iOS/iPadOS) — «Avoid displaying popovers in compact views.»",
+    "Что делать нам: в компактной ширине не показывать поповер: подсказка становится строкой под элементом на всю ширину или шторкой."
+   ],
+   "src": "Источники: Apple Human Interface Guidelines · Popovers (iOS/iPadOS) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/popovers.json)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Скидка на день</span></button><div class=\"ds-hint-container ds-hint-container--default\" style=\"width:100%\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Скидка дня действует только на позиции из раздела «Блюда».</span></div></div></div>",
+   "example_ru": "В компактной ширине подсказка выводится строкой на всю ширину, а не поповером поверх содержимого."
+  },
+  {
+   "title": "Одно взаимодействие за раз",
+   "items": [
+    "Что происходит: обучающий оверлей объясняет сразу все зоны экрана, и пользователь пролистывает подсказки не читая.",
+    "Что делают системы: Nielsen Norman Group · Instructional Overlays and Coach Marks for Mobile Apps — «it is more effective to focus on a single interaction rather than attempting to explain every possible area of the user interface».",
+    "Что делать нам: показывать одну подсказку про один элемент и выпускать следующую только после того, как с первой разобрались."
+   ],
+   "src": "Источники: Nielsen Norman Group · Instructional Overlays and Coach Marks for Mobile Apps (https://www.nngroup.com/articles/mobile-instructional-overlay/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Разделить счёт</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Счёт делится на гостей: выберите количество частей.</span></div></div></div>",
+   "example_ru": "На экране одна подсказка про одно действие «Разделить счёт»: вторая появится, когда эта закроется."
+  },
+  {
+   "title": "Подсказку не путают с интерфейсом",
+   "items": [
+    "Что происходит: обучающая подсказка выглядит как обычная карточка или кнопка, и пользователь пробует с ней взаимодействовать.",
+    "Что делают системы: Nielsen Norman Group · Instructional Overlays and Coach Marks for Mobile Apps — «People must immediately be able to distinguish between hint screens and actual elements of the interface.»",
+    "Что делать нам: давать подсказке свой вид — другой фон, рамку и заголовок «Подсказка», — чтобы её нельзя было принять за элемент экрана."
+   ],
+   "src": "Источники: Nielsen Norman Group · Instructional Overlays and Coach Marks for Mobile Apps (https://www.nngroup.com/articles/mobile-instructional-overlay/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><div class=\"ds-hint-container ds-hint-container--default\" style=\"width:100%\"><div class=\"ds-hint-header\"><span class=\"ds-hint-header__title\">Подсказка</span></div><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Нажмите на строку заказа, чтобы добавить блюдо.</span></div></div></div>",
+   "example_ru": "Подсказка помечена заголовком «Подсказка» и своим фоном: её нельзя принять за карточку или кнопку интерфейса."
+  },
+  {
+   "title": "В подсказке нет критичного",
+   "items": [
+    "Что происходит: обязательные условия и реквизиты прячут в подсказку, и пользователь проваливает задачу, так и не открыв её.",
+    "Что делают системы: Nielsen Norman Group · Tooltip Guidelines — «Don’t use tooltips for information that is vital to task completion.»",
+    "Что делать нам: критичное для задачи писать на экране постоянно, а подсказкой оставлять только пояснение «почему»."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tooltip Guidelines (https://www.nngroup.com/articles/tooltip-guidelines/)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Причина списания</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Списание — это блюдо, отданное гостю без оплаты.</span></div></div><div style=\"font-size:12px;line-height:16px;color:#616161\">Обязательное поле</div></div>",
+   "example_ru": "В подсказке только пояснение, а обязательность поля стоит постоянным текстом 12 px: критичное за тап не прячем."
   }
  ]
 }

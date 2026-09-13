@@ -55,6 +55,83 @@
    "src": "Источники: Material Design 3 · токены (raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml) · Material Web · Filled text field (raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-filled-text-field.scss) · Apple HIG · Typography (developer.apple.com/design/human-interface-guidelines/typography)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\">Пицца «Маргарита» с двойным сыром и пепперони, 32 см</span></div></div></div>",
    "example_ru": "Основной текст 1 rem (16 px), подписи 0.75 rem (12 px): при системном увеличении шрифта строка растёт вместе с текстом, а не остаётся жёстко в пикселях."
-  }
+  },
+ {
+  "title": "Не использовать тонкие начертания",
+  "items": [
+   "Что происходит: мелкий текст набирают тонким начертанием ради воздуха, и на телефоне он рассыпается: тонкие штрихи сливаются с фоном, особенно в тёмной теме.",
+   "Что делают системы: Apple прямо не советует этого — «In general, avoid light font weights.»",
+   "Что делать нам: в мобильном слое ДС оставить два начертания — Regular 400 для текста и Medium 500 для акцентов; Light в мобильных текстовых стилях не применять."
+  ],
+  "src": "Источники: Apple Human Interface Guidelines · Typography (https://developer.apple.com/design/human-interface-guidelines/typography)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\" style=\"font:400 16px Roboto\">Пицца «Маргарита» — обычное начертание</span><span class=\"ds-text-ui__list-item\" style=\"font:500 16px Roboto\">Пицца «Маргарита» — акцентное начертание</span><span class=\"ds-text-ui__label-down\">Light (300) в мобильных стилях не используется</span></div></div></div>",
+  "example_ru": "Строка в двух допустимых начертаниях — Regular и Medium; тонкое начертание в мобильном слое не применяется (Apple: avoid light font weights)."
+ },
+ {
+  "title": "Обрезка растёт вместе с кеглем",
+  "items": [
+   "Что происходит: при увеличенном системном шрифте строка влезает хуже, но её по-прежнему обрезают в одну линию — от значения остаётся два слова из пяти.",
+   "Что делают системы: Apple просит следить за этим отдельно — «Keep text truncation to a minimum as font size increases».",
+   "Что делать нам: при увеличенном кегле число допустимых строк в строке списка не уменьшать; если текст перестаёт влезать — переносить, а полный вариант показывать в раскрытии, а не обрезать."
+  ],
+  "src": "Источники: Apple Human Interface Guidelines · Typography (https://developer.apple.com/design/human-interface-guidelines/typography)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\" style=\"white-space:normal\">Пицца «Маргарита» с двойным сыром и томатами черри</span><span class=\"ds-text-ui__label-down\">Две строки вместо обрезки в одну</span></div></div></div>",
+  "example_ru": "Значение заняло две строки при увеличенном кегле: обрезка не растёт вместе со шрифтом (Apple)."
+ },
+ {
+  "title": "Крупный шрифт — текст в стопку",
+  "items": [
+   "Что происходит: при увеличенном кегле строка «название — сумма — время» перестаёт помещаться: подпись и значение наезжают друг на друга и обрезаются.",
+   "Что делают системы: Apple описывает причину и выход — «When font size increases in a horizontally constrained context, inline items (like glyphs and timestamps) and container boundaries can crowd text and cause truncation or overlapping. To improve readability, consider using a stacked layout where text appears above secondary items».",
+   "Что делать нам: при увеличенном кегле строка перестраивается в стопку — основной текст сверху, вторичные элементы (сумма, время) под ним, а не сбоку."
+  ],
+  "src": "Источники: Apple Human Interface Guidelines · Typography (https://developer.apple.com/design/human-interface-guidelines/typography)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\">Пицца «Маргарита»</span><span class=\"ds-text-ui__label-down\">1 180 ₽ · 12:30</span></div></div></div>",
+  "example_ru": "Крупный кегль — стопка: сумма и время ушли под название, а не встали с ним в одну линию (Apple: stacked layout)."
+ },
+ {
+  "title": "Три строки — не жать интерлиньяж",
+  "items": [
+   "Что происходит: чтобы уложить длинный фрагмент в ограниченную высоту карточки, межстрочный интервал поджимают, и три строки текста слипаются в одно пятно.",
+   "Что делают системы: Apple ограничивает этот приём — «If you need to display three or more lines of text, avoid tight leading even in areas where height is limited».",
+   "Что делать нам: интерлиньяж текстового стиля не уменьшать под высоту контейнера; если три строки не влезают — сокращаем текст или отдаём больше высоты, но строки не поджимаем."
+  ],
+  "src": "Источники: Apple Human Interface Guidelines · Typography (https://developer.apple.com/design/human-interface-guidelines/typography)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column;line-height:24px\"><span class=\"ds-text-ui__list-item\">Комментарий к заказу: без лука, разрезать на восемь частей, соус отдельно</span><span class=\"ds-text-ui__label-down\">line-height 24 px — интерлиньяж не поджат</span></div></div></div>",
+  "example_ru": "Три строки идут с интерлиньяжем 24 px: высоту отдаём тексту, а не поджимаем строки под контейнер (Apple)."
+ },
+ {
+  "title": "Краткость и приоритет важнее объёма",
+  "items": [
+   "Что происходит: в строку списка стараются уместить всё, что есть в базе — состав, модификаторы, комментарий, — и на телефоне пользователь читает то же самое, но заметно дольше.",
+   "Что делают системы: NN/g про мобильный контент формулирует это так — «For the majority of mobile content scenarios, the need for brevity and prioritization is still critical».",
+   "Что делать нам: в мобильной строке text-ui держать минимально нужное (название и ключевой параметр), остальное убирать в раскрытие строки и на детальный экран."
+  ],
+  "src": "Источники: Nielsen Norman Group · Reading Content on Mobile Devices (https://www.nngroup.com/articles/mobile-content/)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\">Пицца «Маргарита» · 1 180 ₽</span><span class=\"ds-text-ui__label-down\">Состав и модификаторы — в раскрытии строки</span></div></div></div>",
+  "example_ru": "В строке осталось главное — название и сумма; состав и модификаторы убраны в раскрытие строки (NN/g: brevity and prioritization)."
+ },
+ {
+  "title": "Крупный шрифт — меньше колонок",
+  "items": [
+   "Что происходит: на телефоне сохраняют многоколоночную раскладку данных, и при увеличенном шрифте третья колонка обрезается по краю экрана.",
+   "Что делают системы: Apple связывает число колонок с кеглем — «Multicolumn text can also be less readable at large sizes due to horizontal space constraints. Reduce the number of columns when the font size increases to avoid truncation and enhance readability».",
+   "Что делать нам: в мобильной строке держать одну-две колонки; при увеличенном кегле вторая колонка переезжает в отдельную строку стопкой, а не обрезается."
+  ],
+  "src": "Источники: Apple Human Interface Guidelines · Typography (https://developer.apple.com/design/human-interface-guidelines/typography)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\">Заказ №1042 · 12:30</span><span class=\"ds-text-ui__label-down\">Третья колонка данных — в раскрытии строки</span></div></div></div>",
+  "example_ru": "Одна-две колонки вместо трёх: всё, что шире, переезжает в стопку или в раскрытие строки (Apple)."
+ },
+ {
+  "title": "Обрезка в прокрутке: нужен полный вид",
+  "items": [
+   "Что происходит: в горизонтально прокручиваемой области текст обрезают многоточием, и до конца значения не добраться никаким жестом — прокрутка его не открывает.",
+   "Что делают системы: Apple ставит условие — «Avoid truncating text in scrollable regions unless people can open a separate view to read the rest of the content».",
+   "Что делать нам: если в прокручиваемой области текст всё же обрезан, у него должна быть возможность открыть полный вид (раскрытие строки или отдельный экран); иначе — перенос вместо обрезки."
+  ],
+  "src": "Источники: Apple Human Interface Guidelines · Typography (https://developer.apple.com/design/human-interface-guidelines/typography)",
+  "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column;overflow-x:auto\"><span class=\"ds-text-ui__list-item\" style=\"white-space:nowrap\">Пицца «Маргарита» с двойным сыром и томатами черри</span><span class=\"ds-text-ui__label-down\">Полный текст — в раскрытии строки</span></div></div></div>",
+  "example_ru": "В прокручиваемой области текст обрезан, но полный вариант открывается в раскрытии строки: обрезки без выхода не бывает (Apple)."
+ }
  ]
 }

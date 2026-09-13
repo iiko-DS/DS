@@ -55,6 +55,72 @@
    "src": "Источники: Apple HIG · Sheets (https://developer.apple.com/design/human-interface-guidelines/sheets) · Material Design 3 · Scrim (https://raw.githubusercontent.com/material-components/material-web/main/dialog/internal/_dialog.scss)",
    "example_html": "<div class=\"pat__phone\"><div style=\"position:relative;height:220px;border-radius:12px;overflow:hidden;background:#FFFFFF;border:1px solid #E0E0E0\"><div style=\"height:48px;display:flex;align-items:center;padding:0 16px;font-size:16px;font-weight:500;border-bottom:1px solid #E0E0E0\">Заказ №128</div><div style=\"padding:16px;color:#616161\">Позиции заказа</div><div class=\"ds-backdrop\" style=\"position:absolute;inset:0;left:0;right:0;top:48px;bottom:0;opacity:.32\"></div><div style=\"position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;gap:8px;background:#FFFFFF;border-radius:16px 16px 0 0;padding:8px 16px 16px;box-shadow:0 -2px 12px rgba(0,0,0,.16)\"><span style=\"width:32px;height:4px;border-radius:2px;background:#E0E0E0\"></span><span style=\"font-size:16px;line-height:24px;font-weight:500\">Способ оплаты</span></div></div></div>",
    "example_ru": "Затемнён ровно недоступный контент: зона затемнения совпадает с ним, а граница шторки видна по скруглению 16 px и грабберу — при прокрутке экран не темнеем."
+  },
+  {
+   "title": "Затемнение — сигнал блокировки",
+   "items": [
+    "Что происходит: затемнение у нас работает как декор: по нему не читается, что фон заблокирован, пока поверх открыта шторка.",
+    "Что делают системы: Nielsen Norman Group, Bottom Sheets: Definition and UX Guidelines — «A translucent dark scrim is usually placed over the locked-out background content as a signal that it is currently unavailable.».",
+    "Что делать нам: держать один токен затемнения (32 % чёрного) и накрывать им ровно тот контент, который стал недоступен."
+   ],
+   "src": "Источники: Nielsen Norman Group, Bottom Sheets: Definition and UX Guidelines (https://www.nngroup.com/articles/bottom-sheet/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"position:relative;height:220px;border-radius:12px;overflow:hidden;background:#FFFFFF;border:1px solid #E0E0E0\"><div style=\"position:absolute;inset:0;padding:16px;color:#616161\">Список заказов на 8 августа</div><div class=\"ds-backdrop\" style=\"position:absolute;inset:0;opacity:.32\"></div></div></div>",
+   "example_ru": "Поверх списка заказов лежит слой затемнения: видно, что фон недоступен, пока открыт лист, — и это отдельный слой, а не фон карточки."
+  },
+  {
+   "title": "Шторка затемняет остальной экран",
+   "items": [
+    "Что происходит: шторка выезжает без затемнения фона, поэтому экран продолжает выглядеть активным и палец тянется к списку под ней.",
+    "Что делают системы: Material Design 1 (Modal bottom sheets) — «When a modal bottom sheet slides into the screen, the rest of the screen dims, giving focus to the bottom sheet.».",
+    "Что делать нам: при выезде модальной шторки затемнять остальной экран целиком, а не только края самого листа."
+   ],
+   "src": "Источники: Material Design 1 (Modal bottom sheets) (https://m1.material.io/components/bottom-sheets.html)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"position:relative;height:220px;border-radius:12px;overflow:hidden;background:#FFFFFF;border:1px solid #E0E0E0\"><div style=\"position:absolute;inset:0;padding:16px;color:#616161\">Список заказов на 8 августа</div><div class=\"ds-backdrop\" style=\"position:absolute;inset:0;opacity:.32\"></div><div style=\"position:absolute;left:0;right:0;bottom:0;background:#FFFFFF;border-radius:16px 16px 0 0;padding:8px 16px 16px;display:flex;flex-direction:column;gap:8px\"><span style=\"width:32px;height:4px;border-radius:2px;background:#E0E0E0\"></span><span style=\"font-size:16px;line-height:24px;font-weight:500\">Выбор способа оплаты</span></div></div></div>",
+   "example_ru": "При появлении шторки остальной экран затемнён: фокус на листе, а список под ним больше не выглядит рабочим."
+  },
+  {
+   "title": "Под затемнением не кликается",
+   "items": [
+    "Что происходит: под затемнением остаются активные кнопки и строки, поэтому палец попадает в контент, который считался заблокированным.",
+    "Что делают системы: Material Design 1 (Modal bottom sheets) — «They appear above other UI elements and must be dismissed in order to interact with the underlying content.».",
+    "Что делать нам: пока лист или диалог открыт, блокировать взаимодействие с фоном и снимать блок только при закрытии."
+   ],
+   "src": "Источники: Material Design 1 (Modal bottom sheets) (https://m1.material.io/components/bottom-sheets.html)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"position:relative;height:220px;border-radius:12px;overflow:hidden;background:#FFFFFF;border:1px solid #E0E0E0\"><div style=\"position:absolute;inset:0;padding:16px;color:#616161\">Список заказов на 8 августа</div><div class=\"ds-backdrop\" style=\"position:absolute;inset:0;left:0;right:0;top:0;bottom:0;opacity:.32\"></div></div></div>",
+   "example_ru": "Слой затемнения накрывает весь фон: пока лист открыт, строки и кнопки под ним не отвечают на нажатия."
+  },
+  {
+   "title": "Затемнение — норма для шита",
+   "items": [
+    "Что происходит: на телефоне шторка стоит на светлом фоне без затемнения, и её контент читается как продолжение страницы.",
+    "Что делают системы: Apple Human Interface Guidelines, Sheets — «centering its content on top of a dimmed background view».",
+    "Что делать нам: на мобиле затемнять фон под шторкой и держать контент листа поверх затемнённого фона."
+   ],
+   "src": "Источники: Apple Human Interface Guidelines, Sheets (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sheets.json)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"position:relative;height:220px;border-radius:12px;overflow:hidden;background:#FFFFFF;border:1px solid #E0E0E0\"><div style=\"position:absolute;inset:0;padding:16px;color:#616161\">Список заказов на 8 августа</div><div class=\"ds-backdrop\" style=\"position:absolute;inset:0;opacity:.40\"></div><div style=\"position:absolute;left:0;right:0;bottom:0;background:#FFFFFF;border-radius:16px 16px 0 0;padding:8px 16px 16px;display:flex;flex-direction:column;gap:8px;box-shadow:0 -2px 12px rgba(0,0,0,.16)\"><span style=\"width:32px;height:4px;border-radius:2px;background:#E0E0E0\"></span><span style=\"font-size:16px;line-height:24px;font-weight:500\">Выбор адреса доставки</span></div></div></div>",
+   "example_ru": "Контент шторки лежит поверх затемнённого фона на 40 %: лист больше не читается как продолжение страницы под ним."
+  },
+  {
+   "title": "Затемнение — отдельный слой",
+   "items": [
+    "Что происходит: затемнение рисуется внутри карточки диалога, поэтому не может накрыть всю страницу и кончается вместе с ней.",
+    "Что делают системы: Carbon Design System, Modal (anatomy) — «Screen overlay that obscures the on-page content.».",
+    "Что делать нам: держать затемнение отдельным экранным слоем (Overlay) над контентом страницы, а не фоном самой карточки."
+   ],
+   "src": "Источники: Carbon Design System, Modal (anatomy) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/modal/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"position:relative;height:220px;border-radius:12px;overflow:hidden;background:#FFFFFF;border:1px solid #E0E0E0\"><div style=\"position:absolute;inset:0;padding:16px;color:#616161\">Список заказов на 8 августа</div><div class=\"ds-backdrop\" style=\"position:absolute;inset:0;opacity:.32\"></div><div style=\"position:absolute;left:16px;right:16px;bottom:16px;background:#FFFFFF;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px\"><span style=\"font-size:16px;line-height:24px;font-weight:500\">Удалить заказ?</span><span style=\"font-size:14px;line-height:20px;color:#616161\">Заказ будет удалён вместе с позициями.</span><div style=\"display:flex;gap:8px\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div></div>",
+   "example_ru": "Затемнение показано отдельным экранным слоем под карточкой: контент страницы перекрыт целиком, а не только под диалогом."
+  },
+  {
+   "title": "Клик по scrim — отмена",
+   "items": [
+    "Что происходит: клик по затемнению работает как отмена во всех случаях, включая форму с уже введёнными данными.",
+    "Что делают системы: Material Components for the Web (MDC), Dialog (scrimClickAction) — «clicking the scrim or pressing the Escape key, allowing all interactions involving dismissal without taking an action».",
+    "Что делать нам: оставлять закрытие по клику на затемнение только простым листам, а у форм — кнопку закрытия и Escape без потери данных."
+   ],
+   "src": "Источники: Material Components for the Web (MDC), Dialog (scrimClickAction) (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-dialog/README.md)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"position:relative;height:220px;border-radius:12px;overflow:hidden;background:#FFFFFF;border:1px solid #E0E0E0\"><div style=\"position:absolute;inset:0;padding:16px;color:#616161\">Список заказов на 8 августа</div><div class=\"ds-backdrop\" style=\"position:absolute;inset:0;opacity:.32\"></div><div style=\"position:absolute;left:0;right:0;bottom:0;background:#FFFFFF;border-radius:12px 12px 0 0;padding:16px;display:flex;flex-direction:column;gap:8px\"><span style=\"font-size:16px;line-height:24px;font-weight:500\">Отменить ввод?</span><span style=\"font-size:14px;line-height:20px;color:#616161\">Позиция «Маргарита» не сохранена</span><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Продолжить ввод</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Закрыть без сохранения</span></button></div></div></div>",
+   "example_ru": "Тап по затемнению уходит в отмену без действия, а форма с несохранёнными данными сначала спрашивает «Отменить ввод?»."
   }
  ]
 }

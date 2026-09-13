@@ -44,6 +44,105 @@
    "src": "Источники: Apple HIG · Branding (developer.apple.com/design/human-interface-guidelines/branding) · Material Web · Icon (raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__card\"><p class=\"phone__card-title\">О приложении</p><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><p class=\"phone__card-text\">Версия 7.8.6 · смена 12 сентября</p></div></div>",
    "example_ru": "В шапке на 375 px — только заголовок: место отдано контенту, а знак 72 px стоит в карточке «О приложении», где нет другого содержимого, и тач-действия не получает."
+  },
+  {
+   "title": "Бренд уступает контенту",
+   "items": [
+    "Что происходит: в шапке на 375 px логотип 150 px съедает половину строки, и заголовок экрана обрезается до «Стол…».",
+    "Что делают системы: Apple ставит бренд ниже контента — «Ensure branding always defers to content. Using screen space for an element that does nothing but display a brand asset can mean there's less room for the content people care about.»",
+    "Что делать нам: знак в шапке — 72 px, а не 150 px; на узком экране он уступает место заголовку экрана и действию."
+   ],
+   "src": "Источники: Apple HIG · Branding (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/branding.json)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Заказы · стол 4</div><span class=\"material-icons\">more_vert</span></div><div style=\"display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><span style=\"font-size:14px;line-height:20px\">Знак 72 px не мешает заголовку экрана</span></div></div>",
+   "example_ru": "В шапке знак уменьшен до 72 px и заголовок «Заказы · стол 4» читается целиком: бренд уступает место контенту."
+  },
+  {
+   "title": "Знак не распыляем по экрану",
+   "items": [
+    "Что происходит: знак встречается в шапке, в каждой карточке отчёта и на экране настроек — и ничего не сообщает пользователю.",
+    "Что делают системы: Apple советует держаться от этого подальше — «Resist the temptation to display your logo throughout your app or game unless it's essential for providing context. People seldom need to be reminded which app they're using, and it's usually better to use the space to give people valuable information and controls.»",
+    "Что делать нам: максимум один знак на экран — в шапке; в списках и карточках бренд не дублируем, место отдаём данным."
+   ],
+   "src": "Источники: Apple HIG · Branding (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/branding.json)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><div class=\"phone__title\">Отчёты</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__card\"><p class=\"phone__card-title\">Выручка за смену</p><p class=\"phone__card-text\">412 000 ₽ · 68 заказов</p></div></div>",
+   "example_ru": "Знак стоит только в шапке, а карточка отчёта занята данными — повторять бренд внутри карточек Apple не советует."
+  },
+  {
+   "title": "Знак в шапке каждой страницы",
+   "items": [
+    "Что происходит: знак стоит только на первом экране приложения, и на внутренних экранах непонятно, в каком продукте находится человек.",
+    "Что делают системы: GOV.UK делает шапку обязательной и минимальной — «You must use the GOV.UK header component at the top of every page. ... It should only show the GOV.UK logo and any GOV.UK-wide links and tools to help your users.»",
+    "Что делать нам: знак остаётся в шапке на всех экранах, но шапка содержит только знак, заголовок экрана и одно системное действие."
+   ],
+   "src": "Источники: GOV.UK Design System · GOV.UK header (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/header/index.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"ds-logo-syrve\"><span class=\"ds-logo-syrve__vector\" style=\"width:70.9px\"></span></div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__card\"><p class=\"phone__card-title\">Смена · 12 сентября</p><p class=\"phone__card-text\">68 заказов · 412 000 ₽</p></div></div>",
+   "example_ru": "Шапка внутреннего экрана: назад, знак syrve, одно системное действие — знак остаётся ориентиром продукта на каждой странице."
+  },
+  {
+   "title": "Название сервиса в шапку не добавлять",
+   "items": [
+    "Что происходит: рядом со знаком появляется название сервиса и ссылки навигации — в шапке три элемента, и заголовок экрана сжимается.",
+    "Что делают системы: GOV.UK эту возможность убрал — «You can no longer use the GOV.UK header to show service name or navigation links.»",
+    "Что делать нам: в шапке мобильного экрана знак не сопровождается названием продукта и меню; название раздела идёт заголовком, а разделы — в «Ещё» или в боковом меню."
+   ],
+   "src": "Источники: GOV.UK Design System · GOV.UK header (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/header/index.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Стоп-лист</div><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div></div><div class=\"phone__card\"><p class=\"phone__card-title\">Стейк рибай</p><p class=\"phone__card-text\">Остаток 3 · до 22:00</p></div></div>",
+   "example_ru": "В шапке заголовок раздела и знак, без названия продукта и ссылок навигации — так шапка GOV.UK больше не показывает название сервиса."
+  },
+  {
+   "title": "Чужой знак в своей шапке",
+   "items": [
+    "Что происходит: в шапке стоит логотип платформы, к которой продукт не относится, и человек считает, что попал в другой сервис.",
+    "Что делают системы: GOV.UK Service Manual разрешает их знак только сервисам GOV.UK — «use the crown or GOV.UK logotype in the header».",
+    "Что делать нам: в шапке стоит только знак своего продукта (iiko или syrve); знаки сторонних платформ не используем, включая совместные материалы и демо."
+   ],
+   "src": "Источники: GOV.UK Service Manual · Making your service look like GOV.UK (https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><div class=\"phone__title\">Настройки</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__card\"><p class=\"phone__card-title\">Печать чеков</p><p class=\"phone__card-text\">Включена · принтер Rongta 80 мм</p></div></div>",
+   "example_ru": "В шапке знак своего продукта: чужой логотип платформы в шапке не появляется, даже если экран про интеграцию с ней."
+  },
+  {
+   "title": "Свой бренд на своём продукте",
+   "items": [
+    "Что происходит: продукт продолжают показывать чужим знаком, и пользователь не понимает, кто отвечает за этот сервис.",
+    "Что делают системы: GOV.UK ставит условие — «identify itself as being part of GOV.UK ... use the crown or GOV.UK logotype in the header».",
+    "Что делать нам: знак в шапке всегда соответствует продукту, в котором открыт экран: iiko — знак iiko, syrve — знак syrve; смешивать знаки в одной шапке нельзя."
+   ],
+   "src": "Источники: GOV.UK Design System · Generic header (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/generic-header/index.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"ds-logo-syrve\"><span class=\"ds-logo-syrve__vector\" style=\"width:70.9px\"></span></div><div class=\"phone__title\">Заказы</div></div><div class=\"phone__card\"><p class=\"phone__card-title\">Стол 7</p><p class=\"phone__card-text\">Капучино × 2 · 420 ₽</p></div></div>",
+   "example_ru": "В шапке знак того продукта, в котором открыт экран: знак появляется по принадлежности сервиса, как условие у GOV.UK."
+  },
+  {
+   "title": "Ссылки шапки уезжают в меню",
+   "items": [
+    "Что происходит: на 375 px в шапке рядом со знаком остаются две ссылки на разделы, и они выдавливают заголовок экрана.",
+    "Что делают системы: Carbon описывает поведение своей шапки — «Links in the header are supported as product navigation, if required. These links move to the side menu in narrow screen widths.»",
+    "Что делать нам: на узком экране ссылки-разделы из шапки уходят в боковое меню (или в «Ещё»); в шапке остаются знак и заголовок."
+   ],
+   "src": "Источники: IBM Carbon · UI shell header (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/UI-shell-header/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><div class=\"phone__title\">Склад</div><span class=\"material-icons\">menu</span></div><div class=\"phone__card\"><p class=\"phone__card-title\">Инвентаризация</p><p class=\"phone__card-text\">Начата 12 сентября · 42 позиции</p></div></div>",
+   "example_ru": "Разделы из шапки переехали в боковое меню (иконка menu), в строке остались знак и заголовок — так же ведёт себя шапка Carbon на узком экране."
+  },
+  {
+   "title": "Знак показывает, чей это сервис",
+   "items": [
+    "Что происходит: экран открывается сразу с формы, и по разметке нельзя понять, в продукте какого вендора работает человек.",
+    "Что делают системы: NHS ставит шапку именно для этого — «Use the appropriate header at the top of every page to show users they are on an NHS service and help them get started in finding what they need.»",
+    "Что делать нам: знак в шапке — обязательный ориентир продукта на каждом экране; при этом он не становится кнопкой и не ведёт на внешний сайт."
+   ],
+   "src": "Источники: NHS digital service manual · Header (https://service-manual.nhs.uk/design-system/components/header)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><div class=\"phone__title\">Настройки</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__card\"><p class=\"phone__card-title\">Печать чеков</p><p class=\"phone__card-text\">Включена · принтер Rongta 80 мм</p></div></div>",
+   "example_ru": "Знак в шапке сразу сообщает, в каком сервисе человек находится, — та же задача, для которой NHS требует шапку на каждой странице."
+  },
+  {
+   "title": "Свой знак и свой шрифт",
+   "items": [
+    "Что происходит: знак продукта стоит рядом со шрифтом другой платформы, и экран выглядит как чужая система с нашим логотипом.",
+    "Что делают системы: GOV.UK Service Manual требует и знак, и шрифт своей организации — «You should also use the brand logo and font of your organisation.»",
+    "Что делать нам: в шапке и заголовках используем знак и шрифт своего продукта (iiko или syrve) без смешения с айдентикой других платформ."
+   ],
+   "src": "Источники: GOV.UK Service Manual · Making your service look like GOV.UK (https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><div class=\"ds-logo-syrve\"><span class=\"ds-logo-syrve__vector\" style=\"width:70.9px\"></span></div><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__card\"><p class=\"phone__card-title\">Стол 4</p><p class=\"phone__card-text\">Стейк рибай · 1 480 ₽</p></div></div>",
+   "example_ru": "Знак syrve и заголовки одного продукта: чужая айдентика в шапке не появляется — правило GOV.UK про знак и шрифт своей организации."
   }
  ]
 }

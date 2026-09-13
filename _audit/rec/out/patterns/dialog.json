@@ -66,6 +66,116 @@
    "src": "Источники: Material Design 3 · Dialogs (https://m3.material.io/components/dialogs/overview) · Apple HIG · Alerts / Action sheets (https://developer.apple.com/design/human-interface-guidelines/alerts)",
    "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Сохранить изменения?</span><span class=\"ds-dialog-header__description\">Второй шаг открывается шторкой</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Один диалог на экране: фон затемнён на 32 %, второй шаг — шторка.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div></div></div></div>",
    "example_ru": "На экране один диалог — второго поверх него нет: фон затемняется на 32 %, а выбор из вариантов уходит в шторку, а не в стопку карточек."
+  },
+  {
+   "title": "Full-screen — только для форм",
+   "items": [
+    "Что происходит: подтверждение из двух строк открывается на весь экран, хотя полноэкранный вариант нужен сложной задаче с несколькими полями.",
+    "Что делают системы: Material Design 1 (Material Design guidelines, Dialogs) — «Full-screen dialogs are best suited to complex tasks, or require an input method editor, as they group a series of tasks together before they can be saved.».",
+    "Что делать нам: короткое подтверждение держать обычной карточкой, а full-screen оставлять формам с вводом данных."
+   ],
+   "src": "Источники: Material Design 1 (Material Design guidelines, Dialogs) (https://m1.material.io/components/dialogs.html)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div></div>",
+   "example_ru": "Короткое подтверждение — карточка по центру: полноэкранная форма с шапкой 56 dp оставлена задаче с несколькими полями ввода."
+  },
+  {
+   "title": "Диалог виден целиком, поверх — нет",
+   "items": [
+    "Что происходит: карточка диалога может выехать за край экрана и пустить второй диалог поверх себя, а внутри оказывается прокрутка.",
+    "Что делают системы: Material Design 1 (Dialog prominence) — «Dialogs should never be obscured by other elements or appear partially on screen.».",
+    "Что делать нам: держать один диалог на экране и целиком, а следующий шаг показывать шторкой после закрытия первого."
+   ],
+   "src": "Источники: Material Design 1 (Dialog prominence) (https://m1.material.io/components/dialogs.html)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Сохранить изменения?</span><span class=\"ds-dialog-header__description\">Второй шаг открывается шторкой</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Один диалог на экране: карточка видна целиком и не перекрыта.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--accent\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div></div></div></div>",
+   "example_ru": "Карточка диалога показана целиком и поверх неё нет второй: следующий шаг уходит в шторку, а не в стопку карточек."
+  },
+  {
+   "title": "Порядок кнопок в диалоге",
+   "items": [
+    "Что происходит: в футере карточки отмена и подтверждение стоят рядом, и от их порядка зависит, какую кнопку нажмут первой.",
+    "Что делают системы: Apple Human Interface Guidelines, Alerts (Buttons) — «In general, place the button people are most likely to choose on the trailing side in a row of buttons or at the top in a stack of buttons. Always place the default button on the trailing side of a row or at the top of a stack. Cancel buttons are typically on the leading side of a row or at the bottom of a stack.».",
+    "Что делать нам: подтверждающее действие ставить справа (в стопке — сверху), отменяющее слева (в стопке — снизу), подтверждающее делать кнопкой по умолчанию."
+   ],
+   "src": "Источники: Apple Human Interface Guidelines, Alerts (Buttons) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/alerts.json)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Сохранить заказ?</span><span class=\"ds-dialog-header__description\">Изменения уйдут на кухню</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">После сохранения правки нельзя будет вернуть.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--accent\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div></div></div></div>",
+   "example_ru": "Главное действие «Сохранить» стоит справа и выделено акцентом, «Отмена» — слева и текстом: порядок кнопок совпадает с ожиданием."
+  },
+  {
+   "title": "Разрушительное — только с «Отмена»",
+   "items": [
+    "Что происходит: у удаления нет безопасного выхода рядом: кнопка одна, и промах по ней нечем отменить.",
+    "Что делают системы: Apple Human Interface Guidelines, Alerts (Buttons) — «If there’s a destructive action, include a Cancel button to give people a clear, safe way to avoid the action.».",
+    "Что делать нам: к разрушительному действию всегда давать «Отмена» и никогда не делать её кнопкой по умолчанию."
+   ],
+   "src": "Источники: Apple Human Interface Guidelines, Alerts (Buttons) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/alerts.json)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div></div>",
+   "example_ru": "Рядом с красным «Удалить» стоит текстовая «Отмена»: у разрушительного действия есть безопасный выход, по умолчанию он не выбран."
+  },
+  {
+   "title": "Текст в диалоге — короткий",
+   "items": [
+    "Что происходит: в карточку попадает абзац на пять строк, из-за чего кнопки уезжают за нижний край, а текст приходится прокручивать.",
+    "Что делают системы: Apple Human Interface Guidelines, Alerts (iOS/iPadOS) — «Although an alert might scroll if the text size is large enough, be sure to minimize the potential for scrolling by keeping alert titles short and including a brief message only when necessary.».",
+    "Что делать нам: держать заголовок коротким и добавлять сообщение одной-двумя строками только когда оно нужно, без прокрутки внутри диалога."
+   ],
+   "src": "Источники: Apple Human Interface Guidelines, Alerts (iOS/iPadOS) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/alerts.json)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div></div>",
+   "example_ru": "Короткий заголовок и одна строка сообщения: текст диалога не прокручивается, кнопки остаются на виду."
+  },
+  {
+   "title": "Свайп с изменениями — спросить",
+   "items": [
+    "Что происходит: шторку с заполняемой формой можно смахнуть вниз одним жестом, и введённые значения исчезают молча.",
+    "Что делают системы: Apple Human Interface Guidelines, Sheets — «People expect to swipe vertically to dismiss a sheet instead of tapping a dismiss button. If people have unsaved changes in the sheet when they begin swiping to dismiss it, use an action sheet to let them confirm their action.».",
+    "Что делать нам: при несохранённых изменениях сначала спрашивать подтверждение, а не закрывать шторку по свайпу."
+   ],
+   "src": "Источники: Apple Human Interface Guidelines, Sheets (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sheets.json)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Отменить ввод?</span><span class=\"ds-dialog-header__description\">В форме есть несохранённые данные</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Позиция «Маргарита» не сохранена.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral\" type=\"button\"><span class=\"ds-btn__label\">Закрыть без сохранения</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--accent\" type=\"button\"><span class=\"ds-btn__label\">Продолжить ввод</span></button></div></div></div></div>",
+   "example_ru": "Свайп по шторке с несохранённой формой приводит к вопросу «Отменить ввод?»: данные теряются только после явного выбора."
+  },
+  {
+   "title": "Два способа закрыть оверлей",
+   "items": [
+    "Что происходит: закрыть шторку можно только системным жестом Back, а явной кнопки закрытия в шапке нет, и об этом приходится догадываться.",
+    "Что делают системы: Nielsen Norman Group, Accidental Dismissal of Overlays — «For all overlays (including bottom sheets), support the following two methods for dismissing the overlay: a clear Close button and the built-in (phone’s or browser’s) Back button or Back gesture.».",
+    "Что делать нам: давать оба способа — кнопку «Закрыть» в шапке и системный Back, чтобы закрытие не приходилось угадывать."
+   ],
+   "src": "Источники: Nielsen Norman Group, Accidental Dismissal of Overlays (https://www.nngroup.com/articles/accidental-overlay-dismissal/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-view__header\" style=\"display:flex;align-items:center;justify-content:space-between;padding:8px 16px\"><span class=\"ds-dialog-view__label\">Выбор адреса доставки</span><span class=\"ds-control-panel__button-icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Шторку закрывают кнопкой в шапке или системным жестом Back.</span></div></div></div>",
+   "example_ru": "В шапке стоит кнопка закрытия (крестик), рядом работает системный Back: способа закрыть оверлей два, и оба видны."
+  },
+  {
+   "title": "Тап вне оверлея убивает ввод",
+   "items": [
+    "Что происходит: случайный тап по затемнению закрывает форму, и всё введённое исчезает без предупреждения и без возможности вернуться.",
+    "Что делают системы: Nielsen Norman Group, Accidental Dismissal of Overlays — «Another situation where it’s easy for users to lose work is if they accidentally tap outside of a partial overlay, thus dismissing it.».",
+    "Что делать нам: для форм с вводом не закрывать оверлей тапом по фону — закрытие только кнопкой или свайпом с подтверждением."
+   ],
+   "src": "Источники: Nielsen Norman Group, Accidental Dismissal of Overlays (https://www.nngroup.com/articles/accidental-overlay-dismissal/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Отменить ввод?</span><span class=\"ds-dialog-header__description\">Тап по фону форму не закрывает</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Позиция «Маргарита» не сохранена.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral\" type=\"button\"><span class=\"ds-btn__label\">Закрыть без сохранения</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--accent\" type=\"button\"><span class=\"ds-btn__label\">Продолжить ввод</span></button></div></div></div></div>",
+   "example_ru": "Случайный тап по фону карточку не закрывает: у формы с введёнными данными закрытие только через явную кнопку."
+  },
+  {
+   "title": "Закрытие по маске — выключить",
+   "items": [
+    "Что происходит: по умолчанию тап по маске (вне карточки) закрывает диалог, поэтому форма может закрыться в один промах мимо кнопки.",
+    "Что делают системы: Ant Design, Modal (maskClosable по умолчанию true) — «Whether to close the modal dialog when the mask (area outside the modal) is clicked».",
+    "Что делать нам: для диалогов с вводом отключать закрытие по маске явно, оставляя его только простым уведомлениям."
+   ],
+   "src": "Источники: Ant Design, Modal (maskClosable по умолчанию true) (https://ant.design/components/modal)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Сохранить заказ?</span><span class=\"ds-dialog-header__description\">Тап по маске диалог не закрывает</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Закрытие по маске выключено: диалог уходит только по кнопке.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--accent\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div></div></div></div>",
+   "example_ru": "У карточки с формой закрытие в один тап по маске выключено: диалог закрывается кнопкой, а не случайным нажатием рядом."
+  },
+  {
+   "title": "Разрушительное — отдельный вариант",
+   "items": [
+    "Что происходит: удаление и обычное сохранение выглядят одинаково, поэтому необратимое действие не отличить от рядового.",
+    "Что делают системы: Carbon Design System, Modal — «If the action is destructive or irreversible, then use a transactional danger modal.».",
+    "Что делать нам: для необратимых действий держать отдельный вариант (danger) и называть само действие в заголовке и на кнопке."
+   ],
+   "src": "Источники: Carbon Design System, Modal (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/modal/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Заголовок и кнопка называют действие, кнопка красная.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div></div>",
+   "example_ru": "Заголовок и кнопка называют действие («Удалить заказ?» и «Удалить»), кнопка красная: вариант danger отличается от обычного диалога."
   }
  ]
 }

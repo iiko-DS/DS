@@ -180,6 +180,127 @@
    "src": "Источники: Apple HIG · Sidebars (developer.apple.com/design/human-interface-guidelines/sidebars) · Material Web · navigation drawer, labs (github.com/material-components/material-web/tree/main/labs/navigationdrawer)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">menu</span><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 7</span><span class=\"ds-list-item__text\">Заказ №1042</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:30</span></div></div><div class=\"ds-list-container__divider\"></div></div></div>",
    "example_ru": "Иконка открытия панели всегда в шапке (343 px тела экрана): панель не «прячем навсегда», свайп от края — дополнительный жест, а состояние панели запоминается между сессиями."
+  },
+  {
+   "title": "Модальная панель для мобилы",
+   "items": [
+    "Что происходит: на телефоне панель открывают в постоянном режиме, и она отбирает у контента треть экрана.",
+    "Что делают системы: Material Components for Android — Navigation drawer (Modal navigation drawer): «They are primarily used for mobile devices where screen space is limited, and can be replaced by standard drawers on tablet and desktop.».",
+    "Что делать нам: на мобиле панель открывается модально поверх контента, а постоянный режим включаем только от планшета."
+   ],
+   "src": "Источники: Material Components for Android · Navigation drawer, Modal navigation drawer (https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/NavigationDrawer.md)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-view__header\"><span class=\"ds-sidenav-view__label\">Заказы</span><span class=\"ds-sidenav-header__close\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Активные</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">История</span></div></div></div></div>",
+   "example_ru": "Панель открыта поверх контента с крестиком закрытия: это модальный режим, который Material Components for Android считает основным для телефона."
+  },
+  {
+   "title": "Постоянная панель не для телефона",
+   "items": [
+    "Что происходит: постоянную панель оставляют на узком экране, и от контента остаётся полоса, в которую не влезает ни одна таблица.",
+    "Что делают системы: Material Components for Android — Navigation drawer (Standard navigation drawer): «They can be used on tablet and desktop, but they aren't suitable for mobile devices due to limited screen size.».",
+    "Что делать нам: постоянную панель показываем от планшета и шире, а на телефоне её место занимает модальный режим или нижняя навигация."
+   ],
+   "src": "Источники: Material Components for Android · Navigation drawer, Standard navigation drawer (https://raw.githubusercontent.com/material-components/material-components-android/master/docs/components/NavigationDrawer.md)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Заказы</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Аналитика и отчёты</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Склад и поставки</span></div></div></div></div>",
+   "example_ru": "Панель шириной 360 px в постоянном режиме: держать её так можно только от планшета — для телефона standard-режим Android-док не рекомендует."
+  },
+  {
+   "title": "Пункт выбран — панель закрылась",
+   "items": [
+    "Что происходит: после выбора раздела модальная панель остаётся открытой, и пользователь закрывает её вручную вторым действием.",
+    "Что делают системы: Material Components for the web — Drawer (Modal drawer): «Close the drawer when an item is activated in order to dismiss the modal as soon as the user performs an action.».",
+    "Что делать нам: в модальном режиме панель закрывается сама после активации пункта — второго действия от пользователя не требуем."
+   ],
+   "src": "Источники: Material Components for the web · Drawer, Modal drawer (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-drawer/README.md)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-view__header\"><span class=\"ds-sidenav-view__label\">Заказы</span><span class=\"ds-sidenav-header__close\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Активные</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">История</span></div></div></div></div>",
+   "example_ru": "Модальная панель с выбранным пунктом: после активации пункта она закрывается сама, как требует Material Components for the web."
+  },
+  {
+   "title": "Затемнение под панелью обязательно",
+   "items": [
+    "Что происходит: модальная панель открыта, но контент под ней остаётся активным — палец попадает по кнопкам, спрятанным за затемнением.",
+    "Что делают системы: Material Components for the web — Drawer (Modal drawer): «The `mdc-drawer-scrim` next sibling element is required, to protect the app's UI from interactions while the modal drawer is open.».",
+    "Что делать нам: под модальной панелью всегда лежит затемнение-подложка, которое перехватывает нажатия по контенту."
+   ],
+   "src": "Источники: Material Components for the web · Drawer, Modal drawer (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-drawer/README.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\" style=\"position:relative\"><div class=\"phone__body\"><div class=\"phone__row\">Заказы · смена 12 сентября</div></div><div class=\"phone__scrim\"></div><div style=\"position:relative;width:280px;background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Заказы</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Меню</span></div></div></div></div>",
+   "example_ru": "Панель лежит поверх затемнения: подложка обязательна, чтобы нажатия не доходили до контента под модальным меню."
+  },
+  {
+   "title": "Закрытие тапом по затемнению",
+   "items": [
+    "Что происходит: панель закрывается только крестиком, и тап по затемнению вокруг неё ничего не делает — привычный жест не работает.",
+    "Что делают системы: MUI (Material UI) — Drawer: «The Drawer can be cancelled by clicking the overlay or pressing the Esc key. It closes when an item is selected, handled by controlling the open prop.».",
+    "Что делать нам: модальная панель закрывается тапом по затемнению, клавишей Esc и выбором пункта; крестик остаётся как явный способ."
+   ],
+   "src": "Источники: MUI (Material UI) · Drawer (https://mui.com/material-ui/react-drawer/)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-view__header\"><span class=\"ds-sidenav-view__label\">Заказы</span><span class=\"ds-sidenav-header__close\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Активные</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">История</span></div></div></div></div>",
+   "example_ru": "Модальная панель закрывается тапом по затемнению или клавишей Esc: у MUI это штатное поведение, а не дополнительная настройка."
+  },
+  {
+   "title": "Свайп панели конфликтует с iOS",
+   "items": [
+    "Что происходит: открытие панели свайпом от края делают основным жестом, и на iOS он спорит с системным «свайп назад».",
+    "Что делают системы: MUI (Material UI) — SwipeableDrawer: «iOS has a \"swipe to go back\" feature that interferes with the discovery feature, so discovery has to be disabled. ... Some low-end mobile devices won't be able to follow the fingers at 60 FPS.».",
+    "Что делать нам: свайп от края держим дополнительным жестом с отключённым discovery, а основной способ открытия — кнопка в шапке."
+   ],
+   "src": "Источники: MUI (Material UI) · SwipeableDrawer (https://mui.com/material-ui/react-drawer/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">menu</span><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 7</span><span class=\"ds-list-item__text\">Заказ №1042</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:30</span></div></div><div class=\"ds-list-container__divider\"></div></div></div>",
+   "example_ru": "Открытие панели — кнопкой в шапке: свайп от края оставляем дополнительным жестом, иначе на iOS он конфликтует с системным «свайп назад»."
+  },
+  {
+   "title": "Не больше двух уровней в панели",
+   "items": [
+    "Что происходит: в панель закладывают третий уровень, и он теряет контекст раздела, внутри которого находится.",
+    "Что делают системы: Apple HIG — Sidebars (Best practices): «In general, show no more than two levels of hierarchy in a sidebar. When a data hierarchy is deeper than two levels, consider using a split view interface that includes a content list between the sidebar items and detail view.».",
+    "Что делать нам: в панели держим два уровня, а третий уводим на отдельный экран с собственным заголовком."
+   ],
+   "src": "Источники: Apple HIG · Sidebars (Best practices) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sidebars.json)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Заказы</span></div><div class=\"ds-sidenav-header ds-sidenav-header--l2 ds-sidenav-header--expanded\"><span class=\"ds-sidenav-header__label\">Заказы</span></div><div class=\"ds-sidenav-item\"><span class=\"ds-sidenav-item__l3\">Активные</span></div><div class=\"ds-sidenav-item\"><span class=\"ds-sidenav-item__l3\">История</span></div><div class=\"ds-sidenav-item\"><span class=\"ds-sidenav-item__l3\">Отменённые</span></div></div></div></div>",
+   "example_ru": "Два уровня панели: раздел и подраздел, а пункты третьего уровня уходят на отдельный экран — как советует Apple HIG."
+  },
+  {
+   "title": "Свайп от края на планшете",
+   "items": [
+    "Что происходит: на iPad панель прячется только кнопкой, а привычный свайп от края её не закрывает.",
+    "Что делают системы: Apple HIG — Sidebars (Hide/show the sidebar): «in iPadOS, people expect to use the built-in edge swipe gesture».",
+    "Что делать нам: на планшете поддерживаем и кнопку, и свайп от края — оба способа ведут к одному результату."
+   ],
+   "src": "Источники: Apple HIG · Sidebars (Hide/show the sidebar) (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/sidebars.json)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-view__header\"><span class=\"ds-sidenav-view__label\">Заказы</span><span class=\"ds-sidenav-header__close\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Активные</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">История</span></div></div></div></div>",
+   "example_ru": "Панель закрывается и свайпом от края, и крестиком: в iPadOS жеста от края ждут как привычного способа скрыть панель."
+  },
+  {
+   "title": "Ссылки шапки сворачиваются в бургер",
+   "items": [
+    "Что происходит: в шапке на узком экране остаётся длинный ряд ссылок, который переносится на вторую строку и выдавливает заголовок.",
+    "Что делают системы: Carbon Design System (IBM) — UI shell header (Responsive behavior): «As a header scales down to fit smaller screen sizes, header links and menus should collapse into a left-panel hamburger menu.».",
+    "Что делать нам: на узком экране ссылки шапки сворачиваются в бургер левой панели, а не переносятся на вторую строку."
+   ],
+   "src": "Источники: Carbon Design System (IBM) · UI shell header, Responsive behavior (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/UI-shell-header/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">menu</span><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 7</span><span class=\"ds-list-item__text\">Заказ №1042</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:30</span></div></div><div class=\"ds-list-container__divider\"></div></div></div>",
+   "example_ru": "Ссылки шапки убраны в бургер левой панели: при уменьшении шапки Carbon советует сворачивать ссылки и меню в гамбургер."
+  },
+  {
+   "title": "Скрытая навигация хуже видимой",
+   "items": [
+    "Что происходит: всю навигацию прячут в бургер, и разделы перестают находиться — пользователь не знает, что лежит внутри.",
+    "Что делают системы: Nielsen Norman Group — Hamburger Menus and Hidden Navigation Hurt UX Metrics: «Hidden navigation is less discoverable than visible or partially visible navigation.».",
+    "Что делать нам: навигацию не прячем целиком: часть разделов оставляем видимой (нижняя навигация, вкладки), бургер — только для остального."
+   ],
+   "src": "Источники: NN/g · Hamburger Menus and Hidden Navigation Hurt UX Metrics (https://www.nngroup.com/articles/hamburger-menus/)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">menu</span><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 7</span><span class=\"ds-list-item__text\">Заказ №1042</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:30</span></div></div><div class=\"ds-list-container__divider\"></div></div></div>",
+   "example_ru": "Панель спрятана под бургер в шапке: NN/g напоминает, что скрытая навигация находится хуже видимой или частично видимой."
+  },
+  {
+   "title": "Дерево вместо навигации продукта",
+   "items": [
+    "Что происходит: дерево используют как основную навигацию продукта, и вместе с разделами оно тащит в меню дерево данных.",
+    "Что делают системы: Carbon Design System (IBM) — Tree view (When not to use): «As the primary navigation in a product's UI. Instead, use the UI Shell left panel for product navigation.».",
+    "Что делать нам: навигацию продукта держим в боковой панели, а дерево оставляем для иерархии данных внутри раздела."
+   ],
+   "src": "Источники: Carbon Design System (IBM) · Tree view (When not to use) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Заказы</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Аналитика и отчёты</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Склад и поставки</span></div></div></div></div>",
+   "example_ru": "Разделы продукта живут в панели, а не в дереве: Carbon прямо выводит основную навигацию из области применения tree view."
   }
  ]
 }

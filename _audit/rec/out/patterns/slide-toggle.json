@@ -55,6 +55,105 @@
    "src": "Источники: Angular Material · _m3-slide-toggle.scss (raw.githubusercontent.com/angular/components/main/src/material/slide-toggle/_m3-slide-toggle.scss) · MD3-токены switch (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-switch.scss) · Ant Design · Switch (raw.githubusercontent.com/ant-design/ant-design/master/components/switch/index.en-US.md) · Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles)",
    "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__row\">Компактный режим: строка ниже, свитч тот же</div><label class=\"ds-slide-toggle\" id=\"pat-st-4\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Новые заказы</span></span></label></div>",
    "example_ru": "Компактный режим сжимает строку и подписи, но не свитч: трек 52 × 32 px, ручка 24 px и тач-зона 48 px остаются теми же — отдельного «маленького» размера у свитча нет."
+  },
+  {
+   "title": "Свитч живёт в строке списка",
+   "items": [
+    "Что происходит: свитч ставят в шапку или на плитку без подписи, и на 375 px он выглядит украшением, а не настройкой.",
+    "Что делают системы: Apple HIG ограничивает применение компонента: «Use the switch toggle style only in a list row.»",
+    "Что делать нам: свитч — только в строке настройки или списка (в том числе в шторке) с подписью рядом; для шапки есть иконочная кнопка-переключатель."
+   ],
+   "src": "Источники: Apple HIG · Toggles (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json)",
+   "example_html": "<div class=\"pat__phone\"><label class=\"ds-slide-toggle\" id=\"pat2-st-1\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Звук новых заказов</span></span></label></div>",
+   "example_ru": "Свитч стоит строкой настройки с подписью «Звук новых заказов»: в шапке ему места нет."
+  },
+  {
+   "title": "Вне списка — кнопка, а не свитч",
+   "items": [
+    "Что происходит: в шапке и на карточке режим переключают свитчем, но он не связан ни с какой строкой и выглядит элементом без подписи.",
+    "Что делают системы: Apple HIG предлагает замену: «Outside of a list, use a button that behaves like a toggle, not a switch.»",
+    "Что делать нам: вне списка включаем иконочную кнопку-переключатель с aria-pressed или кнопку с подписью, а slide-toggle оставляем строке списка."
+   ],
+   "src": "Источники: Apple HIG · Toggles (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Фильтр включён\" aria-pressed=\"true\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_alt</span></span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\" aria-pressed=\"true\" style=\"flex:0 0 auto\"><span class=\"ds-btn__icon material-icons\">star</span><span class=\"ds-btn__label\">Избранное</span></button></div>",
+   "example_ru": "Режим вне списка включают кнопкой с aria-pressed: иконочной в шапке и с подписью на карточке."
+  },
+  {
+   "title": "Чекбокс не заменяем свитчем",
+   "items": [
+    "Что происходит: в форме множественного выбора ставят свитчи, и человек не понимает, применяется настройка сразу или ждёт «Сохранить».",
+    "Что делают системы: Apple HIG отдельно это запрещает: «In general, don’t replace a checkbox with a switch.»",
+    "Что делать нам: множественный выбор — чекбоксами с кнопкой сохранения, мгновенная настройка — свитчем; один и тот же пункт не показываем обоими компонентами."
+   ],
+   "src": "Источники: Apple HIG · Toggles (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json)",
+   "example_html": "<div class=\"pat__phone\"><label class=\"ds-slide-toggle\" id=\"pat2-st-3\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печатать чек</span></span></label><div class=\"ds-checkbox-wrap\"><div class=\"ds-checkbox-group ds-checkbox-group--vertical\"><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\" checked><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1042</span></label><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1041</span></label></div><span class=\"ds-checkbox__support\">Выбор заказов уходит с формой</span></div></div>",
+   "example_ru": "Настройка — свитчем, выбор из нескольких — чекбоксами: свитч применяется сразу, чекбоксы уходят с «Сохранить»."
+  },
+  {
+   "title": "Включение действует сразу",
+   "items": [
+    "Что происходит: свитч переключили, но ничего не произошло: настройка ждёт кнопки «Сохранить» где-то ниже по форме.",
+    "Что делают системы: Alita Joyce и Nielsen Norman Group формулируют правило: «Toggle switches should take immediate effect and should not require the user to click Save or Submit to apply the new state.»",
+    "Что делать нам: свитч в ДС применяется сразу и без кнопки сохранения; если результат не мгновенный, берём чекбокс с подтверждением."
+   ],
+   "src": "Источники: Nielsen Norman Group · Alita Joyce, Toggle-Switch Guidelines (https://www.nngroup.com/articles/toggle-switch-guidelines/)",
+   "example_html": "<div class=\"pat__phone\"><label class=\"ds-slide-toggle\" id=\"pat2-st-4\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печатать чек</span></span></label></div>",
+   "example_ru": "Свитч без кнопки «Сохранить»: настройка вступает в силу в момент переключения."
+  },
+  {
+   "title": "Свитч без эффекта — провал",
+   "items": [
+    "Что происходит: переключатель меняет только свой цвет, на экране ничего не происходит, и человек щёлкает его второй раз.",
+    "Что делают системы: разбор NN/g приводит приложение United Airlines для iOS как провал: «In the United Airlines iOS app, other than the visual change, nothing happens when users tap the toggle switch.» — и там же спрашивает: «How does the user know if the toggle worked or not?»",
+    "Что делать нам: у каждого свитча рядом видимый результат (строка состояния, появившийся блок) или объяснение, что настройка уже работает; молчаливых свитчей в ДС нет."
+   ],
+   "src": "Источники: Nielsen Norman Group · Toggle-Switch Guidelines, кейс United Airlines для iOS (https://www.nngroup.com/articles/toggle-switch-guidelines/)",
+   "example_html": "<div class=\"pat__phone\"><label class=\"ds-slide-toggle\" id=\"pat2-st-5\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печатать чек</span></span></label><div class=\"phone__row\">Чек печатается на кухне</div></div>",
+   "example_ru": "Под свитчем видно, что изменилось: «Чек печатается на кухне» — иначе непонятно, сработало ли переключение."
+  },
+  {
+   "title": "Мгновенная видимая реакция",
+   "items": [
+    "Что происходит: настройка применяется, но подтверждения нет — пользователь не уверен, что переключение дошло до системы.",
+    "Что делают системы: Apple показывает образец такой реакции: «When turning airplane mode on for iOS, Apple provides immediate results by changing the cellular bars in the upper left-hand corner to an airplane icon.»",
+    "Что делать нам: переключение сразу отражается на экране — значком, строкой состояния или обновлённым списком, а не только цветом самого трека."
+   ],
+   "src": "Источники: Nielsen Norman Group · Toggle-Switch Guidelines, кейс iOS и режима полёта (https://www.nngroup.com/articles/toggle-switch-guidelines/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Станция кухни</span><span class=\"ds-list-item__text\">Печатает чеки</span></div><div class=\"ds-list-container__element-right\"><label class=\"ds-slide-toggle\" id=\"pat2-st-6\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked aria-label=\"Печатать чеки\"><span class=\"ds-slide-toggle__track\"></span></span></label></div></div></div></div>",
+   "example_ru": "Результат виден сразу в той же строке — «Печатает чеки», как иконка самолёта вместо шкалы связи в iOS."
+  },
+  {
+   "title": "Свитч не в форму с «Сохранить»",
+   "items": [
+    "Что происходит: в длинной форме есть и свитчи, и обычные поля, и кнопка «Сохранить» — человек не знает, какие настройки уже применились.",
+    "Что делают системы: Nielsen Norman Group прямо не советует так делать: «If you’re considering including toggles in long forms where other types of form fields are present, and users will need to click a Submit button for other changes to take effect, don’t.»",
+    "Что делать нам: свитчи держим отдельно от форм с кнопкой сохранения — в списке настроек или шторке настроек; в форме всё, что меняется, идёт через чекбоксы и «Сохранить»."
+   ],
+   "src": "Источники: Nielsen Norman Group · Toggle-Switch Guidelines (https://www.nngroup.com/articles/toggle-switch-guidelines/)",
+   "example_html": "<div class=\"pat__phone\"><label class=\"ds-slide-toggle\" id=\"pat2-st-7\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\"><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Уведомлять о новых заказах</span></span></label><div class=\"ds-checkbox-wrap\"><div class=\"ds-checkbox-group ds-checkbox-group--vertical\"><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1042</span></label><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1041</span></label></div><span class=\"ds-checkbox__support\">Выбор заказов уходит с формой</span></div><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div>",
+   "example_ru": "Свитч вынесен из формы с «Сохранить»: в форме остаются только поля, которые применяются по кнопке."
+  },
+  {
+   "title": "Свитч сразу, чекбокс — по кнопке",
+   "items": [
+    "Что происходит: свитч и чекбокс ставят рядом как взаимозаменяемые, и ожидание пользователя расходится с поведением: от свитча ждут сохранения по кнопке.",
+    "Что делают системы: Ant Design разводит их по смыслу: «`Switch` will trigger a state change directly when you toggle it, while `Checkbox` is generally used for state marking, which should work in conjunction with submit operation.»",
+    "Что делать нам: свитч — мгновенные настройки без кнопки, чекбокс — пометка выбора с подтверждением; в подписи видно, что рядом они означают разное."
+   ],
+   "src": "Источники: Ant Design · Switch (https://raw.githubusercontent.com/ant-design/ant-design/master/components/switch/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone\"><label class=\"ds-slide-toggle\" id=\"pat2-st-8\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печатать чек</span></span></label><div class=\"ds-checkbox-wrap\"><label class=\"ds-checkbox\"><input class=\"ds-checkbox__input\" type=\"checkbox\" checked><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1042</span></label><span class=\"ds-checkbox__support\">Свитч применяется сразу, чекбокс — по «Сохранить»</span></div><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div>",
+   "example_ru": "Свитч меняет состояние сразу, чекбокс только помечает выбор до «Сохранить»: подписи это объясняют."
+  },
+  {
+   "title": "Подпись строки вместо лейбла свитча",
+   "items": [
+    "Что происходит: у свитча в строке есть и текст строки, и отдельная подпись рядом — на 375 px это дублирование и лишняя ширина.",
+    "Что делают системы: Apple HIG разрешает не подписывать сам переключатель в строке: «You don’t need to supply a label in this situation because the content in the row provides the context for the state the switch controls.»",
+    "Что делать нам: в строке списка имя настройки даёт текст строки, а сам свитч остаётся без подписи (в разметке только aria-label); отдельную подпись рядом не рисуем."
+   ],
+   "src": "Источники: Apple HIG · Toggles (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.json)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Печать</span><span class=\"ds-list-item__text\">Печатать чек на станции</span></div><div class=\"ds-list-container__element-right\"><label class=\"ds-slide-toggle\" id=\"pat2-st-9\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked aria-label=\"Печатать чек на станции\"><span class=\"ds-slide-toggle__track\"></span></span></label></div></div></div></div>",
+   "example_ru": "Имя настройки даёт текст строки списка, у свитча только aria-label: отдельной подписи рядом нет."
   }
  ]
 }
