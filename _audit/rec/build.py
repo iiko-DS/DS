@@ -550,13 +550,13 @@ def page(d):
 
 %(preview)s
 
+%(platforms)s
+
   <div class="card">
     <h2>Что меняется на мобиле</h2>
     %(changes)s
     %(behaviour)s
   </div>
-
-%(platforms)s
 
   <div class="card">
     <h2>Почему так</h2>
