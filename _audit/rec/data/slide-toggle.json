@@ -1,0 +1,225 @@
+{
+ "slug": "slide-toggle",
+ "component": "Slide toggle",
+ "ds_page": "Slide-Toggle_DS",
+ "desc_ru": "Переключатель — включает и выключает настройку сразу, без кнопки «Сохранить»: режимы и правила.",
+ "category_ru": "Только размеры",
+ "category_note_ru": "состав и поведение те же, отличаются размеры",
+ "summary_ru": "Трек и ручка крупнее: 34 × 20 → 52 × 32 px, ручка 16 → 24 px, строка — 48 px под тач. Цвета, состояния и тексты те же.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "трек 34 × 20"
+  },
+  "mobile": {
+   "sub_ru": "трек 52 × 32"
+  }
+ },
+ "changes": [
+  {
+   "what": "Строка (область нажатия)",
+   "desktop": "20 px — по треку",
+   "mobile": "48 px — тач-зона поверх всего ряда (MD3 touch-target 48 и столько же у Angular)",
+   "edit": [
+    {
+     "id": "row",
+     "v": 48,
+     "sel": ".ds-slide-toggle__row",
+     "css": "min-height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Трек",
+   "desktop": "34 × 20 px",
+   "mobile": "52 × 32 px",
+   "edit": [
+    {
+     "id": "track-w",
+     "v": 52,
+     "sel": ".ds-slide-toggle__track",
+     "css": "width:@px"
+    },
+    {
+     "id": "track-h",
+     "v": 32,
+     "sel": ".ds-slide-toggle__track",
+     "css": "height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Ручка (кружок)",
+   "desktop": "16 px",
+   "mobile": "24 px",
+   "edit": [
+    {
+     "id": "knob",
+     "v": 24,
+     "sel": ".ds-slide-toggle__track::after",
+     "css": "width:@px; height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Отступ ручки от края трека",
+   "desktop": "2 px",
+   "mobile": "4 px",
+   "edit": [
+    {
+     "id": "knob-inset",
+     "v": 4,
+     "sel": ".ds-slide-toggle__track::after",
+     "css": "top:@px; left:@px"
+    }
+   ]
+  },
+  {
+   "what": "Ход ручки",
+   "desktop": "14 px",
+   "mobile": "20 px — задано в мобильном слое вместе с размерами трека",
+   "edit": [
+    {
+     "id": "knob-shift",
+     "v": 20,
+     "sel": ".ds-slide-toggle__input:checked + .ds-slide-toggle__track::after",
+     "css": "transform:translateX(@px)"
+    }
+   ]
+  },
+  {
+   "what": "Подпись под переключателем",
+   "desktop": "отступ слева 42 px",
+   "mobile": "60 px — ширина трека + промежуток",
+   "edit": [
+    {
+     "id": "support",
+     "v": 60,
+     "sel": ".ds-slide-toggle__support",
+     "css": "margin-left:@px"
+    }
+   ]
+  },
+  {
+   "what": "Заголовок и подпись",
+   "desktop": "14 px / 400 и 12 px / 400",
+   "mobile": "14 / 400 и 12 / 400 px — те же"
+  },
+  {
+   "what": "Цвета (выкл, вкл, недоступный, ручка)",
+   "desktop": "#9E9E9E · #448AFF · #E0E0E0 · белая",
+   "mobile": "те же — это ось темы, не режима"
+  },
+  {
+   "what": "Состояния",
+   "desktop": "Default · Hover · Disable (плюс On / Off)",
+   "mobile": "те же, кроме наведения — на телефоне его не показывают"
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Поведение не меняется: переключение сразу, свайп по треку сохраняется, подпись под переключателем сдвигается вслед за треком (42 → 60 px) — она выровнена по его ширине, а не по фиксированному числу.</p>",
+ "why_ru": "Material Design 3 (switch) и Angular Material (mat-slide-toggle) сходятся на одних числах: трек 52 × 32, ручка 16 / 24 / 28, тач-зона 48. Трек меньше 32 px и ручка вне шкалы 16 / 24 / 28 у них помечены как не рекомендуемые — а наш десктопный переключатель 34 × 20 как раз такой, плотный. Поэтому на мобиле берём платформенные размеры: трек 52 × 32, ручка 24. Цвета и тексты не трогаем — цвет это ось темы, она от платформы не зависит. iOS HIG чисел не даёт вовсе, но требует использовать switch только в строке списка.",
+ "why_sources": [],
+ "result_html": "<ul class=\"list\"><li>На мобиле трек 52 × 32 и ручка 24 — ровно те числа, которые называют MD3 и Angular Material.</li><li>Ход ручки теперь считается от ширины трека (десктоп 34 − 16 − 2 = 16, мобила 52 − 24 − 4 = 24), а не задан сдвигом «14 px».</li><li>Отступ подписи под переключателем тоже выводится из ширины трека: 34 + 8 = 42 px на десктопе и 52 + 8 = 60 px на мобиле.</li><li><b>Не решено:</b> тач-зона 48 px (MD3 touch-target-size, у Angular плотность её не сжимает) — в библиотеке тач-зоны нет ни у одного компонента, делается отдельным слоем.</li><li><b>Не решено:</b> у MD3 ручка растёт при включении (16 → 24) и при нажатии (28); у нас ручка одного размера в обоих состояниях.</li><li><b>Не решено:</b> наведение на тач-устройствах не отключается нигде в библиотеке.</li><li><b>Не решено (к применению, не к размерам):</b> iOS HIG разрешает switch только в строке списка; вне списка — кнопка-переключатель.</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Выключен и включён",
+   "html": "<label class=\"ds-slide-toggle\" id=\"off\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\"><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Опция</span></span></label><label class=\"ds-slide-toggle\" id=\"on\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Опция</span></span></label>"
+  },
+  {
+   "title_ru": "Недоступный",
+   "html": "<label class=\"ds-slide-toggle\" id=\"dis\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" disabled><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Опция</span></span></label><label class=\"ds-slide-toggle\" id=\"ondis\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked disabled><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Опция</span></span></label>"
+  },
+  {
+   "title_ru": "С подписью под переключателем",
+   "html": "<label class=\"ds-slide-toggle\" id=\"sup-off\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\"><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Опция</span></span><span class=\"ds-slide-toggle__support\">Стоимость товаров в заказе видна сотруднику ресторана</span></label>"
+  }
+ ],
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Числа жёсткие и без размерной шкалы: трек 52 × 32 dp, ручка 16 (выкл) → 24 (вкл) → 28 (нажатие), state layer 40 (slide-toggle.json).",
+    "Тач-таргет 48 dp применяется как height: max(100%, touch-target-size) — строка держит 48 даже при треке 32 (slide-toggle.json).",
+    "Опционально иконка в ручке 16 dp и обводка трека 2 dp — варианты icons и show-only-selected-icon (slide-toggle.json).",
+    "Angular Material повторяет MD3 один в один (52 × 32, ручка 16 / 24 / 28, state layer 40, тач 48) и уточняет: density влияет только на видимость тач-таргета, трек и ручка не масштабируются (slide-toggle.json).",
+    "Опасение: плотные десктопные 34 × 20 — трек меньше 32 dp и ручка вне шкалы 16 / 24 / 28; обе платформы такой свитч помечают как не рекомендуемый (slide-toggle.json).",
+    "Третьего состояния нет: indeterminate slide-toggle не поддерживает (в отличие от checkbox) (slide-toggle.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Страница про свитч у Apple есть (Toggles), но чисел в pt HIG не даёт — ни трека, ни ручки (slide-toggle.json).",
+    "Правило применения: «Use the switch toggle style only in a list row» — переключатель живёт только в строке списка (slide-toggle.json).",
+    "Вне списка switch использовать нельзя: HIG предписывает кнопку, стилизованную под toggle (slide-toggle.json).",
+    "Тач-норма iOS 44 × 44 pt (минимум 28 × 28 pt) — мобильная строка 48 px перекрывает требование с запасом (text-field.json).",
+    "Цвет по умолчанию зелёный, менять его только при необходимости — наш акцент #448AFF это осознанное отступление, а не платформенное значение (data-tech/slide-toggle.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Строку переключателя делать 48 px: трек 52 × 32 остаётся визуальным, хит-зона — на всю строку вместе с подписью.",
+  "Ручку держать 24 px в обоих состояниях: платформенный рост 16 → 24 при включении у нас не реализован, и это надо зафиксировать явно.",
+  "Переключатель ставить только в строке настройки; если нужно действие «включить / выключить» вне списка — это кнопка.",
+  "Подпись слева на 60 px (ширина трека + промежуток) и без переноса, иначе строка перестаёт читаться как один элемент.",
+  "Чего нельзя: уменьшать трек и ручку ради плотности и делать микро-свитч — размерной шкалы нет ни у MD3, ни у Angular.",
+  "Hover в мобильном слое не показывать: на телефоне остаются Default / Press / Disable."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Настройки</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"phone__card\"><p class=\"phone__card-title\">Уведомления</p><p class=\"phone__card-text\">Оповещения на смене</p><div style=\"display:flex;flex-direction:column;gap:8px\"><label class=\"ds-slide-toggle\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Новые заказы</span></span></label><label class=\"ds-slide-toggle\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Проблемы со складом</span></span></label></div></div><div class=\"phone__card\"><p class=\"phone__card-title\">Смена</p><p class=\"phone__card-text\">Сохранение и печать</p><div style=\"display:flex;flex-direction:column;gap:8px\"><div style=\"font:400 14px/20px Roboto;color:#333\">Смена закрывается в 23:00</div><div style=\"font:400 14px/20px Roboto;color:#333\">Отчёты печатаются в 08:00</div></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Печать</p><p class=\"phone__sheet-text\">Чеки и пречеки</p><div class=\"phone__list\"><div class=\"phone__row\">Печатать чек</div><div class=\"phone__row\">Чек печатается сразу после оплаты</div><div class=\"phone__row\">Печатать пречек</div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div></div></div></div><p class=\"phone__caption\">Переключатели в карточке настроек: две строки, состояние меняется сразу</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Настройки</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"phone__card\"><p class=\"phone__card-title\">Уведомления</p><p class=\"phone__card-text\">Оповещения на смене</p><div style=\"display:flex;flex-direction:column;gap:8px\"><label class=\"ds-slide-toggle\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Новые заказы</span></span></label><label class=\"ds-slide-toggle\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Проблемы со складом</span></span></label></div></div><div class=\"phone__card\"><p class=\"phone__card-title\">Смена</p><p class=\"phone__card-text\">Сохранение и печать</p><div style=\"display:flex;flex-direction:column;gap:8px\"><div style=\"font:400 14px/20px Roboto;color:#333\">Смена закрывается в 23:00</div><div style=\"font:400 14px/20px Roboto;color:#333\">Отчёты печатаются в 08:00</div></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Печать</p><p class=\"phone__sheet-text\">Чеки и пречеки</p><div class=\"phone__list\"><div class=\"phone__row\">Печатать чек</div><div class=\"phone__row\">Чек печатается сразу после оплаты</div><div class=\"phone__row\">Печатать пречек</div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "Трек свитча меньше пальца",
+   "items": [
+    "Что происходит: свитч на телефоне мелкий, а промах включает не ту настройку: MD3 фиксирует трек 52 × 32 dp, ручку 16 / 24 / 28 dp, state layer 40 dp и touch target 48 dp, Angular повторяет те же числа (track-height 32 px, track-width 52 px, touch target 48 px), а NN/g по исследованию Parhi, Karlson и Bederson даёт минимум «1cm × 1cm (0.4in x 0.4in)».",
+    "Что делают системы: Material Web расширяет зону нажатия до `height: max(100%, 48px)`, то есть кликабельной становится вся строка, а не трек; Apple держит 44×44 pt как размер контрола по умолчанию для iOS и iPadOS.",
+    "Что делать нам: в ДС трек 52 × 32 px с ручкой 24 px, а нажатие — по всей строке настройки высотой 48–60 px; отдельной «кнопки-свитча» на мобиле не делаем, тач-зону не убираем даже в компактном режиме."
+   ],
+   "src": "Источники: MD3-токены switch (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-switch.scss) · Angular Material · _m3-slide-toggle.scss (raw.githubusercontent.com/angular/components/main/src/material/slide-toggle/_m3-slide-toggle.scss) · Nielsen Norman Group · Touch Targets on Touchscreens (nngroup.com/articles/touch-target-size) · Apple HIG · Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><label class=\"ds-slide-toggle\" id=\"pat-st-0\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печатать чек</span></span></label></div>",
+   "example_ru": "Трек 52 × 32 px с ручкой 24 px, а нажатие — по всей строке высотой 48 px: палец попадает в строку настройки, а не в трек."
+  },
+  {
+   "title": "Свитч вне строки списка",
+   "items": [
+    "Что происходит: свитч ставят в шапку экрана, в плитку или в тулбар, и он теряет смысл: Apple — «Use the switch toggle style only in a list row» и «Outside of a list, use a button that behaves like a toggle, not a switch».",
+    "Что делают системы: Apple показывает это на примере: в приложении Phone фильтр последних звонков сделан кнопкой-переключателем с подсветкой фона, а не свитчем; для macOS HIG отдельно просит использовать свитчи, чекбоксы и радио в теле окна и не ставить их в тулбар или строку состояния.",
+    "Что делать нам: в iiko DS свитч живёт только в строках настроек и списках (в том числе в шторке настроек); для шапки и карточек используем иконочную кнопку-переключатель, а не slide-toggle."
+   ],
+   "src": "Источники: Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Печать</span><span class=\"ds-list-item__text\">Печатать чек</span></div><div class=\"ds-list-container__element-right\"><label class=\"ds-slide-toggle\" id=\"pat-st-1\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked aria-label=\"Печатать чек\"><span class=\"ds-slide-toggle__track\"></span></span></label></div></div></div><div style=\"display:flex;justify-content:flex-start\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Фильтр последних звонков\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_alt</span></span></button></div></div>",
+   "example_ru": "Свитч стоит в строке списка (72 px) и связан с её текстом; для шапки и карточек берём иконочную кнопку-переключатель, а не slide-toggle."
+  },
+  {
+   "title": "Свитч применяет сразу, чекбокс — по кнопке",
+   "items": [
+    "Что происходит: свитч и чекбокс путают по смыслу, и человек ждёт от свитча сохранения по кнопке: Ant Design — «Switch will trigger a state change directly when you toggle it, while Checkbox is generally used for state marking, which should work in conjunction with submit operation».",
+    "Что делают системы: у платформ разные роли: Angular slide-toggle не поддерживает indeterminate (в отличие от mat-checkbox), а Apple отдельно предупреждает «Make sure the visual differences in a toggle's state are obvious» и не советует заменять чекбокс свитчем — «In general, don't replace a checkbox with a switch».",
+    "Что делать нам: свитч — только для настроек, которые применяются мгновенно (без кнопки «Сохранить»), и в ДС рядом с ним нет отмены; для выбора внутри формы с подтверждением используем checkbox, а «частично включено» у свитча не делаем."
+   ],
+   "src": "Источники: Ant Design · Switch (raw.githubusercontent.com/ant-design/ant-design/master/components/switch/index.en-US.md) · Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles) · Angular Material · _m3-slide-toggle.scss (raw.githubusercontent.com/angular/components/main/src/material/slide-toggle/_m3-slide-toggle.scss)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><label class=\"ds-slide-toggle\" id=\"pat-st-2\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печатать чек</span></span></label><div class=\"ds-checkbox-wrap\"><div class=\"ds-checkbox-group ds-checkbox-group--vertical\"><label class=\"ds-checkbox\" id=\"pat-st-2a\"><input class=\"ds-checkbox__input\" type=\"checkbox\" checked><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1042</span></label><label class=\"ds-checkbox\" id=\"pat-st-2b\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1041</span></label></div><span class=\"ds-checkbox__support\">Отметьте заказы и нажмите «Сохранить»</span></div><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div>",
+   "example_ru": "Свитч применяет настройку мгновенно и без кнопки, чекбокс — только вместе с отправкой формы «Сохранить»: у свитча ни «Отмены», ни подтверждения нет."
+  },
+  {
+   "title": "Подпись строки и доступное имя свитча",
+   "items": [
+    "Что происходит: свитч без подписи на мобиле ничего не сообщает, а скринридер читает его без имени: Material Web требует `aria-label` — «Add an aria-label attribute to switches without labels or switches whose labels need to be more descriptive» — и предупреждает, что свитчи не подписываются элементом <label> автоматически.",
+    "Что делают системы: при этом Apple в строках списка просит как раз не дублировать подпись: «You don't need to supply a label in this situation because the content in the row provides the context for the state the switch controls», а вне списка — наоборот, ясно называть настройку: «Clearly identify the setting, view, or content the toggle affects».",
+    "Что делать нам: в разметке ДС у каждой строки есть видимый текст настройки (14 / 20 px), связанный с input, и, если текст описан отдельно (иконка-строка), — явный aria-label; недоступный свитч остаётся видимым и объяснимым (приглушённый, с пояснением)."
+   ],
+   "src": "Источники: Material Web · Switch (raw.githubusercontent.com/material-components/material-web/main/docs/components/switch.md) · Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><label class=\"ds-slide-toggle\" id=\"pat-st-3\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печатать чек</span></span><span class=\"ds-slide-toggle__support\">Чек печатается на станции кухни</span></label><label class=\"ds-slide-toggle\" id=\"pat-st-3b\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" aria-label=\"Показывать стоимость товаров в заказе\"><span class=\"ds-slide-toggle__track\"></span></span></label></div>",
+   "example_ru": "Подпись строки 14 / 20 px связана с input и объясняет настройку; там, где текст описан отдельно и в строке остаётся только трек, у свитча явный aria-label."
+  },
+  {
+   "title": "Плотность не уменьшает свитч",
+   "items": [
+    "Что происходит: в компактном режиме свитч пытаются уменьшить, но платформа этого не позволяет: в Angular плотность меняет только видимость тач-таргета (`slide-toggle-touch-target-display: block, block, none, none`), а размеры трека и ручки фиксированы; в MD3 шкалы размеров у свитча нет вовсе.",
+    "Что делают системы: исключение — Ant Design, у которого размер свитча задан явно (size: medium или small) и меняется осознанно; ещё HIG отмечает, что в macOS внутри сгруппированной формы размер строки выравнивают mini-switch'ем, то есть размер подбирают под строку, а не под желание сделать компактнее.",
+    "Что делать нам: компактный режим в ДС не трогает трек и ручку — он только сжимает строку и её подписи; на мобиле увеличенную тач-зону 48 px не отключаем, а «маленький свитч» как отдельный размер не вводим."
+   ],
+   "src": "Источники: Angular Material · _m3-slide-toggle.scss (raw.githubusercontent.com/angular/components/main/src/material/slide-toggle/_m3-slide-toggle.scss) · MD3-токены switch (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-switch.scss) · Ant Design · Switch (raw.githubusercontent.com/ant-design/ant-design/master/components/switch/index.en-US.md) · Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__row\">Компактный режим: строка ниже, свитч тот же</div><label class=\"ds-slide-toggle\" id=\"pat-st-4\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Новые заказы</span></span></label></div>",
+   "example_ru": "Компактный режим сжимает строку и подписи, но не свитч: трек 52 × 32 px, ручка 24 px и тач-зона 48 px остаются теми же — отдельного «маленького» размера у свитча нет."
+  }
+ ]
+}

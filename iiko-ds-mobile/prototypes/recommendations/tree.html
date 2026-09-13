@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tree — Desktop и Mobile</title>
+<link rel="stylesheet" href="../../../iiko-ds-web/font.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/tokens.css?v=1789259179">
+<link rel="stylesheet" href="../../modes.css?v=1789259179">
+<link rel="stylesheet" href="../../components/index.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/styles.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/index.css?v=1789259179">
+<!-- Автоген не подключил эти четыре файла в агрегаторе библиотеки — без них
+     Checkbox и Radio рисуются системным контролом браузера (13 × 13 вместо
+     маркера 20 × 20). Подключаем их явно на странице; библиотека не правится. -->
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Checkbox_DS/checkbox.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Checkbox_DS/checkbox-icons.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Radio-Button_DS/radio.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Radio-Button_DS/radio-icons.css?v=1789259179">
+<link rel="stylesheet" href="rec.css?v=1789259179">
+<style id="live"></style>   <!-- сюда попадают правки из колонки «Правка» -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<div class="wrap">
+  <p class="crumbs"><a href="index.html#tree">← Все компоненты</a></p>
+  <h1>Tree</h1>
+  <p class="desc">Дерево: иерархия с раскрытием уровней. На мобиле узлы выше, а глубокие уровни лучше заменить на переходы.</p>
+  <p class="cat"><b>Структура</b> · выше узлы; глубокие уровни — переходы по экранам вместо дерева</p>
+
+  <div class="compare">
+<div class="panel" data-mode="desktop"><div class="panel__head"><span class="panel__title">Desktop</span><span class="panel__sub">узел 44 px</span></div><div class="panel__body"><div class="ex"><p class="ex__title">Дерево с уровнями</p><div class="ex__row ex__row--col"><div class="ex__inner"><div style="display:flex;flex-direction:column"><div class="ds-tree-item ds-tree-item--middle" style="padding-left:11px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Меню</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Пицца</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Маргарита</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Карбонара</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Напитки</span></div></div></div></div></div></div></div>
+<div class="panel" data-mode="mobile"><div class="panel__head"><span class="panel__title">Mobile</span><span class="panel__sub">узел 48 px</span></div><div class="panel__body"><div class="ex"><p class="ex__title">Дерево с уровнями</p><div class="ex__row ex__row--col"><div class="ex__inner"><div style="display:flex;flex-direction:column"><div class="ds-tree-item ds-tree-item--middle" style="padding-left:11px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Меню</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Пицца</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Маргарита</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Карбонара</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Напитки</span></div></div></div></div></div></div></div>
+  </div>
+
+<div class="card">
+    <h2>На экране</h2>
+    <div class="editrow"><div><div class="phones"><div class="phones__item"><div class="phone"><div class="phone__screen" data-mode="mobile"><div class="phone__status"><span>9:41</span><span class="phone__ic"><span class="material-icons">signal_cellular_alt</span><span class="material-icons">wifi</span><span class="material-icons">battery_full</span></span></div><div class="phone__head"><span class="material-icons">arrow_back</span><span class="phone__title">Меню ресторана</span><span class="material-icons">more_vert</span></div><div class="phone__body"><div style="display:flex;flex-direction:column"><div class="ds-tree-item ds-tree-item--middle" style="padding-left:11px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Меню</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Пицца</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Маргарита</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Карбонара</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Напитки</span></div></div></div><div class="phone__foot"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Сохранить</span></button></div><div class="phone__scrim"></div><div class="phone__sheet"><p class="phone__sheet-title">Категории</p><p class="phone__sheet-text">Меню · уровень 2 из 3</p><div class="phone__list"><div class="phone__row">Пицца</div><div class="phone__row">Маргарита</div><div class="phone__row">Карбонара</div></div><div class="phone__actions"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Выбрать</span></button><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" type="button"><span class="ds-btn__label">Отмена</span></button></div></div></div></div><p class="phone__caption">Дерево в теле экрана: узлы 48 px, отступ уровня 40 px, узел «Меню» раскрыт</p></div><div class="phones__item"><div class="phone"><div class="phone__screen" data-mode="mobile" data-preview="edit"><div class="phone__status"><span>9:41</span><span class="phone__ic"><span class="material-icons">signal_cellular_alt</span><span class="material-icons">wifi</span><span class="material-icons">battery_full</span></span></div><div class="phone__head"><span class="material-icons">arrow_back</span><span class="phone__title">Меню ресторана</span><span class="material-icons">more_vert</span></div><div class="phone__body"><div style="display:flex;flex-direction:column"><div class="ds-tree-item ds-tree-item--middle" style="padding-left:11px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Меню</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Пицца</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Маргарита</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Карбонара</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Напитки</span></div></div></div><div class="phone__foot"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Сохранить</span></button></div><div class="phone__scrim"></div><div class="phone__sheet"><p class="phone__sheet-title">Категории</p><p class="phone__sheet-text">Меню · уровень 2 из 3</p><div class="phone__list"><div class="phone__row">Пицца</div><div class="phone__row">Маргарита</div><div class="phone__row">Карбонара</div></div><div class="phone__actions"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Выбрать</span></button><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" type="button"><span class="ds-btn__label">Отмена</span></button></div></div></div></div><p class="phone__caption">Тот же экран, с правками из таблицы справа</p></div></div></div><div class="edits"><table><tr><th>Что</th><th>Правка</th></tr><tr><td>Узел</td><td class="edit"><input class="edit__input" type="number" step="1" value="48" data-id="node" data-sel=".ds-tree-item" data-css="min-height:@px" aria-label="Узел"></td></tr></table><p class="point">Правка применяется к правому экрану. Левый — значения как рекомендовано.</p></div></div>
+  </div>
+
+  <div class="card">
+    <h2>Что меняется на мобиле</h2>
+    <table><tr><th>Что</th><th>Desktop</th><th>Mobile</th></tr><tr><td>Узел</td><td>44 px</td><td>48 px — min-height узла у Angular (плотность 0)</td></tr><tr><td>Отступ уровня</td><td>свой (блоки start / middle / end)</td><td>тот же; у Angular отступ уровня 40 px</td></tr><tr><td>Показ иерархии</td><td>дерево с раскрытием на месте</td><td>переходы по уровням (drill-down) или аккордеон — структура страницы</td></tr><tr><td>Действия над узлом</td><td>иконки в строке</td><td>в меню-шторке</td></tr><tr><td>Цвета, кегль</td><td>14 / 20</td><td>14 / 20 — те же, стилевые токены общие</td></tr></table>
+    <p class="point" style="margin-top:10px">Само дерево на мобиле — редкость: обычно уровни раскрывают переходами. Компонент отвечает за высоту узла.</p>
+  </div>
+
+<div class="card">
+    <h2>Примерные паттерны поведения</h2>
+    <div class="pat__bar"><button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text pat__arrow pat__arrow--left" type="button" aria-label="Предыдущие паттерны" hidden><span class="ds-btn-icon__icon"><span class="material-icons" style="font-size:24px">chevron_left</span></span></button><div class="ds-tabs ds-tabs--lvl2 pat__tabs" role="tablist"><button class="ds-tab ds-tab--active" type="button" role="tab" data-pat="pat-tree-0">У дерева нет платформенного эталона</button><button class="ds-tab" type="button" role="tab" data-pat="pat-tree-1">Глубина вложенности и отступ уровня</button><button class="ds-tab" type="button" role="tab" data-pat="pat-tree-2">Длинные названия и горизонтальная прокрутка</button><button class="ds-tab" type="button" role="tab" data-pat="pat-tree-3">Дерево против аккордеона и таблицы</button><button class="ds-tab" type="button" role="tab" data-pat="pat-tree-4">Палец и тач-зона узла</button><button class="ds-tab" type="button" role="tab" data-pat="pat-tree-5">Состояние раскрытия и доступность</button></div><button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text pat__arrow pat__arrow--right" type="button" aria-label="Следующие паттерны" hidden><span class="ds-btn-icon__icon"><span class="material-icons" style="font-size:24px">chevron_right</span></span></button></div>
+    <div class="pat__body"><div class="pat__panel" data-pat-panel="pat-tree-0"><ul class="list"><li>Что происходит: глубину, отступы и размеры узла выбирают на глаз, а потом выясняется, что сослаться на платформу не на что.</li><li>Что делают системы: в MD3 дерева нет вовсе — страницы m3.material.io/components/tree и /components/trees отдают 404, и в наборе официальных токенов нет ни одного файла `*_tree*`; Apple описывает иерархию только как outline view и только для macOS, без единой цифры: «An outline view includes at least one column that contains primary hierarchical data, such as a set of parent containers and their children»; все числа приходят из одной реализации — Angular Material.</li><li>Что делать нам: размеры дерева фиксируем как решение ДС (со ссылкой на Angular как единственный числовой источник) и указываем это в описании компонента.</li></ul><p class="plat__src">Источники: Material Design 3 · компоненты (m3.material.io/components/tree — 404) и токены (github.com/material-components/material-web/tree/main/tokens) · Apple HIG · Outline views (developer.apple.com/design/human-interface-guidelines) · IBM Carbon · Tree view usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Наша схема уровней (Меню, Пицца, Маргарита) — решение ДС: у MD3 дерева нет, Apple даёт только outline view для macOS, а числа есть лишь у Angular.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div style="display:flex;flex-direction:column"><div class="ds-tree-item ds-tree-item--middle" style="padding-left:11px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Меню</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Пицца</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div></div></div></div></div><div class="pat__panel" data-pat-panel="pat-tree-1" hidden><ul class="list"><li>Что происходит: на 375 px третий и четвёртый уровень дерева съедают ширину: при отступе 40 px на уровень под название остаётся 375 − 32 − 4 × 40 ≈ 183 px, и «Пицца с двойным сыром» переносится на три строки.</li><li>Что делают системы: Angular/CDK берёт отступ 40 px на уровень (`_indent: number = 40;`, в комментарии — «Default number 40px from material design menu sub-menu spec») и минимальную высоту узла 48 px при плотности 0; Carbon держит два размера узла — small 32 px по умолчанию и extra small 24 px — и советует второе именно для сложной вложенности: «If you have a tree structure with complex nesting levels, use the extra small node size to keep as much information in view as possible».</li><li>Что делать нам: на мобиле отступ уровня — 24 px вместо 40, узлы — 24 px (extra small по Carbon) с невидимой зоной нажатия; больше трёх уровней в дереве на телефоне не показываем.</li></ul><p class="plat__src">Источники: Angular Material / CDK · padding.ts (raw.githubusercontent.com/angular/components/main/src/cdk/tree/padding.ts) и _m3-tree.scss (raw.githubusercontent.com/angular/components/main/src/material/tree/_m3-tree.scss) · IBM Carbon · Tree view usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Два уровня с отступом 24 px вместо 40 (у Angular/CDK отступ уровня — 40 px, у Carbon «extra small» узел — 24 px при стандартном 32 px): название не переносится на три строки.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div style="display:flex;flex-direction:column"><div class="ds-tree-item ds-tree-item--middle" style="padding-left:11px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Меню</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:35px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Пицца</span></div></div></div></div></div></div></div><div class="pat__panel" data-pat-panel="pat-tree-2" hidden><ul class="list"><li>Что происходит: у длинных названий («Полуфабрикаты, заготовки для горячего цеха») дерево начинает скроллиться вбок, и подпись уезжает от своего узла — непонятно, к какому уровню относится строка.</li><li>Что делают системы: Ant Design при включённой виртуальной прокрутке прямо запрещает авто-ширину — «Virtual scroll only render items in visible region. Thus not support auto width (like long `title` with horizontal scroll)», а для длинных подписей предлагает `blockNode` («Whether treeNode fill remaining horizontal space») и режим линий `showLine`; Carbon добавляет, что дерево рассчитано на «concise labels that do not need to be organized in a column structure».</li><li>Что делать нам: горизонтальную прокрутку в дереве на мобиле не используем; длинное название переносится внутри узла (до двух строк), полное — в раскрытии или в отдельном экране узла.</li></ul><p class="plat__src">Источники: Ant Design · Tree (ant.design/components/tree) · IBM Carbon · Tree view usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Узлы с короткими подписями в 343 px без горизонтальной прокрутки: у Ant Design виртуальный список вообще не поддерживает авто-ширину для длинных названий.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div style="display:flex;flex-direction:column"><div class="ds-tree-item ds-tree-item--middle" style="padding-left:11px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Меню</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Пицца</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div></div></div></div></div><div class="pat__panel" data-pat-panel="pat-tree-3" hidden><ul class="list"><li>Что происходит: дерево применяют там, где хватило бы одного уровня (категории меню), и наоборот — в таблицу пытаются вложить три уровня иерархии.</li><li>Что делают системы: Carbon разводит по глубине — «Use the accordion component when you need to organize lengthy information in sections that only go one level deep. Tree view is best used for nesting categories of information in a hierarchy of multiple levels», а про таблицы оговаривает, что «Data table rows can be expanded, but we recommend only expanding a row one level deep»; Apple для иерархии советует не таблицу, а outline view: «Use an outline view instead of a table view to present hierarchical data».</li><li>Что делать нам: один уровень вложенности — аккордеон или раскрытие строки, два и больше — дерево; третий уровень в таблицу не добавляем, даже если данные так лежат.</li></ul><p class="plat__src">Источники: IBM Carbon · Tree view usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx) · Apple HIG · Lists and tables (developer.apple.com/design/human-interface-guidelines/lists-and-tables) · Nielsen Norman Group · Mobile Tables (nngroup.com/articles/mobile-tables/)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Один уровень — плоская строка («Категория / Пицца / 24 позиции») вместо дерева: Carbon советует аккордеон для одного уровня, а дерево — для нескольких.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div class="ds-text-ui"><div style="display:flex;flex-direction:column"><span class="ds-text-ui__label-up">Категория</span><span class="ds-text-ui__list-item">Пицца</span><span class="ds-text-ui__label-down">24 позиции</span></div></div></div></div></div></div></div><div class="pat__panel" data-pat-panel="pat-tree-4" hidden><ul class="list"><li>Что происходит: узел дерева рисуют 24 px, как в плотных интерфейсах, и попасть в раскрытие ребёнка с первого раза не удаётся — вместо раскрытия выделяется соседняя строка.</li><li>Что делают системы: Apple требует область касания не меньше 44×44 pt, MD3 — 48 dp (в material-components-web это `$height: 48px`), Angular задаёт минимальную высоту узла 48 px при плотности 0; Carbon при этом держит узлы 32 px (small, по умолчанию) и 24 px (extra small), то есть плотный визуальный размер и зона нажатия в платформенных числах расходятся.</li><li>Что делать нам: визуальная строка узла — 24–32 px, но зона нажатия — вся ширина строки и не меньше 44 px по высоте; шеврон раскрытия получает собственную зону 44 px.</li></ul><p class="plat__src">Источники: Apple HIG · Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility) · Google Material Components Web · Touch target (raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-touch-target/_touch-target.scss) · Angular Material · _m3-tree.scss (raw.githubusercontent.com/angular/components/main/src/material/tree/_m3-tree.scss) · IBM Carbon · Tree view usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Пунктиром — зона нажатия 48 × 48 dp вокруг узла: рисунок 24 px, а нажимается вся строка (Apple требует 44 × 44 pt, Angular — 48 px).</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><span class="pat__hit"><span class="ds-tree-item ds-tree-item--middle" style="padding-left:11px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Меню</span></span></span></div></div></div></div></div><div class="pat__panel" data-pat-panel="pat-tree-5" hidden><ul class="list"><li>Что происходит: пользователь раскрывает ветку, уходит на другой экран и возвращается к полностью свёрнутому дереву; с экранным диктором дерево без уровней читается как плоский список.</li><li>Что делают системы: Angular строит дерево как WAI-ARIA tree widget и требует корректных данных — `levelAccessor` или `childrenAccessor` (в документации отмечено, что устаревший `treeControl` не даёт правильной доступности) и признак `isExpandable` у раскрываемых узлов; Ant Design хранит состояние через `defaultExpandedKeys`/`expandedKeys`, умеет `autoExpandParent` и программную прокрутку к узлу `scrollTo({ key, autoExpand })`.</li><li>Что делать нам: состояние раскрытых веток сохраняется на время сессии; в разметке узла есть уровень и признак раскрываемости, чтобы диктор читал иерархию, а не список.</li></ul><p class="plat__src">Источники: Angular Material · Tree (raw.githubusercontent.com/angular/components/main/src/material/tree/tree.md) · Ant Design · Tree (ant.design/components/tree)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Раскрытая ветка (Меню → Пицца → Маргарита) остаётся раскрытой при возврате: у Ant Design для этого есть `expandedKeys` и `autoExpandParent`, у Angular — уровень узла для диктора.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div style="display:flex;flex-direction:column"><div class="ds-tree-item ds-tree-item--middle" style="padding-left:11px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Меню</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:51px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span><span>Пицца</span></div><div class="ds-tree-item ds-tree-item--middle" style="padding-left:91px"><span class="ds-tree__icon"><span class="material-icons" style="font-size:24px">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div></div></div></div></div></div>
+  </div>
+
+  <div class="card">
+    <h2>Почему так</h2>
+    <p class="point">Дерево — самый «бесхозный» компонент набора: MD3 его не имеет вовсе (ни страницы, ни токенов), iOS HIG описывает только macOS outline view и без единого числа. Все числа приходят исключительно из Angular Material: минимальная высота узла 48 при плотности 0 и отступ уровня 40 px (CDK indent = 40). Общее правило Apple про область нажатия 44 × 44 pt тоже перекрывается значением 48. Отдельного «мобильного дерева» не описывает никто — практика такая же, как у таблиц: иерархию показывают списками и переходами.</p>
+  </div>
+
+  <div class="card">
+    <h2>Итог</h2>
+    <ul class="list"><li>Узел 48 px — единственное число, которое вообще существует для дерева (Angular).</li><li>Отступ уровня оставил свой: у нас узел собирается блоками, и подмена сломала бы линии связей.</li><li><b>Не решено:</b> drill-down против аккордеона — платформы не описывают ни того, ни другого для мобилы; нужно решение продукта.</li><li><b>Не решено:</b> действия над узлом (сейчас иконки в строке) — на мобиле их надо уносить в меню-шторку.</li></ul>
+  </div>
+<div class="card">
+  <h2>Найдено в ДС (в библиотеке не правим)</h2>
+  <p><b>box-sizing у кадров и строк.</b> В библиотеке нет <code>box-sizing: border-box</code>, поэтому высота из токена/числа складывалась с паддингами: кадр поля 48 px показывался как 74, кадр textarea 76 как 94, строка списка 68 как 84. В прототипах ДС это лечат на странице (<code>.js-select .ds-select-form__input-frame{box-sizing:border-box;height:48px}</code>) — в каркасе страниц повторено то же для всех таких классов. Библиотеку не правим.</p>
+</div>
+</div>
+<script>
+/* Поля «Правка»: введённое число применяется к компоненту во ВТОРОМ экране блока
+   «На экране» (он помечен data-preview="edit"); первый экран остаётся со
+   значениями как рекомендовано — их и сравниваем. Правило пишется в
+   <style id="live">, поэтому работает и для псевдоэлементов (тач-зона).
+   В шаблоне поля «@» заменяется на введённое число. Пока поле не тронуто,
+   правило не пишется — экраны остаются как есть. */
+(function () {
+  var live = document.getElementById('live');
+  var fields = [].slice.call(document.querySelectorAll('.edit__input'));
+  if (!live || !fields.length) return;
+  var byId = {};
+  fields.forEach(function (f) { if (f.getAttribute('data-id')) byId[f.getAttribute('data-id')] = f; });
+  function rebuild() {
+    var rules = [];
+    fields.forEach(function (f) {
+      if (!f.__touched) return;
+      var v = f.value === '' ? f.getAttribute('value') : f.value;
+      rules.push('[data-mode="mobile"][data-preview="edit"].phone__screen ' + f.getAttribute('data-sel') +
+                 '{' + f.getAttribute('data-css').split('@').join(v) + '}');
+    });
+    live.textContent = rules.join(String.fromCharCode(10));
+  }
+  /* Связанное значение пересчитывается по линейной формуле t = a * v + b
+     (например высота 40 → паддинг 0.5 * 40 - 10 = 10) и сразу видно в поле. */
+  function syncFields(f) {
+    var target = f.getAttribute('data-sync-field');
+    if (!target || !byId[target]) return;
+    var a = parseFloat(f.getAttribute('data-sync-a'));
+    var b = parseFloat(f.getAttribute('data-sync-b'));
+    var v = parseFloat(f.value);
+    if (isNaN(a) || isNaN(v)) return;
+    var t = byId[target];
+    t.value = Math.round((a * v + b) * 100) / 100;
+    t.__touched = true;
+  }
+  fields.forEach(function (f) {
+    f.addEventListener('input', function () {
+      f.__touched = true;
+      syncFields(f);
+      rebuild();
+    });
+  });
+})();
+/* Табы блока «Примерные паттерны поведения»: показывается паттерн выбранного таба,
+   остальные скрыты. Своих компонентов не заводим — только переключение видимости
+   готовых блоков, поэтому на странице видно ровно тот случай, что назван в табе. */
+(function () {
+  var bars = [].slice.call(document.querySelectorAll('.pat__tabs'));
+  bars.forEach(function (bar) {
+    var tabs = [].slice.call(bar.querySelectorAll('.ds-tab'));
+    var panels = [].slice.call(document.querySelectorAll('.pat__panel'));
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        tabs.forEach(function (o) { o.classList.toggle('ds-tab--active', o === t); });
+        panels.forEach(function (p) {
+          p.hidden = p.getAttribute('data-pat-panel') !== t.getAttribute('data-pat');
+        });
+      });
+    });
+  });
+})();
+/* Стрелки у ряда табов: ряд листается на шесть десятых его ширины (но не меньше
+   160 px). Стрелки видны только когда табы не влезают, и та из них, в сторону которой
+   листать нечего, становится недоступной — видно, что список кончился. */
+(function () {
+  [].slice.call(document.querySelectorAll('.pat__bar')).forEach(function (bar) {
+    var row = bar.querySelector('.pat__tabs');
+    var left = bar.querySelector('.pat__arrow--left');
+    var right = bar.querySelector('.pat__arrow--right');
+    if (!row || !left || !right) return;
+    function step() { return Math.max(160, Math.round(row.clientWidth * 0.6)); }
+    function sync() {
+      var rest = row.scrollWidth - row.clientWidth;
+      var over = rest > 1;
+      left.hidden = right.hidden = !over;
+      if (!over) return;
+      left.disabled = row.scrollLeft <= 1;
+      right.disabled = row.scrollLeft >= rest - 1;
+    }
+    left.addEventListener('click', function () { row.scrollLeft -= step(); setTimeout(sync, 260); });
+    right.addEventListener('click', function () { row.scrollLeft += step(); setTimeout(sync, 260); });
+    row.addEventListener('scroll', sync);
+    window.addEventListener('resize', sync);
+    setTimeout(sync, 50);
+  });
+})();
+</script>
+</body>
+</html>

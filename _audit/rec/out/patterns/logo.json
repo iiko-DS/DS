@@ -1,0 +1,49 @@
+{
+ "slug": "logo",
+ "patterns_ru": [
+  {
+   "title": "Спецификации логотипа нет ни у одной платформы",
+   "items": [
+    "Что происходит: искать «спеку логотипа» в платформах бесполезно: m3.material.io/components/logo/specs отдаёт 404, в Angular Material нет src/material/logo (404), у Apple страницы Logo тоже нет (404) — логотип относится к брендбуку, а не к UI-киту.",
+    "Что делают системы: ближайшие проверяемые числа находятся у смежных сущностей: в MD3 и Angular это иконка 24 px по умолчанию (`--md-icon-size` = 24px, `$size: 24px !default`), у Apple — иконка приложения 1024×1024 px, которую система сама маскирует по форме rounded rectangle.",
+    "Что делать нам: Logo в ДС ведём как брендовый ассет с собственной спецификацией (знак iiko — 72 px, знак syrve — 70,9 px) и не подменяем его правилами иконок 24 px; общие правила берём только у Apple — оптическое выравнивание и запрет своих углов и теней."
+   ],
+   "src": "Источники: Material Design 3 · HTTP 404 (m3.material.io/components/logo/specs) · Material Web · Icon (raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md) · Angular Material · icon.scss (raw.githubusercontent.com/angular/components/main/src/material/icon/icon.scss) · Apple HIG · App icons (developer.apple.com/design/human-interface-guidelines/app-icons) · Apple HIG · Icons (developer.apple.com/design/human-interface-guidelines/icons)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" data-mode=\"mobile\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><div class=\"ds-logo-syrve\"><span class=\"ds-logo-syrve__vector\" style=\"width:70.9px\"></span></div></div>",
+   "example_ru": "Знаки по собственной спецификации ДС: iiko — 72 px, syrve — 70,9 px, а не по общим правилам иконок 24 px."
+  },
+  {
+   "title": "Своя «живая область» вокруг знака",
+   "items": [
+    "Что происходит: при обрезке и на разных экранах знак либо прилипает к краю, либо кажется мелким: у платформы есть числа только для графики с полем — Apple: «Define a margin that measures about 10% of the image canvas and keep most of the image within it… it's best when the image occupies about 80% of the image canvas», в канвасе 256×256 px полезная область ≈ 205×205 px.",
+    "Что делают системы: Apple оставляет это правило для иконок интерфейса и документов, а MD3 в качестве бренд-выражения предлагает цветовые роли и типографику вместо отдельного компонента — то есть поле вокруг знака платформа не нормирует вообще.",
+    "Что делать нам: вокруг знака в ДС задаём свою «живую область» ≈ 10 % от его высоты и выравниваем по ней, а не по паддингу карточки 16 px; при вставке в нестандартный контейнер добавляем паддинг до оптического выравнивания."
+   ],
+   "src": "Источники: Apple HIG · Icons (developer.apple.com/design/human-interface-guidelines/icons) · Apple HIG · App icons (developer.apple.com/design/human-interface-guidelines/app-icons) · Material Web · Icon (raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" data-mode=\"mobile\"><div style=\"padding:7px;background:#EDEFF3;border-radius:8px;display:flex\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px\"></span></div></div></div>",
+   "example_ru": "Живая область вокруг знака — около 10 % его высоты (≈7 px при знаке 72 px): выравниваем по ней, а не по паддингу карточки 16 px."
+  },
+  {
+   "title": "Скругления, тени и градиенты знака",
+   "items": [
+    "Что происходит: на мобиле знаку добавляют собственные скругления и тени, хотя в системных контекстах углы и маску рисует система: Apple прямо просит держать основной контент по центру — «Keep primary content centered to avoid truncation when the system adjusts corners or applies masking».",
+    "Что делают системы: Apple рисует иконку приложения квадратной, а скругление применяет сама («Icon shape after system masking»), поэтому «свои» углы и блики ломают её вид; MD3 в своей графике опирается на Material Symbols с осями weight / fill / grade.",
+    "Что делать нам: знак в разметке ДС — плоский: без своих скруглений, теней и градиентов; варианты «на светлом / на тёмном» держим как ось темы и брендбука, а не как эффект оформления."
+   ],
+   "src": "Источники: Apple HIG · App icons (developer.apple.com/design/human-interface-guidelines/app-icons) · Material Web · Icon (raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" data-mode=\"mobile\"><div style=\"padding:7px;background:#EDEFF3;border-radius:8px;display:flex\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px\"></span></div></div><div style=\"padding:7px;background:var(--ds-color-brand-neutral-super-dark);border-radius:8px;display:flex\"><div class=\"ds-logo-syrve\"><span class=\"ds-logo-syrve__vector\" style=\"width:70.9px\"></span></div></div></div>",
+   "example_ru": "Знак в разметке плоский — без собственных скруглений, теней и градиентов; «на светлом / на тёмном» — ось темы из брендбука, углы и маску в системных контекстах рисует сама система."
+  },
+  {
+   "title": "Логотип уступает место контенту",
+   "items": [
+    "Что происходит: логотип в шапке на 375 px забирает место у заголовка и поиска: Apple — «Resist the temptation to display your logo throughout your app or game unless it's essential for providing context», а «Ensure branding always defers to content».",
+    "Что делают системы: Apple описывает показ логотипа в интерфейсе как исключение, а не как способ «напомнить о себе», и советует не превращать его в элемент управления; MD3 заменяет бренд цветовыми ролями (md.sys.color.*) и типографикой.",
+    "Что делать нам: в шапке экрана — только заголовок; знак ставим на входе в приложение, в карточке «О приложении» и на пустых экранах, где нет контента, и не вешаем на него тач-действие (это не кнопка)."
+   ],
+   "src": "Источники: Apple HIG · Branding (developer.apple.com/design/human-interface-guidelines/branding) · Material Web · Icon (raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__card\"><p class=\"phone__card-title\">О приложении</p><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><p class=\"phone__card-text\">Версия 7.8.6 · смена 12 сентября</p></div></div>",
+   "example_ru": "В шапке на 375 px — только заголовок: место отдано контенту, а знак 72 px стоит в карточке «О приложении», где нет другого содержимого, и тач-действия не получает."
+  }
+ ]
+}

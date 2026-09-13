@@ -1,0 +1,77 @@
+{
+  "slug": "slide-toggle",
+  "edits": [
+    {
+      "row": 0,
+      "edits": [
+        {
+          "id": "row",
+          "v": 48,
+          "sel": ".ds-slide-toggle__row",
+          "css": "min-height:@px"
+        }
+      ]
+    },
+    {
+      "row": 1,
+      "edits": [
+        {
+          "id": "track-w",
+          "v": 52,
+          "sel": ".ds-slide-toggle__track",
+          "css": "width:@px"
+        },
+        {
+          "id": "track-h",
+          "v": 32,
+          "sel": ".ds-slide-toggle__track",
+          "css": "height:@px"
+        }
+      ]
+    },
+    {
+      "row": 2,
+      "edits": [
+        {
+          "id": "knob",
+          "v": 24,
+          "sel": ".ds-slide-toggle__track::after",
+          "css": "width:@px; height:@px"
+        }
+      ]
+    },
+    {
+      "row": 3,
+      "edits": [
+        {
+          "id": "knob-inset",
+          "v": 4,
+          "sel": ".ds-slide-toggle__track::after",
+          "css": "top:@px; left:@px"
+        }
+      ]
+    },
+    {
+      "row": 4,
+      "edits": [
+        {
+          "id": "knob-shift",
+          "v": 20,
+          "sel": ".ds-slide-toggle__input:checked + .ds-slide-toggle__track::after",
+          "css": "transform:translateX(@px)"
+        }
+      ]
+    },
+    {
+      "row": 5,
+      "edits": [
+        {
+          "id": "support",
+          "v": 60,
+          "sel": ".ds-slide-toggle__support",
+          "css": "margin-left:@px"
+        }
+      ]
+    }
+  ]
+}

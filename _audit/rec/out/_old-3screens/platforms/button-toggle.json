@@ -1,0 +1,30 @@
+{
+  "slug": "button-toggle",
+  "platform_notes_ru": [
+    {
+      "title": "Material Design 3",
+      "items": [
+        "MD3 и Angular сходятся ровно на одной высоте — 40 dp: «container-height: 40px» у segmented button и mat-button-toggle (button-toggle.json).",
+        "Размерной шкалы XS..XL у segmented button нет (она есть только у button group и split button), а у Angular нет атрибута size — значит «M / S / XS» у переключателя платформой не подтверждены (button-toggle.json).",
+        "Тач-таргет у MD3 задан отдельно — 48 dp при визуальной высоте 40 dp: тонкая сегментированная полоса всё равно нажимается на 48 (button-toggle.json).",
+        "Плотностные 36 dp (density −3) и 24 dp (density −4) у Angular — это документированная плотная конфигурация, а не рекомендация платформ; 24 dp ниже любого минимума (button-toggle.json)."
+      ]
+    },
+    {
+      "title": "iOS HIG",
+      "items": [
+        "iOS HIG не даёт ни одного размера в pt: у segmented control только правила, единственная числовая норма — хит-регион 44×44 pt из страницы Buttons (button-toggle.json).",
+        "Сегментов должно быть немного: «no more than about five to seven in a wide interface and no more than about five segments on iPhone» (button-toggle.json).",
+        "Сегменты одной ширины — «keep segment size consistent»; рваные по размеру сегменты HIG не рекомендует (button-toggle.json).",
+        "В одном контроле либо только текст, либо только иконки: «Prefer using either text or images — not a mix of both» (button-toggle.json)."
+      ]
+    }
+  ],
+  "logic_ru": [
+    "Сегмент — это Button, поэтому на мобиле все размеры сегмента идут в 44 px, а трек за ними вырастает до 52.",
+    "Размерного ряда M/S/XS у переключателя не оставлять: пользователь не должен выбирать размер контрола.",
+    "Сегментов на телефоне — не больше пяти: дальше подписи не влезают и контрол превращается в угадайку.",
+    "Внутри одного контрола не смешивать текст и иконки, ширина сегментов — одинаковая.",
+    "Hover у сегментов не показывать: на тач есть только нажатие, состояния «при наведении» с мобилы уходят."
+  ]
+}

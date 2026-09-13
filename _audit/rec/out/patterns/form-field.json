@@ -1,0 +1,71 @@
+{
+ "slug": "form-field",
+ "patterns_ru": [
+  {
+   "title": "Высота 56 px и кегль ввода 16 px",
+   "items": [
+    "Что происходит: поле высотой 56 px удобно пальцу, но в плотных формах его ужимают до 32–40 px, и вместе с высотой падает кегль ввода — на 375 px такое поле читается хуже и промахивается чаще.",
+    "Что делают системы: Google MDC задаёт высоту числом ($height: 56px !default), MD3 считает ввод текстом body-large — 1 rem (16 px); Apple: 17 pt по умолчанию при минимуме 11 pt; IBM Carbon даёт три размера — «small (32px), medium (40px), and large (48px)», где medium — размер по умолчанию.",
+    "Что делать нам: в мобильном слое ДС держать высоту 56 px и кегль ввода 16 px; 32 px оставить плотным десктопным формам, на телефоне его не применять."
+   ],
+   "src": "Источники: Material Components Web · _variables.scss (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-textfield/_variables.scss) · Material Web · _md-sys-typescale.scss (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss) · Apple HIG · Typography (https://developer.apple.com/design/human-interface-guidelines/typography) · IBM Carbon · Text input (https://carbondesignsystem.com/components/text-input/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\" style=\"height:56px\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Название процесса\" style=\"font-size:16px\"></div></div></div></div>",
+   "example_ru": "Высота поля 56 px и кегль ввода 16 px — как $height: 56px у MDC и body-large 1 rem у MD3; плотные 32 px остаются десктопным формам."
+  },
+  {
+   "title": "Видимый label вместо placeholder",
+   "items": [
+    "Что происходит: placeholder исчезает при вводе, и на 375 px пользователь теряет понимание, что именно заполняет; у дефолтного плейсхолдера к тому же часто не хватает контраста.",
+    "Что делают системы: GOV.UK: «Avoid placeholder text... Do not use placeholder text in place of a label, or for hints or examples» — в том числе потому, что «its browser default styles often do not meet WCAG 2.2 success criterion 1.4.3 Contrast (minimum)»; Carbon: Label «is required unless you get an approved accessibility exemption»; MD3 держит подпись над полем (with-label-top-space: 8px).",
+    "Что делать нам: ставить видимый label над полем, helper-текст кеглем 12 px под полем (body-small 0.75rem), а placeholder использовать только как пример заполнения."
+   ],
+   "src": "Источники: GOV.UK Design System · Text input (https://design-system.service.gov.uk/components/text-input) · IBM Carbon · Text input (https://carbondesignsystem.com/components/text-input/usage) · Material Web · _md-comp-filled-text-field.scss (https://raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-filled-text-field.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Название процесса</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"Например, Кухня\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Подпись остаётся на месте и после ввода</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "Подпись «Название процесса» — отдельным label над полем, placeholder только как пример заполнения; helper-текст под полем кеглем 12 px."
+  },
+  {
+   "title": "Клавиатура закрывает поле и кнопки формы",
+   "items": [
+    "Что происходит: при открытой клавиатуре на 375 px остаётся около трети высоты экрана, и поле, по которому тапнули, вместе с футером формы часто оказывается под клавиатурой.",
+    "Что делают системы: Apple требует показывать подходящую клавиатуру — «show the appropriate keyboard type»; GOV.UK задаёт атрибут inputmode для числовых полей (в разметке date input — inputmode=\"numeric\"); Ant Design для тач-устройств даёт inputReadOnly, что «avoids virtual keyboard on touch devices».",
+    "Что делать нам: выбирать тип клавиатуры по содержимому (numeric/tel), поднимать поле над клавиатурой и не перекрывать его футером формы; поля только для чтения делать read-only, чтобы клавиатура не открывалась."
+   ],
+   "src": "Источники: Apple HIG · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields) · GOV.UK Design System · Date input (https://design-system.service.gov.uk/components/date-input) · Ant Design · DatePicker (https://ant.design/components/date-picker/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Количество гостей</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"4\" inputmode=\"numeric\"></div></div></div><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><div style=\"height:216px;background:#F5F5F5;border-radius:8px;display:flex;justify-content:flex-end;align-items:flex-start;padding:8px\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--text\" type=\"button\" style=\"width:auto\"><span class=\"ds-btn__label\">Готово</span></button></div></div>",
+   "example_ru": "Поле с numeric-клавиатурой поднято над клавиатурой, кнопка «Сохранить» осталась на месте: место под клавиатуру — 216 px из 667 px, поле и футер не перекрыты."
+  },
+  {
+   "title": "Ширина поля по содержимому",
+   "items": [
+    "Что происходит: поле во всю ширину 343 px для номера стола или количества гостей читается как приглашение вводить что угодно и делает форму визуально однообразной.",
+    "Что делают системы: GOV.UK: «Help users understand what they should enter by making text inputs the right size for the content they're intended for. Use fixed width inputs for content that has a specific, known length. Postcode inputs should be postcode-sized, phone number inputs should be phone number-sized»; в их разметке для дня и месяца стоит класс ширины на два знака, для года — на четыре.",
+    "Что делать нам: задавать фиксированные узкие ширины для значений известной длины (день, месяц, год, стол, гости), полную ширину оставлять свободному тексту."
+   ],
+   "src": "Источники: GOV.UK Design System · Text input (https://design-system.service.gov.uk/components/text-input) · GOV.UK Design System · Date input (https://design-system.service.gov.uk/components/date-input)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"align-items:flex-start;gap:8px\"><div class=\"ds-input ds-input--m\" style=\"width:88px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"12\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div><div class=\"ds-input ds-input--m\" style=\"width:88px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"05\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div><div class=\"ds-input ds-input--m\" style=\"width:112px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"2026\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "День, месяц и год — поля 88, 88 и 112 px по содержимому: 343 px полной ширины отданы свободному тексту, а не трём цифрам."
+  },
+  {
+   "title": "Ошибка и подсказка не двигают вёрстку",
+   "items": [
+    "Что происходит: сообщение об ошибке под полем увеличивает высоту формы, и кнопки уезжают из-под пальца ровно в момент, когда пользователь собирался нажать «Сохранить».",
+    "Что делают системы: IBM Carbon описывает ошибку тремя индикаторами — «Error states have three visual indicators to signify invalid content: a red border, an error icon indicator, and an error message» — и заменяет ими helper-текст, а высота поля остаётся прежней; Angular держит подпись-подсказку фиксированной высоты (height: 16px), MD3 задаёт supporting text тем же кеглем body-small.",
+    "Что делать нам: резервировать место под строку hint/ошибки (16 px), не сдвигать кнопки при появлении ошибки и показывать три индикатора: рамку, иконку и текст."
+   ],
+   "src": "Источники: IBM Carbon · Number input (https://carbondesignsystem.com/components/number-input/usage) · Angular Material · _form-field-subscript.scss (https://raw.githubusercontent.com/angular/components/main/src/material/form-field/_form-field-subscript.scss) · Material Web · _md-sys-typescale.scss (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Кухня\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div><div class=\"ds-input ds-input--m ds-input--error\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Бар\" value=\"Бар\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Название занято</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "Строка hint/ошибки зарезервирована под 16 px в обоих состояниях: при ошибке появляются рамка, иконка и текст, а высота поля не меняется и кнопки не уезжают."
+  },
+  {
+   "title": "Критичное не прятать в подсказку",
+   "items": [
+    "Что происходит: формат и обязательность поля пытаются уместить в placeholder или в тултип-иконку, а на тач-экране тултип по наведению вообще не открывается, и требование поля исчезает из интерфейса.",
+    "Что делают системы: IBM Carbon: «Since a tooltip disappears when a user hovers away, do not include pertinent information for the user to complete their task. Use helper text that is always visible and accessible for vital information, such as required fields»; Apple вообще не фиксирует у текстового поля высоту, а собирает форму из подписи и поля.",
+    "Что делать нам: формат и обязательность передавать постоянным helper-текстом под полем, а иконку-подсказку использовать только для пояснений, без критичных требований."
+   ],
+   "src": "Источники: IBM Carbon · Tooltip (https://carbondesignsystem.com/components/tooltip/usage) · Apple HIG · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Дата брони</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"12.05.2026\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Обязательное поле · формат ДД.ММ.ГГГГ</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "Обязательность и формат — постоянным helper-текстом под полем (12 px), а не тултипом по наведению: требование остаётся видимым и на тач-экране."
+  }
+ ]
+}

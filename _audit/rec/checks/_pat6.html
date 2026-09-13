@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8"><body><pre id="out"></pre>
+<iframe id="f" src="/iiko-ds-mobile/prototypes/recommendations/button.html" width="1600" height="900" style="border:0"></iframe>
+<script>
+const f=document.getElementById('f');
+f.onload=()=>setTimeout(()=>{
+  const d=f.contentDocument,N="\u043f\u0430\u0442\u0442\u0435\u0440\u043d\u044b";
+  const c=[...d.querySelectorAll('.card')].find(x=>x.querySelector('h2')&&x.querySelector('h2').textContent.includes(N));
+  const row=c.querySelector('.pat__tabs');
+  document.getElementById('out').textContent=JSON.stringify({rowW:Math.round(row.clientWidth),rowScroll:Math.round(row.scrollWidth),
+    leftHidden:c.querySelector('.pat__arrow--left').hidden, rightHidden:c.querySelector('.pat__arrow--right').hidden});
+},600);
+</script></body>

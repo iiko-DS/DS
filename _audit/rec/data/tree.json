@@ -1,0 +1,161 @@
+{
+ "slug": "tree",
+ "component": "Tree",
+ "ds_page": "Tree_DS",
+ "desc_ru": "Дерево: иерархия с раскрытием уровней. На мобиле узлы выше, а глубокие уровни лучше заменить на переходы.",
+ "category_ru": "Структура",
+ "category_note_ru": "выше узлы; глубокие уровни — переходы по экранам вместо дерева",
+ "summary_ru": "Узел 44 → 48 px. Длинные иерархии на телефоне показывают переходами по уровням или аккордеоном — это структура страницы.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "узел 44 px"
+  },
+  "mobile": {
+   "sub_ru": "узел 48 px"
+  }
+ },
+ "changes": [
+  {
+   "what": "Узел",
+   "desktop": "44 px",
+   "mobile": "48 px — min-height узла у Angular (плотность 0)",
+   "edit": [
+    {
+     "id": "node",
+     "v": 48,
+     "sel": ".ds-tree-item",
+     "css": "min-height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Отступ уровня",
+   "desktop": "свой (блоки start / middle / end)",
+   "mobile": "тот же; у Angular отступ уровня 40 px"
+  },
+  {
+   "what": "Показ иерархии",
+   "desktop": "дерево с раскрытием на месте",
+   "mobile": "переходы по уровням (drill-down) или аккордеон — структура страницы"
+  },
+  {
+   "what": "Действия над узлом",
+   "desktop": "иконки в строке",
+   "mobile": "в меню-шторке"
+  },
+  {
+   "what": "Цвета, кегль",
+   "desktop": "14 / 20",
+   "mobile": "14 / 20 — те же, стилевые токены общие"
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Само дерево на мобиле — редкость: обычно уровни раскрывают переходами. Компонент отвечает за высоту узла.</p>",
+ "why_ru": "Дерево — самый «бесхозный» компонент набора: MD3 его не имеет вовсе (ни страницы, ни токенов), iOS HIG описывает только macOS outline view и без единого числа. Все числа приходят исключительно из Angular Material: минимальная высота узла 48 при плотности 0 и отступ уровня 40 px (CDK indent = 40). Общее правило Apple про область нажатия 44 × 44 pt тоже перекрывается значением 48. Отдельного «мобильного дерева» не описывает никто — практика такая же, как у таблиц: иерархию показывают списками и переходами.",
+ "result_html": "<ul class=\"list\"><li>Узел 48 px — единственное число, которое вообще существует для дерева (Angular).</li><li>Отступ уровня оставил свой: у нас узел собирается блоками, и подмена сломала бы линии связей.</li><li><b>Не решено:</b> drill-down против аккордеона — платформы не описывают ни того, ни другого для мобилы; нужно решение продукта.</li><li><b>Не решено:</b> действия над узлом (сейчас иконки в строке) — на мобиле их надо уносить в меню-шторку.</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Дерево с уровнями",
+   "html": "<div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Карбонара</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Напитки</span></div></div>",
+   "stack": true
+  }
+ ],
+ "found_html": "<p><b>box-sizing у кадров и строк.</b> В библиотеке нет <code>box-sizing: border-box</code>, поэтому высота из токена/числа складывалась с паддингами: кадр поля 48 px показывался как 74, кадр textarea 76 как 94, строка списка 68 как 84. В прототипах ДС это лечат на странице (<code>.js-select .ds-select-form__input-frame{box-sizing:border-box;height:48px}</code>) — в каркасе страниц повторено то же для всех таких классов. Библиотеку не правим.</p>",
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Дерева в MD3 нет: страницы /components/tree и /components/trees отдают 404, в токенах нет ни одного файла *_tree* (tree.json).",
+    "Значит, ни отступа уровня, ни высоты узла, ни иконки раскрытия MD3 не задаёт — Material как источник по дереву исключён полностью (tree.json).",
+    "Ближайшее по смыслу — списки и меню, но вложенность они не нормируют: заимствовать оттуда числа для дерева нельзя (tree.json).",
+    "Опасение: любое «дерево по Material» — ссылка на несуществующий компонент, в ДС это надо честно пометить (tree.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Дерево у Apple описано только для macOS — как outline view, и без чисел: ни отступа уровня, ни высоты строки (tree.json).",
+    "Для iOS компонента-дерева нет: узел приходится собирать из списков, а не брать готовым (tree.json).",
+    "Вложенность Apple показывает disclosure triangles; для неиерархических данных HIG советует таблицу — обратная рекомендация к дереву (tree.json).",
+    "Единственное число — общая тач-норма 44 × 44 pt, к узлам дерева напрямую не привязана (tree.json).",
+    "Опасение: ни размера disclosure-треугольника, ни максимальной глубины Apple не нормирует — иерархию на iOS придётся строить переходами по уровням (tree.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Узел — 48 px (min-height при плотности 0; у Angular это единственное платформенное число по дереву).",
+  "Отступ уровня 40 px не выдавать за платформенную норму: в исходниках он обоснован спекой подменю меню, а не деревом, — фиксировать его как решение ДС.",
+  "На телефоне иерархию показывать переходами по уровням (drill-down) или аккордеоном, а не раскрытием на месте.",
+  "Действия над узлом — в меню-шторке: иконки в строке не влезают и конкурируют с раскрытием.",
+  "Иконку раскрытия ставить в начале узла и не мельче остальных иконок строки — иначе непонятно, что узел раскрывается.",
+  "Чего нельзя: горизонтального скролла дерева и отступа, растущего до края экрана — на третьем уровне текст уже обрезается."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Меню ресторана</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Карбонара</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Напитки</span></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Категории</p><p class=\"phone__sheet-text\">Меню · уровень 2 из 3</p><div class=\"phone__list\"><div class=\"phone__row\">Пицца</div><div class=\"phone__row\">Маргарита</div><div class=\"phone__row\">Карбонара</div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Выбрать</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Дерево в теле экрана: узлы 48 px, отступ уровня 40 px, узел «Меню» раскрыт</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Меню ресторана</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Карбонара</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Напитки</span></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Категории</p><p class=\"phone__sheet-text\">Меню · уровень 2 из 3</p><div class=\"phone__list\"><div class=\"phone__row\">Пицца</div><div class=\"phone__row\">Маргарита</div><div class=\"phone__row\">Карбонара</div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Выбрать</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "У дерева нет платформенного эталона",
+   "items": [
+    "Что происходит: глубину, отступы и размеры узла выбирают на глаз, а потом выясняется, что сослаться на платформу не на что.",
+    "Что делают системы: в MD3 дерева нет вовсе — страницы m3.material.io/components/tree и /components/trees отдают 404, и в наборе официальных токенов нет ни одного файла `*_tree*`; Apple описывает иерархию только как outline view и только для macOS, без единой цифры: «An outline view includes at least one column that contains primary hierarchical data, such as a set of parent containers and their children»; все числа приходят из одной реализации — Angular Material.",
+    "Что делать нам: размеры дерева фиксируем как решение ДС (со ссылкой на Angular как единственный числовой источник) и указываем это в описании компонента."
+   ],
+   "src": "Источники: Material Design 3 · компоненты (m3.material.io/components/tree — 404) и токены (github.com/material-components/material-web/tree/main/tokens) · Apple HIG · Outline views (developer.apple.com/design/human-interface-guidelines) · IBM Carbon · Tree view usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div>",
+   "example_ru": "Наша схема уровней (Меню, Пицца, Маргарита) — решение ДС: у MD3 дерева нет, Apple даёт только outline view для macOS, а числа есть лишь у Angular."
+  },
+  {
+   "title": "Глубина вложенности и отступ уровня",
+   "items": [
+    "Что происходит: на 375 px третий и четвёртый уровень дерева съедают ширину: при отступе 40 px на уровень под название остаётся 375 − 32 − 4 × 40 ≈ 183 px, и «Пицца с двойным сыром» переносится на три строки.",
+    "Что делают системы: Angular/CDK берёт отступ 40 px на уровень (`_indent: number = 40;`, в комментарии — «Default number 40px from material design menu sub-menu spec») и минимальную высоту узла 48 px при плотности 0; Carbon держит два размера узла — small 32 px по умолчанию и extra small 24 px — и советует второе именно для сложной вложенности: «If you have a tree structure with complex nesting levels, use the extra small node size to keep as much information in view as possible».",
+    "Что делать нам: на мобиле отступ уровня — 24 px вместо 40, узлы — 24 px (extra small по Carbon) с невидимой зоной нажатия; больше трёх уровней в дереве на телефоне не показываем."
+   ],
+   "src": "Источники: Angular Material / CDK · padding.ts (raw.githubusercontent.com/angular/components/main/src/cdk/tree/padding.ts) и _m3-tree.scss (raw.githubusercontent.com/angular/components/main/src/material/tree/_m3-tree.scss) · IBM Carbon · Tree view usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:35px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Пицца</span></div></div></div>",
+   "example_ru": "Два уровня с отступом 24 px вместо 40 (у Angular/CDK отступ уровня — 40 px, у Carbon «extra small» узел — 24 px при стандартном 32 px): название не переносится на три строки."
+  },
+  {
+   "title": "Длинные названия и горизонтальная прокрутка",
+   "items": [
+    "Что происходит: у длинных названий («Полуфабрикаты, заготовки для горячего цеха») дерево начинает скроллиться вбок, и подпись уезжает от своего узла — непонятно, к какому уровню относится строка.",
+    "Что делают системы: Ant Design при включённой виртуальной прокрутке прямо запрещает авто-ширину — «Virtual scroll only render items in visible region. Thus not support auto width (like long `title` with horizontal scroll)», а для длинных подписей предлагает `blockNode` («Whether treeNode fill remaining horizontal space») и режим линий `showLine`; Carbon добавляет, что дерево рассчитано на «concise labels that do not need to be organized in a column structure».",
+    "Что делать нам: горизонтальную прокрутку в дереве на мобиле не используем; длинное название переносится внутри узла (до двух строк), полное — в раскрытии или в отдельном экране узла."
+   ],
+   "src": "Источники: Ant Design · Tree (ant.design/components/tree) · IBM Carbon · Tree view usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div>",
+   "example_ru": "Узлы с короткими подписями в 343 px без горизонтальной прокрутки: у Ant Design виртуальный список вообще не поддерживает авто-ширину для длинных названий."
+  },
+  {
+   "title": "Дерево против аккордеона и таблицы",
+   "items": [
+    "Что происходит: дерево применяют там, где хватило бы одного уровня (категории меню), и наоборот — в таблицу пытаются вложить три уровня иерархии.",
+    "Что делают системы: Carbon разводит по глубине — «Use the accordion component when you need to organize lengthy information in sections that only go one level deep. Tree view is best used for nesting categories of information in a hierarchy of multiple levels», а про таблицы оговаривает, что «Data table rows can be expanded, but we recommend only expanding a row one level deep»; Apple для иерархии советует не таблицу, а outline view: «Use an outline view instead of a table view to present hierarchical data».",
+    "Что делать нам: один уровень вложенности — аккордеон или раскрытие строки, два и больше — дерево; третий уровень в таблицу не добавляем, даже если данные так лежат."
+   ],
+   "src": "Источники: IBM Carbon · Tree view usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx) · Apple HIG · Lists and tables (developer.apple.com/design/human-interface-guidelines/lists-and-tables) · Nielsen Norman Group · Mobile Tables (nngroup.com/articles/mobile-tables/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__label-up\">Категория</span><span class=\"ds-text-ui__list-item\">Пицца</span><span class=\"ds-text-ui__label-down\">24 позиции</span></div></div></div>",
+   "example_ru": "Один уровень — плоская строка («Категория / Пицца / 24 позиции») вместо дерева: Carbon советует аккордеон для одного уровня, а дерево — для нескольких."
+  },
+  {
+   "title": "Палец и тач-зона узла",
+   "items": [
+    "Что происходит: узел дерева рисуют 24 px, как в плотных интерфейсах, и попасть в раскрытие ребёнка с первого раза не удаётся — вместо раскрытия выделяется соседняя строка.",
+    "Что делают системы: Apple требует область касания не меньше 44×44 pt, MD3 — 48 dp (в material-components-web это `$height: 48px`), Angular задаёт минимальную высоту узла 48 px при плотности 0; Carbon при этом держит узлы 32 px (small, по умолчанию) и 24 px (extra small), то есть плотный визуальный размер и зона нажатия в платформенных числах расходятся.",
+    "Что делать нам: визуальная строка узла — 24–32 px, но зона нажатия — вся ширина строки и не меньше 44 px по высоте; шеврон раскрытия получает собственную зону 44 px."
+   ],
+   "src": "Источники: Apple HIG · Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility) · Google Material Components Web · Touch target (raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-touch-target/_touch-target.scss) · Angular Material · _m3-tree.scss (raw.githubusercontent.com/angular/components/main/src/material/tree/_m3-tree.scss) · IBM Carbon · Tree view usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tree-view/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><span class=\"pat__hit\"><span class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></span></span></div>",
+   "example_ru": "Пунктиром — зона нажатия 48 × 48 dp вокруг узла: рисунок 24 px, а нажимается вся строка (Apple требует 44 × 44 pt, Angular — 48 px)."
+  },
+  {
+   "title": "Состояние раскрытия и доступность",
+   "items": [
+    "Что происходит: пользователь раскрывает ветку, уходит на другой экран и возвращается к полностью свёрнутому дереву; с экранным диктором дерево без уровней читается как плоский список.",
+    "Что делают системы: Angular строит дерево как WAI-ARIA tree widget и требует корректных данных — `levelAccessor` или `childrenAccessor` (в документации отмечено, что устаревший `treeControl` не даёт правильной доступности) и признак `isExpandable` у раскрываемых узлов; Ant Design хранит состояние через `defaultExpandedKeys`/`expandedKeys`, умеет `autoExpandParent` и программную прокрутку к узлу `scrollTo({ key, autoExpand })`.",
+    "Что делать нам: состояние раскрытых веток сохраняется на время сессии; в разметке узла есть уровень и признак раскрываемости, чтобы диктор читал иерархию, а не список."
+   ],
+   "src": "Источники: Angular Material · Tree (raw.githubusercontent.com/angular/components/main/src/material/tree/tree.md) · Ant Design · Tree (ant.design/components/tree)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column\"><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:11px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Меню</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:51px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span><span>Пицца</span></div><div class=\"ds-tree-item ds-tree-item--middle\" style=\"padding-left:91px\"><span class=\"ds-tree__icon\"><span class=\"material-icons\" style=\"font-size:24px\">subdirectory_arrow_right</span></span><span>Маргарита</span></div></div></div>",
+   "example_ru": "Раскрытая ветка (Меню → Пицца → Маргарита) остаётся раскрытой при возврате: у Ant Design для этого есть `expandedKeys` и `autoExpandParent`, у Angular — уровень узла для диктора."
+  }
+ ]
+}

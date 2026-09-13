@@ -1,0 +1,125 @@
+{
+ "slug": "logo",
+ "component": "Logo",
+ "ds_page": "Logo_DS",
+ "desc_ru": "Логотип iiko и syrve. Визуальный примитив из брендбука — спецификации компонента нет ни у одной платформы.",
+ "category_ru": "Без изменений",
+ "category_note_ru": "токены и значения общие с десктопом",
+ "summary_ru": "Не меняется. Логотипа как компонента нет ни в MD3, ни в Angular Material, ни в iOS HIG — это брендбук, а не UI-библиотека; чисел у него нет и на десктопе нет.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "высота 72 px"
+  },
+  "mobile": {
+   "sub_ru": "то же"
+  }
+ },
+ "changes": [
+  {
+   "what": "Высота",
+   "desktop": "72 px (знак ико, 70,9 px у syrve)",
+   "mobile": "72 px (знак ико, 70,9 px у syrve) — та же"
+  },
+  {
+   "what": "Цвет и пропорции",
+   "desktop": "из брендбука",
+   "mobile": "те же — ось темы и брендбук"
+  },
+  {
+   "what": "Отступы вокруг",
+   "desktop": "определяет страница",
+   "mobile": "то же"
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Ничего не переопределяется: размер логотипа задаёт брендбук и раскладка страницы, а не режим платформы.</p>",
+ "why_ru": "Компонента Logo нет ни в MD3, ни в Angular Material, ни в iOS HIG — все три адреса отдают 404, потому что логотип относится к брендбуку, а не к UI-библиотеке. Ближайшие проверяемые числа — у смежных сущностей: у MD3 и Angular иконка по умолчанию 24 px, у Apple размеры иконок документов и SF Symbols. Выдавать 24 px за правило логотипа нельзя: у логотипа свои пропорции и своя «живая область». Отдельно отмечу правило Apple: не добавлять логотипу собственные скругления, тени и градиенты — система сама маскирует углы и накладывает эффекты.",
+ "result_html": "<ul class=\"list\"><li>Не меняется: ни одной платформенной величины для логотипа не существует.</li><li><b>Не решено:</b> в этом превью стоит заглушка вместо векторного знака — файл логотипа живёт в брендбуке, а не в ДС.</li><li><b>Не решено:</b> если на мобиле нужен уменьшенный знак (например, в шапке), его размер — вопрос брендбука, а не режима платформы.</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Логотип iiko (заглушка вместо вектора)",
+   "html": "<div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:150px;background:#EDEFF3\"></span></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "Логотип syrve (заглушка вместо вектора)",
+   "html": "<div class=\"ds-logo-syrve\"><span class=\"ds-logo-syrve__vector\" style=\"width:150px\"></span></div>",
+   "stack": true
+  }
+ ],
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Компонента Logo в MD3 нет: m3.material.io/components/logo/specs → HTTP 404, ни logo, ни brand-компонента в material-web нет — выдать 24px icon за «правило логотипа» нельзя, это разные сущности (logo.json).",
+    "У Angular Material логотипа тоже нет (src/material/logo/logo.md → HTTP 404); единственная близкая сущность — mat-icon с $size: 24px !default, и это ширина/высота элемента иконки, а не «живая область» знака (logo.json).",
+    "Правил clear space, минимальных размеров и safe area для логотипа не публикует ни MD3, ни Angular — бренд-зону платформенными числами обосновать невозможно (logo.json).",
+    "Единственный размерный графический токен MD3 — --md-icon-size: 24px (в примере темы переопределён до 48px), но он про иконки, а не про логотип (logo.json).",
+    "Бренд в MD3 выражается цветовыми ролями (md.sys.color.*) и типографикой, а не отдельным компонентом (logo.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Компонента Logo в HIG нет: developer.apple.com/design/human-interface-guidelines/logo → HTTP 404; правила есть только для бренд-графики приложения (logo.json).",
+    "Единственные числа Apple про бренд — иконка приложения 1024×1024 px (iOS, iPadOS, macOS), 800×480 px (tvOS), 1088×1088 px (watchOS); скругление применяет система, поэтому свои углы и тени рисовать не надо (logo.json).",
+    "Ближайшее к clear space правило с числами: margin около 10 % канваса и заполнение около 80 % — «most of the center image in a 256x256 px canvas would fit in an area that measures 205x205 px» (logo.json).",
+    "Минимальный размер графики в HIG — 16×16 px (иконки документов macOS); для логотипа это не норма, а нижняя граница растровой графики (logo.json).",
+    "HIG прямо ограничивает показ логотипа в интерфейсе: «Resist the temptation to display your logo throughout your app … unless it's essential for providing context» и «Ensure branding always defers to content» (logo.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Логотип не менять на мобиле: 72 px приходит из брендбука, а не из платформы, масштабировать «под экран» нечего.",
+  "Показывать его на входе или на экране бренда, а не в каждой шапке: бренд уступает контенту.",
+  "Логотип — не ссылка и не кнопка; тач-зону 48 ему не добавляем.",
+  "Использовать вектор: заглушка вместо вектора на телефоне даёт мыло на 3× экранах.",
+  "Размер логотипа не обосновывать платформенными числами — их нет ни у MD3, ни у Angular, ни у Apple."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Ещё</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"phone__card\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:150px;background:#EDEFF3\"></span></div><p class=\"phone__card-title\">Ресторан «Прага»</p><p class=\"phone__card-text\">Арбат, 12 · смена 12 сентября</p></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Смена</span><span class=\"ds-list-item__text\">12 сентября, 09:00 — 23:00</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">открыта</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">devices</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Оборудование</span><span class=\"ds-list-item__text\">Касса, принтер кухни</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">4 онлайн</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">О приложении</span><span class=\"ds-list-item__text\">iikoOffice 8.4</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">сборка 2140</span></div></div></div></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">О приложении</p><p class=\"phone__sheet-text\">iikoOffice 8.4 · сборка 2140</p><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Версия</span><span class=\"ds-list-item__text\">iikoOffice 8.4</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">build</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Сборка</span><span class=\"ds-list-item__text\">2140</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">verified</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Лицензия</span><span class=\"ds-list-item__text\">до 31.12.2026</span></div></div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Закрыть</span></button></div></div></div></div><p class=\"phone__caption\">Знак iiko в карточке ресторана: логотип в теле экрана</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Ещё</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"phone__card\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:150px;background:#EDEFF3\"></span></div><p class=\"phone__card-title\">Ресторан «Прага»</p><p class=\"phone__card-text\">Арбат, 12 · смена 12 сентября</p></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Смена</span><span class=\"ds-list-item__text\">12 сентября, 09:00 — 23:00</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">открыта</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">devices</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Оборудование</span><span class=\"ds-list-item__text\">Касса, принтер кухни</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">4 онлайн</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">О приложении</span><span class=\"ds-list-item__text\">iikoOffice 8.4</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">сборка 2140</span></div></div></div></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">О приложении</p><p class=\"phone__sheet-text\">iikoOffice 8.4 · сборка 2140</p><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Версия</span><span class=\"ds-list-item__text\">iikoOffice 8.4</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">build</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Сборка</span><span class=\"ds-list-item__text\">2140</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">verified</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Лицензия</span><span class=\"ds-list-item__text\">до 31.12.2026</span></div></div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Закрыть</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "Спецификации логотипа нет ни у одной платформы",
+   "items": [
+    "Что происходит: искать «спеку логотипа» в платформах бесполезно: m3.material.io/components/logo/specs отдаёт 404, в Angular Material нет src/material/logo (404), у Apple страницы Logo тоже нет (404) — логотип относится к брендбуку, а не к UI-киту.",
+    "Что делают системы: ближайшие проверяемые числа находятся у смежных сущностей: в MD3 и Angular это иконка 24 px по умолчанию (`--md-icon-size` = 24px, `$size: 24px !default`), у Apple — иконка приложения 1024×1024 px, которую система сама маскирует по форме rounded rectangle.",
+    "Что делать нам: Logo в ДС ведём как брендовый ассет с собственной спецификацией (знак iiko — 72 px, знак syrve — 70,9 px) и не подменяем его правилами иконок 24 px; общие правила берём только у Apple — оптическое выравнивание и запрет своих углов и теней."
+   ],
+   "src": "Источники: Material Design 3 · HTTP 404 (m3.material.io/components/logo/specs) · Material Web · Icon (raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md) · Angular Material · icon.scss (raw.githubusercontent.com/angular/components/main/src/material/icon/icon.scss) · Apple HIG · App icons (developer.apple.com/design/human-interface-guidelines/app-icons) · Apple HIG · Icons (developer.apple.com/design/human-interface-guidelines/icons)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" data-mode=\"mobile\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><div class=\"ds-logo-syrve\"><span class=\"ds-logo-syrve__vector\" style=\"width:70.9px\"></span></div></div>",
+   "example_ru": "Знаки по собственной спецификации ДС: iiko — 72 px, syrve — 70,9 px, а не по общим правилам иконок 24 px."
+  },
+  {
+   "title": "Своя «живая область» вокруг знака",
+   "items": [
+    "Что происходит: при обрезке и на разных экранах знак либо прилипает к краю, либо кажется мелким: у платформы есть числа только для графики с полем — Apple: «Define a margin that measures about 10% of the image canvas and keep most of the image within it… it's best when the image occupies about 80% of the image canvas», в канвасе 256×256 px полезная область ≈ 205×205 px.",
+    "Что делают системы: Apple оставляет это правило для иконок интерфейса и документов, а MD3 в качестве бренд-выражения предлагает цветовые роли и типографику вместо отдельного компонента — то есть поле вокруг знака платформа не нормирует вообще.",
+    "Что делать нам: вокруг знака в ДС задаём свою «живую область» ≈ 10 % от его высоты и выравниваем по ней, а не по паддингу карточки 16 px; при вставке в нестандартный контейнер добавляем паддинг до оптического выравнивания."
+   ],
+   "src": "Источники: Apple HIG · Icons (developer.apple.com/design/human-interface-guidelines/icons) · Apple HIG · App icons (developer.apple.com/design/human-interface-guidelines/app-icons) · Material Web · Icon (raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" data-mode=\"mobile\"><div style=\"padding:7px;background:#EDEFF3;border-radius:8px;display:flex\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px\"></span></div></div></div>",
+   "example_ru": "Живая область вокруг знака — около 10 % его высоты (≈7 px при знаке 72 px): выравниваем по ней, а не по паддингу карточки 16 px."
+  },
+  {
+   "title": "Скругления, тени и градиенты знака",
+   "items": [
+    "Что происходит: на мобиле знаку добавляют собственные скругления и тени, хотя в системных контекстах углы и маску рисует система: Apple прямо просит держать основной контент по центру — «Keep primary content centered to avoid truncation when the system adjusts corners or applies masking».",
+    "Что делают системы: Apple рисует иконку приложения квадратной, а скругление применяет сама («Icon shape after system masking»), поэтому «свои» углы и блики ломают её вид; MD3 в своей графике опирается на Material Symbols с осями weight / fill / grade.",
+    "Что делать нам: знак в разметке ДС — плоский: без своих скруглений, теней и градиентов; варианты «на светлом / на тёмном» держим как ось темы и брендбука, а не как эффект оформления."
+   ],
+   "src": "Источники: Apple HIG · App icons (developer.apple.com/design/human-interface-guidelines/app-icons) · Material Web · Icon (raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" data-mode=\"mobile\"><div style=\"padding:7px;background:#EDEFF3;border-radius:8px;display:flex\"><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px\"></span></div></div><div style=\"padding:7px;background:var(--ds-color-brand-neutral-super-dark);border-radius:8px;display:flex\"><div class=\"ds-logo-syrve\"><span class=\"ds-logo-syrve__vector\" style=\"width:70.9px\"></span></div></div></div>",
+   "example_ru": "Знак в разметке плоский — без собственных скруглений, теней и градиентов; «на светлом / на тёмном» — ось темы из брендбука, углы и маску в системных контекстах рисует сама система."
+  },
+  {
+   "title": "Логотип уступает место контенту",
+   "items": [
+    "Что происходит: логотип в шапке на 375 px забирает место у заголовка и поиска: Apple — «Resist the temptation to display your logo throughout your app or game unless it's essential for providing context», а «Ensure branding always defers to content».",
+    "Что делают системы: Apple описывает показ логотипа в интерфейсе как исключение, а не как способ «напомнить о себе», и советует не превращать его в элемент управления; MD3 заменяет бренд цветовыми ролями (md.sys.color.*) и типографикой.",
+    "Что делать нам: в шапке экрана — только заголовок; знак ставим на входе в приложение, в карточке «О приложении» и на пустых экранах, где нет контента, и не вешаем на него тач-действие (это не кнопка)."
+   ],
+   "src": "Источники: Apple HIG · Branding (developer.apple.com/design/human-interface-guidelines/branding) · Material Web · Icon (raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"phone__card\"><p class=\"phone__card-title\">О приложении</p><div class=\"ds-logo-iiko\"><span class=\"ds-logo-iiko__vector\" style=\"width:72px;background:#EDEFF3\"></span></div><p class=\"phone__card-text\">Версия 7.8.6 · смена 12 сентября</p></div></div>",
+   "example_ru": "В шапке на 375 px — только заголовок: место отдано контенту, а знак 72 px стоит в карточке «О приложении», где нет другого содержимого, и тач-действия не получает."
+  }
+ ]
+}

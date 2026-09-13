@@ -1,0 +1,201 @@
+{
+ "slug": "form-field",
+ "component": "Form field",
+ "ds_page": "Form-Field-Input_DS",
+ "desc_ru": "Поле формы: текст, поиск, выбор из списка. У размера M лейбл сверху, под полем — поддержка и подсказка.",
+ "category_ru": "Только размеры",
+ "category_note_ru": "состав, состояния и стили те же, отличаются размеры",
+ "summary_ru": "Поле M выше: 48 → 56 px, паддинги 12 → 16. Кегль ввода (16 px), лейбл и подписи (12 px) те же.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "поле M 48 px"
+  },
+  "mobile": {
+   "sub_ru": "поле M 56 px"
+  }
+ },
+ "changes": [
+  {
+   "what": "Высота поля M",
+   "desktop": "48 px",
+   "mobile": "56 px",
+   "edit": [
+    {
+     "id": "height",
+     "v": 56,
+     "sel": ".ds-input--m .ds-input__frame",
+     "css": "height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Паддинги поля M",
+   "desktop": "12 px со всех сторон",
+   "mobile": "16 px",
+   "edit": [
+    {
+     "id": "pad",
+     "v": 16,
+     "sel": ".ds-input--m .ds-input__frame",
+     "css": "padding:@px"
+    }
+   ]
+  },
+  {
+   "what": "Размеры S и XS",
+   "desktop": "36 px и 28 px",
+   "mobile": "36 px и 28 px — плотные варианты"
+  },
+  {
+   "what": "Кегль вводимого текста",
+   "desktop": "16 px (M, S) · 14 px (XS)",
+   "mobile": "16 px (M, S) · 14 px (XS) — те же"
+  },
+  {
+   "what": "Лейбл и подписи",
+   "desktop": "12 px",
+   "mobile": "12 px — те же"
+  },
+  {
+   "what": "Иконка в поле",
+   "desktop": "20 px",
+   "mobile": "20 px — та же"
+  },
+  {
+   "what": "Радиус, фон, рамка",
+   "desktop": "12 px, #F8F9FC, рамка 1 px",
+   "mobile": "12 px, #F8F9FC, рамка 1 px — стилевые токены общие"
+  },
+  {
+   "what": "Состояния",
+   "desktop": "hover · focus · error · disabled",
+   "mobile": "те же, кроме наведения — на телефоне его не показывают"
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Поведение не меняется: те же состояния, тот же лейбл сверху у M, те же поддержка и подсказка под полем. Высота поля больше не задана числом — считается из паддингов и строки ввода (12 + 12 + 24 = 48, на мобиле 16 + 16 + 24 = 56), поэтому режим меняет только паддинги.</p>",
+ "why_ru": "MD3 (в реализации MDC Web — $height: 56px) и Angular Material (form-field 56 px при density 0, вертикальный паддинг 16) дают одно и то же число — 56, поэтому на мобиле поле выше. Меньше 48 у Angular — это плотности (−1…−5), а не мобильный размер; размерного ряда small/medium/large у полей нет ни у одной платформы. Второе правило мобильного веба: кегль вводимого текста не меньше 16 px, иначе iOS зумит страницу при фокусе — у нашего M и S он уже 16, менять нечего. Apple высоту поля не фиксирует вовсе: только тач-таргет 44 × 44 pt и кегль 17 pt.",
+ "why_sources": [],
+ "result_html": "<ul class=\"list\"><li>Поле M на мобиле — 56 px с паддингами 16: ровно те числа, которые называют MD3 и Angular Material.</li><li>Высота поля выводится из паддингов и строки ввода, а не задана числом — под это правило попадают все три размера (48 / 36 / 28).</li><li>Кегль ввода у M и S — 16 px, зума iOS при фокусе не будет.</li><li><b>Не решено:</b> у XS кегль ввода 14 px — на телефоне iOS зумит поле при фокусе. Либо не использовать XS на мобиле, либо поднимать кегль до 16.</li><li><b>Не решено:</b> S (36) и XS (28) остаются плотными: 36 у Angular — только density −5, поля 28 px нет ни у MD3, ни у Angular, ни у Apple.</li><li><b>Не решено:</b> иконка в поле рендерится 20 px, а компонентный токен <code>Form field/[M|S] size/Icon</code> равен 24 px — расхождение внутри ДС, не трогал.</li><li><b>Не решено:</b> в токенах есть отступы подписи (<code>Form field/Pad support left/right</code> = 12 px), но в CSS они не применяются — подпись стоит вплотную к краю.</li><li><b>Не решено:</b> наведение на тач-устройствах не отключается нигде в библиотеке.</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Основное поле (M) — с лейблом и без",
+   "html": "<div class=\"ds-input ds-input--m\" style=\"width:320px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Название процесса</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"Название процесса\"></div></div></div><div class=\"ds-input ds-input--m\" style=\"width:320px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Название процесса\"></div></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "Плотные размеры (S и XS)",
+   "html": "<div class=\"ds-input ds-input--s\" style=\"width:320px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Поиск\"></div></div></div><div class=\"ds-input ds-input--xs\" style=\"width:320px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Ячейка\"></div></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "С иконкой",
+   "html": "<div class=\"ds-input ds-input--m\" style=\"width:320px\"><div class=\"ds-input__frame\"><span class=\"ds-input__icon material-icons\">search</span><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Поиск по названию\"></div></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "Состояния: ошибка и недоступное",
+   "html": "<div class=\"ds-input ds-input--m ds-input--error\" style=\"width:320px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Название процесса\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Название занято</span><span class=\"ds-input__hint\"></span></div></div><div class=\"ds-input ds-input--m ds-input--disabled\" style=\"width:320px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Название процесса\" value=\"Значение\" disabled></div></div></div>",
+   "stack": true
+  }
+ ],
+ "found_html": "<p><b>box-sizing у кадров и строк.</b> В библиотеке нет <code>box-sizing: border-box</code>, поэтому высота из токена/числа складывалась с паддингами: кадр поля 48 px показывался как 74, кадр textarea 76 как 94, строка списка 68 как 84. В прототипах ДС это лечат на странице (<code>.js-select .ds-select-form__input-frame{box-sizing:border-box;height:48px}</code>) — в каркасе страниц повторено то же для всех таких классов. Библиотеку не правим.</p>",
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Высота поля 56 dp подтверждена официальной реализацией MDC Web ($height: 56px), в material-web она складывается из токенов top-space 16 + строка body-large 24 + bottom-space 16 (text-field.json).",
+    "У Angular при density 0 ровно те же 56 px (form-field-container-height), шкала плотности доходит до 36 px (−5), вертикальный паддинг по шагам 16/14/12/10/8/6 — отсюда мобильные паддинги 12 → 16 (text-field.json, data-tech/form-field.json).",
+    "Горизонтальный паддинг MD3 — 16 px ($padding-horizontal), то есть наш мобильный 16 со всех сторон платформенный, а не выдуманный (text-field.json).",
+    "Кегль ввода 16 px — это body-large 1 rem у MD3 и у Angular; 12 px (0.75 rem) — только supporting/floating-label, ввод таким быть не может (text-field.json).",
+    "Размерного ряда small/medium/large у полей нет ни в MD3 (только filled/outlined), ни у Angular (fill/outline); поля 28 px (наш XS) и 32 px нет ни у одной платформы (text-field.json, data-tech/form-field.json).",
+    "Тач-таргет 48 dp: у поля 56 px на мобиле он перекрыт, а у S 36 и XS 28 — нет, там тач-зону надо добавлять отдельно (text-field.json, data-tech/form-field.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Высоту поля Apple числом не задаёт: вместо неё тач-таргет 44×44 pt (минимум 28×28 pt) — 56 px на мобиле просто выше минимума, но не «по HIG» (text-field.json).",
+    "Кегль по умолчанию 17 pt, минимум 11 pt; наш ввод 16 px ниже дефолта и это риск: на iOS поле с кеглем меньше 16 px зумит экран при фокусе (text-field.json).",
+    "Внешней подписи-«form field» у Apple нет: label отдельный, а placeholder исчезает при вводе — наша схема «лейбл сверху + поддержка под полем» не Apple-паттерн (text-field.json).",
+    "Длинный ввод HIG отправляет в text view — «To let people input larger amounts of text, use a text view instead»: поле не растягиваем на многострочный текст (text-field.json).",
+    "Для чувствительных данных HIG прямо требует secure text field («Always use a secure text field when your app asks for sensitive data, such as a password») — пароли в обычном поле на мобиле не оставляем (text-field.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Лейбл держать сверху, а не placeholder: подпись, исчезающая при вводе, теряет контекст — что за поле, уже не вспомнить.",
+  "Поддержка и ошибка — одна строка 12 px под полем; две разные подписи одновременно не показывать.",
+  "Поле на всю ширину в столбик: два поля в ряд на 375 px дают ввод шириной около 160 px.",
+  "На мобиле размер один — M; S и XS оставить только для плотных фильтров, где ввод не главное.",
+  "Чего нельзя: кегль ввода меньше 16 px, высота поля ниже 36 px, обязательность одним астериском без текста ошибки."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Новое блюдо</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-input ds-input--m\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Название блюда</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"Пицца «Маргарита»\"></div></div></div><div class=\"ds-input ds-input--m\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Цена, ₽\"></div></div></div><div class=\"ds-input ds-input--m ds-input--error\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Код в меню</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"Пицца «Маргарита»\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Такой код уже есть</span><span class=\"ds-input__hint\"></span></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Добавить модификатор</p><p class=\"phone__sheet-text\">Модификатор изменит цену позиции</p><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Название модификатора</span><span class=\"ds-list-item__text\">Без лука</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">payments</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Цена, ₽</span><span class=\"ds-list-item__text\">0</span></div></div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Добавить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Поля формы блюда в теле: с лейблом, поле цены и поле с ошибкой</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Новое блюдо</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-input ds-input--m\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Название блюда</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"Пицца «Маргарита»\"></div></div></div><div class=\"ds-input ds-input--m\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Цена, ₽\"></div></div></div><div class=\"ds-input ds-input--m ds-input--error\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Код в меню</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"Пицца «Маргарита»\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Такой код уже есть</span><span class=\"ds-input__hint\"></span></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Добавить модификатор</p><p class=\"phone__sheet-text\">Модификатор изменит цену позиции</p><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Название модификатора</span><span class=\"ds-list-item__text\">Без лука</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">payments</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Цена, ₽</span><span class=\"ds-list-item__text\">0</span></div></div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Добавить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "Высота 56 px и кегль ввода 16 px",
+   "items": [
+    "Что происходит: поле высотой 56 px удобно пальцу, но в плотных формах его ужимают до 32–40 px, и вместе с высотой падает кегль ввода — на 375 px такое поле читается хуже и промахивается чаще.",
+    "Что делают системы: Google MDC задаёт высоту числом ($height: 56px !default), MD3 считает ввод текстом body-large — 1 rem (16 px); Apple: 17 pt по умолчанию при минимуме 11 pt; IBM Carbon даёт три размера — «small (32px), medium (40px), and large (48px)», где medium — размер по умолчанию.",
+    "Что делать нам: в мобильном слое ДС держать высоту 56 px и кегль ввода 16 px; 32 px оставить плотным десктопным формам, на телефоне его не применять."
+   ],
+   "src": "Источники: Material Components Web · _variables.scss (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-textfield/_variables.scss) · Material Web · _md-sys-typescale.scss (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss) · Apple HIG · Typography (https://developer.apple.com/design/human-interface-guidelines/typography) · IBM Carbon · Text input (https://carbondesignsystem.com/components/text-input/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\" style=\"height:56px\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Название процесса\" style=\"font-size:16px\"></div></div></div></div>",
+   "example_ru": "Высота поля 56 px и кегль ввода 16 px — как $height: 56px у MDC и body-large 1 rem у MD3; плотные 32 px остаются десктопным формам."
+  },
+  {
+   "title": "Видимый label вместо placeholder",
+   "items": [
+    "Что происходит: placeholder исчезает при вводе, и на 375 px пользователь теряет понимание, что именно заполняет; у дефолтного плейсхолдера к тому же часто не хватает контраста.",
+    "Что делают системы: GOV.UK: «Avoid placeholder text... Do not use placeholder text in place of a label, or for hints or examples» — в том числе потому, что «its browser default styles often do not meet WCAG 2.2 success criterion 1.4.3 Contrast (minimum)»; Carbon: Label «is required unless you get an approved accessibility exemption»; MD3 держит подпись над полем (with-label-top-space: 8px).",
+    "Что делать нам: ставить видимый label над полем, helper-текст кеглем 12 px под полем (body-small 0.75rem), а placeholder использовать только как пример заполнения."
+   ],
+   "src": "Источники: GOV.UK Design System · Text input (https://design-system.service.gov.uk/components/text-input) · IBM Carbon · Text input (https://carbondesignsystem.com/components/text-input/usage) · Material Web · _md-comp-filled-text-field.scss (https://raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-filled-text-field.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Название процесса</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"Например, Кухня\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Подпись остаётся на месте и после ввода</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "Подпись «Название процесса» — отдельным label над полем, placeholder только как пример заполнения; helper-текст под полем кеглем 12 px."
+  },
+  {
+   "title": "Клавиатура закрывает поле и кнопки формы",
+   "items": [
+    "Что происходит: при открытой клавиатуре на 375 px остаётся около трети высоты экрана, и поле, по которому тапнули, вместе с футером формы часто оказывается под клавиатурой.",
+    "Что делают системы: Apple требует показывать подходящую клавиатуру — «show the appropriate keyboard type»; GOV.UK задаёт атрибут inputmode для числовых полей (в разметке date input — inputmode=\"numeric\"); Ant Design для тач-устройств даёт inputReadOnly, что «avoids virtual keyboard on touch devices».",
+    "Что делать нам: выбирать тип клавиатуры по содержимому (numeric/tel), поднимать поле над клавиатурой и не перекрывать его футером формы; поля только для чтения делать read-only, чтобы клавиатура не открывалась."
+   ],
+   "src": "Источники: Apple HIG · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields) · GOV.UK Design System · Date input (https://design-system.service.gov.uk/components/date-input) · Ant Design · DatePicker (https://ant.design/components/date-picker/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Количество гостей</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"4\" inputmode=\"numeric\"></div></div></div><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><div style=\"height:216px;background:#F5F5F5;border-radius:8px;display:flex;justify-content:flex-end;align-items:flex-start;padding:8px\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--text\" type=\"button\" style=\"width:auto\"><span class=\"ds-btn__label\">Готово</span></button></div></div>",
+   "example_ru": "Поле с numeric-клавиатурой поднято над клавиатурой, кнопка «Сохранить» осталась на месте: место под клавиатуру — 216 px из 667 px, поле и футер не перекрыты."
+  },
+  {
+   "title": "Ширина поля по содержимому",
+   "items": [
+    "Что происходит: поле во всю ширину 343 px для номера стола или количества гостей читается как приглашение вводить что угодно и делает форму визуально однообразной.",
+    "Что делают системы: GOV.UK: «Help users understand what they should enter by making text inputs the right size for the content they're intended for. Use fixed width inputs for content that has a specific, known length. Postcode inputs should be postcode-sized, phone number inputs should be phone number-sized»; в их разметке для дня и месяца стоит класс ширины на два знака, для года — на четыре.",
+    "Что делать нам: задавать фиксированные узкие ширины для значений известной длины (день, месяц, год, стол, гости), полную ширину оставлять свободному тексту."
+   ],
+   "src": "Источники: GOV.UK Design System · Text input (https://design-system.service.gov.uk/components/text-input) · GOV.UK Design System · Date input (https://design-system.service.gov.uk/components/date-input)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"align-items:flex-start;gap:8px\"><div class=\"ds-input ds-input--m\" style=\"width:88px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"12\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div><div class=\"ds-input ds-input--m\" style=\"width:88px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"05\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div><div class=\"ds-input ds-input--m\" style=\"width:112px\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"2026\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "День, месяц и год — поля 88, 88 и 112 px по содержимому: 343 px полной ширины отданы свободному тексту, а не трём цифрам."
+  },
+  {
+   "title": "Ошибка и подсказка не двигают вёрстку",
+   "items": [
+    "Что происходит: сообщение об ошибке под полем увеличивает высоту формы, и кнопки уезжают из-под пальца ровно в момент, когда пользователь собирался нажать «Сохранить».",
+    "Что делают системы: IBM Carbon описывает ошибку тремя индикаторами — «Error states have three visual indicators to signify invalid content: a red border, an error icon indicator, and an error message» — и заменяет ими helper-текст, а высота поля остаётся прежней; Angular держит подпись-подсказку фиксированной высоты (height: 16px), MD3 задаёт supporting text тем же кеглем body-small.",
+    "Что делать нам: резервировать место под строку hint/ошибки (16 px), не сдвигать кнопки при появлении ошибки и показывать три индикатора: рамку, иконку и текст."
+   ],
+   "src": "Источники: IBM Carbon · Number input (https://carbondesignsystem.com/components/number-input/usage) · Angular Material · _form-field-subscript.scss (https://raw.githubusercontent.com/angular/components/main/src/material/form-field/_form-field-subscript.scss) · Material Web · _md-sys-typescale.scss (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Кухня\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div><div class=\"ds-input ds-input--m ds-input--error\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Бар\" value=\"Бар\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Название занято</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "Строка hint/ошибки зарезервирована под 16 px в обоих состояниях: при ошибке появляются рамка, иконка и текст, а высота поля не меняется и кнопки не уезжают."
+  },
+  {
+   "title": "Критичное не прятать в подсказку",
+   "items": [
+    "Что происходит: формат и обязательность поля пытаются уместить в placeholder или в тултип-иконку, а на тач-экране тултип по наведению вообще не открывается, и требование поля исчезает из интерфейса.",
+    "Что делают системы: IBM Carbon: «Since a tooltip disappears when a user hovers away, do not include pertinent information for the user to complete their task. Use helper text that is always visible and accessible for vital information, such as required fields»; Apple вообще не фиксирует у текстового поля высоту, а собирает форму из подписи и поля.",
+    "Что делать нам: формат и обязательность передавать постоянным helper-текстом под полем, а иконку-подсказку использовать только для пояснений, без критичных требований."
+   ],
+   "src": "Источники: IBM Carbon · Tooltip (https://carbondesignsystem.com/components/tooltip/usage) · Apple HIG · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input ds-input--m\" style=\"width:100%\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Дата брони</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"12.05.2026\"></div></div><div class=\"ds-input__support-row\"><span class=\"ds-input__support\">Обязательное поле · формат ДД.ММ.ГГГГ</span><span class=\"ds-input__hint\" style=\"display:block;height:16px\"></span></div></div></div>",
+   "example_ru": "Обязательность и формат — постоянным helper-текстом под полем (12 px), а не тултипом по наведению: требование остаётся видимым и на тач-экране."
+  }
+ ]
+}

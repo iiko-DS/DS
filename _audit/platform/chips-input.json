@@ -1,0 +1,105 @@
+{
+  "component": "Chips input",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "input chip container-height",
+          "height_dp": 32,
+          "quote": "'container-height': if($exclude-hardcoded-values, null, 32px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-input-chip.scss"
+        },
+        {
+          "name": "touch target (input chip)",
+          "height_dp": 48,
+          "quote": "  .touch {\n    height: 48px;\n    inset: 50% 0 0;\n    position: absolute;\n    transform: translateY(-50%);\n    width: 100%;\n  }",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/chips/internal/_shared.scss"
+        },
+        {
+          "name": "avatar-size",
+          "height_dp": 24,
+          "quote": "'with-avatar-avatar-size': if($exclude-hardcoded-values, null, 24px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-input-chip.scss"
+        },
+        {
+          "name": "leading-icon-size",
+          "height_dp": 18,
+          "quote": "    'with-leading-icon-leading-icon-size':\n      if($exclude-hardcoded-values, null, 18px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-input-chip.scss"
+        }
+      ],
+      "variants": [
+        "md-input-chip (attrs: avatar, remove-only, selected, disabled, soft-disabled)",
+        "в паре с md-outlined-text-field"
+      ],
+      "touch_target_dp": 48,
+      "notes_ru": "В MD3 нет отдельного компонента 'chips input': это КОМПОЗИЦИЯ из текстового поля (md-outlined-text-field) и input-чипов (md-input-chip). Документация так и показывает: поле ввода + чип-сет. Контейнер чипа 32 dp, аватар 24 dp, иконка 18 dp, тач-таргет 48 dp. Все input-чипы съёмные ('All input chips are removable'); есть remove-only.",
+      "sources": [
+        "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-input-chip.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/chips/internal/_shared.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/text-field.md"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "chip container-height, density 0",
+          "height_dp": 32,
+          "quote": "chip-container-height: list.nth((32px, 28px, 24px), $index),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/chips/_m3-chip.scss"
+        },
+        {
+          "name": "chip container-height, density -1",
+          "height_dp": 28,
+          "quote": "chip-container-height: list.nth((32px, 28px, 24px), $index),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/chips/_m3-chip.scss"
+        },
+        {
+          "name": "chip container-height, density -2",
+          "height_dp": 24,
+          "quote": "chip-container-height: list.nth((32px, 28px, 24px), $index),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/chips/_m3-chip.scss"
+        },
+        {
+          "name": "icon-size",
+          "height_dp": 18,
+          "quote": "chip-with-icon-icon-size: 18px,",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/chips/_m3-chip.scss"
+        }
+      ],
+      "variants": [
+        "<mat-chip-grid> + <mat-chip-row> (паттерн grid)",
+        "input с matChipInputFor + matChipInputSeparatorKeyCodes",
+        "matChipRemove (удаление), disabled",
+        "совместимо с <mat-autocomplete>"
+      ],
+      "density": "Клампится до -2 (theming.clamp-density($scale, -2)). Высота чипа-строки: 32 → 28 → 24 px.",
+      "notes_ru": "Реализуется как mat-chip-grid (контейнер) + mat-chip-row (чип) + <input matChipInputFor>. Ввод по разделителям (MAT_CHIPS_DEFAULT_OPTIONS.separatorKeyCodes), удаление по Delete (событие removed). Размеры чипа те же: 32/28/24 px по плотности.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/chips/_m3-chip.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "sizes": null,
+      "variants": null,
+      "notes_ru": "Компонента Chips input в iOS HIG НЕТ (страницы /chips и /chips-input → 404). Эквивалента 'чипы внутри поля ввода' в HIG не описано. Числа отсутствуют; 'не найдено'.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/chips (404)",
+        "https://developer.apple.com/design/human-interface-guidelines/text-fields"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Чипы в поле ввода высотой меньше 32 dp как базовый размер (MD3 container-height 32 dp; в Angular ниже только через density −1/−2).",
+    "Тач-таргет чипа-строки меньше 48 dp (MD3) — область нажатия 48 dp независимо от высоты чипа.",
+    "Использовать чип-ввод вне чип-сета/грида: MD3 требует чип-сет, Angular — mat-chip-grid.",
+    "Ожидать готовый компонент 'chips input' в MD3: это композиция поля и input-чипов, отдельного компонента нет.",
+    "Переносить chips input на iOS: HIG не описывает ни чипы, ни такой паттерн ввода — не выдумывать размеры в pt."
+  ],
+  "verdict_ru": "Chips input есть в MD3 и Angular Material, но как паттерн, а не отдельный компонент: MD3 — текстовое поле + md-input-chip, Angular — mat-chip-grid + mat-chip-row + matChipInputFor. Проверяемые числа совпадают: высота чипа 32 dp (в Angular ещё 28/24 через плотность), аватар 24 dp, иконка 18 dp, тач-таргет 48 dp. В iOS HIG эквивалента нет — 404 и отсутствие паттерна."
+}

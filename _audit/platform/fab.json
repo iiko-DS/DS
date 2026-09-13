@@ -1,0 +1,143 @@
+{
+  "component": "FAB",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "small FAB",
+          "height_dp": 40,
+          "quote": "/// md.comp.fab.small.container.height -> $container-height: 40px; (container-width 40px, icon-size 24px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-fab-small.scss"
+        },
+        {
+          "name": "medium FAB (default, 'FAB')",
+          "height_dp": 56,
+          "quote": "'container-height': if($exclude-hardcoded-values, null, 56px) / 'container-width': ... 56px / 'icon-size': ... 24px",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-fab-primary.scss"
+        },
+        {
+          "name": "large FAB",
+          "height_dp": 96,
+          "quote": "/// md.comp.fab.large.container.height -> $container-height: 96px; (container-width 96px, icon-size 36px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-fab-large.scss"
+        },
+        {
+          "name": "extended FAB (токены; в material-web без размеров)",
+          "height_dp": 56,
+          "quote": "/// md.comp.extended-fab.small.container.height -> $container-height: 56px (icon 24px, leading-space 16px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-extended-fab-small.scss"
+        },
+        {
+          "name": "extended FAB medium (токен)",
+          "height_dp": 80,
+          "quote": "/// md.comp.extended-fab.medium.container.height -> $container-height: 80px (icon 28px, leading-space 26px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-extended-fab-medium.scss"
+        },
+        {
+          "name": "extended FAB large (токен)",
+          "height_dp": 96,
+          "quote": "/// md.comp.extended-fab.large.container.height -> $container-height: 96px (icon 36px, leading-space 28px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-extended-fab-large.scss"
+        }
+      ],
+      "variants": [
+        "FAB (medium/default)",
+        "small FAB",
+        "large FAB",
+        "extended FAB (иконка + текст)",
+        "branded FAB (medium или large)"
+      ],
+      "touch_target_dp": 48,
+      "notes_ru": "Реализация: атрибут size со значениями small / medium (default) / large: 'FABs may be small, medium (default), or large by setting the size attribute. Small FABs can optionally further reduce their touch target.' Тач-таргет 48 dp: ':host([size=\\'medium\\'][touch-target=\\'wrapper\\']) { margin: max(0px, 48px - var(--_container-height)); }'. Ограничения из API-таблицы: 'Branded FABs cannot be sized to small, and Extended FABs do not have different sizes' (т.е. в material-web extended FAB одного размера, хотя в токенах есть 56/80/96 dp). Формы: --md-fab-container-shape = corner-large, small = corner-medium, large = corner-extra-large; --md-fab-icon-size по умолчанию 24px, small 24px, large 36px, branded 36px. Расширенная шкала FAB больше 96 dp не существует (XL FAB нет).",
+      "sources": [
+        "https://m3.material.io/components/floating-action-button/specs",
+        "https://m3.material.io/components/extended-fab",
+        "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/fab.md",
+        "https://raw.githubusercontent.com/material-components/material-web/main/fab/internal/_shared.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-fab-small.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-fab-large.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-fab-primary.scss"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "matFab (standard FAB)",
+          "height_dp": 56,
+          "quote": "width: 56px; height: 56px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/button/fab.scss"
+        },
+        {
+          "name": "matMiniFab",
+          "height_dp": 40,
+          "quote": "width: 40px; height: 40px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/button/fab.scss"
+        },
+        {
+          "name": "extended FAB",
+          "height_dp": 56,
+          "quote": "fab-extended-container-height: 56px,",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/button/_m3-fab.scss"
+        }
+      ],
+      "variants": [
+        "matFab (button[matFab], a[matFab])",
+        "matMiniFab (button[matMiniFab])",
+        "extended (только для полного FAB: 'Only full sized fabs support the extended attribute, mini FABs do not')",
+        "color: primary (default, primary-container) / secondary / tertiary"
+      ],
+      "density": "шкала 0..-3; fab-touch-target-display: list.nth((block, block, none, none), $index) — при density ≤ -2 тач-таргет отключается",
+      "touch_target": "48 dp: $touch-target-size: 48px -> fab-touch-target-size и fab-small-touch-target-size",
+      "notes_ru": "Числа подтверждены CSS: matFab 56×56, matMiniFab 40×40, extended-высота 56 dp (fab-extended-container-height), тач-таргет 48 dp для обоих размеров. Атрибута size нет: вариантов ровно два (fab / mini fab) + extended. Нет ни 80 dp extended, ни 96 dp large FAB, ни branded FAB — в Angular Material это не описано. matMiniFab не поддерживает extended.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button/fab.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button/_m3-fab.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button/button.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button/fab.ts"
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "sizes": [
+        {
+          "name": "числовых размеров нет",
+          "height_dp": null,
+          "quote": "(в HIG нет компонента floating action button; в индексе Components строка 'floating action' не встречается)",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/components"
+        },
+        {
+          "name": "общий минимум для кнопок",
+          "height_dp": 44,
+          "quote": "a button needs a hit region of at least 44x44 pt — in visionOS, 60x60 pt",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/buttons"
+        }
+      ],
+      "variants": [
+        "прямого эквивалента нет",
+        "ближайшее у Apple: обычная кнопка с prominent-стилем; в visionOS — кнопки 'floating in space' на материале glass ('When a button appears floating in space, use the glass material for its background.')",
+        "в visionOS — 'Prefer buttons that have a discernible background shape and fill'"
+      ],
+      "touch_target_pt": "44x44 pt (visionOS: центры кнопок не ближе 60 pt друг к другу; для кнопок ≥60 pt — 4 pt паддинга)",
+      "notes_ru": "FAB как компонента в HIG нет (проверено по индексу Components: 'floating action' не встречается). iOS не даёт ни размеров, ни разметки для FAB; единственные применимые нормы — хит-регион 44×44 pt (60×60 pt в visionOS) и правила, что кнопки в пространстве делаются на материале glass и с различимой подложкой. Это означает, что FAB-подобный элемент на iOS пришлось бы обосновывать через обычную кнопку, а не через платформенную рекомендацию.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/components",
+        "https://developer.apple.com/design/human-interface-guidelines/buttons",
+        "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "FAB меньше 40 dp: минимальный FAB у платформ — 40 dp (md.comp.fab.small.container.height 40px; matMiniFab 40×40), размеров XS/S меньше 40 dp для FAB не существует.",
+    "FAB XL больше 96 dp: максимальный — large FAB 96 dp; в M3 нет xlarge-FAB, в Angular Material нет large FAB вовсе.",
+    "Уменьшение тач-таргета FAB (material-web touch-target='none' у small FAB) и отключение тач-таргета Angular при density ≤ −2 — противоречит 48 dp (Material) и 44×44 pt (HIG).",
+    "matMiniFab с атрибутом extended: Angular прямо запрещает — 'Only full sized fabs support the extended attribute, mini FABs do not'.",
+    "Branded FAB размера small: material-web — 'Branded FABs cannot be sized to small'.",
+    "Extended FAB с несколькими размерами (56/80/96 dp) в Material Web: в токенах они есть, но API запрещает — 'Extended FABs do not have different sizes'.",
+    "FAB как элемент iOS-интерфейса: в HIG такого компонента нет, заменять платформенную рекомендацию нечем (числа только из общей нормы 44×44 pt).",
+    "Брендированные FAB и FAB с собственными формами/размерами, не входящими в набор small/medium/large."
+  ],
+  "verdict_ru": "FAB описан только в Material: Material Web даёт три размера — small 40×40 dp (иконка 24), medium 56×56 dp (иконка 24, дефолт) и large 96×96 dp (иконка 36), плюс extended-токены 56/80/96 dp, которые веб-реализация не поддерживает ('Extended FABs do not have different sizes'), и branded-вариант только medium/large. Angular Material повторяет ровно два размера: matFab 56×56 dp и matMiniFab 40×40 dp (extended — 56 dp), оба с тач-таргетом 48 dp. iOS HIG FAB не содержит вовсе — только общий минимум хит-региона 44×44 pt (60×60 pt в visionOS). Проверяемый рекомендованный набор для дизайн-системы: 40 dp (small) и 56 dp (medium/default) с тач-таргетом 48 dp; 96 dp large — только Material (в Angular нет), а уменьшение тач-таргета, mini-extended и branded-small запрещены прямо в источниках.",
+  "verified_on": "2026-09-11"
+}

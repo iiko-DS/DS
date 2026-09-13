@@ -1,0 +1,71 @@
+{
+ "slug": "chips",
+ "patterns_ru": [
+  {
+   "title": "Контейнер 32 dp, а палец целится в 48 dp",
+   "items": [
+    "Что происходит: чип — это контейнер 32 dp (MD3 фиксирует одно значение для всех четырёх типов: assist/filter/input/suggestion), тогда как минимальная область нажатия на мобиле — 48 dp; на 375 px разница в 16 px на чип превращается в промах по соседнему фильтру.",
+    "Что делают системы: MD3 расширяет область касания до 48 px отдельным слоем (.touch { height: 48px; inset: 50% 0 0; position: absolute; ... }) и отступом margin: max(0px, (48px - var(--_container-height)) / 2) 0;, а Google Accessibility формулирует то же словами: «An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target».",
+    "Что делать нам: видимую высоту чипа оставить 32 px, а строку и сетку чипов верстать с min-height 48 px и зазором 8 px (IBM Carbon: «When tags are placed in groups, it is recommended to have 8px of space between them on the top, bottom, left, and right»)."
+   ],
+   "src": "Источники: Material Web · chips/internal/_shared.scss (https://raw.githubusercontent.com/material-components/material-web/main/chips/internal/_shared.scss) · Google Accessibility (https://support.google.com/accessibility/android/answer/7101858) · IBM Carbon · Tag (https://carbondesignsystem.com/components/tag/usage)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:8px;min-height:48px\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span></div></div>",
+   "example_ru": "Чип остаётся высотой 32 px, а строка набора — 48 px с зазором 8 px: палец попадает в полосу 48 × 48, а не в сам контейнер."
+  },
+  {
+   "title": "Набор чипов не влезает в 375 px",
+   "items": [
+    "Что происходит: чипы существуют только набором («Chips should always appear in a set»), и 4–6 фильтров на узком экране занимают две-три строки, выдавливая список вниз; третья строка чипов обычно уже не читается как фильтры.",
+    "Что делают системы: IBM Carbon для переполнения делает отдельный вариант — operational tag, который «disclose additional or overflow tags, like in a popover, modal, or detail view», и держит в группе зазор 8 px; у MD3 фильтр — это filter chip (selectable, removable) со своей иконкой 18 dp.",
+    "Что делать нам: держать одну строку набора с горизонтальной прокруткой, последним чипом — «Ещё» с иконкой tune, открывающий шторку со всеми фильтрами; переносить набор на вторую строку вместо прокрутки не нужно."
+   ],
+   "src": "Источники: IBM Carbon · Tag (https://carbondesignsystem.com/components/tag/usage) · Material Web · chip.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"min-height:48px;overflow-x:auto\"><div class=\"ds-chips-group\" style=\"flex-wrap:nowrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Без лука</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__icon\"><span class=\"material-icons\" style=\"font-size:24px\">tune</span></span><span class=\"ds-chips__label\">Ещё</span></div></div></div>",
+   "example_ru": "Набор фильтров — одной строкой 48 px с горизонтальной прокруткой, шестым чипом «Ещё» с иконкой tune: в 343 px тела экрана строка не переносится."
+  },
+  {
+   "title": "Полный набор фильтров в шторке",
+   "items": [
+    "Что происходит: за горизонтальной прокруткой не видно, сколько фильтров есть на самом деле, а активный фильтр легко уезжает за край экрана и перестаёт быть заметным.",
+    "Что делают системы: Carbon прямо отводит переполнение тегов в отдельный вид: «Use to view an overflow of multiple tags, like in a popover, modal, or detail view»; MD3 держит один контейнер 32 dp для всех типов чипа, поэтому набор в шторке не меняет геометрию.",
+    "Что делать нам: в шторке показывать весь набор чипов сеткой с зазором 8 px, ниже — «Найти» акцентом и «Сбросить» текстом на всю ширину; активные фильтры дублировать строкой над списком."
+   ],
+   "src": "Источники: IBM Carbon · Tag (https://carbondesignsystem.com/components/tag/usage) · Material Web · chip.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-group\" style=\"flex-wrap:wrap;gap:8px;width:100%\"><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Приправа</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Без лука</span></div><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__label\">Острая нота</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Гриль</span></div></div><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Найти</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Сбросить</span></button></div>",
+   "example_ru": "В шторке весь набор из 6 фильтров виден сеткой с зазором 8 px, ниже «Найти» и «Сбросить» на всю ширину: ни один чип не уезжает за край."
+  },
+  {
+   "title": "Длинная подпись в чипе",
+   "items": [
+    "Что происходит: длинное значение фильтра («Оплата картой, наличные») растягивает чип, и в строку помещается один-два фильтра вместо четырёх; MD3 максимальную ширину чипа не задаёт вообще.",
+    "Что делают системы: Carbon даёт три размера тега («There are three different tag sizes — small, medium, and large»), советует small «in condensed or inline spaces» и large — рядом с компонентами высотой 32px; Angular Material для тесных мест предлагает вертикальный набор mat-mdc-chip-set-stacked.",
+    "Что делать нам: обрезать подпись чипа с ellipsis и явным max-width, а полный текст показывать в шторке фильтров; высоту 32 px и кегль 14 px при этом не менять."
+   ],
+   "src": "Источники: IBM Carbon · Tag (https://carbondesignsystem.com/components/tag/usage) · Angular Material · chips (_m3-chip.scss) (https://raw.githubusercontent.com/angular/components/main/src/material/chips/_m3-chip.scss)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:8px;min-height:48px\"><div class=\"ds-chips ds-chips--outlined\" style=\"max-width:140px\"><span class=\"ds-chips__label\" style=\"overflow:hidden;text-overflow:ellipsis;white-space:nowrap\">Оплата картой, наличные</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Наличные</span></div></div>",
+   "example_ru": "Длинное значение обрезано по max-width 140 px с многоточием, высота чипа 32 px и кегль 14 px не меняются — полный текст читается в шторке фильтров."
+  },
+  {
+   "title": "Выбранный, снимаемый и недоступный чип",
+   "items": [
+    "Что происходит: фильтр-чип одновременно и выбор, и кнопка удаления: на 375 px состояние «выбран» часто читается только по цвету, а «×» рядом с подписью — цель заметно меньше 48 dp.",
+    "Что делают системы: MD3 разделяет типы чипа — filter chip (selectable, removable) и input chip (remove-only, иконка 18 dp, аватар 24 dp); Angular Material даёт mat-chip-listbox с disabled и отдельный matChipRemove; Carbon предупреждает: «Avoid using tags with multiple functions to prevent confusion and reduce accidental clicks».",
+    "Что делать нам: выбранный чип помечать заливкой и иконкой check (не только цветом), у снимаемого «×» делать собственную цель 48 px, а disabled не менять высоту 32 px — только цвет и прозрачность."
+   ],
+   "src": "Источники: Material Web · chip.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md) · Angular Material · chips (_m3-chip.scss) (https://raw.githubusercontent.com/angular/components/main/src/material/chips/_m3-chip.scss) · IBM Carbon · Tag (https://carbondesignsystem.com/components/tag/usage)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:8px;min-height:48px\"><div class=\"ds-chips ds-chips--filled\"><span class=\"ds-chips__icon\"><span class=\"material-icons\" style=\"font-size:24px\">check</span></span><span class=\"ds-chips__label\">Сыр</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined ds-chips--disabled\"><span class=\"ds-chips__label\">Приправа</span></div></div>",
+   "example_ru": "Выбранный чип помечен заливкой и иконкой check, а не только цветом; у «×» своя цель 48 px, недоступный чип остаётся высотой 32 px и меняет только цвет."
+  },
+  {
+   "title": "Чипы фильтров и экранная клавиатура",
+   "items": [
+    "Что происходит: набор фильтров обычно стоит над строкой поиска; когда открывается клавиатура, фильтры плюс поиск съедают всю верхнюю часть экрана, и список под ними исчезает.",
+    "Что делают системы: Carbon отводит тегам роль фильтра вместе с поиском: «Use as a method of filtering data on a page, within a component, or in conjunction with search capabilities»; MD3 выносит фильтр в отдельный filter chip, чтобы он не смешивался с полем ввода и suggestion chip.",
+    "Что делать нам: строку чипов держать фиксированной высоты 48 px — она не переносится и не растёт; при открытой клавиатуре сжимается список, а не строка фильтров, и активные фильтры остаются видимыми."
+   ],
+   "src": "Источники: IBM Carbon · Tag (https://carbondesignsystem.com/components/tag/usage) · Material Web · chip.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/chip.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-group\" style=\"flex-wrap:nowrap;overflow-x:auto;min-height:48px;height:48px\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span></div></div><div style=\"height:160px;background:#F5F5F5;border-radius:8px\"></div></div>",
+   "example_ru": "Строка фильтров держит фиксированные 48 px и не растёт, при открытой клавиатуре сжимается список под ней — 160 px против 216 px клавиатуры."
+  }
+ ]
+}

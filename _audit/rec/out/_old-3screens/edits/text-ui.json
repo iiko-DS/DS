@@ -1,0 +1,22 @@
+{
+  "slug": "text-ui",
+  "edits": [
+    {
+      "row": 0,
+      "edits": [
+        {
+          "id": "font",
+          "v": 16,
+          "sel": ".ds-text-ui__list-item",
+          "css": "font-size:@px"
+        },
+        {
+          "id": "line",
+          "v": 24,
+          "sel": ".ds-text-ui__list-item",
+          "css": "line-height:@px"
+        }
+      ]
+    }
+  ]
+}

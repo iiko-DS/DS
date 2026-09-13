@@ -1,0 +1,71 @@
+{
+ "slug": "tabs",
+ "patterns_ru": [
+  {
+   "title": "Вкладки не поместились: скролл, а не перенос",
+   "items": [
+    "Что происходит: пять вкладок «Заказы, Стоп-лист, Склад, Отчёты, Смены» на 375 px переносятся на вторую строку, и связь подписи с содержимым теряется — непонятно, какая вкладка какая.",
+    "Что делают системы: Carbon формулирует правило без исключений — «In responsive situations, horizontal tabs should not wrap to multiple lines or stack on top of each other; instead, they should scroll horizontally», добавляя, что «Left and right arrows appear to help navigate the user through tabs that might be off-page»; GOV.UK отдельным подзаголовком: «Avoid tabs that wrap over more than one line», потому что это «makes it harder for users to see the connection between the selected tab and its content»; в MD3 список вкладок прокручивается — «Scrolls the toolbar, if overflowing, to the active tab, or the provided tab».",
+    "Что делать нам: в ДС один вариант переполнения — горизонтальная прокрутка с подтягиванием активной вкладки в вид; переноса на вторую строку нет."
+   ],
+   "src": "Источники: IBM Carbon · Tabs usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tabs/usage.mdx) · GOV.UK Design System · Tabs (design-system.service.gov.uk/components/tabs/) · Material Design 3 · Tabs (m3.material.io/components/tabs/specs)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"width:100%;overflow-x:auto\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Первый</button><button class=\"ds-tab\" type=\"button\">Второй</button><button class=\"ds-tab\" type=\"button\">Третий</button><button class=\"ds-tab\" type=\"button\">Четвёртый</button><button class=\"ds-tab\" type=\"button\">Пятый</button></div></div></div>",
+   "example_ru": "Пять вкладок в полосе 343 px прокручиваются по горизонтали (MD3: «Scrolls the toolbar, if overflowing»), переноса на вторую строку нет — Carbon это прямо запрещает."
+  },
+  {
+   "title": "Минимальная ширина вкладки и «⋯» при переполнении",
+   "items": [
+    "Что происходит: чтобы влезло шесть вкладок, подписи сжимают до «Стоп», «Скл» — и они превращаются в ребус; при попытке сохранить текст вкладки ужимаются до 60 px.",
+    "Что делают системы: Angular держит минимум ширины вкладки — `min-width: 90px;` — и при нехватке места включает пагинацию: «When the list of tab labels exceeds the width of the header, pagination controls appear to let the user scroll left and right across the labels», кнопка-стрелка при этом не уже `min-width: 32px`, а `stretchTabs` по умолчанию растягивает вкладки на всю ширину; Ant Design сворачивает лишние вкладки в меню — свойство `more` описано как «Customize the collapse menu» с иконкой `<EllipsisOutlined />` по умолчанию.",
+    "Что делать нам: вкладка уже 90 px в ДС не выпускается; если подписи не помещаются в 90 px — сокращаем текст, а при более чем пяти вкладках используем скролл или «⋯», но не сжатие."
+   ],
+   "src": "Источники: Angular Material · _tabs-common.scss (raw.githubusercontent.com/angular/components/main/src/material/tabs/_tabs-common.scss) · Ant Design · Tabs (ant.design/components/tabs)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Мои заказы</button><button class=\"ds-tab\" type=\"button\">Стоп-лист</button><button class=\"ds-tab\" type=\"button\">Склад</button></div></div>",
+   "example_ru": "Три вкладки с подписями в одно-два слова — каждая шире минимума 90 px у Angular; место для четвёртой и дальше забирает скролл или «⋯»."
+  },
+  {
+   "title": "Палец в вкладку",
+   "items": [
+    "Что происходит: на телефоне вкладки стоят в 32–36 px (плотный вариант из десктопа), и попасть в нужную с первого раза не удаётся — особенно когда по полосе ещё и «ведут» пальцем, чтобы прокрутить.",
+    "Что делают системы: MD3 задаёт высоту контейнера вкладки 48 px и 64 px, если в строке иконка с подписью (`'with-icon-and-label-text-container-height': … 64px`), индикатор активной вкладки 3 px у primary и 2 px у secondary, иконка 24 px; общий тач-минимум платформы — 48 dp (`$height: 48px` в пакете touch-target), Apple держит 44×44 pt, причём числовой высоты iOS-таб-бара в HIG нет вовсе — единственная точная цифра там для tvOS: «The height of a tab bar is 68 points … you can't change either of these values».",
+    "Что делать нам: высота вкладки на мобиле — 48 px, у вкладки с иконкой — 64 px; плотные варианты 32–36 px (Angular density) в мобильном слое выключены."
+   ],
+   "src": "Источники: Material Design 3 · токены Primary navigation tab (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-primary-navigation-tab.scss) и Secondary navigation tab (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-secondary-navigation-tab.scss) · Google Material Components Web · Touch target (raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-touch-target/_touch-target.scss) · Apple HIG · Tab bars (developer.apple.com/design/human-interface-guidelines/tab-bars)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Мои заказы</button><button class=\"ds-tab\" type=\"button\">Стоп-лист</button><button class=\"ds-tab\" type=\"button\">Склад</button></div></div>",
+   "example_ru": "Высота вкладки 48 px (у Angular density ужимает её до 32 px, но в мобильном слое это выключено), индикатор активной вкладки — 3 px по токену MD3."
+  },
+  {
+   "title": "Максимум один уровень и не больше пяти вкладок",
+   "items": [
+    "Что происходит: вкладки ставят внутри вкладок (заказы, стол 4, меню), и на телефоне пользователь теряет, какой уровень он смотрит; вдобавок седьмая и восьмая вкладки уезжают в невидимую часть.",
+    "Что делают системы: Apple для таб-баров ограничивает количество и уводит лишнее в «More» — «If horizontal space limits the number of visible tabs, the trailing tab becomes a More tab in iOS and iPadOS, revealing the remaining items in a separate list», и советует по умолчанию «a default list of five or fewer»; у MD3 уровней всего два — про secondary сказано «Secondary tabs are used within a content area to further separate related content and establish hierarchy», третьего уровня нет.",
+    "Что делать нам: в мобильном ДС максимум два уровня вкладок и до пяти вкладок в одном ряду; дальше — скролл или переход на отдельный экран, но не третий ряд вкладок."
+   ],
+   "src": "Источники: Apple HIG · Tab bars (developer.apple.com/design/human-interface-guidelines/tab-bars) · Material Design 3 · Tabs (m3.material.io/components/tabs/specs)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Заказы</button><button class=\"ds-tab\" type=\"button\">Смены</button></div><div class=\"ds-tabs ds-tabs--lvl2\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Активные</button><button class=\"ds-tab\" type=\"button\">Закрытые</button></div></div>",
+   "example_ru": "Два уровня вкладок — основные («Заказы», «Смены») и вторичные («Активные», «Закрытые»); у MD3 и Apple уровней больше нет, табов в ряду — до пяти."
+  },
+  {
+   "title": "Подписи вкладок",
+   "items": [
+    "Что происходит: вкладку называют «Разное» или «Прочее», и подпись не сообщает, что внутри; пользователь открывает её наугад, чтобы понять.",
+    "Что делают системы: Carbon требует коротких и конкретных подписей — «Use short tab labels that are clear and specific. Labels should be one to two words, as these are easier to scan»; GOV.UK объясняет причину: «Tabs hide content from users and not everyone will notice them or understand how they work», и советует дублировать подпись заголовком внутри вкладки — «Include a heading at the beginning of each tab that duplicates the information in the tab label».",
+    "Что делать нам: подпись — одно-два слова; первый заголовок внутри вкладки повторяет подпись; счётчик рядом с подписью допустим, но название не заменяет."
+   ],
+   "src": "Источники: IBM Carbon · Tabs usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tabs/usage.mdx) · GOV.UK Design System · Tabs (design-system.service.gov.uk/components/tabs/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Мои заказы</button><button class=\"ds-tab\" type=\"button\">Стоп-лист</button><button class=\"ds-tab\" type=\"button\">Склад</button></div></div>",
+   "example_ru": "Подписи в одно-два слова («Мои заказы», «Стоп-лист», «Склад») — Carbon просит именно столько слов, потому что такие подписи легче сканировать."
+  },
+  {
+   "title": "Когда вкладки не нужны вовсе",
+   "items": [
+    "Что происходит: вкладки ставят для навигации по разделам приложения, и пользователь не понимает, что произошла смена контекста, а не фильтрация внутри экрана.",
+    "Что делают системы: GOV.UK предупреждает прямо: «Tabs hide content from users and not everyone will notice them or understand how they work», «For this reason, do not use the tabs component as a form of page navigation», и не советует вкладки, если пользователю нужно сравнивать содержимое разных вкладок («Do not use tabs if your users might need to»); в MD3 вкладки живут под верхним app bar и разделяют содержимое одного экрана.",
+    "Что делать нам: вкладки — для однотипных представлений одного списка (активные и закрытые заказы), не для перехода между разделами и не для сравнения; для сравнения — таблица или два экрана."
+   ],
+   "src": "Источники: GOV.UK Design System · Tabs (design-system.service.gov.uk/components/tabs/) · Material Design 3 · Tabs (m3.material.io/components/tabs/specs) · IBM Carbon · Tabs usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/tabs/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--selected\" type=\"button\">Активные</button><button class=\"ds-tab\" type=\"button\">Закрытые</button></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 4</span><span class=\"ds-list-item__text\">Стейк рибай · 1 480 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:20</span></div></div></div></div>",
+   "example_ru": "Вкладки переключают два представления одного списка («Активные» и «Закрытые»), а не разделы приложения: содержимое под ними — те же строки заказов."
+  }
+ ]
+}

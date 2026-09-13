@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><style>html,body{margin:0}iframe{border:0;display:block}</style>
+<body><pre id="out"></pre>
+<iframe id="f" src="/iiko-ds-mobile/prototypes/recommendations/button.html" width="1000" height="1200"></iframe>
+<script>
+const f=document.getElementById('f'),out=document.getElementById('out');
+f.onload=()=>setTimeout(()=>{
+  const d=f.contentDocument, w=f.contentWindow, N="\u043f\u0430\u0442\u0442\u0435\u0440\u043d\u044b";
+  const c=[...d.querySelectorAll('.card')].find(x=>x.querySelector('h2')&&x.querySelector('h2').textContent.includes(N));
+  const bar=c.querySelector('.pat__bar'), row=c.querySelector('.pat__tabs');
+  const L=c.querySelector('.pat__arrow--left'), R=c.querySelector('.pat__arrow--right');
+  const r={rowW:Math.round(row.clientWidth), rowScroll:Math.round(row.scrollWidth),
+    leftHidden:L.hidden, rightHidden:R.hidden, leftDisabled:L.disabled, rightDisabled:R.disabled,
+    scrollLeft:Math.round(row.scrollLeft)};
+  R.click();
+  setTimeout(()=>{
+    r.afterRight={scrollLeft:Math.round(row.scrollLeft), leftHidden:L.hidden, leftDisabled:L.disabled, rightDisabled:R.disabled};
+    R.click();
+    setTimeout(()=>{
+      r.afterRight2={scrollLeft:Math.round(row.scrollLeft), rightDisabled:R.disabled};
+      L.click();
+      setTimeout(()=>{
+        r.afterLeft={scrollLeft:Math.round(row.scrollLeft), leftDisabled:L.disabled};
+        out.textContent=JSON.stringify(r,null,1);
+      },400);
+    },400);
+  },400);
+},600);
+</script></body>

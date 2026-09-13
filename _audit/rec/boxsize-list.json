@@ -1,0 +1,178 @@
+[
+ {
+  "sel": ".ds-autocomplete-form__input-frame",
+  "height": 48.0
+ },
+ {
+  "sel": ".ds-badge--counter",
+  "height": 18.0
+ },
+ {
+  "sel": ".ds-badge--point",
+  "height": 8.0
+ },
+ {
+  "sel": ".ds-btn--m",
+  "height": 36.0
+ },
+ {
+  "sel": ".ds-btn--s",
+  "height": 28.0
+ },
+ {
+  "sel": ".ds-btn--xs",
+  "height": 24.0
+ },
+ {
+  "sel": ".ds-btn-icon--m",
+  "height": 36.0
+ },
+ {
+  "sel": ".ds-btn-icon--s",
+  "height": 28.0
+ },
+ {
+  "sel": ".ds-btn-icon--xs",
+  "height": 24.0
+ },
+ {
+  "sel": ".ds-card__divider",
+  "height": 1.0
+ },
+ {
+  "sel": ".ds-chips-input-2__hint",
+  "height": 16.0
+ },
+ {
+  "sel": ".ds-chips-input-2__text",
+  "height": 16.0
+ },
+ {
+  "sel": ".ds-chips-input__hint",
+  "height": 16.0
+ },
+ {
+  "sel": ".ds-chips-input__text",
+  "height": 16.0
+ },
+ {
+  "sel": ".ds-dialog-footer__action",
+  "height": 68.0
+ },
+ {
+  "sel": ".ds-dialog-view__action",
+  "height": 68.0
+ },
+ {
+  "sel": ".ds-divider",
+  "height": 1.0
+ },
+ {
+  "sel": ".ds-divider-line",
+  "height": 1.0
+ },
+ {
+  "sel": ".ds-element-menu__image-size",
+  "height": 24.0
+ },
+ {
+  "sel": ".ds-element-select__image-size",
+  "height": 24.0
+ },
+ {
+  "sel": ".ds-element__image-size",
+  "height": 24.0
+ },
+ {
+  "sel": ".ds-input--m .ds-input__frame",
+  "height": 48.0
+ },
+ {
+  "sel": ".ds-input--s .ds-input__frame",
+  "height": 36.0
+ },
+ {
+  "sel": ".ds-input--xs .ds-input__frame",
+  "height": 28.0
+ },
+ {
+  "sel": ".ds-input-datepicker__frame",
+  "height": 48.0
+ },
+ {
+  "sel": ".ds-input-number__frame",
+  "height": 48.0
+ },
+ {
+  "sel": ".ds-input-timepicker__frame",
+  "height": 48.0
+ },
+ {
+  "sel": ".ds-menu-container__button-group",
+  "height": 52.0
+ },
+ {
+  "sel": ".ds-picture__crop",
+  "height": 173.0
+ },
+ {
+  "sel": ".ds-radio__state",
+  "height": 28.0
+ },
+ {
+  "sel": ".ds-scroll__knob",
+  "height": 8.0
+ },
+ {
+  "sel": ".ds-search--xs",
+  "height": 36.0
+ },
+ {
+  "sel": ".ds-select-container__button-group",
+  "height": 44.0
+ },
+ {
+  "sel": ".ds-select-form__input-frame",
+  "height": 48.0
+ },
+ {
+  "sel": ".ds-sidenav-header--l2.ds-sidenav-header--expanded",
+  "height": 48.0
+ },
+ {
+  "sel": ".ds-slide-toggle__track",
+  "height": 20.0
+ },
+ {
+  "sel": ".ds-slide-toggle__track::after",
+  "height": 16.0
+ },
+ {
+  "sel": ".ds-snackbar__progress",
+  "height": 4.0
+ },
+ {
+  "sel": ".ds-step--bg",
+  "height": 32.0
+ },
+ {
+  "sel": ".ds-step__num",
+  "height": 24.0
+ },
+ {
+  "sel": ".ds-tabs--lvl2 .ds-tab",
+  "height": 28.0
+ },
+ {
+  "sel": ".ds-textarea__hint",
+  "height": 16.0
+ },
+ {
+  "sel": ".ds-textarea__input-frame",
+  "height": 76.0
+ },
+ {
+  "sel": ".ds-textarea__text",
+  "height": 16.0
+ }
+]

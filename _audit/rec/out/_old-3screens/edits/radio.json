@@ -1,0 +1,16 @@
+{
+  "slug": "radio",
+  "edits": [
+    {
+      "row": 0,
+      "edits": [
+        {
+          "id": "height",
+          "v": 48,
+          "sel": ".ds-radio",
+          "css": "min-height:@px"
+        }
+      ]
+    }
+  ]
+}

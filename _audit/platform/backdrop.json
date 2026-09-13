@@ -1,0 +1,257 @@
+{
+  "component": "Backdrop (затемняющий оверлей / scrim)",
+  "platforms": {
+    "md3": {
+      "exists": false,
+      "sizes": [
+        {
+          "param": "затемнение (scrim)",
+          "value": "opacity: 32%",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/dialog/internal/_dialog.scss"
+        },
+        {
+          "param": "цвет scrim",
+          "value": "md.sys.color.scrim = ref-palette neutral0 (#000000)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-color.scss"
+        },
+        {
+          "param": "позиционирование",
+          "value": "position: fixed; inset: 0; z-index: 1",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/dialog/internal/_dialog.scss"
+        },
+        {
+          "param": "диалог: скругление контейнера (контекст оверлея)",
+          "value": "corner-extra-large = 28px",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
+        }
+      ],
+      "variants": [
+        "scrim внутри dialog (md-dialog) — единственная официальная реализация затемнения в material-web",
+        "m3: bottom sheets / side sheets используют тот же scrim-паттерн (страница m3.material.io/components/dialogs/specs → 200)"
+      ],
+      "notes_ru": "Отдельного компонента «Backdrop» в MD3 НЕТ: m3.material.io/components/backdrop/specs → HTTP 404, в material-web нет ни backdrop, ни scrim-компонента. Затемнение существует как часть модальных компонентов: в md-dialog это элемент .scrim с opacity 32%, цветом md.sys.color.scrim (чёрный) и position: fixed/inset: 0. Клик по scrim отменяет диалог — это документированное поведение (событие cancel).",
+      "nearest_ru": "Не компонент: scrim как часть dialog/sheet (32% чёрного, fixed, inset 0).",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/dialog/internal/_dialog.scss",
+          "quote": ".scrim { background: map.get($md-sys-color, 'scrim'); display: none; inset: 0; opacity: 32%; pointer-events: none; position: fixed; z-index: 1; }",
+          "what_ru": "Все числа MD3-затемнения."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-color.scss",
+          "quote": "'scrim': map.get($deps, 'md-ref-palette', 'neutral0'),",
+          "what_ru": "scrim = neutral0, т.е. чёрный."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/dialog.md",
+          "quote": "Dispatched when the dialog has been canceled by clicking on the scrim or pressing Escape.",
+          "what_ru": "Клик по scrim отменяет диалог."
+        },
+        {
+          "url": "https://m3.material.io/components/backdrop/specs",
+          "quote": "HTTP 404 (проверено curl)",
+          "what_ru": "Компонента backdrop в MD3 нет."
+        },
+        {
+          "url": "https://m3.material.io/components/dialogs/specs",
+          "quote": "HTTP 200, <title>Dialogs – Material Design 3",
+          "what_ru": "Затемнение живёт внутри dialogs/sheets."
+        }
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "param": "цвет бэкдропа",
+          "value": "$overlay-backdrop-color: rgba(0, 0, 0, 0.32)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss"
+        },
+        {
+          "param": "z-index бэкдропа",
+          "value": "$overlay-backdrop-z-index: 1000",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss"
+        },
+        {
+          "param": "длительность анимации",
+          "value": "$backdrop-animation-duration: 400ms",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss"
+        },
+        {
+          "param": "кривая анимации",
+          "value": "cubic-bezier(0.25, 0.8, 0.25, 1) (Material Design swift-ease-out)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss"
+        },
+        {
+          "param": "класс по умолчанию",
+          "value": "backdropClass = 'cdk-overlay-dark-backdrop'",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/overlay-config.ts"
+        },
+        {
+          "param": "наличие бэкдропа по умолчанию",
+          "value": "hasBackdrop = false (компоненты включают явно)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/overlay-config.ts"
+        },
+        {
+          "param": "scrim sidenav (M3-токен)",
+          "value": "sidenav-scrim-color: color-with-opacity(neutral-variant20, 40%)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/_m3-sidenav.scss"
+        },
+        {
+          "param": "scrim drawer — z-index",
+          "value": "$drawer-backdrop-z-index: 3 (внутри stacking context контейнера)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/drawer.scss"
+        },
+        {
+          "param": "prefers-reduced-motion",
+          "value": "transition-duration: 1ms",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss"
+        },
+        {
+          "param": "forced-colors (high contrast)",
+          "value": "opacity: 0.6",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss"
+        }
+      ],
+      "variants": [
+        "cdk-overlay-dark-backdrop (обычный)",
+        "cdk-overlay-transparent-backdrop (невидимый, перехватывает клики)",
+        "cdk-overlay-backdrop-noop-animation",
+        "mat-drawer-backdrop / sidenav scrim (40% neutral-variant20)"
+      ],
+      "notes_ru": "Здесь «backdrop» — это настоящая сущность: бэкдроп CDK overlay. Числа: rgba(0,0,0,0.32) — то же 32%, что и MD3-scrim; z-index 1000; появление/исчезновение анимируется 400ms cubic-bezier(0.25,0.8,0.25,1) (в комментарии — «Material Design swift-ease-out»); при prefers-reduced-motion — 1ms; в high-contrast режиме непрозрачность доводится до 0.6. Класс задаётся через конфиг OverlayConfig.backdropClass, наличие — hasBackdrop (по умолчанию false). У sidenav своё затемнение: 40% neutral-variant20.",
+      "nearest_ru": "Полноценный компонент: CDK Overlay backdrop (+ scrim у sidenav/drawer).",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss",
+          "quote": "$overlay-backdrop-color: rgba(0, 0, 0, 0.32) !default;",
+          "what_ru": "Цвет затемнения 32%."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss",
+          "quote": "$overlay-backdrop-z-index: 1000 !default;",
+          "what_ru": "z-index бэкдропа."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss",
+          "quote": "$backdrop-animation-duration: 400ms !default; ... $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;",
+          "what_ru": "Анимация бэкдропа."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss",
+          "quote": "// Default backdrop animation is based on the Material Design swift-ease-out.",
+          "what_ru": "Кривая — из Material Design."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss",
+          "quote": "// In high contrast mode the rgba background will become solid\n      // so we need to fall back to making it opaque using `opacity`.\n      opacity: 0.6;",
+          "what_ru": "Поведение в high-contrast."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/_index.scss",
+          "quote": "@media (prefers-reduced-motion) { transition-duration: 1ms; }",
+          "what_ru": "Уважение к reduced motion."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/overlay-config.ts",
+          "quote": "/** Custom class to add to the backdrop */ backdropClass?: string | string[] = 'cdk-overlay-dark-backdrop';",
+          "what_ru": "API настройки бэкдропа."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/overlay-config.ts",
+          "quote": "/** Whether the overlay has a backdrop. */ hasBackdrop?: boolean = false;",
+          "what_ru": "Бэкдроп выключен по умолчанию."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/_m3-sidenav.scss",
+          "quote": "sidenav-scrim-color: m3-utils.color-with-opacity(map.get($system, neutral-variant20), 40%),",
+          "what_ru": "Scrim sidenav 40%."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/overlay.md",
+          "quote": "The `overlay` package provides a way to open floating panels on the screen.",
+          "what_ru": "Дока overlay."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/cdk/overlay/overlay.md",
+          "quote": "In supported browsers, the CDK renders overlays as native ... the browser automatically promotes them to the top layer.",
+          "what_ru": "Оверлеи идут в top layer (z-index не нужен)."
+        }
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "sizes": [
+        {
+          "param": "детенты листа (влияет на то, сколько контента затемняется)",
+          "value": "large = высота полностью раскрытого листа; medium ≈ половина этой высоты",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/sheets"
+        },
+        {
+          "param": "затемнение",
+          "value": "числовых значений непрозрачности в HIG нет — сказано только «dimmed»",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/sheets"
+        },
+        {
+          "param": "грэббер листа",
+          "value": "описан качественно («small horizontal indicator»), чисел нет",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/sheets"
+        }
+      ],
+      "variants": [
+        "sheets (page sheet / form sheet, resizable с детентами)",
+        "alert (модальный, поверх всего)",
+        "popover (iPadOS/macOS)",
+        "full-screen modal",
+        "scroll edge effect (НЕ затемнение — см. component=scroll)"
+      ],
+      "notes_ru": "Отдельного «backdrop»/scrim-компонента и токена в iOS HIG нет (developer.apple.com/.../backdrop → HTTP 404). Затемнение — это свойство модальных презентаций: родительское окно затемняется, пока лист на экране, и это сигнал «до закрытия взаимодействовать нельзя». Числа в HIG не публикуются: сказано «dimmed background view» без процентов, поэтому брать чужое значение (например, MD3 32%) и выдавать за Apple нельзя. Отдельно HIG предупреждает: scroll edge effect «не затемняет» — это не оверлей.",
+      "nearest_ru": "Не компонент: затемнение как часть modality/sheets/alerts.",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/sheets",
+          "quote": "The parent window is dimmed while the sheet is onscreen, signaling that people can't interact with it until they dismiss the sheet.",
+          "what_ru": "Затемнение = сигнал модальности."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/sheets",
+          "quote": "Each style uses a default size for the sheet, centering its content on top of a dimmed background view",
+          "what_ru": "dimmed background view — без чисел."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/sheets",
+          "quote": "The system defines two detents: large is the height of a fully expanded sheet and medium is about half of the fully expanded height.",
+          "what_ru": "Детенты листа."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/modality",
+          "quote": "Modality is a design technique that presents content in a separate, dedicated mode that prevents interaction with the parent view and requires an explicit action to dismiss.",
+          "what_ru": "Определение модальности."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/modality",
+          "quote": "Let people dismiss a modal view before presenting another one ... you never want to display more than one alert at the same time.",
+          "what_ru": "Один модальный слой за раз."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/scroll-views",
+          "quote": "They don't block or darken like overlays; they exist to ensure controls stay visually distinct.",
+          "what_ru": "Scroll edge effect ≠ затемнение."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/backdrop",
+          "quote": "HTTP 404 (проверено curl)",
+          "what_ru": "Компонента backdrop в HIG нет."
+        }
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Не считать затемнение отдельным компонентом ДС на уровне платформы: у MD3 это часть dialog/sheet (scrim), у Apple — часть модальных презентаций; полноценная сущность есть только в Angular (CDK Overlay backdrop).",
+    "Не хардкодить своё значение непрозрачности, отличное от проверенных: официально подтверждены 32% (Angular CDK и MD3 scrim = 32% чёрного), у sidenav Angular — 40% neutral-variant20; для iOS числа не публикуются вообще.",
+    "Не забывать prefers-reduced-motion (Angular: 1ms) и forced-colors (Angular: opacity 0.6) — это часть официального поведения бэкдропа.",
+    "Не рисовать затемнение как scroll edge effect у iOS: Apple прямо пишет, что scroll edge effect не блокирует и не затемняет.",
+    "Не использовать невидимый бэкдроп для перехвата кликов без крайней необходимости (Angular: cdk-overlay-transparent-backdrop — это официальный вариант, но он меняет поведение скролла мыши)."
+  ],
+  "verdict_ru": "Компонента Backdrop нет ни в MD3, ни в iOS HIG: у Google затемнение — это scrim внутри dialogs/sheets (opacity 32%, цвет md.sys.color.scrim = чёрный, position: fixed; inset: 0), у Apple — «dimmed background view» модальных презентаций без опубликованных чисел. Полноценная реализация есть только в Angular Material: CDK Overlay backdrop с rgba(0,0,0,0.32), z-index 1000, анимацией 400ms cubic-bezier(0.25,0.8,0.25,1), классами cdk-overlay-dark-backdrop / -transparent-backdrop и конфигом backdropClass/hasBackdrop; отдельно sidenav даёт scrim 40% neutral-variant20. Практический вывод для ДС: зафиксировать 32% чёрного как значение по умолчанию (совпадает у MD3 и Angular), добавить reduced-motion 1ms и high-contrast 0.6, а затемнение описывать как часть модального компонента, а не как самостоятельный компонент."
+}

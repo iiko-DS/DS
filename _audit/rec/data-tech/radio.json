@@ -1,0 +1,90 @@
+{
+ "slug": "radio",
+ "component": "Radio button",
+ "_role": "Техническая часть. На страницу не выводится.",
+ "ds_values": {
+  "source": "iiko-ds-web/components/Radio-Button_DS/{radio.css, radio-icons.css, radio-button-label.css} (+ общие правила в Checkbox_DS/checkbox.css)",
+  "desktop": {
+   "row": "20 px (маркер 20 + gap 8 + текст 14/20)",
+   "marker": "20 × 20 (SVG ДС)",
+   "state_layer": ".ds-radio__state 28 × 28, круглая подложка hover/press, position absolute по центру",
+   "label": "14 / 20 #333333",
+   "support": "12 / 16 #616161, margin-left 28",
+   "group": "vertical gap 8, horizontal gap 32",
+   "states": "снят #616161 · выбран #448AFF · ошибка #FF5252 · недоступный #9E9E9E"
+  },
+  "mobile_override": "строка 48 px: iiko-ds-mobile/components/Checkbox_DS/checkbox-touch.css (правило общее с чекбоксом — .ds-checkbox, .ds-radio).",
+  "tokens_used": [
+   "--ds-color-radio-button-* (цвета)",
+   "--ds-space-2x (gap 8)",
+   "--ds-typography-font-size-3-5x / -3x"
+  ],
+  "findings": [
+   "ДЕФЕКТ ДС (исправлен 12.09.2026): iiko-ds-web/components/index.css не подключал checkbox.css, checkbox-icons.css, radio.css, radio-icons.css — контролы были без стилей вообще (display:inline, маркер 0×0, цвета состояний не применялись). Добавлены 4 импорта; проверено замером: display flex, маркер 20 × 20, цвета #616161 / #448AFF / #FF5252 / #9E9E9E.",
+   "Селектор выбранного состояния у радио — `+ .ds-radio__box` (соседний), у чекбокса — `~ .ds-checkbox__box` (общий сосед): при разметке с промежуточным узлом они расходятся.",
+   "Подложка состояния 28 × 28 против 40 у MD3/Angular — расхождение ДС и платформ (вопрос к дизайну).",
+   "Два источника на одну разметку: общие правила в Checkbox_DS/checkbox.css, специфика радио — в Radio-Button_DS/radio.css."
+  ]
+ },
+ "platforms": [
+  {
+   "key": "md3",
+   "title": "Material Design 3",
+   "exists": true,
+   "facts": [
+    "icon-size (маркер) 20 dp — `'icon-size': if($exclude-hardcoded-values, null, 20px),`; док-токен `--md-radio-icon-size | 20px`",
+    "state layer 40 dp — `'state-layer-size': …, 40px`",
+    "touch target 48 dp — `.touch-target { height: 48px; position: absolute; width: 48px; }`",
+    "формула отступа цели: `margin: max(0px, ((48px - map.get($tokens, 'icon-size')) / 2));`",
+    "шкалы размеров НЕТ; состояния: unselected / selected + disabled; радио всегда в группе role=radiogroup"
+   ],
+   "sources": [
+    "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-radio-button.scss",
+    "https://raw.githubusercontent.com/material-components/material-web/main/radio/internal/_radio.scss",
+    "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/radio.md"
+   ]
+  },
+  {
+   "key": "angular_material",
+   "title": "Angular Material",
+   "exists": true,
+   "facts": [
+    "touch target 48 px — `radio-touch-target-size: 48px,`; на плотностях −2/−3 `radio-touch-target-display: none`",
+    "state layer по плотностям — `radio-state-layer-size: list.nth((40px, 36px, 32px, 28px), $index)`, кламп до −3",
+    "размер маркера в токенах не задан; в API labelPosition before/after, mat-radio-group рекомендуется всегда"
+   ],
+   "sources": [
+    "https://raw.githubusercontent.com/angular/components/main/src/material/radio/_m3-radio.scss",
+    "https://raw.githubusercontent.com/angular/components/main/src/material/radio/radio.md"
+   ]
+  },
+  {
+   "key": "ios_hig",
+   "title": "iOS HIG",
+   "exists": false,
+   "facts": [
+    "отдельной страницы Radio buttons нет: URL /radio-buttons → 404",
+    "раздел «Radio buttons» находится внутри Toggles и описан только для macOS: «macOS … also defines radio buttons»",
+    "чисел в pt нет; правило — обычно 2–5 вариантов, при большем числе использовать pop-up button"
+   ],
+   "sources": [
+    "https://developer.apple.com/design/human-interface-guidelines/toggles"
+   ]
+  }
+ ],
+ "verdict": {
+  "keep": "Строка 48 px (min-height) как тач-цель; маркер 20 (ровно MD3), подписи и цвета без изменений, разметка общая с чекбоксом.",
+  "drop": [
+   "Маркер меньше 20 dp",
+   "Тач-таргет меньше 48 dp",
+   "Больше ~5 вариантов в наборе (HIG: pop-up button)",
+   "Одиночное радио как переключатель вкл/выкл (HIG: checkbox/switch)"
+  ],
+  "open": [
+   "Подложка состояния 28 × 28 против state layer 40 у MD3/Angular — решение за дизайном",
+   "Разные комбинаторы у выбранного состояния (radio `+`, checkbox `~`) — потенциальный источник расхождений в разметке",
+   "iOS: радио в HIG — macOS-паттерн, отдельным компонентом Apple его не описывает"
+  ]
+ },
+ "measured_ru": "Замеры headless Chrome: строка 20 px (desktop) → 48 px (mobile); маркер 20 × 20 в обоих режимах; подложка состояния 28 × 28; цвета выбранного #448AFF, ошибки #FF5252, недоступного #9E9E9E."
+}

@@ -1,0 +1,130 @@
+{
+  "component": "Autocomplete",
+  "platforms": {
+    "md3": {
+      "exists": false,
+      "sizes": [
+        {
+          "name": "Иконка вложенного меню (cascading menu indicator)",
+          "size_dp": 24,
+          "quote": "'menu-cascading-menu-indicator-icon-size': if($exclude-hardcoded-values, null, 24px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-filled-autocomplete.scss"
+        },
+        {
+          "name": "Иконка в конце текстового поля (trailing icon)",
+          "size_dp": 24,
+          "quote": "'text-field-trailing-icon-size': if($exclude-hardcoded-values, null, 24px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-filled-autocomplete.scss"
+        },
+        {
+          "name": "Иконка в начале текстового поля (leading icon)",
+          "size_dp": 20,
+          "quote": "'text-field-leading-icon-size': if($exclude-hardcoded-values, null, 20px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-filled-autocomplete.scss"
+        },
+        {
+          "name": "Индикатор активного поля (filled), обычный / в фокусе",
+          "size_dp": 1,
+          "quote": "'text-field-active-indicator-height': if($exclude-hardcoded-values, null, 1px); 'text-field-focus-active-indicator-height': if($exclude-hardcoded-values, null, 2px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-filled-autocomplete.scss"
+        }
+      ],
+      "variants": [
+        {
+          "name": "токены есть только как вариант текстового поля: md.comp.filled-autocomplete и md.comp.outlined-autocomplete",
+          "quote": "@use './md-comp-filled-autocomplete' … @use './md-comp-outlined-autocomplete'",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-filled-autocomplete.scss"
+        },
+        {
+          "name": "меню привязано к текстовому полю: corner-extra-small, elevation level2",
+          "quote": "'menu-container-elevation': map.get($deps, 'md-sys-elevation', 'level2'); 'menu-container-shape': map.get($deps, 'md-sys-shape', 'corner-extra-small')",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-filled-autocomplete.scss"
+        }
+      ],
+      "notes_ru": "Отдельного компонента Autocomplete в M3 нет. В material-web нет ни документации, ни реализации (docs/components/autocomplete.md и autocomplete/autocomplete.ts — 404). Единственное официальное представление — токены-варианты текстового поля (filled/outlined autocomplete), то есть автокомплит описан как состояние text field + меню. Отдельных размеров списка подсказок M3 не публикует.",
+      "sources": [
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-filled-autocomplete.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/docs/components (список: autocomplete отсутствует)",
+        "https://m3.material.io/components (страницы Autocomplete нет)"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Максимальная высота панели (overlay)",
+          "size_dp": 256,
+          "quote": "max-height: 256px; // Prevents lists with a lot of option from growing too high.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/autocomplete/autocomplete.scss"
+        },
+        {
+          "name": "Вертикальные паддинги панели",
+          "size_dp": 8,
+          "quote": "padding: 8px 0;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/autocomplete/autocomplete.scss"
+        },
+        {
+          "name": "Минимальная высота строки опции (mat-option)",
+          "size_dp": 48,
+          "quote": "min-height: 48px;  padding: 0 16px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/core/option/option.scss"
+        }
+      ],
+      "variants": [
+        {
+          "name": "панель = CDK overlay шириной в инпут",
+          "quote": "width: 100%; // Ensures that the panel matches the overlay width.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/autocomplete/autocomplete.scss"
+        },
+        {
+          "name": "тень панели — токен autocomplete-container-elevation-shadow",
+          "quote": "box-shadow: token-utils.slot(autocomplete-container-elevation-shadow, $fallbacks);",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/autocomplete/autocomplete.scss"
+        },
+        {
+          "name": "привязка к input через matAutocomplete, работает и с mat-form-field, и с обычным input",
+          "quote": "you can also set it on any other `input` element using the `matAutocomplete` attribute",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/autocomplete/autocomplete.md"
+        },
+        {
+          "name": "requireSelection — обязательный выбор из списка",
+          "quote": "enable the `requireSelection` input on `mat-autocomplete`",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/autocomplete/autocomplete.md"
+        },
+        {
+          "name": "клавиатура: Down/Up/Enter/Escape, Alt+Up закрыть, Alt+Down открыть",
+          "quote": "| <kbd>Alt</kbd> + <kbd>Down Arrow</kbd> | Open the autocomplete panel if there are any matching options. |",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/autocomplete/autocomplete.md"
+        },
+        {
+          "name": "в списке по умолчанию — галочка у выбранного пункта",
+          "quote": "By default, `MatAutocomplete` displays a checkmark to identify the selected item.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/autocomplete/autocomplete.md"
+        }
+      ],
+      "notes_ru": "Autocomplete в Angular Material — это обычный input + overlay-панель (CDK Overlay). Числовые ориентиры: панель не выше 256px, паддинг 8px, строка опции mat-option min-height 48px. Панель наследует ширину инпута (width: 100%). Много поведения без чисел: requireSelection, autoActiveFirstOption, keyboard-шорткаты, aria combobox/listbox.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/autocomplete/autocomplete.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/autocomplete/autocomplete.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/core/option/option.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "sizes": [],
+      "variants": [],
+      "notes_ru": "У iOS нет компонента «Autocomplete»: HIG не содержит такой страницы. Ближайшие рекомендации — picker для средних и длинных списков и list/table для очень больших; отдельного overlay-списка с фильтрацией HIG не описывает и чисел не даёт.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/pickers",
+        "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Отдельного компонента Autocomplete нет ни в M3, ни в iOS HIG — его нельзя «взять по спецификации»: в M3 это вариант текстового поля, в iOS — ближайшие альтернативы picker/list.",
+    "У M3 нет ни одного размера списка подсказок (высота строки, макс. высота панели) — есть только размеры иконок поля (20/24).",
+    "У iOS HIG нет чисел для списка подсказок вообще (ни высоты строки, ни ширины панели).",
+    "Angular задаёт только 256px max-height и паддинг 8px — конкретной высоты панели/строки подсказки, кроме общей mat-option 48px, нет."
+  ],
+  "verdict_ru": "Настоящие проверяемые числа есть только у Angular Material: панель overlay max-height 256px, паддинг 8px, строка mat-option min-height 48px, ширина = ширина инпута. В M3 автокомплит — не компонент, а набор токенов текстового поля (иконки 24/24/20px, индикатор 1px/2px, меню corner-extra-small + level2). iOS HIG страницы Autocomplete не имеет вовсе — ближайшая рекомендация — picker или list/table."
+}

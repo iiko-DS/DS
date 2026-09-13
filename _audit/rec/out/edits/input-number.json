@@ -1,0 +1,55 @@
+{
+ "slug": "input-number",
+ "edits": [
+  {
+   "row": 0,
+   "mobile": "56 px (паддинги 16) — как у поля M",
+   "edits": [
+    {
+     "id": "height",
+     "v": 56,
+     "sel": ".ds-input-number__frame",
+     "css": "height:@px"
+    },
+    {
+     "id": "pad",
+     "v": 16,
+     "sel": ".ds-input-number__frame",
+     "css": "padding:@px"
+    }
+   ]
+  },
+  {
+   "row": 1,
+   "mobile": "40 × 40 — по правилам Button icon, плюс тач-зона 48",
+   "edits": [
+    {
+     "id": "size-w",
+     "v": 40,
+     "sel": ".ds-input-number-but-icon__button",
+     "css": "width:@px"
+    },
+    {
+     "id": "size-h",
+     "v": 40,
+     "sel": ".ds-input-number-but-icon__button",
+     "css": "height:@px"
+    },
+    {
+     "id": "touch",
+     "v": 48,
+     "sel": ".ds-input-number-but-icon__button",
+     "css": "min-width:@px; min-height:@px"
+    }
+   ]
+  },
+  {
+   "row": 2,
+   "mobile": "16 / 24 px — тот же"
+  },
+  {
+   "row": 4,
+   "mobile": "фон #F8F9FC, рамка 1 px, радиус 12 px — стилевые токены общие"
+  }
+ ]
+}

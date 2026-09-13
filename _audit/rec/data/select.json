@@ -1,0 +1,179 @@
+{
+ "slug": "select",
+ "component": "Select",
+ "ds_page": "Select_DS",
+ "desc_ru": "Селект: выбор одного значения из списка. На десктопе список открывается у поля, на мобиле — шторка снизу.",
+ "category_ru": "Структура",
+ "category_note_ru": "другой контейнер: вместо списка у поля — шторка снизу; поле выше",
+ "summary_ru": "Поле 48 → 56 px, а список опций переезжает в шторку снизу: на всю ширину, крупные пункты 48 px, поиск при длинном списке, «Отмена» под шторкой.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "список у поля"
+  },
+  "mobile": {
+   "sub_ru": "шторка снизу, пункты 48 px"
+  }
+ },
+ "changes": [
+  {
+   "what": "Поле-триггер",
+   "desktop": "48 px (паддинги 12)",
+   "mobile": "56 px (паддинги 16) — как у поля ввода",
+   "edit": [
+    {
+     "id": "height",
+     "v": 56,
+     "sel": ".ds-select-form__input-frame",
+     "css": "height:@px"
+    },
+    {
+     "id": "pad",
+     "v": 16,
+     "sel": ".ds-select-form__input-frame",
+     "css": "padding:@px"
+    }
+   ]
+  },
+  {
+   "what": "Контейнер списка",
+   "desktop": "панель 240 px у поля",
+   "mobile": "шторка снизу: на всю ширину, верхние углы скруглены, не выше 80 % экрана"
+  },
+  {
+   "what": "Пункт списка",
+   "desktop": "по содержимому (паддинги 8–12 / 16)",
+   "mobile": "минимум 48 px — значение Angular для опции оверлея и тач-цель Material",
+   "edit": [
+    {
+     "id": "item-height",
+     "v": 48,
+     "sel": ".ds-select-item",
+     "css": "min-height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Поиск по списку",
+   "desktop": "по месту",
+   "mobile": "строка поиска в шторке — при длинном списке"
+  },
+  {
+   "what": "Подтверждение",
+   "desktop": "клик по пункту закрывает список",
+   "mobile": "«Отмена» и подтверждение под шторкой (ряд кнопок в контейнере)"
+  },
+  {
+   "what": "Кегль, цвета, состояния",
+   "desktop": "12 / 16 и 14 / 20, фон #F8F9FC",
+   "mobile": "12 / 16 и 14 / 20 px, фон #F8F9FC — стилевые токены общие"
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Геометрию шторки задаёт компонент (ширина, скруглённые верхние углы, максимальная высота), а её позицию — страница: компонент не «виснет» сам, иначе в панели рядом с десктопом он перекрывал бы всё.</p>",
+ "why_ru": "Отдельной страницы Select в MD3 нет: селект собран из меню и текстового поля, поэтому поле селекта — те же 56 dp, что у поля ввода, а список — это меню. Angular Material даёт оверлей с конкретными числами: панель максимум 275 px, строка опции min-height 48 px, ширина панели равна ширине поля. И там же прямо сказано, что на мобиле эту роль выполняет шторка снизу — MatBottomSheet «задуман как альтернатива меню и диалогам». В iOS HIG селекта как компонента нет вовсе: его роль делят Picker (средние и длинные списки) и Pop-up button (плоский список взаимоисключающих опций), а Combo box существует только на macOS.",
+ "result_html": "<ul class=\"list\"><li>Поле 56 px — как у поля ввода: у MD3 поле селекта и поле ввода это одно и то же (56 dp).</li><li>Пункт 48 px и шторка снизу — из Angular Material (опция 48, панель 275) и рекомендации Material про bottom sheet.</li><li>Поиск в шторке у нас уже есть в разметке (<code>__search</code>) — включается при длинном списке.</li><li><b>Не решено:</b> отметка выбранного пункта — в ДС нет модификатора выбранного пункта, нужна разметка (галка или акцентный текст).</li><li><b>Не решено:</b> при каком числе пунктов включать поиск — порога нет ни у одной платформы.</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Поле селекта",
+   "html": "<div class=\"ds-select-form\"><span class=\"ds-select-form__label\">Поле</span><div class=\"ds-select-form__input-frame\"><span>Пицца «Маргарита»</span><span class=\"ds-arrow-select\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "Список опций (на мобиле — шторка)",
+   "html": "<div class=\"ds-select-container\"><div class=\"ds-select-container__search\"><div class=\"ds-input ds-input--s\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Поиск\"></div></div></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Пицца «Маргарита»</span><span class=\"ds-select-item__subtitle\">Тесто, соус, моцарелла</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Паста «Карбонара»</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Салат «Цезарь»</span></div></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "Длинный список: пункты с подписями",
+   "html": "<div class=\"ds-select-container\"><div class=\"ds-select-container__search\"><div class=\"ds-input ds-input--s\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Поиск\"></div></div></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Заказ №1042</span><span class=\"ds-select-item__subtitle\">Стол 7 · 12:30</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Заказ №1041</span><span class=\"ds-select-item__subtitle\">Стол 3 · 12:10</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Заказ №1040</span><span class=\"ds-select-item__subtitle\">Выдача · 11:55</span></div></div></div>",
+   "stack": true
+  }
+ ],
+ "found_html": "<ul class=\"list\"><li>Контейнер объявлен как <code>min-height: 406px</code> (высота фрейма Figma): под двумя-тремя строками остаётся ~230 px пустого места. Внутри панелей контейнер снова hug; библиотека не правится. То же у меню (418) и списка (257).</li></ul>",
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Отдельной страницы-компонента Select в MD3 нет (/components/select → 404): селект описан как меню, показывающее текущий выбранный пункт над меню, а в material-web это md-filled-select/md-outlined-select = text field + меню (select.json).",
+    "Поле-триггер наследует text field — 56 dp ($height: 56px), скругление corner-extra-small; список опций с паддингом 8 px сверху и снизу — отсюда мобильные 48 → 56 px (select.json).",
+    "У Angular триггер тоже равен высоте form-field — 56 px при density 0 (шкала до 36 px), текст триггера body-large 16 px (select.json).",
+    "Опция в оверлее — min-height 48 px, а панель ограничена max-height 275 px: на мобиле это прямой аргумент за шторку снизу вместо панели у поля (select.json).",
+    "Вариантов только два — filled и outlined, размерного ряда нет; мультиселект (нативный <select multiple>) внутри mat-form-field Angular прямо не рекомендует (select.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Компонента select/dropdown в HIG нет: взамен Picker для средних и длинных списков («Consider using a picker to offer medium-to-long lists of items») и Pop-up button для плоского списка взаимоисключающих опций (select.json).",
+    "Combo box — только macOS: «Not supported in iOS, iPadOS, tvOS, visionOS, or watchOS» (select.json).",
+    "Размерного ряда нет, кроме общего тач-таргета 44×44 pt: и высоту триггера, и высоту пункта задаём сами (select.json).",
+    "Правило выбора сущности: средний или длинный список — picker, короткий плоский — pop-up button; длинный список на мобиле логично превращать в шторку с прокруткой (select.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Список опций на мобиле — шторка снизу: пункт минимум 48 px, панель 275 px у поля в палец не попадает.",
+  "Длинный список (больше примерно десяти пунктов) — со строкой поиска внутри шторки.",
+  "«Отмена» и подтверждение — рядом под шторкой; закрывать по тапу без подтверждения только там, где результат обратим.",
+  "Селект — для одного значения; множественный выбор решать отдельным сценарием с чипсами, а не мультиселектом в поле.",
+  "В поле держать понятный выбранный текст: placeholder «Выберите» после выбора не возвращать.",
+  "Чего нельзя: открывать список панелью у поля на телефоне, делать пункт ниже 48 px, прятать в селект два-три варианта, которые видны сразу."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Новое блюдо</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-select-form\"><span class=\"ds-select-form__label\">Категория</span><div class=\"ds-select-form__input-frame\"><span>Пицца «Маргарита»</span><span class=\"ds-arrow-select\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-input ds-input--m\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Цена, ₽</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"\"></div></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Категория</p><p class=\"phone__sheet-text\">Новое блюдо · Пицца «Маргарита»</p><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Пицца</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Паста</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Десерт</span></div></div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Поле-селект в форме блюда: значение и стрелка справа</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Новое блюдо</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-select-form\"><span class=\"ds-select-form__label\">Категория</span><div class=\"ds-select-form__input-frame\"><span>Пицца «Маргарита»</span><span class=\"ds-arrow-select\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-input ds-input--m\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Цена, ₽</span><input class=\"ds-input__field\" type=\"text\" placeholder=\"\"></div></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Категория</p><p class=\"phone__sheet-text\">Новое блюдо · Пицца «Маргарита»</p><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Пицца</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Паста</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__text\">Десерт</span></div></div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "Панель списка ограничена по высоте",
+   "items": [
+    "Что происходит: выпадающая панель селекта на телефоне упирается в края экрана и в свой максимум: в Angular Material панель ограничена `$mat-select-panel-max-height: 275px`, а опция внутри — `min-height: 48px`, то есть длинный список начинает прокручиваться внутри панели у поля.",
+    "Что делают системы: MD3 описывает селект как меню на временной поверхности — «display a list of choices on temporary surfaces and display the currently selected menu item above the menu» — с отступами списка top-space / bottom-space 8 px и высотами пунктов 56 / 72 px по токенам меню.",
+    "Что делать нам: на мобиле список опций открываем шторкой снизу на всю ширину (верхние углы скруглены, высота не больше 80 % экрана), а не панелью 275 px у поля; значение остаётся в триггере и не теряется."
+   ],
+   "src": "Источники: Angular Material · select.scss (raw.githubusercontent.com/angular/components/main/src/material/select/select.scss) · Material Web · Select (raw.githubusercontent.com/material-components/material-web/main/docs/components/select.md) · MD3-токены меню (raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-menu.scss)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-select-container\"><div class=\"ds-select-container__search\"><div class=\"ds-input ds-input--s\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Поиск\"></div></div></div></div><div class=\"ds-select-item ds-select-item--true\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Пицца «Маргарита»</span><span class=\"ds-select-item__subtitle\">Тесто, соус, моцарелла</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">ramen_dining</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Паста «Карбонара»</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">eco</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Салат «Цезарь»</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Тирамису</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Суп-пюре из тыквы</span></div></div></div></div>",
+   "example_ru": "Список опций — шторкой снизу на всю ширину (343 px) с ограничением 80 % экрана вместо панели 275 px у поля: выбранное значение остаётся в триггере и не теряется."
+  },
+  {
+   "title": "Высота селекта «пляшет» относительно поля ввода",
+   "items": [
+    "Что происходит: селект рядом с полем ввода выглядит ниже или выше него, и строка формы разъезжается: у поля ввода фиксированная высота — `$height: 56px !default`, у Angular form-field 56 / 52 / 48 / 44 / 40 / 36 px по плотности 0…−5.",
+    "Что делают системы: своего размерного ряда у селекта нет нигде: в MD3 только filled и outlined (md-filled-select / md-outlined-select), в Angular — только density, а у Apple компонента select вообще нет — взамен Picker для средних и длинных списков и Pop-up button для плоского списка взаимоисключающих опций (Combo box — только macOS).",
+    "Что делать нам: высота селекта в ДС равна высоте поля ввода — 56 px с паддингами 16 px, минимальная 36 px в компактном режиме; так строка формы из поля и селекта стоит ровно."
+   ],
+   "src": "Источники: Material Components · textfield variables (raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-textfield/_variables.scss) · Angular Material · _m3-form-field.scss (raw.githubusercontent.com/angular/components/main/src/material/form-field/_m3-form-field.scss) · Apple HIG · Pickers (developer.apple.com/design/human-interface-guidelines/pickers) · Apple HIG · Pop-up buttons (developer.apple.com/design/human-interface-guidelines/pop-up-buttons)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-input ds-input--m\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><span class=\"ds-input__label\">Цена, ₽</span><input class=\"ds-input__field\" type=\"text\" value=\"1 480\"></div></div></div><div class=\"ds-select-form\"><span class=\"ds-select-form__label\">Категория</span><div class=\"ds-select-form__input-frame\"><span>Пицца «Маргарита»</span><span class=\"ds-arrow-select\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div></div>",
+   "example_ru": "Поле ввода и селект в одной строке формы одной высоты — 56 px (в компактном режиме минимальная 36 px), поэтому строка не разъезжается."
+  },
+  {
+   "title": "Длинное значение в триггере и длинный пункт",
+   "items": [
+    "Что происходит: длинное название категории не влезает ни в триггер, ни в пункт списка: опция в Angular — min-height 48 px, то есть фактически одна строка на пункт, а MD3 показывает выбранный пункт над меню и внутри триггера места под многоточие почти не остаётся.",
+    "Что делают системы: для «длинных» списков платформы предлагают другой компонент, а не растягивание пункта: Ant Design — «You probably need AutoComplete if you're looking for an input box that can be typed or selected», у него же фильтрация по вводу описана как filterOption = true, а у Apple длинные списки уходят в Picker.",
+    "Что делать нам: значение в триггере — одна строка 14 / 20 px с многоточием; пункт списка — до двух строк; если названия длинные по природе (варианты блюда), даём поиск внутри шторки, а не переносим пункт в три строки."
+   ],
+   "src": "Источники: Angular Material · option.scss (raw.githubusercontent.com/angular/components/main/src/material/core/option/option.scss) · Material Web · Select (raw.githubusercontent.com/material-components/material-web/main/docs/components/select.md) · Ant Design · Select (raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md) · Apple HIG · Pickers (developer.apple.com/design/human-interface-guidelines/pickers)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-select-form\"><span class=\"ds-select-form__label\">Категория</span><div class=\"ds-select-form__input-frame\"><span style=\"min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap\">Пицца «Маргарита» с томатами черри и моцареллой</span><span class=\"ds-arrow-select\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-select-container\"><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Пицца «Маргарита»</span><span class=\"ds-select-item__subtitle\">Тесто, соус, моцарелла</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">ramen_dining</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Паста «Карбонара»</span></div></div></div></div>",
+   "example_ru": "Значение в триггере — одна строка 14 / 20 px с многоточием, пункт списка — до двух строк: длинные названия ищем поиском в шторке, а не растягиваем пункт до трёх строк."
+  },
+  {
+   "title": "Много опций: поиск внутри списка и порции",
+   "items": [
+    "Что происходит: в списке из 30 категорий искать скроллом долго: Ant Design держит у выпадающего списка высоту `listHeight` 256 px по умолчанию и внутренний виртуальный скролл, а для длинных наборов советует поиск по вводу.",
+    "Что делают системы: платформенные механизмы различаются: меню, из которого собран селект, умеет typeahead по набранным символам и раскрытие по подменю (Material Web требует для вложенности `has-overflow`, иначе работает overflow-скролл), а Angular Material делает поиск отдельным компонентом autocomplete, а не свойством селекта.",
+    "Что делать нам: если опций больше восьми — строка поиска внутри шторки, дальше первые 10 результатов и «Показать ещё»; нативный `<select multiple>` внутри формы не используем (Angular Material прямо не рекомендует его в mat-form-field)."
+   ],
+   "src": "Источники: Ant Design · Select (raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md) · Material Web · Menu (raw.githubusercontent.com/material-components/material-web/main/docs/components/menu.md) · Angular Material · select.md (raw.githubusercontent.com/angular/components/main/src/material/select/select.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-select-container\"><div class=\"ds-select-container__search\"><div class=\"ds-input ds-input--s\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Поиск\"></div></div></div></div><div class=\"ds-select-item ds-select-item--true\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Пицца «Маргарита»</span><span class=\"ds-select-item__subtitle\">Тесто, соус, моцарелла</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">ramen_dining</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Паста «Карбонара»</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">eco</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Салат «Цезарь»</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Тирамису</span></div></div><div class=\"ds-select-item ds-select-item--false\"><span class=\"ds-select-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">soup_kitchen</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-select-item__text\">Суп-пюре из тыквы</span></div></div><div class=\"ds-select-container__button-group\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Показать ещё 20</span></button></div></div></div>",
+   "example_ru": "Опций больше восьми — в шторке строка поиска, дальше первые 10 результатов и «Показать ещё»: нативный multi-select внутри формы не используем."
+  },
+  {
+   "title": "Мультивыбор и подтверждение выбора",
+   "items": [
+    "Что происходит: мультиселект с чипсами в триггере на 375 px переполняется и ломает строку формы: у MD3 нет варианта селекта с несколькими значениями в триггере, а нативный multi-select в Angular не рекомендуется внутри mat-form-field.",
+    "Что делают системы: платформы обходят это по-разному: Ant Design ограничивает число чипсов (`maxTagCount`, demo «Responsive maxTagCount») и скрывает лишние, Apple для множественного выбора уходит в pickers и списки с галочками, а в Angular есть optgroup и отдельный multiple-режим панели.",
+    "Что делать нам: в триггере показываем максимум два чипса и «+N», полный список — в шторке с чекбоксами; шторка не закрывается по тапу на опцию, а под ней стоит ряд кнопок «Отмена» и подтверждение."
+   ],
+   "src": "Источники: Angular Material · select.md (raw.githubusercontent.com/angular/components/main/src/material/select/select.md) · Ant Design · Select (raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md) · Apple HIG · Pickers (developer.apple.com/design/human-interface-guidelines/pickers)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-select-form\"><span class=\"ds-select-form__label\">Категории</span><div class=\"ds-select-form__input-frame\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Пицца</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Паста</span></div><span>+3</span><span class=\"ds-arrow-select\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div><div class=\"ds-select-container\"><div class=\"ds-select-container__title\">Категории</div><div class=\"ds-checkbox-group ds-checkbox-group--vertical\"><label class=\"ds-checkbox\" id=\"pat-select-4a\"><input class=\"ds-checkbox__input\" type=\"checkbox\" checked><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Пицца</span></label><label class=\"ds-checkbox\" id=\"pat-select-4b\"><input class=\"ds-checkbox__input\" type=\"checkbox\" checked><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Паста</span></label><label class=\"ds-checkbox\" id=\"pat-select-4c\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Салаты</span></label><label class=\"ds-checkbox\" id=\"pat-select-4d\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Десерты</span></label><label class=\"ds-checkbox\" id=\"pat-select-4e\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Напитки</span></label></div><div class=\"ds-select-container__button-group\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Применить</span></button></div></div></div>",
+   "example_ru": "В триггере два чипса и «+3», полный список — в шторке с чекбоксами, под ней ряд «Отмена» и «Применить»: шторка не закрывается по тапу на опцию."
+  }
+ ]
+}

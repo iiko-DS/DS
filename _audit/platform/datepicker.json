@@ -1,0 +1,270 @@
+{
+  "component": "Datepicker",
+  "verified_on": "2026-09-11",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Docked date picker — размер контейнера",
+          "size": "360dp × 456dp",
+          "quote": "md.comp.date-picker.docked.container.width = 360 DIPS; md.comp.date-picker.docked.container.height = 456 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Docked date picker — ячейка даты",
+          "size": "48dp × 48dp",
+          "quote": "md.comp.date-picker.docked.date.container.width = 48 DIPS; md.comp.date-picker.docked.date.container.height = 48 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Docked date picker — state layer ячейки",
+          "size": "40dp × 40dp",
+          "quote": "md.comp.date-picker.docked.date.state-layer.width = 40 DIPS; md.comp.date-picker.docked.date.state-layer.height = 40 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Docked date picker — высота хедера",
+          "size": "64dp",
+          "quote": "md.comp.date-picker.docked.header.height = 64 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Docked date picker — кнопка меню (переключатель месяц/год)",
+          "size": "высота 40dp, иконка 18dp",
+          "quote": "md.comp.date-picker.docked.menu-button.container.height = 40 DIPS; md.comp.date-picker.docked.menu-button.icon.size = 18 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Docked date picker — строка списка меню",
+          "size": "48dp",
+          "quote": "md.comp.date-picker.docked.menu.list-item.container.height = 48 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Modal date picker — размер контейнера",
+          "size": "360dp × 524dp",
+          "quote": "md.comp.date-picker.modal.container.width = 360 DIPS; md.comp.date-picker.modal.container.height = 524 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Modal date picker — ячейка даты и state layer",
+          "size": "40dp × 40dp",
+          "quote": "md.comp.date-picker.modal.date.container.width = 40 DIPS; md.comp.date-picker.modal.date.container.height = 40 DIPS; state-layer = 40 DIPS × 40 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Modal date picker — высота хедера",
+          "size": "120dp",
+          "quote": "md.comp.date-picker.modal.header.container.height = 120 DIPS (ширина = ширина контейнера 360 DIPS)",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Modal date picker (выбор диапазона) — высота хедера",
+          "size": "128dp",
+          "quote": "md.comp.date-picker.modal.range-selection.header.container.height = 128 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Modal date picker (выбор диапазона) — индикатор активного края",
+          "size": "40dp",
+          "quote": "md.comp.date-picker.modal.range-selection.active-indicator.container.height = 40 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Modal date picker (выбор года) — ячейка года",
+          "size": "72dp × 36dp",
+          "quote": "md.comp.date-picker.modal.year-selection.year.container.width = 72 DIPS; height = 36 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Modal date input — размер контейнера",
+          "size": "328dp × 512dp",
+          "quote": "md.comp.date-input.modal.container.width = 328 DIPS; md.comp.date-input.modal.container.height = 512 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Modal date input — хедер",
+          "size": "328dp × 120dp",
+          "quote": "md.comp.date-input.modal.header.container.width = 328 DIPS; height = 120 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Обводка ячейки «сегодня»",
+          "size": "1dp",
+          "quote": "md.comp.date-picker.docked.date.today.container.outline.width = 1 DIPS; md.comp.date-picker.modal.date.today.container.outline.width = 1 DIPS",
+          "source": "https://m3.material.io/components/date-pickers/specs"
+        },
+        {
+          "name": "Padding/отступы ячеек и полный набор измерений в текстовом виде",
+          "size": null,
+          "quote": "не найдено — на странице Specs таблица измерений («Attribute | Value») для date picker отсутствует: размеры опубликованы только как значения токенов (md.comp.* = N DIPS), что и процитировано выше",
+          "source": null
+        },
+        {
+          "name": "Радиус скругления ячейки даты",
+          "size": null,
+          "quote": "не найдено — у токенов docked/modal date.container есть shape, но числового значения (DIPS) в опубликованных данных нет",
+          "source": null
+        }
+      ],
+      "variants": [
+        "Docked date picker",
+        "Modal date picker",
+        "Modal date input",
+        "Выбор диапазона дат (range selection) и выбор года (year selection) — режимы, заданные токенами"
+      ],
+      "notes_ru": "Прямая цитата по вариантам: «There are three variants of date pickers: Docked date picker. Modal date picker. Modal date input.» Docked — для больших экранов («Docked date picker on desktop»), modal — диалог на мобиле, modal date input — модальное окно с текстовым полем ввода и кнопками (его отдельные токены md.comp.date-input.modal). Обратите внимание на расхождение в опубликованных токенах: у docked ячейка даты 48×48dp, у modal — 40×40dp; это ровно те значения, что отдаёт страница Specs (проверено по id токена → значению, дублей id нет). Ячейки «сегодня» обведены 1dp. Для сравнения, в реализации мобильного Android (MDC-Android, отдельный источник) день календаря 36dp × 32dp, высота навигации 48dp, actions 52dp — это implementation detail, а не спецификация MD3.",
+      "sources": [
+        "https://m3.material.io/components/date-pickers/specs",
+        "https://m3.material.io/components/date-pickers/guidelines",
+        "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/datepicker/res/values/dimens.xml"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Минимальный размер ячейки календаря",
+          "size": "32px",
+          "quote": "$calendar-body-cell-min-size: 32px !default;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/calendar-body.scss"
+        },
+        {
+          "name": "Минимальная ширина всего календаря",
+          "size": "224px (7 × 32px)",
+          "quote": "$calendar-body-min-size: 7 * $calendar-body-cell-min-size !default;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/calendar-body.scss"
+        },
+        {
+          "name": "Радиус ячейки (круглая/капсульная форма)",
+          "size": "999px",
+          "quote": "$calendar-body-cell-radius: 999px !default;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/calendar-body.scss"
+        },
+        {
+          "name": "Размер контента ячейки",
+          "size": "100% − 5% × 2 (margin 5% на сторону)",
+          "quote": "$calendar-body-cell-content-margin: 5% !default; $calendar-body-cell-content-size: 100% - $calendar-body-cell-content-margin * 2 !default;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/calendar-body.scss"
+        },
+        {
+          "name": "Толщина границы контента ячейки",
+          "size": "1px",
+          "quote": "$calendar-body-cell-content-border-width: 1px !default;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/calendar-body.scss"
+        },
+        {
+          "name": "Shape контейнера календаря (M3-тема)",
+          "size": "corner-large; для touch-режима corner-extra-large (токены, без px)",
+          "quote": "datepicker-calendar-container-shape: map.get($system, corner-large), datepicker-calendar-container-touch-shape: map.get($system, corner-extra-large),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/_m3-datepicker.scss"
+        },
+        {
+          "name": "Высота календаря",
+          "size": null,
+          "quote": "не найдено — вместо числа правило: «The calendar's height is determined automatically based on the width and the number of dates that need to be shown for a month. If you want to make the calendar larger or smaller, adjust the width rather than the height.»",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/datepicker.md"
+        },
+        {
+          "name": "Touch-режим (touchUi)",
+          "size": "календарь открывается в большом диалоге",
+          "quote": "`<mat-datepicker>` has a `touchUi` property that can be set to `true` in order to enable a more touch friendly UI where the calendar opens in a large dialog.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/datepicker.md"
+        },
+        {
+          "name": "Кнопки подтверждения",
+          "size": "Cancel + Apply (обязательный паттерн для доступности)",
+          "quote": "you can add a `<mat-datepicker-actions>` element inside `<mat-datepicker>` with a \"Cancel\" and an \"Apply\" button marked with the `matDatepickerCancel` and `matDatepickerApply` attributes... Always enable confirmation action buttons. This allows assistive technology users to explicitly confirm their selection before committing a value.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/datepicker.md"
+        },
+        {
+          "name": "Формат даты — подсказка под полем",
+          "size": null,
+          "quote": "Always communicate the date format (e.g. 'MM/DD/YYYY'). This can be accomplished using `<mat-hint>` or by providing an additional label adjacent to the form field.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/datepicker.md"
+        }
+      ],
+      "variants": [
+        "Pop-up (по умолчанию, открывается под полем)",
+        "touchUi — большой диалог для тач-устройств",
+        "Inline <mat-calendar> — календарь прямо на странице",
+        "Выбор диапазона дат (range picker, в т.ч. своя selection strategy)"
+      ],
+      "notes_ru": "Angular Material использует сетку из 7 колонок с ячейкой минимум 32px (итого минимум 224px по ширине) и круглой ячейкой (radius 999px) — это заметно мельче, чем 40–48dp у MD3. Размеров контейнера в px нет: размер задаётся шириной (высота вычисляется). Обязательный паттерн доступности — кнопки Cancel/Apply через <mat-datepicker-actions> (иначе значение применяется сразу по клику на дату). Рекомендуется сообщать формат даты через <mat-hint>. Календарь реализует role=\"grid\" внутри role=\"dialog\".",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/datepicker.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/calendar-body.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/datepicker/_m3-datepicker.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Стили date picker",
+          "size": "Compact / Inline / Wheels / Automatic",
+          "quote": "Compact — A button that displays editable date and time content in a modal view. Inline — For time only, a button that displays wheels of values; for dates and times, an inline calendar view. Wheels — A set of scrolling wheels that also supports data entry through built-in or external keyboards. Automatic — A system-determined style based on the current platform and date picker mode.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/pickers"
+        },
+        {
+          "name": "Режимы date picker",
+          "size": "Date / Time / Date and time / Countdown timer",
+          "quote": "A date picker has four modes, each of which presents a different set of selectable values. Date... Time... Date and time... Countdown timer — Displays hours and minutes, up to a maximum of 23 hours and 59 minutes. This mode isn't available in the inline or compact styles.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/pickers"
+        },
+        {
+          "name": "Интервал минут",
+          "size": "по умолчанию 60 значений (0–59); можно увеличить, если делится на 60 (например 15 → 0, 15, 30, 45)",
+          "quote": "By default, a minute list includes 60 values (0 to 59). You can optionally increase the minute interval as long as it divides evenly into 60. For example, you might want quarter-hour intervals (0, 15, 30, and 45).",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/pickers"
+        },
+        {
+          "name": "Компактный стиль",
+          "size": null,
+          "quote": "Use a compact date picker when space is constrained. The compact style displays a button that shows the current value in your app's accent color. When people tap the button, the date picker opens a modal view...",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/pickers"
+        },
+        {
+          "name": "Числовые размеры date picker (высота колеса, ширина, высота ячейки)",
+          "size": null,
+          "quote": "не найдено — на странице HIG Pickers нет ни одного числового размера (pt); где именно открывается пикер — «A picker typically appears at the bottom of a window or in a popover.»",
+          "source": null
+        },
+        {
+          "name": "Отдельная страница Date pickers в HIG",
+          "size": null,
+          "quote": "не найдено — /design/human-interface-guidelines/date-pickers отдаёт 404; date picker описан внутри страницы Pickers",
+          "source": null
+        },
+        {
+          "name": "macOS — стили date picker (для справки, старая ветка HIG)",
+          "size": "textual и graphical",
+          "quote": "There are two styles of date pickers in macOS: textual and graphical.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/pickers"
+        }
+      ],
+      "variants": [
+        "Compact (кнопка + модальное окно)",
+        "Inline (встроенный календарь/колёса)",
+        "Wheels (колёса значений, включая watchOS)",
+        "Automatic (системный выбор стиля)"
+      ],
+      "notes_ru": "В iOS HIG нет страницы «Date pickers» — дата-пикер описан внутри Pickers (проверено: /date-pickers → 404). Числовых размеров нет вообще: ни высоты колеса, ни размера ячейки, ни ширины. Apple описывает стили (compact/inline/wheels/automatic), режимы (date/time/date and time/countdown), совет уменьшать гранулярность минут и правило «Avoid switching views to show a picker» (пикер показывается в контексте — под полем или в popover). В компактном стиле пикер открывается как popover, инлайн — внутри контента.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/pickers"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Размер ячейки даты совпадает только по порядку величины: MD3 даёт 48×48dp (docked) и 40×40dp (modal), Angular Material — минимум 32px с круглой ячейкой; в iOS HIG числа нет вообще.",
+    "Кнопки подтверждения (Apply/Cancel) есть только у Angular Material (<mat-datepicker-actions>, matDatepickerApply/matDatepickerCancel, «Always enable confirmation action buttons») и как требование «текстовые кнопки» у MD3 (modal date input содержит Text buttons); в iOS HIG такого требования нет.",
+    "Стили iOS (compact / inline / wheels / automatic) не имеют аналогов ни в MD3 (docked / modal / modal input), ни в Angular Material (popup / touchUi / inline mat-calendar) — совпадений по названиям и охвату вариантов нет.",
+    "Touch-вариант открытия в большом диалоге документирован только у Angular Material (touchUi); MD3 вместо этого использует отдельный modal-вариант компонента, а iOS — компактный стиль с модальным окном.",
+    "Обводка ячейки «сегодня» (1dp) документирована только у MD3; в Angular Material и iOS HIG числового эквивалента нет.",
+    "Максимальная ширина/высота контейнера date picker есть только у MD3 (360×456 docked, 360×524 modal, 328×512 modal input); Angular Material намеренно не задаёт высоту («adjust the width rather than the height»), iOS HIG не даёт ни того, ни другого.",
+    "Правило «докедный (встроенный) пикер для больших экранов, modal — для мобильных» есть только у MD3; iOS вместо докеда даёт inline-стиль, Angular — inline <mat-calendar>.",
+    "Подсказка формата даты через mat-hint рекомендована только в Angular Material; MD3/iOS аналога с числом или явным требованием в этих источниках не публикуют."
+  ],
+  "verdict_ru": "Только MD3 даёт конкретную геометрию date picker: docked 360×456dp с ячейкой 48×48dp, modal 360×524dp (ячейка 40×40dp), modal date input 328×512dp — все значения проверены по токенам страницы Specs. Angular Material использует другую сетку (ячейка минимум 32px, календарь от 224px, круглая ячейка, radius 999px) и не задаёт высоту контейнера, зато единственный из трёх рекомендует обязательные кнопки Cancel/Apply и подсказку формата через mat-hint. iOS HIG не даёт ни одного числа: только стили compact/inline/wheels/automatic и режимы. Для DS: брать геометрию у MD3, а поведение подтверждения — у Angular Material."
+}

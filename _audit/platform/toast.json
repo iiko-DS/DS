@@ -1,0 +1,376 @@
+{
+  "component": "Toast (всплывающее уведомление). В MD3/Angular Material аналог называется Snackbar; отдельного «Toast» нет ни у одной из трёх платформ",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "param": "высота/вертикальный паддинг",
+          "value": "design_snackbar_padding_vertical = 14dp (для двух строк — 16dp)",
+          "source": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml"
+        },
+        {
+          "param": "горизонтальный паддинг",
+          "value": "design_snackbar_padding_horizontal = 12dp; mtrl-вариант = 8dp",
+          "source": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml"
+        },
+        {
+          "param": "отступ от края экрана",
+          "value": "m3_snackbar_margin = 8dp",
+          "source": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml"
+        },
+        {
+          "param": "скругление",
+          "value": "mtrl_snackbar_background_corner_radius = 4dp",
+          "source": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml"
+        },
+        {
+          "param": "тень",
+          "value": "design_snackbar_elevation = 6dp",
+          "source": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml"
+        },
+        {
+          "param": "текст",
+          "value": "design_snackbar_text_size = 14sp",
+          "source": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml"
+        },
+        {
+          "param": "кнопка действия",
+          "value": "android:minWidth=\"48dp\"",
+          "source": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/layout/design_layout_snackbar_include.xml"
+        },
+        {
+          "param": "порог перехода к вертикальной раскладке",
+          "value": "design_snackbar_action_inline_max_width = 128dp",
+          "source": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml"
+        },
+        {
+          "param": "максимальная ширина (Compose M3)",
+          "value": "ContainerMaxWidth = 600.dp",
+          "source": "https://raw.githubusercontent.com/androidx/androidx/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Snackbar.kt"
+        },
+        {
+          "param": "вертикальный паддинг (Compose M3)",
+          "value": "SnackbarVerticalPadding = 14.dp; HorizontalSpacing = 16.dp; TextEndExtraSpacing = 8.dp",
+          "source": "https://raw.githubusercontent.com/androidx/androidx/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Snackbar.kt"
+        },
+        {
+          "param": "скругление в M3-теме Angular (для сверки)",
+          "value": "corner-extra-small = 4px",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
+        }
+      ],
+      "variants": [
+        "Snackbar без действия (текст)",
+        "Snackbar с одним действием (текстовая кнопка)",
+        "однострочный (паддинг 14dp) / двухстрочный (паддинг 16dp)",
+        "с иконкой закрытия (dismiss)",
+        "цветовые роли: inverse-surface фон, inverse-on-surface текст, inverse-primary действие"
+      ],
+      "notes_ru": "Компонент есть, но называется Snackbar (m3.material.io/components/snackbar/specs → HTTP 200, <title>Snackbar - Material Design 3</title>); страницы /components/toast/specs у MD3 НЕТ (404). Важная оговорка по источникам: HTML-спека m3.material.io рендерится клиентски, поэтому числа взяты из официальных реализаций Google (material-components-android и Compose M3), а не из блога: 14dp вертикальный паддинг (16dp для двух строк), 12dp горизонтальный (8dp в mtrl-варианте), отступ 8dp, скругление 4dp, elevation 6dp, текст 14sp, кнопка действия не уже 48dp, порог «инлайн vs вертикально» 128dp, максимум 600dp у Compose. Именно эти числа и надо считать проверяемыми, а формулировки «высота 48dp» без источника — не использовать.",
+      "nearest_ru": "Snackbar (не Toast).",
+      "sources": [
+        {
+          "url": "https://m3.material.io/components/snackbar/specs",
+          "quote": "HTTP 200, <title>Snackbar - Material Design 3</title>",
+          "what_ru": "Спека Snackbar существует."
+        },
+        {
+          "url": "https://m3.material.io/components/toast/specs",
+          "quote": "HTTP 404 (проверено curl)",
+          "what_ru": "Отдельного компонента Toast в MD3 нет."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml",
+          "quote": "<dimen name=\"design_snackbar_elevation\">6dp</dimen>",
+          "what_ru": "Elevation 6dp."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml",
+          "quote": "<dimen name=\"mtrl_snackbar_background_corner_radius\">4dp</dimen>",
+          "what_ru": "Скругление 4dp."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml",
+          "quote": "<dimen name=\"m3_snackbar_margin\">8dp</dimen>",
+          "what_ru": "Отступ 8dp (M3-вариант)."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml",
+          "quote": "<dimen name=\"design_snackbar_padding_vertical\">14dp</dimen>\n  <dimen name=\"design_snackbar_padding_vertical_2lines\">16dp</dimen>",
+          "what_ru": "Вертикальные паддинги 14dp / 16dp."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml",
+          "quote": "<dimen name=\"design_snackbar_padding_horizontal\">12dp</dimen>\n  <dimen name=\"mtrl_snackbar_padding_horizontal\">8dp</dimen>",
+          "what_ru": "Горизонтальные паддинги 12dp / 8dp."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml",
+          "quote": "<dimen name=\"design_snackbar_text_size\">14sp</dimen>",
+          "what_ru": "Кегль 14sp."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml",
+          "quote": "<dimen name=\"design_snackbar_action_inline_max_width\">128dp</dimen>",
+          "what_ru": "Порог переноса действия 128dp."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/layout/design_layout_snackbar_include.xml",
+          "quote": "android:minWidth=\"48dp\"",
+          "what_ru": "Кнопка действия не уже 48dp."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/androidx/androidx/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Snackbar.kt",
+          "quote": "private val ContainerMaxWidth get() = 600.dp",
+          "what_ru": "Максимальная ширина 600dp."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/androidx/androidx/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Snackbar.kt",
+          "quote": "private val SnackbarVerticalPadding get() = 14.dp",
+          "what_ru": "Вертикальный паддинг 14dp в Compose M3."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/androidx/androidx/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Snackbar.kt",
+          "quote": "private val HorizontalSpacing get() = 16.dp",
+          "what_ru": "Горизонтальный интервал 16dp."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss",
+          "quote": "'corner-extra-small': if($exclude-hardcoded-values, null, 4px),",
+          "what_ru": "4dp/4px — согласовано с M3-токеном угла."
+        }
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "param": "класс компонента",
+          "value": "MatSnackBar / mat-snack-bar (не «toast»)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md"
+        },
+        {
+          "param": "минимальная ширина поверхности",
+          "value": "min-width: 344px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "param": "максимальная ширина поверхности",
+          "value": "max-width: 672px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "param": "внешний отступ",
+          "value": "margin: 8px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "param": "паддинг текста",
+          "value": "padding: 14px 8px 14px 16px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "param": "боковой паддинг",
+          "value": "$_side-padding: 8px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "param": "тень",
+          "value": "elevation(6)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "param": "скругление (M3-токен)",
+          "value": "snack-bar-container-shape = corner-extra-small (4px)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/_m3-snack-bar.scss"
+        },
+        {
+          "param": "типографика (M3-токен)",
+          "value": "body-medium (font/size/weight/line-height из системной темы)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/_m3-snack-bar.scss"
+        },
+        {
+          "param": "анимация появления",
+          "value": "150ms cubic-bezier(0, 0, 0.2, 1), от scale(0.8)/opacity 0 к scale(1)/opacity 1",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "param": "анимация исчезновения",
+          "value": "75ms cubic-bezier(0.4, 0, 1, 1), opacity 1 -> 0",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "param": "handset-режим (телефон)",
+          "value": "width: 100vw, min-width: 0",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "param": "длительность по умолчанию (пример из доки)",
+          "value": "duration: 3000 / 2500 (в примере конфигурации)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md"
+        }
+      ],
+      "variants": [
+        "open(message) — простой текст",
+        "open(message, action) — с действием «Undo»",
+        "openFromComponent() — кастомный компонент + директивы matSnackBarLabel / matSnackBarActions / matSnackBarAction",
+        "politeness: polite (по умолчанию) / assertive через MatSnackBarConfig",
+        "одновременно открыт только один snackbar (новая замена закрывает прежнюю)"
+      ],
+      "notes_ru": "В Angular Material toast называется Snackbar: MatSnackBar, min-width 344px, max-width 672px, margin 8px, паддинг 14px 8px 14px 16px, elevation 6, скругление из M3-токена corner-extra-small (4px), типографика body-medium, появление 150ms cubic-bezier(0,0,0.2,1) со scale(0.8), исчезновение 75ms. На телефоне контейнер растягивается на 100vw. Доступность: сообщение анонсируется через aria-live (polite по умолчанию), фокус НЕ переводится в snackbar, и при наличии действия рекомендуется не задавать duration. Одновременно может быть открыт только один snackbar.",
+      "nearest_ru": "MatSnackBar (= toast).",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md",
+          "quote": "`MatSnackBar` is a service for displaying snack-bar notifications.",
+          "what_ru": "Название компонента."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss",
+          "quote": "min-width: 344px;\n    max-width: 672px;",
+          "what_ru": "Ширины поверхности."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss",
+          "quote": "margin: 8px;",
+          "what_ru": "Внешний отступ."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss",
+          "quote": "padding: 14px $_side-padding 14px 16px;",
+          "what_ru": "Паддинги текста."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss",
+          "quote": "$_side-padding: 8px;",
+          "what_ru": "Боковой паддинг поверхности 8px."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss",
+          "quote": "@include elevation.elevation(6);",
+          "what_ru": "Тень 6."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/_m3-snack-bar.scss",
+          "quote": "snack-bar-container-shape: map.get($system, corner-extra-small),",
+          "what_ru": "Скругление = corner-extra-small (4px по md-sys-shape)."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/_m3-snack-bar.scss",
+          "quote": "snack-bar-supporting-text-font: map.get($system, body-medium-font),",
+          "what_ru": "Типографика body-medium."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss",
+          "quote": "animation: _mat-snack-bar-enter 150ms cubic-bezier(0, 0, 0.2, 1) forwards; ... animation: _mat-snack-bar-exit 75ms cubic-bezier(0.4, 0, 1, 1) forwards;",
+          "what_ru": "Тайминги анимаций 150ms/75ms."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss",
+          "quote": ".mat-mdc-snack-bar-handset & { width: 100vw; }",
+          "what_ru": "Режим телефона 100vw."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md",
+          "quote": "Only one snackbar can ever be opened at one time.",
+          "what_ru": "Один snackbar за раз."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md",
+          "quote": "`MatSnackBar` announces messages via an `aria-live` region ... `MatSnackBar` does not move focus to the snackbar element.",
+          "what_ru": "Доступность: aria-live, фокус не переводится."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md",
+          "quote": "Avoid setting a `duration` for snackbars that have an action available",
+          "what_ru": "Правило для snackbar с действием."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md",
+          "quote": "duration: 3000 ... {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}",
+          "what_ru": "Примеры длительности."
+        }
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "sizes": [
+        {
+          "param": "тоста как компонента",
+          "value": "нет: 0 упоминаний «toast» во всех проверенных страницах HIG (progress-indicators, modality, scroll-views, app-icons, branding, alerts, notifications, sheets, feedback, loading, status, icons, toolbars)",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/toast → HTTP 404"
+        },
+        {
+          "param": "ближайший модальный аналог — alert",
+          "value": "заголовок + опциональный текст + до трёх кнопок",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/alerts"
+        },
+        {
+          "param": "заголовок alert",
+          "value": "рекомендация не переносить на более чем две строки",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/alerts"
+        }
+      ],
+      "variants": [
+        "alert (модальный, блокирует взаимодействие — не тост)",
+        "notification (push, требует разрешения — не тост)",
+        "sheet / popover (модальные презентации)",
+        "индикатор/лейбл в контенте (рекомендуемый Apple способ информировать без прерывания)",
+        "тоста/снекбара как компонента НЕТ"
+      ],
+      "notes_ru": "В iOS НЕТ отдельного компонента-тоста (страница /toast → 404, слово «toast» не встречается ни в одной из проверенных страниц HIG). Apple вместо всплывающих уведомлений предлагает alert (модальный, прерывает задачу; «use alerts sparingly», «avoid using an alert merely to provide information») или notification (push, с разрешением), а для неинтрузивного информирования — индикатор/лейбл в контексте («prefer finding an alternative way to communicate it within the relevant context»). Практический вывод: строя «toast» для мобильного iiko, надо честно принять, что это не-платформенный паттерн; вести его по правилам snackbar (одно сообщение, авто-скрытие, без перевода фокуса), а не по правилам alert.",
+      "nearest_ru": "Не существует; ближайшие — alert и notification (последний требует разрешения пользователя).",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/toast",
+          "quote": "HTTP 404 (проверено curl)",
+          "what_ru": "Компонента toast в HIG нет."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/alerts",
+          "quote": "Use alerts sparingly. Alerts give people important information, but they interrupt the current task to do so.",
+          "what_ru": "Alert прерывает задачу — это не тост."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/alerts",
+          "quote": "Avoid using an alert merely to provide information. People don't appreciate an interruption from an alert that's informative, but not actionable. If you need to provide only information, prefer finding an alternative way to communicate it within the relevant context.",
+          "what_ru": "Для чисто информационных сообщений alert не подходит."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/alerts",
+          "quote": "In all platforms, alerts display a title, optional informative text, and up to three buttons.",
+          "what_ru": "Состав alert: заголовок, текст, до 3 кнопок."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/alerts",
+          "quote": "avoid overly long titles that wrap to more than two lines",
+          "what_ru": "Ограничение заголовка alert."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/modality",
+          "quote": "Let people dismiss a modal view before presenting another one.",
+          "what_ru": "Нельзя показывать несколько модальных слоёв — тосты так не работают."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/notifications.json",
+          "quote": "HTTP 200 (страница есть)",
+          "what_ru": "Есть notifications (push), но это другой механизм."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators",
+          "quote": "that includes an option to confirm the cancellation or resume the process.",
+          "what_ru": "Apple предпочитает alert и для обратной связи по процессам."
+        }
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Не называть компонент «Toast» в ДС как платформенный: у Google это Snackbar, у Apple компонента нет вовсе; слово Toast не встречается ни в MD3-компонентах, ни в HIG.",
+    "Не использовать «высота 48dp» и прочие ходовые числа без источника — проверяемый набор: 14dp (16dp двухстрочный), 12/8dp по горизонтали, 8dp отступ, 4dp скругление, 6dp elevation, 14sp текст, 48dp минимальная ширина действия, 128dp порог, 344–672px ширина (Angular), 150ms/75ms анимация.",
+    "Не заменять alert тостом там, где решение требует подтверждения (Apple: alert — модальный и требует действия; тост без подтверждения не подходит для критичных операций).",
+    "Не задавать duration для snackbar с действием (Angular: «Avoid setting a duration for snackbars that have an action available») и не переводить фокус в тост (Angular: «does not move focus»).",
+    "Не показывать больше уведомлений, чем платформа допускает: Angular — только один snackbar одновременно, iOS — не более одного alert."
+  ],
+  "verdict_ru": "Отдельного «Toast» нет ни у одной из трёх платформ: у MD3 это Snackbar (m3.material.io/components/snackbar/specs → 200, /components/toast/specs → 404), у Angular это MatSnackBar, а в iOS HIG слова toast нет вообще (страница отдаёт 404). Проверяемые числа: MD3-реализации Google — 14dp вертикальный паддинг (16dp для двух строк), 12/8dp горизонтальный, отступ 8dp, скругление 4dp, elevation 6dp, текст 14sp, кнопка действия не уже 48dp, максимум 600dp в Compose; Angular Material — 344–672px, margin 8px, паддинг 14px 8px 14px 16px, elevation 6, corner-extra-small 4px, анимации 150ms/75ms, на телефоне 100vw. Практический вывод для мобильного iiko: собирать компонент по правилам Snackbar (один за раз, авто-скрытие, без перевода фокуса, aria-live/политесс), а на iOS считать его не-платформенным паттерном и не подменять им alert."
+}

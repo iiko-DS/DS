@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><title>p3</title><style>pre{font:13px/17px monospace;white-space:pre-wrap}</style></head>
+<body><iframe id="f" style="width:1920px;height:1400px;border:0"></iframe><pre id="out">pending</pre>
+<script>
+var BASE='../../../iiko-ds-mobile/prototypes/recommendations/';
+var f=document.getElementById('f'),out=document.getElementById('out'),L=[];
+f.onload=function(){try{
+ var d=f.contentDocument;
+ var scripts=[].slice.call(d.querySelectorAll('script'));
+ L.push('скриптов на странице: '+scripts.length);
+ scripts.forEach(function(s,i){L.push('  ['+i+'] длина '+s.textContent.length+' | начало: '+s.textContent.trim().slice(0,50));});
+ if(scripts.length){
+   var txt=scripts[scripts.length-1].textContent;
+   try{ new Function(txt)(); L.push('последний скрипт исполнился без ошибки'); }
+   catch(e){ L.push('ОШИБКА скрипта: '+e); }
+ }
+ var inp=d.querySelector('.edit__input');
+ L.push('__touched после ручного запуска: '+inp.__touched);
+ out.textContent=L.join(String.fromCharCode(10));
+}catch(e){out.textContent='ERR '+e;}};
+f.setAttribute('src',BASE+'button.html');
+</script></body></html>

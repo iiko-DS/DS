@@ -1,0 +1,230 @@
+{
+  "component": "sidenav",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Navigation drawer, container width",
+          "width_dp": 360,
+          "quote": "'container-width': if($exclude-hardcoded-values, null, 360px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-drawer.scss"
+        },
+        {
+          "name": "Navigation bar, container height",
+          "quote": "'container-height': if($exclude-hardcoded-values, null, 80px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-bar.scss",
+          "height_dp": 80
+        },
+        {
+          "name": "Navigation drawer, active indicator height",
+          "quote": "'active-indicator-height': if($exclude-hardcoded-values, null, 56px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-drawer.scss",
+          "height_dp": 56
+        },
+        {
+          "name": "Navigation bar, active indicator height",
+          "quote": "'active-indicator-height': if($exclude-hardcoded-values, null, 32px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-bar.scss",
+          "height_dp": 32
+        }
+      ],
+      "other_measurements": [
+        {
+          "name": "Navigation drawer, active indicator width",
+          "quote": "'active-indicator-width': if($exclude-hardcoded-values, null, 336px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-drawer.scss",
+          "measure_px": 336
+        },
+        {
+          "name": "Navigation bar, active indicator width",
+          "quote": "'active-indicator-width': if($exclude-hardcoded-values, null, 64px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-bar.scss",
+          "measure_px": 64
+        },
+        {
+          "name": "Navigation drawer, icon size",
+          "quote": "'icon-size': if($exclude-hardcoded-values, null, 24px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-drawer.scss",
+          "measure_px": 24
+        },
+        {
+          "name": "Navigation bar, icon size",
+          "quote": "'icon-size': if($exclude-hardcoded-values, null, 24px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-bar.scss",
+          "measure_px": 24
+        },
+        {
+          "name": "Navigation drawer, форма (corner-large-end)",
+          "quote": "'container-shape': map.get($deps, 'md-sys-shape', 'corner-large-end'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-drawer.scss",
+          "measure_px": 16
+        },
+        {
+          "name": "Navigation bar, реализация: height: var(--_container-height)",
+          "quote": "height: var(--_container-height);",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/labs/navigationbar/internal/_navigation-bar.scss",
+          "measure_px": 80
+        }
+      ],
+      "variants": [
+        {
+          "name": "Navigation drawer (standard / modal) — labs-компонент в Material Web",
+          "evidence": "/labs/navigationdrawer/internal/navigation-drawer.ts",
+          "source": "https://github.com/material-components/material-web/tree/main/labs/navigationdrawer"
+        },
+        {
+          "name": "Navigation bar (нижняя навигация, labs)",
+          "evidence": "/labs/navigationbar/internal/navigation-bar.ts",
+          "source": "https://github.com/material-components/material-web/tree/main/labs/navigationbar"
+        },
+        {
+          "name": "Navigation rail — есть токены (tokens/v0_192/_md-comp-navigation-rail.scss), но компонента в библиотеке нет",
+          "evidence": "tokens/v0_192/_md-comp-navigation-rail.scss",
+          "source": "https://github.com/material-components/material-web/tree/main/tokens"
+        }
+      ],
+      "touch_target_dp": 48,
+      "touch_target_quote": "height: max(48px, 100%);",
+      "touch_target_source": "https://raw.githubusercontent.com/material-components/material-web/main/button/internal/_touch-target.scss",
+      "notes_ru": "MD3 drawer: ширина 360 dp, иконка 24, индикатор 56×336, скругление с одного края 16 (corner-large-end), высота 100%. Нижняя navigation bar: 80 dp, индикатор 32×64. В Material Web drawer и navigation bar живут в labs (не в стабильном API), navigation rail существует только токенами — компонента нет. Отдельного варианта navigation drawer ширины 240 dp в MD3-токенах нет.",
+      "sources": [
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-drawer.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-bar.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/labs/navigationbar/internal/_navigation-bar.scss",
+        "https://github.com/material-components/material-web/tree/main/tokens",
+        "https://raw.githubusercontent.com/material-components/material-web/main/button/internal/_touch-target.scss"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Sidenav/drawer container width (M3-токен)",
+          "width_px": 360,
+          "quote": "sidenav-container-width: 360px,",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/_m3-sidenav.scss"
+        }
+      ],
+      "other_measurements": [
+        {
+          "name": "Скругление drawer (corner-large = 16px)",
+          "quote": "sidenav-container-shape: map.get($system, corner-large),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/_m3-sidenav.scss",
+          "measure_px": 16
+        },
+        {
+          "name": "Толщина разделителя side-mode",
+          "quote": "border-right-width: 1px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/drawer.scss",
+          "measure_px": 1
+        },
+        {
+          "name": "Длительность анимации переезда drawer",
+          "quote": "transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1);",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/drawer.scss",
+          "measure_px": 400
+        },
+        {
+          "name": "z-index: content 1 / side-drawer 2 / backdrop 3 / over-drawer 4 (верхний уровень)",
+          "quote": "$drawer-over-drawer-z-index: 4;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/drawer.scss",
+          "measure_px": 4
+        }
+      ],
+      "variants": [
+        {
+          "name": "Режимы mode: over (по умолчанию) | push | side",
+          "quote": "| `over` | Sidenav floats over the primary content, which is covered by a backdrop                 |",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/sidenav.md"
+        },
+        {
+          "name": "position: start (по умолчанию) | end, максимум два sidenav в контейнере",
+          "quote": "A\n`<mat-sidenav-container>` can have up to two `<mat-sidenav>` elements total, but only one for any\ngiven side.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/sidenav.md"
+        },
+        {
+          "name": "MatSidenav (полноэкранный) vs MatDrawer (секция приложения)",
+          "quote": "The drawer component is designed to add side content to a small section of your app.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/sidenav.md"
+        },
+        {
+          "name": "fixedInViewport + fixedTopGap/fixedBottomGap (только mat-sidenav)",
+          "quote": "For `<mat-sidenav>` only (not `<mat-drawer>`) fixed positioning is supported.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/sidenav.md"
+        },
+        {
+          "name": "Ширина по умолчанию — по контенту; задаётся CSS",
+          "quote": "The `<mat-sidenav>` and `<mat-drawer>` will, by default, fit the size of its content. The width can\nbe explicitly set via CSS:",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/sidenav.md"
+        },
+        {
+          "name": "autosize, disableClose, autoFocus, hasBackdrop",
+          "quote": "`<mat-drawer>` also supports all of these same modes and options.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/sidenav.md"
+        }
+      ],
+      "density": "не поддерживается (в _m3-sidenav.scss секция density пустая: `density: (),`)",
+      "notes_ru": "Angular Material: M3-токен ширины 360 px, но документация отдельно оговаривает, что по умолчанию ширина по контенту и задаётся CSS (в примере 200 px). Вариантов ширины 240 px в исходниках нет (в _m2-sidenav.scss ширина = auto). Три режима over/push/side, position start/end, до двух sidenav, анимация 400 ms. Density-шкалы нет.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/sidenav.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/_m3-sidenav.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/sidenav/drawer.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Ширина sidebar",
+          "width_pt": null,
+          "quote": "не найдено",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/sidebars"
+        }
+      ],
+      "other_measurements": [],
+      "variants": [
+        {
+          "name": "Sidebar (навигация по разделам приложения), версия «таб-бар, превращающийся в sidebar»",
+          "quote": "you choose whether to display a sidebar or a tab bar when your app opens.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/sidebars"
+        },
+        {
+          "name": "Максимум два уровня иерархии в sidebar",
+          "quote": "In general, show no more than two levels of hierarchy in a sidebar.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/sidebars"
+        },
+        {
+          "name": "macOS: три размера sidebar (small/medium/large) — влияют на row height/текст/глифы",
+          "quote": "A sidebar’s row height, text, and glyph size depend on its overall size, which can be small, medium, or large.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/sidebars"
+        },
+        {
+          "name": "Скрытие sidebar: iPadOS — edge swipe, macOS — кнопка/меню view",
+          "quote": "For example, in iPadOS, people expect to use the built-in edge swipe gesture; in macOS, you can include a show/hide button",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/sidebars"
+        },
+        {
+          "name": "Navigation bar (44 pt) как отдельная страница HIG отсутствует",
+          "quote": "In iOS, a navigation-specific toolbar is sometimes called a navigation bar.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/toolbars"
+        }
+      ],
+      "notes_ru": "В HIG нет ни страницы Navigation bars, ни числовой ширины sidebar (запрошенный /navigation-bars возвращает 404; текущий сайт закрывает тему страницей Toolbars). Единственная числовая привязка к 44 pt во всей HIG — рекомендация Apple для высоты кнопки Sign in with Apple («44 points tall, which is the default (and recommended) button height in iOS»), а не высота навбара. Правила структуры: ≤2 уровня иерархии, sidebar как адаптация таб-бара.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/sidebars",
+        "https://developer.apple.com/design/human-interface-guidelines/toolbars",
+        "https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple",
+        "https://developer.apple.com/design/human-interface-guidelines/components"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Ширина боковой панели 240 dp — нет ни в MD3-токенах, ни в исходниках Angular Material (у Angular 360 px токен / auto по M2 / пример 200 px).",
+    "Высота iOS navigation bar 44 pt — в актуальной HIG этого числа нет (страницы Navigation bars не существует); историческое значение нельзя выдавать за действующую норму.",
+    "Sidebar глубже двух уровней иерархии — прямо не рекомендуется в iOS HIG.",
+    "Два одинаковых «старта» (два sidenav на одну сторону) — ошибка конфигурации в Angular Material.",
+    "Navigation rail как компонент — в Material Web есть только токены, компонента нет (для веба вариант не нормирован)."
+  ],
+  "verdict_ru": "Ширина сходится: и MD3 (navigation drawer), и Angular Material M3 дают 360 dp/px; 240 dp не подтверждается ни одним исходником. Высоты: MD3 даёт drawer 100% и navigation bar 80 dp с индикатором 56×336 / 32×64, Angular Material режимами over/push/side и анимацией 400 ms — но не задаёт высоту панели. iOS: sidebar нормирован только структурно (≤2 уровня, адаптивная версия таб-бара), числовой ширины нет."
+}

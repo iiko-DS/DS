@@ -1,0 +1,41 @@
+{
+ "slug": "badge",
+ "edits": [
+  {
+   "row": 0,
+   "mobile": "8 × 8 px — та же",
+   "edits": [
+    {
+     "id": "point-size",
+     "v": 8,
+     "sel": ".ds-badge--point",
+     "css": "width:@px; height:@px"
+    }
+   ]
+  },
+  {
+   "row": 1,
+   "mobile": "высота 18 px, минимум 19 px по ширине, паддинги 1 / 6 — то же",
+   "edits": [
+    {
+     "id": "counter-min",
+     "v": 18,
+     "sel": ".ds-badge--counter",
+     "css": "min-height:@px"
+    }
+   ]
+  },
+  {
+   "row": 2,
+   "mobile": "12 / 500 — те же, полный круг",
+   "edits": [
+    {
+     "id": "counter-font",
+     "v": 12,
+     "sel": ".ds-badge--counter",
+     "css": "font-size:@px"
+    }
+   ]
+  }
+ ]
+}

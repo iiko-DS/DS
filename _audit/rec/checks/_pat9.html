@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><body><pre id="out"></pre>
+<iframe id="f" src="/iiko-ds-mobile/prototypes/recommendations/list.html" width="1600" height="4000" style="border:0"></iframe>
+<script>
+const f=document.getElementById('f');
+f.onload=()=>setTimeout(()=>{
+  const d=f.contentDocument,w=f.contentWindow,N="\u043f\u0430\u0442\u0442\u0435\u0440\u043d\u044b";
+  const c=[...d.querySelectorAll('.card')].find(x=>x.querySelector('h2')&&x.querySelector('h2').textContent.includes(N));
+  const tabs=[...c.querySelectorAll('.pat__tabs .ds-tab')]; tabs[2].click();
+  const el=c.querySelector('.pat__panel[data-pat-panel$="-2"] .ds-list-item');
+  const up=el.querySelector('.ds-list-item__label-up');
+  const gs=n=>{const s=w.getComputedStyle(n);return {cls:n.className,text:n.textContent.trim().slice(0,20),color:s.color,bg:s.backgroundColor,display:s.display,w:s.width,h:s.height,ff:s.fontFamily.slice(0,30),fs:s.fontSize,ov:s.overflow,vis:s.visibility,op:s.opacity};};
+  const out={item:gs(el), up:gs(up), text:gs(el.querySelector('.ds-list-item__text')), down:gs(el.querySelector('.ds-list-item__label-down')),
+             phoneMode: el.closest('.pat__phone').getAttribute('data-mode'),
+             sheets:[...d.styleSheets].length};
+  document.getElementById('out').textContent=JSON.stringify(out,null,1);
+},700);
+</script></body>

@@ -1,0 +1,127 @@
+{
+ "slug": "button",
+ "component": "Button",
+ "_role": "Техническая часть (для проверки утверждений на простой странице). На страницу не выводится.",
+ "ds_values": {
+  "source": "iiko-ds-web/tokens.css (Component → button/m|s|xs) + iiko-ds-web/iiko-ds-spec.md, каталог: Button — «Размеры: M (36px), S (28px), XS (24px)»",
+  "sizes": [
+   {
+    "name": "M",
+    "height_px": 36,
+    "calc": "pad 8+8 + строка 20",
+    "pad": "8 / 12",
+    "text": "14 px / 500",
+    "icon": "20 px"
+   },
+   {
+    "name": "S",
+    "height_px": 28,
+    "calc": "pad 4+4 + строка 20",
+    "pad": "4 / 8",
+    "text": "14 px / 500",
+    "icon": "20 px"
+   },
+   {
+    "name": "XS",
+    "height_px": 24,
+    "calc": "pad 4+4 + строка 16",
+    "pad": "4 / 6",
+    "text": "12 px / 500",
+    "icon": "16 px"
+   }
+  ],
+  "mobile": "iiko-ds-mobile/modes.css: только M — паддинги 12/16, кегль 16 → высота 44 px. Проверено замером в headless Chrome: desktop M h=36 pad=8/12 font=14/500; mobile M h=44 pad=12/16 font=16/500.",
+  "mobile_override": "M: паддинг 12/16 → 44; S: 12/16 + строка 20 → 44; XS: 14/16 + строка 16 → 44. Тач-слой 48 — iiko-ds-mobile/components/Button_DS/button-touch.css. Высота числом не задаётся: HUG из паддингов и строки. значения заданы явно в мобильном слое iiko-ds-mobile/components/<Имя>_DS/*.css: десктопный CSS держит размер числами, поэтому режимные токены его не сдвигают. Библиотека iiko-ds-web не правится.."
+ },
+ "platforms": [
+  {
+   "key": "md3",
+   "title": "Material Design 3",
+   "facts": [
+    "Высота контейнера 40 dp; отдельной мобильной кнопки нет — спека одна на все устройства",
+    "Горизонтальные паддинги 24 dp (leading/trailing space)",
+    "Иконка 18 dp; текст label-large 14 sp / 500; форма shape full (pill ≈ 20 dp)",
+    "Тач-таргет не меньше 48 × 48 dp",
+    "Размеров S и XS в спеке нет"
+   ],
+   "sources": [
+    "https://m3.material.io/components/buttons/specs",
+    "https://raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-outlined-button.scss",
+    "https://raw.githubusercontent.com/material-components/material-web/main/button/internal/_touch-target.scss"
+   ]
+  },
+  {
+   "key": "angular_material",
+   "title": "Angular Material",
+   "facts": [
+    "Высота контейнера — токен темы --mat-button-<тип>-container-height",
+    "Тач-зона — отдельный элемент .mat-mdc-button-touch-target, density её не сжимает",
+    "Доки: «minimum touch-target of 48x48 … particularly on mobile devices and small screens»",
+    "Шкалы S/XS нет — есть density"
+   ],
+   "sources": [
+    "https://raw.githubusercontent.com/angular/components/main/src/material/button/button.md",
+    "https://material.angular.dev/components/button/overview"
+   ]
+  },
+  {
+   "key": "ios_hig",
+   "title": "iOS HIG",
+   "facts": [
+    "Минимальный тач-таргет 44 × 44 pt; высота системной кнопки ≈ 44 pt",
+    "Форма — capsule (≈ 14 pt радиус на кнопке 44 pt)",
+    "Размеров S/XS нет"
+   ],
+   "sources": [
+    "https://developer.apple.com/design/human-interface-guidelines/buttons",
+    "https://developer.apple.com/design/human-interface-guidelines/layout"
+   ]
+  }
+ ],
+ "verdict": {
+  "keep": "Все размеры на мобиле = тач-минимум 44 (iOS HIG, план); тач-зона 48 — механизм MD3/Angular.",
+  "drop": [
+   "XS (24 px) — то же",
+   "S (28 px) — ниже любого платформенного тач-таргета",
+   "Кнопки S 28 и XS 24 на мобиле: ниже любого платформенного минимума"
+  ],
+  "open": [
+   "Кегль на мобиле 16 px против 14 sp у MD3 — осознанное расхождение",
+   "Радиус 8 px против pill у MD3 и capsule у iOS",
+   "Что делать с уже собранными в Figma S/XS-кнопками"
+  ]
+ },
+ "hover_on_touch": {
+  "status_ru": "У нас hover на тач не отключается нигде: в iiko-ds-web/components нет ни одного @media (hover: none|hover). Проверено grep-ом по всей библиотеке.",
+  "angular_material": {
+   "facts": [
+    "src/material/expansion/expansion-panel-header.scss: «Disable the hover on touch devices since it can appear like it is stuck. We can't use @media (hover) above, because the desktop support browser support isn't great.» → @media (hover: none) { background: <container background> }",
+    "src/material/stepper/step-header.scss: «On touch devices the :hover state will linger on the element after a tap. Reset it via @media after the declaration…» → @media (hover: none) { &:hover { background: none } }"
+   ],
+   "sources": [
+    "https://raw.githubusercontent.com/angular/components/main/src/material/expansion/expansion-panel-header.scss",
+    "https://raw.githubusercontent.com/angular/components/main/src/material/stepper/step-header.scss"
+   ]
+  },
+  "md3": {
+   "facts": [
+    "hover — это state layer с отдельной прозрачностью: токены hover-state-layer-opacity (0.08) рядом с focus/pressed/dragged",
+    "отдельного «мобильного» hover в MD3 нет: состояние описано для указателя",
+    "текстового правила про тач получить не удалось: m3.material.io/foundations/interactive-states/states отдаётся Angular-шеллом, headless Chrome отдаёт ~978 символов текста, в curl 0 цифр"
+   ],
+   "sources": [
+    "https://raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-outlined-button.scss"
+   ]
+  },
+  "ios_hig": {
+   "facts": [
+    "hover описан только для Apple Pencil / указателя: «Use hover to help people predict what will happen when Apple Pencil touches the screen», «Avoid using hover to initiate an action»",
+    "для пальца hover в HIG не предусмотрен"
+   ],
+   "sources": [
+    "https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble"
+   ]
+  }
+ },
+ "measured_ru": "Замеры headless Chrome, одна разметка: desktop 36 / 28 / 24 → mobile 44 / 44 / 44; тач-слой :: после 48×48 (узкие кнопки — 76…90 px шириной)."
+}

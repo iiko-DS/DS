@@ -1,0 +1,71 @@
+{
+ "slug": "icon-size",
+ "patterns_ru": [
+  {
+   "title": "Базовая иконка 24 px",
+   "items": [
+    "Что происходит: единственное совпадение платформ — 24 dp/px, но в макетах иконки масштабируют произвольно (16/18/28/32), и ритм строки рвётся: одна иконка выглядит крупнее соседнего текста, другая мельче.",
+    "Что делают системы: MD3: «`--md-icon-size` | `24px`»; Angular Material: «$size: 24px !default»; iOS абсолютных размеров иконок не даёт и привязывает символ к тексту — «The scales are defined relative to the cap height of the San Francisco system font».",
+    "Что делать нам: закрепить 24 px базовым размером иконки в мобильном слое; исключения — 20 px в поле ввода и 48 px для крупных состояний на пустых экранах."
+   ],
+   "src": "Источники: Material Web · icon.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md) · Angular Material · icon.scss (https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.scss) · Apple HIG · SF Symbols (https://developer.apple.com/design/human-interface-guidelines/sf-symbols)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:16px;align-items:center\"><span class=\"ds-icon-group\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span></span><span class=\"ds-state\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></span></div>",
+   "example_ru": "Базовая иконка — 24 px (--md-icon-size: 24px у MD3, $size: 24px у Angular): произвольные 16/18/28/32 в мобильном слое не задаются."
+  },
+  {
+   "title": "Иконка 24 внутри цели 48",
+   "items": [
+    "Что происходит: визуально иконка занимает 24 dp, а попасть в неё пальцем нужно точно; в шапке и в строке списка это половина промахов.",
+    "Что делают системы: MD3 считает отступ иконочной кнопки от 48 px (margin: max(0px, (48px - var(--_state-layer-height))/2) ...), а Google Accessibility формулирует прямо: «An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target»; Apple держит 44×44 pt по умолчанию при минимуме 28×28 pt.",
+    "Что делать нам: иконочную кнопку делать 48×48 px целиком, а иконку внутри — 24 px; отдельная иконка без кнопки остаётся декоративной и вне интерактива."
+   ],
+   "src": "Источники: Material Web · _icon-button.scss (https://raw.githubusercontent.com/material-components/material-web/main/iconbutton/internal/_icon-button.scss) · Google Accessibility (https://support.google.com/accessibility/android/answer/7101858) · Apple HIG · Accessibility (https://developer.apple.com/design/human-interface-guidelines/accessibility)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:12px;align-items:center\"><span class=\"pat__hit\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span></span><span class=\"ds-arrow\" style=\"width:48px;height:48px\"><span class=\"material-icons\" style=\"font-size:24px\">chevron_right</span></span></div>",
+   "example_ru": "Рисунок иконки 24 px, а нажимается полоса 48 × 48 px (пунктир): иконочная кнопка целиком 48 px, как считает MD3 и Google Accessibility."
+  },
+  {
+   "title": "Иконка рядом с текстом: вес и кегль",
+   "items": [
+    "Что происходит: иконка «выпадает» из строки: рядом с текстом 14 px она кажется крупнее, а жирная иконка рядом с обычным текстом выглядит акцентнее самого текста.",
+    "Что делают системы: Apple: «In general, match the weights of interface icons and adjacent text» и советует подгонять размер оптически — «you may need to adjust its dimensions to ensure that it appears visually consistent with other icons»; MD3 даёт ось оптического размера, границы которой заданы диапазоном opsz 20..48.",
+    "Что делать нам: размер и вес иконки брать от кегля строки (24 px к тексту 16 px, 20 px к тексту 12–14 px) и не задавать «на глаз» произвольные значения."
+   ],
+   "src": "Источники: Apple HIG · Icons (https://developer.apple.com/design/human-interface-guidelines/icons) · Material Web · icon.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md)",
+   "example_html": "<div class=\"pat__phone\" style=\"gap:12px\"><div class=\"ds-icon-group\" style=\"width:100%\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span style=\"font-size:16px;line-height:24px\">Название процесса</span></div><div class=\"ds-icon-group\" style=\"width:100%\"><span class=\"ds-icon-group__icon\" style=\"width:20px;height:20px\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span style=\"font-size:14px;line-height:20px\">Подпись строки</span></div></div>",
+   "example_ru": "Размер иконки берётся от кегля строки: 24 px к тексту 16 px и 20 px к тексту 14 px — иконка не выглядит крупнее или акцентнее подписи."
+  },
+  {
+   "title": "Плотность не должна менять иконку",
+   "items": [
+    "Что происходит: при уплотнении интерфейса уменьшают и иконки, и вместе с ними падает цель нажатия — строка становится компактнее ровно там, где палец наименее точен.",
+    "Что делают системы: у Angular Material density-миксин иконки пустой — плотность размер иконки не меняет, а 48×48 обеспечивает только иконочная кнопка; в iOS HIG абсолютных размеров иконок нет, кроме растров иконок документов macOS (16/32/128/256/512 px).",
+    "Что делать нам: плотностью менять отступы строки, а не размер иконки; цель нажатия остаётся 48 px при любой плотности, а уменьшение иконки допускается только вместе с уменьшением кегля строки."
+   ],
+   "src": "Источники: Angular Material · _icon-theme.scss (https://raw.githubusercontent.com/angular/components/main/src/material/icon/_icon-theme.scss) · Apple HIG · Icons (https://developer.apple.com/design/human-interface-guidelines/icons)",
+   "example_html": "<div class=\"pat__phone\" style=\"gap:8px\"><div class=\"ds-icon-group ds-icon-group--4x\" style=\"width:100%;min-height:48px\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span style=\"font-size:14px;line-height:20px\">Строка 48 px — обычная плотность</span></div><div class=\"ds-icon-group\" style=\"width:100%;min-height:40px\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span style=\"font-size:14px;line-height:20px\">Строка 40 px — плотная</span></div></div>",
+   "example_ru": "Плотность меняет только отступы и высоту строки (48 → 40 px), а иконка остаётся 24 px: цель нажатия не уменьшается вместе с плотностью."
+  },
+  {
+   "title": "Три размера вместо самодельной шкалы",
+   "items": [
+    "Что происходит: в ДС хочется «ступенек» размеров иконок (18/20/24/28/32), но ни одна платформа такого пресета не публикует — шкала получается выдуманной.",
+    "Что делают системы: MD3 нормирует базовые 24 px, отдельно 20 px для иконки в начале поля и пример кастомизации --md-icon-size: 48px; Angular держит ровно один размер 24 px; Apple даёт три шкалы (small, medium, large) относительно текста, а не в точках.",
+    "Что делать нам: зафиксировать три размера — 20 px (в полях), 24 px (по умолчанию), 48 px (крупные состояния); произвольные 18/28/32 из макетов не поддерживать."
+   ],
+   "src": "Источники: Material Web · icon.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md) · Angular Material · icon.scss (https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.scss) · Apple HIG · SF Symbols (https://developer.apple.com/design/human-interface-guidelines/sf-symbols)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:16px;align-items:center\"><span class=\"ds-icon-group__icon\" style=\"width:20px;height:20px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span class=\"ds-icon-group__icon\" style=\"width:48px;height:48px\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span></div>",
+   "example_ru": "Три разрешённых размера: 20 px в полях, 24 px по умолчанию и 48 px для крупных состояний на пустых экранах — самодельной шкалы 18/28/32 нет."
+  },
+  {
+   "title": "Доступность: иконка — не подпись",
+   "items": [
+    "Что происходит: иконка без подписи в шапке или строке списка не читается скринридером: он либо произносит имя глифа, либо ничего, и назначение кнопки остаётся неизвестным.",
+    "Что делают системы: Angular Material помечает mat-icon как aria-hidden=\"true\" и требует, чтобы интерактивным владельцем была кнопка или ссылка — «The <mat-icon> element should be a child of a <button> or <a> element»; Apple замечает, что кнопкам с текстовой подписью подсказка не нужна, потому что подпись уже всё сообщает.",
+    "Что делать нам: иконку всегда вкладывать в элемент с aria-label (или в кнопку с текстом), декоративную — помечать aria-hidden; у иконочной кнопки без подписи aria-label обязателен."
+   ],
+   "src": "Источники: Angular Material · icon.md (https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"gap:16px;align-items:center\"><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\" role=\"img\" aria-label=\"Настройки\"><span class=\"material-icons\" style=\"font-size:24px\">settings</span></span><span class=\"ds-icon-group__icon\" style=\"width:24px;height:24px\" aria-hidden=\"true\"><span class=\"material-icons\" style=\"font-size:24px\">chevron_right</span></span></div>",
+   "example_ru": "Смысловая иконка 24 px несёт aria-label «Настройки», декоративная помечена aria-hidden: скринридер не читает имя глифа вместо назначения."
+  }
+ ]
+}

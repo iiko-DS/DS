@@ -1,0 +1,33 @@
+{
+ "slug": "chips",
+ "edits": [
+  {
+   "row": 0,
+   "mobile": "32 px — та же: 32 dp фиксирует MD3, 28 и 24 у Angular это плотности, а не мобильный размер"
+  },
+  {
+   "row": 3,
+   "mobile": "14 / 20, радиус 8 px, обводка 1 px — те же, стилевые токены общие",
+   "edits": [
+    {
+     "id": "radius",
+     "v": 8,
+     "sel": ".ds-chips",
+     "css": "border-radius:@px"
+    }
+   ]
+  },
+  {
+   "row": 4,
+   "mobile": "иконка 18 px, аватар 24 px — те же",
+   "edits": [
+    {
+     "id": "icon",
+     "v": 18,
+     "sel": ".ds-chips__icon",
+     "css": "width:@px; height:@px"
+    }
+   ]
+  }
+ ]
+}

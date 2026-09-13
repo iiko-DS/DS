@@ -1,0 +1,242 @@
+{
+  "component": "menu",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Menu item, min-height однострочного (токен list-item)",
+          "quote": "'list-item-one-line-container-height':\n      if($exclude-hardcoded-values, null, 56px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "height_dp": 56
+        },
+        {
+          "name": "Menu item, min-height двухстрочного",
+          "quote": "'list-item-two-line-container-height':\n      if($exclude-hardcoded-values, null, 72px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "height_dp": 72
+        }
+      ],
+      "other_measurements": [
+        {
+          "name": "Menu item, leading/trailing space (padding)",
+          "quote": "'list-item-leading-space': if($exclude-hardcoded-values, null, 16px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "measure_px": 16
+        },
+        {
+          "name": "Menu panel, min-width",
+          "quote": "min-width: 112px;",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/menu/internal/_menu.scss",
+          "measure_px": 112
+        },
+        {
+          "name": "Menu panel, отступ сверху/снизу списка",
+          "quote": "'top-space': if($exclude-hardcoded-values, null, 8px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-menu.scss",
+          "measure_px": 8
+        },
+        {
+          "name": "Menu item, gap (иконка/текст)",
+          "quote": "display: flex;\n    gap: 16px;",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/menu/internal/menuitem/_menu-item.scss",
+          "measure_px": 16
+        },
+        {
+          "name": "Menu container, corner-extra-small (shape)",
+          "quote": "'corner-extra-small': if($exclude-hardcoded-values, null, 4px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss",
+          "measure_px": 4
+        }
+      ],
+      "variants": [
+        {
+          "name": "Позиционирование относительно anchor; positioning=\"popover\" | fixed",
+          "quote": "When opened, menus position themselves to an anchor. Thus, either `anchor` or `anchorElement` must be supplied to `md-menu` before opening.",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/menu.md"
+        },
+        {
+          "name": "Overflow / submenu (hasOverflow)",
+          "quote": "`hasOverflow` | `has-overflow` | `boolean` | `false` | Displays overflow content like a submenu. Not required in most cases when using `positioning=\"popover\"`.",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/menu.md"
+        },
+        {
+          "name": "Selected item (выделение выбранного)",
+          "quote": "'list-item-selected-container-color':\n      map.get($deps, 'md-sys-color', 'secondary-container'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-menu.scss"
+        },
+        {
+          "name": "Item: иконка слева, supporting text, trailing supporting text",
+          "quote": "md-item[multiline] {\n    min-height: map.get($tokens, 'two-line-container-height');",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/menu/internal/menuitem/_menu-item.scss"
+        },
+        {
+          "name": "Item: иконки в слотах start/end, selected-состояние",
+          "quote": "  [slot='start'] {\n    color: map.get($tokens, 'leading-icon-color');",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/menu/internal/menuitem/_menu-item.scss"
+        }
+      ],
+      "touch_target_dp": 48,
+      "touch_target_quote": "height: max(48px, 100%);",
+      "touch_target_source": "https://raw.githubusercontent.com/material-components/material-web/main/button/internal/_touch-target.scss",
+      "notes_ru": "В material-web высота пункта меню берётся из list-item токенов: 56 px (одна строка) / 72 px (две строки) — это НЕ 48 dp, которые обычно цитируют по странице Menus спецификации m3.material.io (страница не отдаётся без JS, поэтому 48 dp как первоисточник подтвердить не удалось). Панель: min-width 112 px, паддинг списка 8 px сверху/снизу, пункт — 16 px до края, иконка 24 px, скругление 4 px (corner-extra-small), elevation level2. Sub-menu in material-web; 'menuitemcheckbox/menuitemradio' ролей нет.",
+      "sources": [
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/menu/internal/menuitem/_menu-item.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/menu/internal/_menu.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-menu.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/menu.md",
+        "https://github.com/material-components/material-web/tree/main/tokens"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Menu item height ($item-height)",
+          "height_px": 48,
+          "quote": "$item-height: 48px !default;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/core/style/_menu-common.scss"
+        },
+        {
+          "name": "Menu item min-height (рендер панели)",
+          "height_px": 48,
+          "quote": "min-height: 48px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/menu/menu.scss"
+        }
+      ],
+      "other_measurements": [
+        {
+          "name": "Overlay min-width",
+          "quote": "$overlay-min-width: 112px !default;   // 56 * 2",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/core/style/_menu-common.scss",
+          "measure_px": 112
+        },
+        {
+          "name": "Overlay max-width",
+          "quote": "$overlay-max-width: 280px !default;   // 56 * 5",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/core/style/_menu-common.scss",
+          "measure_px": 280
+        },
+        {
+          "name": "Паддинг списка пунктов (menu content)",
+          "quote": "padding: 8px 0;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/menu/menu.scss",
+          "measure_px": 8
+        },
+        {
+          "name": "menu-item-icon-size",
+          "quote": "menu-item-icon-size: 24px,",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/menu/_m3-menu.scss",
+          "measure_px": 24
+        },
+        {
+          "name": "menu-item leading/trailing spacing",
+          "quote": "menu-item-leading-spacing: 12px,",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/menu/_m3-menu.scss",
+          "measure_px": 12
+        },
+        {
+          "name": "Позиция пункта: line-height = height ($item-height)",
+          "quote": "line-height: $item-height;\n  height: $item-height;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/core/style/_menu-common.scss",
+          "measure_px": 48
+        }
+      ],
+      "variants": [
+        {
+          "name": "Позиционирование xPosition/yPosition, overlapTrigger",
+          "quote": "The position can be changed using the `xPosition` (`before | after`) and `yPosition`\n(`above | below`) attributes. The menu can be forced to overlap the trigger using the\n`overlapTrigger` attribute.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/menu/menu.md"
+        },
+        {
+          "name": "Nested submenu (matMenuTriggerFor внутри mat-menu-item)",
+          "quote": "Material supports the ability for an `mat-menu-item` to open a sub-menu.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/menu/menu.md"
+        },
+        {
+          "name": "Context menu (matContextMenuTriggerFor)",
+          "quote": "You can set up a `mat-menu` as a context menu by adding the `matContextMenuTriggerFor` directive\nto your container and binding it to a menu instance.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/menu/menu.md"
+        },
+        {
+          "name": "Иконки в пунктах, lazy rendering (matMenuContent), передача данных (matMenuTriggerData)",
+          "quote": "By default, the menu content will be initialized even when the panel is closed. To defer\ninitialization until the menu is open, the content can be provided as an `ng-template`\nwith the `matMenuContent` attribute:",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/menu/menu.md"
+        },
+        {
+          "name": "Роли menuitemcheckbox/menuitemradio НЕ поддерживаются",
+          "quote": "Angular Material does not support the `menuitemcheckbox` or `menuitemradio` roles.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/menu/menu.md"
+        }
+      ],
+      "density": "не поддерживается (в _m3-menu.scss секция density пустая: `density: (),`)",
+      "notes_ru": "Angular Material: пункт меню 48 px (и min-height, и line-height), панель 112–280 px, паддинг списка 8 px, иконка 24 px. Density-шкалы у меню нет. Есть вложенные меню и context-menu триггер, но нет checkbox/radio-пунктов. Панель не имеет верхней/нижней границы по высоте — ограничивается max-width и скроллом.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/menu/menu.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/menu/_m3-menu.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/menu/menu.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/core/style/_menu-common.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Высота пункта меню / высота панели",
+          "height_pt": null,
+          "quote": "не найдено",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/menus"
+        }
+      ],
+      "other_measurements": [],
+      "variants": [
+        {
+          "name": "iOS/iPadOS: три раскладки меню — small (4 items), medium (3 items), large (список)",
+          "quote": "In iOS and iPadOS, a menu can display items in one of the following three layouts.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/menus"
+        },
+        {
+          "name": "Small: ряд из четырёх пунктов-иконок без подписей",
+          "quote": "A row of four items appears at the top of the menu, above a list that contains the remaining items. For each item in the top row, the menu displays a symbol or icon, but no label.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/menus"
+        },
+        {
+          "name": "Medium: ряд из трёх пунктов (иконка над короткой подписью)",
+          "quote": "A row of three items appears at the top of the menu, above a list that contains the remaining items. For each item in the top row, the menu displays a symbol or icon above a short label.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/menus"
+        },
+        {
+          "name": "Submenu: максимум один уровень, ~5 пунктов",
+          "quote": "Also, if a submenu contains more than about five items, consider creating a new menu.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/menus"
+        },
+        {
+          "name": "Context menu: не более ~3 групп (separators)",
+          "quote": "In general, you don’t want more than about three groups in a context menu.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/context-menus"
+        },
+        {
+          "name": "Action sheets: не более 4 кнопок, включая Cancel",
+          "quote": "Avoid displaying more than four buttons in an action sheet, including the Cancel button.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/action-sheets"
+        }
+      ],
+      "notes_ru": "iOS HIG описывает меню как раскладки и правила содержимого (small/medium/large, один уровень сабменю, ~3 группы в контекстном меню, ≤4 кнопок в action sheet), но не даёт ни одной числовой величины высоты/отступов. Action sheet — это не popup-меню: выбирать действие надо через action sheet, а не через меню.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/menus",
+        "https://developer.apple.com/design/human-interface-guidelines/context-menus",
+        "https://developer.apple.com/design/human-interface-guidelines/action-sheets"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Пункт меню 48 dp как «спецификация MD3» — в доступных первоисточниках это число не подтверждается (в Material Web пункт = 56/72 px из list-item токенов; 48 px есть только у Angular Material).",
+    "Checkbox/radio-пункты меню — не поддерживаются в Angular Material (роли menuitemcheckbox/menuitemradio), в Material Web отдельных токенов нет.",
+    "Многоуровневые сабменю — iOS HIG прямо ограничивает одним уровнем; у Material нет токенов/стилей под 3+ уровня.",
+    "Меню как форма/интерактивный контейнер: Angular Material запрещает любые интерактивные контролы внутри MatMenu, кроме MatMenuItem.",
+    "Action sheet длиннее 4 кнопок (iOS) и меню с более чем ~3 группами (контекстное меню iOS) — выходят за норму HIG."
+  ],
+  "verdict_ru": "Высота пункта меню — точка расхождения: Angular Material жёстко 48 px (line-height = height), Material Web берёт 56/72 px из list-item токенов (48 dp из спецификации m3.material.io недоступен для проверки, страница требует JS). Ширина панели совпадает у обеих реализаций: 112 px минимум (Angular Material добавляет максимум 280 px). iOS HIG размеров не задаёт вообще, но ограничивает структуру: ≤4 кнопки в action sheet, один уровень сабменю, ~3 группы."
+}

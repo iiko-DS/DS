@@ -1,0 +1,22 @@
+{
+ "slug": "datepicker",
+ "edits": [
+  {
+   "row": 0,
+   "edits": [
+    {
+     "id": "height",
+     "v": 56,
+     "sel": ".ds-input-datepicker__frame",
+     "css": "height:@px"
+    },
+    {
+     "id": "pad-v",
+     "v": 16,
+     "sel": ".ds-input-datepicker__frame",
+     "css": "padding-top:@px; padding-bottom:@px"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "slug": "text-ui",
+ "patterns_ru": [
+  {
+   "title": "Основной текст: 14 → 16 px",
+   "items": [
+    "Что происходит: базовую строку на мобиле оставляют 14 px «как на десктопе», и текст в списке заказов приходится читать с напряжением, а часть пользователей просто зумит страницу.",
+    "Что делают системы: NN/g про мобильные данные прямо пишет, что «Items need to be legible without requiring the user to zoom in»; MD3 держит основной текст на роли `body-large` — 1 rem, то есть 16 px, а подписи на `body-small` — 0.75 rem (12 px); Apple задаёт кегль текста 17 pt по умолчанию и минимум 11 pt для второстепенного текста.",
+    "Что делать нам: базовый уровень строки в мобильном ДС — 16 / 24 px, и это единственный уровень, который поднимается: остальные (10 / 12 / 14 / 20 / 24 / 32 / 40) остаются десктопными, иначе иерархия кеглей поедет."
+   ],
+   "src": "Источники: Nielsen Norman Group · Mobile Tables (nngroup.com/articles/mobile-tables/) · Material Design 3 · типы Text field (raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-filled-text-field.scss) · Apple HIG · Typography (developer.apple.com/design/human-interface-guidelines/typography)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\">Пицца «Маргарита» с двойным сыром и пепперони, 32 см</span></div></div></div>",
+   "example_ru": "Основной текст строки набран 16 / 24 px (у MD3 это body-large 1 rem) — длинное название читается без зума и переносится на вторую строку, а не обрезается."
+  },
+  {
+   "title": "Подписи сверху и снизу — 12 px, не мельче",
+   "items": [
+    "Что происходит: подписи в строке пытаются ужать до 10–11 px, чтобы влезло больше текста, и они перестают читаться; особенно на телефоне в тёмной теме.",
+    "Что делают системы: MD3 фиксирует размер подписи как `body-small` — 0.75 rem (12 px), Apple держит минимум 11 pt для второстепенного текста, а Carbon требует короткой подписи и запрещает двоеточия: «Keep the label short and concise», «Do not use colons after label names»; GOV.UK просит ограничивать подсказку одной короткой фразой: «Keep hint text to a single short sentence, without any full stops».",
+    "Что делать нам: подписи сверху и снизу — 12 / 16 px без уменьшения; если подпись не влезает, сокращаем текст, а не кегль (минимум Apple — 11 pt, у нас 12 px)."
+   ],
+   "src": "Источники: Material Design 3 · типы Text field (raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-filled-text-field.scss) · Apple HIG · Typography (developer.apple.com/design/human-interface-guidelines/typography) · IBM Carbon · Text input usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx) · GOV.UK Design System · Text input (design-system.service.gov.uk/components/text-input/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__label-up\">Заказ</span><span class=\"ds-text-ui__list-item\">№1042 · Стол 7</span><span class=\"ds-text-ui__label-down\">Открыт 12:30</span></div></div></div>",
+   "example_ru": "Подписи сверху и снизу — 12 / 16 px, основной текст — 16 / 24 px: сокращать подпись до 10 px нельзя, у Apple минимум для второстепенного текста — 11 pt."
+  },
+  {
+   "title": "Длинное значение: перенос, а не обрезка",
+   "items": [
+    "Что происходит: длинное название блюда обрезается многоточием в одну строку, и пользователь не видит ни размера, ни состава — а именно по ним он выбирает строку.",
+    "Что делают системы: Carbon разрешает довести содержимое до двух строк и только потом обрезать: «In cases where a column title is too long, wrap the text to two lines and then truncate the rest of the text», с оговоркой, что полный текст должен быть доступен; Ant Design для этого держит `ellipsis` («The ellipsis cell content»), причём `tableLayout` тогда становится `fixed`; NN/g напоминает, что на узком экране без прокрутки читаемо помещаются лишь две колонки.",
+    "Что делать нам: значение в строке может занять две строки, обрезка — только после этого; полный текст показываем в раскрытии строки, а не в подсказке по наведению (на телефоне его нет)."
+   ],
+   "src": "Источники: IBM Carbon · Data table usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx) · Ant Design · Table (ant.design/components/table) · Nielsen Norman Group · Mobile Tables (nngroup.com/articles/mobile-tables/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\">Пицца «Маргарита» с двойным сыром и пепперони, 32 см</span></div></div></div>",
+   "example_ru": "Название занимает две строки в 343 px и не обрезается: Carbon разрешает обрезку только после двух строк, полный текст уходит в раскрытие строки."
+  },
+  {
+   "title": "Строка занимает всю ширину тела экрана",
+   "items": [
+    "Что происходит: строку фиксируют по ширине (например, 320 px «как в макете»), и на телефоне справа остаётся пустая полоса, а текст переносится раньше, чем нужно.",
+    "Что делают системы: Carbon собирает такие данные в структурный список, где содержимое складывается в иерархию: «The content within a structured list can be stacked to create hierarchy within the data», и предупреждает, что вкладывать в него сложные структуры не стоит; GOV.UK описывает родственное поведение для полей: «By default, the width of text inputs is fluid and will fit the full width of the container they are placed into» — фиксированной ширины по умолчанию нет, а если она уже вьюпорта, элемент ужимается.",
+    "Что делать нам: строку text-ui не фиксировать — она занимает всю доступную ширину (343 px при экране 375); сужение допустимо только по смыслу («две трети»), и тогда текст переносится, а не обрезается."
+   ],
+   "src": "Источники: IBM Carbon · Structured list usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/structured-list/usage.mdx) · GOV.UK Design System · Text input (design-system.service.gov.uk/components/text-input/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__label-up\">Заказ</span><span class=\"ds-text-ui__list-item\">№1042 · Стол 7</span><span class=\"ds-text-ui__label-down\">Открыт 12:30</span></div></div></div>",
+   "example_ru": "Строка занимает всю ширину тела экрана (343 px): подпись, значение и вторая подпись складываются в иерархию, справа пустой полосы нет."
+  },
+  {
+   "title": "Кегль масштабируется системной настройкой",
+   "items": [
+    "Что происходит: кегли в макете задают жёсткими пикселями, и при увеличенном системном шрифте текст не растёт — пользователь с плохим зрением ничего не выигрывает.",
+    "Что делают системы: MD3 в реализации для Android задаёт размеры текста в sp (например, `design_snackbar_text_size = 14sp`), то есть значение масштабируется системной настройкой; в material-web и Angular кегль задан через rem (`1rem` = 16 px) и связан с размером шрифта корневого элемента; Apple оперирует пунктами (17 pt по умолчанию, минимум 11 pt) и советует не опускаться ниже минимума.",
+    "Что делать нам: в мобильном слое ДС кегль строки задавать в rem (1 rem = 16 px для основного текста), а не жёстким px; минимальный уровень подписи — 12 px / 11 pt."
+   ],
+   "src": "Источники: Material Design 3 · токены (raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml) · Material Web · Filled text field (raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-filled-text-field.scss) · Apple HIG · Typography (developer.apple.com/design/human-interface-guidelines/typography)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-text-ui\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-text-ui__list-item\">Пицца «Маргарита» с двойным сыром и пепперони, 32 см</span></div></div></div>",
+   "example_ru": "Основной текст 1 rem (16 px), подписи 0.75 rem (12 px): при системном увеличении шрифта строка растёт вместе с текстом, а не остаётся жёстко в пикселях."
+  }
+ ]
+}

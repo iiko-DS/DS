@@ -1,0 +1,39 @@
+{
+ "slug": "select",
+ "edits": [
+  {
+   "row": 0,
+   "mobile": "56 px (паддинги 16) — как у поля ввода",
+   "edits": [
+    {
+     "id": "height",
+     "v": 56,
+     "sel": ".ds-select-form__input-frame",
+     "css": "height:@px"
+    },
+    {
+     "id": "pad",
+     "v": 16,
+     "sel": ".ds-select-form__input-frame",
+     "css": "padding:@px"
+    }
+   ]
+  },
+  {
+   "row": 2,
+   "mobile": "минимум 48 px — значение Angular для опции оверлея и тач-цель Material",
+   "edits": [
+    {
+     "id": "item-height",
+     "v": 48,
+     "sel": ".ds-select-item",
+     "css": "min-height:@px"
+    }
+   ]
+  },
+  {
+   "row": 5,
+   "mobile": "12 / 16 и 14 / 20 px, фон #F8F9FC — стилевые токены общие"
+  }
+ ]
+}

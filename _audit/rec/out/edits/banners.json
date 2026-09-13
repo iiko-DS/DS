@@ -1,0 +1,23 @@
+{
+ "slug": "banners",
+ "edits": [
+  {
+   "row": 4,
+   "mobile": "радиус 12 px, иконка 20 px — те же, стилевые токены общие",
+   "edits": [
+    {
+     "id": "radius",
+     "v": 12,
+     "sel": ".ds-banner",
+     "css": "border-radius:@px"
+    },
+    {
+     "id": "icon",
+     "v": 20,
+     "sel": ".ds-banner__icon",
+     "css": "font-size:@px"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><title>pg</title><style>pre{font:13px/17px monospace;white-space:pre-wrap}</style></head>
+<body><iframe id="f" style="border:0"></iframe><pre id="out">…</pre>
+<script>
+var W=parseInt(new URLSearchParams(location.search).get('w')||'1920',10);
+var f=document.getElementById('f'); f.style.width=W+'px'; f.style.height='3200px';
+var out=document.getElementById('out'),L=[];
+f.onload=function(){try{
+ var d=f.contentDocument;
+ var card=d.querySelector('.plats').closest('.card');
+ var cr=card.getBoundingClientRect(), cs=d.defaultView.getComputedStyle(card);
+ var cols=[].slice.call(d.querySelectorAll('.plats .plat'));
+ L.push('окно '+W+' | карточка: x='+Math.round(cr.left)+'..'+Math.round(cr.right)+' padding='+cs.paddingLeft+'/'+cs.paddingRight+' (ширина '+Math.round(cr.width)+')');
+ cols.forEach(function(c,i){var r=c.getBoundingClientRect();
+   L.push('  колонка '+(i+1)+': '+Math.round(r.left)+'…'+Math.round(r.right)+' (ширина '+Math.round(r.width)+')');});
+ for(var i=1;i<cols.length;i++){
+   var a=cols[i-1].getBoundingClientRect(), b=cols[i].getBoundingClientRect();
+   L.push('  зазор '+(i)+'→'+(i+1)+': '+Math.round(b.left-a.right)+' px');}
+ var c0=cols[0].getBoundingClientRect(), cn=cols[cols.length-1].getBoundingClientRect();
+ L.push('  от паддинга карточки слева: '+Math.round(c0.left-cr.left-parseFloat(cs.borderLeftWidth))+
+        ' | справа: '+Math.round(cr.right-cn.right-parseFloat(cs.borderRightWidth)));
+ out.textContent=L.join(String.fromCharCode(10));
+}catch(e){out.textContent='ERR '+e;}};
+f.setAttribute('src','../../../iiko-ds-mobile/prototypes/recommendations/button.html');
+</script></body></html>

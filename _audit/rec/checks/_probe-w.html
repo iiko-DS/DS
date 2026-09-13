@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><title>pw</title><style>pre{font:13px/17px monospace;white-space:pre-wrap}</style></head>
+<body><iframe id="f" style="width:1920px;height:2200px;border:0"></iframe><pre id="out">…</pre>
+<script>
+var BASE='../../../iiko-ds-mobile/prototypes/recommendations/';
+var f=document.getElementById('f'),out=document.getElementById('out'),L=[];
+f.onload=function(){try{
+ var d=f.contentDocument;
+ function w(q){var e=d.querySelector(q); if(!e) return q+': нет'; var r=e.getBoundingClientRect(), cs=d.defaultView.getComputedStyle(e);
+   return q+': '+Math.round(r.width)+'x'+Math.round(r.height)+' cs.width='+cs.width+' box='+cs.boxSizing;}
+ ['.phone:nth-of-type(1) .phone__body','.phone .ds-search','.phone .ds-list-container','.phone .ds-list-container__item','.phone .ds-input','.phone .ds-tabs','.phone .ds-chips','.phone .ds-checkbox','.phone .ds-slide-toggle','.phone .ds-radio','.phone .ds-divider'].forEach(function(q){L.push(w(q));});
+ out.textContent=L.join(String.fromCharCode(10));
+}catch(e){out.textContent='ERR '+e;}};
+f.setAttribute('src',BASE+'button.html');
+</script></body></html>

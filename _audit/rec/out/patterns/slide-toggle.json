@@ -1,0 +1,60 @@
+{
+ "slug": "slide-toggle",
+ "patterns_ru": [
+  {
+   "title": "Трек свитча меньше пальца",
+   "items": [
+    "Что происходит: свитч на телефоне мелкий, а промах включает не ту настройку: MD3 фиксирует трек 52 × 32 dp, ручку 16 / 24 / 28 dp, state layer 40 dp и touch target 48 dp, Angular повторяет те же числа (track-height 32 px, track-width 52 px, touch target 48 px), а NN/g по исследованию Parhi, Karlson и Bederson даёт минимум «1cm × 1cm (0.4in x 0.4in)».",
+    "Что делают системы: Material Web расширяет зону нажатия до `height: max(100%, 48px)`, то есть кликабельной становится вся строка, а не трек; Apple держит 44×44 pt как размер контрола по умолчанию для iOS и iPadOS.",
+    "Что делать нам: в ДС трек 52 × 32 px с ручкой 24 px, а нажатие — по всей строке настройки высотой 48–60 px; отдельной «кнопки-свитча» на мобиле не делаем, тач-зону не убираем даже в компактном режиме."
+   ],
+   "src": "Источники: MD3-токены switch (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-switch.scss) · Angular Material · _m3-slide-toggle.scss (raw.githubusercontent.com/angular/components/main/src/material/slide-toggle/_m3-slide-toggle.scss) · Nielsen Norman Group · Touch Targets on Touchscreens (nngroup.com/articles/touch-target-size) · Apple HIG · Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><label class=\"ds-slide-toggle\" id=\"pat-st-0\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печатать чек</span></span></label></div>",
+   "example_ru": "Трек 52 × 32 px с ручкой 24 px, а нажатие — по всей строке высотой 48 px: палец попадает в строку настройки, а не в трек."
+  },
+  {
+   "title": "Свитч вне строки списка",
+   "items": [
+    "Что происходит: свитч ставят в шапку экрана, в плитку или в тулбар, и он теряет смысл: Apple — «Use the switch toggle style only in a list row» и «Outside of a list, use a button that behaves like a toggle, not a switch».",
+    "Что делают системы: Apple показывает это на примере: в приложении Phone фильтр последних звонков сделан кнопкой-переключателем с подсветкой фона, а не свитчем; для macOS HIG отдельно просит использовать свитчи, чекбоксы и радио в теле окна и не ставить их в тулбар или строку состояния.",
+    "Что делать нам: в iiko DS свитч живёт только в строках настроек и списках (в том числе в шторке настроек); для шапки и карточек используем иконочную кнопку-переключатель, а не slide-toggle."
+   ],
+   "src": "Источники: Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Печать</span><span class=\"ds-list-item__text\">Печатать чек</span></div><div class=\"ds-list-container__element-right\"><label class=\"ds-slide-toggle\" id=\"pat-st-1\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked aria-label=\"Печатать чек\"><span class=\"ds-slide-toggle__track\"></span></span></label></div></div></div><div style=\"display:flex;justify-content:flex-start\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Фильтр последних звонков\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_alt</span></span></button></div></div>",
+   "example_ru": "Свитч стоит в строке списка (72 px) и связан с её текстом; для шапки и карточек берём иконочную кнопку-переключатель, а не slide-toggle."
+  },
+  {
+   "title": "Свитч применяет сразу, чекбокс — по кнопке",
+   "items": [
+    "Что происходит: свитч и чекбокс путают по смыслу, и человек ждёт от свитча сохранения по кнопке: Ant Design — «Switch will trigger a state change directly when you toggle it, while Checkbox is generally used for state marking, which should work in conjunction with submit operation».",
+    "Что делают системы: у платформ разные роли: Angular slide-toggle не поддерживает indeterminate (в отличие от mat-checkbox), а Apple отдельно предупреждает «Make sure the visual differences in a toggle's state are obvious» и не советует заменять чекбокс свитчем — «In general, don't replace a checkbox with a switch».",
+    "Что делать нам: свитч — только для настроек, которые применяются мгновенно (без кнопки «Сохранить»), и в ДС рядом с ним нет отмены; для выбора внутри формы с подтверждением используем checkbox, а «частично включено» у свитча не делаем."
+   ],
+   "src": "Источники: Ant Design · Switch (raw.githubusercontent.com/ant-design/ant-design/master/components/switch/index.en-US.md) · Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles) · Angular Material · _m3-slide-toggle.scss (raw.githubusercontent.com/angular/components/main/src/material/slide-toggle/_m3-slide-toggle.scss)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><label class=\"ds-slide-toggle\" id=\"pat-st-2\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печатать чек</span></span></label><div class=\"ds-checkbox-wrap\"><div class=\"ds-checkbox-group ds-checkbox-group--vertical\"><label class=\"ds-checkbox\" id=\"pat-st-2a\"><input class=\"ds-checkbox__input\" type=\"checkbox\" checked><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1042</span></label><label class=\"ds-checkbox\" id=\"pat-st-2b\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\">Заказ №1041</span></label></div><span class=\"ds-checkbox__support\">Отметьте заказы и нажмите «Сохранить»</span></div><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div>",
+   "example_ru": "Свитч применяет настройку мгновенно и без кнопки, чекбокс — только вместе с отправкой формы «Сохранить»: у свитча ни «Отмены», ни подтверждения нет."
+  },
+  {
+   "title": "Подпись строки и доступное имя свитча",
+   "items": [
+    "Что происходит: свитч без подписи на мобиле ничего не сообщает, а скринридер читает его без имени: Material Web требует `aria-label` — «Add an aria-label attribute to switches without labels or switches whose labels need to be more descriptive» — и предупреждает, что свитчи не подписываются элементом <label> автоматически.",
+    "Что делают системы: при этом Apple в строках списка просит как раз не дублировать подпись: «You don't need to supply a label in this situation because the content in the row provides the context for the state the switch controls», а вне списка — наоборот, ясно называть настройку: «Clearly identify the setting, view, or content the toggle affects».",
+    "Что делать нам: в разметке ДС у каждой строки есть видимый текст настройки (14 / 20 px), связанный с input, и, если текст описан отдельно (иконка-строка), — явный aria-label; недоступный свитч остаётся видимым и объяснимым (приглушённый, с пояснением)."
+   ],
+   "src": "Источники: Material Web · Switch (raw.githubusercontent.com/material-components/material-web/main/docs/components/switch.md) · Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><label class=\"ds-slide-toggle\" id=\"pat-st-3\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Печатать чек</span></span><span class=\"ds-slide-toggle__support\">Чек печатается на станции кухни</span></label><label class=\"ds-slide-toggle\" id=\"pat-st-3b\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" aria-label=\"Показывать стоимость товаров в заказе\"><span class=\"ds-slide-toggle__track\"></span></span></label></div>",
+   "example_ru": "Подпись строки 14 / 20 px связана с input и объясняет настройку; там, где текст описан отдельно и в строке остаётся только трек, у свитча явный aria-label."
+  },
+  {
+   "title": "Плотность не уменьшает свитч",
+   "items": [
+    "Что происходит: в компактном режиме свитч пытаются уменьшить, но платформа этого не позволяет: в Angular плотность меняет только видимость тач-таргета (`slide-toggle-touch-target-display: block, block, none, none`), а размеры трека и ручки фиксированы; в MD3 шкалы размеров у свитча нет вовсе.",
+    "Что делают системы: исключение — Ant Design, у которого размер свитча задан явно (size: medium или small) и меняется осознанно; ещё HIG отмечает, что в macOS внутри сгруппированной формы размер строки выравнивают mini-switch'ем, то есть размер подбирают под строку, а не под желание сделать компактнее.",
+    "Что делать нам: компактный режим в ДС не трогает трек и ручку — он только сжимает строку и её подписи; на мобиле увеличенную тач-зону 48 px не отключаем, а «маленький свитч» как отдельный размер не вводим."
+   ],
+   "src": "Источники: Angular Material · _m3-slide-toggle.scss (raw.githubusercontent.com/angular/components/main/src/material/slide-toggle/_m3-slide-toggle.scss) · MD3-токены switch (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-switch.scss) · Ant Design · Switch (raw.githubusercontent.com/ant-design/ant-design/master/components/switch/index.en-US.md) · Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__row\">Компактный режим: строка ниже, свитч тот же</div><label class=\"ds-slide-toggle\" id=\"pat-st-4\"><span class=\"ds-slide-toggle__row\"><input type=\"checkbox\" class=\"ds-slide-toggle__input\" checked><span class=\"ds-slide-toggle__track\"></span><span class=\"ds-slide-toggle__title\">Новые заказы</span></span></label></div>",
+   "example_ru": "Компактный режим сжимает строку и подписи, но не свитч: трек 52 × 32 px, ручка 24 px и тач-зона 48 px остаются теми же — отдельного «маленького» размера у свитча нет."
+  }
+ ]
+}

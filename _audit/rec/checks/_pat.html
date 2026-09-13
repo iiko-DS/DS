@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><style>html,body{margin:0;padding:0;background:#fff}iframe{border:0;display:block}</style>
+<body><iframe id="f" src="/iiko-ds-mobile/prototypes/recommendations/button.html" width="1600" height="3600"></iframe>
+<pre id="out" style="display:none"></pre>
+<script>
+const f=document.getElementById('f');
+f.onload=()=>setTimeout(()=>{
+  const d=f.contentDocument, w=f.contentWindow;
+  const N="\u043f\u0430\u0442\u0442\u0435\u0440\u043d\u044b";
+  const c=[...d.querySelectorAll('.card')].find(x=>x.querySelector('h2')&&x.querySelector('h2').textContent.includes(N));
+  if(!c){document.getElementById('out').textContent='NO CARD';return;}
+  const b=c.getBoundingClientRect();
+  const cols=[...c.querySelectorAll('.plat')].map(p=>p.getBoundingClientRect());
+  document.getElementById('out').textContent=JSON.stringify({top:Math.round(b.top+w.scrollY),h:Math.round(b.height),w:Math.round(b.width),cols:cols.length,firstColW:Math.round(cols[0].width),rows:new Set(cols.map(r=>Math.round(r.top))).size});
+  w.scrollTo(0, Math.round(b.top+w.scrollY)-16);
+},400);
+</script></body>

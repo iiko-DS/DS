@@ -1,0 +1,33 @@
+{
+ "slug": "search",
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Числовых спецификаций поиска в MD3 нет: страница m3.material.io/components/search отдаёт HTTP 200, но рендерится на клиенте и чисел не публикует, а в material-web компонента поиска нет вовсе (search.json).",
+    "Референсная реализация MD3 — поиск как text field с ведущей иконкой search: «<md-outlined-text-field placeholder=\"Search for messages\"><md-icon slot=\"leading-icon\">search</md-icon>» (search.json).",
+    "У Angular Material отдельного компонента search тоже нет (в src/material нет директории search); сборка — mat-form-field + <input matInput>, плюс нативный type=\"search\" через matNativeControl (search.json).",
+    "Значит все размеры наследуются от поля: 56 px при density 0 (шкала до 36 px), ввод 16 px, тач-таргет 48 dp — своего размерного ряда у поиска нет (search.json).",
+    "Подсказки в Angular — отдельный компонент autocomplete, «a normal text input enhanced by a panel of suggested options», а не часть поиска (search.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Apple — единственная из трёх с полноценным компонентом: search field — «an editable text field that displays a Search icon, a Clear button, and placeholder text where people can enter what they are searching for» (search.json).",
+    "Числа у него только общие: тач-таргет 44×44 pt и кегль 17 pt (минимум 11 pt) — высоту search field HIG не задаёт (search.json).",
+    "Три точки входа: вкладка в таб-баре, тулбар сверху или снизу, инлайн с контентом — на мобиле это выбор места, а не размеров (search.json).",
+    "Фильтры: scope bar для категорий («Use a scope bar to filter among clearly defined search categories») и tokens для частых терминов (search.json).",
+    "Отдельно: искать надо начинать сразу при вводе, от этого зависит, нужна ли вообще кнопка «Найти» (search.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "На мобиле поиск — полноэкранный режим с автофокусом: строка на всю ширину, подсказки и результаты под ней, «Отмена» рядом.",
+  "Кегль ввода держать 16 px: меньше — iOS зумит экран при фокусе.",
+  "Иконка-вариант — 36 px с тач-зоной 48, как любая иконочная кнопка.",
+  "Поле 243 px в шапке на мобиле не нужно: строка либо на всю ширину, либо это иконка, открывающая полноэкранный поиск.",
+  "Пустой результат — отдельный текст, а не пустой список; подсказки показывать до ввода, а не после.",
+  "Чего нельзя: держать поиск свёрнутым с уже набранным запросом, показывать результаты под клавиатурой, делать строку ниже 44 px."
+ ]
+}

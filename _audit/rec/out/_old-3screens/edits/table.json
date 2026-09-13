@@ -1,0 +1,38 @@
+{
+  "slug": "table",
+  "edits": [
+    {
+      "row": 0,
+      "edits": [
+        {
+          "id": "row-h",
+          "v": 52,
+          "sel": ".ds-table-content-cell",
+          "css": "min-height:@px"
+        }
+      ]
+    },
+    {
+      "row": 1,
+      "edits": [
+        {
+          "id": "head-h",
+          "v": 56,
+          "sel": ".ds-table-header-cell",
+          "css": "min-height:@px"
+        }
+      ]
+    },
+    {
+      "row": 2,
+      "edits": [
+        {
+          "id": "pad-h",
+          "v": 16,
+          "sel": ".ds-table-content-cell",
+          "css": "padding-left:@px; padding-right:@px"
+        }
+      ]
+    }
+  ]
+}

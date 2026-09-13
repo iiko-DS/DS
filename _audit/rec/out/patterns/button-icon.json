@@ -1,0 +1,60 @@
+{
+ "slug": "button-icon",
+ "patterns_ru": [
+  {
+   "title": "Иконка без подписи должна читаться однозначно",
+   "items": [
+    "Что происходит: смысл иконки неочевиден («три точки», «звёздочка», «фильтр»), подписи нет, и пользователь не знает, что произойдёт после нажатия.",
+    "Что делают системы: IBM Carbon: «In an icon only button, that has no label, the icon must accurately represent what the button does.»; Apple HIG называет такой элемент image button — «An image button appears in a view and displays an image, symbol, or icon.»",
+    "Что делать нам: разрешать только иконки из утверждённого набора ДС, требовать aria-label и подпись-подсказку при долгом нажатии; «⋯» в ДС всегда означает «остальные действия»."
+   ],
+   "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Остальные действия: удалить, печать, отправить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_horiz</span></span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">more_horiz</span><span class=\"ds-btn__label\">Ещё</span></button></div>",
+   "example_ru": "Разрешены только однозначные иконки: «карандаш» — правка, «⋯» — остальные действия, у каждой есть aria-label; если смысл не читается, та же иконка идёт с подписью."
+  },
+  {
+   "title": "Контейнер 40 px, а палец — 48 px",
+   "items": [
+    "Что происходит: иконка-кнопка 40×40 в шапке стоит вплотную к соседней, и тапы попадают не туда, особенно при работе одной рукой.",
+    "Что делают системы: в MD3 state layer 40 px и иконка 24 px, но тач-цель больше — «height: max(48px, 100%); width: max(48px, 100%);»; Angular Material: «icon-button-touch-target-size: 48px»; Apple: «a button needs a hit region of at least 44x44 pt — in visionOS, 60x60 pt».",
+    "Что делать нам: контейнер 40 px, тач-зона 48 px, паддинг между иконками не меньше 8 px; в плотных таблицах не опускать зону ниже 44 px."
+   ],
+   "src": "Источники: Material Design 3 · Icon button (https://raw.githubusercontent.com/material-components/material-web/main/iconbutton/internal/_shared.scss) · Angular Material · Icon button tokens (https://raw.githubusercontent.com/angular/components/main/src/material/button/_m3-icon-button.scss) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Добавить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button></span></div>",
+   "example_ru": "Контейнер иконки 40 px, зона нажатия — пунктир 48 × 48, между иконками 20 px: тап одной рукой попадает в нужную."
+  },
+  {
+   "title": "Плотность уменьшает и цель тоже",
+   "items": [
+    "Что происходит: чтобы «всё влезло», в шапке включают компактную плотность, иконка-кнопка становится 32 px, и по ней перестаёт попадать палец.",
+    "Что делают системы: Angular Material даёт шкалу плотности «icon-button-state-layer-size: list.nth((40px, 36px, 32px, 28px, 24px, 24px), $index)» и предупреждает: «The size caps out at 24px, because anything lower will be smaller than the icon.»",
+    "Что делать нам: разрешить плотности только 40 / 36 / 32 px и всегда держать тач-зону 48 px; в мобильном режиме плотность не применять вовсе."
+   ],
+   "src": "Источники: Angular Material · Icon button tokens (https://raw.githubusercontent.com/angular/components/main/src/material/button/_m3-icon-button.scss) · Material Design 3 · Icon button (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon-button.md)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"flex-direction:column;align-items:stretch\"><div class=\"pat__phone-row\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Правка, 40 px\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Правка, 36 px\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--xs ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Правка, 32 px\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></span></div></div>",
+   "example_ru": "Плотности 40 / 36 / 32 px, а зона нажатия у всех трёх 48 × 48: ниже 24 px иконка уже не читается, в мобильном режиме плотность не применяем."
+  },
+  {
+   "title": "Сколько иконок в шапке",
+   "items": [
+    "Что происходит: в шапке пять иконок, они наезжают друг на друга и на заголовок, и непонятно, какое действие главное.",
+    "Что делают системы: Carbon: «Each page should have only one primary button. Any remaining calls to action should be represented as lower emphasis buttons.»; Apple советует кнопки в тулбаре оформлять отдельным элементом тулбара, а не набором иконок подряд.",
+    "Что делать нам: в шапке максимум две иконки-кнопки (одно действие плюс «⋯»), остальное — под «⋯» или в шторке; иконка-кнопка не заменяет главную кнопку формы."
+   ],
+   "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Фильтр\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_list</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Остальные действия: печать, отменить, отправить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></div>",
+   "example_ru": "В шапке максимум две иконки — одно действие плюс «⋯»: пять иконок подряд наезжают друг на друга и на заголовок."
+  },
+  {
+   "title": "Состояние «включено» и загрузка",
+   "items": [
+    "Что происходит: переключённое состояние показывают только цветом, а во время загрузки иконка превращается в спиннер другого размера и кнопка «прыгает».",
+    "Что делают системы: в MD3 состояние переключается атрибутом у той же кнопки — «toggle-состояние через атрибут toggle + слот slot=selected»; Apple: «You can configure an image button to behave like a push button, toggle, or pop-up button.»",
+    "Что делать нам: включённое состояние — заливка плюс aria-pressed, а не только цвет; загрузка — в контейнере того же размера, кнопка блокируется и её состояние объявляется текстом «Загрузка»."
+   ],
+   "src": "Источники: Material Design 3 · Icon button (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon-button.md) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Избранное, включено\" aria-pressed=\"true\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">star</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Загрузка\" disabled><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">refresh</span></span></button></div>",
+   "example_ru": "Включённое состояние — заливка плюс aria-pressed, во время загрузки иконка недоступна (имя «Загрузка»): контейнер того же размера 40 px, кнопка не прыгает."
+  }
+ ]
+}

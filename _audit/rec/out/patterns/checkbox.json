@@ -1,0 +1,60 @@
+{
+ "slug": "checkbox",
+ "patterns_ru": [
+  {
+   "title": "Маркер 18–20 px — целиться некуда",
+   "items": [
+    "Что происходит: в списке фильтров чекбокс нажимают по квадратику 18–20 px, половина тапов промахивается в соседнюю строку, а иногда и в другую опцию.",
+    "Что делают системы: MD3 держит контейнер 18 px, но зона нажатия у него 48 px — «// <input> is also the touch target … input { appearance: none; height: 48px; }» с отступом «margin: max(0px, ((48px - container-size) / 2));»; Angular Material: «checkbox-touch-target-size: 48px»; Nielsen Norman Group: «Interactive elements must be at least 1cm × 1cm (0.4in × 0.4in)…»",
+    "Что делать нам: строка чекбокса — 48 px минимум, нажатие по всей строке (маркер и подпись вместе), как это уже сделано в нашем мобильном слое."
+   ],
+   "src": "Источники: Material Design 3 · Checkbox (https://raw.githubusercontent.com/material-components/material-web/main/checkbox/internal/_checkbox.scss) · Angular Material · Checkbox (https://raw.githubusercontent.com/angular/components/main/src/material/checkbox/_m3-checkbox.scss) · Nielsen Norman Group (https://www.nngroup.com/articles/touch-target-size/)",
+   "example_html": "<div class=\"pat__phone\"><label class=\"ds-checkbox \" style=\"min-height:48px\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Стоп-лист</span></label><label class=\"ds-checkbox \" style=\"min-height:48px\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Общий стол</span></label><label class=\"ds-checkbox \" style=\"min-height:48px\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Печать пречека</span></label></div>",
+   "example_ru": "Строка чекбокса 48 px и нажимается целиком — маркер и подпись вместе: по квадратику 20 × 20 палец промахивается в соседний пункт."
+  },
+  {
+   "title": "Подпись нельзя обрезать многоточием",
+   "items": [
+    "Что происходит: длинные подписи («Учитывать стоп-лист при продаже навынос») обрезают в одну строку, и два разных пункта выглядят одинаково.",
+    "Что делают системы: Carbon: «Do not truncate checkbox label text with an ellipsis.» и «Long labels may wrap to a second line, and this is preferable to truncation.», а про выравнивание — «Text should wrap beneath the checkbox so the control and label are top aligned.»; рекомендуются подписи «fewer than three words».",
+    "Что делать нам: подписи в 2–4 слова, перенос в две строки с выравниванием по верху, обрезка запрещена; если текст не влезает — переписывать подпись, а не резать."
+   ],
+   "src": "Источники: IBM Carbon · Checkbox (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/checkbox/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><label class=\"ds-checkbox \" style=\"min-height:48px;align-items:flex-start\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"white-space:normal\">Учитывать стоп-лист при продаже навынос и в доставке</span></label></div>",
+   "example_ru": "Длинная подпись переносится на вторую строку и выровнена по верху с маркером: обрезки «Учитывать стоп-лист при прод…» нет, пункты не выглядят одинаково."
+  },
+  {
+   "title": "Группа и «можно выбрать несколько»",
+   "items": [
+    "Что происходит: чекбоксы идут списком без общего заголовка, и пользователь не понимает, что выбор множественный и что «применить» — отдельное действие.",
+    "Что делают системы: GOV.UK: «Group checkboxes together in a <fieldset> with a <legend> that describes them … This is usually a question, like ‘How would you like to be contacted?’» и предупреждает: «Do not assume that users will know how many options they can select based on the visual difference between radios and checkboxes alone.», советуя подсказку «Select all that apply».",
+    "Что делать нам: у группы — заголовок-вопрос и подсказка «можно выбрать несколько», в шапке группы — «Выбрать все / Снять все», отдельная кнопка «Применить» в футере."
+   ],
+   "src": "Источники: GOV.UK Design System · Checkboxes (https://design-system.service.gov.uk/components/checkboxes/)",
+   "example_html": "<div class=\"pat__phone\"><span style=\"font-size:16px;line-height:24px;font-weight:500\">Как оформить подачу?</span><div class=\"ds-checkbox-wrap\"><div class=\"ds-checkbox-group ds-checkbox-group--vertical\"><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Подавать сразу</span></label><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Подавать вместе с горячим</span></label></div><span class=\"ds-checkbox__support\">Можно выбрать несколько</span></div><div class=\"pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Выбрать все</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Применить</span></button></div></div>",
+   "example_ru": "У группы заголовок-вопрос и подсказка «Можно выбрать несколько», «Применить» — отдельным действием: пользователь не угадывает, сколько вариантов ему разрешено."
+  },
+  {
+   "title": "Ошибка и недоступность — не только цвет",
+   "items": [
+    "Что происходит: ошибку помечают красной рамкой, disabled — серым, и в обоих случаях непонятно, что именно не так и что делать.",
+    "Что делают системы: в MD3 для этого отдельные токены — «error (selected-error-*, error-outline-color)» и «disabled (disabled-outline-*, disabled-container-opacity)»; GOV.UK требует текстовую ошибку рядом с полем: «Make sure errors follow the guidance in the Error message component and have specific error messages for specific error states.»",
+    "Что делать нам: текст ошибки под строкой (12 / 16 px) и у группы целиком, disabled-подпись с причиной; цвет — только дополнение к тексту и иконке."
+   ],
+   "src": "Источники: Material Design 3 · Checkbox (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-checkbox.scss) · GOV.UK Design System · Checkboxes (https://design-system.service.gov.uk/components/checkboxes/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-checkbox-wrap\"><label class=\"ds-checkbox ds-checkbox--error\" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Стоп-лист</span></label><span class=\"ds-checkbox__support\" style=\"color:#FF5252\">Стоп-лист недоступен для доставки</span></div><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\" disabled><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Скидка на позицию (недоступна для доставки)</span></label></div>",
+   "example_ru": "Ошибка — текстом под строкой, недоступность — с причиной в подписи: красный и серый остаются дополнением к тексту, а не единственным сигналом."
+  },
+  {
+   "title": "Ничего не предвыбирать и дать пункт «никакой из»",
+   "items": [
+    "Что происходит: часть чекбоксов включена по умолчанию, и пользователь отправляет форму, не заметив выбор; в списке из 12 фильтров нет способа сказать «ничего не нужно».",
+    "Что делают системы: GOV.UK: «Do not pre-select checkbox options as this makes it more likely that users will: not realise they’ve missed a question, submit the wrong answer.»; и про пустой выбор: сделать отдельный пункт «none», иначе «users would have to leave all of the boxes unchecked»; там же — «Order checkbox options alphabetically by default.»",
+    "Что делать нам: по умолчанию ни один пункт не отмечен, для «ничего из» — отдельный взаимоисключающий чекбокс с понятной подписью, порядок пунктов — по алфавиту, а не по внутреннему порядку модели."
+   ],
+   "src": "Источники: GOV.UK Design System · Checkboxes (https://design-system.service.gov.uk/components/checkboxes/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-checkbox-group ds-checkbox-group--vertical\"><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Ничего из перечисленного</span></label><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Приправа</span></label><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Соус</span></label><label class=\"ds-checkbox \" style=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\"><span class=\"ds-checkbox__box\"></span><span class=\"ds-checkbox__label\" style=\"\">Сыр</span></label></div><span class=\"ds-checkbox__support\">По умолчанию ни один пункт не отмечен</span></div>",
+   "example_ru": "Ни один пункт не отмечен заранее, порядок по алфавиту и есть отдельный взаимоисключающий пункт «Ничего из перечисленного»: случайный выбор не отправится."
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+{
+  "component": "Button group",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "standard: xsmall",
+          "height_dp": 32,
+          "quote": "/// md.comp.button-group.standard.xsmall.container.height -> $container-height: 32px; ($between-space: 18px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-button-group-standard-xsmall.scss"
+        },
+        {
+          "name": "standard: small",
+          "height_dp": 40,
+          "quote": "/// md.comp.button-group.standard.small.container.height -> $container-height: 40px; ($between-space: 12px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-button-group-standard-small.scss"
+        },
+        {
+          "name": "standard: medium",
+          "height_dp": 56,
+          "quote": "/// md.comp.button-group.standard.medium.container.height -> $container-height: 56px; ($between-space: 8px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-button-group-standard-medium.scss"
+        },
+        {
+          "name": "standard: large",
+          "height_dp": 96,
+          "quote": "/// md.comp.button-group.standard.large.container.height -> $container-height: 96px; ($between-space: 8px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-button-group-standard-large.scss"
+        },
+        {
+          "name": "standard: xlarge",
+          "height_dp": 136,
+          "quote": "/// md.comp.button-group.standard.xlarge.container.height -> $container-height: 136px; ($between-space: 8px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-button-group-standard-xlarge.scss"
+        },
+        {
+          "name": "connected: xsmall/small/medium/large/xlarge",
+          "height_dp": null,
+          "quote": "connected.xsmall/small/medium/large/xlarge.container.height -> 32 / 40 / 56 / 96 / 136 px; $between-space: 2px",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-button-group-connected-medium.scss"
+        }
+      ],
+      "variants": [
+        "standard (с зазором между кнопками)",
+        "connected (кнопки состыкованы, зазор 2 dp)",
+        "× размеры xsmall / small / medium / large / xlarge (для обоих вариантов)"
+      ],
+      "touch_target_dp": null,
+      "notes_ru": "M3-компонент 'Button groups' существует (m3.material.io/components/button-groups/overview отвечает 200, тогда как заведомо ложный путь .../zzz-bogus/overview отдаёт 404), но числовых данных в HTML нет — клиентский рендер. Токены в официальном наборе (Google Material 3, v34.0.21) дают два варианта (standard / connected) и пять размеров; известные числа: container.height 32/40/56/96/136 dp, between-space standard 18/12/8/8/8 dp, connected 2 dp, а также pressed item width multiplier 15%. В Material Web НЕТ реализации компонента button group — в репозитории нет каталога button-group на верхнем уровне (есть только токены); тач-таргет отдельным токеном не задан. Прямого соответствия с иконка-кнопками/сегментами нет.",
+      "sources": [
+        "https://m3.material.io/components/button-groups/overview",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-button-group-standard-medium.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-button-group-standard-xsmall.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/_md-comp-button-group-connected-medium.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/"
+      ]
+    },
+    "angular_material": {
+      "exists": false,
+      "sizes": [],
+      "variants": [],
+      "density": "не найдено",
+      "touch_target": "не найдено",
+      "notes_ru": "Компонента 'button group' в Angular Material нет: в src/material есть button (включая fab и icon button внутри), button-toggle, но нет отдельного button-group. Ближайшая сущность — mat-button-toggle-group (соединённая группа, 'The MatButtonToggleGroup surrounding the individual buttons applies role=\"group\"'; высота 40 dp). Т.е. в терминах M3 эквивалент — connected button group, но собственных размеров/токенов group-уровня Angular Material не публикует.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/button-toggle.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/_m3-button-toggle.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "sizes": [],
+      "variants": [],
+      "notes_ru": "В HIG нет компонента 'button group'; раздел Components содержит Segmented controls, Toolbars, Toggles, Pop-up buttons, Pull-down buttons, но не группу кнопок. Ближайшее по смыслу — segmented control ('A segmented control is a linear set of two or more segments, each of which functions as a button'), у которого нет ни одного числового размера.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/segmented-controls",
+        "https://developer.apple.com/design/human-interface-guidelines/buttons"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Группа кнопок высотой 136 dp (xlarge) — токен существует, но не реализован ни в Material Web, ни в Angular Material, ни в HIG.",
+    "Button group размера XS (32 dp) — токен md.comp.button-group.*.xsmall.container.height 32px, но ни одна платформа не даёт его в API и он ниже минимума тач-таргета 48 dp / 44 pt.",
+    "Sizes-варианты внутри одной группы (разные высоты у кнопок группы): противоречит M3 (единый container height) и HIG ('keep segment size consistent').",
+    "Ожидание отдельного компонента 'button group' в Angular Material или iOS: его нет — в Angular ближайшее это mat-button-toggle-group, в iOS — segmented control.",
+    "Группа кнопок без тач-таргета ≥48 dp: у группы собственного токена тач-таргета нет, а общий минимум платформ — 48 dp (Material) / 44×44 pt (HIG)."
+  ],
+  "verdict_ru": "Button group как компонент существует только в Material Design 3: токены дают два варианта (standard и connected) и пять размеров с высотами 32/40/56/96/136 dp (зазор standard 18/12/8/8/8 dp, connected — 2 dp), при этом в Material Web реализации нет вовсе, а в Angular Material и iOS HIG компонента с таким именем не существует (ближайшее — mat-button-toggle-group и segmented control соответственно). Числовая база M3 для группы: 56 dp у medium — тот же размер, что у обычной кнопки medium, из чего собирается консистентная группа. Рекомендуемыми для продукта можно считать только размеры, совпадающие с обычными кнопками и подкреплённые реализацией (40 и 56 dp); 136 dp, 32 dp и разноразмерные группы ни одна платформа не рекомендует.",
+  "verified_on": "2026-09-11"
+}

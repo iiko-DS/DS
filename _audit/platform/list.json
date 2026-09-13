@@ -1,0 +1,356 @@
+{
+  "component": "List (список)",
+  "verified_at": "2026-09-11",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "component_name": "Lists: md-list / md-list-item (Material Web — официальная библиотека MD3)",
+      "sizes": [
+        {
+          "name": "Высота строки one-line",
+          "quote": "'list-item-one-line-container-height':\n      if($exclude-hardcoded-values, null, 56px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "height_dp": 56
+        },
+        {
+          "name": "Высота строки two-line",
+          "quote": "'list-item-two-line-container-height':\n      if($exclude-hardcoded-values, null, 72px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "height_dp": 72
+        },
+        {
+          "name": "Высота строки three-line",
+          "quote": "'list-item-three-line-container-height':\n      if($exclude-hardcoded-values, null, 88px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "height_dp": 88
+        },
+        {
+          "name": "Горизонтальный отступ строки (leading space)",
+          "quote": "'list-item-leading-space': if($exclude-hardcoded-values, null, 16px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "value": 16,
+          "unit": "dp"
+        },
+        {
+          "name": "Горизонтальный отступ строки (trailing space)",
+          "quote": "'list-item-trailing-space': if($exclude-hardcoded-values, null, 16px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "value": 16,
+          "unit": "dp"
+        },
+        {
+          "name": "Padding контейнера списка (верх/низ)",
+          "quote": "padding: 8px 0;",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/list/internal/_list.scss",
+          "value": 8,
+          "unit": "dp"
+        },
+        {
+          "name": "Внутренние токены top-space / bottom-space строки",
+          "quote": "'top-space': if($exclude-hardcoded-values, null, 12px),\n      'bottom-space': if($exclude-hardcoded-values, null, 12px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-list-item.scss",
+          "value": 12,
+          "unit": "dp"
+        },
+        {
+          "name": "Размер leading/trailing иконки",
+          "quote": "'list-item-leading-icon-size': if($exclude-hardcoded-values, null, 24px),\n    'list-item-trailing-icon-size': if($exclude-hardcoded-values, null, 24px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "value": 24,
+          "unit": "dp"
+        },
+        {
+          "name": "Размер аватара (leading avatar)",
+          "quote": "'list-item-leading-avatar-size': if($exclude-hardcoded-values, null, 40px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "value": 40,
+          "unit": "dp"
+        },
+        {
+          "name": "Размер изображения (leading image)",
+          "quote": "'list-item-leading-image-height': if($exclude-hardcoded-values, null, 56px),\n    'list-item-leading-image-width': if($exclude-hardcoded-values, null, 56px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "value": "56x56",
+          "unit": "dp"
+        },
+        {
+          "name": "Ширина ведущего видео (leading video)",
+          "quote": "'list-item-leading-video-width': if($exclude-hardcoded-values, null, 100px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "value": 100,
+          "unit": "dp"
+        },
+        {
+          "name": "Отступ divider внутри списка",
+          "quote": "'divider-leading-space': if($exclude-hardcoded-values, null, 16px),\n    'divider-trailing-space': if($exclude-hardcoded-values, null, 16px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "value": 16,
+          "unit": "dp"
+        },
+        {
+          "name": "Основной текст строки = body-large",
+          "quote": "'list-item-label-text-size':\n      map.get($deps, 'md-sys-typescale', 'body-large-size'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "value": "body-large"
+        },
+        {
+          "name": "Значение body-large",
+          "quote": "'body-large-size': if($exclude-hardcoded-values, null, 1rem),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss",
+          "value": "1rem (16px)",
+          "unit": "rem"
+        },
+        {
+          "name": "Supporting text = body-medium",
+          "quote": "'list-item-supporting-text-size':\n      map.get($deps, 'md-sys-typescale', 'body-medium-size'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "value": "body-medium"
+        },
+        {
+          "name": "Значение body-medium",
+          "quote": "'body-medium-size': if($exclude-hardcoded-values, null, 0.875rem),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss",
+          "value": "0.875rem (14px)",
+          "unit": "rem"
+        },
+        {
+          "name": "Trailing supporting text / overline = label-small",
+          "quote": "'list-item-trailing-supporting-text-size':\n      map.get($deps, 'md-sys-typescale', 'label-small-size'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+          "value": "label-small"
+        },
+        {
+          "name": "Значение label-small",
+          "quote": "'label-small-size': if($exclude-hardcoded-values, null, 0.6875rem),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss",
+          "value": "0.6875rem (11px)",
+          "unit": "rem"
+        },
+        {
+          "name": "Touch target для строки списка",
+          "quote": "не найдено",
+          "source": null,
+          "value": "не найдено"
+        }
+      ],
+      "variants": [
+        "one-line (только текст/headline)",
+        "two-line (headline + supporting-text)",
+        "three-line (headline + две строки supporting-text)",
+        "icon item (leading 24 dp, trailing 24 dp)",
+        "avatar item (40 dp, corner-full)",
+        "image item (56x56 dp, corner-none)",
+        "video item (leading video, ширина 100 dp; small video height 56 dp)",
+        "divider между строками",
+        "поведение через type: \"text\" (по умолчанию), \"button\", \"link\" (с href/target)"
+      ],
+      "states": [
+        {
+          "name": "hover state layer opacity",
+          "value": 0.08,
+          "quote": "'hover-state-layer-opacity': if($exclude-hardcoded-values, null, 0.08),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-state.scss"
+        },
+        {
+          "name": "focus state layer opacity",
+          "value": 0.12,
+          "quote": "'focus-state-layer-opacity': if($exclude-hardcoded-values, null, 0.12),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-state.scss"
+        },
+        {
+          "name": "pressed state layer opacity",
+          "value": 0.12,
+          "quote": "'pressed-state-layer-opacity': if($exclude-hardcoded-values, null, 0.12)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-state.scss"
+        },
+        {
+          "name": "selected trailing icon color",
+          "value": "md.sys.color.primary",
+          "quote": "'list-item-selected-trailing-icon-color':\n      map.get($deps, 'md-sys-color', 'primary'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss"
+        },
+        {
+          "name": "disabled opacity строки",
+          "value": null,
+          "note_ru": "Токен существует, но его значение подставляется из другого токена — числовая константа не задана",
+          "quote": "'disabled-opacity':\n        map.get($original-tokens, 'list-item-disabled-label-text-opacity'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-list-item.scss"
+        }
+      ],
+      "touch_target_dp": null,
+      "touch_target_note_ru": "Числовой константы touch target для списка в официальных исходниках material-web нет — не найдено",
+      "notes_ru": "MD3 задаёт высоты строк токенами md.comp.list.list-item.*: 56/72/88 dp, горизонтальные отступы 16 dp, контейнер списка 8 px, внутренние токены строки 12 dp. Типографика: label-text = body-large, supporting-text = body-medium, trailing-supporting-text = label-small. Это единственный компонент из набора, который есть и в спецификации MD3, и в официальной веб-библиотеке (md-list/md-list-item). Спец-страница m3.material.io/components/lists/specs существует, но рендерится клиентским JS, поэтому все числа взяты из официальных токенов и исходников material-web.",
+      "sources": [
+        "https://m3.material.io/components/lists/specs",
+        "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/list.md",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-list.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-list-item.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/list/internal/_list.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-state.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "component_name": "mat-list / mat-list-item, mat-nav-list, mat-action-list, mat-selection-list (+ mat-list-option)",
+      "sizes": [
+        {
+          "name": "Высота строки one-line (плотность 0)",
+          "quote": "list-list-item-one-line-container-height:\n        list.nth((48px, 44px, 40px, 36px, 32px, 24px), $index),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+          "height_dp": 48
+        },
+        {
+          "name": "Высота строки two-line (плотность 0)",
+          "quote": "list-list-item-two-line-container-height:\n        list.nth((64px, 60px, 56px, 52px, 48px, 48px), $index),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+          "height_dp": 64
+        },
+        {
+          "name": "Высота строки three-line (плотность 0)",
+          "quote": "list-list-item-three-line-container-height:\n        list.nth((88px, 84px, 80px, 76px, 72px, 56px), $index),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+          "height_dp": 88
+        },
+        {
+          "name": "Отступы ведущей иконки (start/end space), плотность 0",
+          "quote": "list-list-item-leading-icon-start-space: list.nth((16px, 12px, 8px, 4px, 4px, 4px), $index),\n    list-list-item-leading-icon-end-space: list.nth((16px, 12px, 8px, 4px, 4px, 4px), $index),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+          "value": 16,
+          "unit": "px"
+        },
+        {
+          "name": "Размер ведущей иконки",
+          "quote": "// Match spec, which has list-item-leading-icon-size of 24px.\n    // Current version of tokens (0_161) has 18px.\n    list-list-item-leading-icon-size: 24px,",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+          "value": 24,
+          "unit": "px"
+        },
+        {
+          "name": "Размер завершающей иконки",
+          "quote": "list-list-item-trailing-icon-size: 24px,",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+          "value": 24,
+          "unit": "px"
+        },
+        {
+          "name": "Размер аватара",
+          "quote": "list-list-item-leading-avatar-size: 40px,",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+          "value": 40,
+          "unit": "px"
+        },
+        {
+          "name": "Основной текст = body-large",
+          "quote": "list-list-item-label-text-size: map.get($system, body-large-size),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+          "value": "body-large"
+        },
+        {
+          "name": "Supporting text = body-medium",
+          "quote": "list-list-item-supporting-text-size: map.get($system, body-medium-size),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+          "value": "body-medium"
+        },
+        {
+          "name": "Trailing supporting text = label-small",
+          "quote": "list-list-item-trailing-supporting-text-size: map.get($system, label-small-size),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+          "value": "label-small"
+        },
+        {
+          "name": "Отступ divider рядом с аватаром",
+          "quote": ".mat-mdc-list-item-avatar ~ .mat-divider-inset {\n    margin-left: 72px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/list/list.scss",
+          "value": 72,
+          "unit": "px"
+        }
+      ],
+      "variants": [
+        "simple list (<mat-list-item> с текстом напрямую)",
+        "multi-line list (matListItemTitle + matListItemLine; вход lines=N включает перенос текста)",
+        "mat-nav-list (role=\"navigation\", только ссылки)",
+        "mat-action-list (каждый элемент — <button>)",
+        "mat-selection-list + mat-list-option (role=\"listbox\")",
+        "подзаголовки matSubheader + <mat-divider>",
+        "слоты строки: matListItemIcon, matListItemAvatar, matListItemMeta, matListItemTitle, matListItemLine"
+      ],
+      "density": "Есть: clamp-density($scale, -5). one-line (48, 44, 40, 36, 32, 24); two-line (64, 60, 56, 52, 48, 48); three-line (88, 84, 80, 76, 72, 56); отступы иконки (16, 12, 8, 4, 4, 4).",
+      "touch_target_dp": null,
+      "touch_target_note_ru": "Для mat-list токена touch target нет — не найдено. Общий M3-touch-target в Angular Material равен 48 px, но заведён он у кнопок: '$touch-target-size: 48px;' (https://raw.githubusercontent.com/angular/components/main/src/material/button/_m3-button.scss).",
+      "notes_ru": "Ключевое расхождение: в M3-теме Angular Material высоты строк 48/64/88 px (плотность 0), а в токенах MD3 — 56/72/88. Не совпадает one-line (48 против 56) и two-line (64 против 72). В комментариях исходников отмечено только расхождение по цвету контейнера и по размеру ведущей иконки ('Match spec, which has list-item-leading-icon-size of 24px. Current version of tokens (0_161) has 18px.'); про высоты комментариев нет. Отступ 72 px применяется к вложенному divider рядом с аватаром.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/list/list.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/list/_m3-list.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/list/list.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button/_m3-button.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": true,
+      "component_name": "Lists and tables (HIG) / List, UITableView (API)",
+      "sizes": [
+        {
+          "name": "Высота строки списка/таблицы",
+          "quote": "не найдено",
+          "source": null,
+          "value": "не найдено"
+        },
+        {
+          "name": "Размер контрола по умолчанию (iOS/iPadOS) — используется как ориентир области касания",
+          "quote": "Platform Default control size Minimum control size iOS, iPadOS 44x44 pt 28x28 pt macOS 28x28 pt 20x20 pt tvOS 66x66 pt 56x56 pt visionOS 60x60 pt 28x28 pt watchOS 44x44 pt 28x28 pt",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+          "value": "44x44 pt",
+          "unit": "pt"
+        },
+        {
+          "name": "Минимальный размер контрола (iOS/iPadOS)",
+          "quote": "iOS, iPadOS 44x44 pt 28x28 pt",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+          "value": "28x28 pt",
+          "unit": "pt"
+        },
+        {
+          "name": "Рекомендованный padding вокруг элементов",
+          "quote": "In general, it works well to add about 12 points of padding around elements that include a bezel. For elements without a bezel, about 24 points of padding",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+          "value": "12 pt (с безелем) / 24 pt (без безеля)",
+          "unit": "pt"
+        },
+        {
+          "name": "Высота строки UITableView по умолчанию",
+          "quote": "The default height in points of each row in the table view.",
+          "source": "https://developer.apple.com/documentation/uikit/uitableview/rowheight",
+          "value": "UITableView.automaticDimension (вычисляется автоматически; фиксированного 44 pt в документации нет)"
+        }
+      ],
+      "variants": [
+        "grouped — только в HIG: \"In iOS and iPadOS, for example, the grouped style uses headers, footers, and additional space to separate groups of data\"",
+        "plain — только в API UIKit: \"A plain table view.\" (UITableView.Style)",
+        "insetGrouped — только в API UIKit: \"A table view where the grouped sections are inset with rounded corners.\"",
+        "SwiftUI ListStyle: automatic, bordered, carousel, elliptical, grouped, inset, insetGrouped, plain, sidebar",
+        "macOS bordered (чередующийся фон строк), watchOS elliptical",
+        "паттерн строки: info button (detail disclosure) vs disclosure indicator"
+      ],
+      "touch_target_dp": 44,
+      "touch_target_note_ru": "Значение в pt, не в dp: HIG даёт 44x44 pt как размер контрола по умолчанию для iOS/iPadOS и 28x28 pt как минимум.",
+      "notes_ru": "HIG не публикует ни одной числовой высоты строки списка или таблицы — только стили, правила контента и паттерн disclosure. Числа для iOS ограничены областями касания (44x44 pt) и padding вокруг элементов (12/24 pt).",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+        "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/lists-and-tables.json",
+        "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+        "https://developer.apple.com/documentation/swiftui/liststyle",
+        "https://developer.apple.com/documentation/uikit/uitableview/style-swift.enum",
+        "https://developer.apple.com/documentation/uikit/uitableview/rowheight"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Ни одна из трёх платформ не даёт высоты для строк «4+ строк»: MD3 ограничен one/two/three-line (56/72/88 dp), Angular Material — тремя строками, HIG чисел не даёт вовсе.",
+    "Ни MD3, ни iOS HIG не имеют density/compact-режима списка — density API есть только у Angular Material (шкала 0…-5).",
+    "Ни одна платформа не публикует числовой touch target именно для строки списка: у Angular Material 48 px заведён только у кнопок, в токенах MD3 такого параметра нет, у HIG есть лишь общая рекомендация 44x44 pt для контролов.",
+    "Нет согласия по высоте двухстрочной строки: MD3 — 72 dp, Angular Material — 64 px. Совмещать значения двух Material-платформ без явного решения нельзя.",
+    "Ни у MD3, ни у Angular Material, ни у HIG нет варианта «список с несколькими колонками» — это уже таблица."
+  ],
+  "verdict_ru": "List — самый обеспеченный числами компонент набора. MD3 даёт 56/72/88 dp, отступы 16 dp, контейнер 8 px, внутренние токены строки 12 dp и токены состояний (hover 0.08, focus/pressed 0.12) — это единственная платформа с полной машинно-читаемой спецификацией. Angular Material в M3-теме использует другие высоты (48/64/88 px) плюс density API «0…-5», поэтому числа двух Material-платформ не взаимозаменяемы. iOS HIG сознательно не даёт высот строк — только стили (grouped/plain/insetGrouped) и общий минимум контрола 44x44 pt. Для iiko DS: эталон высот — MD3, density — из Angular Material, iOS даёт только стили и правило раскрытия."
+}

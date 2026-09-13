@@ -1,0 +1,16 @@
+{
+  "slug": "menu",
+  "edits": [
+    {
+      "row": 1,
+      "edits": [
+        {
+          "id": "height",
+          "v": 72,
+          "sel": ".ds-menu-item",
+          "css": "min-height:@px"
+        }
+      ]
+    }
+  ]
+}

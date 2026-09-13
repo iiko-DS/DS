@@ -1,0 +1,34 @@
+{
+ "slug": "scroll",
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Компонента Scroll/Scrollbar в MD3 нет: /components/scroll/specs, /components/scrollbars/specs и /styles/scrollbars → HTTP 404, в material-web нет ни scroll, ни scrollbar (scroll.json).",
+    "Все числа прокрутки — платформенные (Android framework), а не токены MD3: скроллбар 4 dip, появление с задержкой 300 ms, затухание 250 ms, «затухающие» края контента 12 dip (scroll.json).",
+    "В самой документации MD3 прокрутка присутствует только как API таба (scrollToTab) и как поведение списков — отдельного компонента прокрутки нет (scroll.json).",
+    "У Angular Material скроллбара как компонента тоже нет: есть cdkScrollable/ScrollDispatcher и виртуальный скролл, где itemSize обязателен (иначе исключение «requires the itemSize property to be set»), а буферы minBufferPx/maxBufferPx задаются в пикселях (в доке 50/100/250) (scroll.json).",
+    "Ближайшее «число MD3» про прокрутку — thickness линейного progress-трека 4 px, но это индикатор, а не полоса прокрутки (scroll.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Компонента Scroll/Scrollbar в HIG нет: /scroll → 404, /scroll-bars → 404; есть только правила для scroll view (scroll.json).",
+    "Ни одной числовой толщины или высоты индикатора Apple не публикует — «не найдено»; у macOS-панелей бывают уменьшенные small/mini scroll bars, тоже без чисел (scroll.json).",
+    "Индикатор полупрозрачный и появляется после начала прокрутки: «The scroll view itself has no appearance, but it can display a translucent scroll indicator that typically appears after people begin scrolling» (scroll.json).",
+    "Ключевое правило для мобилы: «Avoid putting a scroll view inside another scroll view with the same orientation» — вертикальная прокрутка в вертикальную не вкладывается (scroll.json).",
+    "HIG честно предупреждает, что индикатор виден не всегда («scroll indicators aren't always visible»), поэтому на продолжение контента надо намекать обрезкой у края (scroll.json).",
+    "Ещё из HIG: page control при page-by-page скролле, refresh control для pull-to-refresh, scroll edge effect (automatic/hard/soft) — это не затемнение под тулбаром (scroll.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Нарисованный скролл ДС 184 px на мобиле не использовать: полосу прокрутки там скрывает система, а инерцию и safe-area задаёт браузер.",
+  "Если полоса прокрутки видна — это ошибка раскладки, а не работа компонента.",
+  "На то, что список длинный, намекать обрезкой последней строки, а не стрелками и подписями.",
+  "Вложенную прокрутку того же направления не делать: либо прокручивается страница, либо внутренняя область.",
+  "Длинные списки выводить виртуальным скроллом, иначе телефон тормозит на первом кадре.",
+  "Чего нельзя: считать свой скролл частью мобильного DS, задавать ему числа, вкладывать вертикальный скролл в вертикальный."
+ ]
+}

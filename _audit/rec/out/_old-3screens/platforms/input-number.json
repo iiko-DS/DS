@@ -1,0 +1,34 @@
+{
+ "slug": "input-number",
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Отдельного number input нет ни у MD3, ни у Angular: это text field с type=\"number\" (MD3) или нативный <input type=\"number\"> через matInput внутри mat-form-field (Angular) (input-number.json).",
+    "Поэтому поле наследует платформенную высоту: 56 dp у MD3 ($height: 56px) и 56 px при density 0 у Angular (шкала 56/52/48/44/40/36 до −5) — отсюда мобильные 48 → 56 px (input-number.json).",
+    "Кегль ввода 16 px — body-large 1 rem у обеих систем; меньше не задаём, иначе поле выпадает из платформенной типографики (input-number.json).",
+    "Инкремент-кнопок нет ни у MD3 («степпера/инкремент-кнопок в MD3 не предусмотрено»), ни у Angular — наш «+/−» это Button icon, то есть 36 → 40 × 40 плюс тач-зона 48 (input-number.json).",
+    "Из платформенного у числа есть только тип ввода и формат: MD3 даёт prefix/suffix («prefix-text=\"$\" suffix-text=\".00\"»), Angular — type=\"number\" через matNativeControl и inputmode (input-number.json).",
+    "Тач-таргет MD3 — общие 48 dp, а у Angular он выведен из form-field; при плотности −2 и ниже тач-зоны у контролов уже отключаются (input-number.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Отдельного числового поля нет: text field + number formatter — «A number formatter automatically configures the text field to accept only numeric values» (input-number.json).",
+    "Apple — единственная из трёх с инкремент-контролом: Stepper, и он не показывает значение сам — «Consider pairing a stepper with a text field when large value changes are likely» (input-number.json).",
+    "Клавиатуру HIG требует подходящую: «In iOS, iPadOS, tvOS, and visionOS apps, show the appropriate keyboard type» — на числовом поле это цифровая (input-number.json).",
+    "Своих размеров у числа нет: только общий тач-таргет 44×44 pt и кегль 17 pt (минимум 11 pt) (input-number.json).",
+    "Требования форматировать число с учётом локали у Apple есть, а чисел поля и кнопок «+/−» нет ни одного — их берём из Button icon (input-number.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Кнопки «+/−» — ровно 40 × 40 с тач-зоной 48; растягивать их по ширине поля не нужно.",
+  "Кнопки ставить по краям поля, а не отдельным рядом: инкремент относится к конкретному полю.",
+  "На цифровое поле ставить inputmode=\"numeric\"; type=\"number\" — только там, где реально нужны браузерные стрелки.",
+  "Ручной ввод не блокировать: степпер ускоряет, но не заменяет клавиатуру.",
+  "Границы значения показывать сразу (минимум/максимум), а не ошибкой после ввода.",
+  "Чего нельзя: неочевидный шаг, отрицательные и нулевые значения там, где это запрещено, поле без возможности ввести число с клавиатуры."
+ ]
+}

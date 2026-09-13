@@ -1,0 +1,16 @@
+{
+  "slug": "list",
+  "edits": [
+    {
+      "row": 0,
+      "edits": [
+        {
+          "id": "height",
+          "v": 72,
+          "sel": ".ds-list-item",
+          "css": "min-height:@px"
+        }
+      ]
+    }
+  ]
+}

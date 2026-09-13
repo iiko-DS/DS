@@ -1,0 +1,363 @@
+/* Оболочка страницы. Своих компонентов у неё нет — свои классы только для каркаса. */
+html,body{margin:0;background:#f4f5f7;font-family:'Roboto','Helvetica Neue',Arial,sans-serif;color:#333}
+body{padding:24px;box-sizing:border-box}
+.wrap{width:100%;max-width:100%;margin:0 auto}
+a{color:var(--ds-palette-accent-500)}
+.crumbs{font-size:13px;line-height:18px;margin:0 0 14px}
+h1{font-size:24px;line-height:32px;font-weight:500;margin:0 0 6px}
+.desc{max-width:820px}
+.desc{font-size:14px;line-height:20px;color:#424242;margin:0 0 10px;max-width:820px}
+.cat{display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;background:#fff;
+     border:1px solid var(--ds-color-stroke-default);border-radius:999px;padding:4px 12px;margin:0 0 20px}
+.cat b{font-weight:500}
+/* Мобильную панель показываем шириной телефона (375 px), а не «половиной окна»:
+   иначе «на всю ширину» элементы рисуются вдвое шире реальности (поле 725 вместо 343)
+   и на глаз выглядят раздутыми. Десктопная панель занимает остаток ширины. */
+.compare{display:grid;grid-template-columns:minmax(0,1fr) 375px;gap:20px;align-items:start;margin:0 0 20px}
+@media (max-width:1100px){.compare{grid-template-columns:1fr}}
+.panel[data-mode="mobile"]{width:375px;max-width:100%;box-sizing:border-box;border-radius:20px}
+.panel[data-mode="mobile"] .panel__body{padding:12px}
+.panel[data-mode="mobile"] .panel__head{padding:8px 12px}
+/* Десктопная панель уже половины экрана: широкая горизонтальная раскладка
+   (шесть шагов степпера и т.п.) не влезает. Прокрутка по горизонтали внутри
+   панели — как в узком окне, вместо выхода за панель и наложения на соседнюю. */
+.panel[data-mode="desktop"] .panel__body{overflow-x:auto}
+/* Текст подсказки в ДС собран в одну строку — на телефоне он уходит за панель.
+   Внутри панелей разрешаем перенос (это же требование мобильной версии). */
+.panel .ds-hint-content__label,.panel .ds-hint-container__label{white-space:normal;overflow-wrap:anywhere}
+@media (max-width:900px){.compare{grid-template-columns:1fr}}
+.panel{background:#fff;border:1px solid var(--ds-color-stroke-default);border-radius:var(--ds-radius-3x);box-sizing:border-box}
+.panel__head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+             padding:10px 16px;border-bottom:1px solid var(--ds-color-stroke-default)}
+.panel__title{font-size:14px;line-height:20px;font-weight:500}
+.panel__sub{font-size:12px;line-height:16px;color:#757575}
+.panel__body{padding:16px}
+.ex{margin:0 0 18px}
+.ex:last-child{margin-bottom:0}
+.ex__title{font-size:12px;line-height:16px;font-weight:500;color:#757575;margin:0 0 8px}
+.ex__row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.ex__row--col{flex-direction:column;align-items:stretch}
+.ex__row--col>*{width:100%}
+.ex__inner{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.card{background:#fff;border:1px solid var(--ds-color-stroke-default);border-radius:var(--ds-radius-3x);
+      padding:16px;box-sizing:border-box;margin:0 0 16px}
+h2{font-size:16px;line-height:24px;font-weight:500;margin:0 0 10px}
+table{border-collapse:collapse;width:100%;font-size:13px;line-height:18px}
+th,td{border:1px solid var(--ds-color-stroke-default);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#fafafa;font-weight:500}
+td:first-child{width:34%}
+/* Колонка «Правка»: поля мобильных размеров. Значение поля применяется к
+   компоненту в мобильной панели этой же страницы (см. скрипт в конце). */
+td.edit{white-space:nowrap;width:1%}
+.edit__input{width:64px;box-sizing:border-box;font:13px/18px 'Roboto','Helvetica Neue',Arial,sans-serif;
+             color:#333;padding:4px 6px;border:1px solid var(--ds-color-stroke-default);border-radius:6px;background:#fff}
+.edit__input+.edit__input{margin-left:6px}
+/* Блок «На экране»: корпус телефона и экран внутри него. Экран помечен
+   data-mode="mobile", поэтому в нём действуют мобильные значения и правки из
+   колонки «Правка» — компонент видно в окружении интерфейса, а не в панели. */
+.phone{width:375px;max-width:100%;padding:8px;box-sizing:border-box;background:#1f1f1f;border-radius:40px;
+       box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.phones{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}
+.phones__item{display:flex;flex-direction:column;gap:10px}
+.phone__caption{font-size:13px;line-height:18px;color:#757575;margin:0;max-width:375px}
+.phone__screen{position:relative;display:flex;flex-direction:column;height:720px;box-sizing:border-box;overflow:hidden;
+               background:#f4f5f7;border-radius:32px;font-family:'Roboto','Helvetica Neue',Arial,sans-serif}
+.phone__scrim{position:absolute;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,.32)}
+.phone__sheet{position:absolute;left:0;right:0;bottom:0;box-sizing:border-box;padding:16px;background:#fff;
+              border-radius:16px 16px 0 0;display:flex;flex-direction:column;gap:8px}
+.phone__sheet-title{margin:0;font-size:16px;line-height:24px;font-weight:500;color:#333}
+.phone__sheet-text{margin:0 0 4px;font-size:14px;line-height:20px;color:#616161}
+.phone__actions{display:flex;flex-direction:column;gap:8px}
+.phone__actions .ds-btn{width:100%}
+.phone__icons{display:flex;gap:8px}
+.phone__card{background:#fff;border:1px solid var(--ds-color-stroke-default);border-radius:12px;padding:16px;box-sizing:border-box}
+.phone__card-title{margin:0 0 4px;font-size:16px;line-height:24px;font-weight:500;color:#333}
+.phone__card-text{margin:0;font-size:14px;line-height:20px;color:#616161}
+.phone__sheet-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.phone__chips{display:flex;gap:8px;flex-wrap:wrap}
+/* Блок «Что говорят платформы»: три колонки, источники ссылками */
+.plats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0 0 12px}
+@media (max-width:1100px){.plats{grid-template-columns:1fr}}
+.plat__title{font-size:13px;line-height:18px;font-weight:500;margin:0 0 6px}
+.plat__src{font-size:12px;line-height:16px;color:#757575;word-break:break-all;margin:6px 0 0}
+.plat ul.list{margin:0 0 6px}
+/* «Примерные паттерны поведения»: табы — по одному на паттерн, подпись таба — название
+   паттерна. Под табами один столбец: пункты, источники и пример разметкой ДС. */
+/* Табы: пока влезают — стоят в строку. Если не влезают — листаются стрелками
+   (стрелка слева и справа от ряда); стрелки появляются только при переполнении,
+   у края соответствующая стрелка становится недоступной. Полосу прокрутки прячем. */
+.pat__bar{display:flex;align-items:center;gap:8px;margin:0 0 16px}
+.pat__bar .pat__tabs{margin:0}
+.pat__tabs{flex:1 1 auto;min-width:0;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;
+           scrollbar-width:none}
+.pat__tabs::-webkit-scrollbar{height:0}
+.pat__tabs .ds-tab{flex:0 0 auto}
+.pat__arrow[hidden]{display:none}
+.pat__panel{display:block}
+.pat__panel[hidden]{display:none}
+.pat__panel .list{max-width:900px;margin:0 0 6px}
+/* Пример — отдельной плашкой: серая подложка и рамка, чтобы не сливался с текстом
+   паттерна. Подпись к примеру — обычным цветом текста, а не бледно-серой. */
+.pat__ex{margin:16px 0 0;padding:12px 14px;background:#fafafa;border:1px solid var(--ds-color-stroke-default);border-radius:8px}
+.pat__ex .ex__title{font-size:13px;line-height:18px;color:#333;margin:0 0 6px}
+.pat__ex-note{font-size:13px;line-height:18px;color:#333;margin:0 0 10px;max-width:900px}
+/* Примеры в табах повторяют случай из паттерна: тело экрана 375 с паддингами 16 = 343,
+   узкая кнопка для длинной подписи (180 — подпись «Сохранить и отправить на кухню» уже
+   не влезает в строку), пунктирная зона нажатия 48 × 48 вокруг иконки. Библиотека не
+   правится — это только разметка страницы рекомендаций. */
+.pat__ex .ds-btn{width:auto}
+.pat__phone{width:343px;max-width:100%;display:flex;flex-direction:column;gap:8px;align-items:stretch}
+.pat__phone .ds-btn{width:100%}
+.pat__phone-row{flex-direction:row;align-items:center}
+.pat__phone-row .ds-btn{flex:1 1 auto;width:auto;min-width:0}
+.pat__narrow{max-width:180px;display:flex}
+.pat__narrow .ds-btn{height:auto;min-height:44px;padding:12px 16px;white-space:normal;max-width:100%}
+/* В ДС ширина задана числом — диалог 500 px, однострочный снекбар 370 px: внутри тела
+   экрана 343 px они вылезали за плашку примера. В примерах ширина — по телу экрана. */
+.pat__phone .ds-dialog-view,
+.pat__phone .ds-dialog-header,
+.pat__phone .ds-dialog-content,
+.pat__phone .ds-dialog-view__action,
+.pat__phone .ds-snackbar { width: 100% }
+.pat__narrow .ds-btn__label{white-space:normal;line-height:20px;text-align:center}
+.pat__hit{position:relative;display:inline-flex;margin:0 10px}
+.pat__hit::before{content:"";position:absolute;left:50%;top:50%;width:48px;height:48px;transform:translate(-50%,-50%);border:1px dashed #9E9E9E;border-radius:8px;pointer-events:none}
+details summary{cursor:pointer;font-size:13px;line-height:19px;color:#424244;margin:0 0 4px}
+.phone__list{display:flex;flex-direction:column;gap:8px}
+/* Строка кнопок: несколько кнопок в одну линию. Ширину берут по содержимому,
+   переноса нет — если не влезают, строка прокручивается по горизонтали. */
+.phone__line{display:flex;flex-wrap:nowrap;gap:4px;align-items:center;padding:8px 10px;overflow-x:auto;
+             background:#fff;border-bottom:1px solid var(--ds-color-stroke-default)}
+.phone__status{display:flex;align-items:center;justify-content:space-between;padding:10px 20px 4px;
+               font-size:13px;line-height:16px;font-weight:500;color:#333}
+.phone__ic{display:inline-flex;gap:4px}
+.phone__status .material-icons{font-size:16px}
+.phone__head{display:flex;align-items:center;gap:12px;padding:6px 16px 12px;background:#fff;
+             border-bottom:1px solid var(--ds-color-stroke-default)}
+.phone__head .material-icons{font-size:24px;color:#333}
+.phone__title{flex:1;font-size:16px;line-height:24px;font-weight:500;color:#333}
+.phone__body{flex:1;display:flex;flex-direction:column;gap:8px;padding:12px 16px}
+.phone__row{background:#fff;border:1px solid var(--ds-color-stroke-default);border-radius:8px;
+            padding:12px 14px;font-size:14px;line-height:20px;color:#333}
+.phone__foot{display:flex;gap:8px;padding:12px 16px 16px;background:#fff;
+             border-top:1px solid var(--ds-color-stroke-default)}
+.phone__foot .ds-btn{flex:1 1 0}
+p{margin:0 0 8px}
+p:last-child{margin-bottom:0}
+/* Панели и таблицы — на всю ширину, сплошной текст — в читаемую меру */
+.point{font-size:13px;line-height:19px;color:#424242;max-width:1100px}
+.list{margin:0;padding-left:20px;font-size:13px;line-height:19px;max-width:1100px}
+.list li{margin:0 0 4px}
+ul.list{list-style:disc}
+/* Каркас оболочки: меню компонентов слева, страница компонента справа */
+.kit{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:900px){.kit{grid-template-columns:1fr}}
+.nav{background:#fff;border:1px solid var(--ds-color-stroke-default);border-radius:var(--ds-radius-3x);
+     padding:8px;box-sizing:border-box;position:sticky;top:24px}
+@media (max-width:900px){.nav{position:static}}
+.nav__title{font:500 12px/16px 'Roboto','Helvetica Neue',Arial,sans-serif;color:#757575;margin:0;padding:8px 10px}
+.nav__item{display:block;width:100%;box-sizing:border-box;text-align:left;background:none;border:0;border-radius:8px;
+           cursor:pointer;font:500 14px/20px 'Roboto','Helvetica Neue',Arial,sans-serif;color:#333;padding:8px 10px}
+.nav__item+.nav__item{margin-top:2px}
+.nav__item:hover{background:#f4f5f7}
+.nav__item.is-active{background:#eef4ff;color:var(--ds-palette-accent-500)}
+.frame{width:100%;border:0;display:block;min-height:600px;background:transparent}
+/* Блок пояснений в колонке страницы ставим по сетке самой страницы компонента:
+   внутри фрейма она начинается через 24 px, без этого блок шире карточек над ним
+   (замер: карточки страницы 329…1870, блок 305…1894). */
+.kit .card{margin:16px 24px 0}
+/* ── Артефакт автогена библиотеки ──────────────────────────────
+   У 23 текстовых классов в CSS ДС `background` задан тем же токеном, что и
+   `color` (следы экспорта Figma: имя узла → класс, заливка текста → background).
+   Из-за этого текст рисуется сплошной плашкой — чёрной или белой.
+   Каркас страницы нейтрализует это внутри панелей. Сама библиотека не правится.
+   ───────────────────────────────────────────────────────────── */
+.panel .ds-checkbox-label__support-text,.panel .ds-chips__chip-text,.panel .ds-control-panel-2__month,.panel .ds-control-panel__month,.panel .ds-dialog-header__description,.panel .ds-elements__date,.panel .ds-hint-header__title,.panel .ds-input-number-but-icon__support-text,.panel .ds-list-item__label-down,.panel .ds-list-item__label-up,.panel .ds-list-item__text,.panel .ds-menu-item__label-down,.panel .ds-menu-item__label-up,.panel .ds-menu-item__text,.panel .ds-radio-button-label__support-text,.panel .ds-search__text,.panel .ds-select-item__label-down,.panel .ds-select-item__label-up,.panel .ds-select-item__subtitle,.panel .ds-sidenav-item__l3,.panel .ds-status__content,.panel .ds-text-ui__label-down,.panel .ds-text-ui__label-up,.panel .ds-text-ui__list-item{background:none}
+.phone .ds-checkbox-label__support-text,.phone .ds-chips__chip-text,.phone .ds-control-panel-2__month,.phone .ds-control-panel__month,.phone .ds-dialog-header__description,.phone .ds-elements__date,.phone .ds-hint-header__title,.phone .ds-input-number-but-icon__support-text,.phone .ds-list-item__label-down,.phone .ds-list-item__label-up,.phone .ds-list-item__text,.phone .ds-menu-item__label-down,.phone .ds-menu-item__label-up,.phone .ds-menu-item__text,.phone .ds-radio-button-label__support-text,.phone .ds-search__text,.phone .ds-select-item__label-down,.phone .ds-select-item__label-up,.phone .ds-select-item__subtitle,.phone .ds-sidenav-item__l3,.phone .ds-status__content,.phone .ds-text-ui__label-down,.phone .ds-text-ui__label-up,.phone .ds-text-ui__list-item{background:none}
+/* ── Тот же автоген, но цветом: у светлого снекбара подпись белая на белом,
+   у подписей сайдбара — тёмные токены на тёмной панели ДС. Внутри панелей
+   приводим к читаемому виду, библиотеку не правим. ── */
+.panel .ds-snackbar--light .ds-snackbar__label{color:var(--ds-color-snackbar-complex-light-text-color,#333)}
+.panel .ds-sidenav-item__label,.panel .ds-sidenav-item__l3{color:var(--ds-color-text-inversive,#fff)}
+/* Автоген ставит подписям white-space: nowrap — длинный текст в примерах уходит
+   за карточку. Внутри панелей перенос разрешён. */
+/* Автоген залил обёртку кнопки фона диалога акцентной кнопкой: вокруг каждой
+   кнопки получалась синяя рамка. Внутри панелей заливку и тень снимаем. */
+.panel .ds-dialog-footer__button{background:none;box-shadow:none}
+/* Иконки — лигатуры Google Material Icons (шрифт подключается в шапке страницы;
+   так же сделано в прототипах ДС). Слоты ДС уже центрируют содержимое —
+   гасим лишнюю высоту строки, размер задаётся в разметке через font-size. */
+.panel .material-icons{line-height:1;display:inline-block}
+/* Автоген библиотеки не выставил box-sizing: у 44 классов с объявленной
+   высотой или минимумом паддинги и рамка добавляются сверху — кадр поля 48 px
+   рисуется как 74, строка списка 68 как 84. В прототипах ДС это лечат на самой
+   странице (.js-select .ds-select-form__input-frame{box-sizing:border-box}),
+   повторяем то же внутри панелей. Библиотека не правится — это находка для ДС. */
+.panel .ds-autocomplete-form__input-frame,
+.panel .ds-badge--counter,
+.panel .ds-badge--point,
+.panel .ds-btn--m,
+.panel .ds-btn--s,
+.panel .ds-btn--xs,
+.panel .ds-btn-icon--m,
+.panel .ds-btn-icon--s,
+.panel .ds-btn-icon--xs,
+.panel .ds-card__divider,
+.panel .ds-chips-input-2__hint,
+.panel .ds-chips-input-2__text,
+.panel .ds-chips-input__hint,
+.panel .ds-chips-input__text,
+.panel .ds-dialog-footer__action,
+.panel .ds-dialog-view__action,
+.panel .ds-divider,
+.panel .ds-divider-line,
+.panel .ds-element-menu__image-size,
+.panel .ds-element-select__image-size,
+.panel .ds-element__image-size,
+.panel .ds-input--m .ds-input__frame,
+.panel .ds-input--s .ds-input__frame,
+.panel .ds-input--xs .ds-input__frame,
+.panel .ds-input-datepicker__frame,
+.panel .ds-input-number__frame,
+.panel .ds-input-timepicker__frame,
+.panel .ds-menu-container__button-group,
+.panel .ds-picture__crop,
+.panel .ds-radio__state,
+.panel .ds-scroll__knob,
+.panel .ds-search--xs,
+.panel .ds-select-container__button-group,
+.panel .ds-select-form__input-frame,
+.panel .ds-sidenav-header--l2.ds-sidenav-header--expanded,
+.panel .ds-slide-toggle__track,
+.panel .ds-slide-toggle__track::after,
+.panel .ds-snackbar__progress,
+.panel .ds-step--bg,
+.panel .ds-step__num,
+.panel .ds-tabs--lvl2 .ds-tab,
+.panel .ds-textarea__hint,
+.panel .ds-textarea__input-frame,
+.panel .ds-textarea__text {
+  box-sizing: border-box;
+}
+
+/* В ДС блок действий диалога — столбик с жёсткой высотой 68 px: две кнопки по
+   44 + паддинги в него не влезают и вторая выходит за карточку. Внутри панелей
+   высота отпущена (минимум — десктопные 68). */
+.panel .ds-dialog-view__action,.panel .ds-dialog-footer__action{height:auto;min-height:68px}
+/* Автоген библиотеки не подключил у Checkbox и Radio сами контролы: агрегатор
+   iiko-ds-web/components/index.css тянет только `*-label.css`, а
+   `checkbox.css` / `checkbox-icons.css` / `radio.css` / `radio-icons.css` не
+   подключает никто. Без них `.ds-checkbox` остаётся `display:inline`, маркер
+   20 × 20 не рисуется, а на экран выходит системный контрол браузера 13 × 13.
+   На странице четыре файла подключены явно (см. head); библиотека не правится. */
+/* У Button icon блок состояний стоит в библиотеке ВЫШЕ блока «Стиль × Тип» и при
+   равной специфичности (0,2,0) проигрывает ему по порядку: недоступная иконка
+   рисуется как активная (фон #448AFF, белая иконка). Внутри панелей возвращаем
+   состояниям их токены — специфичность .panel + 2 класса. Библиотека не правится. */
+.panel .ds-btn-icon:disabled,.panel .ds-btn-icon.ds-btn-icon--disabled{
+  background:var(--ds-color-button-icon-disable-background-filled);
+  border-color:var(--ds-color-button-icon-disable-border-color);
+  color:var(--ds-color-button-icon-disable-icon-color)}
+.panel .ds-btn-icon--outlined:disabled,.panel .ds-btn-icon--outlined.ds-btn-icon--disabled{
+  background:var(--ds-color-button-icon-disable-background-outlined)}
+.panel .ds-btn-icon--text:disabled,.panel .ds-btn-icon--text.ds-btn-icon--disabled{
+  background:var(--ds-color-button-icon-disable-background-text);border-color:transparent}
+/* Ещё один след автогена — min-height «по размеру нарисованного в Figma фрейма»:
+   контейнер меню 418 px, селекта 406, списка 257. Контент из двух-трёх строк
+   занимает 140–180 и под ним остаётся пустое поле. Внутри панелей контейнер
+   снова hug (min-height:0), библиотека не правится — это находка для ДС. */
+.panel .ds-menu-container,.panel .ds-select-container,.panel .ds-list-container{min-height:0}
+/* Подпись-подсказка под полем объявлена высотой 16 px (--ds-size-4x), а строка
+   текста в ней 19 px: три пикселя срезаются. Внутри панелей высота по контенту. */
+.panel .ds-textarea__hint{height:auto}
+.panel .ds-dialog-content__label,.panel .ds-dialog-view__label,.panel .ds-dialog-header__label,
+.panel .ds-dialog-header__description{white-space:normal;overflow-wrap:anywhere}
+
+/* Кнопки в шторке: пока они умещаются в строку — стоят в строку, а не в столбик.
+   Переносим, если не влезают (labels у кнопок не переносятся). */
+.phone__sheet .phone__actions { flex-direction: row; flex-wrap: wrap }
+/* Кнопка в ДС тянется на всю ширину — в строке это ломает раскладку: даём ей
+   ширину по содержимому, иначе вторая кнопка уходит на следующую строку. */
+.phone__sheet .phone__actions .ds-btn { width: auto; flex: 1 1 auto; min-width: 0 }
+
+/* Блок «На экране»: два экрана и рядом колонки «Что» и «Правка» — третья колонка
+   ряда, на месте, где раньше стоял третий экран. */
+.editrow { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 20px; align-items: start }
+@media (max-width: 1250px) { .editrow { grid-template-columns: 1fr } }
+.edits table { width: 100% }
+.edits td:first-child { width: 62% }
+.edits .point { margin-top: 10px; max-width: 380px }
+
+.phone .ds-menu-container,
+.phone .ds-select-container,
+.phone .ds-list-container { min-height: 0 }
+.phone .ds-textarea__hint { height: auto }
+/* Подсказка ДС собрана в одну строку (nowrap) — внутри экрана она вылезает за
+   корпус. То же правило, что для панелей: разрешаем перенос. */
+.phone .ds-hint-content__label,
+.phone .ds-hint-container__label { white-space: normal; overflow-wrap: anywhere }
+.pat__panel .ds-hint-content__label,.pat__panel .ds-hint-container__label{white-space:normal;overflow-wrap:anywhere}
+.pat__panel .ds-checkbox-label__support-text,.pat__panel .ds-chips__chip-text,.pat__panel .ds-control-panel-2__month,.pat__panel .ds-control-panel__month,.pat__panel .ds-dialog-header__description,.pat__panel .ds-elements__date,.pat__panel .ds-hint-header__title,.pat__panel .ds-input-number-but-icon__support-text,.pat__panel .ds-list-item__label-down,.pat__panel .ds-list-item__label-up,.pat__panel .ds-list-item__text,.pat__panel .ds-menu-item__label-down,.pat__panel .ds-menu-item__label-up,.pat__panel .ds-menu-item__text,.pat__panel .ds-radio-button-label__support-text,.pat__panel .ds-search__text,.pat__panel .ds-select-item__label-down,.pat__panel .ds-select-item__label-up,.pat__panel .ds-select-item__subtitle,.pat__panel .ds-sidenav-item__l3,.pat__panel .ds-status__content,.pat__panel .ds-text-ui__label-down,.pat__panel .ds-text-ui__label-up,.pat__panel .ds-text-ui__list-item{background:none}
+.pat__panel .ds-snackbar--light .ds-snackbar__label{color:var(--ds-color-snackbar-complex-light-text-color,#333)}
+.pat__panel .ds-sidenav-item__label,.pat__panel .ds-sidenav-item__l3{color:var(--ds-color-text-inversive,#fff)}
+.pat__panel .ds-dialog-footer__button{background:none;box-shadow:none}
+.pat__panel .material-icons{line-height:1;display:inline-block}
+.pat__panel .ds-autocomplete-form__input-frame,
+.pat__panel .ds-badge--counter,
+.pat__panel .ds-badge--point,
+.pat__panel .ds-btn--m,
+.pat__panel .ds-btn--s,
+.pat__panel .ds-btn--xs,
+.pat__panel .ds-btn-icon--m,
+.pat__panel .ds-btn-icon--s,
+.pat__panel .ds-btn-icon--xs,
+.pat__panel .ds-card__divider,
+.pat__panel .ds-chips-input-2__hint,
+.pat__panel .ds-chips-input-2__text,
+.pat__panel .ds-chips-input__hint,
+.pat__panel .ds-chips-input__text,
+.pat__panel .ds-dialog-footer__action,
+.pat__panel .ds-dialog-view__action,
+.pat__panel .ds-divider,
+.pat__panel .ds-divider-line,
+.pat__panel .ds-element-menu__image-size,
+.pat__panel .ds-element-select__image-size,
+.pat__panel .ds-element__image-size,
+.pat__panel .ds-input--m .ds-input__frame,
+.pat__panel .ds-input--s .ds-input__frame,
+.pat__panel .ds-input--xs .ds-input__frame,
+.pat__panel .ds-input-datepicker__frame,
+.pat__panel .ds-input-number__frame,
+.pat__panel .ds-input-timepicker__frame,
+.pat__panel .ds-menu-container__button-group,
+.pat__panel .ds-picture__crop,
+.pat__panel .ds-radio__state,
+.pat__panel .ds-scroll__knob,
+.pat__panel .ds-search--xs,
+.pat__panel .ds-select-container__button-group,
+.pat__panel .ds-select-form__input-frame,
+.pat__panel .ds-sidenav-header--l2.ds-sidenav-header--expanded,
+.pat__panel .ds-slide-toggle__track,
+.pat__panel .ds-slide-toggle__track::after,
+.pat__panel .ds-snackbar__progress,
+.pat__panel .ds-step--bg,
+.pat__panel .ds-step__num,
+.pat__panel .ds-tabs--lvl2 .ds-tab,
+.pat__panel .ds-textarea__hint,
+.pat__panel .ds-textarea__input-frame,
+.pat__panel .ds-textarea__text {
+  box-sizing: border-box;
+}
+.pat__panel .ds-dialog-view__action,.pat__panel .ds-dialog-footer__action{height:auto;min-height:68px}
+.pat__panel .ds-btn-icon:disabled,.pat__panel .ds-btn-icon.ds-btn-icon--disabled{
+  background:var(--ds-color-button-icon-disable-background-filled);
+  border-color:var(--ds-color-button-icon-disable-border-color);
+  color:var(--ds-color-button-icon-disable-icon-color)}
+.pat__panel .ds-btn-icon--outlined:disabled,.pat__panel .ds-btn-icon--outlined.ds-btn-icon--disabled{
+  background:var(--ds-color-button-icon-disable-background-outlined)}
+.pat__panel .ds-btn-icon--text:disabled,.pat__panel .ds-btn-icon--text.ds-btn-icon--disabled{
+  background:var(--ds-color-button-icon-disable-background-text);border-color:transparent}
+.pat__panel .ds-menu-container,.pat__panel .ds-select-container,.pat__panel .ds-list-container{min-height:0}
+.pat__panel .ds-textarea__hint{height:auto}
+.pat__panel .ds-dialog-content__label,.pat__panel .ds-dialog-view__label,.pat__panel .ds-dialog-header__label,
+.pat__panel .ds-dialog-header__description{white-space:normal;overflow-wrap:anywhere}

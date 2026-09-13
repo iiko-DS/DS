@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><title>p2</title><style>pre{font:13px/17px monospace;white-space:pre-wrap}</style></head>
+<body><iframe id="f" style="width:1920px;height:1400px;border:0"></iframe><pre id="out">pending</pre>
+<script>
+var BASE='../../../iiko-ds-mobile/prototypes/recommendations/';
+var f=document.getElementById('f'),out=document.getElementById('out'),L=[];
+function h(d,panel,q){var el=d.querySelector('.panel[data-mode="'+panel+'"] '+q);return el?Math.round(el.getBoundingClientRect().height):-1;}
+f.onload=function(){try{
+ var d=f.contentDocument;
+ L.push('базово: mobile='+h(d,'mobile','.ds-btn--m')+' desktop='+h(d,'desktop','.ds-btn--m'));
+ var st=d.getElementById('live');
+ L.push('style#live найден: '+(!!st));
+ st.textContent='[data-mode="mobile"] .ds-btn--m{height:40px}';
+ L.push('после ручной записи правила: mobile='+h(d,'mobile','.ds-btn--m'));
+ st.textContent='';
+ var inp=d.querySelector('.edit__input');
+ L.push('полей: '+d.querySelectorAll('.edit__input').length+' | __touched до: '+inp.__touched);
+ inp.value=41; inp.dispatchEvent(new Event('input'));
+ L.push('после dispatch: __touched='+inp.__touched+' live="'+st.textContent+'" mobile='+h(d,'mobile','.ds-btn--m'));
+ out.textContent=L.join(String.fromCharCode(10));
+}catch(e){out.textContent='ERR '+e;}};
+f.setAttribute('src',BASE+'button.html');
+</script></body></html>

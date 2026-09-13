@@ -1,0 +1,199 @@
+{
+ "slug": "input-number",
+ "component": "Input number",
+ "ds_page": "Input-Number_DS",
+ "desc_ru": "Числовое поле: количество с шагом «+/−». Числа наследуются от поля ввода — отдельного компонента нет ни на одной платформе.",
+ "category_ru": "Только размеры",
+ "category_note_ru": "выше поле и крупнее кнопки «+/−»; цифровая клавиатура — правило разметки",
+ "summary_ru": "Поле 48 → 56 px, кнопки «+/−» 36 → 40: они инстансы Button icon и растут по его правилам. Плюс цифровая клавиатура при вводе (inputmode) — это разметка, не размер.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "поле 48 px"
+  },
+  "mobile": {
+   "sub_ru": "поле 56 px, кнопки 40 × 40"
+  }
+ },
+ "changes": [
+  {
+   "what": "Высота поля",
+   "desktop": "48 px (паддинги 12)",
+   "mobile": "56 px (паддинги 16) — как у поля M",
+   "edit": [
+    {
+     "id": "height",
+     "v": 56,
+     "sel": ".ds-input-number__frame",
+     "css": "height:@px"
+    },
+    {
+     "id": "pad",
+     "v": 16,
+     "sel": ".ds-input-number__frame",
+     "css": "padding:@px"
+    }
+   ]
+  },
+  {
+   "what": "Кнопки «+/−»",
+   "desktop": "Button icon M, 36 × 36",
+   "mobile": "40 × 40 — по правилам Button icon, плюс тач-зона 48",
+   "edit": [
+    {
+     "id": "size-w",
+     "v": 40,
+     "sel": ".ds-input-number-but-icon__button",
+     "css": "width:@px"
+    },
+    {
+     "id": "size-h",
+     "v": 40,
+     "sel": ".ds-input-number-but-icon__button",
+     "css": "height:@px"
+    },
+    {
+     "id": "touch",
+     "v": 48,
+     "sel": ".ds-input-number-but-icon__button",
+     "css": "min-width:@px; min-height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Кегль ввода",
+   "desktop": "16 / 24",
+   "mobile": "16 / 24 px — тот же"
+  },
+  {
+   "what": "Клавиатура",
+   "desktop": "обычная",
+   "mobile": "цифровая: inputmode=\"numeric\"; type=\"number\" — только там, где нужны браузерные стрелки"
+  },
+  {
+   "what": "Цвета, радиус, состояния",
+   "desktop": "фон #F8F9FC, рамка 1 px, радиус 12",
+   "mobile": "фон #F8F9FC, рамка 1 px, радиус 12 px — стилевые токены общие"
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Единственное, что добавляется в разметку, — <code>inputmode</code>: на телефоне сразу открывается цифровая клавиатура. Кнопки «+/−» — инстансы Button icon, их размер на мобиле меняется в его режиме, а не здесь.</p>",
+ "why_ru": "Отдельного компонента «числовое поле» нет ни в MD3, ни в Angular Material, ни в iOS HIG: все три используют обычное текстовое поле (<code>type=\"number\"</code> или text field с number formatter). Поэтому числа наследуются от поля: MD3 — 56 dp с паддингами 16 и кеглем ввода 16; Angular — <code>form-field-container-height</code> 56 при density 0 (шкала до 36 — это плотности). Apple даёт кегль 17 pt для числового ввода и тач-зону 44 pt, а инкремент-кнопки «+/−» есть только у него (Steppers): в MD3 и Angular Material такого контрола нет — там цифры вводит клавиатура. Размеров, специфичных именно для числового поля, нет ни на одной платформе.",
+ "result_html": "<ul class=\"list\"><li>Поле 56 px — то же значение, что у любого поля M (MD3 56 dp, Angular 56 при density 0).</li><li>Кнопки «+/−» 40 × 40 с тач-зоной 48 — растут автоматически: это Button icon размера M.</li><li>Цифровая клавиатура — единственное изменение не про размеры: <code>inputmode</code> в разметке.</li><li><b>Не решено:</b> инкремент-кнопки «+/−» — не платформенный паттерн (только Apple Steppers); у MD3 и Angular Material такого контрола нет. Оставляем как есть, но фиксируем.</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Поле с «+/−»",
+   "html": "<div class=\"ds-input-number-but-icon\"><div class=\"ds-input-number-but-icon__container\"><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\"><input type=\"text\" inputmode=\"numeric\" value=\"12\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "С подписью",
+   "html": "<div class=\"ds-input-number-but-icon\"><span class=\"ds-input-number-but-icon__label\">Количество порций</span><div class=\"ds-input-number-but-icon__container\"><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\"><input type=\"text\" inputmode=\"numeric\" value=\"4\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "Недоступное",
+   "html": "<div class=\"ds-input-number-but-icon ds-input-number-but-icon--disabled\"><div class=\"ds-input-number-but-icon__container\"><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\"><input type=\"text\" inputmode=\"numeric\" value=\"0\" disabled style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div></div>",
+   "stack": true
+  }
+ ],
+ "found_html": "<p><b>box-sizing у кадров и строк.</b> В библиотеке нет <code>box-sizing: border-box</code>, поэтому высота из токена/числа складывалась с паддингами: кадр поля 48 px показывался как 74, кадр textarea 76 как 94, строка списка 68 как 84. В прототипах ДС это лечат на странице (<code>.js-select .ds-select-form__input-frame{box-sizing:border-box;height:48px}</code>) — в каркасе страниц повторено то же для всех таких классов. Библиотеку не правим.</p>",
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Отдельного number input нет ни у MD3, ни у Angular: это text field с type=\"number\" (MD3) или нативный <input type=\"number\"> через matInput внутри mat-form-field (Angular) (input-number.json).",
+    "Поэтому поле наследует платформенную высоту: 56 dp у MD3 ($height: 56px) и 56 px при density 0 у Angular (шкала 56/52/48/44/40/36 до −5) — отсюда мобильные 48 → 56 px (input-number.json).",
+    "Кегль ввода 16 px — body-large 1 rem у обеих систем; меньше не задаём, иначе поле выпадает из платформенной типографики (input-number.json).",
+    "Инкремент-кнопок нет ни у MD3 («степпера/инкремент-кнопок в MD3 не предусмотрено»), ни у Angular — наш «+/−» это Button icon, то есть 36 → 40 × 40 плюс тач-зона 48 (input-number.json).",
+    "Из платформенного у числа есть только тип ввода и формат: MD3 даёт prefix/suffix («prefix-text=\"$\" suffix-text=\".00\"»), Angular — type=\"number\" через matNativeControl и inputmode (input-number.json).",
+    "Тач-таргет MD3 — общие 48 dp, а у Angular он выведен из form-field; при плотности −2 и ниже тач-зоны у контролов уже отключаются (input-number.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Отдельного числового поля нет: text field + number formatter — «A number formatter automatically configures the text field to accept only numeric values» (input-number.json).",
+    "Apple — единственная из трёх с инкремент-контролом: Stepper, и он не показывает значение сам — «Consider pairing a stepper with a text field when large value changes are likely» (input-number.json).",
+    "Клавиатуру HIG требует подходящую: «In iOS, iPadOS, tvOS, and visionOS apps, show the appropriate keyboard type» — на числовом поле это цифровая (input-number.json).",
+    "Своих размеров у числа нет: только общий тач-таргет 44×44 pt и кегль 17 pt (минимум 11 pt) (input-number.json).",
+    "Требования форматировать число с учётом локали у Apple есть, а чисел поля и кнопок «+/−» нет ни одного — их берём из Button icon (input-number.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Кнопки «+/−» — ровно 40 × 40 с тач-зоной 48; растягивать их по ширине поля не нужно.",
+  "Кнопки ставить по краям поля, а не отдельным рядом: инкремент относится к конкретному полю.",
+  "На цифровое поле ставить inputmode=\"numeric\"; type=\"number\" — только там, где реально нужны браузерные стрелки.",
+  "Ручной ввод не блокировать: степпер ускоряет, но не заменяет клавиатуру.",
+  "Границы значения показывать сразу (минимум/максимум), а не ошибкой после ввода.",
+  "Чего нельзя: неочевидный шаг, отрицательные и нулевые значения там, где это запрещено, поле без возможности ввести число с клавиатуры."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Новый заказ</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Стейк рибай</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Десерт</span><span class=\"ds-list-item__text\">Тирамису</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">480 ₽</span></div></div></div><div class=\"ds-input-number-but-icon\"><span class=\"ds-input-number-but-icon__label\">Количество порций</span><div class=\"ds-input-number-but-icon__container\"><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\"><input type=\"text\" inputmode=\"numeric\" value=\"4\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Добавить</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Изменить количество</p><p class=\"phone__sheet-text\">Стейк рибай · 1 480 ₽</p><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Порции</span><span class=\"ds-list-item__text\">4</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">payments</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Цена позиции</span><span class=\"ds-list-item__text\">1 480 ₽</span></div></div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Счётчик в теле заказа: поле со значением и кнопки «+/−»</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Новый заказ</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Кухня</span><span class=\"ds-list-item__text\">Стейк рибай</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 480 ₽</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">icecream</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Десерт</span><span class=\"ds-list-item__text\">Тирамису</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">480 ₽</span></div></div></div><div class=\"ds-input-number-but-icon\"><span class=\"ds-input-number-but-icon__label\">Количество порций</span><div class=\"ds-input-number-but-icon__container\"><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\"><input type=\"text\" inputmode=\"numeric\" value=\"4\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Добавить</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Изменить количество</p><p class=\"phone__sheet-text\">Стейк рибай · 1 480 ₽</p><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Порции</span><span class=\"ds-list-item__text\">4</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">payments</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Цена позиции</span><span class=\"ds-list-item__text\">1 480 ₽</span></div></div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "Степпер или цифровая клавиатура",
+   "items": [
+    "Что происходит: набрать число с клавиатуры на телефоне дороже одного тапа: пользователь выделяет значение, стирает, вводит новое и закрывает клавиатуру — всё это на маленькой цели в узком поле.",
+    "Что делают системы: Nielsen Norman Group: «to increase the number of guests from 1 to 2 in a form, the user only needs one tap on the plus button» — это меньше усилий, чем набирать цифру на клавиатуре; IBM Carbon: «Number input lets users enter a numeric value and incrementally increase or decrease the value with a two-segment control» и «reduces input efforts for adjusting small values».",
+    "Что делать нам: для малых значений (гости, количество порций) по умолчанию давать степпер, а цифровую клавиатуру оставлять вторым способом ввода."
+   ],
+   "src": "Источники: Nielsen Norman Group · Design Guidelines for Input Steppers (https://www.nngroup.com/articles/input-steppers) · IBM Carbon · Number input (https://carbondesignsystem.com/components/number-input/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-number-but-icon\" style=\"width:100%\"><span class=\"ds-input-number-but-icon__label\">Количество порций</span><div class=\"ds-input-number-but-icon__container\"><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\" style=\"flex:1\"><input type=\"text\" inputmode=\"numeric\" value=\"4\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div></div></div>",
+   "example_ru": "Значение 4 набирается одним тапом по «+» — это дешевле, чем стирать и вводить цифру с клавиатуры (NN/g, Carbon)."
+  },
+  {
+   "title": "Большие изменения — не степпер",
+   "items": [
+    "Что происходит: чтобы задать 50 из 1, придётся тапнуть десятки раз: на мобиле это худший способ ввода, и пользователь бросает поле с неверным значением.",
+    "Что делают системы: NN/g: «Steppers are not suitable for a large number adjustments»; Carbon: «It is best practice not to use number input if large value changes are expected. For example, when the value sets from 1 to 30, number input is not a great option because it requires many clicks to reach 30» и предлагает слайдер; Apple: «Consider pairing a stepper with a text field when large value changes are likely».",
+    "Что делать нам: если диапазон шире ~20 значений или значение непредсказуемо, ставить обычное поле с числовой клавиатурой, а степпер — только как дополнение рядом с ним."
+   ],
+   "src": "Источники: Nielsen Norman Group · Design Guidelines for Input Steppers (https://www.nngroup.com/articles/input-steppers) · IBM Carbon · Number input (https://carbondesignsystem.com/components/number-input/usage) · Apple HIG · Steppers (https://developer.apple.com/design/human-interface-guidelines/steppers)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-number-but-icon\" style=\"width:100%\"><span class=\"ds-input-number-but-icon__label\">Количество порций</span><div class=\"ds-input-number-but-icon__container\" style=\"width:100%\"><div class=\"ds-input-number__frame\" style=\"flex:1\"><input type=\"text\" inputmode=\"numeric\" value=\"50\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div></div><span class=\"ds-input-number-but-icon__support-text\" style=\"font-size:12px;line-height:16px;display:block\">От 1 до 50 — значение вводится числом, а не 49 тапами по «+»</span></div></div>",
+   "example_ru": "Диапазон 1–50 передан обычным числовым полем: сорок девять тапов по «+» заменены одним вводом — степпер для больших изменений не подходит."
+  },
+  {
+   "title": "Кнопки «+» и «−» под палец",
+   "items": [
+    "Что происходит: две узкие кнопки, стоящие вплотную к полю, набираются не с первого раза, особенно при быстром повторном тапе для набора нескольких единиц.",
+    "Что делают системы: NN/g: «Use large buttons for both desktop and mobile. Target areas should be big enough to support the input modality. For example, for touchscreens, we've long recommended a minimum target size of 1 cm by 1 cm» и «We recommend horizontal placement for steppers on mobile devices, considering the inherent precision challenges of using a fingertip»; Apple требует hit region минимум 44×44 pt.",
+    "Что делать нам: делать горизонтальный степпер, где каждая кнопка — цель 48×48 px, между «−», полем и «+» есть зазор; вертикальные «+» и «−» столбиком на мобиле не применять."
+   ],
+   "src": "Источники: Nielsen Norman Group · Design Guidelines for Input Steppers (https://www.nngroup.com/articles/input-steppers) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-number-but-icon\" style=\"width:100%\"><span class=\"ds-input-number-but-icon__label\">Количество порций</span><div class=\"ds-input-number-but-icon__container\" style=\"gap:8px\"><span class=\"ds-input-number-but-icon__button\" style=\"width:48px;height:48px;justify-content:center\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\" style=\"flex:1\"><input type=\"text\" inputmode=\"numeric\" value=\"12\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\" style=\"width:48px;height:48px;justify-content:center\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div></div></div>",
+   "example_ru": "Кнопки «+» и «−» — цели 48 × 48 px с зазором 8 px до поля: горизонтальный степпер вместо узких кнопок вплотную к полю (NN/g: 1 × 1 см, HIG: 44 × 44 pt)."
+  },
+  {
+   "title": "Клавиатура, стрелки и прокрутка",
+   "items": [
+    "Что происходит: поле без настроек открывает то алфавитную, то числовую клавиатуру, а стрелки «вверх/вниз» и прокрутка колесом, привычные на десктопе, на телефоне недоступны — остаётся только ручной набор.",
+    "Что делают системы: MD3 использует текстовое поле с type=\"number\": «A text field's `type` attribute changes how the text field works, such as displaying a different keyboard or providing default validation»; Apple просит показывать подходящую клавиатуру и number formatter; Carbon описывает, что значение растёт по Up arrow и падает по Down arrow; Ant Design по умолчанию держит controls и keyboard включёнными, а onStep вызывается кнопками, клавиатурой и колесом.",
+    "Что делать нам: задавать inputmode numeric и type number, сохранять работу стрелок Up/Down, а кнопки «+/−» дублировать как способ ввода — они не должны уезжать под клавиатуру."
+   ],
+   "src": "Источники: Material Web · text-field.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/text-field.md) · Apple HIG · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields) · IBM Carbon · Number input (https://carbondesignsystem.com/components/number-input/usage) · Ant Design · InputNumber (https://ant.design/components/input-number/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-number-but-icon\" style=\"width:100%\"><span class=\"ds-input-number-but-icon__label\">Количество порций</span><div class=\"ds-input-number-but-icon__container\"><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\" style=\"flex:1\"><input type=\"text\" inputmode=\"numeric\" value=\"12\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div></div><div style=\"height:216px;background:#F5F5F5;border-radius:8px;display:flex;justify-content:flex-end;align-items:flex-start;padding:8px\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--text\" type=\"button\" style=\"width:auto\"><span class=\"ds-btn__label\">Готово</span></button></div></div>",
+   "example_ru": "Поле со степпером и inputmode numeric стоит над клавиатурой, «+/−» не уезжают под неё: под клавиатуру отведено 216 px из 667 px, ввод закрывает «Готово»."
+  },
+  {
+   "title": "Формат числа: единицы и разряды",
+   "items": [
+    "Что происходит: в поле остаётся голое «1500», и на мобиле непонятно, это рубли, граммы или проценты; разделитель разрядов в разных локалях разный, и значение читается по-разному.",
+    "Что делают системы: MD3 показывает префикс и суффикс прямо в разметке — <md-outlined-text-field label=\"Dollar amount\" type=\"number\" value=\"0\" prefix-text=\"$\" suffix-text=\".00\">; Apple предупреждает: «Don't assume the actual presentation of data... formatting can vary significantly based on people's locale».",
+    "Что делать нам: выводить единицы суффиксом внутри поля (₽, %, г), разделитель разрядов брать из локали, а не хардкодить; формат дублировать в helper-тексте под полем."
+   ],
+   "src": "Источники: Material Web · text-field.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/text-field.md) · Apple HIG · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-number-but-icon\" style=\"width:100%\"><span class=\"ds-input-number-but-icon__label\">Сумма заказа</span><div class=\"ds-input-number-but-icon__container\"><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\" style=\"flex:1\"><input type=\"text\" inputmode=\"numeric\" value=\"1 500 ₽\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div><span class=\"ds-input-number-but-icon__support-text\" style=\"font-size:12px;line-height:16px;display:block\">Единицы — суффиксом в поле, разделитель разрядов — из локали</span></div></div>",
+   "example_ru": "Единицы показаны суффиксом в самом поле («1 500 ₽»), разряды разделены по локали: голое «1500» не говорит, рубли это, граммы или проценты."
+  },
+  {
+   "title": "Ошибка, подсказка и состояния",
+   "items": [
+    "Что происходит: при ошибке строка подсказки исчезает или добавляется новая, поле «прыгает» по высоте, и на мобиле вместе с ним уезжают кнопки формы.",
+    "Что делают системы: Carbon: «Error states have three visual indicators to signify invalid content: a red border, an error icon indicator, and an error message», helper-текст заменяется текстом ошибки, а в fluid-стиле высота остаётся 64 px «except when there is a warning or error»; MD3 держит supporting text тем же кеглем body-small.",
+    "Что делать нам: резервировать строку состояния (16 px), при ошибке показывать три индикатора, высоту поля не менять; disabled-состояние не должно менять размеры поля."
+   ],
+   "src": "Источники: IBM Carbon · Number input (https://carbondesignsystem.com/components/number-input/usage) · Material Web · _md-sys-typescale.scss (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-input-number-but-icon\" style=\"width:100%\"><span class=\"ds-input-number-but-icon__label\">Количество порций</span><div class=\"ds-input-number-but-icon__container\"><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\" style=\"flex:1\"><input type=\"text\" inputmode=\"numeric\" value=\"4\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div><span class=\"ds-input-number-but-icon__support-text\" style=\"font-size:12px;line-height:16px;display:block\">&#8203;</span></div><div class=\"ds-input-number-but-icon\" style=\"width:100%\"><span class=\"ds-input-number-but-icon__label\">Количество порций</span><div class=\"ds-input-number-but-icon__container\"><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_less</span></span></span><div class=\"ds-input-number__frame\" style=\"flex:1;border:1px solid #FF5252\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">error_outline</span></span><input type=\"text\" inputmode=\"numeric\" value=\"0\" style=\"border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%\"></div><span class=\"ds-input-number-but-icon__button\"><span class=\"ds-input-number-but-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">expand_more</span></span></span></div><span class=\"ds-input-number-but-icon__support-text\" style=\"font-size:12px;line-height:16px;display:block;color:#FF5252\">Введите число от 1 до 50</span></div></div>",
+   "example_ru": "Строка состояния зарезервирована под 16 px в обоих случаях: при ошибке появляются рамка, иконка и текст, а высота поля не меняется и disabled не сдвигает размеры."
+  }
+ ]
+}

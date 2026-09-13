@@ -1,0 +1,17 @@
+{
+ "slug": "chips-input",
+ "edits": [
+  {
+   "row": 4,
+   "mobile": "14 / 20, фон #F8F9FC — те же, стилевые токены общие",
+   "edits": [
+    {
+     "id": "font",
+     "v": 14,
+     "sel": ".ds-chips-input",
+     "css": "font-size:@px"
+    }
+   ]
+  }
+ ]
+}

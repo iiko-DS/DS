@@ -1,0 +1,16 @@
+{
+ "slug": "checkbox",
+ "edits": [
+  {
+   "row": 0,
+   "edits": [
+    {
+     "id": "min-height",
+     "v": 48,
+     "sel": ".ds-checkbox",
+     "css": "min-height:@px"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "slug": "button",
+ "patterns_ru": [
+  {
+   "title": "Два действия в строку",
+   "items": [
+    "Что происходит: на 375 px две подписи ещё помещаются в строку, но если обе оформлены как главные, экран читается как два равнозначных призыва — человек сначала читает оба, потом выбирает.",
+    "Что делают системы: Apple — «Keep the number of prominent buttons to one or two per view. Presenting too many prominent buttons increases cognitive load, requiring people to spend more time considering options before making a choice» и «Use style — not size — to visually distinguish the preferred choice among multiple options»; IBM Carbon — «Each page should have only one primary button. Any remaining calls to action should be represented as lower emphasis buttons».",
+    "Что делать нам: одна заливка на экран, второе действие — обводкой или текстом; в одном ряду кнопки одинаковой высоты и с короткими подписями — Apple про узкие экраны: «If two buttons must share the same horizontal space, use the same height for both, and use images or short text titles for each button's content»."
+   ],
+   "src": "Источники: Apple HIG · Buttons (developer.apple.com/design/human-interface-guidelines/buttons) · IBM Carbon · Button usage (carbondesignsystem.com/components/button/usage)",
+   "example_html": "<span class=\"ds-btn-group ds-btn-group--horizontal\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></span>",
+   "example_ru": "Одно главное действие на экран: заливка — у главного, обводка — у второго, высота у обеих одна."
+  },
+  {
+   "title": "Третье и четвёртое действие не влезают",
+   "items": [
+    "Что происходит: ряд подписей перестаёт помещаться, строка начинает прокручиваться, крайняя кнопка обрезана — обрезанное действие никто не ищет, а прокрутка в ряду кнопок на мобиле почти не заметна.",
+    "Что делают системы: IBM Carbon уводит вторичные действия в overflow-меню («Menu buttons, including menu buttons, combo buttons, and overflow menus, open a menu with a list of interactive options»), а сама иконка меню описана как «The icon button of overflow menu is treated as the ghost button, displaying only an icon and following its designated color and style»; Ant Design держит «at most one primary button in a section» и отдельно помечает опасное: «danger: used for actions of risk, like deletion or authorization».",
+    "Что делать нам: одно главное действие на всю ширину, остальные — под «⋯»; разрушительное не ставить в общий ряд (Apple: «a primary button uses an app's accent color, whereas a destructive button uses the system red color») и не делать его главным: «Don't assign the primary role to a button that performs a destructive action, even if that action is the most likely choice»."
+   ],
+   "src": "Источники: IBM Carbon · Menu buttons / overflow menu (carbondesignsystem.com/components/menu-buttons/usage) · IBM Carbon · Button usage (carbondesignsystem.com/components/button/usage) · Ant Design · Button (ant.design/components/button) · Apple HIG · Buttons (developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--outlined\" type=\"button\" aria-label=\"Ещё: удалить, печать, отправить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_horiz</span></span></button></div>",
+   "example_ru": "Главное действие — на всю ширину тела экрана (375 − паддинги 16 = 343 px), вторичные уходят под «⋯»."
+  },
+  {
+   "title": "Длинная подпись",
+   "items": [
+    "Что происходит: длинная подпись («Сохранить и отправить на кухню») в узкой кнопке: либо текст усекается с многоточием, либо кегль уменьшают, чтобы втиснуть строку в одну линию, — и подпись перестаёт читаться.",
+    "Что делают системы: IBM Carbon — «When the button's label is too long to fit within the available space of the button, the label should overflow and wrap to the second line. We do not recommend truncating a button label», там же советуют держать формулу «{verb} + {noun}».",
+    "Что делать нам: подпись — глагол плюс короткое дополнение («Сохранить», «Отправить на кухню»), при нехватке места переносить на вторую строку (кнопка растёт по высоте), а не усекать и не уменьшать кегль; для длинных вторичных действий — «⋯»."
+   ],
+   "src": "Источники: IBM Carbon · Button usage (carbondesignsystem.com/components/button/usage)",
+   "example_html": "<div class=\"pat__narrow\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить и отправить на кухню</span></button></div>",
+   "example_ru": "Подпись переносится на вторую строку, кнопка растёт по высоте — усечения «Сохранить и отпр…» и уменьшения кегля нет. В ДС подпись заперта в одну строку, поэтому на странице показано рекомендуемое поведение."
+  },
+  {
+   "title": "Кнопка на всю ширину",
+   "items": [
+    "Что происходит: главное действие формы, оформленное «по ширине текста» и прижатое к правому краю, на мобиле получает маленькую зону нажатия, а в футере шторки выглядит случайным элементом.",
+    "Что делают системы: IBM Carbon — «Fluid width buttons are always preferable to fixed width default buttons in a layout. When possible, set the button container's relative position to the responsive layout grid and match the button width to the width of other elements on the page», в таблице выравниваний «Full-span» отдан диалогам, боковым панелям и мелким плиткам; Apple (раздел watchOS) — «Prefer buttons that span the width of the screen for primary actions in your app. Full-width buttons look better and are easier for people to tap».",
+    "Что делать нам: в футере формы и в шторке главное действие — на всю ширину тела (343 px при экране 375), кнопки в группе — одной ширины и одной высоты; вторичные действия — текстом или «⋯», а не второй полноширинной кнопкой."
+   ],
+   "src": "Источники: IBM Carbon · Button usage (carbondesignsystem.com/components/button/usage) · Apple HIG · Buttons (developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<div class=\"pat__phone\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить заказ</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div>",
+   "example_ru": "В футере формы главное действие — на всю ширину, второе — текстом под ним: две заливки на экран спорят друг с другом."
+  },
+  {
+   "title": "Кнопка-иконка без подписи",
+   "items": [
+    "Что происходит: иконка 24 px в углу экрана — площадь нажатия совпадает с рисунком, палец по ней промахивается; без подписи смысл иконки угадывается, особенно у нестандартных действий.",
+    "Что делают системы: Apple HIG — «As a general rule, a button needs a hit region of at least 44x44 pt — in visionOS, 60x60 pt — to ensure that people can select it easily, whether they use a fingertip, a pointer, their eyes, or a remote»; Material и Angular Material держат тач-таргет 48 dp (в Material Web это `_touch-target.scss`, в Angular Material `$touch-target-size: 48px`), при этом сама кнопка в Material — 40 dp высоты.",
+    "Что делать нам: рисунок иконки оставлять 24 px, а зону нажатия расширять до 48 dp / 44 pt паддингом или псевдоэлементом; у иконки-кнопки обязательно доступное имя (aria-label) — HIG описывает содержимое кнопки как «A symbol (or icon), text label, or both that a button displays to convey its purpose»."
+   ],
+   "src": "Источники: Apple HIG · Buttons (developer.apple.com/design/human-interface-guidelines/buttons) · Material Web · button (raw.githubusercontent.com/material-components/material-web/main/docs/components/button.md) · Material Web · touch target (raw.githubusercontent.com/material-components/material-web/main/button/internal/_touch-target.scss) · Angular Material · button (github.com/angular/components)",
+   "example_html": "<span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral \" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">more_horiz</span><span class=\"ds-btn__label\">Ещё</span></button>",
+   "example_ru": "Пунктиром — зона нажатия 48 × 48 dp (на iOS хит-регион 44 × 44 pt): рисунок иконки 24 px, нажимаемая область вокруг — 48. Рядом тот же смысл с подписью, если иконка не читается."
+  },
+  {
+   "title": "Нажатие не сработало или нажали дважды",
+   "items": [
+    "Что происходит: на телефоне двойное нажатие по кнопке отправки — обычное дело; без видимой реакции человек жмёт ещё раз или решает, что кнопка не работает.",
+    "Что делают системы: IBM Carbon — «Buttons can have inline loading that provides visual feedback that the action is in process. The button would be disabled when inline loading is in progress»; Ant Design — «loading: adds a loading spinner in button, avoids multiple submits too»; Apple HIG требует отклик: «Always include a press state for a custom button. Without a press state, a button can feel unresponsive, making people wonder if it's accepting their input».",
+    "Что делать нам: пока идёт запрос — спиннер внутри кнопки и блокировка повторного нажатия; подпись на время загрузки не подменять (иначе кнопка меняет ширину и «прыгает»), состояние нажатия показывать всегда, даже у текстовых кнопок."
+   ],
+   "src": "Источники: IBM Carbon · Button usage (carbondesignsystem.com/components/button/usage) · Ant Design · Button (ant.design/components/button) · Apple HIG · Buttons (developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<span class=\"ds-btn-group ds-btn-group--horizontal\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\" disabled><span class=\"ds-btn__label\">Сохранить</span></button></span>",
+   "example_ru": "Слева — обычная кнопка, справа — та же кнопка, пока идёт запрос: она недоступна, повторное нажатие не проходит. Спиннера внутри кнопки в ДС нет — это находка для библиотеки."
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "slug": "hint-tooltip",
+ "patterns_ru": [
+  {
+   "title": "На тач-экране наведения нет",
+   "items": [
+    "Что происходит: подсказка, которая появляется при hover, на телефоне не появляется вовсе — в десктопном прототипе она есть, а на устройстве её просто нет.",
+    "Что делают системы: Nielsen Norman Group: «Because tooltips are initiated by a hover gesture, they can be used only on devices with a mouse or keyboard. They are not normally available on touchscreens»; MD3 для мобиля описывает «Tap and hold the element on mobile», а у подсказки на таче есть сестра — popup tip, которая открывается тапом и закрывается тапом вне себя (NN/g).",
+    "Что делать нам: на мобиле открывать подсказку тапом или долгим нажатием, а не наведением; для длинного текста использовать rich-подсказку или шторку, а не всплывающий пузырь."
+   ],
+   "src": "Источники: Nielsen Norman Group · Tooltip Guidelines (https://www.nngroup.com/articles/tooltip-guidelines) · Material Design 3 · Tooltips / Guidelines (https://m3.material.io/components/tooltips/guidelines)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Как считаем доставку</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-header\"><span class=\"ds-hint-header__title\">Доставка</span></div><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Считаем по зонам: чем дальше зона, тем выше тариф. Своя машина — без наценки.</span></div></div></div>",
+   "example_ru": "Подсказка открыта тапом и стоит под элементом, а не поверх него: иконка 24 px без наведения, длинный текст на 2–3 строки читается в rich-подсказке."
+  },
+  {
+   "title": "Одна подсказка за раз",
+   "items": [
+    "Что происходит: на мобиле легко открыть вторую подсказку поверх первой: два пузыря частично закрывают друг друга и оба закрывают содержимое, о котором говорят.",
+    "Что делают системы: MD3 требует: «Only display one tooltip at a time» и «Triggering a new tooltip immediately closes any other open tooltip»; Apple HIG для popover требует не показывать несколько popover одновременно и не показывать popover поверх popover.",
+    "Что делать нам: новая подсказка всегда закрывает предыдущую; одновременный показ не допускать и не вешать подсказки на два соседних элемента одной строки."
+   ],
+   "src": "Источники: Material Design 3 · Tooltips / Guidelines (https://m3.material.io/components/tooltips/guidelines) · Apple HIG · Popovers (https://developer.apple.com/design/human-interface-guidelines/popovers)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Как считаем доставку</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Пояснение к тарифам: одна подсказка на экране.</span></div></div></div>",
+   "example_ru": "На экране 1 подсказка: открытие новой закрывает предыдущую, двух пузырей над соседними элементами строки нет."
+  },
+  {
+   "title": "Автоскрытие 1,5 секунды",
+   "items": [
+    "Что происходит: 1,5 секунды хватает на подпись «Скопировать», но не на фразу про инвентаризацию с 23:00 до 02:00 — текст уходит раньше, чем дочитан, и пользователь остаётся без информации.",
+    "Что делают системы: Angular Material на мобиле скрывает подсказку ровно через 1500 мс — «On mobile, the tooltip displays when the user longpresses the element and hides after a delay of 1500ms»; MD3 повторяет ту же длительность для ухода с элемента — «Both plain and rich tooltips disappear 1.5 seconds after navigating away from the target region»; числовой рекомендации «сколько секунд на чтение» нет ни у одной платформы.",
+    "Что делать нам: до двух-трёх слов — plain-подсказка; всё, что длиннее, выводить rich-подсказкой или постоянным hint под полем, который не исчезает сам."
+   ],
+   "src": "Источники: Angular Material · tooltip.md (https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.md) · Material Design 3 · Tooltips / Guidelines (https://m3.material.io/components/tooltips/guidelines)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Скопировать</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Скопировать в буфер</span></div></div></div>",
+   "example_ru": "Plain-подсказка из двух слов, которая скрывается через 1500 мс (Angular и MD3): всё, что длиннее, выводится rich-подсказкой или постоянным hint."
+  },
+  {
+   "title": "Ширина подсказки на 375 px",
+   "items": [
+    "Что происходит: подсказка шириной 200 px на экране 375 px занимает больше половины ширины; текст в ней рвётся на строки, а сама она закрывает элемент, о котором рассказывает.",
+    "Что делают системы: Angular задаёт max-width: 200px, min-width: 40px и padding: 4px 8px, MD3 держит plain-подсказку высотой 24 dp и просит «Avoid wrapping text to multiple lines», а длинное переносит в rich-подсказку с подзаголовком и текстом; Carbon просит не накрывать содержимое — «Do not cover related content that is essential to the user's tasks».",
+    "Что делать нам: plain-подсказку держать одной строкой в пределах 200 px, длинную выводить rich-подсказкой или шторкой, а у края экрана переворачивать и сдвигать (MD3 двигает её шагом 8 dp, Carbon определяет края окна, чтобы её не обрезало)."
+   ],
+   "src": "Источники: Angular Material · tooltip.scss (https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.scss) · Material Design 3 · Tooltips / Guidelines (https://m3.material.io/components/tooltips/guidelines) · IBM Carbon · Tooltip (https://carbondesignsystem.com/components/tooltip/usage)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Инвентаризация</span></button><div class=\"ds-hint-container ds-hint-container--default\" style=\"width:200px\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">С 23:00 до 02:00</span></div></div></div>",
+   "example_ru": "Подсказка шириной 200 px и одной строкой (max-width: 200px, padding 4/8 — как у Angular): в 375 px она не занимает пол-экрана и не накрывает элемент."
+  },
+  {
+   "title": "Что нельзя прятать в подсказку",
+   "items": [
+    "Что происходит: в подсказку уезжают требования к паролю и форматы полей — то, без чего задачу не выполнить; на мобиле это критично, потому что подсказка ещё и закрывается сама.",
+    "Что делают системы: IBM Carbon: «Since a tooltip disappears when a user hovers away, do not include pertinent information for the user to complete their task. Use helper text that is always visible and accessible for vital information, such as required fields»; тот же промах разбирает NN/g на примере требований к паролю, а MD3 в такой ситуации советует диалог, а не подсказку.",
+    "Что делать нам: обязательные требования и форматы выводить постоянным helper-текстом под полем; в подсказке оставлять только пояснения «почему» и «что это»."
+   ],
+   "src": "Источники: IBM Carbon · Tooltip (https://carbondesignsystem.com/components/tooltip/usage) · Nielsen Norman Group · Tooltip Guidelines (https://www.nngroup.com/articles/tooltip-guidelines) · Material Design 3 · Tooltips (https://m3.material.io/components/tooltips/guidelines)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">help_outline</span><span class=\"ds-btn__label\">Что такое стоп-лист</span></button><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Стоп-лист — блюда, которые временно нельзя заказать.</span></div></div><div style=\"font-size:12px;line-height:16px;color:#616161\">Обязательное поле · формат ДД.ММ.ГГГГ</div></div>",
+   "example_ru": "В подсказке только пояснение «почему»; требование и формат вынесены постоянным helper-текстом 12 px — подсказка закрывается сама и для обязательного не годится."
+  },
+  {
+   "title": "Интерактив и цель нажатия",
+   "items": [
+    "Что происходит: иконка-подсказка размером 24 dp без подписи — маленькая цель для пальца, а ссылки и кнопки внутри подсказки на таче недоступны: по ним нельзя попасть и их нельзя поймать тапом.",
+    "Что делают системы: Carbon: «Do not include interactive elements within a tooltip. Interactive elements in tooltips are inaccessible for some users and are hard to use for all users since tooltips do not receive focus» — для интерактива есть toggletip; Google Accessibility напоминает, что иконка 24×24 dp живёт внутри цели 48×48 dp, Apple держит 44×44 pt и замечает, что кнопкам с текстом подсказка не нужна.",
+    "Что делать нам: иконку-подсказку делать 24 px внутри цели 48 px и ставить только у иконок без подписи; текст дублировать в aria-describedby, а интерактив в подсказку не помещать (для этого — toggletip/шторка)."
+   ],
+   "src": "Источники: IBM Carbon · Tooltip (https://carbondesignsystem.com/components/tooltip/usage) · Google Accessibility (https://support.google.com/accessibility/android/answer/7101858) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons) · Angular Material · tooltip.md (https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.md)",
+   "example_html": "<div class=\"pat__phone\" style=\"align-items:flex-start\"><span class=\"pat__hit\"><span class=\"ds-hint-container__icon\"><span class=\"material-icons\" style=\"font-size:24px\">help_outline</span></span></span><div class=\"ds-hint-container ds-hint-container--default\"><div class=\"ds-hint-content\"><span class=\"ds-hint-content__label\">Пояснение без ссылок и кнопок внутри: интерактив уходит в шторку.</span></div></div></div>",
+   "example_ru": "Иконка-подсказка 24 px внутри цели 48 × 48 px, интерактивных элементов внутри нет — ссылки и кнопки для тача недоступны и уходят в шторку."
+  }
+ ]
+}

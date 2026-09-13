@@ -1,0 +1,26 @@
+<!doctype html><meta charset="utf-8"><body><pre id="out"></pre><script>
+const PAGES=["autocomplete", "backdrop", "badge", "banners", "button", "button-icon", "button-toggle", "card", "checkbox", "chips", "chips-input", "datepicker", "dialog", "divider", "expansion-panel", "form-field", "hint-tooltip", "icon-size", "input-number", "list", "logo", "menu", "radio", "scroll", "search", "select", "sidenav", "slide-toggle", "snackbar", "status", "stepper", "table", "table-2-lvl", "tabs", "text-ui", "textarea", "timepicker", "tree"], OUT=[]; let i=0;
+const clipped = el => { let a = el.parentElement; while (a && !a.classList.contains('panel')) { const o = getComputedStyle(a).overflow; if (o !== 'visible') return true; a = a.parentElement; } return false; };
+function scan(doc, page){
+  doc.querySelectorAll('.panel').forEach(panel => {
+    const pr = panel.getBoundingClientRect(); const mode = panel.dataset.mode || 'desktop';
+    const seen = new Set();
+    panel.querySelectorAll('*').forEach(el => {
+      if (clipped(el)) return;
+      const r = el.getBoundingClientRect(); if (!r.width && !r.height) return;
+      const dL = pr.left - r.left, dR = r.right - pr.right;
+      if (dL > 5 || dR > 5) {
+        const key = el.className + '|' + Math.round(dL) + '|' + Math.round(dR);
+        if (seen.has(key)) return; seen.add(key);
+        OUT.push(page + ' [' + mode + '] ' + (el.className || el.tagName) + ' | вылез влево ' + Math.round(dL) + ' / вправо ' + Math.round(dR) + ' px | ' + el.textContent.trim().slice(0,24));
+      }
+    });
+  });
+}
+function next(){ if(i>=PAGES.length){document.getElementById('out').textContent=OUT.join('\n');return;}
+  const page=PAGES[i++]; const f=document.createElement('iframe'); f.style.cssText='width:1500px;height:1300px;border:0';
+  f.src='/iiko-ds-mobile/prototypes/recommendations/'+page+'.html';
+  f.onload=()=>setTimeout(()=>{scan(f.contentDocument,page); f.remove(); next();},320);
+  document.body.appendChild(f); }
+next();
+</script></body>

@@ -1,0 +1,99 @@
+{
+ "slug": "slide-toggle",
+ "component": "Slide toggle",
+ "_role": "Техническая часть. На страницу не выводится.",
+ "ds_values": {
+  "source": "iiko-ds-web/components/Slide-Toggle_DS/slide-toggle.css (выверено вручную) + токены --ds-slide-toggle-* + спека «Slide toggle [52887:2592]», 6 вариантов (Active Off/On × State Default/Disable/Hover)",
+  "desktop": {
+   "track": "34 × 20 px",
+   "knob": "16 × 16, отступ 2 px, ход 14 px",
+   "radius_track": 12,
+   "support_pad_left": "42 px (совпадает с токеном Slide toggle/Pad left support 10,5x)",
+   "title": "14 px / 400 #333333",
+   "support": "12 px / 400 #616161"
+  },
+  "colors": "вкл #448AFF (hover #3969D5) · выкл #9E9E9E (hover #757575) · недоступный #E0E0E0, текст #9E9E9E · ручка #FFFFFF — ось темы",
+  "tokens_used": [
+   "--ds-slide-toggle-knob-width/height",
+   "--ds-slide-toggle-pad-top/bottom",
+   "--ds-slide-toggle-deselected-pad-left",
+   "--ds-slide-toggle-selected-pad-right",
+   "--ds-slide-toggle-gap",
+   "--ds-slide-toggle-border-radius",
+   "--ds-slide-toggle-border-radius-knob"
+  ],
+  "tokens_unused": [
+   "--ds-slide-toggle-selected-pad-left",
+   "--ds-slide-toggle-deselected-pad-right",
+   "--ds-slide-toggle-text-size/weight",
+   "--ds-slide-toggle-gap-support",
+   "--ds-slide-toggle-pad-left-support-10-5x",
+   "--ds-slide-toggle-pad-left-support-0",
+   "--ds-slide-toggle-text-support-size/weight"
+  ],
+  "geometry_ru": "Трек больше не задан числами: высота = pad-top + ручка + pad-bottom (2+16+2 = 20; мобила 4+24+4 = 32), ширина = ручка × 2 + отступ ручки (16×2+2 = 34; мобила 24×2+4 = 52). Ход ручки выводится из ширины трека (100% − ручка − отступ), поэтому магического сдвига 14 px больше нет. Подпись: padding-left = ширина трека + промежуток (42 / 60).",
+  "tokenisation": "11.09.2026: локальные переменные компонента (--_st-knob, --_st-inset, --_st-track-w, --_st-track-h) считают геометрию из токенов; режим mobile меняет только токены (ручка 24, паддинги 4, отступы ручки 4). Регрессия git HEAD → текущий: 0 отличий на десктопе (4 состояния).",
+  "mobile_override": "значения заданы явно в мобильном слое iiko-ds-mobile/components/<Имя>_DS/*.css: десктопный CSS держит размер числами, поэтому режимные токены его не сдвигают. Библиотека iiko-ds-web не правится.."
+ },
+ "platforms": [
+  {
+   "key": "md3",
+   "title": "Material Design 3 (switch)",
+   "exists": true,
+   "facts": [
+    "track-height 32px, track-width 52px, unselected-handle-height 16px, selected-handle-height 24px, pressed-handle-height 28px",
+    "state-layer-size 40px, touch-target-size 48px, применение: height: max(100%, touch-target-size)",
+    "selected-icon-size 16px, track-outline-width 2px; варианты: unselected / selected / icons / show-only-selected-icon / disabled",
+    "Шкалы размеров у switch нет"
+   ],
+   "sources": [
+    "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-switch.scss",
+    "https://raw.githubusercontent.com/material-components/material-web/main/switch/internal/_switch.scss",
+    "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/switch.md"
+   ]
+  },
+  {
+   "key": "angular_material",
+   "title": "Angular Material",
+   "exists": true,
+   "facts": [
+    "slide-toggle-track-height: 32px, slide-toggle-track-width: 52px",
+    "slide-toggle-unselected-handle-size: 16px, selected-handle-size: 24px, pressed-handle-size: 28px, with-icon-handle-size: 24px",
+    "slide-toggle-state-layer-size: 40px, slide-toggle-touch-target-size: 48px, selected-icon-size: 16px",
+    "density клампится до −3 и влияет только на показ тач-таргета (block, block, none, none); трек и ручка фиксированы",
+    "indeterminate не поддерживается (в отличие от mat-checkbox)"
+   ],
+   "sources": [
+    "https://raw.githubusercontent.com/angular/components/main/src/material/slide-toggle/_m3-slide-toggle.scss",
+    "https://raw.githubusercontent.com/angular/components/main/src/material/slide-toggle/slide-toggle.md"
+   ]
+  },
+  {
+   "key": "ios_hig",
+   "title": "iOS HIG (Toggles)",
+   "exists": true,
+   "facts": [
+    "Числовых размеров в pt нет",
+    "«Use the switch toggle style only in a list row» — вне списка использовать кнопку-переключатель",
+    "Цвет по умолчанию зелёный, менять только при необходимости"
+   ],
+   "sources": [
+    "https://developer.apple.com/design/human-interface-guidelines/toggles"
+   ]
+  }
+ ],
+ "verdict": {
+  "keep": "На мобиле трек 52 × 32 и ручка 24 (отступ 4, ход 20) — числа, в которых сходятся MD3 и Angular Material. Цвета, состояния и тексты — общие.",
+  "drop": [
+   "Плотные размеры 34 × 20 на мобиле: трек меньше 32 px и ручка вне шкалы 16/24/28 помечены у платформ как не рекомендуемые",
+   "Попытки «уменьшить» свитч плотностью: ни MD3, ни Angular не имеют шкалы размеров switch"
+  ],
+  "open": [
+   "Тач-зона 48 px — отдельным слоем (в библиотеке тач-зон нет нигде)",
+   "Ручка MD3 растёт при включении (16 → 24) и при нажатии (28); у нас ручка одного размера",
+   "Hover на тач не гасится",
+   "HIG: switch только в строке списка — правило применения, не размеров"
+  ]
+ },
+ "measured_ru": "Замеры headless Chrome: десктоп трек 34×20, ручка 16 (left 2 → 16 при включении), support pad-left 42, текст 14/20; мобила трек 52×32, ручка 24 (left 4 → 24), support pad-left 60. Цвета в состояниях: #9E9E9E / #448AFF / #E0E0E0, ручка #FFFFFF — совпадают с десктопом. Регрессия git HEAD → текущий: 0 отличий."
+}

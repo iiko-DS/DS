@@ -1,0 +1,20 @@
+{
+ "slug": "table",
+ "edits": [
+  {
+   "row": 1,
+   "mobile": "56 px — тот же токен, что и строка данных"
+  },
+  {
+   "row": 3,
+   "edits": [
+    {
+     "id": "foot-h",
+     "v": 52,
+     "sel": ".ds-table-footer",
+     "css": "height:@px"
+    }
+   ]
+  }
+ ]
+}

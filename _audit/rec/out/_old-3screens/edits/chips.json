@@ -1,0 +1,33 @@
+{
+ "slug": "chips",
+ "edits": [
+  {
+   "row": 0,
+   "edits": [
+    {
+     "id": "height",
+     "v": 32,
+     "sel": ".ds-chips",
+     "css": "height:@px"
+    }
+   ]
+  },
+  {
+   "row": 1,
+   "edits": [
+    {
+     "id": "touch-w",
+     "v": 48,
+     "sel": ".ds-chips::after",
+     "css": "width:@px"
+    },
+    {
+     "id": "touch-h",
+     "v": 48,
+     "sel": ".ds-chips::after",
+     "css": "height:@px"
+    }
+   ]
+  }
+ ]
+}

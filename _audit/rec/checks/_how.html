@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><body><pre id="out"></pre><script>
+const P=['autocomplete','list','sidenav','table'], OUT=[]; let i=0;
+function next(){ if(i>=P.length){document.getElementById('out').textContent=OUT.join('\n');return;}
+ const page=P[i++]; const f=document.createElement('iframe'); f.style.cssText='width:1600px;height:1400px;border:0';
+ f.src='/iiko-ds-mobile/prototypes/recommendations/'+page+'.html';
+ f.onload=()=>setTimeout(()=>{const d=f.contentDocument, w=f.contentWindow;
+  const mp=d.querySelector('.panel[data-mode="mobile"]'), body=mp.querySelector('.panel__body');
+  const frame=[...mp.querySelectorAll('.ds-autocomplete-form__input-frame,.ds-input--m .ds-input__frame,.ds-select-form__input-frame')][0];
+  OUT.push(page+': мобильная панель '+Math.round(mp.getBoundingClientRect().width)+' px, тело '+Math.round(body.getBoundingClientRect().width)
+    +' | окно ' + w.innerWidth + ' px | телефон 375 px = ' + Math.round(375/mp.getBoundingClientRect().width*100) + ' % ширины панели'
+    + (frame ? ' | поле '+Math.round(frame.getBoundingClientRect().width)+'×'+Math.round(frame.getBoundingClientRect().height) : ''));
+  f.remove(); next();},330);
+ document.body.appendChild(f);}
+next();</script></body>

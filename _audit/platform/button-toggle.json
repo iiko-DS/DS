@@ -1,0 +1,110 @@
+{
+  "component": "Button toggle",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "default (единственный размер в M3)",
+          "height_dp": 40,
+          "quote": "'container-height': if($exclude-hardcoded-values, null, 40px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-outlined-segmented-button.scss"
+        },
+        {
+          "name": "размерной шкалы XS..XL у segmented button нет",
+          "height_dp": null,
+          "quote": "в tokens/versions/latest/sass нет ни одного файла _md-comp-segmented-button-*.scss (шкала xsmall..xlarge есть только у button-group и split-button)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/latest/sass/"
+        }
+      ],
+      "variants": [
+        "md.comp.outlined.segmented-button (единственный набор токенов)",
+        "в репозитории — labs/segmentedbutton и labs/segmentedbuttonset (статус labs, не стабильный компонент)"
+      ],
+      "touch_target_dp": 48,
+      "notes_ru": "В M3 это отдельный компонент 'Segmented buttons' (m3.material.io/components/segmented-buttons существует, HTTP 200, но клиентский рендер). Числовая база: container-height 40 dp, иконка 18 dp, outline-width 1 px, типографика label-large. Отдельной размерной шкалы XS/S/M/L у segmented button в актуальном наборе токенов нет (в отличие от button group и split button) — только один размер 40 dp. В Material Web стабильный компонент отсутствует, есть только labs-компоненты segmentedbutton/segmentedbuttonset. Часть состояния 'toggle' в M3 реализуется также иконка-кнопкой с атрибутом toggle (slot=\"selected\").",
+      "sources": [
+        "https://m3.material.io/components/segmented-buttons/specs",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-outlined-segmented-button.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/labs/segmentedbutton/internal/_shared.scss"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "default (density 0 / -1 / -2)",
+          "height_dp": 40,
+          "quote": "button-toggle-height: list.nth((40px, 40px, 40px, 36px, 24px), $index)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/_m3-button-toggle.scss"
+        },
+        {
+          "name": "density -3",
+          "height_dp": 36,
+          "quote": "list.nth((40px, 40px, 40px, 36px, 24px), $index)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/_m3-button-toggle.scss"
+        },
+        {
+          "name": "density -4",
+          "height_dp": 24,
+          "quote": "list.nth((40px, 40px, 40px, 36px, 24px), $index)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/_m3-button-toggle.scss"
+        }
+      ],
+      "variants": [
+        "mat-button-toggle (одиночный on/off)",
+        "mat-button-toggle-group (exclusive по умолчанию, multiple — checkbox-поведение)",
+        "appearance: 'legacy' | 'standard'",
+        "vertical (вертикальная раскладка)"
+      ],
+      "density": "шкала 0..-4 -> 40/40/40/36/24 dp ($scale: theming.clamp-density($scale, -4))",
+      "touch_target": "отдельного токена тач-таргета у button-toggle нет; высота 40 dp и внутренние кнопки нативные (<button> с aria-pressed)",
+      "notes_ru": "Тип подтверждён кодом: export type MatButtonToggleAppearance = 'legacy' | 'standard'. Высота по умолчанию 40 dp, форма corner-extra-large. Дефолтный appearance следует актуальным правилам Material ('By default, the appearance of mat-button-toggle-group and mat-button-toggle will follow the latest Material Design guidelines'). Атрибут size отсутствует — доступна только density.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/button-toggle.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/button-toggle.ts",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/_m3-button-toggle.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/button-toggle.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "числовых размеров нет",
+          "height_dp": null,
+          "quote": "A segmented control is a linear set of two or more segments, each of which functions as a button.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/segmented-controls"
+        },
+        {
+          "name": "хит-регион (общий для кнопок)",
+          "height_dp": 44,
+          "quote": "a button needs a hit region of at least 44x44 pt",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/buttons"
+        }
+      ],
+      "variants": [
+        "Segmented control: single choice, multiple choices (macOS), или набор действий без состояния выбора",
+        "Toggles (UISwitch) — для парного состояния on/off"
+      ],
+      "touch_target_pt": "44x44 pt (visionOS 60x60 pt)",
+      "notes_ru": "Прямого аналога 'button toggle' два: segmented control и toggles (switch). Ни на одной из страниц нет ни одного числа в pt — только правила: 'Limit the number of segments in a control … Aim for no more than about five to seven segments in a wide interface and no more than about five segments on iPhone', 'In general, keep segment size consistent', 'Prefer using either text or images — not a mix of both'. Единственная применимая числовая норма — хит-регион 44x44 pt из страницы Buttons. Страницы отдаются клиентским JS, числа/цитаты взяты из официального JSON-эндпоинта страниц.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/segmented-controls",
+        "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json",
+        "https://developer.apple.com/design/human-interface-guidelines/toggles",
+        "https://developer.apple.com/design/human-interface-guidelines/buttons"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Высота 24 dp (Angular density −4): меньше 40 dp, заданных платформами по умолчанию, и нарушает общий минимум 44×44 pt (HIG) / 48 dp (Material touch target).",
+    "Высота 36 dp (density −3) как штатная — это документированная «плотная» конфигурация Angular, а не рекомендация платформ (M3 и HIG дают 40 dp и хит-регион 44 pt).",
+    "Размерная шкала XS/S/M/L/XL для button toggle: в M3 у segmented button её нет (единственный размер 40 dp), у Angular — нет атрибута size, в HIG размеров нет вовсе.",
+    "Сегментированный контрол более чем с ~5–7 сегментами: HIG — 'Aim for no more than about five to seven segments in a wide interface and no more than about five segments on iPhone'.",
+    "Смешивание текста и иконок в одном segmented control: HIG — 'Prefer using either text or images — not a mix of both — in a single segmented control'.",
+    "Разная ширина/высота сегментов: HIG — 'In general, keep segment size consistent'."
+  ],
+  "verdict_ru": "Аналог есть на всех трёх платформах, но числовых размеров почти нет: M3 (segmented buttons) и Angular Material (mat-button-toggle) сходятся ровно на одной высоте — 40 dp; у Angular дополнительно есть только плотностные значения 36 dp (density −3) и 24 dp (density −4), а размерного атрибута/шкалы нет. В M3 размерной шкалы XS..XL у segmented button нет вовсе (она есть только у button group и split button), в вебе компонент живёт в labs. iOS HIG не даёт ни одного размера в pt — только правило хит-региона 44×44 pt и ограничение по числу сегментов (≈5–7). Итог: рекомендуемый проверяемый набор — 40 dp, 1 px аутлайн, иконка 18 dp (M3) / 24 dp (Angular), 44×44 pt хит-регион; 24 dp и дробление на XS/S/M/L — не подтверждены платформами.",
+  "verified_on": "2026-09-11"
+}

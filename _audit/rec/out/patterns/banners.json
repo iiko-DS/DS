@@ -1,0 +1,60 @@
+{
+ "slug": "banners",
+ "patterns_ru": [
+  {
+   "title": "Баннера нет ни в MD3, ни у Apple — числа только из MD2",
+   "items": [
+    "Что происходит: баннер считают платформенным компонентом, ищут его размеры в актуальных гайдах, не находят и «худеют» его до 32 px, после чего текст перестаёт читаться.",
+    "Что делают системы: в каталоге MD3 баннера нет (страницы /components/banner → 404), зато в MD2 и его реализации mdc-banner числа есть: «$_min-width: 344px;», «min-height: 52px;», «content-max-width: 720px», «$mobile-breakpoint: 480px;»; у Apple страницы banners тоже нет — только алерт, а он «Avoid using an alert merely to provide information».",
+    "Что делать нам: описывать баннер самим: min-height 52 px для одной строки, ширина по телу экрана (343 px при 375 px), радиус и обводка — по нашей геометрии; на MD3 в этом блоке не ссылаться."
+   ],
+   "src": "Источники: Material Design 2 · Banners (https://m2.material.io/components/banners) · MDC Web · Banner (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/_banner.scss) · Apple HIG · Alerts (https://developer.apple.com/design/human-interface-guidelines/alerts)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Смена не закрыта — заказы за 8 августа не отправлены</span></div></div></div>",
+   "example_ru": "Баннер по телу экрана 343 px и min-height 52 px на одну строку текста: на MD3 в этом блоке не ссылаемся, 52 px пришли из MD2."
+  },
+  {
+   "title": "Баннер сверху сдвигает контент",
+   "items": [
+    "Что происходит: при появлении баннер выталкивает содержимое вниз, и на маленьком экране пользователь теряет место и позицию прокрутки.",
+    "Что делают системы: MD2: «Banners should be displayed at the top of the screen, below a top app bar» — баннер немодальный и персистентный, при появлении сдвигает контент вниз, а не накладывается.",
+    "Что делать нам: ставить баннер в поток под шапкой, не поверх футера и вне зоны экранной клавиатуры; при его появлении сохранять позицию скролла и не перезагружать список."
+   ],
+   "src": "Источники: Material Design 2 · Banners (https://m2.material.io/components/banners) · Material Design 3 · Components (https://m3.material.io/components)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"height:48px;display:flex;align-items:center;padding:0 16px;background:#FFFFFF;border-bottom:1px solid #E0E0E0;font-size:16px;font-weight:500\">Заказы</div><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Нет связи с кассой — изменения сохранятся локально</span></div></div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Список заказов ниже остался на месте: баннер встал в поток и позицию прокрутки не сбросил</div></div>",
+   "example_ru": "Баннер встал в поток под шапкой и вытолкнул контент вниз: место под него есть, позиция прокрутки сохранена."
+  },
+  {
+   "title": "Один баннер за раз и он не исчезает сам",
+   "items": [
+    "Что происходит: несколько сообщений складываются в стопку, часть из них исчезает через 3 секунды, и пользователь не успевает дочитать важное.",
+    "Что делают системы: MD2: «It requires a user action to be dismissed» и «Only one banner should be shown at a time»; в MD3 для низкоприоритетных сообщений вместо баннера оставлен snackbar.",
+    "Что делать нам: максимум один баннер, закрытие только по действию пользователя (иконка «×» с зоной 44–48 px); остальные сообщения — строкой в списке или в шторке, а не второй плашкой сверху."
+   ],
+   "src": "Источники: Material Design 2 · Banners (https://m2.material.io/components/banners) · Material Design 3 · Components (https://m3.material.io/components)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">warning</span></span><span>Печать чека не отвечает — заказ не отправлен</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><span class=\"pat__hit\" style=\"margin:0\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Закрыть баннер\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></button></span></div></div></div>",
+   "example_ru": "Один баннер на экран и закрытие только по «×» с зоной нажатия 48 × 48 (пунктир): сам он не исчезает через 3 секунды."
+  },
+  {
+   "title": "Два действия максимум",
+   "items": [
+    "Что происходит: в баннер впихивают три-четыре кнопки, и на 375 px подписи обрезаются или переносятся на вторую строку.",
+    "Что делают системы: MD2: «Banners can contain up to two text buttons, with the dismissive action placed on the left and the confirming action on the right.», и только текстовые кнопки — иконки вместо текста не приветствуются.",
+    "Что делать нам: одно текстовое действие в 2 слова плюс иконка закрытия; порядок «отменяющее слева — подтверждающее справа»; всё, что не влезло, — в шторку."
+   ],
+   "src": "Источники: Material Design 2 · Banners (https://m2.material.io/components/banners) · MDC Web · Banner (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/_banner-theme.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">warning</span></span><span>Нужно подтверждение действия</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Подтвердить</span></button></div></div></div>",
+   "example_ru": "Два текстовых действия: «Отмена» слева, «Подтвердить» справа — третья кнопка в баннер не влезает и уходит в шторку."
+  },
+  {
+   "title": "Длинный текст и ошибки формы",
+   "items": [
+    "Что происходит: текст баннера в две-три строки не влезает в фиксированную высоту, а ошибки валидации показывают баннером, и пользователь не понимает, какое поле исправить.",
+    "Что делают системы: GOV.UK: «Do not: use a notification banner to tell the user about validation errors — use an Error message component» и требует доступность — «Use `role=\"region\"` and `aria-labelledby=\"govuk-notification-banner-title\"` … so that screen reader users can navigate to the notification banner.»; там же сказано, что пользователи часто пропускают важное в баннерах, включая тех, кто пользуется ассистивными технологиями.",
+    "Что делать нам: 52 px — минимум для одной строки, максимум 2–3 строки и ссылка «Подробнее»; ошибки полей показывать у полей, а не баннером; заголовок баннера связывать с aria-labelledby."
+   ],
+   "src": "Источники: GOV.UK Design System · Notification banner (https://design-system.service.gov.uk/components/notification-banner/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\" style=\"align-items:flex-start\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Заказы за 8 августа не отправлены: нет связи с принтером. Проверьте кабель и повторите отправку.</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Подробнее</span></button></div></div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Ошибка поля показана у поля: «Адрес доставки обязателен»</div></div>",
+   "example_ru": "Текст баннера — до трёх строк и одно действие «Подробнее»; ошибки валидации баннером не показываем, они стоят у полей."
+  }
+ ]
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Textarea — Desktop и Mobile</title>
+<link rel="stylesheet" href="../../../iiko-ds-web/font.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/tokens.css?v=1789259179">
+<link rel="stylesheet" href="../../modes.css?v=1789259179">
+<link rel="stylesheet" href="../../components/index.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/styles.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/index.css?v=1789259179">
+<!-- Автоген не подключил эти четыре файла в агрегаторе библиотеки — без них
+     Checkbox и Radio рисуются системным контролом браузера (13 × 13 вместо
+     маркера 20 × 20). Подключаем их явно на странице; библиотека не правится. -->
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Checkbox_DS/checkbox.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Checkbox_DS/checkbox-icons.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Radio-Button_DS/radio.css?v=1789259179">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Radio-Button_DS/radio-icons.css?v=1789259179">
+<link rel="stylesheet" href="rec.css?v=1789259179">
+<style id="live"></style>   <!-- сюда попадают правки из колонки «Правка» -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<div class="wrap">
+  <p class="crumbs"><a href="index.html#textarea">← Все компоненты</a></p>
+  <h1>Textarea</h1>
+  <p class="desc">Многострочное поле: комментарий, описание, адрес. Растёт при наборе — фиксированной высоты нет ни у одной платформы.</p>
+  <p class="cat"><b>Только размеры</b> · меняется минимальная высота и рост поля; паддинги, кегль и цвета те же</p>
+
+  <div class="compare">
+<div class="panel" data-mode="desktop"><div class="panel__head"><span class="panel__title">Desktop</span><span class="panel__sub">кадр 76 px, фиксированный</span></div><div class="panel__body"><div class="ex"><p class="ex__title">Пустое поле с плейсхолдером</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-textarea"><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Комментарий к заказу"></textarea></div></div></div></div></div></div><div class="ex"><p class="ex__title">С текстом в три строки</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-textarea"><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст">Доставить к 11:00. Позвонить за 15 минут. Пропуск на территории.</textarea></div></div></div></div></div></div><div class="ex"><p class="ex__title">С лейблом и подсказкой</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-textarea"><span class="ds-textarea__label">Комментарий</span><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст"></textarea></div></div><div class="ds-textarea__support"><span class="ds-textarea__hint">До 500 символов</span></div></div></div></div></div><div class="ex"><p class="ex__title">Недоступное</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-textarea ds-textarea--disabled"><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст" disabled>Поле заблокировано</textarea></div></div></div></div></div></div></div></div>
+<div class="panel" data-mode="mobile"><div class="panel__head"><span class="panel__title">Mobile</span><span class="panel__sub">минимум 3 строки + паддинги = 104 px, растёт</span></div><div class="panel__body"><div class="ex"><p class="ex__title">Пустое поле с плейсхолдером</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-textarea"><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Комментарий к заказу"></textarea></div></div></div></div></div></div><div class="ex"><p class="ex__title">С текстом в три строки</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-textarea"><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст">Доставить к 11:00. Позвонить за 15 минут. Пропуск на территории.</textarea></div></div></div></div></div></div><div class="ex"><p class="ex__title">С лейблом и подсказкой</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-textarea"><span class="ds-textarea__label">Комментарий</span><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст"></textarea></div></div><div class="ds-textarea__support"><span class="ds-textarea__hint">До 500 символов</span></div></div></div></div></div><div class="ex"><p class="ex__title">Недоступное</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-textarea ds-textarea--disabled"><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст" disabled>Поле заблокировано</textarea></div></div></div></div></div></div></div></div>
+  </div>
+
+<div class="card">
+    <h2>На экране</h2>
+    <div class="editrow"><div><div class="phones"><div class="phones__item"><div class="phone"><div class="phone__screen" data-mode="mobile"><div class="phone__status"><span>9:41</span><span class="phone__ic"><span class="material-icons">signal_cellular_alt</span><span class="material-icons">wifi</span><span class="material-icons">battery_full</span></span></div><div class="phone__head"><span class="material-icons">arrow_back</span><span class="phone__title">Доставка</span><span class="material-icons">more_vert</span></div><div class="phone__body"><div class="phone__row">Доставка к 11:00 · Ленина 15, офис 3</div><div class="ds-textarea"><span class="ds-textarea__label">Комментарий</span><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст">Позвонить за 15 минут. Пропуск на территории.</textarea></div></div><div class="ds-textarea__support"><span class="ds-textarea__hint">До 500 символов</span></div></div></div><div class="phone__foot"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Сохранить</span></button><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined" type="button"><span class="ds-btn__label">Отмена</span></button></div><div class="phone__scrim"></div><div class="phone__sheet"><p class="phone__sheet-title">Комментарий</p><p class="phone__sheet-text">Доставка к 11:00 · Ленина 15</p><div class="phone__list"><div class="phone__row">Позвонить за 15 минут. Пропуск на территории.</div><div class="phone__row">До 500 символов</div></div><div class="phone__actions"><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" type="button"><span class="ds-btn__label">Отмена</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Сохранить</span></button></div></div></div></div><p class="phone__caption">Многострочное поле в форме: лейбл, три строки, подсказка «До 500 символов»</p></div><div class="phones__item"><div class="phone"><div class="phone__screen" data-mode="mobile" data-preview="edit"><div class="phone__status"><span>9:41</span><span class="phone__ic"><span class="material-icons">signal_cellular_alt</span><span class="material-icons">wifi</span><span class="material-icons">battery_full</span></span></div><div class="phone__head"><span class="material-icons">arrow_back</span><span class="phone__title">Доставка</span><span class="material-icons">more_vert</span></div><div class="phone__body"><div class="phone__row">Доставка к 11:00 · Ленина 15, офис 3</div><div class="ds-textarea"><span class="ds-textarea__label">Комментарий</span><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст">Позвонить за 15 минут. Пропуск на территории.</textarea></div></div><div class="ds-textarea__support"><span class="ds-textarea__hint">До 500 символов</span></div></div></div><div class="phone__foot"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Сохранить</span></button><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined" type="button"><span class="ds-btn__label">Отмена</span></button></div><div class="phone__scrim"></div><div class="phone__sheet"><p class="phone__sheet-title">Комментарий</p><p class="phone__sheet-text">Доставка к 11:00 · Ленина 15</p><div class="phone__list"><div class="phone__row">Позвонить за 15 минут. Пропуск на территории.</div><div class="phone__row">До 500 символов</div></div><div class="phone__actions"><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" type="button"><span class="ds-btn__label">Отмена</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Сохранить</span></button></div></div></div></div><p class="phone__caption">Тот же экран, с правками из таблицы справа</p></div></div></div><div class="edits"><table><tr><th>Что</th><th>Правка</th></tr><tr><td>Высота кадра</td><td class="edit"><input class="edit__input" type="number" step="1" value="104" data-id="min-height" data-sel=".ds-textarea__input-frame" data-css="min-height:@px" data-sync-field="pad-t" data-sync-a="0.5" data-sync-b="-36" aria-label="Высота кадра"></td></tr><tr><td>Паддинги</td><td class="edit"><input class="edit__input" type="number" step="1" value="16" data-id="pad-t" data-sel=".ds-textarea__input-frame" data-css="padding-top:@px" aria-label="Паддинги"><input class="edit__input" type="number" step="1" value="16" data-id="pad-r" data-sel=".ds-textarea__input-frame" data-css="padding-right:@px" aria-label="Паддинги"><input class="edit__input" type="number" step="1" value="16" data-id="pad-b" data-sel=".ds-textarea__input-frame" data-css="padding-bottom:@px" aria-label="Паддинги"><input class="edit__input" type="number" step="1" value="16" data-id="pad-l" data-sel=".ds-textarea__input-frame" data-css="padding-left:@px" aria-label="Паддинги"></td></tr></table><p class="point">Правка применяется к правому экрану. Левый — значения как рекомендовано.</p></div></div>
+  </div>
+
+  <div class="card">
+    <h2>Что меняется на мобиле</h2>
+    <table><tr><th>Что</th><th>Desktop</th><th>Mobile</th></tr><tr><td>Высота кадра</td><td>76 px, фиксированная</td><td>не фиксирована: минимум 3 строки × 24 + паддинги 16 и 16 = 104 px</td></tr><tr><td>Рост при наборе</td><td>по rows, но кадр держит 76 px</td><td>растёт свободно (height: auto), размер можно тянуть</td></tr><tr><td>Паддинги</td><td>4 / 12 / 12 / 12</td><td>16 / 16 / 16 / 16 — как у однострочного поля M</td></tr><tr><td>Кегль ввода</td><td>16 / 24</td><td>16 / 24 — тот же: правило «не меньше 16 px», иначе iOS зумит при фокусе</td></tr><tr><td>Лейбл, подсказка, цвета</td><td>16 px лейбл · 12 px подсказка · фон #F8F9FC, рамка 1 px #E0E0E0</td><td>16 px лейбл, 12 px подсказка, фон #F8F9FC, рамка 1 px #E0E0E0 — те же, стилевые токены общие</td></tr></table>
+    <p class="point" style="margin-top:10px">На мобиле кадр не держит высоту: чем больше текста, тем выше поле — как в браузере по умолчанию. Разметка та же, добавляется только <code>rows</code> у самого <code>textarea</code>.</p>
+  </div>
+
+<div class="card">
+    <h2>Примерные паттерны поведения</h2>
+    <div class="pat__bar"><button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text pat__arrow pat__arrow--left" type="button" aria-label="Предыдущие паттерны" hidden><span class="ds-btn-icon__icon"><span class="material-icons" style="font-size:24px">chevron_left</span></span></button><div class="ds-tabs ds-tabs--lvl2 pat__tabs" role="tablist"><button class="ds-tab ds-tab--active" type="button" role="tab" data-pat="pat-textarea-0">Высота по строкам, а не токеном</button><button class="ds-tab" type="button" role="tab" data-pat="pat-textarea-1">Авторост поля с границей</button><button class="ds-tab" type="button" role="tab" data-pat="pat-textarea-2">Ручка ресайза бесполезна на телефоне</button><button class="ds-tab" type="button" role="tab" data-pat="pat-textarea-3">Счётчик символов</button><button class="ds-tab" type="button" role="tab" data-pat="pat-textarea-4">Подпись и подсказка многострочного поля</button><button class="ds-tab" type="button" role="tab" data-pat="pat-textarea-5">Кегль ввода и тач-минимум</button></div><button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text pat__arrow pat__arrow--right" type="button" aria-label="Следующие паттерны" hidden><span class="ds-btn-icon__icon"><span class="material-icons" style="font-size:24px">chevron_right</span></span></button></div>
+    <div class="pat__body"><div class="pat__panel" data-pat-panel="pat-textarea-0"><ul class="list"><li>Что происходит: у многострочного поля нет размера по умолчанию — на десктопе оно 5 строк, и те же 5 строк на телефоне съедают пол-экрана и выталкивают кнопку сохранения.</li><li>Что делают системы: MD3 высоту textarea как токен не задаёт — «Textareas can specify the initial number of `rows`. Use CSS `width`, `height`, and `resize` to control the resize behavior of a textarea»; GOV.UK требует соразмерности содержимому: «Make the height of a textarea proportional to the amount of text you expect users to enter. You can set the height of a textarea by specifying the `rows` attribute»; Carbon фиксирует только нижнюю границу — «By default, text area has a minimum height of 40px/2.5rem but no maximum height».</li><li>Что делать нам: в мобильном ДС два размера — 3 строки для короткой заметки и 6 строк для комментария, при этом поле не ниже 40 px (граница Carbon).</li></ul><p class="plat__src">Источники: Material Design 3 · Text field docs (raw.githubusercontent.com/material-components/material-web/main/docs/components/text-field.md) · GOV.UK Design System · Textarea (design-system.service.gov.uk/components/textarea/) · IBM Carbon · Text input usage, sizing (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Поле в три строки (rows=&quot;3&quot;) — короткая заметка; нижняя граница по Carbon — 40 px / 2.5 rem, максимума у платформы нет.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div class="ds-textarea"><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Комментарий к заказу"></textarea></div></div></div></div></div></div></div></div><div class="pat__panel" data-pat-panel="pat-textarea-1" hidden><ul class="list"><li>Что происходит: поле растёт с каждой строкой и на телефоне уползает вместе с кнопкой сохранения: пользователь пишет длинный комментарий и не видит, чем его сохранить.</li><li>Что делают системы: Angular даёт авторазмер директивой `cdkTextareaAutosize`, Ant Design — настройкой с границами: `autoSize` («Height auto size feature») умеет `true | false` или объект `{ minRows: 2, maxRows: 6 }`; Carbon напоминает, что при переполнении внутри поля включается своя прокрутка: «If the user makes the field size shorter than the content inside the field then a vertical scroll will become available».</li><li>Что делать нам: авторост разрешаем с жёсткими границами minRows = 3, maxRows = 6, дальше — внутренняя прокрутка; кнопка сохранения при этом остаётся на экране.</li></ul><p class="plat__src">Источники: Angular Material · Input docs (raw.githubusercontent.com/angular/components/main/src/material/input/input.md) · Ant Design · Input (ant.design/components/input) · IBM Carbon · Text input usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Верхняя граница роста — шесть строк (у Ant Design `autoSize` ограничивают `{ minRows: 2, maxRows: 6 }`), дальше текст уходит во внутреннюю прокрутку поля.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div class="ds-textarea"><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="6" placeholder="Комментарий к заказу"></textarea></div></div></div></div></div></div></div></div><div class="pat__panel" data-pat-panel="pat-textarea-2" hidden><ul class="list"><li>Что происходит: в разметке остаётся `resize: both` из десктопа — за уголок поля на телефоне не взяться, зато случайный жест меняет ширину и ломает сетку.</li><li>Что делают системы: Carbon описывает ограничение прямо — «The resize handle has no effect on the width of the text area container, it only effects the height», то есть ширина поля не меняется никогда, а если содержимое больше поля, включается вертикальная прокрутка внутри него.</li><li>Что делать нам: в мобильном слое ДС `resize` выключен совсем (ни вертикального, ни горизонтального), размер задаётся числом строк и авторостом.</li></ul><p class="plat__src">Источники: IBM Carbon · Text input usage, resize handle (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx) · Ant Design · Input.TextArea (ant.design/components/input)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">У поля нет ручки ресайза: ширина не меняется никогда (Carbon), высота задаётся числом строк, а лишний текст прокручивается внутри поля.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div class="ds-textarea"><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Комментарий к заказу"></textarea></div></div></div></div></div></div></div></div><div class="pat__panel" data-pat-panel="pat-textarea-3" hidden><ul class="list"><li>Что происходит: ограничение по символам всплывает только при отправке формы — длинный комментарий не влезает, и пользователь теряет написанное.</li><li>Что делают системы: Carbon требует и счётчика, и остановки ввода на лимите: «A character counter can be added to text area to indicate both the number of characters being entered and the total number of characters allowed. Once the max number of characters is reached the text area should prevent the user from entering any additional character and provide messaging to the user that a limit has been met»; GOV.UK задаёт формулировку — «Say ‘[whatever it is] must be [number] characters or less’» с примером «Summary must be 400 characters or less».</li><li>Что делать нам: счётчик показываем сразу (12 px под полем), при достижении лимита ввод останавливаем и пишем «Не больше 500 символов» — той же формулировкой, что и в подсказке.</li></ul><p class="plat__src">Источники: IBM Carbon · Text input usage, character counter (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx) · GOV.UK Design System · Textarea (design-system.service.gov.uk/components/textarea/)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Лимит показан под полем подсказкой «До 500 символов» (GOV.UK рекомендует формулировку «must be 400 characters or less»), счётчик — строкой 12 px, а не внутри поля.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div class="ds-textarea"><span class="ds-textarea__label">Комментарий</span><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст"></textarea></div></div><div class="ds-textarea__support"><span class="ds-textarea__hint">До 500 символов</span></div></div></div></div></div></div></div><div class="pat__panel" data-pat-panel="pat-textarea-4" hidden><ul class="list"><li>Что происходит: в «Комментарии» пишут название блюда, потому что placeholder «Введите текст» ничего не объясняет, а после начала ввода вся подсказка исчезает.</li><li>Что делают системы: GOV.UK без исключений — «You must label textareas. Placeholder text is not a suitable substitute for a label, as it disappears when users click inside the textarea»; Carbon строит поле как label и helper text снаружи поля и требует короткой подписи без двоеточия; MD3 оставляет паддинги поля по 16 px сверху и снизу, чтобы подпись и текст не смыкались.</li><li>Что делать нам: подпись над полем всегда, подсказка — строкой под полем и не исчезает во время ввода; placeholder — только пример текста внутри поля.</li></ul><p class="plat__src">Источники: GOV.UK Design System · Textarea (design-system.service.gov.uk/components/textarea/) · IBM Carbon · Text input usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/text-input/usage.mdx) · Material Design 3 · токены Filled text field (raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-filled-text-field.scss)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Подпись «Комментарий» стоит над полем, подсказка «До 500 символов» — строкой под ним: placeholder исчезает при вводе и подписью быть не может.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div class="ds-textarea"><span class="ds-textarea__label">Комментарий</span><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст"></textarea></div></div><div class="ds-textarea__support"><span class="ds-textarea__hint">До 500 символов</span></div></div></div></div></div></div></div><div class="pat__panel" data-pat-panel="pat-textarea-5" hidden><ul class="list"><li>Что происходит: чтобы втиснуть форму, поле ужимают по кеглю до 13 px — читать собственный текст неудобно, а попасть в поле пальцем неточно.</li><li>Что делают системы: MD3 держит вводимый текст на `body-large` (1 rem, то есть 16 px) и общий тач-минимум платформы 48 dp (`$height: 48px` в пакете touch-target); Angular задаёт тот же 1 rem на ввод; Apple фиксирует тач-зону 44×44 pt и кегль 17 pt по умолчанию, а для многострочного ввода держит отдельный компонент Text view («Use a text view when you need to display text that’s long, editable, or in a special format»).</li><li>Что делать нам: кегль ввода в textarea на мобиле — 16 px, высота зоны нажатия — не меньше 44 px; уменьшение кегля ради вёрстки в мобильном ДС запрещено.</li></ul><p class="plat__src">Источники: Material Design 3 · токены Filled text field (raw.githubusercontent.com/material-components/material-web/main/tokens/_md-comp-filled-text-field.scss) · Google Material Components Web · Touch target (raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-touch-target/_touch-target.scss) · Angular Material · Input docs (raw.githubusercontent.com/angular/components/main/src/material/input/input.md) · Apple HIG · Text views (developer.apple.com/design/human-interface-guidelines/text-views) и Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility)</p><div class="ex pat__ex"><p class="ex__title">Пример</p><p class="pat__ex-note">Поле в заблокированном виде: кегль 16 px (1 rem у MD3 и Angular), зона нажатия — не меньше 44 pt; недоступное состояние отличается цветом и подписью, а не размером текста.</p><div class="ex__row"><div class="ex__inner"><div class="pat__phone"><div class="ds-textarea ds-textarea--disabled"><div class="ds-textarea__input-frame"><div class="ds-textarea__input-content"><textarea class="ds-textarea__field" rows="3" placeholder="Текст" disabled>Поле заблокировано</textarea></div></div></div></div></div></div></div></div></div>
+  </div>
+
+  <div class="card">
+    <h2>Почему так</h2>
+    <p class="point">Фиксированной высоты у многострочного поля нет ни на одной платформе. MD3 — это text field с <code>type="textarea"</code>: высота задаётся числом строк (пример в документации — <code>rows="3"</code>), общие с полем значения: паддинги 16 и кегль ввода body-large (16). Angular Material — <code>&lt;textarea matInput&gt;</code> с <code>rows</code> и <code>cdkTextareaAutosize</code> (авто-высота); его шкала 56/52/48/44/40/36 описывает однострочный контейнер, а не textarea. Apple — Text view: «высота не ограничена» плюс прокрутка, минимум области касания 44 pt. Размерного ряда (small/medium/large) у textarea нет нигде, а фиксированная высота прямо не рекомендуется — поэтому на мобиле зафиксирован только минимум: три строки.</p>
+  </div>
+
+  <div class="card">
+    <h2>Итог</h2>
+    <ul class="list"><li>Минимум 104 px на мобиле = 3 строки по 24 плюс паддинги 16 и 16 — те же числа, что у поля M.</li><li>Фиксированные 76 px остались только на десктопе; на мобиле кадр растёт с текстом.</li><li>Лейбл, подсказка, кегль и цвета не менялись — это ось темы.</li><li><b>Найдено:</b> у элемента <code>.ds-textarea__field</code> (сам <code>textarea</code>) в компонентном CSS нет базовых правил — только <code>--disabled</code>; в прототипах его стилизуют страницы. Это стоит доделать в ДС.</li><li><b>Не решено:</b> авто-рост по содержимому в CSS невозможен — нужен либо <code>cdkTextareaAutosize</code> (Angular), либо <code>rows</code> на стороне использования.</li></ul>
+  </div>
+<div class="card">
+  <h2>Найдено в ДС (в библиотеке не правим)</h2>
+  <ul class="list"><li>Подпись-подсказка под полем объявлена высотой 16 px (<code>--ds-size-4x</code>), а строка текста в ней 19 px — три пикселя срезаются (замер 12.09.2026: бокс 155×16, контент 155×19). Внутри панелей высота по контенту; библиотека не правится.</li></ul>
+</div>
+</div>
+<script>
+/* Поля «Правка»: введённое число применяется к компоненту во ВТОРОМ экране блока
+   «На экране» (он помечен data-preview="edit"); первый экран остаётся со
+   значениями как рекомендовано — их и сравниваем. Правило пишется в
+   <style id="live">, поэтому работает и для псевдоэлементов (тач-зона).
+   В шаблоне поля «@» заменяется на введённое число. Пока поле не тронуто,
+   правило не пишется — экраны остаются как есть. */
+(function () {
+  var live = document.getElementById('live');
+  var fields = [].slice.call(document.querySelectorAll('.edit__input'));
+  if (!live || !fields.length) return;
+  var byId = {};
+  fields.forEach(function (f) { if (f.getAttribute('data-id')) byId[f.getAttribute('data-id')] = f; });
+  function rebuild() {
+    var rules = [];
+    fields.forEach(function (f) {
+      if (!f.__touched) return;
+      var v = f.value === '' ? f.getAttribute('value') : f.value;
+      rules.push('[data-mode="mobile"][data-preview="edit"].phone__screen ' + f.getAttribute('data-sel') +
+                 '{' + f.getAttribute('data-css').split('@').join(v) + '}');
+    });
+    live.textContent = rules.join(String.fromCharCode(10));
+  }
+  /* Связанное значение пересчитывается по линейной формуле t = a * v + b
+     (например высота 40 → паддинг 0.5 * 40 - 10 = 10) и сразу видно в поле. */
+  function syncFields(f) {
+    var target = f.getAttribute('data-sync-field');
+    if (!target || !byId[target]) return;
+    var a = parseFloat(f.getAttribute('data-sync-a'));
+    var b = parseFloat(f.getAttribute('data-sync-b'));
+    var v = parseFloat(f.value);
+    if (isNaN(a) || isNaN(v)) return;
+    var t = byId[target];
+    t.value = Math.round((a * v + b) * 100) / 100;
+    t.__touched = true;
+  }
+  fields.forEach(function (f) {
+    f.addEventListener('input', function () {
+      f.__touched = true;
+      syncFields(f);
+      rebuild();
+    });
+  });
+})();
+/* Табы блока «Примерные паттерны поведения»: показывается паттерн выбранного таба,
+   остальные скрыты. Своих компонентов не заводим — только переключение видимости
+   готовых блоков, поэтому на странице видно ровно тот случай, что назван в табе. */
+(function () {
+  var bars = [].slice.call(document.querySelectorAll('.pat__tabs'));
+  bars.forEach(function (bar) {
+    var tabs = [].slice.call(bar.querySelectorAll('.ds-tab'));
+    var panels = [].slice.call(document.querySelectorAll('.pat__panel'));
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        tabs.forEach(function (o) { o.classList.toggle('ds-tab--active', o === t); });
+        panels.forEach(function (p) {
+          p.hidden = p.getAttribute('data-pat-panel') !== t.getAttribute('data-pat');
+        });
+      });
+    });
+  });
+})();
+/* Стрелки у ряда табов: ряд листается на шесть десятых его ширины (но не меньше
+   160 px). Стрелки видны только когда табы не влезают, и та из них, в сторону которой
+   листать нечего, становится недоступной — видно, что список кончился. */
+(function () {
+  [].slice.call(document.querySelectorAll('.pat__bar')).forEach(function (bar) {
+    var row = bar.querySelector('.pat__tabs');
+    var left = bar.querySelector('.pat__arrow--left');
+    var right = bar.querySelector('.pat__arrow--right');
+    if (!row || !left || !right) return;
+    function step() { return Math.max(160, Math.round(row.clientWidth * 0.6)); }
+    function sync() {
+      var rest = row.scrollWidth - row.clientWidth;
+      var over = rest > 1;
+      left.hidden = right.hidden = !over;
+      if (!over) return;
+      left.disabled = row.scrollLeft <= 1;
+      right.disabled = row.scrollLeft >= rest - 1;
+    }
+    left.addEventListener('click', function () { row.scrollLeft -= step(); setTimeout(sync, 260); });
+    right.addEventListener('click', function () { row.scrollLeft += step(); setTimeout(sync, 260); });
+    row.addEventListener('scroll', sync);
+    window.addEventListener('resize', sync);
+    setTimeout(sync, 50);
+  });
+})();
+</script>
+</body>
+</html>

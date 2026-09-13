@@ -1,0 +1,180 @@
+{
+ "slug": "chips-input",
+ "component": "Chips input",
+ "ds_page": "Chips-Input_DS",
+ "desc_ru": "Поле со значениями-чипами: метки внутри поля ввода, поле растёт по строкам. Числа — от поля и от чипа.",
+ "category_ru": "Размеры + поведение",
+ "category_note_ru": "чипы и тач-зона те же; паддинги как у поля; выбор значений — из шторки",
+ "summary_ru": "Паддинги кадра — как у поля M на мобиле (16 по бокам), чипы — обычные чипы: 32 px и тач-зона 48. Выбор значений делается шторкой снизу, а не выпадающим списком.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "кадр с паддингом 12"
+  },
+  "mobile": {
+   "sub_ru": "кадр с паддингом 16, тач 48 у чипов"
+  }
+ },
+ "changes": [
+  {
+   "what": "Чипы в поле",
+   "desktop": "32 px, тач по контуру",
+   "mobile": "32 px + тач-зона 48 × 48 — как у обычных чипов",
+   "edit": [
+    {
+     "id": "chip-h",
+     "v": 32,
+     "sel": ".ds-chips",
+     "css": "height:@px"
+    },
+    {
+     "id": "touch-w",
+     "v": 48,
+     "sel": ".ds-chips::after",
+     "css": "width:@px"
+    },
+    {
+     "id": "touch-h",
+     "v": 48,
+     "sel": ".ds-chips::after",
+     "css": "height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Паддинги кадра",
+   "desktop": "12 по бокам",
+   "mobile": "16 по бокам — как у поля M",
+   "edit": [
+    {
+     "id": "pad-h",
+     "v": 16,
+     "sel": ".ds-chips-input__frame",
+     "css": "padding-left:@px; padding-right:@px"
+    }
+   ]
+  },
+  {
+   "what": "Рост поля",
+   "desktop": "по строкам",
+   "mobile": "так же; чипы переносятся на новые строки"
+  },
+  {
+   "what": "Выбор значений",
+   "desktop": "выпадающий список под полем",
+   "mobile": "шторка снизу (по плану и по практике Angular: выбор из оверлея)"
+  },
+  {
+   "what": "Кегль, цвета, состояния",
+   "desktop": "14 / 20, фон #F8F9FC",
+   "mobile": "14 / 20, фон #F8F9FC — те же, стилевые токены общие",
+   "edit": [
+    {
+     "id": "font",
+     "v": 14,
+     "sel": ".ds-chips-input",
+     "css": "font-size:@px"
+    }
+   ]
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Сам чип-ввод — это текстовое поле, число которого берётся от поля (MD3: чип 32 dp, тач-таргет 48 dp, аватар 24, иконка 18). Единственное поведенческое изменение — контейнер выбора: на мобиле это шторка снизу.</p>",
+ "why_ru": "Chips input есть и в MD3, и в Angular Material, но как паттерн, а не отдельный компонент: MD3 — текстовое поле плюс <code>md-input-chip</code>, Angular — <code>mat-chip-grid</code> + <code>mat-chip-row</code> + <code>matChipInputFor</code>. Числа совпадают: высота чипа 32 dp (в Angular ещё 28 и 24 — это плотности), аватар 24 dp, иконка 18 dp. Отдельно MD3 задаёт тач-таргет чипа-строки 48 dp независимо от его высоты — это и есть причина тач-слоя. Шкалы размеров у чипов нет ни там, ни там, чип-ввод вне грида не рекомендуется (MD3 требует чип-сет, Angular — mat-chip-grid).",
+ "result_html": "<ul class=\"list\"><li>Чипы в поле остались 32 px, но получили тач-зону 48 — ровно то, что MD3 предписывает чипу-строке.</li><li>Паддинги кадра стали 16 по бокам — как у поля M на мобиле.</li><li>Выбор значений из шторки снизу — поведение страницы, в CSS его нет.</li><li><b>Не решено:</b> в ДС два варианта компонента (<code>ds-chips-input</code> и <code>ds-chips-input-2</code>) с разными токенами паддингов — стоит свести к одному.</li><li><b>Не решено:</b> аватар (24 dp) и иконка (18 dp) в ДС не заданы — если чипы будут с аватарами, это новая функциональность.</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Поле с чипами",
+   "html": "<div class=\"ds-chips-input\" style=\"width:320px\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "Чипы переносятся на строки",
+   "html": "<div class=\"ds-chips-input\" style=\"width:240px\"><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Первая</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Вторая</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Третья</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Четвёртая</span></div><input type=\"text\" placeholder=\"Ещё\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none\"></div></div></div>",
+   "stack": true
+  }
+ ],
+ "found_html": "<p><b>box-sizing у кадров и строк.</b> В библиотеке нет <code>box-sizing: border-box</code>, поэтому высота из токена/числа складывалась с паддингами: кадр поля 48 px показывался как 74, кадр textarea 76 как 94, строка списка 68 как 84. В прототипах ДС это лечат на странице (<code>.js-select .ds-select-form__input-frame{box-sizing:border-box;height:48px}</code>) — в каркасе страниц повторено то же для всех таких классов. Библиотеку не правим.</p>",
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Отдельного компонента «chips input» в MD3 нет — это композиция текстового поля и input-чипов; Angular делает то же через mat-chip-grid + mat-chip-row (chips-input.json).",
+    "Высота чипа 32 dp совпадает у MD3 («container-height»: 32px) и Angular; 28 и 24 px — это только шаг плотности Angular −1 / −2 (chips-input.json).",
+    "Тач-таргет задан отдельно: «.touch { height: 48px; ... }» — нажимается 48 dp независимо от высоты чипа 32 dp (chips-input.json).",
+    "Аватар 24 dp и иконка 18 dp — из тех же токенов; все input-чипы съёмные («All input chips are removable») (chips-input.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Компонента Chips input в iOS HIG нет — страницы /chips и /chips-input → 404 (chips-input.json).",
+    "Чисел в pt для чипов Apple не публикует — эквивалента «чипов внутри поля» в HIG нет вовсе (chips-input.json).",
+    "Значит переносить паттерн на iOS нельзя: альтернативу (теги, список выбранного) придётся описывать самостоятельно (chips-input.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Чипы в поле не растягивать: 32 px — платформенная высота, расти должна тач-зона до 48.",
+  "Паддинги кадра — 16 по бокам, как у поля M на мобиле: поле ввода не должно отличаться от обычного инпута.",
+  "Выбор значений на телефоне делать шторкой снизу, а не выпадающим списком под полем.",
+  "Чипы переносятся на новые строки, поле растёт по содержимому — не делать горизонтальный скролл внутри поля.",
+  "Крестик удаления должен быть доступен отдельно от тапа по чипу, иначе удалять приходится с промахами."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Блюдо</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Халяль</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Веган</span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div><div class=\"ds-input ds-input--m\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Название позиции\"></div></div></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Категория</span><span class=\"ds-list-item__text\">Пицца</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\"></span></div></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Метки блюда</p><p class=\"phone__sheet-text\">Метки живут внутри поля — набором</p><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Халяль</span></div><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Веган</span></div><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Ещё одна метка — по желанию</span></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Карточка блюда: метки-чипы внутри поля; в шторке те же подписи без поля</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Блюдо</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Халяль</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Веган</span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div><div class=\"ds-input ds-input--m\"><div class=\"ds-input__frame\"><div class=\"ds-input__content\"><input class=\"ds-input__field\" type=\"text\" placeholder=\"Название позиции\"></div></div></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Категория</span><span class=\"ds-list-item__text\">Пицца</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\"></span></div></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Метки блюда</p><p class=\"phone__sheet-text\">Метки живут внутри поля — набором</p><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Халяль</span></div><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Веган</span></div><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Ещё одна метка — по желанию</span></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "Много чипов — поле растёт и уезжает",
+   "items": [
+    "Что происходит: после 8–10 чипов поле ввода растёт на пол-экрана, кнопка добавления уезжает вниз, форма перестаёт помещаться и перекрывается клавиатурой.",
+    "Что делают системы: Ant Design ограничивает вывод чипов — «maxTagCount | Max tag count to show. `responsive` will cost render performance» и «maxTagPlaceholder | Placeholder for not showing tags»; в MD3 контейнер чипа держится фиксированным: «container-height: … 32px».",
+    "Что делать нам: после 5–6 чипов показывать «+5 ещё» (открывает шторку со списком и удалением), поле не растить больше 3–4 строк и держать его видимым над клавиатурой."
+   ],
+   "src": "Источники: Ant Design · Select (https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md) · Material Design 3 · Input chip (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-input-chip.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Бекон</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Оливки</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">+5 ещё</span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div></div>",
+   "example_ru": "После пяти чипов поле не растёт: шестой заменяет «+5 ещё», чипы переносятся на вторую строку, а поле ввода остаётся видимым над клавиатурой."
+  },
+  {
+   "title": "Крестик съёма — отдельная цель",
+   "items": [
+    "Что происходит: чип снимают тапом по крестику 18 px внутри чипа 32 px; вместо съёма открывается выбор значения или снимается соседний чип.",
+    "Что делают системы: в MD3 иконка в чипе — «with-leading-icon-leading-icon-size: … 18px», а тач-таргет шире — «.touch { height: 48px; … width: 100%; }»; при этом «All input chips are removable».",
+    "Что делать нам: у крестика своя зона не меньше 44–48 px, клик по телу чипа не удаляет; удаление дублировать действием «Снять» в списке подсказок и в шторке."
+   ],
+   "src": "Источники: Material Design 3 · Chips (https://raw.githubusercontent.com/material-components/material-web/main/chips/internal/_shared.scss) · Material Design 3 · Input chip (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-input-chip.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div></div>",
+   "example_ru": "У крестика чипа своя зона 44–48 px, а клик по телу чипа значение не снимает: «Сыр» снимается по «×», а не случайным касанием."
+  },
+  {
+   "title": "Ввод по разделителям и клавиатура",
+   "items": [
+    "Что происходит: чтобы получить чип, нужно набрать текст и нажать Enter или запятую; на мобиле Enter — это «Готово», и чип не создаётся.",
+    "Что делают системы: у Angular Material ввод идёт через директиву «matChipInputFor» с набором разделителей «matChipInputSeparatorKeyCodes», удаление — по клавише Delete; Ant Design даёт «tokenSeparators | Separator used to tokenize, only applies when `mode=\"tags\"` or `mode=\"multiple\"`».",
+    "Что делать нам: рядом с полем — кнопка «Добавить», активная при непустом вводе; создание чипа по запятой, по «Готово» и по кнопке, а не только по Enter."
+   ],
+   "src": "Источники: Angular Material · Chips (https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md) · Ant Design · Select (https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input\" style=\"width:100%\"><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><input type=\"text\" value=\"Соус\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div><div class=\"pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Добавить</span></button></div></div>",
+   "example_ru": "Рядом с полем кнопка «Добавить», активная при непустом вводе: чип создаётся по запятой, по «Готово» и по кнопке, а не только по Enter."
+  },
+  {
+   "title": "Выбор значения: список под полем или шторка",
+   "items": [
+    "Что происходит: подсказки открываются абсолютным списком под полем, их накрывает клавиатура, и до нижних вариантов не добраться.",
+    "Что делают системы: Ant Design включает виртуальный скролл по умолчанию и предупреждает о цене для скринридеров — «Default virtual scrolling will create a mock element to simulate an accessible binding…»; Carbon для мобильных форм прямо советует нативный select: «The native HTML select works more easily when submitting data and is also easier to use on a mobile platform.»",
+    "Что делать нам: выбирать значения шторкой снизу, высота строки в списке — не меньше 48 px, счётчик выбранных — в заголовке шторки, закрытие — тапом по scrim и кнопкой «Готово»."
+   ],
+   "src": "Источники: Ant Design · Select (https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md) · IBM Carbon · Dropdown (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/dropdown/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div><div style=\"background:#FFFFFF;border:1px solid #E0E0E0;border-radius:12px;padding:8px 0;display:flex;flex-direction:column\"><span style=\"font-size:14px;line-height:20px;font-weight:500;padding:8px 16px\">Выбрано: 2</span></div><div style=\"min-height:0;display:flex;flex-direction:column\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-menu-item__text\" style=\"background:none\">Приправа</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-menu-item__text\" style=\"background:none\">Оливки</span></div></div></div><div class=\"pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div></div>",
+   "example_ru": "Значения выбираются шторкой снизу: строки по 48 px, счётчик выбранных «Выбрано: 2» в заголовке, закрытие — тапом по scrim и кнопкой «Готово»."
+  },
+  {
+   "title": "Чип и набираемый текст — не одно и то же",
+   "items": [
+    "Что происходит: значения и ещё не подтверждённый текст перемешаны: непонятно, что уже сохранено в форме, а что просто набрано и потеряется при уходе с экрана.",
+    "Что делают системы: в MD3 отдельного компонента нет — это композиция «текстовое поле + input-чип», в Angular Material — тоже паттерн: «mat-chip-grid (контейнер) + mat-chip-row (чип) + <input matChipInputFor>».",
+    "Что делать нам: чипы — только подтверждённые значения (с рамкой и крестиком), набираемый текст — в поле ввода с плейсхолдером «Начните вводить название», пустое состояние — с подсказкой, а не с пустой рамкой."
+   ],
+   "src": "Источники: Material Design 3 · Chips (https://m3.material.io/components/chips) · Angular Material · Chips (https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><input type=\"text\" placeholder=\"Начните вводить название\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div></div>",
+   "example_ru": "Подтверждённое значение — чип с рамкой и крестиком, набираемый текст — в поле с подсказкой «Начните вводить название»: видно, что уже сохранено, а что ещё нет."
+  }
+ ]
+}

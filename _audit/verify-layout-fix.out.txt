@@ -1,0 +1,32 @@
+
+== 1276 metro ==
+  OK   1440 | overlap=0 contentOverflow=0 radii=16px/16px nav=on(16px) hdr=64 cls=ok
+  OK   1184 | overlap=0 contentOverflow=0 radii=16px/16px nav=on(16px) hdr=64 cls=ok
+  OK    768 | overlap=0 contentOverflow=0 radii=14px/14px nav=off hdr=64 cls=ok
+  OK    375 | overlap=0 contentOverflow=0 radii=24px/24px nav=off hdr=56 cls=ok
+
+== 1277 metro2 ==
+  OK   1440 | overlap=0 contentOverflow=0 radii=16px/16px nav=on(16px) hdr=64 cls=ok
+  OK   1184 | overlap=0 contentOverflow=0 radii=16px/16px nav=on(16px) hdr=64 cls=ok
+  OK    768 | overlap=0 contentOverflow=0 radii=14px/14px nav=off hdr=64 cls=ok
+  OK    375 | overlap=0 contentOverflow=0 radii=24px/24px nav=off hdr=56 cls=ok
+
+== 7422 suppliers ==
+  OK   1440 | overlap=0 contentOverflow=0 radii=16px/16px nav=on(16px) hdr=64 cls=ok
+  OK   1184 | overlap=0 contentOverflow=0 radii=16px/16px nav=on(16px) hdr=64 cls=ok
+  OK    768 | overlap=0 contentOverflow=0 radii=14px/14px nav=off hdr=64 cls=ok
+  OK    375 | overlap=0 contentOverflow=0 radii=24px/24px nav=off hdr=56 cls=ok
+
+== 7431 pricelist ==
+  OK   1440 | overlap=0 contentOverflow=0 radii=16px/16px nav=on(16px) hdr=64 cls=ok
+  OK   1184 | overlap=0 contentOverflow=0 radii=16px/16px nav=on(16px) hdr=64 cls=ok
+  OK    768 | overlap=0 contentOverflow=0 radii=14px/14px nav=off hdr=64 cls=ok
+  OK    375 | overlap=0 contentOverflow=0 radii=24px/24px nav=off hdr=56 cls=ok
+
+== 7436 edit ==
+  OK   1440 | overlap=0 contentOverflow=0 radii=16px/16px nav=on(16px) hdr=64 cls=ok
+  OK   1184 | overlap=0 contentOverflow=0 radii=16px/16px nav=on(16px) hdr=64 cls=ok
+  OK    768 | overlap=0 contentOverflow=0 radii=14px/14px nav=off hdr=64 cls=ok
+  OK    375 | overlap=0 contentOverflow=0 radii=24px/24px nav=off hdr=56 cls=ok
+
+ИТОГ: все проверки пройдены.

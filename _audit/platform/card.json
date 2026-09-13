@@ -1,0 +1,203 @@
+{
+  "component": "Card (карточка)",
+  "verified_at": "2026-09-11",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "component_name": "Cards: elevated / filled / outlined (страница m3.material.io + официальные токены *_card)",
+      "sizes": [
+        {
+          "name": "Радиус контейнера elevated card = md.sys.shape.corner.medium",
+          "quote": "'container-shape': map.get($deps, 'md-sys-shape', 'corner-medium'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-elevated-card.scss",
+          "value": 12,
+          "unit": "dp"
+        },
+        {
+          "name": "Радиус контейнера filled card = corner.medium",
+          "quote": "'container-shape': map.get($deps, 'md-sys-shape', 'corner-medium'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-filled-card.scss",
+          "value": 12,
+          "unit": "dp"
+        },
+        {
+          "name": "Радиус контейнера outlined card = corner.medium",
+          "quote": "'container-shape': map.get($deps, 'md-sys-shape', 'corner-medium'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-outlined-card.scss",
+          "value": 12,
+          "unit": "dp"
+        },
+        {
+          "name": "Значение токена md.sys.shape.corner.medium",
+          "quote": "'corner-medium': if($exclude-hardcoded-values, null, 12px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss",
+          "value": 12,
+          "unit": "dp"
+        },
+        {
+          "name": "Толщина обводки outlined card",
+          "quote": "'outline-width': if($exclude-hardcoded-values, null, 1px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-outlined-card.scss",
+          "value": 1,
+          "unit": "dp"
+        },
+        {
+          "name": "Размер иконки в карточке",
+          "quote": "'icon-size': if($exclude-hardcoded-values, null, 24px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-elevated-card.scss",
+          "value": 24,
+          "unit": "dp"
+        },
+        {
+          "name": "Внутренние отступы карточки (padding)",
+          "quote": "не найдено",
+          "source": null,
+          "value": "не найдено"
+        }
+      ],
+      "variants": [
+        "elevated card (m3.material.io: \"Cards display content and actions about a single subject. Explore three types: elevated, filled and outlined.\")",
+        "filled card",
+        "outlined card",
+        "типографика карточки по токенам: title = title-large (1.375rem/22px), subtitle = title-medium (1rem/16px)"
+      ],
+      "touch_target_dp": null,
+      "touch_target_note_ru": "Токена touch target у карточек MD3 нет — не найдено",
+      "notes_ru": "У карточек в официальном наборе токенов MD3 есть container-shape (corner-medium = 12 dp), outline-width 1 px, icon-size 24 px, elevation и типографика — но НЕТ токена внутренних отступов. Значение 16 dp, которое обычно называют «padding карточки MD3», в токенах MD3 не зафиксировано: оно существует как формулировка 'the standard padding specified in the Material Design spec' в документации Angular Material (см. платформу angular_material). Спец-страница m3.material.io/components/cards/specs существует, но рендерится клиентским JS — числа из неё машинно не извлекаются. Компонента Card в Material Web нет (в all.ts таких экспортов нет).",
+      "sources": [
+        "https://m3.material.io/components/cards/specs",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-elevated-card.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-filled-card.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-outlined-card.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/all.ts",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "component_name": "mat-card (+ mat-card-header, mat-card-content, mat-card-actions, mat-card-footer, mat-card-title, mat-card-subtitle, mat-card-title-group, mat-card-image, mat-card-avatar)",
+      "sizes": [
+        {
+          "name": "Padding контента карточки по умолчанию",
+          "quote": "// Default padding for text content within a card.\n$mat-card-default-padding: 16px !default;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.scss",
+          "value": 16,
+          "unit": "px"
+        },
+        {
+          "name": "Padding шапки карточки",
+          "quote": "// Apply default padding for a text content region. Omit any bottom padding because we assume\n    // this region will be followed by another region that includes top padding.\n    padding: $mat-card-default-padding $mat-card-default-padding 0;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.scss",
+          "value": "16 16 0",
+          "unit": "px"
+        },
+        {
+          "name": "Размер аватара в шапке",
+          "quote": "// Size of the `mat-card-header` region custom to Angular Material.\n$mat-card-header-size: 40px !default;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.scss",
+          "value": 40,
+          "unit": "px"
+        },
+        {
+          "name": "Минимальная высота блока действий",
+          "quote": "min-height: 52px;\n  padding: 8px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.scss",
+          "value": 52,
+          "unit": "px"
+        },
+        {
+          "name": "Padding блока действий",
+          "quote": "min-height: 52px;\n  padding: 8px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.scss",
+          "value": 8,
+          "unit": "px"
+        },
+        {
+          "name": "Изображение sm-image",
+          "quote": "// Specifically sized small image, specific to Angular Material.\n.mat-mdc-card-sm-image {\n  width: 80px;\n  height: 80px;\n}",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.scss",
+          "value": "80x80",
+          "unit": "px"
+        },
+        {
+          "name": "Изображение md-image",
+          "quote": "// Specifically sized medium image, specific to Angular Material.\n.mat-mdc-card-md-image {\n  width: 112px;\n  height: 112px;\n}",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.scss",
+          "value": "112x112",
+          "unit": "px"
+        },
+        {
+          "name": "Изображение lg-image",
+          "quote": "// Specifically sized large image, specific to Angular Material.\n.mat-mdc-card-lg-image {\n  width: 152px;\n  height: 152px;\n}",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.scss",
+          "value": "152x152",
+          "unit": "px"
+        },
+        {
+          "name": "Изображение xl-image",
+          "quote": "// Specifically sized extra-large image, specific to Angular Material.\n.mat-mdc-card-xl-image {\n  width: 240px;\n  height: 240px;\n}",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.scss",
+          "value": "240x240",
+          "unit": "px"
+        },
+        {
+          "name": "Радиус контейнера (все три варианта) = corner-medium, обводка 1 px у outlined",
+          "quote": "card-elevated-container-shape: map.get($system, corner-medium),\n      card-filled-container-shape: map.get($system, corner-medium),\n      card-outlined-container-shape: map.get($system, corner-medium),\n      card-outlined-outline-width: 1px,",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/_m3-card.scss",
+          "value": 12,
+          "unit": "dp"
+        },
+        {
+          "name": "Типографика заголовка = title-large",
+          "quote": "card-title-text-size: map.get($system, title-large-size),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/_m3-card.scss",
+          "value": "title-large"
+        },
+        {
+          "name": "Типографика подзаголовка = title-medium",
+          "quote": "card-subtitle-text-size: map.get($system, title-medium-size),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/card/_m3-card.scss",
+          "value": "title-medium"
+        }
+      ],
+      "variants": [
+        "секции: mat-card-header, mat-card-content, mat-card-actions, mat-card-footer, <img mat-card-image>",
+        "шапка: mat-card-title, mat-card-subtitle, <img mat-card-avatar>, mat-card-title-group",
+        "<mat-card-actions align=\"start|end\">",
+        "M3-варианты по токенам: elevated / filled / outlined",
+        "a11y-роли: role=group / region / landmark; tabindex 0 / -1 / без tabindex"
+      ],
+      "density": "НЕТ. В M3-токенах карточки указано 'density: ()' — density-настроек у mat-card нет.",
+      "touch_target_dp": null,
+      "notes_ru": "Именно Angular Material документирует 16 px как «стандартный padding из спецификации Material Design»: 'In many cases developers may just want the standard padding specified in the Material Design spec. In this case, the <mat-card-header>, <mat-card-content>, and <mat-card-footer> sections can be used.' Так как токена padding у MD3 нет, 16 dp придётся обосновывать этой формулировкой, а не ссылкой на токен MD3. Размеры изображений 80/112/152/240 px и avatar 40 px помечены в исходниках как 'specific to Angular Material' — в спеке-числах MD3 их нет.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/card/_m3-card.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/card/card.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "component_name": "нет — страница Cards в HIG отсутствует (HTTP 404)",
+      "sizes": [],
+      "variants": [],
+      "touch_target_dp": 44,
+      "touch_target_note_ru": "44x44 pt — общий размер контрола из HIG Accessibility; к карточкам он не привязан.",
+      "notes_ru": "В iOS HIG карточки нет: developer.apple.com/design/human-interface-guidelines/cards возвращает 404, а в разделах Lists and tables, Collections и Layout карточка не описана ни как компонент, ни численно — не найдено. Ближайшие описанные паттерны для iOS — списки/таблицы и collections (row/grid). Любые «карточки iOS» в дизайн-системе будут вне HIG, то есть без официального источника.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+        "https://developer.apple.com/design/human-interface-guidelines/collections",
+        "https://developer.apple.com/design/human-interface-guidelines/cards (HTTP 404)"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Ни одна из трёх платформ не задаёт размеров карточки (ширина/высота/аспект) — только радиус, обводка, тень и типографика.",
+    "Padding-токен карточки отсутствует у MD3: 16 dp существует только как формулировка «standard padding из спеки Material Design» в документации Angular Material.",
+    "Density карточки нет нигде: ни MD3 (нет токена), ни Angular Material ('density: ()'), ни в HIG.",
+    "У iOS HIG карточки нет вообще — брать с iOS числа для карточек нельзя ни в каком виде.",
+    "Ни одна платформа не даёт отдельного touch target для карточки и не описывает «карточку-список» или карточку с изображением и аватаром одновременно."
+  ],
+  "verdict_ru": "Карточку можно обосновать лишь частично: MD3 официально даёт радиус 12 dp (corner-medium), обводку 1 dp у outlined и иконку 24 dp — но ни padding, ни размеров. 16 dp опирается на формулировку Angular Material «standard padding specified in the Material Design spec», и называть это «числом из MD3» неверно. Angular Material добавляет неспековые размеры (avatar 40 px, изображения 80/112/152/240 px, actions 52/8 px) и не имеет density. iOS HIG карточку не описывает, поэтому ссылка на iOS в разделе карточек недопустима."
+}

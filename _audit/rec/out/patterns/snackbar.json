@@ -1,0 +1,71 @@
+{
+ "slug": "snackbar",
+ "patterns_ru": [
+  {
+   "title": "Длительность: уходит сам и слишком рано",
+   "items": [
+    "Что происходит: на телефоне снекбар живёт несколько секунд и закрывается без участия пользователя — прочитать текст и попасть в кнопку действия за это время успевает не каждый; тот, кто читает медленно или увеличенным шрифтом, теряет сообщение совсем.",
+    "Что делают системы: Google в Material Components Web ограничивает таймаут жёстко — «Value must be between `4000` and `10000` (or `-1` to disable the timeout completely) or an error will be thrown. Defaults to `5000` (5 seconds)», а в Compose Material 3 значения заданы как `SnackbarDuration.Short -> 4000L, SnackbarDuration.Long -> 10000L`; у Angular Material длительность по умолчанию `duration?: number = 0` (то есть без автоскрытия) и есть прямое предупреждение: «Avoid setting a `duration` for snackbars that have an action available, as screen reader users may want to navigate to the snackbar element to activate the action».",
+    "Что делать нам: в ДС зафиксировать таймер 4–10 с (по умолчанию 5 с) только для сообщений без действия, а снекбар с «Отменить»/«Повторить» таймера не получает — он закрывается по действию или свайпом."
+   ],
+   "src": "Источники: Google Material Components Web · Snackbar (raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-snackbar/README.md) · Compose Material 3 · SnackbarDuration (raw.githubusercontent.com/androidx/androidx/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/SnackbarHost.kt) · Angular Material · Snack bar (raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-snackbar ds-snackbar--single ds-snackbar--light\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__label\">Заказ №1042 сохранён</span></div></div></div>",
+   "example_ru": "Однострочный снекбар без действия: высота 48 px, сам уходит через 4–10 с (по умолчанию 5 с) — кнопки в нём нет, значит, вернуться к сообщению нельзя."
+  },
+  {
+   "title": "Текст длиннее двух строк",
+   "items": [
+    "Что происходит: на 375 px длинная формулировка про отсутствие связи со складом превращает однострочную плашку в трёх-четырёхстрочный блок, который перекрывает половину экрана.",
+    "Что делают системы: Carbon считает нормой две строки и советует для длинного текста другой компонент — «If a toast or inline notification requires a message that is longer than two lines, use an actionable notification and include a short message with a “View more” link that takes the user to a view of the full notification message», а в разделе размеров — «limit toast notifications to two lines of text»; MD3 закладывает ровно два размера контейнера: `'with-single-line-container-height': 48px` и `'with-two-lines-container-height': 68px`.",
+    "Что делать нам: держать в ДС два варианта — однострочный 48 px и двухстрочный 68 px; всё, что длиннее двух строк, уходит в плашку или шторку с ссылкой «Подробнее», а не раздувает снекбар."
+   ],
+   "src": "Источники: IBM Carbon · Notification usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx) · Material Design 3 · токены Snackbar (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-snackbar.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-snackbar ds-snackbar--complex ds-snackbar--dark\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__icon\"><span class=\"material-icons\" style=\"font-size:24px\">error</span></span><span class=\"ds-snackbar__label\">Не удалось сохранить заказ</span><span class=\"ds-snackbar__button\">Повторить</span></div></div></div>",
+   "example_ru": "Двухстрочный тёмный снекбар: 68 px и одно действие 48 px; текст в две строки, длиннее — уже не снекбар, а плашка со ссылкой «Подробнее»."
+  },
+  {
+   "title": "Снекбар накрывает нижние действия",
+   "items": [
+    "Что происходит: в мобильном iiko главное действие живёт внизу (футер формы, кнопка на всю ширину), и всплывающая плашка встаёт ровно поверх него — по кнопке в этот момент не нажать, а на телефоне её и не видно.",
+    "Что делают системы: Carbon признаёт проблему и требует управляемости — «Toast notifications cover content on the screen so they should always be easily dismissed»; MD3 держит отступ от края (в material-components-android `m3_snackbar_margin = 8dp`, в Compose максимальная ширина ограничена `ContainerMaxWidth = 600.dp`), а у Angular Material при узком экране контейнер растягивается на всю ширину (`width: 100vw`, `min-width: 0`).",
+    "Что делать нам: ставить снекбар с отступом 8 px от краёв и не поверх футера: плашка идёт в потоке над кнопкой, а закрытие свайпом работает всегда."
+   ],
+   "src": "Источники: IBM Carbon · Notification usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx) · Google Material Components Android · dimens (raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/values/dimens.xml) · Angular Material · snack-bar-container.scss (raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 4</span><span class=\"ds-list-item__text\">Стейк рибай · 1 480 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:20</span></div></div></div><div class=\"ds-snackbar ds-snackbar--single ds-snackbar--light\" style=\"margin-top:8px\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__label\">Заказ №1042 сохранён</span></div></div><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Новый заказ</span></button></div>",
+   "example_ru": "Плашка стоит над футером с отступом 8 px: строка заказа видна, кнопка «Новый заказ» остаётся доступной и не перекрыта."
+  },
+  {
+   "title": "Одновременно только одно сообщение",
+   "items": [
+    "Что происходит: за секунду прилетают два сообщения («Сохранено», «Нет связи»), и на телефоне они либо накладываются друг на друга, либо пользователь видит только последнее и теряет контекст.",
+    "Что делают системы: Angular Material держит строго одно окно — «Only one snackbar can ever be opened at one time. If a new snackbar is opened while a previous message is still showing, the older message will be automatically dismissed»; Carbon вместо наложения ставит тосты стопкой: «Toast notifications slide in and out from the top right of the screen. They stack with `$spacing-03` in-between».",
+    "Что делать нам: в ДС — очередь на одно сообщение: новый текст вытесняет предыдущий без наложения, а важные ошибки вообще не отдавать снекбару (для них — плашка в контенте, которую не смывает таймер)."
+   ],
+   "src": "Источники: Angular Material · Snack bar (raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md) · IBM Carbon · Notification usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/notification/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-snackbar ds-snackbar--single ds-snackbar--light\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__label\">Заказ №1042 сохранён</span></div></div></div>",
+   "example_ru": "Одно сообщение на экран: второй снекбар вытесняет первый, а не встаёт поверх него; важная ошибка для этого слота не используется."
+  },
+  {
+   "title": "Действие «Отменить» и доступность",
+   "items": [
+    "Что происходит: снекбар с «Отменить» — единственный шанс откатить действие, но фокус в него не переводится, и с экранным диктором до кнопки ещё нужно добраться; сама кнопка при этом узкая — на палец в тесной плашке.",
+    "Что делают системы: Angular Material прямо предупреждает, что фокус остаётся на месте («`MatSnackBar` does not move focus to the snackbar element») и что сообщение объявляется вежливо (politeness polite через aria-live); в material-components-android кнопка действия держит тач-минимум `android:minWidth=\"48dp\"`, а саму плашку можно закрыть крестиком — «a dedicated dismiss icon may be optionally included as well for accessibility purposes».",
+    "Что делать нам: действие — не уже 48 px и одно на плашку; сообщение дублируем в aria-live (polite), а отменяемое действие таймером не отправляем — ждём решения пользователя."
+   ],
+   "src": "Источники: Angular Material · Snack bar (raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md) · Google Material Components Android · design_layout_snackbar.xml (raw.githubusercontent.com/material-components/material-components-android/master/lib/java/com/google/android/material/snackbar/res/layout/design_layout_snackbar.xml) · Google Material Components Web · Snackbar (raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-snackbar/README.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-snackbar ds-snackbar--single ds-snackbar--light\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__label\">Заказ №1042 сохранён</span><span class=\"ds-snackbar__button\">Отменить</span></div></div></div>",
+   "example_ru": "Одно действие «Отменить» шириной не меньше 48 px: пока оно есть, таймер 4–10 с не ставится — снекбар живёт до решения пользователя."
+  },
+  {
+   "title": "Снекбаром не заменяют остальные уведомления",
+   "items": [
+    "Что происходит: соблазн сообщать всплывающей плашкой всё подряд — успех, ошибку валидации, системную новость; на телефоне такие сообщения часто не замечают, и опереться на них как на канал нельзя.",
+    "Что делают системы: GOV.UK прямо предупреждает о баннерной слепоте — «Use notification banners sparingly. There's evidence that people often miss them», а Apple не даёт компонента-тоста вовсе (страница HIG /toast — 404): вместо него есть Alerts («up to three buttons», модально) и рекомендация «prefer finding an alternative way to communicate it within the relevant context» плюс предупреждение «avoid using an alert merely to provide information».",
+    "Что делать нам: снекбар — только подтверждение и отмена короткого действия; ошибки валидации — у полей и в сводке ошибок над заголовком, системные новости — в плашке в контенте."
+   ],
+   "src": "Источники: GOV.UK Design System · Notification banner (design-system.service.gov.uk/components/notification-banner/) · Apple HIG · Alerts (developer.apple.com/design/human-interface-guidelines/alerts) · Apple HIG · компоненты (developer.apple.com/design/human-interface-guidelines/components)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-snackbar ds-snackbar--single ds-snackbar--light\"><div class=\"ds-snackbar__body\"><span class=\"ds-snackbar__label\">Заказ №1042 сохранён</span></div></div></div>",
+   "example_ru": "Снекбар показывает только исход короткого действия: ошибки уходят к полям, а системные новости — в плашку в контенте, которую не смывает таймер."
+  }
+ ]
+}

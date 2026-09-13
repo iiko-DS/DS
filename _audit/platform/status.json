@@ -1,0 +1,296 @@
+{
+  "component": "Status (статусный индикатор)",
+  "platforms": {
+    "md3": {
+      "exists": false,
+      "sizes": [
+        {
+          "param": "circular progress — диаметр",
+          "value": "48px",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-circular-progress-indicator.scss"
+        },
+        {
+          "param": "circular progress — толщина индикатора",
+          "value": "4px",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-circular-progress-indicator.scss"
+        },
+        {
+          "param": "linear progress — высота трека и индикатора",
+          "value": "4px / 4px",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-linear-progress-indicator.scss"
+        },
+        {
+          "param": "иконка (ближайшее к «статусной» графике)",
+          "value": "--md-icon-size: 24px",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md"
+        }
+      ],
+      "variants": [
+        "progress: linear / circular",
+        "progress: determinate / indeterminate",
+        "progress: four-color (indeterminate, 4 цвета)",
+        "badges (m3.material.io/components/badges/specs → HTTP 200): точные числа не проверены — страница m3.material.io рендерится клиентски"
+      ],
+      "notes_ru": "Компонента «Status» в MD3 НЕТ: m3.material.io/components/status/specs → HTTP 404, в material-web такого компонента нет. Ближайшие официальные сущности: (1) Progress indicators (m3.material.io/components/progress-indicators/specs → 200; доки в material-web), (2) Badges (m3.material.io/components/badges/specs → 200), (3) статусных цветов как отдельного компонента в MD3 нет — статус выражается цветовой ролью (error = map.get($palettes, neutral, 0) и т.п. из md-sys-color) плюс текст/иконка. Indeterminate-индикатор в MD3 может циклически менять 4 цвета.",
+      "nearest_ru": "Ближайшие компоненты: Progress indicators (linear/circular; 48px круговой, толщина 4px, трек 4px) и Badges.",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/progress.md",
+          "quote": "There are two types of progress indicators: linear and circular.",
+          "what_ru": "Типы индикаторов прогресса в MD3."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/progress.md",
+          "quote": "Progress indicators may be determinate to show progress, or indeterminate for an unspecified amount of progress.",
+          "what_ru": "determinate/indeterminate."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/progress.md",
+          "quote": "Indeterminate progress indicators may cycle between four colors (primary,\nprimary container, tertiary, and tertiary container by default).",
+          "what_ru": "Четырёхцветный indeterminate."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-circular-progress-indicator.scss",
+          "quote": "'size': if($exclude-hardcoded-values, null, 48px)",
+          "what_ru": "Размер кругового индикатора 48px."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-circular-progress-indicator.scss",
+          "quote": "'active-indicator-width': if($exclude-hardcoded-values, null, 4px),",
+          "what_ru": "Толщина 4px."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-linear-progress-indicator.scss",
+          "quote": "'track-height': if($exclude-hardcoded-values, null, 4px),",
+          "what_ru": "Высота линейного трека 4px."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md",
+          "quote": "`--md-icon-size` | `24px`",
+          "what_ru": "Стандартный размер иконки 24px (не статус, но ближайшая «индикаторная» графика)."
+        },
+        {
+          "url": "https://m3.material.io/components/status/specs",
+          "quote": "HTTP 404 (проверено curl, страницы нет)",
+          "what_ru": "Доказательство отсутствия компонента Status в MD3."
+        },
+        {
+          "url": "https://m3.material.io/components/progress-indicators/specs",
+          "quote": "HTTP 200, <title>Progress indicators – Material Design 3",
+          "what_ru": "Спека progress indicators существует."
+        },
+        {
+          "url": "https://m3.material.io/components/badges/specs",
+          "quote": "HTTP 200, <title>Badge – Material Design 3",
+          "what_ru": "Спека badges существует."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/material-components/material-web/main",
+          "quote": "в material-components/material-web отсутствуют директории badge/ и status/ (есть button, checkbox, chips, dialog, divider, fab, icon, list, menu, progress, ...)",
+          "what_ru": "Список компонентов material-web — подтверждение отсутствия badge/status.",
+          "kind": "repo_structure_check"
+        }
+      ]
+    },
+    "angular_material": {
+      "exists": false,
+      "sizes": [
+        {
+          "param": "mat-badge — размер контейнера (M3-токен)",
+          "value": "badge-container-size: 16px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss"
+        },
+        {
+          "param": "mat-badge — паддинг",
+          "value": "badge-container-padding: 0 4px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss"
+        },
+        {
+          "param": "mat-badge — маленькая точка",
+          "value": "badge-small-size-container-size: 6px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss"
+        },
+        {
+          "param": "mat-badge — смещение",
+          "value": "badge-container-offset: -12px 0 (small: -6px 0)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss"
+        },
+        {
+          "param": "mat-badge — line-height",
+          "value": "16px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss"
+        },
+        {
+          "param": "mat-badge — legacy M2 размер",
+          "value": "$default-size: 22px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.scss"
+        },
+        {
+          "param": "mat-progress-spinner — базовый диаметр",
+          "value": "BASE_SIZE = 100",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/progress-spinner/progress-spinner.ts"
+        },
+        {
+          "param": "mat-progress-spinner — базовый stroke",
+          "value": "BASE_STROKE_WIDTH = 10; strokeWidth по умолчанию = diameter / 10",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/progress-spinner/progress-spinner.ts"
+        },
+        {
+          "param": "mat-progress-spinner — переход индикатора",
+          "value": "transition: stroke-dashoffset 500ms cubic-bezier(0, 0, 0.2, 1)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/progress-spinner/progress-spinner.scss"
+        }
+      ],
+      "variants": [
+        "mat-badge (content/overlap; size='small' → 6px точка)",
+        "mat-progress-spinner (spinner) и mat-spinner (indeterminate)",
+        "mat-progress-bar (linear, mode: determinate/indeterminate/buffer/query)"
+      ],
+      "notes_ru": "Отдельного компонента «Status» в Angular Material нет (src/material/status/status.md → 404; есть src/material/badge, progress-spinner, progress-bar). Для точечного статуса официально используется mat-badge: 16px контейнер, точка 6px, смещение -12px/-6px; для процессов — mat-progress-spinner (100px база, stroke = диаметр/10) и mat-progress-bar. Цветовые роли берутся из M3-темы (badge-background-color = error).",
+      "nearest_ru": "Ближайшие компоненты: mat-badge, mat-progress-spinner, mat-progress-bar.",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss",
+          "quote": "badge-container-size: 16px,",
+          "what_ru": "Размер M3-бейджа 16px."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss",
+          "quote": "badge-small-size-container-size: 6px,",
+          "what_ru": "Маленький бейдж = точка 6px."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss",
+          "quote": "badge-container-padding: 0 4px,",
+          "what_ru": "Паддинг бейджа."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.scss",
+          "quote": "$default-size: 22px !default;",
+          "what_ru": "M2-размер бейджа."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/progress-spinner/progress-spinner.ts",
+          "quote": "const BASE_SIZE = 100;",
+          "what_ru": "Диаметр спиннера по умолчанию 100."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/progress-spinner/progress-spinner.ts",
+          "quote": "const BASE_STROKE_WIDTH = 10;",
+          "what_ru": "Базовый stroke 10."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/progress-spinner/progress-spinner.ts",
+          "quote": "return this._strokeWidth ?? this.diameter / 10;",
+          "what_ru": "strokeWidth = diameter/10."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/status/status.md",
+          "quote": "HTTP 404",
+          "what_ru": "Компонента status в Angular Material нет."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.md",
+          "quote": "HTTP 200",
+          "what_ru": "Дока badge существует."
+        }
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "sizes": [
+        {
+          "param": "виджет/иконка приложения (для логотипов и статусной графики)",
+          "value": "1024x1024 px (iOS, iPadOS, macOS), 800x480 px (tvOS), 1088x1088 px (watchOS)",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/app-icons"
+        },
+        {
+          "param": "документ-иконка: поле",
+          "value": "margin ≈ 10% канваса, изображение занимает ≈ 80% (в канвасе 256×256 px область ≈ 205×205 px)",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/icons"
+        },
+        {
+          "param": "минимальный размер документ-иконки",
+          "value": "16x16 px",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/icons"
+        },
+        {
+          "param": "цвет индикаторов по умолчанию",
+          "value": "белый поверх фона сцены; меняется через tint color",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators"
+        }
+      ],
+      "variants": [
+        "Progress indicators: determinate (progress bar, circular)",
+        "Progress indicators: indeterminate (activity indicator / spinner)",
+        "Refresh control (спрятан по умолчанию, появляется при pull-down)",
+        "Gauges: circular/linear, стили standard и capacity, вариант accessory",
+        "Activity rings (только Move/Exercise/Stand)",
+        "Status bars — системный элемент, не статусный индикатор контента"
+      ],
+      "notes_ru": "Отдельного компонента «Status» в HIG нет. Есть страница-категория Status (role: collectionGroup), которая перечисляет 4 элемента: Activity rings, Gauges, Progress indicators, Rating indicators. Числа: индикатор по умолчанию белый поверх контента и перекрашивается через tint color; для иконок — 1024×1024 px, для документ-иконок поле ≈10% канваса и заполнение ≈80%. Спиннер нельзя подписывать, нельзя менять его форму на bar-стиль.",
+      "nearest_ru": "Категория Status → Activity rings, Gauges, Progress indicators, Rating indicators (компонента Status как такового нет).",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/status.json",
+          "quote": "topicSections identifiers: activity-rings, gauges, progress-indicators, rating-indicators; metadata.role = collectionGroup",
+          "what_ru": "Страница Status — это категория-список, а не компонент.",
+          "kind": "structure_check"
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators",
+          "quote": "there are two types of progress indicators: Determinate ... Indeterminate",
+          "what_ru": "Два типа индикаторов прогресса."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators",
+          "quote": "Don't switch from the circular style to the bar style.",
+          "what_ru": "Нельзя менять форму индикатора."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators",
+          "quote": "Avoid labeling a spinning progress indicator.",
+          "what_ru": "Спиннер не подписывают."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators",
+          "quote": "Keep progress indicators moving so people know something is continuing to happen.",
+          "what_ru": "Индикатор не должен «замирать»."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators",
+          "quote": "By default the system displays the progress indicators in white over the scene's background color. You can change the color of the progress indicator by setting its tint color.",
+          "what_ru": "Цвет индикатора по умолчанию."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators",
+          "quote": "A refresh control is a specialized type of activity indicator that's hidden by default, becoming visible when people drag down the view they want to reload.",
+          "what_ru": "Refresh control спрятан по умолчанию."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/gauges",
+          "quote": "a gauge that uses the capacity style displays a fill that stops at the value's location on the path",
+          "what_ru": "Стили gauge: standard/capacity (+ accessory)."
+        },
+        {
+          "url": "https://developer.apple.com/design/human-interface-guidelines/activity-rings",
+          "quote": "Never change the colors of the rings ... Always display Activity rings on a black background.",
+          "what_ru": "Жёсткие правила Activity rings."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/status-bars.json",
+          "quote": "HTTP 200, страница Status bars (системный статус-бар)",
+          "what_ru": "Отличие: системный статус-бар ≠ статусный индикатор контента."
+        }
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Не заводить «Status» как замену progress indicators и badges: в MD3/Angular Material для этого есть progress (48px/4px) и badge (16px/точка 6px), у Apple — progress indicators, gauges, activity rings.",
+    "Не кодировать статус только цветом — ни одна платформа не даёт «цвет = статус» без текста/иконки/подписи (у iOS статусные индикаторы подписывают текстом, у MD3 есть label и semantic color roles).",
+    "Не подписывать спиннер (iOS: «Avoid labeling a spinning progress indicator») и не менять его форму (circular ↔ bar).",
+    "Не использовать Activity rings как универсальный статус (Apple: «Use Activity rings only to show Move, Exercise, and Stand information»).",
+    "Не переносить 6px-точку бейджа на тач-таргет: 6px — это индикатор, а не зона нажатия (для нажатия — 48 dp у Android/Material)."
+  ],
+  "verdict_ru": "Компонента Status нет ни в MD3, ни в Angular Material, ни в iOS HIG как отдельной сущности — поэтому в ДС его стоит собирать как составной: badge/progress + текст, а не как новую платформенную единицу. Проверяемые «якоря» размеров: MD3 — круговой progress 48px с толщиной 4px и линейный трек 4px, Angular Material — badge 16px (точка 6px, смещение -12px), спиннер 100px со stroke = диаметр/10. iOS даёт правила, а не числа: индикатор белый по умолчанию, перекрашивается tint color, спиннер не подписывается, а «Status» у Apple — это категория из Activity rings, Gauges, Progress indicators и Rating indicators. Единственное настоящее расхождение платформ — iOS жёстко запрещает менять форму и подписывать спиннер; MD3 допускает четырёхцветный indeterminate."
+}

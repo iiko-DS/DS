@@ -1,0 +1,71 @@
+{
+ "slug": "stepper",
+ "patterns_ru": [
+  {
+   "title": "Горизонтальный шаговый индикатор на 375 px",
+   "items": [
+    "Что происходит: горизонтальная цепочка из 4–5 шагов с подписями на 375 px не помещается — подписи сжимаются до нечитаемого, либо цепочка уезжает за край и последний шаг не виден.",
+    "Что делают системы: Angular Material предупреждает прямо по этому поводу — «Prefer vertical steppers when building for small screen sizes, as horizontal steppers typically take up significantly more horizontal space thus introduce horizontal scrolling», и позволяет менять `orientation` динамически; у Ant Design для этого есть отдельное свойство `responsive`: «Change to vertical direction when screen width smaller than `532px`» (по умолчанию `true`).",
+    "Что делать нам: на мобиле у ДС один вариант — вертикальный степпер; точку переключения берём свою (375 px, у Ant Design 532 px) и горизонтальный вариант в мобильном слое не показываем."
+   ],
+   "src": "Источники: Angular Material · Stepper (raw.githubusercontent.com/angular/components/main/src/material/stepper/stepper.md) · Ant Design · Steps (ant.design/components/steps)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-stepper ds-stepper--vertical\"><button class=\"ds-step ds-step--selected\" type=\"button\"><span class=\"ds-step__num\">1</span><span>Стол</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step\" type=\"button\"><span class=\"ds-step__num\">2</span><span>Гости</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step\" type=\"button\"><span class=\"ds-step__num\">3</span><span>Оплата</span></button></div></div>",
+   "example_ru": "Вертикальный степпер вместо горизонтального: три шага занимают 343 px тела экрана, подписи не сжимаются (у Ant Design порог переключения — 532 px)."
+  },
+  {
+   "title": "Подписи шагов не влезают — остаются номера",
+   "items": [
+    "Что происходит: в узкой колонке степпера подписи «Оформление заказа», «Подтверждение оплаты» не влезают в строку шага и обрезаются на середине слова.",
+    "Что делают системы: Angular держит минимум под подпись `$label-min-width: 50px` и высоту строки иконки/подписи `$label-header-height: 24px`, то есть текст заведомо короткий, а иконка шага — `$step-header-icon-size: 16px`; Carbon нормирует саму формулировку — «The label should communicate what the user will accomplish in each step in one or two words», а на нехватку места отвечает: «When there is not enough space, consider rewording the label or truncate the label text with an ellipsis and provide a tooltip».",
+    "Что делать нам: подпись шага — одно-два слова; на мобиле подпись остаётся у всех шагов, но короткая («Стол», «Гости», «Оплата»), а полное название живёт в заголовке содержимого шага."
+   ],
+   "src": "Источники: IBM Carbon · Progress indicator (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/progress-indicator/usage.mdx) · Angular Material · _stepper-variables.scss (raw.githubusercontent.com/angular/components/main/src/material/stepper/_stepper-variables.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-stepper ds-stepper--vertical\"><button class=\"ds-step ds-step--selected\" type=\"button\"><span class=\"ds-step__num\">1</span><span>Стол</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step\" type=\"button\"><span class=\"ds-step__num\">2</span><span>Гости</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step\" type=\"button\"><span class=\"ds-step__num\">3</span><span>Оплата</span></button></div></div>",
+   "example_ru": "Подписи в одно слово («Стол», «Гости», «Оплата») и номер шага 24 px: минимум под подпись у Angular — 50 px, иконка шага — 16 px."
+  },
+  {
+   "title": "Пальцем в шаг не попасть",
+   "items": [
+    "Что происходит: в iiko по шагам часто ходят назад и вперёд (вернуться к столу, к гостям), а маркер шага — 8–16 px; попасть в него с первого раза почти случайно.",
+    "Что делают системы: MD3 требует зону касания не меньше 48 dp (в material-components-web это `$height: 48px` в пакете touch-target), Apple — 44×44 pt («44x44 pt» в разделе Accessibility, минимум 28×28 pt), а Carbon для интерактивного шага разрешает отдавать под клик всю подпись: «clicking anywhere within the step label container».",
+    "Что делать нам: кликабельная область шага — вся строка (не меньше 48 px по высоте), визуальный маркер при этом может быть 24–32 px; маркер без увеличенной зоны нажатия в мобильный ДС не выпускаем."
+   ],
+   "src": "Источники: Google Material Components Web · Touch target (raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-touch-target/_touch-target.scss) · Apple HIG · Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility) · IBM Carbon · Progress indicator (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/progress-indicator/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><span class=\"pat__hit\"><button class=\"ds-step ds-step--selected\" type=\"button\"><span class=\"ds-step__num\">1</span><span>Стол</span></button></span></div>",
+   "example_ru": "Пунктиром — зона нажатия 48 × 48 dp вокруг шага: маркер 24 px, нажимается вся строка шага (Apple требует 44 × 44 pt)."
+  },
+  {
+   "title": "Ошибка и «необязательный» шаг",
+   "items": [
+    "Что происходит: шаг с ошибкой выглядит как пройденный, а «необязательный» — как обязательный; пользователь не понимает, куда возвращаться.",
+    "Что делают системы: Ant Design держит ровно четыре статуса шага — `wait`, `process`, `finish`, `error` — и отдельный тип `type=\"dot\"`, где подписи показываются вертикально; Carbon отводит под это helper text: «Use the helper text to indicate that a step is optional or that a step is in an error state».",
+    "Что делать нам: у шага в ДС четыре состояния (ожидает, активен, пройден, ошибка) плюс пометка «необязательный»; ошибку показываем и знаком на маркере, и текстом в самом шаге, а не только цветом."
+   ],
+   "src": "Источники: Ant Design · Steps (ant.design/components/steps) · IBM Carbon · Progress indicator (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/progress-indicator/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-stepper ds-stepper--vertical\"><button class=\"ds-step\" type=\"button\"><span class=\"ds-step__icon\"><span class=\"material-icons\" style=\"font-size:24px;line-height:1\">check</span></span><span>Стол</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step ds-step--selected\" type=\"button\"><span class=\"ds-step__num\">2</span><span>Гости</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step ds-step--error\" type=\"button\"><span class=\"ds-step__num\">3</span><span>Оплата — ошибка, необязательный шаг</span></button></div></div>",
+   "example_ru": "Пройденный шаг — иконкой, активный — номером 24 px, шаг с ошибкой — знаком и текстом «Оплата — ошибка, необязательный шаг» (у Ant Design четыре статуса: wait, process, finish, error)."
+  },
+  {
+   "title": "Возврат назад и порядок прохождения",
+   "items": [
+    "Что происходит: на телефоне пользователь уходит с шага на шаг случайно (свайп, системный «назад») и теряет уже введённое; линейный мастер из 5 шагов на маленьком экране ломается на первом же возврате.",
+    "Что делают системы: GOV.UK для многошаговых флоу советует не запирать порядок — «Users should be able to complete tasks in whatever order they like», и запрещает линейный вариант там, где пройти всё сразу нельзя: «Do not use the task list for a long service that needs to be completed in a specific order»; при этом весь ряд задачи кликабелен — «The whole row is linked, allowing users to select anywhere within it to start the task».",
+    "Что делать нам: если шагов больше трёх и между ними ходят туда-сюда — не линейный степпер, а список шагов с сохранением черновика; в линейном мастере кнопки «Назад» и «Далее» стоят одной парой внизу и данные шага не теряются."
+   ],
+   "src": "Источники: GOV.UK Design System · Task list (raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/task-list/index.md) · Angular Material · Stepper (raw.githubusercontent.com/angular/components/main/src/material/stepper/stepper.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-stepper-button\"><span class=\"ds-stepper-button__counter\">1 из 6</span><div class=\"ds-stepper-button__group\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined\" type=\"button\"><span class=\"ds-btn__label\">Назад</span></button><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Далее</span></button></div></div></div>",
+   "example_ru": "Панель «1 из 6» с кнопками «Назад» и «Далее» в одну строку: возврат на шаг назад доступен всегда, счётчик показывает место в цепочке."
+  },
+  {
+   "title": "Ориентир выбираем сами",
+   "items": [
+    "Что происходит: у степпера нет платформенного эталона — размеры и поведение берутся из одной реализации, и об этом стоит сказать вслух, а не ссылаться на «Material».",
+    "Что делают системы: в MD3 компонента Stepper нет — в наборе официальных токенов material-web нет ни одного файла stepper (никакой высоты шага и вариантов), а в Apple HIG слово «stepper» означает другое: «A stepper is a two-segment control that people use to increase or decrease an incremental value» — многошагового мастера у Apple нет вовсе.",
+    "Что делать нам: числами для ДС считаем значения из Angular Material (хедер 72 px, минимальная высота 42 px, толщина линии 1 px, вертикальный отступ контента 36 px), но помечаем их как решение ДС на базе реализации, а не как платформенную норму."
+   ],
+   "src": "Источники: Material Web · список токенов (github.com/material-components/material-web/tree/main/tokens) · Apple HIG · Steppers (developer.apple.com/design/human-interface-guidelines/steppers) · Angular Material · _stepper-variables.scss (raw.githubusercontent.com/angular/components/main/src/material/stepper/_stepper-variables.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-stepper ds-stepper--vertical\"><button class=\"ds-step ds-step--selected\" type=\"button\"><span class=\"ds-step__num\">1</span><span>Стол</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step\" type=\"button\"><span class=\"ds-step__num\">2</span><span>Гости</span></button><span class=\"ds-stepper__divider\"></span><button class=\"ds-step\" type=\"button\"><span class=\"ds-step__num\">3</span><span>Оплата</span></button></div></div>",
+   "example_ru": "Вертикальный степпер (72 px на хедер у Angular, до 42 px по плотности): числа взяты из реализации, потому что ни MD3, ни HIG компонента-мастера не дают."
+  }
+ ]
+}

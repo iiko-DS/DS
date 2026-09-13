@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><title>pl</title><style>pre{font:13px/17px monospace;white-space:pre-wrap}</style></head>
+<body><iframe id="f" style="width:1920px;height:2200px;border:0"></iframe><pre id="out">pending</pre>
+<script>
+var BASE='../../../iiko-ds-mobile/prototypes/recommendations/';
+var f=document.getElementById('f'),out=document.getElementById('out'),L=[];
+f.onload=function(){try{
+ var d=f.contentDocument, line=d.querySelector('.phone__line');
+ L.push('кнопки: '+[].map.call(line.children,function(e){return Math.round(e.getBoundingClientRect().width)+'x'+Math.round(e.getBoundingClientRect().height);}).join(' | '));
+ L.push('client='+line.clientWidth+' scroll='+line.scrollWidth+' → влезает: '+(line.scrollWidth<=line.clientWidth));
+ L.push('подпись экрана: '+d.querySelectorAll('.phone__caption')[1].textContent);
+ out.textContent=L.join(String.fromCharCode(10));
+}catch(e){out.textContent='ERR '+e;}};
+f.setAttribute('src',BASE+'button.html');
+</script></body></html>

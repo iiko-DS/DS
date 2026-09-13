@@ -1,0 +1,71 @@
+{
+ "slug": "table",
+ "patterns_ru": [
+  {
+   "title": "Широкая таблица на 375 px",
+   "items": [
+    "Что происходит: заказ на 375 px с составом, количеством, ценой и статусом не помещается в четыре колонки — последняя уезжает за край, и строка читается как обрезанная, даже если прокрутка есть.",
+    "Что делают системы: NN/g оценивает терпимое число колонок прямо — «For complex or wordy entries, such as those in comparison tables, only 2 columns may fit legibly on a narrow mobile screen», а разворот телефона считает крайней мерой: «Rotating the phone is a last resort»; у MD3 таблица описана только токенами — заголовок 56 px, строка данных и футер 52 px (`'row-item-container-height': … 52px`), без вариантов компоновки и без плотности.",
+    "Что делать нам: на мобиле — не больше двух-трёх колонок в табличной форме; остальное уходит во вторую строку ячейки, в раскрытие строки или в карточный вид. Высоту строки держим по MD3: 56 px заголовок, 52 px строка."
+   ],
+   "src": "Источники: Nielsen Norman Group · Mobile Tables (nngroup.com/articles/mobile-tables/) · Material Design 3 · токены Data table (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-data-table.scss)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:1.6\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:1\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1.6\"><span class=\"ds-table-content-cell__label\">Пицца «Маргарита»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\">1 180 ₽</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1.6\"><span class=\"ds-table-content-cell__label\">Паста «Карбонара»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\">740 ₽</span></div></div></div></div>",
+   "example_ru": "На 375 px остались две колонки («Блюдо» и «Сумма») по правилу NN/g — читается без зума; у MD3 строка данных 52 px, заголовок 56 px."
+  },
+  {
+   "title": "Закрепить первый столбец и шапку",
+   "items": [
+    "Что происходит: при горизонтальной прокрутке уезжает не только данные, но и то, чем они подписаны: пользователь видит «1 180 ₽» и не понимает, чья это цена и по какому столбцу.",
+    "Что делают системы: NN/g формулирует два правила — «Sticky column headers help users know what they are looking at» и «If users must scroll horizontally to see all the data, the leftmost column, which is typically a column of row headers, should be locked in place»; у Angular это штатные входы `sticky`/`stickyEnd` для колонок и `sticky` у `matHeaderRowDef` («In order to fix the header row to the top of the scrolling viewport containing the table»), у Ant Design — `fixed` у колонки плюс `scroll.x`.",
+    "Что делать нам: в мобильной таблице первый столбец с подписями закрепляем всегда (ширина ~1,6 от остальных), шапку — при высоте больше экрана; о прокрутке сообщаем обрезанной последней ячейкой, а не только жестом."
+   ],
+   "src": "Источники: Nielsen Norman Group · Mobile Tables (nngroup.com/articles/mobile-tables/) · Angular Material · Table и table.scss (raw.githubusercontent.com/angular/components/main/src/material/table/table.scss) · Ant Design · Table (ant.design/components/table)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:1.6\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:1\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1.6\"><span class=\"ds-table-content-cell__label\">Пицца «Маргарита»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\">1 180 ₽</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1.6\"><span class=\"ds-table-content-cell__label\">Паста «Карбонара»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\">740 ₽</span></div></div></div></div>",
+   "example_ru": "Первый столбец с подписями шире остальных (1,6 против 1) и остаётся на месте при прокрутке — как требуют NN/g, Angular sticky и Ant Design fixed."
+  },
+  {
+   "title": "Текст в ячейках и длина заголовков",
+   "items": [
+    "Что происходит: в ячейке оказывается «Пицца «Маргарита» с двойным сыром и пепперони, 32 см», строка растёт до трёх строк, а заголовок «Способ оплаты» ломается на две — таблица превращается в кашу.",
+    "Что делают системы: Carbon требует коротких заголовков и явного поведения при переполнении — «Column titles should stick to one or two words that describe the data in that column», «In cases where a column title is too long, wrap the text to two lines and then truncate the rest of the text», оговаривая, что дальше полный текст показывается в подсказке; Ant Design даёт для ячейки `ellipsis` (при включении `tableLayout` становится `fixed`), а MD3 закрепляет кегль 14 px и для заголовка (`title-small`), и для строки (`body-medium`), с паддингом ячейки 16 px у Angular.",
+    "Что делать нам: заголовок — одно-два слова; значение в ячейке — максимум две строки, дальше обрезка по многоточию, а полный текст живёт в раскрытии строки (подсказка по наведению на телефоне не работает)."
+   ],
+   "src": "Источники: IBM Carbon · Data table usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx) · Ant Design · Table (ant.design/components/table) · Material Design 3 · токены Data table (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-data-table.scss) · Angular Material · table.scss (raw.githubusercontent.com/angular/components/main/src/material/table/table.scss)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:2\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:1\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:2\"><span class=\"ds-table-content-cell__label\" style=\"white-space:normal\">Пицца «Маргарита» с двойным сыром и пепперони, 32 см</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\">1 180 ₽</span></div></div></div></div>",
+   "example_ru": "Длинное название переносится на вторую строку внутри ячейки; заголовок «Блюдо» — одно слово, кегль 14 px, паддинг ячейки 16 px."
+  },
+  {
+   "title": "Карточки и раскрытие вместо таблицы",
+   "items": [
+    "Что происходит: в вертикальной таблице на телефоне строки по 52 px дают всего 5–6 видимых записей, а сравнение всё равно невозможно — пользователь скроллит и теряет контекст.",
+    "Что делают системы: Carbon держит для этого структурный список и запрещает вкладывать в него сложное — «Nesting items is not recommended, as structured lists are used to present simple data», а у самой таблицы есть раскрытие строки: «The expandable data table helps present large amounts of data in a small space»; NN/g советует аккордеоны для сгруппированных данных («Accordions for Groups of Data»).",
+    "Что делать нам: на 375 px таблица с колонками — только для сравнения однотипных чисел; в остальных случаях строка списка или карточка с главным значением справа и деталями в раскрытии."
+   ],
+   "src": "Источники: IBM Carbon · Structured list usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/structured-list/usage.mdx) · IBM Carbon · Data table usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx) · Nielsen Norman Group · Mobile Tables (nngroup.com/articles/mobile-tables/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:12px\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;padding:16px\"><div style=\"font:500 16px Roboto\">Пицца «Маргарита»</div><div style=\"font:400 12px Roboto;color:#616161\">2 шт · 1 180 ₽</div></div><div style=\"border:1px solid #E0E0E0;border-radius:12px;padding:16px\"><div style=\"font:500 16px Roboto\">Паста «Карбонара»</div><div style=\"font:400 12px Roboto;color:#616161\">1 шт · 740 ₽</div></div></div></div>",
+   "example_ru": "Карточный вид вместо четырёх колонок: главное значение (2 шт · 1 180 ₽) уходит во вторую строку — так таблица читается на 343 px."
+  },
+  {
+   "title": "Пустое состояние, загрузка и ошибка",
+   "items": [
+    "Что происходит: пока данные не пришли, таблица показывает пустые строки, а когда запрос упал — тоже пусто; пользователь не отличает «нет заказов» от «нет связи» и от «ещё грузится».",
+    "Что делают системы: Carbon разводит состояния по времени — скелеты «should only appear for only a few seconds, disappearing once components and content populate the page», а при долгой загрузке нужен полноэкранный индикатор («If a loading process will require the application's full resources and will take longer than a moment or two, use a full-screen loading indicator»); Ant Design даёт для пустоты отдельный компонент: «When there is no data provided, display for friendly tips».",
+    "Что делать нам: три состояния в ДС — скелет трёх строк (до пары секунд), футер с текстом «Нет заказов за сегодня — изменить фильтр» и ошибка с кнопкой «Повторить»; пустой серой таблицы без текста в мобильном слое быть не должно."
+   ],
+   "src": "Источники: IBM Carbon · Loading pattern (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/patterns/loading-pattern/index.mdx) · IBM Carbon · Data table usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx) · Ant Design · Empty (ant.design/components/empty)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:1.6\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:1\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div class=\"ds-table-footer\"><span class=\"ds-table-footer__label\">Нет заказов за сегодня — изменить фильтр</span></div></div></div>",
+   "example_ru": "Пустое состояние — текстом в футере таблицы с подсказкой, что делать («изменить фильтр»); скелета и состояния ошибки в ДС пока нет — это находка для библиотеки."
+  },
+  {
+   "title": "Доступность таблицы на телефоне",
+   "items": [
+    "Что происходит: с экранным диктором таблица без подписей читается как поток чисел, а строка высотой 52 px при чекбоксе 20 px легко промахивается пальцем.",
+    "Что делают системы: GOV.UK требует описательных заголовков и связи ячейки с ними — «Use table headers to tell users what the rows and columns represent. Use the `scope` attribute to help users of assistive technology distinguish between row and column headers», а также подписи-`<caption>` и выравнивания чисел: «When comparing columns of numbers, align the numbers to the right in table cells»; Apple требует область касания 44×44 pt, а Carbon предупреждает, что «check all» в шапке имеет три состояния — «check, unchecked, and indeterminate».",
+    "Что делать нам: у каждой таблицы — caption и scope у заголовков; числа вправо, текст влево; чекбокс строки получает кликабельную область не меньше 44 px по высоте, а трёхсостоянийный «выбрать все» на мобиле не показываем."
+   ],
+   "src": "Источники: GOV.UK Design System · Table (design-system.service.gov.uk/components/table/) · Apple HIG · Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility) · IBM Carbon · Data table usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:1.4\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:.8\"><span class=\"ds-table-header-cell__label\">Кол-во</span></div><div class=\"ds-table-header-cell\" style=\"flex:1\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1.4\"><span class=\"ds-table-content-cell__label\">Пицца «Маргарита»</span></div><div class=\"ds-table-content-cell\" style=\"flex:.8\"><span class=\"ds-table-content-cell__label\" style=\"text-align:right\">2</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\" style=\"text-align:right\">1 180 ₽</span></div></div></div></div>",
+   "example_ru": "Подписи колонок в шапке, числа («2», «1 180 ₽») выровнены вправо по правилу GOV.UK, строка данных 52 px — палец не промахивается."
+  }
+ ]
+}

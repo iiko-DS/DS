@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><title>fit</title>
+<link rel="stylesheet" href="../../../iiko-ds-web/font.css">
+<link rel="stylesheet" href="../../../iiko-ds-web/tokens.css">
+<link rel="stylesheet" href="../../modes.css">
+<link rel="stylesheet" href="../../components/index.css">
+<link rel="stylesheet" href="../../../iiko-ds-web/styles.css">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/index.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>pre{font:13px/17px monospace;white-space:pre-wrap}.row{display:flex;gap:8px;flex-wrap:nowrap;align-items:center;width:359px;box-sizing:border-box;padding:12px;background:#fff}</style>
+</head><body>
+<pre id="out">…</pre>
+<script>
+var COMBOS=[["Создать","add","ОК","Далее","chevron_right"],["Создать","add","Да","Далее","chevron_right"],
+            ["Создать","add","ОК","Ещё","chevron_right"]];
+var out=document.getElementById('out'), L=[];
+COMBOS.forEach(function(c,i){
+  var d=document.createElement('div'); d.className='row'; d.setAttribute('data-mode','mobile');
+  d.innerHTML='<button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button">'+
+    '<span class="ds-btn__icon material-icons">'+c[1]+'</span><span class="ds-btn__label">'+c[0]+'</span></button>'+
+    '<button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined" type="button"><span class="ds-btn__label">'+c[2]+'</span></button>'+
+    '<button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" type="button"><span class="ds-btn__label">'+c[3]+'</span>'+
+    '<span class="ds-btn__icon material-icons">'+c[4]+'</span></button>'+
+    '<button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--outlined" type="button" aria-label="Ещё">'+
+    '<span class="ds-btn-icon__icon"><span class="material-icons" style="font-size:20px">more_vert</span></span></button>';
+  document.body.appendChild(d);
+  var ws=[].map.call(d.children,function(e){return Math.round(e.getBoundingClientRect().width);});
+  var free = d.clientWidth - parseFloat(getComputedStyle(d).paddingLeft)*2;
+  L.push('вариант '+i+' ['+[c[0],c[2],c[3]].join(' / ')+'] ширины '+ws.join('+')+' = '+(ws.reduce(function(a,b){return a+b;},0)+8*(ws.length-1))+' при доступных '+free);
+});
+out.textContent=L.join(String.fromCharCode(10));
+</script></body></html>

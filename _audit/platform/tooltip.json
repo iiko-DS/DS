@@ -1,0 +1,215 @@
+{
+  "component": "Hint / Tooltip",
+  "verified_on": "2026-09-11",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Plain tooltip — высота контейнера",
+          "size": "24dp",
+          "quote": "Plain tooltip padding and size measurements — Container height: 24dp",
+          "source": "https://m3.material.io/components/tooltips/specs"
+        },
+        {
+          "name": "Plain tooltip — padding",
+          "size": "8dp",
+          "quote": "Plain tooltip padding and size measurements — Padding: 8dp",
+          "source": "https://m3.material.io/components/tooltips/specs"
+        },
+        {
+          "name": "Rich tooltip — padding сверху",
+          "size": "12dp",
+          "quote": "Rich tooltip padding and size measurements — Top padding: 12dp",
+          "source": "https://m3.material.io/components/tooltips/specs"
+        },
+        {
+          "name": "Rich tooltip — padding снизу",
+          "size": "8dp",
+          "quote": "Rich tooltip padding and size measurements — Bottom padding: 8dp",
+          "source": "https://m3.material.io/components/tooltips/specs"
+        },
+        {
+          "name": "Rich tooltip — padding по бокам",
+          "size": "16dp",
+          "quote": "Rich tooltip padding and size measurements — Left and right padding: 16dp",
+          "source": "https://m3.material.io/components/tooltips/specs"
+        },
+        {
+          "name": "Дистанция до элемента с визуальной границей (кнопка)",
+          "size": "4dp",
+          "quote": "If there's a visual boundary, like a button, the distance is 4dp",
+          "source": "https://m3.material.io/components/tooltips/guidelines"
+        },
+        {
+          "name": "Дистанция до элемента без визуальной границы (текст)",
+          "size": "8dp",
+          "quote": "If there's no visual boundary, like with text baselines, the distance is 8dp",
+          "source": "https://m3.material.io/components/tooltips/guidelines"
+        },
+        {
+          "name": "Шаг динамического позиционирования",
+          "size": "8dp",
+          "quote": "The position of the tooltip adjusts in increments of 8dp to avoid going off-screen.",
+          "source": "https://m3.material.io/components/tooltips/guidelines"
+        },
+        {
+          "name": "Время до исчезновения после ухода с элемента",
+          "size": "1,5 секунды",
+          "quote": "Both plain and rich tooltips disappear 1.5 seconds after navigating away from the target region.",
+          "source": "https://m3.material.io/components/tooltips/guidelines"
+        },
+        {
+          "name": "Задержка появления (show delay)",
+          "size": null,
+          "quote": "не найдено — в спецификации и guidelines MD3 числовой задержки перед появлением tooltip нет (описано только «Tap and hold the element on mobile» / hover on desktop)",
+          "source": null
+        },
+        {
+          "name": "Plain tooltip — corner radius",
+          "size": null,
+          "quote": "не найдено — токен md.comp.plain-tooltip.container.shape присутствует на странице Specs, но числового значения (DIPS) у него в опубликованных данных нет",
+          "source": null
+        },
+        {
+          "name": "Максимальная ширина tooltip",
+          "size": null,
+          "quote": "не найдено — числового max-width в MD3 для tooltip нет; есть качественная рекомендация «Avoid wrapping text to multiple lines»",
+          "source": null
+        }
+      ],
+      "variants": [
+        "Plain tooltip (краткая подпись элемента; best used for labelling UI elements with no text)",
+        "Rich tooltip (subhead + supporting text + до двух text buttons)",
+        "Persistent rich tooltip (открывается по клику/тапу или при загрузке страницы, не исчезает при уходе с элемента)"
+      ],
+      "notes_ru": "Показ: hover на десктопе или tap-and-hold на мобиле; persistent rich tooltip — только по клику/тапу. Одновременно — один tooltip: «Triggering a new tooltip immediately closes any other open tooltip» и «Only display one tooltip at a time». Rich tooltip: «Rich tooltips can have up to two text buttons» и «Keep buttons short so they can be side by side. Avoid stacking them when possible.» Критичную информацию в tooltip прятать нельзя — рекомендуется dialog. Plain tooltip по умолчанию сверху, в app bar — снизу.",
+      "sources": [
+        "https://m3.material.io/components/tooltips/specs",
+        "https://m3.material.io/components/tooltips/guidelines"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Padding",
+          "size": "4px 8px",
+          "quote": "padding: 4px 8px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.scss"
+        },
+        {
+          "name": "Минимальная ширина",
+          "size": "40px",
+          "quote": "min-width: 40px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.scss"
+        },
+        {
+          "name": "Максимальная ширина",
+          "size": "200px",
+          "quote": "max-width: 200px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.scss"
+        },
+        {
+          "name": "Минимальная высота",
+          "size": "24px",
+          "quote": "min-height: 24px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.scss"
+        },
+        {
+          "name": "Максимальная высота",
+          "size": "40vh",
+          "quote": "max-height: 40vh;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.scss"
+        },
+        {
+          "name": "Смещение относительно элемента",
+          "size": "-8px",
+          "quote": "$offset: -8px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.scss"
+        },
+        {
+          "name": "Мобильное поведение: long-press + автоскрытие",
+          "size": "скрытие через 1500 мс",
+          "quote": "On mobile, the tooltip displays when the user longpresses the element and hides after a delay of 1500ms.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.md"
+        },
+        {
+          "name": "Дефолтное поведение на десктопе",
+          "size": "0 мс (сразу)",
+          "quote": "By default, the tooltip will be immediately shown when the user's mouse hovers over the tooltip's trigger element and immediately hides when the user's mouse leaves.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.md"
+        },
+        {
+          "name": "Настраиваемые задержки",
+          "size": "matTooltipShowDelay / matTooltipHideDelay (мс)",
+          "quote": "you can use the inputs matTooltipShowDelay and matTooltipHideDelay to provide a delay time in milliseconds",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.md"
+        },
+        {
+          "name": "Shape контейнера (M3-тема)",
+          "size": "corner-extra-small (токен, без px)",
+          "quote": "tooltip-container-shape: map.get($system, corner-extra-small),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/_m3-tooltip.scss"
+        },
+        {
+          "name": "Rich tooltip (subhead, кнопки, ссылки)",
+          "size": null,
+          "quote": "не найдено — в Angular Material только plain tooltip: в _m3-tooltip.scss указано «Generates the tokens for MDC plain-tooltip», токенов rich-tooltip нет",
+          "source": null
+        }
+      ],
+      "variants": [
+        "MatTooltip (только plain; позиции above | below | left | right | before | after, плюс matTooltipPositionAtOrigin)"
+      ],
+      "notes_ru": "Angular Material ближе к MD3 по механике (hover/long-press), но с собственными числами: padding 4×8px, min-height 24px, min-width 40px, max-width 200px, max-height 40vh, offset −8px; в MD3 — высота 24dp и padding 8dp. Rich-варианта нет вообще. Позиционирование — 6 вариантов + позиционирование от точки касания/курсора. Доступность: добавляет aria-describedby на скрытую копию текста (она всегда в DOM), прямо просит не делать взаимодействие доступным только по pointer-событиям. Классы панели для стилизации/стрелки: mat-tooltip-panel-above|below|left|right.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/tooltip.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/tooltip/_m3-tooltip.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "sizes": [
+        {
+          "name": "Tooltip как компонент HIG",
+          "size": null,
+          "quote": "не найдено — страницы /design/human-interface-guidelines/tooltips не существует (HTTP 404 у документа и у JSON-эндпоинта developer.apple.com/tutorials/data/design/human-interface-guidelines/tooltips.json). В списке компонентов HIG (Components) tooltip отсутствует",
+          "source": null
+        },
+        {
+          "name": "Упоминание tooltip в HIG (visionOS, Buttons)",
+          "size": null,
+          "quote": "In addition to the four states shown above, a button can also reveal a tooltip when people look at it for a brief time. In general, buttons that contain text don't need to display a tooltip because the button's descriptive label communicates what it does.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/buttons"
+        },
+        {
+          "name": "Числовые размеры tooltip",
+          "size": null,
+          "quote": "не найдено — числа нет ни в одном документе HIG",
+          "source": null
+        }
+      ],
+      "variants": [
+        "Ближайший компонент HIG — Popover: «A popover is a transient view that appears above other content when people click or tap a control or interactive area.»",
+        "В macOS есть help tag / tooltip-подобное поведение, но отдельной страницы-компонента в HIG нет"
+      ],
+      "notes_ru": "Прямо: в iOS HIG компонента tooltip нет. То, что в Material/Angular называется tooltip, в iOS решается label кнопки, popover или (для visionOS) системным tooltip при взгляде на кнопку. HIG по popover: не показывать несколько popover одновременно, не показывать popover поверх popover, не использовать popover для предупреждений (для этого alert) и не делать popover большим («Make a popover only big enough to display its contents»).",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/buttons",
+        "https://developer.apple.com/design/human-interface-guidelines/popovers"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Rich tooltip (subhead + до двух кнопок + ссылки) есть только у MD3; в Angular Material реализован только plain tooltip, в iOS HIG компонента tooltip нет вообще.",
+    "Числовые размеры tooltip есть у MD3 (plain: высота 24dp, padding 8dp; rich: 12/8/16dp) и у Angular Material (24px/40px/200px/40vh, padding 4×8px), но не совпадают между собой; у iOS — 404, чисел нет.",
+    "Задержка появления (show delay) не документирована ни у одной из трёх платформ числом: MD3 её не публикует, Angular Material даёт только настраиваемые matTooltipShowDelay/matTooltipHideDelay без дефолтного числа, HIG не даёт компонента.",
+    "Автоскрытие через 1500 мс на мобиле задокументировано только у Angular Material как часть поведения по умолчанию; MD3 говорит о 1,5 секунды после ухода с элемента — это другое правило, а не задержка показа.",
+    "Требование «не более двух кнопок в rich tooltip» есть только у MD3; в Angular Material (plain) кнопок нет, в iOS HIG нет компонента.",
+    "Обязательное правило «одновременно только один tooltip» есть у MD3 («Only display one tooltip at a time»); ближайший аналог у iOS — «Show one popover at a time», в Angular Material такое правило не документировано (в tooltip.md его нет).",
+    "Ни у одной из трёх платформ нет компонента «hint» как части платформенного набора: в Angular Material это директива mat-hint внутри form-field (например, ей рекомендуют сообщать формат даты), в MD3 — supporting text у text field (числа в этом аудите не собирались), в iOS HIG отдельного компонента hint нет."
+  ],
+  "verdict_ru": "Tooltip есть только у MD3 и Angular Material, причём у Angular это всегда plain-вариант с собственными числами (24px высота, 40–200px ширина, padding 4×8px), а у MD3 — plain 24dp + rich с subhead и максимум двумя кнопками. Числовых совпадений почти нет: совпадает только логика показа (hover на десктопе, long-press на мобиле) и автоскрытие в районе 1,5 с. В iOS HIG компонента tooltip нет — страница отдаёт 404, ближайшие сущности это popover и системный tooltip visionOS. Практический вывод для DS: переносить можно механику (hover/tap-and-hold, одна подсказка за раз), а размеры надо выбирать самостоятельно — ни одна из трёх платформ не даёт общей цифры."
+}

@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><body><pre id="out"></pre>
+<iframe id="f" src="/iiko-ds-mobile/prototypes/recommendations/button.html" width="1600" height="5000" style="border:0"></iframe>
+<script>
+const f=document.getElementById('f'), out=document.getElementById('out');
+f.onload=()=>setTimeout(()=>{
+  const d=f.contentDocument, w=f.contentWindow;
+  const N="\u043f\u0430\u0442\u0442\u0435\u0440\u043d\u044b";
+  const c=[...d.querySelectorAll('.card')].find(x=>x.querySelector('h2')&&x.querySelector('h2').textContent.includes(N));
+  const tabs=[...c.querySelectorAll('.pat__tabs .ds-tab')];
+  const res={top:Math.round(c.getBoundingClientRect().top+w.scrollY), h:Math.round(c.getBoundingClientRect().height),
+             tabs:tabs.length, labels:tabs.map(t=>t.textContent.trim()),
+             panels:[...c.querySelectorAll('.pat__panel')].length,
+             visibleBefore:[...c.querySelectorAll('.pat__panel')].filter(p=>!p.hidden).length,
+             exCount:[...c.querySelectorAll('.pat__panel .pat__ex')].length};
+  tabs[4].click();
+  res.afterClickTab5={active:tabs.filter(t=>t.classList.contains('ds-tab--active')).map(t=>t.textContent.trim()),
+                      visiblePanels:[...c.querySelectorAll('.pat__panel')].filter(p=>!p.hidden).map(p=>p.getAttribute('data-pat-panel'))};
+  res.cardHafter=Math.round(c.getBoundingClientRect().height);
+  tabs[2].click();
+  res.cardHtab3=Math.round(c.getBoundingClientRect().height);
+  tabs[0].click();
+  out.textContent=JSON.stringify(res,null,1);
+},500);
+</script></body>

@@ -1,0 +1,47 @@
+URL: https://developer.apple.com/design/human-interface-guidelines/sidebars
+TITLE: Sidebars
+ABSTRACT: A sidebar appears on the leading side of a view and lets people navigate between areas of your app or top-level collections of content, like folders and playlists.
+[IMAGE]
+A sidebar requires a large amount of vertical and horizontal space. When space is limited or you want to devote more of the screen to other information or functionality, a more compact control such as a tab bar may provide a better navigation experience. For many apps, you don’t need to choose between a tab bar or sidebar for navigation; instead, you can adopt a style of tab bar that provides both. For guidance, see doc://com.apple.HIG/design/Human-Interface-Guidelines/tab-bars and doc://com.apple.HIG/design/Human-Interface-Guidelines/layout.
+## Best practices
+Extend visually rich content beneath the sidebar. In iOS, iPadOS, and macOS, as with other controls such as toolbars and tab bars, sidebars can float above content in the doc://com.apple.HIG/design/Human-Interface-Guidelines/materials#Liquid-Glass layer. To reinforce the separation, you can extend content beneath the sidebar either by letting it horizontally scroll or by applying a background extension effect. A background extension effect mirrors adjacent content to give the impression of stretching it under the sidebar. For developer guidance, see doc://com.apple.documentation/documentation/SwiftUI/View/backgroundExtensionEffect().
+When possible, let people customize the contents of a sidebar. A sidebar lets people navigate to important areas in your app, so it works well when people can decide which areas are most important and in what order they appear.
+Group hierarchy with disclosure controls if your app has a lot of content. Using doc://com.apple.HIG/design/Human-Interface-Guidelines/disclosure-controls helps keep the sidebar’s vertical space to a manageable level.
+Consider using familiar symbols to represent items in the sidebar. doc://com.apple.HIG/design/Human-Interface-Guidelines/sf-symbols provides a wide range of customizable symbols you can use to represent items in your app. If you need to use a custom icon, consider creating a doc://com.apple.HIG/design/Human-Interface-Guidelines/sf-symbols#Custom-symbols rather than using a bitmap image. Download the SF Symbols app from https://developer.apple.com/design/resources/#sf-symbols.
+Consider letting people hide the sidebar. People sometimes want to hide the sidebar to create more room for content details or to reduce distraction. When possible, let people hide and show the sidebar using the platform-specific interactions they already know. For example, in iPadOS, people expect to use the built-in edge swipe gesture; in macOS, you can include a show/hide button or add Show Sidebar and Hide Sidebar commands to your app’s View menu. In visionOS, a window typically expands to accommodate a sidebar, so people rarely need to hide it. Avoid hiding the sidebar by default to ensure that it remains discoverable.
+In general, show no more than two levels of hierarchy in a sidebar. When a data hierarchy is deeper than two levels, consider using a split view interface that includes a content list between the sidebar items and detail view.
+If you need to include two levels of hierarchy in a sidebar, use succinct, descriptive labels to title each group. To help keep labels short, omit unnecessary words.
+Make sure any sidebar icon colors you choose serve a clear purpose. By default, sidebar icons use your app’s doc://com.apple.HIG/design/Human-Interface-Guidelines/color#App-accent-colors. In macOS, people can change the system accent color, which applies to all apps. When they do this, they expect all sidebar icons to appear in that color, so make sure your sidebar icons display the color people choose. However, if you use them sparingly, fixed colors can help clarify the meaning of an icon or draw attention to it. For example, the VIP icon in Mail uses a yellow color to set it apart from other sidebar icons, providing a visual cue about its importance.
+## Platform considerations
+No additional considerations for tvOS. Not supported in watchOS.
+### iOS, iPadOS
+When you use the doc://com.apple.documentation/documentation/SwiftUI/TabViewStyle/sidebarAdaptable style of tab view to present a sidebar, you choose whether to display a sidebar or a tab bar when your app opens. Both variations include a button that people can use to switch between them. This style also adapts its appearance depending on the platform, and responds automatically to rotation and window resizing, providing a version of the control that’s appropriate to the width of the view.
+[NOTE] To display a sidebar only, use doc://com.apple.documentation/documentation/SwiftUI/NavigationSplitView to present a sidebar in the primary pane of a split view, or use doc://com.apple.documentation/documentation/UIKit/UISplitViewController.
+Consider using a tab bar first. A tab bar provides more space to feature content, and offers enough flexibility to navigate between many apps’ main areas. If you need to expose more areas than fit in a tab bar, the tab bar’s convertible sidebar-style appearance can provide access to content that people use less frequently. For guidance, see doc://com.apple.HIG/design/Human-Interface-Guidelines/tab-bars.
+If necessary, apply the correct appearance to a sidebar. If you’re not using SwiftUI to create a sidebar, you can use the doc://com.apple.documentation/documentation/UIKit/UICollectionLayoutListConfiguration-swift.struct/Appearance-swift.enum/sidebar appearance of a collection view list layout. For developer guidance, see doc://com.apple.documentation/documentation/UIKit/UICollectionLayoutListConfiguration-swift.struct/Appearance-swift.enum.
+### macOS
+A sidebar’s row height, text, and glyph size depend on its overall size, which can be small, medium, or large. You can set the size programmatically, but people can also change it by selecting a different sidebar icon size in General settings.
+Consider automatically hiding and revealing a sidebar when its container window resizes. For example, reducing the size of a Mail viewer window can automatically collapse its sidebar, making more room for message content.
+Avoid putting critical information or actions at the bottom of a sidebar. People often relocate a window in a way that hides its bottom edge.
+### visionOS
+If your app’s hierarchy is deep, consider using a sidebar within a tab in a tab bar. In this situation, a sidebar can support secondary navigation within the tab. If you do this, be sure to prevent selections in the sidebar from changing which tab is currently open.
+[IMAGE]
+## Resources
+#### Related
+doc://com.apple.HIG/design/Human-Interface-Guidelines/split-views
+doc://com.apple.HIG/design/Human-Interface-Guidelines/tab-bars
+doc://com.apple.HIG/design/Human-Interface-Guidelines/layout
+#### Developer documentation
+doc://com.apple.documentation/documentation/SwiftUI/TabViewStyle/sidebarAdaptable — SwiftUI
+doc://com.apple.documentation/documentation/SwiftUI/NavigationSplitView — SwiftUI
+doc://com.apple.documentation/documentation/SwiftUI/ListStyle/sidebar — SwiftUI
+doc://com.apple.documentation/documentation/UIKit/UICollectionLayoutListConfiguration-swift.struct — UIKit
+doc://com.apple.documentation/documentation/AppKit/NSSplitViewController — AppKit
+#### Videos
+## Change log
+| D a t e | C h a n g e s |
+| J u n e   8 ,   2 0 2 6 | U p d a t e d   g u i d a n c e   f o r   s i d e b a r   i c o n   c o l o r s ,   a n d   c l a r i f i e d   g u i d a n c e   f o r   t h e   a d a p t a b l e   s i d e b a r   s t y l e . |
+| J u n e   9 ,   2 0 2 5 | A d d e d   g u i d a n c e   f o r   e x t e n d i n g   c o n t e n t   b e n e a t h   t h e   s i d e b a r . |
+| A u g u s t   6 ,   2 0 2 4 | U p d a t e d   g u i d a n c e   t o   i n c l u d e   t h e   S w i f t U I   a d a p t a b l e   s i d e b a r   s t y l e . |
+| D e c e m b e r   5 ,   2 0 2 3 | A d d e d   a r t w o r k   f o r   i P a d O S . |
+| J u n e   2 1 ,   2 0 2 3 | U p d a t e d   t o   i n c l u d e   g u i d a n c e   f o r   v i s i o n O S . |

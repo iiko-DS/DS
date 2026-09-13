@@ -1,0 +1,33 @@
+{
+ "slug": "dialog",
+ "edits": [
+  {
+   "row": 1,
+   "edits": [
+    {
+     "id": "act-min",
+     "v": 68,
+     "sel": ".ds-dialog-view__action",
+     "css": "min-height:@px"
+    },
+    {
+     "id": "btn-h",
+     "v": 44,
+     "sel": ".ds-btn",
+     "css": "height:@px"
+    }
+   ]
+  },
+  {
+   "row": 3,
+   "edits": [
+    {
+     "id": "pad-h",
+     "v": 24,
+     "sel": ".ds-dialog-view__action",
+     "css": "padding-left:@px; padding-right:@px"
+    }
+   ]
+  }
+ ]
+}

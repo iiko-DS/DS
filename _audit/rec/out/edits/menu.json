@@ -1,0 +1,21 @@
+{
+ "slug": "menu",
+ "edits": [
+  {
+   "row": 1,
+   "mobile": "72 px — MD3 two-line из токенов list-item (у Angular пункт жёстко 48)",
+   "edits": [
+    {
+     "id": "height",
+     "v": 72,
+     "sel": ".ds-menu-item",
+     "css": "min-height:@px"
+    }
+   ]
+  },
+  {
+   "row": 5,
+   "mobile": "14 / 20 px, подписи 12 / 16 px — стилевые токены общие"
+  }
+ ]
+}

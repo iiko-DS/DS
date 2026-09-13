@@ -1,0 +1,27 @@
+{
+  "slug": "snackbar",
+  "edits": [
+    {
+      "row": 0,
+      "edits": [
+        {
+          "id": "margins",
+          "v": 8,
+          "sel": ".ds-snackbar",
+          "css": "width:auto; margin-left:@px; margin-right:@px"
+        }
+      ]
+    },
+    {
+      "row": 1,
+      "edits": [
+        {
+          "id": "height",
+          "v": 48,
+          "sel": ".ds-snackbar",
+          "css": "min-height:@px"
+        }
+      ]
+    }
+  ]
+}

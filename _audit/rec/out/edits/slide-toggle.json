@@ -1,0 +1,13 @@
+{
+ "slug": "slide-toggle",
+ "edits": [
+  {
+   "row": 0,
+   "mobile": "48 px — тач-зона поверх всего ряда (MD3 touch-target 48 и столько же у Angular)"
+  },
+  {
+   "row": 6,
+   "mobile": "14 / 400 и 12 / 400 px — те же"
+  }
+ ]
+}

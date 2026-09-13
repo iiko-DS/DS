@@ -1,0 +1,132 @@
+{
+ "autocomplete|0|ds-autocomplete-form__icon": [
+  "arrow_drop_down"
+ ],
+ "autocomplete|1|ds-menu-item__icon": [
+  "restaurant",
+  "restaurant",
+  "restaurant"
+ ],
+ "banners|0|ds-banner__icon": [
+  "info"
+ ],
+ "banners|1|ds-banner__icon": [
+  "info"
+ ],
+ "chips|2|ds-chips__icon": [
+  "tune"
+ ],
+ "datepicker|0|ds-input-datepicker__icon": [
+  "calendar_today"
+ ],
+ "datepicker|1|ds-control-panel__button-icon": [
+  "chevron_left",
+  "chevron_right"
+ ],
+ "expansion-panel|0|ds-expansion__icon": [
+  "receipt_long"
+ ],
+ "expansion-panel|0|ds-expansion__arrow": [
+  "expand_more"
+ ],
+ "expansion-panel|1|ds-expansion__icon": [
+  "receipt_long"
+ ],
+ "expansion-panel|1|ds-expansion__arrow": [
+  "expand_less"
+ ],
+ "expansion-panel|2|ds-expansion__icon": [
+  "block",
+  "info"
+ ],
+ "expansion-panel|2|ds-expansion__arrow": [
+  "expand_more",
+  "expand_less"
+ ],
+ "icon-size|0|ds-icon-group__icon": [
+  "settings",
+  "settings",
+  "settings"
+ ],
+ "icon-size|1|ds-arrow": [
+  "chevron_right"
+ ],
+ "icon-size|2|ds-icon-group__icon": [
+  "edit",
+  "delete",
+  "more_vert"
+ ],
+ "input-number|0|ds-input-number-but-icon__icon": [
+  "expand_less",
+  "expand_more"
+ ],
+ "input-number|1|ds-input-number-but-icon__icon": [
+  "expand_less",
+  "expand_more"
+ ],
+ "input-number|2|ds-input-number-but-icon__icon": [
+  "expand_less",
+  "expand_more"
+ ],
+ "list|0|ds-list-item__icon": [
+  "restaurant"
+ ],
+ "list|1|ds-list-item__icon": [
+  "restaurant",
+  "restaurant",
+  "restaurant"
+ ],
+ "menu|0|ds-menu-item__icon": [
+  "receipt_long",
+  "refresh",
+  "delete"
+ ],
+ "menu|1|ds-menu-item__icon": [
+  "edit",
+  "content_copy"
+ ],
+ "search|0|ds-search__icon": [
+  "search"
+ ],
+ "search|0|ds-search__right-icon": [
+  "close"
+ ],
+ "search|1|ds-search__icon": [
+  "search"
+ ],
+ "search|1|ds-search__right-icon": [
+  "close"
+ ],
+ "select|0|ds-arrow-select": [
+  "arrow_drop_down"
+ ],
+ "select|1|ds-select-item__icon": [
+  "restaurant",
+  "restaurant",
+  "restaurant"
+ ],
+ "select|2|ds-select-item__icon": [
+  "receipt_long",
+  "receipt_long",
+  "receipt_long"
+ ],
+ "snackbar|1|ds-snackbar__icon": [
+  "error"
+ ],
+ "status|0|ds-status__icon": [
+  "edit",
+  "check_circle",
+  "schedule",
+  "error"
+ ],
+ "timepicker|0|ds-input-timepicker__icon": [
+  "schedule"
+ ],
+ "tree|0|ds-tree__icon": [
+  "expand_more",
+  "expand_more",
+  "subdirectory_arrow_right",
+  "subdirectory_arrow_right",
+  "expand_more"
+ ]
+}

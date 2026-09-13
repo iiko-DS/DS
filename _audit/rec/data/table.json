@@ -1,0 +1,196 @@
+{
+ "slug": "table",
+ "component": "Table",
+ "ds_page": "Table_DS",
+ "desc_ru": "Таблица: данные строками и колонками. На мобиле — приоритетные колонки плюс прокрутка или карточки.",
+ "category_ru": "Структура",
+ "category_note_ru": "другой контейнер: карточки или приоритетные колонки со скроллом; строки выше",
+ "summary_ru": "Строки 36 → 52 px (данные) и 36 → 56 (шапка) — официальные токены MD3, которые же берёт Angular. Содержимое на телефоне показывают карточками или прокручивают по горизонтали, редакторы — в шторке.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "строка 36 px"
+  },
+  "mobile": {
+   "sub_ru": "строка 52 px, шапка 56"
+  }
+ },
+ "changes": [
+  {
+   "what": "Строка данных",
+   "desktop": "36 px (min-height)",
+   "mobile": "52 px — токен MD3 и значение Angular по умолчанию",
+   "edit": [
+    {
+     "id": "row-h",
+     "v": 52,
+     "sel": ".ds-table-content-cell",
+     "css": "min-height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Строка шапки",
+   "desktop": "36 px",
+   "mobile": "56 px — тот же токен, что и строка данных",
+   "edit": [
+    {
+     "id": "head-h",
+     "v": 56,
+     "sel": ".ds-table-header-cell",
+     "css": "min-height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Паддинг ячейки",
+   "desktop": "8",
+   "mobile": "16 — рабочее значение Angular Material",
+   "edit": [
+    {
+     "id": "pad-h",
+     "v": 16,
+     "sel": ".ds-table-content-cell",
+     "css": "padding-left:@px; padding-right:@px"
+    }
+   ]
+  },
+  {
+   "what": "Футер",
+   "desktop": "65 px",
+   "mobile": "52 px — токен MD3/Angular; «Показать ещё» вместо пагинации",
+   "edit": [
+    {
+     "id": "foot-h",
+     "v": 52,
+     "sel": ".ds-table-footer",
+     "css": "height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Показ данных",
+   "desktop": "все колонки",
+   "mobile": "карточки или приоритетные колонки с горизонтальной прокруткой"
+  },
+  {
+   "what": "Редактирование, фильтры, сортировка",
+   "desktop": "в ячейке и в шапке",
+   "mobile": "в шторке снизу"
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Что именно становится карточкой, а что уходит в раскрытие — решение продукта (оно в открытых вопросах плана). Компонент отвечает за высоты строк и паддинги.</p>",
+ "why_ru": "Это случай, где платформенная рекомендация практически одна: MD3 отдаёт только токены (строка заголовка 56 dp, строка данных 52, футер 52, обводки 1 dp, пары title-small / body-medium) и не имеет страницы спецификации таблицы; iOS HIG описывает списки и таблицы без чисел, кроме общего 44 × 44 pt и того, что высота строки UITableView по умолчанию автоматическая. Всю рабочую числовую обвязку — паддинг ячейки 16 px и высоты 56 / 52 / 52 — даёт Angular Material. Отдельного мобильного набора таблиц нет ни у кого: типовой подход — показывать данные карточками или списками, а горизонтальный скролл держать как запасной вариант.",
+ "result_html": "<ul class=\"list\"><li>Строки 52 и шапка 56 — из официальных токенов MD3, те же значения в Angular Material.</li><li>Паддинг ячейки 16 — рабочее значение Angular; у нас в токенах было 8.</li><li>Карточный вид — структура страницы, а не размер: какие поля главные, решается продуктом.</li><li><b>Не решено:</b> пагинация против «Показать ещё» — на мобиле рекомендация склоняется к «Показать ещё».</li><li><b>Не решено:</b> двухуровневая таблица (table-2-lvl) описана отдельной страницей — её паттерн стоит утвердить вместе с этим.</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Таблица: шапка и две строки",
+   "html": "<div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\"><span class=\"ds-table-header-cell__label\">Кол-во</span></div><div class=\"ds-table-header-cell\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\"><span class=\"ds-table-content-cell__label\">Пицца «Маргарита»</span></div><div class=\"ds-table-content-cell\"><span class=\"ds-table-content-cell__label\">2</span></div><div class=\"ds-table-content-cell\"><span class=\"ds-table-content-cell__label\">1 180 ₽</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\"><span class=\"ds-table-content-cell__label\">Паста «Карбонара»</span></div><div class=\"ds-table-content-cell\"><span class=\"ds-table-content-cell__label\">1</span></div><div class=\"ds-table-content-cell\"><span class=\"ds-table-content-cell__label\">740 ₽</span></div></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "Карточный вид (структура страницы)",
+   "html": "<div style=\"display:flex;flex-direction:column;gap:12px\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;padding:16px\"><div style=\"font:500 14px Roboto\">Пицца «Маргарита»</div><div style=\"font:400 12px Roboto;color:#616161\">2 шт · 1 180 ₽</div></div><div style=\"border:1px solid #E0E0E0;border-radius:12px;padding:16px\"><div style=\"font:500 14px Roboto\">Паста «Карбонара»</div><div style=\"font:400 12px Roboto;color:#616161\">1 шт · 740 ₽</div></div></div>",
+   "stack": true
+  }
+ ],
+ "found_html": "<p><b>box-sizing у кадров и строк.</b> В библиотеке нет <code>box-sizing: border-box</code>, поэтому высота из токена/числа складывалась с паддингами: кадр поля 48 px показывался как 74, кадр textarea 76 как 94, строка списка 68 как 84. В прототипах ДС это лечат на странице (<code>.js-select .ds-select-form__input-frame{box-sizing:border-box;height:48px}</code>) — в каркасе страниц повторено то же для всех таких классов. Библиотеку не правим.</p>",
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Готовые числа: строка заголовка 56 dp, строка данных и футер 52 dp, обводки 1 dp, заголовок title-small и данные body-medium — оба 14 px (table.json).",
+    "Мобильного варианта у MD3 нет: компонента в Material Web не существует, поведение (sticky, сортировка, ширина колонок, padding ячеек) не описано (table.json).",
+    "Padding ячейки в MD3 отсутствует — 16 px берётся у Angular Material, выдавать его за «число по Material» нельзя (table.json).",
+    "Density таблицы MD3 не имеет — регулируемая плотность (до −4) есть только у Angular Material (table.json).",
+    "Ни минимальной ширины колонки, ни максимума колонок, ни правила многострочных ячеек ни одна платформа не публикует (table.json).",
+    "Sticky-заголовок, sticky-футер и sticky-колонки описаны только у Angular Material, и там же предупреждение о дрожании stuck-ячеек в Safari на мобильных (table.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Числовых размеров таблицы в HIG нет: ни высоты строки, ни высоты заголовка, ни padding ячейки (table.json).",
+    "Единственное применимое число — общая тач-норма 44 × 44 pt, к строкам таблицы она напрямую не привязана (table.json).",
+    "Стили plain / grouped / insetGrouped — то, что Apple предлагает вместо колонок: на телефоне строка строится как список, а не как сетка (table.json).",
+    "Требования к содержанию: заголовки колонок в title case без завершающей точки, сортировка по клику на заголовок, чередующийся фон строк для широких многоколоночных таблиц (table.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Данные на телефоне показывать карточками или приоритетными колонками с горизонтальной прокруткой — таблица целиком не влезает ни при какой плотности.",
+  "Строку данных делать 52 px, шапку 56 px, паддинг ячейки 16 px: это единственные числа, в которых сходятся MD3 и Angular Material.",
+  "Футер 52 px и «Показать ещё» вместо номерной пагинации — постраничные номера на тач не работают.",
+  "Редактирование ячейки, фильтры и сортировку уводить в шторку снизу: правка прямо в ячейке на мобиле недоступна.",
+  "Приоритетных колонок — 2–3, и не давать включать больше: иначе горизонтальный скролл появляется в каждой строке.",
+  "Чего нельзя: ожидать на мобиле sticky-заголовка и опираться на 16 dp паддинг как на платформенное правило — у MD3 такого числа нет."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Заказ №1042</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div style=\"border:1px solid var(--ds-color-stroke-default);border-radius:12px;overflow:hidden;background:#fff\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-content-cell__label\">Пицца «Маргарита»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-content-cell__label\">1 180 ₽</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-content-cell__label\">Паста «Карбонара»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-content-cell__label\">740 ₽</span></div></div><div class=\"ds-table-footer\" style=\"width:100%\"><div class=\"ds-table-footer__content\"><span class=\"ds-table-footer__label\">Показать ещё</span></div></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Добавить позицию</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Позиции заказа</p><p class=\"phone__sheet-text\">Заказ №1042 · 5 позиций</p><div class=\"phone__list\"><div class=\"phone__row\">Пицца «Маргарита» · 2 шт · 1 180 ₽</div><div class=\"phone__row\">Паста «Карбонара» · 1 шт · 740 ₽</div><div class=\"phone__row\">Показать ещё</div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Таблица в теле экрана: шапка, две строки и футер «Показать ещё»</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Заказ №1042</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div style=\"border:1px solid var(--ds-color-stroke-default);border-radius:12px;overflow:hidden;background:#fff\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-content-cell__label\">Пицца «Маргарита»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-content-cell__label\">1 180 ₽</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-content-cell__label\">Паста «Карбонара»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1;min-width:0\"><span class=\"ds-table-content-cell__label\">740 ₽</span></div></div><div class=\"ds-table-footer\" style=\"width:100%\"><div class=\"ds-table-footer__content\"><span class=\"ds-table-footer__label\">Показать ещё</span></div></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Добавить позицию</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Позиции заказа</p><p class=\"phone__sheet-text\">Заказ №1042 · 5 позиций</p><div class=\"phone__list\"><div class=\"phone__row\">Пицца «Маргарита» · 2 шт · 1 180 ₽</div><div class=\"phone__row\">Паста «Карбонара» · 1 шт · 740 ₽</div><div class=\"phone__row\">Показать ещё</div></div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "Широкая таблица на 375 px",
+   "items": [
+    "Что происходит: заказ на 375 px с составом, количеством, ценой и статусом не помещается в четыре колонки — последняя уезжает за край, и строка читается как обрезанная, даже если прокрутка есть.",
+    "Что делают системы: NN/g оценивает терпимое число колонок прямо — «For complex or wordy entries, such as those in comparison tables, only 2 columns may fit legibly on a narrow mobile screen», а разворот телефона считает крайней мерой: «Rotating the phone is a last resort»; у MD3 таблица описана только токенами — заголовок 56 px, строка данных и футер 52 px (`'row-item-container-height': … 52px`), без вариантов компоновки и без плотности.",
+    "Что делать нам: на мобиле — не больше двух-трёх колонок в табличной форме; остальное уходит во вторую строку ячейки, в раскрытие строки или в карточный вид. Высоту строки держим по MD3: 56 px заголовок, 52 px строка."
+   ],
+   "src": "Источники: Nielsen Norman Group · Mobile Tables (nngroup.com/articles/mobile-tables/) · Material Design 3 · токены Data table (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-data-table.scss)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:1.6\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:1\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1.6\"><span class=\"ds-table-content-cell__label\">Пицца «Маргарита»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\">1 180 ₽</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1.6\"><span class=\"ds-table-content-cell__label\">Паста «Карбонара»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\">740 ₽</span></div></div></div></div>",
+   "example_ru": "На 375 px остались две колонки («Блюдо» и «Сумма») по правилу NN/g — читается без зума; у MD3 строка данных 52 px, заголовок 56 px."
+  },
+  {
+   "title": "Закрепить первый столбец и шапку",
+   "items": [
+    "Что происходит: при горизонтальной прокрутке уезжает не только данные, но и то, чем они подписаны: пользователь видит «1 180 ₽» и не понимает, чья это цена и по какому столбцу.",
+    "Что делают системы: NN/g формулирует два правила — «Sticky column headers help users know what they are looking at» и «If users must scroll horizontally to see all the data, the leftmost column, which is typically a column of row headers, should be locked in place»; у Angular это штатные входы `sticky`/`stickyEnd` для колонок и `sticky` у `matHeaderRowDef` («In order to fix the header row to the top of the scrolling viewport containing the table»), у Ant Design — `fixed` у колонки плюс `scroll.x`.",
+    "Что делать нам: в мобильной таблице первый столбец с подписями закрепляем всегда (ширина ~1,6 от остальных), шапку — при высоте больше экрана; о прокрутке сообщаем обрезанной последней ячейкой, а не только жестом."
+   ],
+   "src": "Источники: Nielsen Norman Group · Mobile Tables (nngroup.com/articles/mobile-tables/) · Angular Material · Table и table.scss (raw.githubusercontent.com/angular/components/main/src/material/table/table.scss) · Ant Design · Table (ant.design/components/table)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:1.6\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:1\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1.6\"><span class=\"ds-table-content-cell__label\">Пицца «Маргарита»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\">1 180 ₽</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1.6\"><span class=\"ds-table-content-cell__label\">Паста «Карбонара»</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\">740 ₽</span></div></div></div></div>",
+   "example_ru": "Первый столбец с подписями шире остальных (1,6 против 1) и остаётся на месте при прокрутке — как требуют NN/g, Angular sticky и Ant Design fixed."
+  },
+  {
+   "title": "Текст в ячейках и длина заголовков",
+   "items": [
+    "Что происходит: в ячейке оказывается «Пицца «Маргарита» с двойным сыром и пепперони, 32 см», строка растёт до трёх строк, а заголовок «Способ оплаты» ломается на две — таблица превращается в кашу.",
+    "Что делают системы: Carbon требует коротких заголовков и явного поведения при переполнении — «Column titles should stick to one or two words that describe the data in that column», «In cases where a column title is too long, wrap the text to two lines and then truncate the rest of the text», оговаривая, что дальше полный текст показывается в подсказке; Ant Design даёт для ячейки `ellipsis` (при включении `tableLayout` становится `fixed`), а MD3 закрепляет кегль 14 px и для заголовка (`title-small`), и для строки (`body-medium`), с паддингом ячейки 16 px у Angular.",
+    "Что делать нам: заголовок — одно-два слова; значение в ячейке — максимум две строки, дальше обрезка по многоточию, а полный текст живёт в раскрытии строки (подсказка по наведению на телефоне не работает)."
+   ],
+   "src": "Источники: IBM Carbon · Data table usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx) · Ant Design · Table (ant.design/components/table) · Material Design 3 · токены Data table (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-data-table.scss) · Angular Material · table.scss (raw.githubusercontent.com/angular/components/main/src/material/table/table.scss)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:2\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:1\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:2\"><span class=\"ds-table-content-cell__label\" style=\"white-space:normal\">Пицца «Маргарита» с двойным сыром и пепперони, 32 см</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\">1 180 ₽</span></div></div></div></div>",
+   "example_ru": "Длинное название переносится на вторую строку внутри ячейки; заголовок «Блюдо» — одно слово, кегль 14 px, паддинг ячейки 16 px."
+  },
+  {
+   "title": "Карточки и раскрытие вместо таблицы",
+   "items": [
+    "Что происходит: в вертикальной таблице на телефоне строки по 52 px дают всего 5–6 видимых записей, а сравнение всё равно невозможно — пользователь скроллит и теряет контекст.",
+    "Что делают системы: Carbon держит для этого структурный список и запрещает вкладывать в него сложное — «Nesting items is not recommended, as structured lists are used to present simple data», а у самой таблицы есть раскрытие строки: «The expandable data table helps present large amounts of data in a small space»; NN/g советует аккордеоны для сгруппированных данных («Accordions for Groups of Data»).",
+    "Что делать нам: на 375 px таблица с колонками — только для сравнения однотипных чисел; в остальных случаях строка списка или карточка с главным значением справа и деталями в раскрытии."
+   ],
+   "src": "Источники: IBM Carbon · Structured list usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/structured-list/usage.mdx) · IBM Carbon · Data table usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx) · Nielsen Norman Group · Mobile Tables (nngroup.com/articles/mobile-tables/)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:12px\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;padding:16px\"><div style=\"font:500 16px Roboto\">Пицца «Маргарита»</div><div style=\"font:400 12px Roboto;color:#616161\">2 шт · 1 180 ₽</div></div><div style=\"border:1px solid #E0E0E0;border-radius:12px;padding:16px\"><div style=\"font:500 16px Roboto\">Паста «Карбонара»</div><div style=\"font:400 12px Roboto;color:#616161\">1 шт · 740 ₽</div></div></div></div>",
+   "example_ru": "Карточный вид вместо четырёх колонок: главное значение (2 шт · 1 180 ₽) уходит во вторую строку — так таблица читается на 343 px."
+  },
+  {
+   "title": "Пустое состояние, загрузка и ошибка",
+   "items": [
+    "Что происходит: пока данные не пришли, таблица показывает пустые строки, а когда запрос упал — тоже пусто; пользователь не отличает «нет заказов» от «нет связи» и от «ещё грузится».",
+    "Что делают системы: Carbon разводит состояния по времени — скелеты «should only appear for only a few seconds, disappearing once components and content populate the page», а при долгой загрузке нужен полноэкранный индикатор («If a loading process will require the application's full resources and will take longer than a moment or two, use a full-screen loading indicator»); Ant Design даёт для пустоты отдельный компонент: «When there is no data provided, display for friendly tips».",
+    "Что делать нам: три состояния в ДС — скелет трёх строк (до пары секунд), футер с текстом «Нет заказов за сегодня — изменить фильтр» и ошибка с кнопкой «Повторить»; пустой серой таблицы без текста в мобильном слое быть не должно."
+   ],
+   "src": "Источники: IBM Carbon · Loading pattern (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/patterns/loading-pattern/index.mdx) · IBM Carbon · Data table usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx) · Ant Design · Empty (ant.design/components/empty)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:1.6\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:1\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div class=\"ds-table-footer\"><span class=\"ds-table-footer__label\">Нет заказов за сегодня — изменить фильтр</span></div></div></div>",
+   "example_ru": "Пустое состояние — текстом в футере таблицы с подсказкой, что делать («изменить фильтр»); скелета и состояния ошибки в ДС пока нет — это находка для библиотеки."
+  },
+  {
+   "title": "Доступность таблицы на телефоне",
+   "items": [
+    "Что происходит: с экранным диктором таблица без подписей читается как поток чисел, а строка высотой 52 px при чекбоксе 20 px легко промахивается пальцем.",
+    "Что делают системы: GOV.UK требует описательных заголовков и связи ячейки с ними — «Use table headers to tell users what the rows and columns represent. Use the `scope` attribute to help users of assistive technology distinguish between row and column headers», а также подписи-`<caption>` и выравнивания чисел: «When comparing columns of numbers, align the numbers to the right in table cells»; Apple требует область касания 44×44 pt, а Carbon предупреждает, что «check all» в шапке имеет три состояния — «check, unchecked, and indeterminate».",
+    "Что делать нам: у каждой таблицы — caption и scope у заголовков; числа вправо, текст влево; чекбокс строки получает кликабельную область не меньше 44 px по высоте, а трёхсостоянийный «выбрать все» на мобиле не показываем."
+   ],
+   "src": "Источники: GOV.UK Design System · Table (design-system.service.gov.uk/components/table/) · Apple HIG · Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility) · IBM Carbon · Data table usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/data-table/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"border:1px solid #E0E0E0;border-radius:12px;overflow:hidden;width:100%\"><div style=\"display:flex;background:#FAFAFA\"><div class=\"ds-table-header-cell\" style=\"flex:1.4\"><span class=\"ds-table-header-cell__label\">Блюдо</span></div><div class=\"ds-table-header-cell\" style=\"flex:.8\"><span class=\"ds-table-header-cell__label\">Кол-во</span></div><div class=\"ds-table-header-cell\" style=\"flex:1\"><span class=\"ds-table-header-cell__label\">Сумма</span></div></div><div style=\"display:flex\"><div class=\"ds-table-content-cell\" style=\"flex:1.4\"><span class=\"ds-table-content-cell__label\">Пицца «Маргарита»</span></div><div class=\"ds-table-content-cell\" style=\"flex:.8\"><span class=\"ds-table-content-cell__label\" style=\"text-align:right\">2</span></div><div class=\"ds-table-content-cell\" style=\"flex:1\"><span class=\"ds-table-content-cell__label\" style=\"text-align:right\">1 180 ₽</span></div></div></div></div>",
+   "example_ru": "Подписи колонок в шапке, числа («2», «1 180 ₽») выровнены вправо по правилу GOV.UK, строка данных 52 px — палец не промахивается."
+  }
+ ]
+}

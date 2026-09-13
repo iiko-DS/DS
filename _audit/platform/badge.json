@@ -1,0 +1,192 @@
+{
+  "component": "Badge",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Маленький бейдж (точка, без цифры)",
+          "size_dp": 6,
+          "quote": "'size': if($exclude-hardcoded-values, null, 6px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-badge.scss"
+        },
+        {
+          "name": "Большой бейдж (с числом)",
+          "size_dp": 16,
+          "quote": "'large-size': if($exclude-hardcoded-values, null, 16px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-badge.scss"
+        }
+      ],
+      "variants": [
+        {
+          "name": "форма — corner-full (круг/капсула)",
+          "quote": "'shape': map.get($deps, 'md-sys-shape', 'corner-full'); 'large-shape': map.get($deps, 'md-sys-shape', 'corner-full')",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-badge.scss"
+        },
+        {
+          "name": "цвет — error / on-error",
+          "quote": "'color': map.get($deps, 'md-sys-color', 'error'); 'large-label-text-color': map.get($deps, 'md-sys-color', 'on-error')",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-badge.scss"
+        },
+        {
+          "name": "текст большого бейджа — label-small",
+          "quote": "'large-label-text-size': map.get($deps, 'md-sys-typescale', 'label-small-size')",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-badge.scss"
+        }
+      ],
+      "notes_ru": "M3 знает ровно два размера: точка 6px и бейдж с числом 16px, форма corner-full, цвет error. Позиции бейджа (above/below, before/after) в токенах не описаны — токенов позиции нет. Веб-реализации тоже нет (badge/badge.ts — 404 в material-web), то есть M3 даёт только токены, без компонента.",
+      "sources": [
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-badge.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/docs/components (список: badge отсутствует)"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Средний бейдж (по умолчанию, M3-токен container-size)",
+          "size_dp": 16,
+          "quote": "badge-container-size: 16px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss"
+        },
+        {
+          "name": "Маленький бейдж (M3-токен, без текста)",
+          "size_dp": 6,
+          "quote": "badge-small-size-container-size: 6px, badge-small-size-text-size: 0",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss"
+        },
+        {
+          "name": "Большой бейдж (M3-токен)",
+          "size_dp": 16,
+          "quote": "badge-large-size-container-size: 16px, badge-large-size-container-padding: 0 4px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss"
+        },
+        {
+          "name": "Фолбэк M2: базовый размер",
+          "size_dp": 22,
+          "quote": "$default-size: 22px !default;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.scss"
+        },
+        {
+          "name": "Фолбэк M2: маленький (22 − 6)",
+          "size_dp": 16,
+          "quote": "$small-size: $default-size - 6;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.scss"
+        },
+        {
+          "name": "Фолбэк M2: большой (22 + 6)",
+          "size_dp": 28,
+          "quote": "$large-size: $default-size + 6;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.scss"
+        },
+        {
+          "name": "Высота строки текста бейджа",
+          "size_dp": 16,
+          "quote": "badge-line-height: 16px, badge-large-size-line-height: 16px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss"
+        }
+      ],
+      "variants": [
+        {
+          "name": "три размера: small / medium (по умолчанию) / large",
+          "quote": "The badge has 3 sizes: `small`, `medium` and `large`. By default, the badge is set to `medium`. Badges that are `small` do not show the label text.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.md"
+        },
+        {
+          "name": "позиция: above|below + before|after, по умолчанию above after",
+          "quote": "By default, the badge will be placed `above after`. The direction can be changed by defining the attribute `matBadgePosition` follow by `above|below` and `before|after`.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.md"
+        },
+        {
+          "name": "перекрытие: matBadgeOverlap, по умолчанию true",
+          "quote": "Typically, you want the badge to overlap an icon and not a text phrase. By default it will overlap.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.md"
+        },
+        {
+          "name": "скрытие: применяется mat-badge-hidden при hidden или отсутствии значения (число 0 → скрыт)",
+          "quote": "'[class.mat-badge-hidden]': 'hidden || !content'",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.ts"
+        },
+        {
+          "name": "сдвиг контейнера: -6px (small) и -12px (medium/large)",
+          "quote": "badge-small-size-container-offset: -6px 0, badge-container-offset: -12px 0, badge-large-size-container-offset: -12px 0",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss"
+        },
+        {
+          "name": "скрытие вручную — matBadgeHidden",
+          "quote": "The badge visibility can be toggled programmatically by defining `matBadgeHidden`.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.md"
+        },
+        {
+          "name": "обязательное описание для скринридеров — matBadgeDescription",
+          "quote": "You must provide a meaningful description via `matBadgeDescription`.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.md"
+        }
+      ],
+      "notes_ru": "Angular Material — единственный из трёх с полноценным компонентом бейджа: три размера (small 6, medium 16 в M3-теме, фолбэк M2 22/16/28), четыре позиции, перекрытие, скрытие. Важная деталь: бейдж скрывается, когда значение пустое или числовой 0 (биндинг hidden || !content), а не «всегда при нуле» по отдельному правилу.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/badge/badge.ts"
+      ]
+    },
+    "ios_hig": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Числового размера бейджа в HIG нет",
+          "size_dp": null,
+          "quote": "A badge is a small, filled oval containing a number …",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/notifications"
+        }
+      ],
+      "variants": [
+        {
+          "name": "бейдж на иконке приложения = количество непрочитанных уведомлений",
+          "quote": "Use a badge only to show people how many unread notifications they have. Don’t use a badge to convey numeric information that isn’t related to notifications, such as weather-related data, dates and times, stock prices, or game scores.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/notifications"
+        },
+        {
+          "name": "бейдж на элементе таб-бара — красный овал с белым текстом",
+          "quote": "You can display a badge — a red oval containing white text and either a number or an exclamation point — on a tab to indicate that there’s new or updated information in the section",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/tab-bars"
+        },
+        {
+          "name": "нулевое значение убирает уведомления из Notification Center",
+          "quote": "Note that reducing a badge’s count to zero removes all related notifications from Notification Center.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/notifications"
+        },
+        {
+          "name": "бейдж — не единственный канал передачи важной информации",
+          "quote": "Make sure badging isn’t the only method you use to communicate essential information. People can turn off badging for your app",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/notifications"
+        },
+        {
+          "name": "нельзя рисовать свой компонент, похожий на бейдж",
+          "quote": "Avoid creating a custom image or component that mimics the appearance or behavior of a badge.",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/notifications"
+        },
+        {
+          "name": "в UITabBarItem бейдж = дополнительное значение (badgeValue, цвет и атрибуты текста настраиваются)",
+          "quote": "A tab bar item can display a supplementary value in a badge that provides extra information to the user … You can customize the badge’s appearance, including its background color and text attributes.",
+          "source": "https://developer.apple.com/documentation/uikit/uitabbaritem"
+        }
+      ],
+      "notes_ru": "Отдельной страницы Badge в HIG нет (404) — правила разбросаны по разделам «Notifications → Badging» и «Tab bars», плюс API UITabBarItem. Правила жёсткие: только количество непрочитанных, обновлять сразу, обязательно дублировать информацию другим способом, не имитировать бейдж своим компонентом. Ни одного числа (ни размера, ни отступа) HIG не даёт.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/notifications",
+        "https://developer.apple.com/design/human-interface-guidelines/tab-bars",
+        "https://developer.apple.com/documentation/uikit/uitabbaritem",
+        "https://developer.apple.com/design/human-interface-guidelines/badges (страница отсутствует, 404)"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Размера бейджа меньше 6 dp нет ни у одной платформы: M3 — 6 (точка) и 16 (с числом), Angular — 6/16/22(+M2 28), iOS числа не даёт вообще.",
+    "Позиции бейджа (above/below, before/after) есть только у Angular Material; в токенах M3 их нет, HIG позиции не описывает.",
+    "Отдельной страницы/компонента Badge нет ни в iOS HIG (404), ни в material-web (нет реализации) — у M3 только токены.",
+    "Правила скрытия бейджа различаются и не универсальны: Angular скрывает при пустом значении/0 (binding hidden || !content), iOS отдельного правила «скрывать при 0» не формулирует — только «уменьшение счётчика до нуля убирает уведомления»."
+  ],
+  "verdict_ru": "Числа дают только M3 и Angular Material, и они совпадают в M3-режиме: 6 dp у точки, 16 dp у бейджа с числом, форма corner-full, цвет error, текст label-small, высота строки 16. Angular добавляет то, чего нет нигде: три именованных размера, четыре позиции, перекрытие и правило скрытия при пустом/нулевом значении. iOS HIG регулирует не размер, а смысл: бейдж — только счётчик непрочитанного, обязательное дублирование информации другим способом, запрет имитаций."
+}

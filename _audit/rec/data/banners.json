@@ -1,0 +1,174 @@
+{
+ "slug": "banners",
+ "component": "Banners",
+ "ds_page": "Banners_DS",
+ "desc_ru": "Баннер: сообщение над содержимым с действиями. Компонента нет ни в одной актуальной платформе — числа только из Material Design 2.",
+ "category_ru": "Размеры + поведение",
+ "category_note_ru": "крупнее паддинги; действия складываются под текст",
+ "summary_ru": "Паддинги 12 / 16 → 16 / 16 (высота 52 → 76), действия уезжают под текст — вертикальная раскладка. Длинный текст не обрезается.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "паддинги 12 / 16, действия справа"
+  },
+  "mobile": {
+   "sub_ru": "паддинги 16 / 16, действия под текстом"
+  }
+ },
+ "changes": [
+  {
+   "what": "Паддинги",
+   "desktop": "12 сверху и снизу, 16 по бокам",
+   "mobile": "16 / 16 — высота 76 px при минимуме 52 у mdc-banner",
+   "edit": [
+    {
+     "id": "pad-v",
+     "v": 16,
+     "sel": ".ds-banner",
+     "css": "padding-top:@px; padding-bottom:@px"
+    },
+    {
+     "id": "pad-h",
+     "v": 16,
+     "sel": ".ds-banner",
+     "css": "padding-left:@px; padding-right:@px"
+    }
+   ]
+  },
+  {
+   "what": "Раскладка",
+   "desktop": "горизонтальная: иконка, текст, действия в строку",
+   "mobile": "вертикальная: действия под текстом (класс ds-banner--vertical)"
+  },
+  {
+   "what": "Число действий",
+   "desktop": "не ограничено",
+   "mobile": "не больше двух, оба текстовые — правило mdc-banner (dismissive слева, confirming справа)"
+  },
+  {
+   "what": "Длинный текст",
+   "desktop": "в строку",
+   "mobile": "переносится на строки, не обрезается"
+  },
+  {
+   "what": "Радиус, цвета, иконка",
+   "desktop": "радиус 12, иконка 20 px",
+   "mobile": "радиус 12 px, иконка 20 px — те же, стилевые токены общие",
+   "edit": [
+    {
+     "id": "radius",
+     "v": 12,
+     "sel": ".ds-banner",
+     "css": "border-radius:@px"
+    },
+    {
+     "id": "icon",
+     "v": 20,
+     "sel": ".ds-banner__icon",
+     "css": "font-size:@px"
+    }
+   ]
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Раскладку меняет класс <code>ds-banner--vertical</code> — он в ДС уже есть; режим подменяет только паддинги. Это осознанно: раскладка — выбор разметки (как <code>orientation</code> у Angular), а не размер.</p>",
+ "why_ru": "Banner — единственный компонент из группы, которого нет <b>ни в одной</b> из трёх актуальных платформ: в каталоге MD3 страницы баннеров нет (404), в Angular Material нет директории banner (ближайшая замена — MatSnackBar), в iOS HIG нет страницы banners. Все проверяемые числа существуют только в Material Design 2 и его реализации mdc-banner: минимальная высота 52 px, минимальная ширина 344 px, максимальная ширина контента, высота разделителя, размер изображения с иллюстрацией. Оттуда же правило «не более двух действий, оба текстовые, dismissive слева, confirming справа». Поэтому наши паддинги 16 / 16 и высота 76 — это выше единственного проверяемого минимума, и другого источника чисел у баннера нет.",
+ "result_html": "<ul class=\"list\"><li>Паддинги 16 / 16 дают 76 px — выше минимума 52 из mdc-banner; на мобиле баннер становится выше и заметнее.</li><li>Раскладка переключается классом <code>ds-banner--vertical</code> (действия под текстом) — так же, как это описано в брифе плана.</li><li><b>Не решено:</b> компонента нет в MD3/Angular/HIG — «по Material» его обосновать нельзя, все числа из MD2 (не MD3). Это стоит зафиксировать в спеке.</li><li><b>Не решено:</b> правило «не больше двух действий» — из mdc-banner и брифа; в ДС оно не выражено ни классом, ни ограничением.</li><li><b>Не решено:</b> длинный текст: у нас он переносится, но максимальная ширина контента (MD2) не задана.</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Баннер с одним действием",
+   "html": "<div class=\"ds-banner ds-banner--horizontal\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span class=\"ds-banner__row\">Текст баннера с пояснением, который на узком экране переносится на строки</span><div class=\"ds-banner__buttons\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Понятно</span></button></div></div>",
+   "html_mobile": "<div class=\"ds-banner ds-banner--vertical\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Текст баннера с пояснением, который на узком экране переносится на строки</span></div><div class=\"ds-banner__buttons\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Понятно</span></button></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "Два действия (предел по mdc-banner)",
+   "html": "<div class=\"ds-banner ds-banner--vertical\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Нужно подтверждение действия</span></div><div class=\"ds-banner__buttons\"><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Подтвердить</span></button></div></div>",
+   "stack": true
+  }
+ ],
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "Компонента Banner в MD3 нет: страница /components/banner/overview → 404, в каталоге его нет — все числа только из MD2/MDC-banner (banners.json).",
+    "Единственные проверяемые размеры оттуда: min-width 344 px, min-height 52 px, content-max-width 720 px, изображение 40 px, брейкпоинт 480 px (banners.json).",
+    "Правило «не больше двух действий, только текст, dismissive слева, confirming справа» — тоже MD2/MDC, в MD3 и Angular его нет (banners.json).",
+    "Баннер не исчезает сам: MD2 требует явного закрытия пользователем — автоскрытие на мобиле запрещено, это и отличает его от snackbar (banners.json).",
+    "В Angular Material баннера нет вовсе — полосу придётся собирать вручную, платформенной геометрии у Angular нет (banners.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "В iOS HIG баннера нет: страница /banners → 404 и у HTML, и у JSON-эндпоинта (banners.json).",
+    "Числовых размеров у Apple для полосы-сообщения не существует — в pt брать нечего (banners.json).",
+    "Apple не даёт компонента для некритичного постоянного сообщения: alert — только для критичного, «Avoid using an alert merely to provide information» (banners.json).",
+    "Значит на iOS это либо уведомление, либо собственная вёрстка внутри экрана, но не платформенный компонент (banners.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Баннер — вертикальная раскладка: действия под текстом, оба текстовые или на всю ширину; в строку на узком экране они не влезают.",
+  "Длинный текст не обрезать, а переносить: у баннера нет тултипа, где можно дочитать обрезанное.",
+  "Действий не больше двух: закрывающее слева, подтверждающее справа — правило берём у mdc-banner, потому что своих нет.",
+  "Баннер не самоисчезающий: если он уходит по таймеру, это snackbar, а не баннер — не смешивать.",
+  "Показывать не больше одного баннера одновременно и не ставить его над пустым состоянием — на телефоне это съедает пол-экрана."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Товары</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-banner ds-banner--accent ds-banner--vertical\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Остатки меньше нормы: три позиции ждут заказа у поставщика</span></div><div class=\"ds-banner__buttons\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Понятно</span></button></div></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">inventory_2</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Мука</span><span class=\"ds-list-item__text\">Склад · 42 кг</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">норма</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">inventory_2</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Сыр моцарелла</span><span class=\"ds-list-item__text\">Склад · 6 кг</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">мало</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">inventory_2</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Томаты</span><span class=\"ds-list-item__text\">Склад · 3 кг</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">мало</span></div></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__icon material-icons\">add</span><span class=\"ds-btn__label\">Создать заказ</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Заказ поставщику</p><p class=\"phone__sheet-text\">Три позиции ниже нормы</p><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Мука</span>42 кг</div><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Сыр моцарелла</span>6 кг</div><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Томаты</span>3 кг</div><div class=\"phone__row\">Заказ уйдёт поставщику «Метро» завтра до 12:00</div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__icon material-icons\">add</span><span class=\"ds-btn__label\">Создать заказ</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Склад: баннер-пояснение над списком; в шторке те же строки без баннера</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Товары</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-banner ds-banner--accent ds-banner--vertical\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Остатки меньше нормы: три позиции ждут заказа у поставщика</span></div><div class=\"ds-banner__buttons\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Понятно</span></button></div></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">inventory_2</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Мука</span><span class=\"ds-list-item__text\">Склад · 42 кг</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">норма</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">inventory_2</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Сыр моцарелла</span><span class=\"ds-list-item__text\">Склад · 6 кг</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">мало</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">inventory_2</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Томаты</span><span class=\"ds-list-item__text\">Склад · 3 кг</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">мало</span></div></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__icon material-icons\">add</span><span class=\"ds-btn__label\">Создать заказ</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Заказ поставщику</p><p class=\"phone__sheet-text\">Три позиции ниже нормы</p><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Мука</span>42 кг</div><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Сыр моцарелла</span>6 кг</div><div class=\"phone__row\" style=\"display:flex;align-items:center;justify-content:space-between;gap:8px\"><span>Томаты</span>3 кг</div><div class=\"phone__row\">Заказ уйдёт поставщику «Метро» завтра до 12:00</div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__icon material-icons\">add</span><span class=\"ds-btn__label\">Создать заказ</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "Баннера нет ни в MD3, ни у Apple — числа только из MD2",
+   "items": [
+    "Что происходит: баннер считают платформенным компонентом, ищут его размеры в актуальных гайдах, не находят и «худеют» его до 32 px, после чего текст перестаёт читаться.",
+    "Что делают системы: в каталоге MD3 баннера нет (страницы /components/banner → 404), зато в MD2 и его реализации mdc-banner числа есть: «$_min-width: 344px;», «min-height: 52px;», «content-max-width: 720px», «$mobile-breakpoint: 480px;»; у Apple страницы banners тоже нет — только алерт, а он «Avoid using an alert merely to provide information».",
+    "Что делать нам: описывать баннер самим: min-height 52 px для одной строки, ширина по телу экрана (343 px при 375 px), радиус и обводка — по нашей геометрии; на MD3 в этом блоке не ссылаться."
+   ],
+   "src": "Источники: Material Design 2 · Banners (https://m2.material.io/components/banners) · MDC Web · Banner (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/_banner.scss) · Apple HIG · Alerts (https://developer.apple.com/design/human-interface-guidelines/alerts)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Смена не закрыта — заказы за 8 августа не отправлены</span></div></div></div>",
+   "example_ru": "Баннер по телу экрана 343 px и min-height 52 px на одну строку текста: на MD3 в этом блоке не ссылаемся, 52 px пришли из MD2."
+  },
+  {
+   "title": "Баннер сверху сдвигает контент",
+   "items": [
+    "Что происходит: при появлении баннер выталкивает содержимое вниз, и на маленьком экране пользователь теряет место и позицию прокрутки.",
+    "Что делают системы: MD2: «Banners should be displayed at the top of the screen, below a top app bar» — баннер немодальный и персистентный, при появлении сдвигает контент вниз, а не накладывается.",
+    "Что делать нам: ставить баннер в поток под шапкой, не поверх футера и вне зоны экранной клавиатуры; при его появлении сохранять позицию скролла и не перезагружать список."
+   ],
+   "src": "Источники: Material Design 2 · Banners (https://m2.material.io/components/banners) · Material Design 3 · Components (https://m3.material.io/components)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"height:48px;display:flex;align-items:center;padding:0 16px;background:#FFFFFF;border-bottom:1px solid #E0E0E0;font-size:16px;font-weight:500\">Заказы</div><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Нет связи с кассой — изменения сохранятся локально</span></div></div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Список заказов ниже остался на месте: баннер встал в поток и позицию прокрутки не сбросил</div></div>",
+   "example_ru": "Баннер встал в поток под шапкой и вытолкнул контент вниз: место под него есть, позиция прокрутки сохранена."
+  },
+  {
+   "title": "Один баннер за раз и он не исчезает сам",
+   "items": [
+    "Что происходит: несколько сообщений складываются в стопку, часть из них исчезает через 3 секунды, и пользователь не успевает дочитать важное.",
+    "Что делают системы: MD2: «It requires a user action to be dismissed» и «Only one banner should be shown at a time»; в MD3 для низкоприоритетных сообщений вместо баннера оставлен snackbar.",
+    "Что делать нам: максимум один баннер, закрытие только по действию пользователя (иконка «×» с зоной 44–48 px); остальные сообщения — строкой в списке или в шторке, а не второй плашкой сверху."
+   ],
+   "src": "Источники: Material Design 2 · Banners (https://m2.material.io/components/banners) · Material Design 3 · Components (https://m3.material.io/components)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">warning</span></span><span>Печать чека не отвечает — заказ не отправлен</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><span class=\"pat__hit\" style=\"margin:0\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Закрыть баннер\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></button></span></div></div></div>",
+   "example_ru": "Один баннер на экран и закрытие только по «×» с зоной нажатия 48 × 48 (пунктир): сам он не исчезает через 3 секунды."
+  },
+  {
+   "title": "Два действия максимум",
+   "items": [
+    "Что происходит: в баннер впихивают три-четыре кнопки, и на 375 px подписи обрезаются или переносятся на вторую строку.",
+    "Что делают системы: MD2: «Banners can contain up to two text buttons, with the dismissive action placed on the left and the confirming action on the right.», и только текстовые кнопки — иконки вместо текста не приветствуются.",
+    "Что делать нам: одно текстовое действие в 2 слова плюс иконка закрытия; порядок «отменяющее слева — подтверждающее справа»; всё, что не влезло, — в шторку."
+   ],
+   "src": "Источники: Material Design 2 · Banners (https://m2.material.io/components/banners) · MDC Web · Banner (https://raw.githubusercontent.com/material-components/material-components-web/master/packages/mdc-banner/_banner-theme.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">warning</span></span><span>Нужно подтверждение действия</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Подтвердить</span></button></div></div></div>",
+   "example_ru": "Два текстовых действия: «Отмена» слева, «Подтвердить» справа — третья кнопка в баннер не влезает и уходит в шторку."
+  },
+  {
+   "title": "Длинный текст и ошибки формы",
+   "items": [
+    "Что происходит: текст баннера в две-три строки не влезает в фиксированную высоту, а ошибки валидации показывают баннером, и пользователь не понимает, какое поле исправить.",
+    "Что делают системы: GOV.UK: «Do not: use a notification banner to tell the user about validation errors — use an Error message component» и требует доступность — «Use `role=\"region\"` and `aria-labelledby=\"govuk-notification-banner-title\"` … so that screen reader users can navigate to the notification banner.»; там же сказано, что пользователи часто пропускают важное в баннерах, включая тех, кто пользуется ассистивными технологиями.",
+    "Что делать нам: 52 px — минимум для одной строки, максимум 2–3 строки и ссылка «Подробнее»; ошибки полей показывать у полей, а не баннером; заголовок баннера связывать с aria-labelledby."
+   ],
+   "src": "Источники: GOV.UK Design System · Notification banner (https://design-system.service.gov.uk/components/notification-banner/)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-banner ds-banner--vertical\" style=\"min-height:52px\"><div class=\"ds-banner__row\" style=\"align-items:flex-start\"><span class=\"ds-banner__icon\"><span class=\"material-icons\" style=\"font-size:24px\">info</span></span><span>Заказы за 8 августа не отправлены: нет связи с принтером. Проверьте кабель и повторите отправку.</span></div><div class=\"ds-banner__buttons\" style=\"justify-content:flex-end\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Подробнее</span></button></div></div><div style=\"padding:12px 16px;background:#FFFFFF;border:1px solid #E0E0E0;border-radius:8px;font-size:14px;line-height:20px\">Ошибка поля показана у поля: «Адрес доставки обязателен»</div></div>",
+   "example_ru": "Текст баннера — до трёх строк и одно действие «Подробнее»; ошибки валидации баннером не показываем, они стоят у полей."
+  }
+ ]
+}

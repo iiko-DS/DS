@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8"><body><pre id="out"></pre>
+<iframe id="f" src="/iiko-ds-mobile/prototypes/recommendations/card.html" width="1600" height="5000" style="border:0"></iframe>
+<script>
+const f=document.getElementById('f');
+f.onload=()=>setTimeout(()=>{
+  const d=f.contentDocument,w=f.contentWindow;
+  const fields=[...d.querySelectorAll('.edit__input')];
+  const s1=d.querySelector('.phones__item .phone__screen');
+  const s2=d.querySelectorAll('.phones__item')[1].querySelector('.phone__screen');
+  const before={live:d.getElementById('live').textContent.length, h1:Math.round(s1.getBoundingClientRect().height), h2:Math.round(s2.getBoundingClientRect().height)};
+  const f0=fields[0];
+  const sel=f0.getAttribute('data-sel'), css=f0.getAttribute('data-css');
+  const el1=s1.querySelector(sel), el2=s2.querySelector(sel);
+  const m1=el1?w.getComputedStyle(el1).height:null, m2=el2?w.getComputedStyle(el2).height:null;
+  // вводим новое значение и шлём input
+  f0.value = String(parseFloat(f0.value||f0.getAttribute('value')) + 8);
+  f0.dispatchEvent(new w.Event('input', {bubbles:true}));
+  const after={live:d.getElementById('live').textContent.length,
+               h1:Math.round(s1.getBoundingClientRect().height), h2:Math.round(s2.getBoundingClientRect().height),
+               m1:el1?w.getComputedStyle(el1).height:null, m2:el2?w.getComputedStyle(el2).height:null};
+  document.getElementById('out').textContent=JSON.stringify({fields:fields.length, sel, css, before, after}, null, 1);
+},700);
+</script></body>

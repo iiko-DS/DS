@@ -1,0 +1,119 @@
+{
+  "component": "Divider",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Толщина разделителя",
+          "size_dp": 1,
+          "quote": "`--md-divider-thickness` | `1px`",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md"
+        },
+        {
+          "name": "Отступ inset-разделителя от края",
+          "size_dp": 16,
+          "quote": ":host([inset]), :host([inset-start]) { padding-inline-start: 16px; } :host([inset]), :host([inset-end]) { padding-inline-end: 16px; }",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/divider/internal/_divider.scss"
+        }
+      ],
+      "variants": [
+        {
+          "name": "full-width (на всю ширину) — значение по умолчанию",
+          "quote": "Use full width dividers to separate larger sections of unrelated content.",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md"
+        },
+        {
+          "name": "inset — равные отступы с двух сторон; inset-start / inset-end — с одной",
+          "quote": "Inset dividers are equally indented from both sides of the screen by default. Use `inset-start` or `inset-end` to change this.",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md"
+        },
+        {
+          "name": "цвет — outline-variant",
+          "quote": "`--md-divider-color` | `--md-sys-color-outline-variant`",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md"
+        },
+        {
+          "name": "роль: декоративный по умолчанию, role=separator только вручную",
+          "quote": "Dividers are decorative by default and not announced by assistive technology. Add a `role=\"separator\"` attribute to non-decorative dividers that should be announced.",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md"
+        }
+      ],
+      "notes_ru": "M3: толщина 1px, цвет outline-variant, inset 16px (padding-inline-start/end). Варианты материала — full-width, inset, inset-start, inset-end. Вертикального варианта в веб-реализации нет: :host задаёт height = thickness и width: 100% (горизонтальная линия). Токен-файл дизайна содержит только color и thickness.",
+      "sources": [
+        "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/divider.md",
+        "https://raw.githubusercontent.com/material-components/material-web/main/divider/internal/_divider.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-divider.scss"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Толщина разделителя (M3-токен)",
+          "size_dp": 1,
+          "quote": "divider-width: 1px",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/divider/_m3-divider.scss"
+        },
+        {
+          "name": "Вертикальный разделитель: толщина по правой границе",
+          "size_dp": 1,
+          "quote": "border-right-width: token-utils.slot(divider-width, $fallbacks);",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/divider/divider.scss"
+        },
+        {
+          "name": "Отступ inset-разделителя",
+          "size_dp": 80,
+          "quote": "$inset-margin: 80px;  … &.mat-divider-inset { margin-left: $inset-margin; }",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/divider/divider.scss"
+        }
+      ],
+      "variants": [
+        {
+          "name": "горизонтальный / вертикальный (атрибут vertical)",
+          "quote": "Add the `vertical` attribute in order to set whether or not the divider is vertically-oriented.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/divider/divider.md"
+        },
+        {
+          "name": "inset (атрибут inset)",
+          "quote": "Add the `inset` attribute in order to set whether or not the divider is an inset divider.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/divider/divider.md"
+        },
+        {
+          "name": "цвет — outline-variant",
+          "quote": "divider-color: map.get($system, outline-variant)",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/divider/_m3-divider.scss"
+        },
+        {
+          "name": "роль separator ставится всегда",
+          "quote": "`MatDivider` applies the ARIA `role=\"separator\"` attribute, exclusively implementing the non-focusable style of separator",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/divider/divider.md"
+        }
+      ],
+      "notes_ru": "Angular Material — единственный, у кого есть вертикальный разделитель как явный вариант (.mat-divider-vertical через aтрибут vertical). Толщина 1px, цвет outline-variant, inset-отступ 80px (жёстко зашит в SCSS, не токен). Роль separator применяется всегда, в отличие от M3, где разделитель по умолчанию декоративный.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/divider/divider.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/divider/divider.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/divider/_m3-divider.scss"
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "sizes": [],
+      "variants": [],
+      "notes_ru": "В iOS HIG нет ни компонента Divider/Separator, ни его числовых размеров: страница «Lists and tables» числа не содержит (только «групповой стиль использует header/footer и дополнительное пространство»), у SwiftUI Divider в документации тоже только описание без толщины. UITableView.separatorInset документирует свойство («The default inset of cell separators»), но числового дефолта не приводит. Толщина «hairline 1 pt» первоисточником не подтверждается — null.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+        "https://developer.apple.com/documentation/swiftui/divider",
+        "https://developer.apple.com/documentation/uikit/uitableview/separatorinset"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Разделителя тоньше 1 px нет ни у одной платформы: M3 — thickness 1px, Angular — divider-width 1px; iOS числа не публикует вообще.",
+    "Вертикальный разделитель есть только у Angular Material; в веб-реализации M3 его нет (height = thickness, width: 100%).",
+    "iOS: толщины разделителя (в т.ч. «hairline 1 pt») и его inset в первоисточниках нет — только свойство separatorInset без значения по умолчанию.",
+    "Отступ inset расходится радикально: M3 — 16 px, Angular Material — 80 px; единого значения нет."
+  ],
+  "verdict_ru": "M3 и Angular Material сходятся в главном: толщина 1 px и цвет outline-variant (M3-токен outline-variant). Расходятся в inset: M3 — 16 px с обеих сторон, Angular Material — 80 px только слева (жёстко в SCSS). Вертикальный вариант есть только у Angular (атрибут vertical), у M3 веб-разделитель всегда горизонтальный. iOS не даёт ни толщины, ни отступа — «hairline 1 pt» первоисточником не подтверждается."
+}

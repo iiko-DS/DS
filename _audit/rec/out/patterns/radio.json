@@ -1,0 +1,60 @@
+{
+ "slug": "radio",
+ "patterns_ru": [
+  {
+   "title": "Радио-кнопка меньше пальца",
+   "items": [
+    "Что происходит: у радио маркер всего 20 dp, а промах на телефоне выбирает соседнюю опцию: MD3 фиксирует иконку 20 dp, state layer 40 dp и тач-таргет 48 dp, Angular — `radio-touch-target-size: 48px`, Apple — контрол 44×44 pt по умолчанию, NN/g — минимум «1cm × 1cm».",
+    "Что делают системы: MD3 и Angular расширяют зону нажатия вокруг маркера, а не сам маркер: `.touch-target { height: 48px; width: 48px }` и отступ `margin: max(0px, ((48px - icon-size) / 2))`, то есть кликабельно всё кольцо вокруг иконки 20 px.",
+    "Что делать нам: в ДС нажатие — по всей строке опции высотой 48 px, а не по маркеру: подпись связана с input, тап по тексту тоже выбирает, маркер остаётся 20 × 20 px, а hover-слой 28 × 28 px на тач не показываем."
+   ],
+   "src": "Источники: Material Web · Radio (raw.githubusercontent.com/material-components/material-web/main/docs/components/radio.md) · MD3-токены radio (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-radio-button.scss) · Angular Material · _m3-radio.scss (raw.githubusercontent.com/angular/components/main/src/material/radio/_m3-radio.scss) · Apple HIG · Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility) · Nielsen Norman Group · Touch Targets on Touchscreens (nngroup.com/articles/touch-target-size)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\" id=\"pat-radio-0-1\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-0\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Карта</span></label></div></div>",
+   "example_ru": "Нажатие — по всей строке опции высотой 48 px: маркер остаётся 20 × 20 px, подпись рядом с ним тоже выбирает опцию, а hover-слой 28 × 28 px на тач не показываем."
+  },
+  {
+   "title": "Опций больше пяти — уже не радио",
+   "items": [
+    "Что происходит: длинный список радиокнопок на 375 px занимает весь экран и его неудобно читать: Apple — «Avoid listing too many radio buttons in a set… If you need to present more than about five options, consider using a component like a pop-up button instead», Ant Design — «Utilizing Radio is recommended when there are fewer total options (less than 5)».",
+    "Что делают системы: длинные взаимоисключающие списки платформы уводят в другие компоненты: Apple — Picker («Consider using a picker to offer medium-to-long lists of items») и Pop-up button («Use a pop-up button to present a flat list of mutually exclusive options or states»), Ant Design — Select, а Combo box у Apple доступен только на macOS.",
+    "Что делать нам: 2–5 опций — радиокнопками в столбик; больше пяти — селект или шторка со списком (см. компонент Select), а не «простыня» радио на весь экран."
+   ],
+   "src": "Источники: Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles) · Apple HIG · Pickers (developer.apple.com/design/human-interface-guidelines/pickers) · Apple HIG · Pop-up buttons (developer.apple.com/design/human-interface-guidelines/pop-up-buttons) · Ant Design · Select (raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-select-form\"><span class=\"ds-select-form__label\">Категория</span><div class=\"ds-select-form__input-frame\"><span>Пицца «Маргарита»</span><span class=\"ds-arrow-select\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_drop_down</span></span></div></div></div>",
+   "example_ru": "Опций больше пяти — это уже селект (поле 56 px вместо «простыни» радио на весь экран): радиокнопками держим 2–5 взаимоисключающих вариантов."
+  },
+  {
+   "title": "Смешанного состояния у радио не бывает",
+   "items": [
+    "Что происходит: пытаются показать «частично выбрано» штрихом в маркере, и это сбивает: Apple — «Although a radio button can also display a mixed state (indicated by a dash), this state is rarely useful because you can communicate multiple states by using additional radio buttons».",
+    "Что делают системы: MD3 вообще не даёт радио третьего состояния: вариантов только unselected, selected и disabled, тогда как у checkbox есть mixed — и Apple советует для «частично» брать именно checkbox («If you need to show that a setting or item has a mixed state, consider using a checkbox instead»).",
+    "Что делать нам: в ДС у радио четыре состояния — снят, выбран, ошибка, недоступен — и никакого dash; для иерархии настроек «включить всё / часть» берём checkbox, а не радио."
+   ],
+   "src": "Источники: Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles) · Material Web · Radio (raw.githubusercontent.com/material-components/material-web/main/docs/components/radio.md) · MD3-токены radio (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-radio-button.scss)",
+   "example_html": "<div style=\"display:flex;flex-direction:column;gap:8px\"><label class=\"ds-radio\" id=\"pat-radio-2-1\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-2\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Снят</span></label><label class=\"ds-radio\" id=\"pat-radio-2-2\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-2\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Выбран</span></label><div class=\"ds-radio-wrap\" style=\"display:flex;flex-direction:column;gap:4px\"><label class=\"ds-radio ds-radio--error\" id=\"pat-radio-2-3\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-2\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Выбран, но с ошибкой</span></label><span class=\"ds-radio__support\" style=\"color:#FF5252\">Текст ошибки</span></div><label class=\"ds-radio ds-radio--disabled\" id=\"pat-radio-2-4\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-2\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Недоступный</span></label></div>",
+   "example_ru": "У радио четыре состояния — снят, выбран, ошибка, недоступен — и никакого штриха «частично»: для «включить всё / часть» берём checkbox с indeterminate."
+  },
+  {
+   "title": "Группа радио и её ярлык — часть доступности",
+   "items": [
+    "Что происходит: без роли группы и её заголовка скринридер читает опции по одной и не сообщает, сколько их вообще: Material Web — «Place radios inside a role=\"radiogroup\"» и «Radio groups must display a label, either with aria-label or aria-labelledby».",
+    "Что делают системы: Apple и Carbon добавляют к группе отдельный заголовок: в HIG проверяют состояние одного набора, а Carbon описывает групповой label как часть анатомии — «Group label (optional): Describes the group of options or provides guidance for making a selection»; Angular требует помещать радио в mat-radio-group.",
+    "Что делать нам: в разметке ДС у каждой группы радио есть видимый заголовок, связанный с группой (aria-labelledby), у каждой опции — label с for, и мы не оборачиваем радио во внешний <label>, чтобы скринридер не терял число опций в группе."
+   ],
+   "src": "Источники: Material Web · Radio (raw.githubusercontent.com/material-components/material-web/main/docs/components/radio.md) · IBM Carbon · Radio button usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/radio-button/usage.mdx) · Angular Material · _m3-radio.scss (raw.githubusercontent.com/angular/components/main/src/material/radio/_m3-radio.scss)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><span class=\"phone__card-title\" id=\"pat-radio-3-label\">Способ получения</span><div class=\"ds-radio-group ds-radio-group--vertical\" role=\"radiogroup\" aria-labelledby=\"pat-radio-3-label\"><label class=\"ds-radio\" id=\"pat-radio-3-1\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-3\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Доставка</span></label><label class=\"ds-radio\" id=\"pat-radio-3-2\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-3\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Самовывоз</span></label><label class=\"ds-radio\" id=\"pat-radio-3-3\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-3\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">В зале</span></label></div></div>",
+   "example_ru": "У группы есть видимый заголовок, связанный через aria-labelledby: скринридер сообщает, что опций в группе три, а не читает их по одной вслепую."
+  },
+  {
+   "title": "Горизонтальный ряд и шаг между опциями",
+   "items": [
+    "Что происходит: горизонтальный ряд радио с длинными подписями на 375 px не влезает и режет текст: Apple — «Use consistent spacing when you display radio buttons horizontally. Measure the space needed to accommodate the longest button label, and use that measurement consistently».",
+    "Что делают системы: Carbon по умолчанию советует вертикаль — «When possible, arrange the radio button and checkbox groups vertically for easier reading», — и задаёт шаг в форме: 32 px (layout-03), при тесноте 24 px (layout-02) или 16 px (layout-01).",
+    "Что делать нам: по умолчанию — столбик, шаг между строками 8 px при высоте строки 48 px (это больше платформенного минимума для тач-цели); горизонтально — только две короткие опции, с отступом по длине самой длинной подписи."
+   ],
+   "src": "Источники: Apple HIG · Toggles (developer.apple.com/design/human-interface-guidelines/toggles) · IBM Carbon · Radio button usage (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/radio-button/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"ds-radio-group ds-radio-group--vertical\"><label class=\"ds-radio\" id=\"pat-radio-4-1\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-4\" checked><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Доставка</span></label><label class=\"ds-radio\" id=\"pat-radio-4-2\"><input class=\"ds-radio__input\" type=\"radio\" name=\"pat-radio-4\"><span class=\"ds-radio__box\"><span class=\"ds-radio__state\"></span></span><span class=\"ds-radio__label\">Самовывоз</span></label></div></div>",
+   "example_ru": "По умолчанию — столбик с шагом 8 px при высоте строки 48 px (это больше тач-минимума): в одну строку ставим только две короткие опции и с отступом по самой длинной подписи."
+  }
+ ]
+}

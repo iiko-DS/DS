@@ -1,0 +1,118 @@
+{
+  "component": "Tree (дерево)",
+  "verified_at": "2026-09-11",
+  "platforms": {
+    "md3": {
+      "exists": false,
+      "component_name": "нет — в MD3 дерева нет",
+      "sizes": [],
+      "variants": [],
+      "touch_target_dp": null,
+      "notes_ru": "В MD3 компонента «дерево» нет: m3.material.io/components/tree и /components/trees отдают 404; в наборе официальных токенов MD3 нет ни одного файла *_tree* (ближайшие — списки и меню); в официальной веб-библиотеке Material Web такого компонента нет (all.ts). Числа и варианты — не найдено.",
+      "sources": [
+        "https://m3.material.io/components/tree (HTTP 404)",
+        "https://m3.material.io/components/trees (HTTP 404)",
+        "https://raw.githubusercontent.com/material-components/material-web/main/all.ts"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "component_name": "mat-tree / mat-tree-node / mat-nested-tree-node (+ matTreeNodeDef, matTreeNodeToggle, matTreeNodePadding)",
+      "sizes": [
+        {
+          "name": "Минимальная высота узла (плотность 0)",
+          "quote": "tree-node-min-height: list.nth((48px, 44px, 40px, 36px, 28px), $index),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tree/_m3-tree.scss",
+          "height_dp": 48
+        },
+        {
+          "name": "Отступ одного уровня (indent) по умолчанию",
+          "quote": "* Default number 40px from material design menu sub-menu spec.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/cdk/tree/padding.ts",
+          "value": 40,
+          "unit": "px"
+        },
+        {
+          "name": "Значение indent в CDK",
+          "quote": "_indent: number = 40;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/cdk/tree/padding.ts",
+          "value": 40,
+          "unit": "px"
+        },
+        {
+          "name": "Типографика узла = body-large",
+          "quote": "tree-node-text-size: map.get($system, body-large-size),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/tree/_m3-tree.scss",
+          "value": "body-large"
+        },
+        {
+          "name": "Внутренний padding узла сверх indent",
+          "quote": "не найдено",
+          "source": null,
+          "value": "не найдено"
+        }
+      ],
+      "variants": [
+        "flat tree (mat-tree-node; узлы — соседи): 'Flat trees are generally easier to style and inspect. They are also more friendly to scrolling variations, such as infinite or virtual scrolling.'",
+        "nested tree (mat-nested-tree-node + matTreeNodeOutlet)",
+        "matTreeNodeToggle (+ [matTreeNodeToggleRecursive]) — раскрытие и сворачивание, в том числе рекурсивно",
+        "matTreeNodePadding (только flat tree) — отступ по уровню через matNodePadding",
+        "несколько шаблонов узлов (предикат when)",
+        "DataSource: levelAccessor (плоские данные) или childrenAccessor (вложенные), trackBy",
+        "a11y: WAI-ARIA tree widget; для корректной работы нужны levelAccessor/childrenAccessor (treeControl не даёт правильной a11y), isExpandable на раскрываемых узлах"
+      ],
+      "density": "Есть: clamp-density($scale, -4); min-height узла (48, 44, 40, 36, 28).",
+      "touch_target_dp": null,
+      "touch_target_note_ru": "Токена touch target для узла/тогла нет — не найдено",
+      "notes_ru": "Angular Material — единственный источник чисел: min-height узла 48 px при плотности 0 и отступ 40 px на уровень. В комментарии CDK отступ 40 px обоснован не дерево-спекою, а подменю меню: 'Default number 40px from material design menu sub-menu spec.' Внутренний padding узла числами не документирован (не найдено); для nested tree отступ задаётся CSS, отдельного токена нет.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/tree/tree.md",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/tree/_m3-tree.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/tree/tree.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/cdk/tree/padding.ts"
+      ]
+    },
+    "ios_hig": {
+      "exists": true,
+      "component_name": "Outline views — ближайший аналог дерева, описан только для macOS",
+      "sizes": [
+        {
+          "name": "Высота строки и отступ уровня в HIG",
+          "quote": "не найдено",
+          "source": null,
+          "value": "не найдено"
+        },
+        {
+          "name": "Область касания (общий размер контрола)",
+          "quote": "Platform Default control size Minimum control size iOS, iPadOS 44x44 pt 28x28 pt macOS 28x28 pt 20x20 pt",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+          "value": "44x44 pt",
+          "unit": "pt"
+        }
+      ],
+      "variants": [
+        "outline view с disclosure triangles: 'Parent containers have disclosure triangles that expand to reveal their children.'",
+        "чередующиеся цвета строк в многоколоночных outline view",
+        "редактирование данных, сохранение состояния раскрытия",
+        "для неиерархических данных HIG советует таблицу (обратная рекомендация к lists-and-tables)"
+      ],
+      "touch_target_dp": 44,
+      "touch_target_note_ru": "44x44 pt — общий размер контрола из HIG Accessibility, к узлам дерева напрямую не привязан.",
+      "notes_ru": "HIG описывает иерархический список как outline view и только для macOS: 'An outline view includes at least one column that contains primary hierarchical data, such as a set of parent containers and their children.' Числовых значений (высота строки, отступ уровня, размер disclosure-треугольника) нет — не найдено. Отдельного компонента-дерева для iOS у Apple нет.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/outline-views",
+        "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/outline-views.json",
+        "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+        "https://developer.apple.com/design/human-interface-guidelines/accessibility"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "В MD3 дерева нет ни как компонента, ни как токенов — Material исключён как источник по дереву полностью.",
+    "У Apple дерево описано только для macOS (outline views) и без чисел: ни отступ уровня, ни высота строки не заданы; для iOS компонента-дерева нет.",
+    "Числовой отступ уровня (40 px) существует только в реализации Angular Material/CDK и обоснован спекой подменю меню, а не деревом — это не платформенная рекомендация.",
+    "Ни одна платформа не даёт рекомендаций по максимальной глубине дерева, минимальному размеру toggle-иконки и поведению при горизонтальном скролле.",
+    "Density узла есть только у Angular Material (до -4); MD3 и HIG плотности не задают."
+  ],
+  "verdict_ru": "Дерево — самый «бесхозный» компонент набора: MD3 его не имеет вовсе, iOS HIG описывает только macOS outline view и без единого числа. Все числа (min-height узла 48 dp при плотности 0 и отступ 40 px на уровень) приходят исключительно из Angular Material, причём 40 px в исходниках мотивированы спекой подменю меню, а не дерева. Для страницы iiko DS это надо показать прямо: дерево — компонент без платформенного эталона, значения берутся из реализации и должны быть зафиксированы как решение дизайн-системы."
+}

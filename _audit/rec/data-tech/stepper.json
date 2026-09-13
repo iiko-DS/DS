@@ -1,0 +1,99 @@
+{
+ "slug": "stepper",
+ "component": "Stepper",
+ "_role": "Техническая часть. На страницу не выводится.",
+ "ds_values": {
+  "source": "iiko-ds-web/components/Stepper_DS/stepper.css (выверено вручную, страница спеки 7006–7060) + токены --ds-stepper-* + разметка из прототипа iiko-ds-prototypes/figma-1276-metro-desktop.html",
+  "step": {
+   "min_height_px": 24,
+   "bg_variant": "min-height 32, pad 4/8, radius 8, фон Stepper/Default (#FAFAFA), hover — Stepper/Hover, selected — #F5F9FF + рамка 1px",
+   "marker": "24×24, radius circular; selected — акцентная заливка (#448AFF) + белая цифра",
+   "text": "14 px / 400, line-height 20",
+   "states": "Default, Hover (#448AFF), Press, Selected (#448AFF текст), Disabled (#9E9E9E), Error"
+  },
+  "divider": {
+   "size_px": "8 × 1 (в вертикальном варианте 1 × 8)",
+   "color": "Stepper/Divider color (#616161)"
+  },
+  "stepper_button": {
+   "counter": "14 px / 500",
+   "row": "gap 16, min-height 36",
+   "group_gap": 8
+  },
+  "tokens_used": [
+   "--ds-stepper-gap",
+   "--ds-stepper-divider-width",
+   "--ds-stepper-gap-button"
+  ],
+  "tokens_unused": [
+   "--ds-stepper-pad-top/right/bottom/left",
+   "--ds-stepper-border-radius",
+   "--ds-stepper-text-size",
+   "--ds-stepper-text-weight",
+   "--ds-stepper-gap-line",
+   "--ds-stepper-selected-border-size",
+   "--ds-stepper-text-weight-button"
+  ],
+  "tokenisation": "11.09.2026: три жёстких значения в stepper.css заменены на компонентные токены (gap 8 = --ds-stepper-gap, ширина линии 8 = --ds-stepper-divider-width, gap панели кнопок 16 = --ds-stepper-gap-button). Регрессия git HEAD → текущий по замерам: 0 отличий.",
+  "mobile_override": " Плюс строка шага 48 px (min-height) в вертикальном варианте — тач-цель; у Angular хедер шага 72 px, минимум 42."
+ },
+ "structure_ru": "Stepper — группа C плана («Структура»): на мобиле раскладка другая, поэтому вариант живёт отдельным файлом iiko-ds-mobile/components/Stepper_DS/stepper-vertical.css и включается классом `ds-stepper--vertical` (в Angular то же — атрибут `orientation`). Шаги (.ds-step) — общие с десктопом, лежат в iiko-ds-web. Специфичность селекторов в мобильном файле поднята до `.ds-stepper.ds-stepper--vertical`: мобильный слой по регламенту подключается до iiko-ds-web/components/index.css, и при равной специфичности базовые правила перебивали бы мобильные.",
+ "platforms": [
+  {
+   "key": "md3",
+   "title": "Material Design 3",
+   "exists": false,
+   "facts": [
+    "Компонента Stepper в MD3/Material Web нет: в списке токенов (60+ md-comp-*.scss, включая v0_192) нет ни одного stepper, в docs/components — 20 компонентов без stepper, в полном списке файлов репозитория подстрока 'stepper' не встречается",
+    "Следовательно нет ни высоты шага, ни вариантов — любые числа по «MD3 stepper» будут выдумкой"
+   ],
+   "sources": [
+    "https://github.com/material-components/material-web/tree/main/tokens",
+    "https://github.com/material-components/material-web/tree/main/docs/components"
+   ]
+  },
+  {
+   "key": "angular_material",
+   "title": "Angular Material",
+   "exists": true,
+   "facts": [
+    "$header-height: 72px, $header-minimum-height: 42px, density 0…−4 → 72/68/64/60/42",
+    "$label-header-height: 24px, $step-header-icon-size: 16px, $line-width: 1px, $side-gap: 24px, $label-min-width: 50px, $vertical-stepper-content-margin: 36px",
+    "«There are two stepper variants: horizontal and vertical. You can switch between the two using the orientation attribute»",
+    "«Prefer vertical steppers when building for small screen sizes, as horizontal steppers typically take up significantly more horizontal space thus introduce horizontal scrolling»",
+    "Responsive stepper: orientation меняют динамически по вьюпорту",
+    "Доступность: role=tablist/tab/tabpanel"
+   ],
+   "sources": [
+    "https://raw.githubusercontent.com/angular/components/main/src/material/stepper/_stepper-variables.scss",
+    "https://raw.githubusercontent.com/angular/components/main/src/material/stepper/stepper.md"
+   ]
+  },
+  {
+   "key": "ios_hig",
+   "title": "iOS HIG",
+   "exists": "другое значение",
+   "facts": [
+    "«A stepper is a two-segment control that people use to increase or decrease an incremental value» — это «+/−» у поля, а не мастер",
+    "Многошагового мастера в HIG нет: ни размеров, ни рекомендаций по ориентации"
+   ],
+   "sources": [
+    "https://developer.apple.com/design/human-interface-guidelines/steppers"
+   ]
+  }
+ ],
+ "verdict": {
+  "keep": "Вертикальная раскладка + строка шага 48 px (тач-цель), маркер и текст без изменений.",
+  "drop": [
+   "Горизонтальный ряд шагов на мобиле — ни одна платформа его не нормирует, Angular прямо предупреждает про горизонтальный скролл"
+  ],
+  "open": [
+   "Компактная шапка (Step_mob в Figma): показывать ли только номера, название — только у текущего шага",
+   "Стрелки прокрутки строки (Scroll left/right в Figma) — в CSS их нет",
+   "Растягивать ли кнопки «Назад / Далее» на всю ширину",
+   "Собственных размеров шага нет ни в MD3, ни в HIG; размеры Angular описывают другой компонент",
+   "Hover у шага на тач не гасится (общая проблема библиотеки)"
+  ]
+ },
+ "measured_ru": "Замеры в headless Chrome: горизонтально — контейнер 1096×24, шаг 24 px, разделитель 8×1; вертикально — контейнер 239×264, шаги 24 px в столбик, разделитель 1×8 с левым отступом 11.5 px (центр линии совпадает с центром маркера, x=12). Панель «Назад / Далее»: счётчик 14/500, gap 16, min-height 36; кнопки — Button M (36 desktop → 44 mobile)."
+}

@@ -1,0 +1,60 @@
+{
+ "slug": "sidenav",
+ "patterns_ru": [
+  {
+   "title": "Ширина панели: 360 px, а не 240",
+   "items": [
+    "Что происходит: панель 240 px на телефоне обрезает подписи второго уровня и «съедает» иконки: MD3 задаёт navigation drawer container-width 360 px, M3-токен Angular Material — тоже 360 px (`sidenav-container-width: 360px`), а 240 dp не подтверждается ни одним исходником.",
+    "Что делают системы: при этом Angular отдельно оговаривает, что по умолчанию ширина идёт по контенту и задаётся CSS (в примере документации 200 px), а Apple числовой ширины sidebar не публикует вовсе — только структуру и правила.",
+    "Что делать нам: на мобильном экране панель занимает 360 px (на 375 px это почти весь экран, и это нормально при режиме over), уровни внутри различаем паддингом и кеглем 10 / 12 px, а не уменьшением ширины."
+   ],
+   "src": "Источники: MD3-токены navigation drawer (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-drawer.scss) · Angular Material · _m3-sidenav.scss (raw.githubusercontent.com/angular/components/main/src/material/sidenav/_m3-sidenav.scss) · Apple HIG · Sidebars (developer.apple.com/design/human-interface-guidelines/sidebars)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Заказы</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Аналитика и отчёты</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Склад и поставки</span></div></div></div></div>",
+   "example_ru": "Панель шириной 360 px (на 375 px это почти весь экран): подписи вроде «Аналитика и отчёты» влезают целиком — уровни различаем паддингом и кеглем 10 / 12 px, а не шириной 240 px."
+  },
+  {
+   "title": "Панель «рядом» на узком экране не помещается",
+   "items": [
+    "Что происходит: режим side на телефоне оставляет от контента огрызок в 15 px: Angular описывает режимы mode = over / push / side, и в режиме `over` «Sidenav floats over the primary content, which is covered by a backdrop».",
+    "Что делают системы: Apple советует не тащить sidebar на телефон: «A sidebar requires a large amount of vertical and horizontal space. When space is limited or you want to devote more of the screen to other information or functionality, a more compact control such as a tab bar may provide a better navigation experience»; для 3–5 пунктов MD3 даёт нижнюю навигацию 80 dp с индикатором 32 × 64.",
+    "Что делать нам: на мобиле панель открывается поверх контента (over) с затемнением-подложкой и явным закрытием — крестиком, тапом по затемнению и кнопкой «назад»; для 3–5 равнозначных разделов вместо панели ставим нижнюю навигацию 80 px."
+   ],
+   "src": "Источники: Angular Material · sidenav.md (raw.githubusercontent.com/angular/components/main/src/material/sidenav/sidenav.md) · Apple HIG · Sidebars (developer.apple.com/design/human-interface-guidelines/sidebars) · MD3-токены navigation bar (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-bar.scss)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-view__header\"><span class=\"ds-sidenav-view__label\">Заказы</span><span class=\"ds-sidenav-header__close\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Активные</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">История</span></div></div></div></div>",
+   "example_ru": "На мобиле панель идёт поверх контента (over) и закрывается крестиком в шапке, а не оставляет от экрана огрызок в side-режиме; для 3–5 разделов вместо панели — нижняя навигация 80 px."
+  },
+  {
+   "title": "Больше двух уровней иерархии в панели",
+   "items": [
+    "Что происходит: третий уровень в панели теряет контекст: Apple дважды повторяет ограничение — «In general, show no more than two levels of hierarchy in a sidebar», и наоборот — «When a data hierarchy is deeper than two levels, consider using a split view interface that includes a content list between the sidebar items and detail view».",
+    "Что делают системы: для длинных списков HIG предлагает прятать группы: «Group hierarchy with disclosure controls if your app has a lot of content. Using disclosure controls helps keep the sidebar's vertical space to a manageable level», а подписи групп советует делать короткими и по делу.",
+    "Что делать нам: в панели ДС — два уровня (раздел и подраздел), третий уровень уходит на отдельный экран со своим заголовком; длинные подписи сокращаем вручную, а не уменьшаем кегль ниже 10 px."
+   ],
+   "src": "Источники: Apple HIG · Sidebars (developer.apple.com/design/human-interface-guidelines/sidebars) · Apple HIG · Disclosure controls (developer.apple.com/design/human-interface-guidelines/disclosure-controls)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Заказы</span></div><div class=\"ds-sidenav-header ds-sidenav-header--l2 ds-sidenav-header--expanded\"><span class=\"ds-sidenav-header__label\">Заказы</span></div><div class=\"ds-sidenav-item\"><span class=\"ds-sidenav-item__l3\">Активные</span></div><div class=\"ds-sidenav-item\"><span class=\"ds-sidenav-item__l3\">История</span></div><div class=\"ds-sidenav-item\"><span class=\"ds-sidenav-item__l3\">Отменённые</span></div></div></div></div>",
+   "example_ru": "В панели два уровня — раздел и подраздел (на мобиле 56 px и 48 px): третий уровень уходит на отдельный экран, длинные подписи сокращаем, а не уменьшаем кегль ниже 10 px."
+  },
+  {
+   "title": "Активный пункт и тач-зона в панели",
+   "items": [
+    "Что происходит: пункты панели плотные, и на телефоне легко нажать соседний раздел: MD3 задаёт у drawer active-indicator-height 56 px и иконку 24 px, у нижней навигации — контейнер 80 px и индикатор 32 × 64, а Apple держит контрол 44×44 pt по умолчанию.",
+    "Что делают системы: платформы делают кликабельной всю строку пункта и помечают активный раздел индикатором (в MD3 — по токену высоты 56 px), а Apple просит использовать узнаваемые символы и не выносить критичные действия вниз панели: «Avoid putting critical information or actions at the bottom of a sidebar».",
+    "Что делать нам: строка пункта первого уровня — 56 px по индикатору MD3, нажатие по всей строке, иконка 24 px; компактной плотности у панели нет (в Angular density у sidenav не поддерживается), поэтому пункты не сжимаем."
+   ],
+   "src": "Источники: MD3-токены navigation drawer (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-navigation-drawer.scss) · Apple HIG · Sidebars (developer.apple.com/design/human-interface-guidelines/sidebars) · Apple HIG · Accessibility (developer.apple.com/design/human-interface-guidelines/accessibility) · Angular Material · _m3-sidenav.scss (raw.githubusercontent.com/angular/components/main/src/material/sidenav/_m3-sidenav.scss)",
+   "example_html": "<div data-mode=\"mobile\" style=\"width:360px;max-width:100%\"><div style=\"background:var(--ds-color-brand-neutral-super-dark);border-radius:12px;overflow:hidden\"><div class=\"ds-sidenav-view\"><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\" style=\"background:#448AFF;color:#fff\"><span class=\"ds-sidenav-item__label\">Заказы</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Меню</span></div><div class=\"ds-sidenav-item ds-sidenav-item--l1 ds-sidenav-item--expanded\"><span class=\"ds-sidenav-item__label\">Склад</span></div></div></div></div>",
+   "example_ru": "Строка первого уровня — 56 px (уровни 2–3 — 48 px), нажатие по всей строке, активный раздел помечен индикатором: компактной плотности у панели нет, пункты не сжимаем."
+  },
+  {
+   "title": "Показать и скрыть панель",
+   "items": [
+    "Что происходит: панель закрыта, и непонятно, как её вернуть: HIG — «Consider letting people hide the sidebar… in iPadOS, people expect to use the built-in edge swipe gesture; in macOS, you can include a show/hide button or add Show Sidebar and Hide Sidebar commands», и ещё «Avoid hiding the sidebar by default to ensure that it remains discoverable».",
+    "Что делают системы: в iOS и iPadOS HIG даёт адаптивный стиль, где всегда есть кнопка переключения: «you choose whether to display a sidebar or a tab bar when your app opens. Both variations include a button that people can use to switch between them»; в Material Web drawer и navigation bar лежат в labs, то есть в стабильном API их нет.",
+    "Что делать нам: в шапке мобильного экрана всегда видна иконка открытия панели (по умолчанию панель не «прячем навсегда»), свайп от края — дополнительный жест, а панель запоминает состояние между сессиями и не открывается сама поверх формы."
+   ],
+   "src": "Источники: Apple HIG · Sidebars (developer.apple.com/design/human-interface-guidelines/sidebars) · Material Web · navigation drawer, labs (github.com/material-components/material-web/tree/main/labs/navigationdrawer)",
+   "example_html": "<div class=\"pat__phone\" data-mode=\"mobile\"><div class=\"phone__head\"><span class=\"material-icons\">menu</span><div class=\"phone__title\">Заказы</div><span class=\"material-icons\">more_vert</span></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 7</span><span class=\"ds-list-item__text\">Заказ №1042</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:30</span></div></div><div class=\"ds-list-container__divider\"></div></div></div>",
+   "example_ru": "Иконка открытия панели всегда в шапке (343 px тела экрана): панель не «прячем навсегда», свайп от края — дополнительный жест, а состояние панели запоминается между сессиями."
+  }
+ ]
+}

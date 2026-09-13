@@ -1,0 +1,233 @@
+{
+ "slug": "button-toggle",
+ "component": "Button toggle",
+ "ds_page": "Button-Toggle_DS",
+ "desc_ru": "Переключатель — контейнер-трек с инстансами Button внутри: выбранный сегмент и невыбранные. Режим отображения, фильтр, формат.",
+ "category_ru": "Только размеры",
+ "category_note_ru": "состав и поведение те же, отличаются размеры",
+ "summary_ru": "Своих размеров у переключателя нет: сегменты — это Button, и на мобиле они растут по его правилам (все размеры → 44), контейнер за ними: 44 → 52 px.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "сегменты 36 px, трек 46 px"
+  },
+  "mobile": {
+   "sub_ru": "сегменты 44 px, трек 52 px"
+  }
+ },
+ "changes": [
+  {
+   "what": "Сегменты (инстансы Button)",
+   "desktop": "M 36, S 28, XS 24 px",
+   "mobile": "все размеры 44 px — по правилам Button",
+   "edit": [
+    {
+     "id": "seg-h",
+     "v": 44,
+     "sel": ".ds-btn",
+     "css": "height:@px",
+     "sync": {
+      "field": "track-h",
+      "a": 1,
+      "b": 8
+     }
+    }
+   ]
+  },
+  {
+   "what": "Трек (контейнер): высота",
+   "desktop": "44 px с сегментом M (с S — 36, с XS — 32)",
+   "mobile": "52 px с любым сегментом — сегменты выросли до 44",
+   "edit": [
+    {
+     "id": "track-h",
+     "v": 52,
+     "sel": ".ds-button-toggle",
+     "css": "height:@px",
+     "sync": {
+      "field": "seg-h",
+      "a": 1,
+      "b": 8
+     }
+    }
+   ]
+  },
+  {
+   "what": "Рамка трека",
+   "desktop": "1 px, Stroke/Default (#E0E0E0) — у контейнера всегда, у Filled и Outlined одинаково",
+   "mobile": "1 px — та же, у контейнера всегда, у Filled и Outlined одинаково",
+   "edit": [
+    {
+     "id": "track-border",
+     "v": 1,
+     "sel": ".ds-button-toggle",
+     "css": "border:@px solid"
+    }
+   ]
+  },
+  {
+   "what": "Отступы трека и промежуток",
+   "desktop": "4 / 4 px",
+   "mobile": "4 / 4 px — те же",
+   "edit": [
+    {
+     "id": "track-pad",
+     "v": 4,
+     "sel": ".ds-button-toggle",
+     "css": "padding:@px"
+    }
+   ]
+  },
+  {
+   "what": "Радиус трека",
+   "desktop": "12 px",
+   "mobile": "12 px — тот же",
+   "edit": [
+    {
+     "id": "track-radius",
+     "v": 12,
+     "sel": ".ds-button-toggle",
+     "css": "border-radius:@px"
+    }
+   ]
+  },
+  {
+   "what": "Фон трека",
+   "desktop": "Shapes/Default (#FFFFFF) — и у Filled, и у Outlined",
+   "mobile": "тот же"
+  },
+  {
+   "what": "Размеры сегментов",
+   "desktop": "M (36), S (28), XS (24) — размеры Button",
+   "mobile": "M, S и XS → 44 px — по правилам Button (все размеры до тач-минимума)",
+   "edit": [
+    {
+     "id": "size-h",
+     "v": 44,
+     "sel": ".ds-btn",
+     "css": "height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Наведение и состояния сегментов",
+   "desktop": "hover / press / disabled — от Button",
+   "mobile": "hover не показывается, только нажатие; тач-зона 48 у каждого сегмента — как у Button",
+   "edit": [
+    {
+     "id": "touch",
+     "v": 48,
+     "sel": ".ds-btn::after",
+     "css": "min-width:@px; min-height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Число сегментов в треке",
+   "desktop": "без ограничения",
+   "mobile": "не больше 5–7 (на узком экране ≈5)"
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Переключатель ничего не рисует сам: вид сегмента (фон, рамка, цвет, hover, press, disabled) целиком задаёт Button, у контейнера своя рамка 1 px. На странице выбранный сегмент — <b>Accent Filled</b>, остальные — <b>Neutral Text</b>; какие именно Style и Type у инстансов внутри, в репозитории не зафиксировано. В автогене спеки у типа Filled стоит «рамка none», но у контейнера в токенах только одна рамка (Outlined/Border), поэтому здесь она у обоих типов.</p>",
+ "why_ru": "Переключатель — надслойка над Button, поэтому на мобиле ему нечего переназначать: сегменты — те же кнопки, и они растут по своему мобильному режиму (M 36 → 44), а трек становится выше на те же 8 px. Числа самого трека (отступы 4, промежуток 4, радиус 12) на обеих платформах одинаковые — платформы дают число только всему контролу (M3 segmented buttons и Angular Material: 40 px на контрол), а размеры сегментов внутри у нас задаёт Button.",
+ "why_sources": [],
+ "result_html": "<ul class=\"list\"><li>Отдельного «мобильного переключателя» нет: сегменты — инстансы Button, их мобильные значения уже описаны у Button.</li><li>Контейнер на мобиле не меняется: отступы 4 / 4, промежуток 4, радиус 12, рамка 1 px — из компонентных токенов.</li><li>Рамка у трека одна и та же у Filled и Outlined, поэтому высоты типов совпадают: 46 px на десктопе, 54 px на мобиле.</li><li><b>Не решено (к дизайну):</b> какой Style и Type у вложенных Button. В примере выбранный — Accent Filled, невыбранные — Neutral Text.</li><li><b>Не решено (к дизайну):</b> фон трека в токенах — Shapes/Default (#FFFFFF), то есть на белой поверхности трек читается только по рамке. Нужен ли ему тон.</li><li><b>Не решено:</b> в автогене спеки у типа Filled написано «рамка none» — если так и задумано, это одна строка правки в CSS.</li><li><b>Не решено:</b> M3 и Angular Material дают 40 px на весь сегментированный контрол, у нас на мобиле 54 (внутри кнопка 44).</li><li><b>Не решено:</b> hover и press у сегментов наследуются от Button, а в библиотеке hover на тач-устройствах не отключается нигде.</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Три сегмента, выбран первый",
+   "html": "<div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Список</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Таблица</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Плитка</span></button></div>"
+  },
+  {
+   "title_ru": "Сегменты с иконками",
+   "html": "<div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__icon material-icons\" style=\"font-size:20px;line-height:1\">edit</span><span class=\"ds-btn__label\">Правка</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\" style=\"font-size:20px;line-height:1\">add</span><span class=\"ds-btn__label\">Добавить</span></button></div>"
+  },
+  {
+   "title_ru": "Плотные треки (Button S и XS)",
+   "html": "<div class=\"ds-button-toggle ds-button-toggle--filled\"><button class=\"ds-btn ds-btn--s ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">День</span></button><button class=\"ds-btn ds-btn--s ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Неделя</span></button></div><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--xs ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__icon material-icons\" style=\"font-size:20px;line-height:1\">edit</span><span class=\"ds-btn__label\">М</span></button><button class=\"ds-btn ds-btn--xs ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\" style=\"font-size:20px;line-height:1\">add</span><span class=\"ds-btn__label\">S</span></button></div>"
+  }
+ ],
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "MD3 и Angular сходятся ровно на одной высоте — 40 dp: «container-height: 40px» у segmented button и mat-button-toggle (button-toggle.json).",
+    "Размерной шкалы XS..XL у segmented button нет (она есть только у button group и split button), а у Angular нет атрибута size — значит «M / S / XS» у переключателя платформой не подтверждены (button-toggle.json).",
+    "Тач-таргет у MD3 задан отдельно — 48 dp при визуальной высоте 40 dp: тонкая сегментированная полоса всё равно нажимается на 48 (button-toggle.json).",
+    "Плотностные 36 dp (density −3) и 24 dp (density −4) у Angular — это документированная плотная конфигурация, а не рекомендация платформ; 24 dp ниже любого минимума (button-toggle.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "iOS HIG не даёт ни одного размера в pt: у segmented control только правила, единственная числовая норма — хит-регион 44×44 pt из страницы Buttons (button-toggle.json).",
+    "Сегментов должно быть немного: «no more than about five to seven in a wide interface and no more than about five segments on iPhone» (button-toggle.json).",
+    "Сегменты одной ширины — «keep segment size consistent»; рваные по размеру сегменты HIG не рекомендует (button-toggle.json).",
+    "В одном контроле либо только текст, либо только иконки: «Prefer using either text or images — not a mix of both» (button-toggle.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "Сегмент — это Button, поэтому на мобиле все размеры сегмента идут в 44 px, а трек за ними вырастает до 52.",
+  "Размерного ряда M/S/XS у переключателя не оставлять: пользователь не должен выбирать размер контрола.",
+  "Сегментов на телефоне — не больше пяти: дальше подписи не влезают и контрол превращается в угадайку.",
+  "Внутри одного контрола не смешивать текст и иконки, ширина сегментов — одинаковая.",
+  "Hover у сегментов не показывать: на тач есть только нажатие, состояния «при наведении» с мобилы уходят."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Отчёты</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">День</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Неделя</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Месяц</span></button></div><div class=\"phone__card\"><p class=\"phone__card-title\">Выручка за день</p><p class=\"phone__card-text\">184 200 ₽ · 126 заказов</p></div><div class=\"phone__card\"><div style=\"display:flex;justify-content:space-between;gap:8px\"><span>Средний чек</span><span>1 462 ₽</span></div><hr class=\"ds-divider ds-divider--lite\"><div style=\"display:flex;justify-content:space-between;gap:8px\"><span>Гостей</span><span>312</span></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__icon material-icons\">download</span><span class=\"ds-btn__label\">Скачать отчёт</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Период отчёта</p><p class=\"phone__sheet-text\">Сегменты выбирают период — трек в шторке</p><div class=\"phone__row\">День</div><div class=\"phone__row\">Неделя</div><div class=\"phone__row\">Месяц</div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Применить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Отчёты: трек сегментов в теле — период меняет выручку; в шторке те же подписи списком</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Отчёты</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">День</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Неделя</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Месяц</span></button></div><div class=\"phone__card\"><p class=\"phone__card-title\">Выручка за день</p><p class=\"phone__card-text\">184 200 ₽ · 126 заказов</p></div><div class=\"phone__card\"><div style=\"display:flex;justify-content:space-between;gap:8px\"><span>Средний чек</span><span>1 462 ₽</span></div><hr class=\"ds-divider ds-divider--lite\"><div style=\"display:flex;justify-content:space-between;gap:8px\"><span>Гостей</span><span>312</span></div></div></div><div class=\"phone__foot\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__icon material-icons\">download</span><span class=\"ds-btn__label\">Скачать отчёт</span></button></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Период отчёта</p><p class=\"phone__sheet-text\">Сегменты выбирают период — трек в шторке</p><div class=\"phone__row\">День</div><div class=\"phone__row\">Неделя</div><div class=\"phone__row\">Месяц</div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Применить</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "Сколько сегментов влезает на iPhone",
+   "items": [
+    "Что происходит: в переключатель добавляют 6–7 сегментов, подписи сжимаются, и на 375 px они либо обрезаются, либо уезжают за край.",
+    "Что делают системы: Apple HIG: «Aim for no more than about five to seven segments in a wide interface and no more than about five segments on iPhone»; IBM Carbon даёт у свитчера три высоты — «small (32px), medium (40px), and large (48px)».",
+    "Что делать нам: максимум 4–5 сегментов в мобильном режиме; больше — «⋯» с остальными в шторке либо обычный вертикальный список вариантов."
+   ],
+   "src": "Источники: Apple HIG · Segmented controls (https://developer.apple.com/design/human-interface-guidelines/segmented-controls) · IBM Carbon · Content switcher (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Все</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Мои</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Смена</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Зал</span></button></div></div>",
+   "example_ru": "Четыре сегмента в один ряд во всю ширину 343 px: подписи не сжимаются и не уезжают за край — остальное уходит под «⋯»."
+  },
+  {
+   "title": "Подписи ломают раскладку",
+   "items": [
+    "Что происходит: сегменты делают по ширине содержимого, поэтому «Все» узкий, а «Не назначенные» растянут на пол-экрана, и группа плывёт.",
+    "Что делают системы: Apple: «In general, keep segment size consistent»; Carbon считает ширину по самой длинной подписи — у неё должно быть «at minimum 16px spacing to the right of the label», а остальные сегменты равны ей.",
+    "Что делать нам: сегменты равной ширины по самой длинной подписи, одинаковый кегль во всех сегментах, перенос подписи внутри сегмента не допускать."
+   ],
+   "src": "Источники: Apple HIG · Segmented controls (https://developer.apple.com/design/human-interface-guidelines/segmented-controls) · IBM Carbon · Content switcher (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Все</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">В работе</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Не назначенные</span></button></div></div>",
+   "example_ru": "Сегменты одной ширины по самой длинной подписи («Не назначенные»), подписи в одну строку и одинаковым кеглем: группа не «плывёт»."
+  },
+  {
+   "title": "Подпись не влезает — что делать",
+   "items": [
+    "Что происходит: подпись «Неназначенные» не влезает в сегмент, её обрезают многоточием без пояснения, и два сегмента выглядят одинаково.",
+    "Что делают системы: Carbon описывает выход прямо: «If the label text is too long in a content tab, add an ellipsis and accompany it with a browser-based tooltip to show the full string of text. If a label is too long to fit within its control tabs, consider using the icon modifier.», и просит «limit label text to two to three words».",
+    "Что делать нам: подписи в 2–3 слова; усечение только вместе с полной подписью (title/aria), а при нехватке места — вариант с иконками без текста."
+   ],
+   "src": "Источники: IBM Carbon · Content switcher (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/content-switcher/usage.mdx)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\" title=\"Показать все заказы\"><span class=\"ds-btn__label\">Все</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\" title=\"Только мои заказы\"><span class=\"ds-btn__label\">Мои</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\" title=\"Заказы моей смены\"><span class=\"ds-btn__label\">Смена</span></button></div></div>",
+   "example_ru": "Подписи в 2–3 слова, у каждой полная строка в title: обрезки «Не назнач…» без пояснения нет, а вариант с иконками — на случай совсем узкого сегмента."
+  },
+  {
+   "title": "Высота 40 px и хит-регион 44–48 px",
+   "items": [
+    "Что происходит: сегмент высотой 40 px стоит вплотную к такому же соседу, и пользователь переключает не тот вариант или срабатывает два раза.",
+    "Что делают системы: в MD3 у segmented button единственная высота — «container-height: … 40px»; Angular Material держит ту же базу и уменьшает её только плотностью — «button-toggle-height: list.nth((40px, 40px, 40px, 36px, 24px), $index)»; Apple: «a button needs a hit region of at least 44x44 pt».",
+    "Что делать нам: 40 px по умолчанию, тач-зона не меньше 44–48 px (за счёт вертикальных паддингов контейнера), 36 и 24 px — только для мыши и плотных админ-экранов."
+   ],
+   "src": "Источники: Material Design 3 · Segmented buttons (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-outlined-segmented-button.scss) · Angular Material · Button toggle (https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/_m3-button-toggle.scss) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+   "example_html": "<div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Список</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Таблица</span></button></div></div>",
+   "example_ru": "Сегмент 40 px, контейнер с паддингами 4 px — 48 px по высоте: тач-зона не ниже 44–48 px, сегменты не слипаются."
+  },
+  {
+   "title": "Переключатель — не табы",
+   "items": [
+    "Что происходит: переключателем меняют экран, а табами — вид внутри экрана, и пользователь теряет ориентацию: что уже применено, а что просто выбрано.",
+    "Что делают системы: у Apple сегмент — «A segmented control is a linear set of two or more segments, each of which functions as a button.» и настраивается на один выбор, на несколько (macOS) или на набор действий без состояния выбора; Angular: «mat-button-toggle-group (exclusive по умолчанию, multiple — checkbox-поведение)».",
+    "Что делать нам: в ДС явно закрепить режимы single / multiple / действия; для смены экрана — табы, для смены вида — переключатель, для двух состояний — slide-toggle."
+   ],
+   "src": "Источники: Apple HIG · Segmented controls (https://developer.apple.com/design/human-interface-guidelines/segmented-controls) · Angular Material · Button toggle (https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/button-toggle.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-tabs\"><button class=\"ds-tab ds-tab--active\" type=\"button\">Заказы</button><button class=\"ds-tab\" type=\"button\">Меню</button></div><div class=\"pat__phone pat__phone-row\"><div class=\"ds-button-toggle ds-button-toggle--outlined\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Список</span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Таблица</span></button></div></div></div>",
+   "example_ru": "Экран меняют табы («Заказы / Меню»), вид внутри экрана — переключатель («Список / Таблица»): что применено, а что просто выбрано, видно сразу."
+  }
+ ]
+}

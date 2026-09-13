@@ -1,0 +1,60 @@
+{
+ "slug": "chips-input",
+ "patterns_ru": [
+  {
+   "title": "Много чипов — поле растёт и уезжает",
+   "items": [
+    "Что происходит: после 8–10 чипов поле ввода растёт на пол-экрана, кнопка добавления уезжает вниз, форма перестаёт помещаться и перекрывается клавиатурой.",
+    "Что делают системы: Ant Design ограничивает вывод чипов — «maxTagCount | Max tag count to show. `responsive` will cost render performance» и «maxTagPlaceholder | Placeholder for not showing tags»; в MD3 контейнер чипа держится фиксированным: «container-height: … 32px».",
+    "Что делать нам: после 5–6 чипов показывать «+5 ещё» (открывает шторку со списком и удалением), поле не растить больше 3–4 строк и держать его видимым над клавиатурой."
+   ],
+   "src": "Источники: Ant Design · Select (https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md) · Material Design 3 · Input chip (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-input-chip.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Бекон</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Оливки</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">+5 ещё</span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div></div>",
+   "example_ru": "После пяти чипов поле не растёт: шестой заменяет «+5 ещё», чипы переносятся на вторую строку, а поле ввода остаётся видимым над клавиатурой."
+  },
+  {
+   "title": "Крестик съёма — отдельная цель",
+   "items": [
+    "Что происходит: чип снимают тапом по крестику 18 px внутри чипа 32 px; вместо съёма открывается выбор значения или снимается соседний чип.",
+    "Что делают системы: в MD3 иконка в чипе — «with-leading-icon-leading-icon-size: … 18px», а тач-таргет шире — «.touch { height: 48px; … width: 100%; }»; при этом «All input chips are removable».",
+    "Что делать нам: у крестика своя зона не меньше 44–48 px, клик по телу чипа не удаляет; удаление дублировать действием «Снять» в списке подсказок и в шторке."
+   ],
+   "src": "Источники: Material Design 3 · Chips (https://raw.githubusercontent.com/material-components/material-web/main/chips/internal/_shared.scss) · Material Design 3 · Input chip (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-input-chip.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Приправа</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div></div>",
+   "example_ru": "У крестика чипа своя зона 44–48 px, а клик по телу чипа значение не снимает: «Сыр» снимается по «×», а не случайным касанием."
+  },
+  {
+   "title": "Ввод по разделителям и клавиатура",
+   "items": [
+    "Что происходит: чтобы получить чип, нужно набрать текст и нажать Enter или запятую; на мобиле Enter — это «Готово», и чип не создаётся.",
+    "Что делают системы: у Angular Material ввод идёт через директиву «matChipInputFor» с набором разделителей «matChipInputSeparatorKeyCodes», удаление — по клавише Delete; Ant Design даёт «tokenSeparators | Separator used to tokenize, only applies when `mode=\"tags\"` or `mode=\"multiple\"`».",
+    "Что делать нам: рядом с полем — кнопка «Добавить», активная при непустом вводе; создание чипа по запятой, по «Готово» и по кнопке, а не только по Enter."
+   ],
+   "src": "Источники: Angular Material · Chips (https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md) · Ant Design · Select (https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md)",
+   "example_html": "<div class=\"pat__phone\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input\" style=\"width:100%\"><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span></div><input type=\"text\" value=\"Соус\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div><div class=\"pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Добавить</span></button></div></div>",
+   "example_ru": "Рядом с полем кнопка «Добавить», активная при непустом вводе: чип создаётся по запятой, по «Готово» и по кнопке, а не только по Enter."
+  },
+  {
+   "title": "Выбор значения: список под полем или шторка",
+   "items": [
+    "Что происходит: подсказки открываются абсолютным списком под полем, их накрывает клавиатура, и до нижних вариантов не добраться.",
+    "Что делают системы: Ant Design включает виртуальный скролл по умолчанию и предупреждает о цене для скринридеров — «Default virtual scrolling will create a mock element to simulate an accessible binding…»; Carbon для мобильных форм прямо советует нативный select: «The native HTML select works more easily when submitting data and is also easier to use on a mobile platform.»",
+    "Что делать нам: выбирать значения шторкой снизу, высота строки в списке — не меньше 48 px, счётчик выбранных — в заголовке шторки, закрытие — тапом по scrim и кнопкой «Готово»."
+   ],
+   "src": "Источники: Ant Design · Select (https://raw.githubusercontent.com/ant-design/ant-design/master/components/select/index.en-US.md) · IBM Carbon · Dropdown (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/dropdown/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Соус</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><input type=\"text\" placeholder=\"Добавить метку\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div><div style=\"background:#FFFFFF;border:1px solid #E0E0E0;border-radius:12px;padding:8px 0;display:flex;flex-direction:column\"><span style=\"font-size:14px;line-height:20px;font-weight:500;padding:8px 16px\">Выбрано: 2</span></div><div style=\"min-height:0;display:flex;flex-direction:column\"><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-menu-item__text\" style=\"background:none\">Приправа</span></div></div><div class=\"ds-menu-item\" style=\"min-height:48px;width:auto\"><span class=\"ds-menu-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span><div style=\"display:flex;flex-direction:column\"><span class=\"ds-menu-item__text\" style=\"background:none\">Оливки</span></div></div></div><div class=\"pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div></div>",
+   "example_ru": "Значения выбираются шторкой снизу: строки по 48 px, счётчик выбранных «Выбрано: 2» в заголовке, закрытие — тапом по scrim и кнопкой «Готово»."
+  },
+  {
+   "title": "Чип и набираемый текст — не одно и то же",
+   "items": [
+    "Что происходит: значения и ещё не подтверждённый текст перемешаны: непонятно, что уже сохранено в форме, а что просто набрано и потеряется при уходе с экрана.",
+    "Что делают системы: в MD3 отдельного компонента нет — это композиция «текстовое поле + input-чип», в Angular Material — тоже паттерн: «mat-chip-grid (контейнер) + mat-chip-row (чип) + <input matChipInputFor>».",
+    "Что делать нам: чипы — только подтверждённые значения (с рамкой и крестиком), набираемый текст — в поле ввода с плейсхолдером «Начните вводить название», пустое состояние — с подсказкой, а не с пустой рамкой."
+   ],
+   "src": "Источники: Material Design 3 · Chips (https://m3.material.io/components/chips) · Angular Material · Chips (https://raw.githubusercontent.com/angular/components/main/src/material/chips/chips.md)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-chips-input\" style=\"width:100%\"><span class=\"ds-chips-input__label\">Метки</span><div class=\"ds-chips-input__frame\"><div class=\"ds-chips-input__content\" style=\"flex-wrap:wrap\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Сыр</span><span class=\"ds-chips__close\"><span class=\"material-icons\" style=\"font-size:18px\">close</span></span></div><input type=\"text\" placeholder=\"Начните вводить название\" style=\"border:0;background:none;font:inherit;color:inherit;outline:none;width:100%\"></div></div></div></div>",
+   "example_ru": "Подтверждённое значение — чип с рамкой и крестиком, набираемый текст — в поле с подсказкой «Начните вводить название»: видно, что уже сохранено, а что ещё нет."
+  }
+ ]
+}

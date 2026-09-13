@@ -1,0 +1,185 @@
+{
+ "slug": "dialog",
+ "component": "Dialog",
+ "ds_page": "Dialog_DS",
+ "desc_ru": "Диалог: подтверждение или короткая форма поверх контента. На мобиле — на всю ширину, сложные задачи на весь экран.",
+ "category_ru": "Структура",
+ "category_note_ru": "другая презентация: на всю ширину, кнопки в столбик, сложные — full-screen",
+ "summary_ru": "Ширина 500 px → вся ширина минус поля; кнопки встают в столбик на всю ширину; сложные диалоги разворачиваются на весь экран. Паддинги 24 остаются — это совпадающее значение MD3 и Angular.",
+ "panels": {
+  "desktop": {
+   "sub_ru": "диалог 500 px по центру"
+  },
+  "mobile": {
+   "sub_ru": "на всю ширину, кнопки в столбик"
+  }
+ },
+ "changes": [
+  {
+   "what": "Ширина",
+   "desktop": "500 px",
+   "mobile": "вся доступная ширина минус поля (у Angular для малых экранов своё max-width)"
+  },
+  {
+   "what": "Кнопки",
+   "desktop": "в строку справа; в ДС блок действий фиксирован 68 px — при двух кнопках вторая выходит за карточку",
+   "mobile": "в столбик, на всю ширину (высота блока отпущена — 68 + кнопки по 44)",
+   "edit": [
+    {
+     "id": "act-min",
+     "v": 68,
+     "sel": ".ds-dialog-view__action",
+     "css": "min-height:@px"
+    },
+    {
+     "id": "btn-h",
+     "v": 44,
+     "sel": ".ds-btn",
+     "css": "height:@px"
+    }
+   ]
+  },
+  {
+   "what": "Сложные задачи",
+   "desktop": "диалог 500 px",
+   "mobile": "full-screen dialog (M3) — на весь экран"
+  },
+  {
+   "what": "Паддинги",
+   "desktop": "24",
+   "mobile": "24 — совпадающее значение MD3 и Angular",
+   "edit": [
+    {
+     "id": "pad-h",
+     "v": 24,
+     "sel": ".ds-dialog-view__action",
+     "css": "padding-left:@px; padding-right:@px"
+    }
+   ]
+  },
+  {
+   "what": "Число кнопок",
+   "desktop": "без ограничения",
+   "mobile": "не больше трёх — правило Apple для алертов"
+  },
+  {
+   "what": "Затемнение под диалогом",
+   "desktop": "Backdrop",
+   "mobile": "Backdrop же; на мобиле чаще под шторкой снизу"
+  }
+ ],
+ "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Простые подтверждения остаются центрированным диалогом, сложные (форма, несколько шагов) — на весь экран. Это правило страницы: компонент задаёт ширину и раскладку кнопок.</p>",
+ "why_ru": "По диалогу совпадают только MD3 и Angular Material: ширина контейнера 280…560 dp/px и паддинги 24, причём Angular берёт значения прямо из M3-токенов темы. У Angular дополнительно есть max-width для малых экранов и отдельный паддинг блока действий. iOS HIG размеров окна не даёт вообще — только правило области нажатия 44 × 44 pt и лимит в три кнопки. Ровно поэтому мобильная форма диалога строится не «по числам», а по правилам: на всю ширину, кнопки в столбик, сложное — на весь экран.",
+ "result_html": "<ul class=\"list\"><li>Ширина на всю доступную — следствие max-width для малых экранов у Angular; фиксированные 500 px на телефоне бессмысленны.</li><li>Кнопки в столбик на всю ширину — иначе в них сложно попасть (правило Apple про область нажатия 44 pt).</li><li>Паддинги 24 не менял: это общее значение обеих платформ и оно уже стоит в компоненте.</li><li><b>Найдено и исправлено:</b> у блока действий стояло <code>height: 68px</code> без <code>box-sizing: border-box</code> — на экране выходило 100 px (паддинги 16/16 считались сверху). То же было у ряда кнопок меню (52 → 68) и селекта (44 → 60). Добавил border-box: на экране теперь ровно объявленные значения.</li><li><b>Не решено:</b> full-screen вариант в ДС не описан — нужна разметка (шапка с закрытием, контент, футер с кнопками на всю ширину).</li></ul>",
+ "examples": [
+  {
+   "title_ru": "Диалог подтверждения",
+   "html": "<div class=\"ds-dialog-view\" ><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div>",
+   "stack": true
+  },
+  {
+   "title_ru": "Диалог с длинным текстом",
+   "html": "<div class=\"ds-dialog-view\" ><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Заказ будет удалён вместе с позициями, историей статусов и привязанными платежами. Восстановить его после удаления не получится.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div>",
+   "stack": true
+  }
+ ],
+ "found_html": "<p><b>Плашки вместо текста.</b> У <code>.ds-dialog-header__description</code> в библиотеке <code>background</code> задан тем же токеном, что и <code>color</code> — след автогена Figma: заливка текста попала в фон. Из-за этого текст рисовался сплошным прямоугольником. На странице этим классам выставлен <code>background: none</code> внутри панелей — сама библиотека не правится.</p><p><b>Подписи не переносятся.</b> У <code>__label</code>-классов ДС стоит <code>white-space: nowrap</code> (автоген): длинный текст не переносится, а уходит за карточку. В примере с длинным текстом перенос разрешён каркасом.</p><p><b>Синяя рамка вокруг кнопок.</b> У <code>.ds-dialog-footer__button</code> в ДС стоит <code>background: var(--ds-color-button-accent-filled-default-background, #448aff)</code> и тень кнопки — обёртка выглядит как акцентная кнопка, и из-под вложенной кнопки выходит синяя рамка. Внутри панелей заливка и тень сняты; библиотека не правится.</p><p><b>Фиксированная высота блока кнопок.</b> <code>.ds-dialog-view__action</code> и <code>.ds-dialog-footer__action</code> в ДС — <code>height: 68px</code> при <code>flex-direction: column</code>: две кнопки по 44 px с паддингами не влезают, вторая выходит за карточку. Внутри панелей высота отпущена (<code>height: auto; min-height: 68px</code>).</p><p><b>box-sizing у кадров и строк.</b> В библиотеке нет <code>box-sizing: border-box</code>, поэтому высота из токена/числа складывалась с паддингами: кадр поля 48 px показывался как 74, кадр textarea 76 как 94, строка списка 68 как 84. В прототипах ДС это лечат на странице (<code>.js-select .ds-select-form__input-frame{box-sizing:border-box;height:48px}</code>) — в каркасе страниц повторено то же для всех таких классов. Библиотеку не правим.</p>",
+ "platform_notes_ru": [
+  {
+   "title": "Material Design 3",
+   "items": [
+    "MD3 и Angular сходятся на ширине: min 280 и max 560 (dp/px), причём Angular берёт это из M3-токенов темы (dialog.json).",
+    "Паддинги совпадают на 24, но по-разному: MD3 — 24 dp со всех сторон, Angular — content 20px 24px, actions 16px 24px (dialog.json).",
+    "Между кнопками — 8: MD3 «padding between buttons: 8dp», Angular «button-horizontal-margin: 8px»; высота блока действий у Angular min-height 52 px (dialog.json).",
+    "Полноэкранный вариант есть только у MD3: header 56 dp, action bar 56 dp, radius 0 — и он для compact-брейкпоинтов, то есть ровно для мобилы (dialog.json).",
+    "«Не больше двух действий» — правило MD3; у Angular лимита нет, поэтому на мобиле опираться надо на MD3 (dialog.json)."
+   ]
+  },
+  {
+   "title": "iOS HIG",
+   "items": [
+    "Компонента «dialog» в HIG нет (/dialogs → 404): роль модального диалога выполняет Alert (dialog.json).",
+    "Alert — до трёх кнопок: «alerts display a title, optional informative text, and up to three buttons» (dialog.json).",
+    "Размеров окна alert Apple не даёт — только общее правило хит-региона 44×44 pt и запрет на скролл в алерте (dialog.json).",
+    "Заголовок — не больше двух строк: «avoid overly long titles that wrap to more than two lines» (dialog.json).",
+    "Alert — только для критичного и неразрушающего; для выбора среди вариантов Apple советует action sheet, а не алерт (dialog.json)."
+   ]
+  }
+ ],
+ "logic_ru": [
+  "На мобиле диалог — на всю ширину минус поля, а не фиксированные 500 px.",
+  "Кнопки — в столбик на всю ширину: при двух кнопках в строке вторая уезжает за карточку.",
+  "Сложные диалоги разворачивать на весь экран (full-screen) — правило MD3 для compact-брейкпоинтов.",
+  "Паддинги 24 оставить: это совпадающее значение MD3 и Angular.",
+  "Чего делать нельзя: больше двух-трёх действий в диалоге — MD3 даёт максимум два, Apple до трёх; остальное уводить в отдельный экран."
+ ],
+ "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Заказы</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 5</span><span class=\"ds-list-item__text\">Иванов · 2 480 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">2 позиции</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 8</span><span class=\"ds-list-item__text\">Петрова · 940 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 позиция</span></div></div></div></div><div class=\"ds-backdrop\" style=\"position:absolute;left:0;right:0;top:0;bottom:0;opacity:.32\"></div><div style=\"position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:0;box-sizing:border-box\"><div class=\"ds-dialog-header\" style=\"width:100%;padding:16px 24px 8px\"><span class=\"ds-dialog-header__label\" style=\"white-space:normal\">Удалить заказ?</span><span class=\"ds-dialog-header__description\" style=\"white-space:normal\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\" style=\"width:100%;min-height:0;flex-direction:column;padding:8px 24px\"><span class=\"ds-dialog-content__label\" style=\"white-space:normal\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\" style=\"height:auto;gap:8px;padding:8px 24px 16px\"><div class=\"ds-dialog-footer__button\" style=\"background:none;box-shadow:none;padding:0\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div><div class=\"ds-dialog-footer__button\" style=\"background:none;box-shadow:none;padding:0\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><div class=\"ds-backdrop\" style=\"position:absolute;left:0;right:0;top:0;bottom:0;opacity:.32\"></div><div class=\"phone__sheet\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:0;box-sizing:border-box\"><div class=\"ds-dialog-header\" style=\"width:100%;padding:0 0 8px\"><span class=\"ds-dialog-header__label\" style=\"white-space:normal\">Удалить заказ?</span><span class=\"ds-dialog-header__description\" style=\"white-space:normal\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\" style=\"width:100%;min-height:0;flex-direction:column;padding:0 0 8px\"><span class=\"ds-dialog-content__label\" style=\"white-space:normal\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\" style=\"height:auto;gap:8px;padding:8px 0 0\"><div class=\"ds-dialog-footer__button\" style=\"background:none;box-shadow:none;padding:0\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div><div class=\"ds-dialog-footer__button\" style=\"background:none;box-shadow:none;padding:0\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div></div></div><p class=\"phone__caption\">Заказы: подтверждение удаления в диалоге и тот же диалог шторкой — как рекомендовано</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><span class=\"material-icons\">arrow_back</span><span class=\"phone__title\">Заказы</span><span class=\"material-icons\">more_vert</span></div><div class=\"phone__body\"><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 5</span><span class=\"ds-list-item__text\">Иванов · 2 480 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">2 позиции</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">receipt_long</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 8</span><span class=\"ds-list-item__text\">Петрова · 940 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">1 позиция</span></div></div></div></div><div class=\"ds-backdrop\" style=\"position:absolute;left:0;right:0;top:0;bottom:0;opacity:.32\"></div><div style=\"position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:0;box-sizing:border-box\"><div class=\"ds-dialog-header\" style=\"width:100%;padding:16px 24px 8px\"><span class=\"ds-dialog-header__label\" style=\"white-space:normal\">Удалить заказ?</span><span class=\"ds-dialog-header__description\" style=\"white-space:normal\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\" style=\"width:100%;min-height:0;flex-direction:column;padding:8px 24px\"><span class=\"ds-dialog-content__label\" style=\"white-space:normal\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\" style=\"height:auto;gap:8px;padding:8px 24px 16px\"><div class=\"ds-dialog-footer__button\" style=\"background:none;box-shadow:none;padding:0\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div><div class=\"ds-dialog-footer__button\" style=\"background:none;box-shadow:none;padding:0\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div><div class=\"ds-backdrop\" style=\"position:absolute;left:0;right:0;top:0;bottom:0;opacity:.32\"></div><div class=\"phone__sheet\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:0;box-sizing:border-box\"><div class=\"ds-dialog-header\" style=\"width:100%;padding:0 0 8px\"><span class=\"ds-dialog-header__label\" style=\"white-space:normal\">Удалить заказ?</span><span class=\"ds-dialog-header__description\" style=\"white-space:normal\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\" style=\"width:100%;min-height:0;flex-direction:column;padding:0 0 8px\"><span class=\"ds-dialog-content__label\" style=\"white-space:normal\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\" style=\"height:auto;gap:8px;padding:8px 0 0\"><div class=\"ds-dialog-footer__button\" style=\"background:none;box-shadow:none;padding:0\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div><div class=\"ds-dialog-footer__button\" style=\"background:none;box-shadow:none;padding:0\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+ "patterns_ru": [
+  {
+   "title": "Basic или full-screen на мобиле",
+   "items": [
+    "Что происходит: базовый диалог MD3 — от 280dp до 560dp ширины с паддингами 24dp; на телефоне 375 px он всё равно занимает почти весь экран, а форма из нескольких полей внутри карточки превращается в неудобную прокрутку.",
+    "Что делают системы: MD3 задаёт правило по брейкпоинтам: «Full-screen dialogs are for compact breakpoints only, like mobile devices. For medium and expanded breakpoints, use a basic dialog» — у full-screen шапка 56dp, панель действий 56dp, радиус 0dp против 28dp у basic.",
+    "Что делать нам: держать в ДС два диалога: короткое подтверждение — карточка 280–560 px с радиусом 28 px, форма с несколькими полями — full-screen со своей шапкой и закреплённым футером."
+   ],
+   "src": "Источники: Material Design 3 · Dialogs / Specs (https://m3.material.io/components/dialogs/specs) · Material Design 3 · Dialogs / Overview (https://m3.material.io/components/dialogs/overview)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div></div>",
+   "example_ru": "Короткое подтверждение — карточка во всю ширину тела экрана 343 px (MD3 basic: 280–560 dp), форма из полей ушла бы в full-screen с шапкой 56 dp."
+  },
+  {
+   "title": "Максимум два действия",
+   "items": [
+    "Что происходит: третья кнопка в подтверждении превращает его в выбор из списка, и на мобиле растёт шанс нажать разрушительное действие вместо отмены.",
+    "Что делают системы: MD3: «Dialogs should contain a maximum of two actions. If a single action is provided, it must be an acknowledgement action. If two actions are provided, one must be a confirming action, and the other a dismissing action»; Apple HIG ограничивает alert тремя кнопками («up to three buttons»), Carbon для transactional modal держит «a cancel and primary action buttons».",
+    "Что делать нам: в диалоге ДС не больше двух действий: разрушительное — negative filled, отменяющее — text; остальные действия уводить в шторку, а не добавлять третьей кнопкой."
+   ],
+   "src": "Источники: Material Design 3 · Dialogs (https://m3.material.io/components/dialogs/overview) · Apple HIG · Alerts (https://developer.apple.com/design/human-interface-guidelines/alerts) · IBM Carbon · Modal (https://carbondesignsystem.com/components/modal/usage)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div></div>",
+   "example_ru": "В диалоге ровно 2 действия — «Удалить» (negative filled) и «Отмена» (text): третьей кнопки, превращающей подтверждение в выбор, нет."
+  },
+  {
+   "title": "Ширина и отступы на маленьком экране",
+   "items": [
+    "Что происходит: диалог с фиксированной шириной на 375 px даёт либо обрезанные края, либо слишком узкую карточку с двухстрочными подписями кнопок.",
+    "Что делают системы: Angular Material решает это отдельным токеном для маленьких экранов — dialog-container-small-max-width: calc(100vw - 32px), то есть 16 px с каждой стороны; паддинги заданы числами: dialog-actions-padding: 16px 24px, dialog-content-padding: 20px 24px 0.",
+    "Что делать нам: в мобильном слое ставить width: 100% и отступ 16 px по бокам, паддинг 24 px, а между кнопками — 8 px (MD3: «Padding between buttons: 8dp»)."
+   ],
+   "src": "Источники: Angular Material · _m3-dialog.scss (https://raw.githubusercontent.com/angular/components/main/src/material/dialog/_m3-dialog.scss) · Material Design 3 · Dialogs / Specs (https://m3.material.io/components/dialogs/specs)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Заказ будет удалён вместе с позициями, историей статусов и привязанными платежами.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div></div>",
+   "example_ru": "Карточка занимает 343 px тела экрана, то есть по 16 px от края 375 px; паддинг 24 px и зазор 8 px между кнопками — как требует Angular для маленьких экранов."
+  },
+  {
+   "title": "Длинный заголовок и скролл тела",
+   "items": [
+    "Что происходит: длинный заголовок забирает три строки, тело диалога уезжает под кнопки, а сами кнопки выталкиваются за нижний край экрана.",
+    "Что делают системы: Apple HIG просит не допускать длинных заголовков («avoid overly long titles that wrap to more than two lines») и по возможности избегать скролла в алерте («When possible, avoid displaying an alert that scrolls»); Angular ограничивает высоты — $mat-dialog-container-max-height: 95vh, $mat-dialog-content-max-height: 65vh.",
+    "Что делать нам: ограничивать заголовок двумя строками, тело — прокручиваемой областью с максимальной высотой, а футер с кнопками держать закреплённым и всегда видимым."
+   ],
+   "src": "Источники: Apple HIG · Alerts (https://developer.apple.com/design/human-interface-guidelines/alerts) · Angular Material · dialog.scss (https://raw.githubusercontent.com/angular/components/main/src/material/dialog/dialog.scss)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ вместе с позициями и историей?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\"><div style=\"display:flex;flex-direction:column\"><span class=\"ds-dialog-content__label\">Заказ будет удалён вместе с позициями, историей статусов и привязанными платежами. Восстановить его после удаления не получится.</span><span class=\"ds-dialog-content__label\">Позиции отправятся в архив отчётности, а бронь стола освободится.</span><span class=\"ds-dialog-content__label\">Платежи останутся в кассе без привязки к заказу.</span></div></span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div></div></div></div>",
+   "example_ru": "Заголовок ограничен двумя строками, тело — прокручиваемая область (65 vh), футер с кнопками закреплён и всегда виден: три абзаца не выдавливают «Удалить» за нижний край."
+  },
+  {
+   "title": "Кнопки в столбик и порядок действий",
+   "items": [
+    "Что происходит: две кнопки в ряд на 375 px — это две цели шириной около 150 px, стоящие вплотную; «Удалить» нажимается вместо «Отмена» на порядок чаще.",
+    "Что делают системы: Apple фиксирует роль и порядок: в алертах отменяющее действие всегда называется «Cancel», а действие по умолчанию стоит на trailing; Carbon ставит Cancel слева ghost-кнопкой, MD3 добавляет 8 dp между кнопками, а Angular задаёт $mat-dialog-button-horizontal-margin: 8px и min-height: 52px блоку действий.",
+    "Что делать нам: на мобиле действия выкладывать в столбик, каждое на всю ширину, отменяющее — внизу, между кнопками 8 px (в превью — .phone__actions с flex-direction:column)."
+   ],
+   "src": "Источники: Apple HIG · Alerts (https://developer.apple.com/design/human-interface-guidelines/alerts) · IBM Carbon · Modal (https://carbondesignsystem.com/components/modal/usage) · Material Design 3 · Dialogs / Specs (https://m3.material.io/components/dialogs/specs)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Удалить заказ?</span><span class=\"ds-dialog-header__description\">Действие нельзя отменить</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Заказ будет удалён вместе с позициями.</span></div><div class=\"ds-dialog-view__action\"><div style=\"display:flex;flex-direction:column;gap:8px\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--negative ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Удалить</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div></div></div></div></div>",
+   "example_ru": "Действия выложены в столбик на всю ширину, отменяющее — ниже разрушительного, зазор 8 px: две цели по 150 px в ряд заменены двумя по 295 px."
+  },
+  {
+   "title": "Диалог поверх диалога и фон",
+   "items": [
+    "Что происходит: подтверждение поверх уже открытого диалога на мобиле не оставляет видимого контекста: непонятно, что именно отменяется, а затемнение 32 % поверх затемнения читается как «экран завис».",
+    "Что делают системы: MD3 разрешает открывать второй диалог только поверх full-screen и требует basic-подтверждение при закрытии full-screen без сохранения; Apple HIG для выбора из нескольких вариантов советует action sheet, а не alert.",
+    "Что делать нам: не открывать диалог из диалога — второй шаг делать шторкой; фон затемнять 32 % (как в превью), а для выбора варианта использовать шторку, а не диалог."
+   ],
+   "src": "Источники: Material Design 3 · Dialogs (https://m3.material.io/components/dialogs/overview) · Apple HIG · Alerts / Action sheets (https://developer.apple.com/design/human-interface-guidelines/alerts)",
+   "example_html": "<div class=\"pat__phone\"><div class=\"ds-dialog-view\" style=\"width:100%;min-height:auto\"><div class=\"ds-dialog-header\"><span class=\"ds-dialog-header__label\">Сохранить изменения?</span><span class=\"ds-dialog-header__description\">Второй шаг открывается шторкой</span></div><div class=\"ds-dialog-content\"><span class=\"ds-dialog-content__label\">Один диалог на экране: фон затемнён на 32 %, второй шаг — шторка.</span></div><div class=\"ds-dialog-view__action\"><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Отмена</span></button></div><div class=\"ds-dialog-footer__button\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Сохранить</span></button></div></div></div></div>",
+   "example_ru": "На экране один диалог — второго поверх него нет: фон затемняется на 32 %, а выбор из вариантов уходит в шторку, а не в стопку карточек."
+  }
+ ]
+}

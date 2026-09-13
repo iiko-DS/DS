@@ -1,0 +1,16 @@
+# ── VS Code: локальный MCP-конфиг (содержит токен Figma) ──
+# Реальный файл с токеном не коммитим. Для команды есть .vscode/mcp.example.json
+.vscode/mcp.json
+
+# ── Переменные окружения / секреты ──
+.env
+.env.*
+*.local
+
+# ── Вложенные репозитории: у них свой git (iiko-ds-web, iiko-ds-prototypes) ──
+/iiko-ds-web/
+/iiko-ds-prototypes/
+
+# ── Мусор Python и кэши ──
+__pycache__/
+*.pyc

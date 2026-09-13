@@ -1,0 +1,71 @@
+{
+ "slug": "status",
+ "patterns_ru": [
+  {
+   "title": "Компонента «Status» нет ни у одной платформы",
+   "items": [
+    "Что происходит: на 375 px статус рисуют «как принято у нас», и он расходится с платформами: у MD3 страницы /components/status нет (404), у Apple HIG есть только категория Status из четырёх элементов, у Angular отдельного статуса тоже нет.",
+    "Что делают системы: MD3 выражает статус цветовой ролью и текстом, а не компонентом (ближайшие официальные сущности — progress indicators и badges: m3.material.io/components/progress-indicators/specs и /components/badges/specs отдают 200); Angular Material вместо статуса даёт mat-badge и progress-spinner/progress-bar; Carbon единственный держит официальный статусный паттерн — с отдельными наборами иконочных, фигурных и бейдж-индикаторов.",
+    "Что делать нам: зафиксировать в ДС свой минимальный набор (знак + подпись + семантика цвета) и записать, что он опирается на решение ДС и паттерн Carbon, а не на платформенный компонент."
+   ],
+   "src": "Источники: IBM Carbon · Status indicator pattern (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/patterns/status-indicator-pattern/index.mdx) · Material Design 3 · Progress indicators (m3.material.io/components/progress-indicators/specs) · Apple HIG · Status (developer.apple.com/design/human-interface-guidelines) · Angular Material · badge (raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:16px\"><span class=\"ds-status ds-status--neutral ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span><span class=\"ds-status__label\">Черновик</span></span><span class=\"ds-status ds-status--positive ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">check_circle</span></span><span class=\"ds-status__label\">Готово</span></span><span class=\"ds-status ds-status--warning ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span><span class=\"ds-status__label\">Ждёт проверки</span></span><span class=\"ds-status ds-status--negative ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">error</span></span><span class=\"ds-status__label\">Ошибка</span></span></div></div>",
+   "example_ru": "Четыре состояния ДС (черновик, готово, ждёт проверки, ошибка): у каждого свой знак и подпись — так компонент живёт без платформенного эталона."
+  },
+  {
+   "title": "Цвет — не единственный носитель смысла",
+   "items": [
+    "Что происходит: на улице и на ярком свете «зелёная/красная» точка на телефоне не различается, а в тёмной теме цветные статусы выцветают — смысл сообщения теряется целиком.",
+    "Что делают системы: Carbon требует подписи рядом с фигурой — «Shape indicators don't have the added recognition of an icon, therefore, it's important that they are paired with a status label», и отдельно — «Avoid using only color and status labels to differentiate your content», опираясь на требования по нон-текст-контрасту (3:1); GOV.UK в статусах таск-листа отказался от капса именно из-за читаемости: «The use of uppercase in task statuses makes them harder to read».",
+    "Что делать нам: статус в ДС — всегда пара «знак + короткая подпись» («Просрочен», «Готов») в предложном регистре; цвет усиливает, но не заменяет текст."
+   ],
+   "src": "Источники: IBM Carbon · Status indicator pattern (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/patterns/status-indicator-pattern/index.mdx) · GOV.UK Design System · Task list (raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/task-list/index.md)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:16px\"><span class=\"ds-status ds-status--neutral ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span><span class=\"ds-status__label\">Черновик</span></span><span class=\"ds-status ds-status--positive ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">check_circle</span></span><span class=\"ds-status__label\">Готово</span></span><span class=\"ds-status ds-status--warning ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">schedule</span></span><span class=\"ds-status__label\">Ждёт проверки</span></span><span class=\"ds-status ds-status--negative ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">error</span></span><span class=\"ds-status__label\">Ошибка</span></span></div></div>",
+   "example_ru": "Смысл читается текстом, а не цветом: у каждого статуса своя подпись «Черновик», «Готово», «Ждёт проверки», «Ошибка», цвет — только усиление."
+  },
+  {
+   "title": "Размеры знака: 24 px в строке, 20 и 16 в плашках",
+   "items": [
+    "Что происходит: в списке заказов статус пытаются сделать заметнее — крупнее, с тенью, со своим цветом в каждой строке; строки начинают «кричать», а статус всё равно не читается, потому что он часть строки, а не акцент экрана.",
+    "Что делают системы: Carbon нормирует два варианта знака — «Icon indicator | 20px | 16pt» и «Shape indicator | 16px | 14pt», фигуру ставит перед подписью и просит не мешать один и тот же знак с разными цветами; MD3 для ближайших официальных сущностей задаёт иконку `--md-icon-size: 24px`, круговой прогресс 48 px при толщине 4 px и линейный трек 4 px.",
+    "Что делать нам: знак внутри строки — иконка 24 px (как в компоненте ДС), точка 16 px — для плотных таблиц, 20 px — для плашек и заголовков; размер статуса строку не раздувает."
+   ],
+   "src": "Источники: IBM Carbon · Status indicator pattern (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/patterns/status-indicator-pattern/index.mdx) · Material Design 3 · токены circular progress (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-circular-progress-indicator.scss) · Material Web · Icon (raw.githubusercontent.com/material-components/material-web/main/docs/components/icon.md)",
+   "example_html": "<div class=\"pat__phone\"><div style=\"display:flex;flex-direction:column;gap:16px\"><span class=\"ds-status ds-status--accent ds-status--text\"><span class=\"ds-status__label\">Отправлено</span></span><span class=\"ds-status ds-status--negative ds-status--text\"><span class=\"ds-status__label\">3 заказа просрочены</span></span></div></div>",
+   "example_ru": "Текстовая форма без плашки: подпись рядом со знаком, кегль 12 px у подписи и 24 px у иконки — статус не перетягивает внимание со строки заказа."
+  },
+  {
+   "title": "Бейдж с числом — только на крупной иконке",
+   "items": [
+    "Что происходит: на маленькую иконку в шапке вешают счётчик — число наползает на значок и на соседей, а на узком экране ещё и обрезается: «1 248» превращается в «1 2…».",
+    "Что делают системы: Carbon разрешает числовой бейдж только на большой иконке-кнопке — «The badge with a number can only be used with the large icon button (48px)», а бесчисловой точкой предлагает обходиться в тулбарах; Angular держит для бейджа контейнер 16 px и точку 6 px со смещением -12px 0, Ant Design ограничивает вывод числа свойством `overflowCount` со значением по умолчанию 99.",
+    "Что делать нам: в ДС бейдж с числом — только на иконке-кнопке 48 px; для мелких иконок — точка 6 px без числа; значения больше 99 показываем как «99+»."
+   ],
+   "src": "Источники: IBM Carbon · Status indicator pattern (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/patterns/status-indicator-pattern/index.mdx) · Angular Material · badge M3 токены (raw.githubusercontent.com/angular/components/main/src/material/badge/_m3-badge.scss) · Ant Design · Badge (ant.design/components/badge)",
+   "example_html": "<div class=\"pat__phone-row\"><span class=\"ds-status ds-status--negative ds-status--filled\"><span class=\"ds-status__label\">12</span></span><span class=\"ds-status ds-status--neutral ds-status--text\"><span class=\"ds-status__label\">Новых заказов — 12, больше 99 показываем как «99+»</span></span></div>",
+   "example_ru": "Число стоит подписью рядом со знаком, а не бейджем на мелкой иконке: больше 99 — «99+», потому что числовой бейдж в Carbon допустим только на кнопке 48 px."
+  },
+  {
+   "title": "Загрузка: спиннер против скелета",
+   "items": [
+    "Что происходит: на телефоне крутят спиннер там, где данные придут через секунду, и наоборот — рисуют пустые ячейки мгновенно; пользователь либо ждёт «вечный» прогресс, либо видит «нет данных», которых пока просто нет.",
+    "Что делают системы: Carbon разводит случаи по длительности — для долгого процесса («Processing takes more than a few seconds»): «If a loading process will require the application’s full resources and will take longer than a moment or two, use a full-screen loading indicator», а скелеты держит для контейнерных компонентов и короткого времени: «should only appear for only a few seconds, disappearing once components and content populate the page»; для точечных операций есть inline loading с четырьмя состояниями (inactive, active, finished, error) и запретом запускать его сразу на нескольких элементах.",
+    "Что делать нам: до пары секунд — скелет строки, дольше — полноэкранный индикатор; для сохранения в конкретной строке — один маленький inline-индикатор, а не «лестница» спиннеров."
+   ],
+   "src": "Источники: IBM Carbon · Loading pattern (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/patterns/loading-pattern/index.mdx) · IBM Carbon · Inline loading (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/inline-loading/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><span class=\"ds-status ds-status--accent ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">sync</span></span><span class=\"ds-status__label\">Обновляем данные</span></span></div>",
+   "example_ru": "Текстовый статус «Обновляем данные» на время запроса; спиннера и скелета в ДС нет — это находка для библиотеки, а до тех пор состояние показывается статусом и подписью."
+  },
+  {
+   "title": "Спиннер без подписи и его цвет",
+   "items": [
+    "Что происходит: рядом со спиннером не пишут, что именно грузится, а на светлой теме iiko белый индикатор не видно вовсе — ожидание выглядит как зависание.",
+    "Что делают системы: Apple держит индикатор белым поверх фона сцены и перекрашивает его через tint color, то есть на светлом фоне цвет задаёт приложение; Angular считает толщину индикатора от диаметра (`strokeWidth` по умолчанию = diameter / 10 при базе `BASE_SIZE = 100`) и анимирует переход через `stroke-dashoffset 500ms cubic-bezier(0, 0, 0.2, 1)`; MD3 задаёт линейному индикатору высоту трека 4 px.",
+    "Что делать нам: цвет индикатора брать из темы (accent на нейтральной плашке), толщину не задавать руками — круг 48 px и трек 4 px по токенам, а к долгой загрузке добавлять текст состояния («Descriptive loading text for the action is optional, but encouraged»)."
+   ],
+   "src": "Источники: Apple HIG · Progress indicators (developer.apple.com/design/human-interface-guidelines/progress-indicators) · Angular Material · progress-spinner (raw.githubusercontent.com/angular/components/main/src/material/progress-spinner/progress-spinner.scss) · Material Design 3 · токены linear progress (raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-linear-progress-indicator.scss) · IBM Carbon · Inline loading (raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/inline-loading/usage.mdx)",
+   "example_html": "<div class=\"pat__phone\"><span class=\"ds-status ds-status--accent ds-status--filled\"><span class=\"ds-status__icon\"><span class=\"material-icons\" style=\"font-size:24px\">sync</span></span><span class=\"ds-status__label\">Обновляем данные</span></span></div>",
+   "example_ru": "Цвет статуса — из темы (accent), а не белый на белом: круговой индикатор в MD3 — 48 px при толщине 4 px, у нас его роль пока играет текстовый статус."
+  }
+ ]
+}

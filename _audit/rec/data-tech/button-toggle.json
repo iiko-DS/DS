@@ -1,0 +1,114 @@
+{
+ "slug": "button-toggle",
+ "component": "Button toggle",
+ "_role": "Техническая часть (для проверки утверждений на простой странице). На страницу не выводится.",
+ "ds_values": {
+  "source": "iiko-ds-web/tokens.css (Component → button toggle: pad 4, gap 4, border-radius 12, outlined-border-size 1 — размерного ряда M/S/XS у переключателя нет) + iiko-ds-web/iiko-ds-spec.md («Button toggle [17039:71554]», 12 вариантов: Size M/S/XS × Type Filled/Outlined × Content Icon/Text) + components/Button-Toggle_DS/button-toggle.css",
+  "sizes": [
+   {
+    "name": "базовый (Filled, Text)",
+    "height_px": 28,
+    "calc": "pad 4+4 + строка 20",
+    "pad": "4 / 4",
+    "icon": "20 px (у --xs — 16 px)"
+   },
+   {
+    "name": "Outlined",
+    "height_px": 28,
+    "calc": "pad 4+4 + строка 20 (после правки: рамка box-sizing: border-box внутрь)",
+    "pad": "4 / 4",
+    "icon": "20 px"
+   }
+  ],
+  "desktop_delta": "Правка 11.09.2026: у .ds-button-toggle задана высота calc(pad-top + pad-bottom + строка) = 28 px и box-sizing: border-box. Было: рамка 1 px добавляла Outlined-сегменту 2 px (30 px против 28 px у Filled). Замерено в headless Chrome: 24 варианта (div и button × Type × Content × M/S/XS) — изменилось только поле h у 15 из них: 30 → 28 и 32 → 28 (у <button> без сброса рамки больше не остаётся браузерной 2 px outset).",
+  "mobile": "iiko-ds-mobile/modes.css: своих значений у переключателя нет. Сегменты — Button, он на мобиле M 44. Замерено: desktop трек 44 (сегменты 36), mobile трек 52 (сегменты 44); отступы трека 4/4 и радиус 12 на обеих платформах.",
+  "mobile_override": "значения заданы явно в мобильном слое iiko-ds-mobile/components/<Имя>_DS/*.css: десктопный CSS держит размер числами, поэтому режимные токены его не сдвигают. Библиотека iiko-ds-web не правится.."
+ },
+ "platforms": [
+  {
+   "key": "md3",
+   "title": "Material Design 3",
+   "facts": [
+    "Segmented buttons: container-height 40 dp — единственный размер (_md-comp-outlined-segmented-button.scss: 'container-height': 40px)",
+    "Иконка 18 dp, outline-width 1 px, типографика label-large",
+    "Размерной шкалы XS..XL у segmented button нет (в tokens/versions/latest/sass нет ни одного _md-comp-segmented-button-*.scss)",
+    "В Material Web стабильного компонента нет — только labs/segmentedbutton(–set)"
+   ],
+   "sources": [
+    "https://m3.material.io/components/segmented-buttons/specs",
+    "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-outlined-segmented-button.scss",
+    "https://raw.githubusercontent.com/material-components/material-web/main/labs/segmentedbutton/internal/_shared.scss"
+   ]
+  },
+  {
+   "key": "angular_material",
+   "title": "Angular Material",
+   "facts": [
+    "button-toggle-height: list.nth((40px, 40px, 40px, 36px, 24px), $index) → 40 dp на density 0…−2, 36 dp на −3, 24 dp на −4",
+    "Атрибута size нет — только density; форма corner-extra-large",
+    "Отдельного токена тач-таргета у button-toggle нет (в отличие от кнопок): сама высота 40 dp и нативные <button> с aria-pressed"
+   ],
+   "sources": [
+    "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/_m3-button-toggle.scss",
+    "https://raw.githubusercontent.com/angular/components/main/src/material/button-toggle/button-toggle.md"
+   ]
+  },
+  {
+   "key": "ios_hig",
+   "title": "iOS HIG",
+   "facts": [
+    "Segmented control: ни одного числа в pt — «A segmented control is a linear set of two or more segments, each of which functions as a button»",
+    "«Aim for no more than about five to seven segments in a wide interface and no more than about five segments on iPhone»",
+    "«In general, keep segment size consistent»; «Prefer using either text or images — not a mix of both» in a single segmented control",
+    "Применимое число — общий хит-регион «at least 44x44 pt» со страницы Buttons"
+   ],
+   "sources": [
+    "https://developer.apple.com/design/human-interface-guidelines/segmented-controls",
+    "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/segmented-controls.json",
+    "https://developer.apple.com/design/human-interface-guidelines/buttons"
+   ]
+  }
+ ],
+ "verdict": {
+  "keep": "На мобиле высота сегмента 40 px (вертикальные паддинги 10) — совпадает с единственной высотой, которую называют M3 и Angular Material.",
+  "drop": [
+   "Размерный ряд XS/S/M/L — платформы его у переключателя не описывают",
+   "Плотные 36/24 dp у Angular — это density-режимы, а не рекомендация (и в них у иконка-кнопок отключается тач-таргет)"
+  ],
+  "open": [
+   "Тач-зона: 40 px ниже 44 pt из HIG; отдельного токена тач-таргета у переключателя нет и у Angular",
+   "Модификаторы --s/--xs в CSS меняют только иконку (20 → 16) и не влияют на высоту: токенов размера у toggle нет",
+   "Hover на тач не гасится (см. hover_on_touch)",
+   "Правила HIG 5–7 сегментов и «не смешивать текст с иконками» в библиотеке не выражены — это уровень дизайна/лейаута",
+   "Набор сегментов на узком экране: план говорит «при нехватке ширины набор скроллится» — правила не реализованы",
+   "Группового класса для набора сегментов в ДС нет (нет `.ds-button-toggle-group`): в примере страницы сегменты стоят в строке с gap — это каркас страницы, не компонент."
+  ]
+ },
+ "hover_on_touch": {
+  "status_ru": "Как у Button icon: @media (hover: none) в библиотеке нет; у .ds-button-toggle --filled/--outlined состояния описаны без hover/active вовсе (в CSS есть только цвета Filled/Outlined + типографика).",
+  "angular_material": {
+   "facts": [
+    "кнопки-переключатели строятся на нативных <button> с aria-pressed; hover-подсветка на тач «залипает» — Angular гасит её через @media (hover: none) (expansion-panel-header.scss, step-header.scss)"
+   ],
+   "sources": [
+    "https://raw.githubusercontent.com/angular/components/main/src/material/expansion/expansion-panel-header.scss"
+   ]
+  },
+  "md3": {
+   "facts": [
+    "состояния (в т.ч. hover) — state layer поверх контейнера 40 dp; описан для указателя"
+   ],
+   "sources": []
+  },
+  "ios_hig": {
+   "facts": [
+    "hover для пальца не предусмотрен; выбранное состояние передаётся заливкой сегмента"
+   ],
+   "sources": []
+  }
+ },
+ "state_styling_open_ru": "Цвета Filled/Outlined в репозитории заданы только компонентными токенами Button toggle (Filled/Background и Outlined/Background = Shapes/Default = #FFFFFF, рамка = Stroke/Default, текст = акцент) — выверенной строки размеров/состояний у компонента в спеке нет (sizes_line/states_line пусты). 11.09.2026 была попытка подставить сюда токены Button Filled (акцентная заливка) — откачена: это не токены этого компонента.",
+ "structure_ru": "Button toggle — надслойка над Button: сам компонент = контейнер-трек, содержимое = инстансы Button (`.ds-btn`). Слот в Figma назван «Button container» [59885:13]. Поэтому файл компонента содержит только геометрию/фон трека, а вид сегмента целиком на стороне Button. Мобильных переопределений у переключателя нет: сегменты растут по правилам Button (M 36 → 44), трек — за ними.",
+ "measured_ru": "Замеры в headless Chrome после правки: рамка контейнера 1 px Stroke/Default у обоих типов; desktop трек M 46 (сегменты 36), S 38 (28), XS 34 (24); mobile трек M 54 (сегменты 44), S и XS без изменений. Отступы 4/4, gap 4, радиус 12 — на обеих платформах.",
+ "border_ru": "Рамка Контейнера: `--ds-button-toggle-outlined-border-size` (1 px) + `--ds-color-button-toggle-outlined-border-color` (Stroke/Default #E0E0E0). Отдельного токена рамки для типа Filled в коллекции Component нет; в автогене спеки у Filled стоит «рамка none» — расхождение вынесено в открытые вопросы."
+}

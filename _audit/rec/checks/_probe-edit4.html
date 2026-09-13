@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><title>p4</title><style>pre{font:13px/17px monospace;white-space:pre-wrap}</style></head>
+<body><iframe id="f" style="width:1920px;height:1500px;border:0"></iframe><pre id="out">pending</pre>
+<script>
+var BASE='../../../iiko-ds-mobile/prototypes/recommendations/';
+var f=document.getElementById('f'),out=document.getElementById('out'),L=[];
+function st(d,q){var el=d.querySelector('.panel[data-mode="mobile"] '+q);if(!el)return q+': нет';
+ var cs=d.defaultView.getComputedStyle(el),r=el.getBoundingClientRect();
+ return q+': h='+Math.round(r.height)+' w='+Math.round(r.width)+' pad='+cs.paddingTop+'/'+cs.paddingLeft+' line='+cs.lineHeight+' font='+cs.fontSize;}
+f.onload=function(){try{
+ var d=f.contentDocument;
+ var hF=d.querySelector('.edit__input[aria-label="Высота"]');
+ var pF=d.querySelectorAll('.edit__input[aria-label="Паддинги (верт. / гор.)"]');
+ L.push('до правки:  '+st(d,'.ds-btn--m'));
+ hF.value=40; hF.dispatchEvent(new Event('input'));
+ L.push('высота 40 (паддинги не трогал): '+st(d,'.ds-btn--m'));
+ L.push('  поле паддингов в таблице: '+pF[0].value+' / '+pF[1].value);
+ pF[0].value=10; pF[0].dispatchEvent(new Event('input'));
+ L.push('высота 40 + паддинг 10: '+st(d,'.ds-btn--m'));
+ L.push('десктоп: '+st(d,'.panel[data-mode="desktop"] .ds-btn--m'.replace('.panel[data-mode="desktop"] ','')) );
+ L.push('mobile-панель десктопная кнопка: '+ (function(){var el=d.querySelector('.panel[data-mode="desktop"] .ds-btn--m');return Math.round(el.getBoundingClientRect().height);})());
+ out.textContent=L.join(String.fromCharCode(10));
+}catch(e){out.textContent='ERR '+e;}};
+f.setAttribute('src',BASE+'button.html');
+</script></body></html>

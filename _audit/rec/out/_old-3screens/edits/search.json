@@ -1,0 +1,39 @@
+{
+  "slug": "search",
+  "edits": [
+    {
+      "row": 1,
+      "edits": [
+        {
+          "id": "size",
+          "v": 36,
+          "sel": ".ds-search",
+          "css": "width:@px; height:@px"
+        },
+        {
+          "id": "touch",
+          "v": 48,
+          "sel": ".ds-search__icon",
+          "css": "min-width:@px; min-height:@px"
+        }
+      ]
+    },
+    {
+      "row": 3,
+      "edits": [
+        {
+          "id": "font",
+          "v": 16,
+          "sel": ".ds-search__label",
+          "css": "font-size:@px"
+        },
+        {
+          "id": "line",
+          "v": 24,
+          "sel": ".ds-search__label",
+          "css": "line-height:@px"
+        }
+      ]
+    }
+  ]
+}

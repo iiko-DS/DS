@@ -1,0 +1,190 @@
+{
+  "component": "snackbar",
+  "platforms": {
+    "md3": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Snackbar, высота однострочного",
+          "quote": "'with-single-line-container-height':\n      if($exclude-hardcoded-values, null, 48px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-snackbar.scss",
+          "height_dp": 48
+        },
+        {
+          "name": "Snackbar, высота двухстрочного",
+          "quote": "'with-two-lines-container-height': if($exclude-hardcoded-values, null, 68px)",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-snackbar.scss",
+          "height_dp": 68
+        },
+        {
+          "name": "Snackbar, icon size",
+          "quote": "'icon-size': if($exclude-hardcoded-values, null, 24px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-snackbar.scss",
+          "height_dp": 24
+        }
+      ],
+      "other_measurements": [
+        {
+          "name": "Скругление контейнера (corner-extra-small)",
+          "quote": "'corner-extra-small': if($exclude-hardcoded-values, null, 4px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss",
+          "measure_px": 4
+        }
+      ],
+      "variants": [
+        {
+          "name": "С действием (action label) и без",
+          "quote": "'action-label-text-line-height':\n      map.get($deps, 'md-sys-typescale', 'label-large-line-height'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-snackbar.scss"
+        },
+        {
+          "name": "Однострочный / двухстрочный",
+          "quote": "'supporting-text-line-height':\n      map.get($deps, 'md-sys-typescale', 'body-medium-line-height'),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-snackbar.scss"
+        },
+        {
+          "name": "С иконкой",
+          "quote": "'icon-size': if($exclude-hardcoded-values, null, 24px),",
+          "source": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-snackbar.scss"
+        }
+      ],
+      "touch_target_dp": 48,
+      "touch_target_quote": "height: max(48px, 100%);",
+      "touch_target_source": "https://raw.githubusercontent.com/material-components/material-web/main/button/internal/_touch-target.scss",
+      "notes_ru": "MD3 задаёт токены snackbar: 48 px одна строка / 68 px две строки, иконка 24, скругление 4 (corner-extra-small), action-label типографика label-large, supporting text — body-medium. Позиции (снизу по центру) в токенах нет — она на странице спецификации m3.material.io, которая без JS не отдаётся. Важно: в Material Web компонента snackbar нет, только токены — элемент придётся делать самому.",
+      "sources": [
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-snackbar.scss",
+        "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss",
+        "https://github.com/material-components/material-web/tree/main/tokens"
+      ]
+    },
+    "angular_material": {
+      "exists": true,
+      "sizes": [
+        {
+          "name": "Ширина контейнера, минимум",
+          "width_px": 344,
+          "quote": "min-width: 344px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "name": "Ширина контейнера, максимум",
+          "width_px": 672,
+          "quote": "max-width: 672px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "name": "Внешний отступ контейнера",
+          "height_px": 8,
+          "quote": "margin: 8px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "name": "Внутренний отступ текста (14px сверху/снизу)",
+          "height_px": 14,
+          "quote": "padding: 14px $_side-padding 14px 16px;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        }
+      ],
+      "other_measurements": [
+        {
+          "name": "Скругление (corner-extra-small)",
+          "quote": "snack-bar-container-shape: map.get($system, corner-extra-small),",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/_m3-snack-bar.scss",
+          "measure_px": 4
+        },
+        {
+          "name": "Тень (elevation 6)",
+          "quote": "@include elevation.elevation(6);",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss",
+          "measure_px": 6
+        },
+        {
+          "name": "Анимация появления / исчезновения, ms",
+          "quote": "animation: _mat-snack-bar-enter 150ms cubic-bezier(0, 0, 0.2, 1) forwards;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss",
+          "measure_px": 150
+        }
+      ],
+      "variants": [
+        {
+          "name": "Позиция по умолчанию: bottom + center",
+          "quote": "verticalPosition?: MatSnackBarVerticalPosition = 'bottom';",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-config.ts"
+        },
+        {
+          "name": "Позиции: start | center | end | left | right; вертикально top | bottom",
+          "quote": "export type MatSnackBarHorizontalPosition = 'start' | 'center' | 'end' | 'left' | 'right';",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-config.ts"
+        },
+        {
+          "name": "Длительность: по умолчанию 0 (без авто-закрытия), задаётся вручную",
+          "quote": "duration?: number = 0;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-config.ts"
+        },
+        {
+          "name": "Только один snackbar одновременно",
+          "quote": "Only one snackbar can ever be opened at one time. If a new snackbar is opened while a previous\nmessage is still showing, the older message will be automatically dismissed.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md"
+        },
+        {
+          "name": "Одно действие + политесс polite, фокус не переносится",
+          "quote": "`MatSnackBar` does not move focus to the snackbar element.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md"
+        },
+        {
+          "name": "handset-режим: ширина 100vw / 100%",
+          "quote": "width: 100vw;",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss"
+        },
+        {
+          "name": "Не задавать duration при наличии действия",
+          "quote": "Avoid setting a `duration` for snackbars that have an action available, as screen reader users may\nwant to navigate to the snackbar element to activate the action.",
+          "source": "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md"
+        }
+      ],
+      "density": "не поддерживается (в _m3-snack-bar.scss секция density пустая: `density: (),`)",
+      "notes_ru": "Angular Material: панель 344–672 px, отступ 8 px по периметру, текст 14 px, скругление 4, elevation 6, вход 150 ms. Дефолты: bottom + center, duration 0 (то есть без авто-закрытия — значение нужно задавать явно), politeness polite, одновременно только один snackbar. Фокус на snackbar не переносится, поэтому для действия нужна альтернатива. Density-шкалы нет.",
+      "sources": [
+        "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-container.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/_m3-snack-bar.scss",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar-config.ts",
+        "https://raw.githubusercontent.com/angular/components/main/src/material/snack-bar/snack-bar.md"
+      ]
+    },
+    "ios_hig": {
+      "exists": false,
+      "sizes": [
+        {
+          "name": "Размеры snackbar/toast",
+          "height_pt": null,
+          "quote": "не найдено",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/components"
+        }
+      ],
+      "other_measurements": [],
+      "variants": [
+        {
+          "name": "Варианты snackbar/toast",
+          "quote": "не найдено",
+          "source": "https://developer.apple.com/design/human-interface-guidelines/components"
+        }
+      ],
+      "notes_ru": "В iOS HIG компонента snackbar/toast нет: в списке компонентов HIG (72 страницы) нет ни snackbar, ни toast, ни banner. Ближайшие системные замены — Alerts (модальный, «up to three buttons»), Action sheets (≤4 кнопок) и Notifications (пользовательские уведомления). Числовых размеров у них нет; единственная числовая величина в этих разделах — максимальная высота accessory view в visionOS-алерте 154 pt.",
+      "sources": [
+        "https://developer.apple.com/design/human-interface-guidelines/components",
+        "https://developer.apple.com/design/human-interface-guidelines/alerts",
+        "https://developer.apple.com/design/human-interface-guidelines/action-sheets",
+        "https://developer.apple.com/design/human-interface-guidelines/notifications"
+      ]
+    }
+  },
+  "not_recommended_ru": [
+    "Snackbar/toast в iOS — паттерна нет в HIG (72 страницы компонентов); заменять надо на alert/action sheet или пользовательское уведомление, либо это будет кастомный (не нормированный платформой) элемент.",
+    "Позиция снизу по центру как число от MD3 — в токенах MD3 позиции нет, это утверждение со страницы спецификации (не проверяемо без JS).",
+    "Готовый компонент snackbar в Material Web — отсутствует: есть только токены, элемент придётся реализовывать самостоятельно.",
+    "Авто-скрытие snackbar с действием — противоречит рекомендации Angular Material (duration не задавать, если есть action).",
+    "Несколько snackbar одновременно — Angular Material прямо ограничивает одним."
+  ],
+  "verdict_ru": "Высоты близки по смыслу, но заданы в разных системах: MD3 — 48 dp однострочный / 68 dp двухстрочный (иконка 24, скругление 4), Angular Material — панель 344–672 px, отступ 8 px, текст 14 px, скругление 4, по умолчанию bottom+center и duration 0. В Material Web компонента нет, только токены; в iOS HIG паттерна нет вовсе. Практический вывод: высоту брать 48/68 dp из MD3, поведение (один за раз, без авто-скрытия при действии, без переноса фокуса) — из Angular Material."
+}
