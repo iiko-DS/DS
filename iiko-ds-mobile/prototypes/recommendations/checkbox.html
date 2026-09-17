@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkbox — Desktop и Mobile</title>
+<link rel="stylesheet" href="../../../iiko-ds-web/font.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/tokens.css?v=1789456848">
+<link rel="stylesheet" href="../../modes.css?v=1789456848">
+<link rel="stylesheet" href="../../components/index.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/styles.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/index.css?v=1789456848">
+<!-- Автоген не подключил эти четыре файла в агрегаторе библиотеки — без них
+     Checkbox и Radio рисуются системным контролом браузера (13 × 13 вместо
+     маркера 20 × 20). Подключаем их явно на странице; библиотека не правится. -->
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Checkbox_DS/checkbox.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Checkbox_DS/checkbox-icons.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Radio-Button_DS/radio.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Radio-Button_DS/radio-icons.css?v=1789456848">
+<link rel="stylesheet" href="rec.css?v=1789456848">
+<style id="live"></style>   <!-- сюда попадают правки из колонки «Правка» -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<div class="wrap">
+  <p class="crumbs"><a href="index.html#checkbox">← Все компоненты</a></p>
+  <h1>Checkbox</h1>
+  <p class="desc">Чекбокс: выбор одного или нескольких вариантов из списка. Состояния — не выбран, выбран, смешанный, ошибка, недоступный.</p>
+  <p class="cat"><b>Только размеры</b> · меняется только нажимаемая строка; маркер, подписи и цвета те же</p>
+
+  <div class="compare">
+<div class="panel" data-mode="desktop"><div class="panel__head"><span class="panel__title">Desktop</span><span class="panel__sub">строка 20 px</span></div><div class="panel__body"><div class="ex"><p class="ex__title">Три состояния: снят, выбран, смешанный</p><div class="ex__row ex__row--col"><div class="ex__inner"><div style="display:flex;flex-direction:column;gap:8px"><label class="ds-checkbox" id="c1"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Не выбран</span></label><label class="ds-checkbox" id="c2"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Выбран</span></label><label class="ds-checkbox" id="c3"><input class="ds-checkbox__input" type="checkbox" data-indeterminate><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Смешанный</span></label><script>document.querySelectorAll("input[data-indeterminate]").forEach(function(i){i.indeterminate=true});</script></div></div></div></div><div class="ex"><p class="ex__title">Ошибка и недоступный</p><div class="ex__row ex__row--col"><div class="ex__inner"><div style="display:flex;flex-direction:column;gap:8px"><div class="ds-checkbox-wrap"><label class="ds-checkbox ds-checkbox--error" id="c4"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Выбран, но с ошибкой</span></label><span class="ds-checkbox__support" style="color:#FF5252">Текст ошибки</span></div><label class="ds-checkbox ds-checkbox--disabled" id="c5"><input class="ds-checkbox__input" type="checkbox" disabled><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Недоступный</span></label><label class="ds-checkbox ds-checkbox--disabled" id="c6"><input class="ds-checkbox__input" type="checkbox" checked disabled><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Недоступный выбранный</span></label></div></div></div></div><div class="ex"><p class="ex__title">Вертикальная группа с подписью под контролом</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox" id="g1"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label><label class="ds-checkbox" id="g2"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Соус</span></label></div><span class="ds-checkbox__support">Отметьте минимум один пункт</span></div></div></div></div><div class="ex"><p class="ex__title">Горизонтальная группа</p><div class="ex__row ex__row--col"><div class="ex__inner"><div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap"><label class="ds-checkbox" id="h1"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Малый</span></label><label class="ds-checkbox" id="h2"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Средний</span></label><label class="ds-checkbox" id="h3"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Большой</span></label></div></div></div></div></div></div>
+<div class="panel" data-mode="mobile"><div class="panel__head"><span class="panel__title">Mobile</span><span class="panel__sub">строка 48 px</span></div><div class="panel__body"><div class="ex"><p class="ex__title">Три состояния: снят, выбран, смешанный</p><div class="ex__row ex__row--col"><div class="ex__inner"><div style="display:flex;flex-direction:column;gap:8px"><label class="ds-checkbox" id="c1"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Не выбран</span></label><label class="ds-checkbox" id="c2"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Выбран</span></label><label class="ds-checkbox" id="c3"><input class="ds-checkbox__input" type="checkbox" data-indeterminate><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Смешанный</span></label><script>document.querySelectorAll("input[data-indeterminate]").forEach(function(i){i.indeterminate=true});</script></div></div></div></div><div class="ex"><p class="ex__title">Ошибка и недоступный</p><div class="ex__row ex__row--col"><div class="ex__inner"><div style="display:flex;flex-direction:column;gap:8px"><div class="ds-checkbox-wrap"><label class="ds-checkbox ds-checkbox--error" id="c4"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Выбран, но с ошибкой</span></label><span class="ds-checkbox__support" style="color:#FF5252">Текст ошибки</span></div><label class="ds-checkbox ds-checkbox--disabled" id="c5"><input class="ds-checkbox__input" type="checkbox" disabled><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Недоступный</span></label><label class="ds-checkbox ds-checkbox--disabled" id="c6"><input class="ds-checkbox__input" type="checkbox" checked disabled><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Недоступный выбранный</span></label></div></div></div></div><div class="ex"><p class="ex__title">Вертикальная группа с подписью под контролом</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox" id="g1"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label><label class="ds-checkbox" id="g2"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Соус</span></label></div><span class="ds-checkbox__support">Отметьте минимум один пункт</span></div></div></div></div><div class="ex"><p class="ex__title">Горизонтальная группа</p><div class="ex__row ex__row--col"><div class="ex__inner"><div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap"><label class="ds-checkbox" id="h1"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Малый</span></label><label class="ds-checkbox" id="h2"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Средний</span></label><label class="ds-checkbox" id="h3"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Большой</span></label></div></div></div></div></div></div>
+  </div>
+
+<div class="card">
+    <h2>На экране</h2>
+    <div class="screens">
+      <div class="screens__menu" role="tablist"><div class="review__progress" data-rev-progress></div><button class="menu__reset" type="button" data-reset-patterns title="Сбросить оценки всех паттернов этого компонента: статусы, комментарии и отметки просмотра. Значения колонки «Правка» останутся"><span class="material-icons">restart_alt</span>Сбросить оценки паттернов</button><button class="screens__item screens__item--active" type="button" role="tab" aria-selected="true" data-view="base">Основные</button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-0" data-pat="pat-checkbox-0"><span class="item__t">Маркер 18–20 px — целиться некуда</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-1" data-pat="pat-checkbox-1"><span class="item__t">Подпись нельзя обрезать многоточием</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-2" data-pat="pat-checkbox-2"><span class="item__t">Группа и «можно выбрать несколько»</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-3" data-pat="pat-checkbox-3"><span class="item__t">Ошибка и недоступность — не только цвет</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-4" data-pat="pat-checkbox-4"><span class="item__t">Ничего не предвыбирать и дать пункт «никакой из»</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-5" data-pat="pat-checkbox-5"><span class="item__t">Зона нажатия 48 dp, не квадратик</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-6" data-pat="pat-checkbox-6"><span class="item__t">Подпись не усекать многоточием</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-7" data-pat="pat-checkbox-7"><span class="item__t">Подпись переносится под квадратик</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-8" data-pat="pat-checkbox-8"><span class="item__t">Ничего не предвыбирать</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-9" data-pat="pat-checkbox-9"><span class="item__t">Сколько можно выбрать — словами</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-10" data-pat="pat-checkbox-10"><span class="item__t">Долгое нажатие включает выбор</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-11" data-pat="pat-checkbox-11"><span class="item__t">По умолчанию — пусто</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-12" data-pat="pat-checkbox-12"><span class="item__t">Фильтры поставили в две колонки</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-13" data-pat="pat-checkbox-13"><span class="item__t">Четвёртая галка молча сбрасывает первую</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-14" data-pat="pat-checkbox-14"><span class="item__t">Вложенные пункты не влезают по ширине</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-checkbox-15" data-pat="pat-checkbox-15"><span class="item__t">Выбор потерялся при закрытии шторки</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button></div>
+      <div class="screens__stage"><div class="phones"><div class="phones__item"><div class="phone"><div class="phone__screen" data-mode="mobile"><div class="phone__status"><span>9:41</span><span class="phone__ic"><span class="material-icons">signal_cellular_alt</span><span class="material-icons">wifi</span><span class="material-icons">battery_full</span></span></div><div class="phone__head"><span class="material-icons">arrow_back</span><span class="phone__title">Стоп-лист</span><span class="material-icons">more_vert</span></div><div class="phone__body"><div class="ds-tabs"><button class="ds-tab ds-tab--active" type="button">Все</button><button class="ds-tab" type="button">В наличии</button><button class="ds-tab" type="button">Стоп</button></div><hr class="ds-divider ds-divider--m"><div class="ds-checkbox-wrap"><label class="ds-checkbox ds-checkbox--error"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Устрицы — нужна причина</span></label><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Стейк рибай</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Устрицы</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Тирамису</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сырники</span></label></div><span class="ds-checkbox__support" style="color:#FF5252">Отметьте причину стопа</span></div></div><div class="phone__foot" data-buttons="sheet"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Сохранить</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--outlined" type="button"><span class="ds-btn__label">Отмена</span></button></div><div class="phone__scrim"></div><div class="phone__sheet"><p class="phone__sheet-title">Причина стопа</p><p class="phone__sheet-text">Устрицы · склад Западный</p><div class="ds-checkbox-group ds-checkbox-group--vertical"><div class="ds-list-container__item"><div class="ds-list-container__element-left"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span></label></div><div class="ds-list-container__content"><span class="ds-list-item__text">Нет в наличии</span></div></div><div class="ds-list-container__item"><div class="ds-list-container__element-left"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span></label></div><div class="ds-list-container__content"><span class="ds-list-item__text">Испортилось</span></div></div><div class="ds-list-container__item"><div class="ds-list-container__element-left"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span></label></div><div class="ds-list-container__content"><span class="ds-list-item__text">Убрано из меню</span></div></div></div><span class="ds-checkbox__support">Выбор одной причины</span><div class="phone__actions" data-buttons="screen"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">В стоп-лист</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--text" type="button"><span class="ds-btn__label">Отмена</span></button></div></div></div></div><p class="phone__caption">Галочки в списке; тот же экран со шторкой — там те же причины, но строками списка</p></div><div class="phones__item"><div class="phone"><div class="phone__screen" data-mode="mobile" data-preview="edit"><div class="phone__status"><span>9:41</span><span class="phone__ic"><span class="material-icons">signal_cellular_alt</span><span class="material-icons">wifi</span><span class="material-icons">battery_full</span></span></div><div class="phone__head"><span class="material-icons">arrow_back</span><span class="phone__title">Стоп-лист</span><span class="material-icons">more_vert</span></div><div class="phone__body"><div class="ds-tabs"><button class="ds-tab ds-tab--active" type="button">Все</button><button class="ds-tab" type="button">В наличии</button><button class="ds-tab" type="button">Стоп</button></div><hr class="ds-divider ds-divider--m"><div class="ds-checkbox-wrap"><label class="ds-checkbox ds-checkbox--error"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Устрицы — нужна причина</span></label><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Стейк рибай</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Устрицы</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Тирамису</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сырники</span></label></div><span class="ds-checkbox__support" style="color:#FF5252">Отметьте причину стопа</span></div></div><div class="phone__foot" data-buttons="sheet"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Сохранить</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--outlined" type="button"><span class="ds-btn__label">Отмена</span></button></div><div class="phone__scrim"></div><div class="phone__sheet"><p class="phone__sheet-title">Причина стопа</p><p class="phone__sheet-text">Устрицы · склад Западный</p><div class="ds-checkbox-group ds-checkbox-group--vertical"><div class="ds-list-container__item"><div class="ds-list-container__element-left"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span></label></div><div class="ds-list-container__content"><span class="ds-list-item__text">Нет в наличии</span></div></div><div class="ds-list-container__item"><div class="ds-list-container__element-left"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span></label></div><div class="ds-list-container__content"><span class="ds-list-item__text">Испортилось</span></div></div><div class="ds-list-container__item"><div class="ds-list-container__element-left"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span></label></div><div class="ds-list-container__content"><span class="ds-list-item__text">Убрано из меню</span></div></div></div><span class="ds-checkbox__support">Выбор одной причины</span><div class="phone__actions" data-buttons="screen"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">В стоп-лист</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--text" type="button"><span class="ds-btn__label">Отмена</span></button></div></div></div></div><p class="phone__caption">То же, с правками из таблицы справа</p></div></div></div>
+    </div>
+    <div class="screens__note" data-note></div>
+    <div class="screens__sets" hidden><div data-set="pat-checkbox-0" data-kind="body"><div data-part="screen"><div class="pat__phone"><label class="ds-checkbox " style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Стоп-лист</span></label><label class="ds-checkbox " style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Общий стол</span></label><label class="ds-checkbox " style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Печать пречека</span></label></div></div><div data-part="sheet"><div class="pat__phone"><label class="ds-checkbox " style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Стоп-лист</span></label><label class="ds-checkbox " style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Общий стол</span></label><label class="ds-checkbox " style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Печать пречека</span></label></div></div><div data-part="body"><div class="pat__phone"><label class="ds-checkbox " style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Стоп-лист</span></label><label class="ds-checkbox " style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Общий стол</span></label><label class="ds-checkbox " style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Печать пречека</span></label></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Маркер 18–20 px — целиться некуда</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-0"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-0"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-0"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-0" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Строка чекбокса 48 px и нажимается целиком — маркер и подпись вместе: по квадратику 20 × 20 палец промахивается в соседний пункт.</p><ul class="list"><li>Что происходит: в списке фильтров чекбокс нажимают по квадратику 18–20 px, половина тапов промахивается в соседнюю строку, а иногда и в другую опцию.</li><li>Что делать нам: строка чекбокса — 48 px минимум, нажатие по всей строке (маркер и подпись вместе), как это уже сделано в нашем мобильном слое.</li></ul><p class="plat__src">Источники: Material Design 3 · Checkbox (https://raw.githubusercontent.com/material-components/material-web/main/checkbox/internal/_checkbox.scss) · Angular Material · Checkbox (https://raw.githubusercontent.com/angular/components/main/src/material/checkbox/_m3-checkbox.scss) · Nielsen Norman Group (https://www.nngroup.com/articles/touch-target-size/)</p><div class="review__comment-block" data-pat="pat-checkbox-0"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-1" data-kind="body"><div data-part="screen"><div class="pat__phone"><label class="ds-checkbox " style="min-height:48px;align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="white-space:normal">Учитывать стоп-лист при продаже навынос и в доставке</span></label></div></div><div data-part="sheet"><div class="pat__phone"><label class="ds-checkbox " style="min-height:48px;align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="white-space:normal">Учитывать стоп-лист при продаже навынос и в доставке</span></label></div></div><div data-part="body"><div class="pat__phone"><label class="ds-checkbox " style="min-height:48px;align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="white-space:normal">Учитывать стоп-лист при продаже навынос и в доставке</span></label></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Подпись нельзя обрезать многоточием</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-1"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-1"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-1"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-1" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Длинная подпись переносится на вторую строку и выровнена по верху с маркером: обрезки «Учитывать стоп-лист при прод…» нет, пункты не выглядят одинаково.</p><ul class="list"><li>Что происходит: длинные подписи («Учитывать стоп-лист при продаже навынос») обрезают в одну строку, и два разных пункта выглядят одинаково.</li><li>Что делать нам: подписи в 2–4 слова, перенос в две строки с выравниванием по верху, обрезка запрещена; если текст не влезает — переписывать подпись, а не резать.</li></ul><p class="plat__src">Источники: IBM Carbon · Checkbox (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/checkbox/usage.mdx)</p><div class="review__comment-block" data-pat="pat-checkbox-1"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-2" data-kind="body"><div data-part="screen"><div class="pat__phone"><span style="font-size:16px;line-height:24px;font-weight:500">Как оформить подачу?</span><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Подавать сразу</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Подавать вместе с горячим</span></label></div><span class="ds-checkbox__support">Можно выбрать несколько</span></div><div class="pat__phone-row"><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" type="button"><span class="ds-btn__label">Выбрать все</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Применить</span></button></div></div></div><div data-part="sheet"><div class="pat__phone"><span style="font-size:16px;line-height:24px;font-weight:500">Как оформить подачу?</span><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Подавать сразу</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Подавать вместе с горячим</span></label></div><span class="ds-checkbox__support">Можно выбрать несколько</span></div><div class="pat__phone-row"><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" type="button"><span class="ds-btn__label">Выбрать все</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Применить</span></button></div></div></div><div data-part="body"><div class="pat__phone"><span style="font-size:16px;line-height:24px;font-weight:500">Как оформить подачу?</span><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Подавать сразу</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Подавать вместе с горячим</span></label></div><span class="ds-checkbox__support">Можно выбрать несколько</span></div><div class="pat__phone-row"><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" type="button"><span class="ds-btn__label">Выбрать все</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Применить</span></button></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Группа и «можно выбрать несколько»</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-2"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-2"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-2"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-2" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">У группы заголовок-вопрос и подсказка «Можно выбрать несколько», «Применить» — отдельным действием: пользователь не угадывает, сколько вариантов ему разрешено.</p><ul class="list"><li>Что происходит: чекбоксы идут списком без общего заголовка, и пользователь не понимает, что выбор множественный и что «применить» — отдельное действие.</li><li>Что делать нам: у группы — заголовок-вопрос и подсказка «можно выбрать несколько», в шапке группы — «Выбрать все / Снять все», отдельная кнопка «Применить» в футере.</li></ul><p class="plat__src">Источники: GOV.UK Design System · Checkboxes (https://design-system.service.gov.uk/components/checkboxes/)</p><div class="review__comment-block" data-pat="pat-checkbox-2"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-3" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-checkbox-wrap"><label class="ds-checkbox ds-checkbox--error" style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Стоп-лист</span></label><span class="ds-checkbox__support" style="color:#FF5252">Стоп-лист недоступен для доставки</span></div><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox" disabled><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Скидка на позицию (недоступна для доставки)</span></label></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-checkbox-wrap"><label class="ds-checkbox ds-checkbox--error" style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Стоп-лист</span></label><span class="ds-checkbox__support" style="color:#FF5252">Стоп-лист недоступен для доставки</span></div><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox" disabled><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Скидка на позицию (недоступна для доставки)</span></label></div></div><div data-part="body"><div class="pat__phone"><div class="ds-checkbox-wrap"><label class="ds-checkbox ds-checkbox--error" style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Стоп-лист</span></label><span class="ds-checkbox__support" style="color:#FF5252">Стоп-лист недоступен для доставки</span></div><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox" disabled><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Скидка на позицию (недоступна для доставки)</span></label></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Ошибка и недоступность — не только цвет</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-3"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-3"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-3"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-3" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Ошибка — текстом под строкой, недоступность — с причиной в подписи: красный и серый остаются дополнением к тексту, а не единственным сигналом.</p><ul class="list"><li>Что происходит: ошибку помечают красной рамкой, disabled — серым, и в обоих случаях непонятно, что именно не так и что делать.</li><li>Что делать нам: текст ошибки под строкой (12 / 16 px) и у группы целиком, disabled-подпись с причиной; цвет — только дополнение к тексту и иконке.</li></ul><p class="plat__src">Источники: Material Design 3 · Checkbox (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-comp-checkbox.scss) · GOV.UK Design System · Checkboxes (https://design-system.service.gov.uk/components/checkboxes/)</p><div class="review__comment-block" data-pat="pat-checkbox-3"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-4" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Ничего из перечисленного</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Приправа</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Соус</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Сыр</span></label></div><span class="ds-checkbox__support">По умолчанию ни один пункт не отмечен</span></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Ничего из перечисленного</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Приправа</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Соус</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Сыр</span></label></div><span class="ds-checkbox__support">По умолчанию ни один пункт не отмечен</span></div></div><div data-part="body"><div class="pat__phone"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Ничего из перечисленного</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Приправа</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Соус</span></label><label class="ds-checkbox " style=""><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="">Сыр</span></label></div><span class="ds-checkbox__support">По умолчанию ни один пункт не отмечен</span></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Ничего не предвыбирать и дать пункт «никакой из»</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-4"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-4"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-4"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-4" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Ни один пункт не отмечен заранее, порядок по алфавиту и есть отдельный взаимоисключающий пункт «Ничего из перечисленного»: случайный выбор не отправится.</p><ul class="list"><li>Что происходит: часть чекбоксов включена по умолчанию, и пользователь отправляет форму, не заметив выбор; в списке из 12 фильтров нет способа сказать «ничего не нужно».</li><li>Что делать нам: по умолчанию ни один пункт не отмечен, для «ничего из» — отдельный взаимоисключающий чекбокс с понятной подписью, порядок пунктов — по алфавиту, а не по внутреннему порядку модели.</li></ul><p class="plat__src">Источники: GOV.UK Design System · Checkboxes (https://design-system.service.gov.uk/components/checkboxes/)</p><div class="review__comment-block" data-pat="pat-checkbox-4"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-5" data-kind="body"><div data-part="screen"><div class="pat__phone"><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Стоп-лист</span></label><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Общий стол</span></label></div></div><div data-part="sheet"><div class="pat__phone"><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Стоп-лист</span></label><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Общий стол</span></label></div></div><div data-part="body"><div class="pat__phone"><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Стоп-лист</span></label><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Общий стол</span></label></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Зона нажатия 48 dp, не квадратик</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-5"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-5"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-5"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-5" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Строка чекбокса 48 px и нажимается целиком: квадратик 20 × 20 остаётся только рисунком.</p><ul class="list"><li>Что происходит: в списке фильтров чекбокс жмут по квадратику 18–20 px, половина тапов уходит в соседнюю строку.</li><li>Что делать нам: строка чекбокса на мобиле минимум 48 px, нажатие — по всей строке вместе с подписью, а не по квадратику.</li></ul><p class="plat__src">Источники: Google Android Accessibility · Touch target size, Material Design (https://support.google.com/accessibility/android/answer/7101858)</p><div class="review__comment-block" data-pat="pat-checkbox-5"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-6" data-kind="body"><div data-part="screen"><div class="pat__phone"><label class="ds-checkbox" style="min-height:48px;align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="white-space:normal">Учитывать стоп-лист при продаже навынос</span></label></div></div><div data-part="sheet"><div class="pat__phone"><label class="ds-checkbox" style="min-height:48px;align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="white-space:normal">Учитывать стоп-лист при продаже навынос</span></label></div></div><div data-part="body"><div class="pat__phone"><label class="ds-checkbox" style="min-height:48px;align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="white-space:normal">Учитывать стоп-лист при продаже навынос</span></label></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Подпись не усекать многоточием</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-6"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-6"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-6"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-6" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Подпись переносится на вторую строку: обрезки «Учитывать стоп-лист при прод…» нет.</p><ul class="list"><li>Что происходит: длинную подпись «Учитывать стоп-лист при продаже навынос» обрезают в одну строку, и два разных пункта выглядят одинаково.</li><li>Что делать нам: подпись переносится, а не режется; если и две строки не помещаются — переписываем формулировку короче.</li></ul><p class="plat__src">Источники: IBM Carbon · Checkbox (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/checkbox/usage.mdx)</p><div class="review__comment-block" data-pat="pat-checkbox-6"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-7" data-kind="body"><div data-part="screen"><div class="pat__phone"><div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap"><label class="ds-checkbox" style="align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label><label class="ds-checkbox" style="align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="white-space:normal">Добавлять сыр в каждую пиццу заказа</span></label></div></div></div><div data-part="sheet"><div class="pat__phone"><div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap"><label class="ds-checkbox" style="align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label><label class="ds-checkbox" style="align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="white-space:normal">Добавлять сыр в каждую пиццу заказа</span></label></div></div></div><div data-part="body"><div class="pat__phone"><div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap"><label class="ds-checkbox" style="align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label><label class="ds-checkbox" style="align-items:flex-start"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label" style="white-space:normal">Добавлять сыр в каждую пиццу заказа</span></label></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Подпись переносится под квадратик</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-7"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-7"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-7"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-7" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Длинная подпись уходит под маркер и выровнена по верхнему краю, а не по центру двух строк.</p><ul class="list"><li>Что происходит: длинная подпись уезжает вправо одной строкой и обрезается у края, а маркер оказывается по центру двух строк текста.</li><li>Что делать нам: при переносе подпись идёт под маркер и выравнивается по верхнему краю (align-items: flex-start), а не по центру блока.</li></ul><p class="plat__src">Источники: IBM Carbon · Checkbox (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/checkbox/usage.mdx)</p><div class="review__comment-block" data-pat="pat-checkbox-7"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-8" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Приправа</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Соус</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Приправа</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Соус</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Приправа</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Соус</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Ничего не предвыбирать</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-8"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-8"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-8"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-8" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Три пункта, и ни один не отмечен заранее: случайный фильтр в заказ не уйдёт.</p><ul class="list"><li>Что происходит: часть пунктов включена заранее, и заказ уходит с фильтрами, которых пользователь не выбирал.</li><li>Что делать нам: по умолчанию ни один пункт не отмечен; предвыбор допустим только там, где он словами описан рядом с пунктом.</li></ul><p class="plat__src">Источники: GOV.UK Design System · Checkboxes (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/checkboxes/index.md)</p><div class="review__comment-block" data-pat="pat-checkbox-8"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-9" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Подавать сразу</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Подавать с горячим</span></label></div><span class="ds-checkbox__support">Можно выбрать несколько</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Подавать сразу</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Подавать с горячим</span></label></div><span class="ds-checkbox__support">Можно выбрать несколько</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Подавать сразу</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Подавать с горячим</span></label></div><span class="ds-checkbox__support">Можно выбрать несколько</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Сколько можно выбрать — словами</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-9"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-9"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-9"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-9" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Подсказка «Можно выбрать несколько» стоит у группы: пользователь не угадывает по внешнему виду.</p><ul class="list"><li>Что происходит: чекбоксы и радио выглядят похоже, и человек не понимает, разрешено ли ему выбрать несколько пунктов или только один.</li><li>Что делать нам: у группы — подсказка словами («Можно выбрать несколько»), связанная с группой, а у радио — обратная подсказка, что вариант один.</li></ul><p class="plat__src">Источники: GOV.UK Design System · Checkboxes (https://raw.githubusercontent.com/alphagov/govuk-design-system/main/src/components/checkboxes/index.md)</p><div class="review__comment-block" data-pat="pat-checkbox-9"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-10" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-checkbox-wrap"><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Заказ №1042</span></label><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Заказ №1041</span></label><span class="ds-checkbox__support">Долгое нажатие по строке включает выбор заказов</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-checkbox-wrap"><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Заказ №1042</span></label><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Заказ №1041</span></label><span class="ds-checkbox__support">Долгое нажатие по строке включает выбор заказов</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-checkbox-wrap"><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Заказ №1042</span></label><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Заказ №1041</span></label><span class="ds-checkbox__support">Долгое нажатие по строке включает выбор заказов</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Долгое нажатие включает выбор</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-10"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-10"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-10"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-10" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Чекбоксы появляются в режиме выбора: долгое нажатие по строке включает выбор заказов.</p><ul class="list"><li>Что происходит: в списке заказов нужно отметить сразу несколько строк, а рядом с каждой уже стоит чекбокс — экран превращается в частокол.</li><li>Что делать нам: для списков с массовым выбором используем долгое нажатие: оно включает режим выбора и выделяет первую строку, а чекбоксы показываем только в этом режиме.</li></ul><p class="plat__src">Источники: Gmail для Android · выбор письма, долгое нажатие (https://support.google.com/mail/answer/6562?hl=en&amp;co=GENIE.Platform%3DAndroid)</p><div class="review__comment-block" data-pat="pat-checkbox-10"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-11" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-checkbox-wrap"><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Подписаться на новости</span></label><span class="ds-checkbox__support">Пункт остаётся пустым, пока его не отметят</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-checkbox-wrap"><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Подписаться на новости</span></label><span class="ds-checkbox__support">Пункт остаётся пустым, пока его не отметят</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-checkbox-wrap"><label class="ds-checkbox" style="min-height:48px"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Подписаться на новости</span></label><span class="ds-checkbox__support">Пункт остаётся пустым, пока его не отметят</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">По умолчанию — пусто</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-11"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-11"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-11"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-11" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Чекбокс пуст, пока человек сам его не отметил: подписка по умолчанию не включается.</p><ul class="list"><li>Что происходит: подписка или согласие включены заранее, и пользователь отправляет форму, не заметив этого выбора.</li><li>Что делать нам: пустой чекбокс по умолчанию — правило ДС; «выбрано» появляется только действием человека, предвключённых подписок у нас нет.</li></ul><p class="plat__src">Источники: Nielsen Norman Group · Jakob Nielsen, Checkboxes vs. Radio Buttons (https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/)</p><div class="review__comment-block" data-pat="pat-checkbox-11"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-12" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Навынос</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Стоп-лист</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Брони столов</span></label></div></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Навынос</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Стоп-лист</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Брони столов</span></label></div></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Навынос</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Стоп-лист</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Брони столов</span></label></div></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Фильтры поставили в две колонки</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-12"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-12"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-12"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-12" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Фильтры идут одним столбиком с шагом 48 px: сетка в две колонки, где непонятно, чей квадратик, в ДС не поддерживается.</p><ul class="list"><li>Что происходит: чтобы восемь фильтров уместились на один экран без прокрутки, чекбоксы ставят в две колонки; на 375 px подписи переносятся, и непонятно, к какому квадратику относится «навынос».</li><li>Что делать нам: чекбоксы только в один столбик с шагом строки 48 px; длинный набор фильтров уходит в шторку с прокруткой, сетку в две колонки в ДС не поддерживаем.</li></ul><p class="plat__src">Источники: Maddie Brown · Nielsen Norman Group · Checkboxes: Design Guidelines (https://www.nngroup.com/articles/checkboxes-design-guidelines/)</p><div class="review__comment-block" data-pat="pat-checkbox-12"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-13" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Соус</span></label><label class="ds-checkbox ds-checkbox--disabled"><input class="ds-checkbox__input" type="checkbox" disabled><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Приправа — лимит выбран</span></label></div><span class="ds-checkbox__support">Можно выбрать до 2 значений — выбрано 2 из 2</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Соус</span></label><label class="ds-checkbox ds-checkbox--disabled"><input class="ds-checkbox__input" type="checkbox" disabled><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Приправа — лимит выбран</span></label></div><span class="ds-checkbox__support">Можно выбрать до 2 значений — выбрано 2 из 2</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Сыр</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Соус</span></label><label class="ds-checkbox ds-checkbox--disabled"><input class="ds-checkbox__input" type="checkbox" disabled><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Приправа — лимит выбран</span></label></div><span class="ds-checkbox__support">Можно выбрать до 2 значений — выбрано 2 из 2</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Четвёртая галка молча сбрасывает первую</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-13"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-13"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-13"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-13" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Лимит написан словами и виден счётчиком, а лишний пункт остаётся видимым и приглушённым с причиной — вместо молчаливого сброса первой галки.</p><ul class="list"><li>Что происходит: в фильтре можно выбрать не больше трёх значений; человек ставит четвёртую галку, первый выбор тихо снимается, и в списке оказывается не то, что он выбирал.</li><li>Что делать нам: лимит пишем в заголовке группы («можно выбрать до 3») и рядом счётчик «2 из 3»; при превышении — подсветка и текст, а не молчаливый сброс; пункты, которые нельзя выбрать, остаются видимыми и приглушёнными с причиной.</li></ul><p class="plat__src">Источники: Maddie Brown · Nielsen Norman Group · Checkboxes: Design Guidelines (https://www.nngroup.com/articles/checkboxes-design-guidelines/)</p><div class="review__comment-block" data-pat="pat-checkbox-13"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-14" data-kind="body"><div data-part="screen"><div class="pat__phone" style="flex-direction:column;align-items:stretch;gap:8px"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Печать пречека</span></label><label class="ds-checkbox" style="margin-left:24px"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">При закрытии смены</span></label></div></div><div data-part="sheet"><div class="pat__phone" style="flex-direction:column;align-items:stretch;gap:8px"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Печать пречека</span></label><label class="ds-checkbox" style="margin-left:24px"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">При закрытии смены</span></label></div></div><div data-part="body"><div class="pat__phone" style="flex-direction:column;align-items:stretch;gap:8px"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Печать пречека</span></label><label class="ds-checkbox" style="margin-left:24px"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">При закрытии смены</span></label></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Вложенные пункты не влезают по ширине</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-14"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-14"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-14"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-14" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Подчинённый пункт сдвинут на 24 px и подписан в 3–4 слова: подпись не уезжает в три строки и не режется по ширине.</p><ul class="list"><li>Что происходит: подчинённые чекбоксы сдвинуты вправо; на 375 px от подписи «Печать пречека при закрытии смены» остаётся два-три слова в строке, и группа читается как простыня из переносов.</li><li>Что делать нам: один уровень вложенности с отступом 24 px, подписи подчинённых пунктов не длиннее 3–4 слов, пояснение — второй строкой 12–14 px; многоточие и горизонтальную сетку во вложенных пунктах не используем.</li></ul><p class="plat__src">Источники: Apple HIG · Toggles (Checkboxes) (https://developer.apple.com/design/human-interface-guidelines/toggles)</p><div class="review__comment-block" data-pat="pat-checkbox-14"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-checkbox-15" data-kind="body"><div data-part="screen"><div class="pat__phone" style="flex-direction:column;align-items:stretch;gap:8px"><div class="ds-chips-group" style="flex-wrap:wrap;gap:8px"><div class="ds-chips ds-chips--filled"><span class="ds-chips__label">Навынос</span><span class="ds-chips__close"><span class="material-icons" style="font-size:18px">close</span></span></div><div class="ds-chips ds-chips--filled"><span class="ds-chips__label">Брони столов</span><span class="ds-chips__close"><span class="material-icons" style="font-size:18px">close</span></span></div></div><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Навынос</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Брони столов</span></label></div></div></div></div><div data-part="sheet"><div class="pat__phone" style="flex-direction:column;align-items:stretch;gap:8px"><div class="ds-chips-group" style="flex-wrap:wrap;gap:8px"><div class="ds-chips ds-chips--filled"><span class="ds-chips__label">Навынос</span><span class="ds-chips__close"><span class="material-icons" style="font-size:18px">close</span></span></div><div class="ds-chips ds-chips--filled"><span class="ds-chips__label">Брони столов</span><span class="ds-chips__close"><span class="material-icons" style="font-size:18px">close</span></span></div></div><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Навынос</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Брони столов</span></label></div></div></div></div><div data-part="body"><div class="pat__phone" style="flex-direction:column;align-items:stretch;gap:8px"><div class="ds-chips-group" style="flex-wrap:wrap;gap:8px"><div class="ds-chips ds-chips--filled"><span class="ds-chips__label">Навынос</span><span class="ds-chips__close"><span class="material-icons" style="font-size:18px">close</span></span></div><div class="ds-chips ds-chips--filled"><span class="ds-chips__label">Брони столов</span><span class="ds-chips__close"><span class="material-icons" style="font-size:18px">close</span></span></div></div><div class="ds-checkbox-wrap"><div class="ds-checkbox-group ds-checkbox-group--vertical"><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Навынос</span></label><label class="ds-checkbox"><input class="ds-checkbox__input" type="checkbox" checked><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Брони столов</span></label></div></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Выбор потерялся при закрытии шторки</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-checkbox-15"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-checkbox-15"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-checkbox-15"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-checkbox-15" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Применённые фильтры остаются видимыми чипами над списком и после закрытия шторки — выбор не теряется вместе со свайпом.</p><ul class="list"><li>Что происходит: в шторке фильтров человек отметил 12 галочек, потянул шторку вниз, чтобы посмотреть список под ней, и закрыл её; применённых фильтров нет, и он начинает заново.</li><li>Что делать нам: выбор в шторке живёт до нажатия «Сбросить»; при закрытии с изменениями — подтверждение или сохранение черновика; применённые фильтры дублируем строкой чипов над списком, чтобы результат читался и после закрытия шторки.</li></ul><p class="plat__src">Источники: NN/g · изучение мобильных приложений (Walmart app) (https://www.nngroup.com/articles/accidental-overlay-dismissal/)</p><div class="review__comment-block" data-pat="pat-checkbox-15"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div></div>
+  </div>
+
+  <div class="card">
+    <h2>Что меняется на мобиле</h2>
+    <table><tr><th>Что</th><th>Desktop</th><th>Mobile<br><span class="th-sub">рекомендованные</span></th><th class="edit__head"><span>Правка</span><span class="review__saved" data-edits-state title="Значения сохраняются сами"></span></th></tr><tr><td>Строка (область нажатия)</td><td>20 px — по маркеру и тексту</td><td>48 px — вся строка, нажатие по всей строке</td><td class="edit"><input class="edit__input" type="number" step="1" value="48" data-id="min-height" data-sel=".ds-checkbox" data-css="min-height:@px" aria-label="Строка (область нажатия)"></td></tr><tr><td>Маркер</td><td>20 × 20 px (SVG из файла иконок ДС)</td><td>20 × 20 px — тот же маркер, «крупного» варианта у платформ нет</td><td class="edit"><input class="edit__input" type="number" step="1" value="20" data-id="marker" data-sel=".ds-checkbox__box" data-css="width:@px; height:@px" aria-label="Маркер"></td></tr><tr><td>Подпись</td><td>14 / 20 px</td><td>14 / 20 px — та же подпись</td><td class="edit"><input class="edit__input" type="number" step="1" value="14" data-id="font" data-sel=".ds-checkbox__label" data-css="font-size:@px" aria-label="Подпись"><input class="edit__input" type="number" step="1" value="20" data-id="line" data-sel=".ds-checkbox__label" data-css="line-height:@px" aria-label="Подпись"></td></tr><tr><td>Подпись под контролом (support)</td><td>12 / 16 px, отступ слева 28 px</td><td>12 / 16 px, отступ слева 28 px — тот же</td><td class="edit"><input class="edit__input" type="number" step="1" value="12" data-id="sup-font" data-sel=".ds-checkbox__support" data-css="font-size:@px" aria-label="Подпись под контролом (support)"><input class="edit__input" type="number" step="1" value="16" data-id="sup-line" data-sel=".ds-checkbox__support" data-css="line-height:@px" aria-label="Подпись под контролом (support)"><input class="edit__input" type="number" step="1" value="28" data-id="sup-left" data-sel=".ds-checkbox__support" data-css="margin-left:@px" aria-label="Подпись под контролом (support)"></td></tr><tr><td>Отступ в группе</td><td>8 px вертикально, 32 px горизонтально</td><td>8 px вертикально, 32 px горизонтально — те же; при строке 48 шаг между строками 56</td><td class="edit"><input class="edit__input" type="number" step="1" value="8" data-id="gap-v" data-sel=".ds-checkbox-group" data-css="gap:@px" aria-label="Отступ в группе"><input class="edit__input" type="number" step="1" value="32" data-id="gap-h" data-sel=".ds-checkbox-group" data-css="column-gap:@px" aria-label="Отступ в группе"></td></tr><tr><td>Цвета</td><td>#616161 снят · #448AFF выбран и смешанный · #FF5252 ошибка · #9E9E9E недоступный</td><td>те же — это ось темы, не режима</td><td class="edit"></td></tr><tr><td>Состояния</td><td>снят · выбран · смешанный · ошибка · недоступный</td><td>те же</td><td class="edit"></td></tr></table><p class="point" style="margin-top:10px">Правка применяется к правому экрану в блоке «На экране». Левый — значения как рекомендовано для мобилы.</p>
+    <p class="point" style="margin-top:10px">Разметка не меняется: чекбокс уже обёрнут в <code>&lt;label&gt;</code>, поэтому вся строка кликабельна — на мобиле она просто дорастает до 48 px. Смешанное состояние ставится из кода (<code>input.indeterminate = true</code>): атрибутом его не задать.</p>
+  </div>
+
+  <div class="card" data-fold="checkbox-why">
+    <div class="card__head" role="button" tabindex="0" aria-expanded="true">
+      <h2>Почему так</h2><span class="material-icons card__chev">expand_more</span>
+    </div>
+    <div class="card__body">
+      <p class="point">Число у платформ ровно одно — тач-таргет 48. MD3 делает тач-целью сам <code>&lt;input&gt;</code> высотой 48 px с отступом <code>margin: max(0px, ((48px − container-size) / 2))</code>; Angular Material — <code>checkbox-touch-target-size: 48px</code> (виден на плотностях 0 и −1, на −2 и −3 скрывается). Маркера это не касается: MD3 фиксирует контейнер 18 dp, обводку 2 dp и радиус 2 dp и не имеет вариантов large/small, а Angular вообще не выводит размер маркера в токены — его шкала плотности уменьшает только подложку состояния (40 → 36 → 32 → 28). Маркер уменьшать нельзя: и «микро-размеры», и тач-таргет меньше 48 dp платформы прямо не рекомендуют. iOS HIG отдельной страницы чекбокса не имеет вовсе — чекбокс там описан как macOS-стиль внутри Toggles и без чисел.</p>
+    </div>
+  </div>
+
+  <div class="card" data-fold="checkbox-result">
+    <div class="card__head" role="button" tabindex="0" aria-expanded="true">
+      <h2>Итог</h2><span class="material-icons card__chev">expand_more</span>
+    </div>
+    <div class="card__body">
+      <ul class="list"><li>Строка 48 px — число, в котором сходятся MD3 и Angular Material.</li><li>Маркер остался 20 px: это на 2 больше платформенных 18 dp у MD3, уменьшать нельзя — «крупного» варианта нет ни у одной платформы.</li><li>Подписи, цвета и состояния не менялись — это ось темы, а не режима.</li><li><b>Не решено:</b> чекбокс без подписи — горизонтальная тач-цель остаётся по маркеру (20 px); у MD3 цель вокруг маркера 48 × 48.</li><li><b>Не решено:</b> в списке строка 48 плюс отступ списка 8 даёт шаг 56 — если нужен ровно 48, это правило списка.</li><li><b>Не решено:</b> на iOS HIG чекбокс — macOS-паттерн; для «вкл/выкл» Apple предписывает switch, а не чекбокс.</li></ul>
+    </div>
+  </div>
+<div class="card">
+  <h2>Найдено в ДС (в библиотеке не правим)</h2>
+  <ul class="list"><li>Агрегатор <code>iiko-ds-web/components/index.css</code> подключает у Checkbox и Radio только описания строки (<code>*-label.css</code>). Сами контролы — <code>checkbox.css</code>, <code>checkbox-icons.css</code>, <code>radio.css</code>, <code>radio-icons.css</code> — не подключает ни агрегатор, ни одна страница ДС.</li><li>Следствие: <code>.ds-checkbox</code> и <code>.ds-radio</code> остаются <code>display:inline</code>, маркер 20 × 20 не рисуется, цвета состояний не приходят — на экран выходит системный контрол браузера 13 × 13 (замер 12.09.2026: 21 системный контрол на страницах Checkbox, Radio, List).</li><li>На этих страницах четыре файла подключены явно из <code>_audit/rec/build.py</code> (маркер 20 × 20, зазор 8, нативный <code>input</code> скрыт). Собственный CSS компонента библиотеки верный — не хватало только подключения.</li></ul>
+</div>
+</div>
+<script>
+/* Поля «Правка»: введённое число применяется к компоненту во ВТОРОМ экране блока
+   «На экране» (он помечен data-preview="edit"); первый экран остаётся со
+   значениями как рекомендовано — их и сравниваем. Правило пишется в
+   <style id="live">, поэтому работает и для псевдоэлементов (тач-зона).
+   В шаблоне поля «@» заменяется на введённое число. Пока поле не тронуто,
+   правило не пишется — экраны остаются как есть. */
+(function () {
+  var live = document.getElementById('live');
+  var fields = [].slice.call(document.querySelectorAll('.edit__input'));
+  if (!live || !fields.length) return;
+  var byId = {};
+  fields.forEach(function (f) { if (f.getAttribute('data-id')) byId[f.getAttribute('data-id')] = f; });
+  function rebuild() {
+    var rules = [];
+    fields.forEach(function (f) {
+      if (!f.__touched) return;
+      var v = f.value === '' ? f.getAttribute('value') : f.value;
+      rules.push('[data-mode="mobile"][data-preview="edit"].phone__screen ' + f.getAttribute('data-sel') +
+                 '{' + f.getAttribute('data-css').split('@').join(v) + '}');
+    });
+    live.textContent = rules.join(String.fromCharCode(10));
+  }
+  /* Связанное значение пересчитывается по линейной формуле t = a * v + b
+     (например высота 40 → паддинг 0.5 * 40 - 10 = 10) и сразу видно в поле. */
+  function syncFields(f) {
+    var target = f.getAttribute('data-sync-field');
+    if (!target || !byId[target]) return;
+    var a = parseFloat(f.getAttribute('data-sync-a'));
+    var b = parseFloat(f.getAttribute('data-sync-b'));
+    var v = parseFloat(f.value);
+    if (isNaN(a) || isNaN(v)) return;
+    var t = byId[target];
+    t.value = Math.round((a * v + b) * 100) / 100;
+    t.__touched = true;
+  }
+  fields.forEach(function (f) {
+    f.addEventListener('input', function () {
+      f.__touched = true;
+      syncFields(f);
+      rebuild();
+    });
+  });
+})();
+/* Меню блока «На экране»: «Основные» — дефолтные кнопки на экранах, пункт паттерна —
+   кнопки из его примера (и текст этого паттерна под экранами). Меняем только места
+   с data-buttons и текст; оба экрана получают одно и то же, а правки из 4-й колонки
+   остаются только на правом экране. */
+(function () {
+  var items = [].slice.call(document.querySelectorAll('.screens__item'));
+  if (!items.length) return;
+  var slots = [].slice.call(document.querySelectorAll('[data-buttons]'));
+  var note = document.querySelector('[data-note]');
+  var base = slots.map(function (s) { return s.innerHTML; });
+  var baseNote = note ? note.innerHTML : '';
+  /* У компонентов с примерами-состояниями (галочки, списки, диалоги) кнопок в примере нет:
+     там показываем пример вместо тела экрана — в теле одна вариация компонента, в шторке
+     другая, и шторку не трогаем: компонент должен быть виден в обоих местах. */
+  var bodies = [].slice.call(document.querySelectorAll('.phone__body'));
+  var baseBodies = bodies.map(function (b) { return b.innerHTML; });
+  /* Режим на каждый паттерн свой: он записан в наборе (data-kind). Запасной вариант —
+     если пример-состояние, а тел экранов нет, показываем в кнопках. */
+  var useBody = false;
+  function setMode(kind) { useBody = (kind === 'body'); }
+  function showBody(html) {
+    bodies.forEach(function (b, i) { b.innerHTML = (html === undefined || html === null || html === '') ? baseBodies[i] : html; });
+  }
+  var sets = {}, kinds = {};
+  [].slice.call(document.querySelectorAll('.screens__sets [data-set]')).forEach(function (set) {
+    var parts = {};
+    [].slice.call(set.querySelectorAll('[data-part]')).forEach(function (p) {
+      parts[p.getAttribute('data-part')] = p.innerHTML;
+    });
+    sets[set.getAttribute('data-set')] = parts;
+    kinds[set.getAttribute('data-set')] = set.getAttribute('data-kind') || 'slot';
+  });
+  items.forEach(function (it) {
+    it.addEventListener('click', function () {
+      var set = sets[it.getAttribute('data-view')];
+      items.forEach(function (o) {
+        var on = o === it;
+        o.classList.toggle('screens__item--active', on);
+        o.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      setMode(set ? kinds[it.getAttribute('data-view')] : '');
+      slots.forEach(function (slot, i) {
+        if (useBody) return;
+        var kind = slot.getAttribute('data-buttons');
+        slot.innerHTML = (set && set[kind] !== undefined) ? set[kind] : base[i];
+      });
+      if (note) note.innerHTML = (set && set.note !== undefined) ? set.note : baseNote;
+      showBody(useBody ? (set ? set.body : '') : '');
+    });
+  });
+})();
+/* Открыта внутри оболочки (или любого фрейма) — сообщаем родителю свою высоту и
+   убираем свой нижний отступ. Под file:// оболочка не может заглянуть в этот
+   документ (Chrome считает каждый файл отдельным origin), поэтому высоту она
+   получает сообщением, а не замером. Открытая отдельной вкладкой страница ведёт
+   себя как раньше: ничего не гасит и никому не сообщает. */
+(function () {
+  if (window.parent === window) return;
+  var SLUG = 'checkbox';
+  function tame() {
+    var crumb = document.querySelector('.crumbs');
+    if (crumb) crumb.style.display = 'none';
+    if (document.body) document.body.style.paddingBottom = '0';
+    var wrap = document.querySelector('.wrap');
+    if (wrap && wrap.lastElementChild) wrap.lastElementChild.style.marginBottom = '0';
+    /* Свои полосы прокрутки гасим сами: пока страница показывает свою полосу,
+       её ширина 15 px сужает текст, высота считается «с полосой», фрейм
+       подстраивается под неё — и под блоком пояснений остаётся лишний отступ
+       (замер под file://: 69 px вместо 17). Под http то же самое делала оболочка,
+       но она не может заглянуть в документ под file://. */
+    document.documentElement.style.overflow = 'hidden';
+    if (document.body) document.body.style.overflow = 'hidden';
+  }
+  function report() {
+    tame();
+    var wrap = document.querySelector('.wrap');
+    var last = wrap ? wrap.lastElementChild : null;
+    /* Высоту берём только по низу последнего блока. documentElement.scrollHeight
+       тут не годится: он никогда не меньше окна фрейма, поэтому после первой же
+       перестраховки фрейм оставался на 52 px выше содержимого и под блоком
+       пояснений вырастал лишний отступ (замер под file://: 69 px вместо 17). */
+    var bottom = last ? Math.ceil(last.getBoundingClientRect().bottom + (window.scrollY || 0))
+                      : Math.ceil(document.documentElement.scrollHeight);
+    try {
+      parent.postMessage({ ds: 'page-height', slug: SLUG, height: bottom,
+                           full: Math.ceil(document.documentElement.scrollHeight) }, '*');
+    } catch (e) {}
+  }
+  window.addEventListener('load', report);
+  window.addEventListener('resize', report);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(report);
+  [0, 120, 400, 1000, 2000, 4000].forEach(function (t) { setTimeout(report, t); });
+  if (window.ResizeObserver) { try { new ResizeObserver(report).observe(document.body); } catch (e) {} }
+})();
+/* Курсор мыши на мобильных экранах заменён кружком, имитирующим касание пальцем:
+   он идёт за указателем внутри телефона, при нажатии становится плотнее. На тач-
+   устройствах не включается (там настоящий палец). Размер — 44 px. */
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  [].slice.call(document.querySelectorAll('.phone__screen')).forEach(function (screen) {
+    var dot = document.createElement('div');
+    dot.className = 'phone__touch';
+    screen.appendChild(dot);
+    function place(e) {
+      var r = screen.getBoundingClientRect();
+      dot.style.left = (e.clientX - r.left) + 'px';
+      dot.style.top = (e.clientY - r.top) + 'px';
+      dot.style.display = 'block';
+    }
+    screen.addEventListener('pointermove', place);
+    screen.addEventListener('pointerover', place);
+    screen.addEventListener('pointerleave', function () { dot.style.display = 'none'; });
+    screen.addEventListener('pointerdown', function () { dot.classList.add('phone__touch--press'); });
+    screen.addEventListener('pointerup', function () { dot.classList.remove('phone__touch--press'); });
+  });
+})();
+/* ── Ревью страницы: статусы паттернов, свой комментарий, отметки в меню, «просмотрено»
+   и отчёт. Механизм тот же, что в KDS (iiko-ds-prototypes/KDS/ux-proposals.html):
+   решения лежат в localStorage, меню показывает статусы, отчёт скачивается файлом.
+   Ключи хранилища — по компоненту (SLUG). ── */
+(function () {
+  var SLUG = 'checkbox';
+  var ROUND = 1;                      /* номер круга ревью: новый круг — новые ключи */
+  var LABEL = { accepted: 'Одобряем', later: 'Отложить', rejected: 'Не подходит' };
+  var ICON = { accepted: 'check_circle', later: 'schedule', rejected: 'cancel' };
+  /* Кто смотрит: у каждого человека свои решения, комментарии, правки и отметки просмотра
+     (имя выбирается в меню компонентов). Один человек — один файл решений, поэтому мнения
+     четырёх дизайнеров и двух ответственных не затирают друг друга. */
+  var PERSON = '';
+  try { PERSON = localStorage.getItem('rec-person') || ''; } catch (e) { PERSON = ''; }
+  function keyOf(what) { return 'rec-' + what + '-' + SLUG + '-v1' + (PERSON ? ':' + PERSON : ''); }
+  var REVIEW = {}, SEEN = {}, EDITS = {};
+  function loadAll() {
+    try { REVIEW = JSON.parse(localStorage.getItem(keyOf('review')) || '{}') || {}; } catch (e) { REVIEW = {}; }
+    try { SEEN = JSON.parse(localStorage.getItem(keyOf('seen')) || '{}') || {}; } catch (e) { SEEN = {}; }
+    try { EDITS = JSON.parse(localStorage.getItem(keyOf('edits')) || '{}') || {}; } catch (e) { EDITS = {}; }
+  }
+  loadAll();
+  function saveReview() { try { localStorage.setItem(keyOf('review'), JSON.stringify(REVIEW)); } catch (e) {} }
+  function saveSeen() { try { localStorage.setItem(keyOf('seen'), JSON.stringify(SEEN)); } catch (e) {} }
+  function saveEdits() { try { localStorage.setItem(keyOf('edits'), JSON.stringify(EDITS)); } catch (e) {} }
+  function entry(id) { return REVIEW[id] || {}; }
+  function compName() { return document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : SLUG; }
+  function noteOfScore() { return document.querySelector('[data-note]'); }
+  function activePat() {
+    var it = document.querySelector('.screens__item--active[data-pat]');
+    return it ? it.getAttribute('data-pat') : '';
+  }
+  /* Меню: иконка статуса, метка комментария, отметка «просмотрено», строка прогресса. */
+  function paintMenu() {
+    var n = { accepted: 0, later: 0, rejected: 0 }, seen = 0, total = 0;
+    [].slice.call(document.querySelectorAll('.screens__item[data-pat]')).forEach(function (it) {
+      var id = it.getAttribute('data-pat'), e = entry(id);
+      total++;
+      if (SEEN[id]) { seen++; it.classList.add('is-viewed'); } else { it.classList.remove('is-viewed'); }
+      var st = it.querySelector('.item__st');
+      if (st) {
+        st.className = 'item__st' + (e.st ? ' is-' + e.st : '');
+        st.innerHTML = e.st ? '<span class="material-icons">' + ICON[e.st] + '</span>' : '';
+      }
+      var cm = it.querySelector('.item__cm');
+      if (cm) cm.style.display = e.note ? '' : 'none';
+      if (e.st) n[e.st]++;
+    });
+    var pr = document.querySelector('[data-rev-progress]');
+    if (pr) pr.innerHTML = 'Просмотрено <b>' + seen + '/' + total + '</b> · ' +
+      '<span class="is-ok"><span class="material-icons">check_circle</span> ' + n.accepted + '</span> · ' +
+      '<span class="is-later"><span class="material-icons">schedule</span> ' + n.later + '</span> · ' +
+      '<span class="is-no"><span class="material-icons">cancel</span> ' + n.rejected + '</span>';
+  }
+  /* Текст паттерна: подсветка выбранного статуса и сохранённый комментарий. */
+  function paintNote() {
+    var note = noteOfScore();
+    if (!note) return;
+    var id = activePat(), e = entry(id);
+    [].slice.call(note.querySelectorAll('.review__btn[data-st]')).forEach(function (b) {
+      b.classList.toggle('is-on', b.getAttribute('data-st') === e.st);
+    });
+    var ta = note.querySelector('.review__comment');
+    if (ta && !ta.__touched) ta.value = e.note || '';
+  }
+  function paint() { paintMenu(); paintNote(); showStates(); postSummary(); }
+  /* Сводка для меню оболочки: сколько паттернов просмотрено и что решено.
+     Идёт с задержкой, чтобы частые перерисовки не спамили родителя. */
+  var sumT = null;
+  function postSummary() {
+    if (sumT) return;
+    sumT = setTimeout(function () {
+      sumT = null;
+      var n = { accepted: 0, later: 0, rejected: 0 }, seen = 0, total = 0;
+      [].slice.call(document.querySelectorAll('.screens__item[data-pat]')).forEach(function (it) {
+        var id = it.getAttribute('data-pat'), e = entry(id);
+        total++;
+        if (SEEN[id]) seen++;
+        if (e.st) n[e.st]++;
+      });
+      try {
+        parent.postMessage({ ds: 'rec-summary', slug: SLUG, total: total, seen: seen,
+                             accepted: n.accepted, later: n.later, rejected: n.rejected }, '*');
+      } catch (e) {}
+    }, 400);
+  }
+  /* Кнопок сохранения нет: и комментарий, и значения колонки «Правка» пишутся сами —
+     через короткую паузу после ввода и сразу при уходе из поля. Пометка «Сохранено»
+     тихо стоит рядом и подсвечивается зелёным в момент записи. */
+  var tmr = {};
+  function mark(el, on) {
+    if (!el) return;
+    el.textContent = on ? 'Сохранено' : '';
+    el.classList.toggle('is-on', !!on);
+    if (!on) return;
+    clearTimeout(el.__t);
+    el.__t = setTimeout(function () { el.classList.remove('is-on'); }, 1800);
+  }
+  function commitComment(block) {
+    if (!block) return;
+    var pid = block.getAttribute('data-pat');
+    var ta = block.querySelector('.review__comment');
+    var e = entry(pid), v = ta ? ta.value.trim() : '';
+    if ((e.note || '') !== v) {
+      REVIEW[pid] = { st: e.st || '', note: v };
+      saveReview(); paintMenu();
+    }
+    mark(block.querySelector('[data-cmt-state]'), true);
+  }
+  function commitEdits() {
+    editRows().forEach(function (r) { EDITS[r.id] = { value: r.value, at: new Date().toISOString() }; });
+    saveEdits();
+    mark(document.querySelector('[data-edits-state]'), true);
+  }
+  function showStates() {
+    var block = noteOfScore() ? noteOfScore().querySelector('.review__comment-block') : null;
+    if (block) mark(block.querySelector('[data-cmt-state]'), true);
+    mark(document.querySelector('[data-edits-state]'), true);
+  }
+  function download(name, text, mime) {
+    var blob = new Blob([text], { type: (mime || 'text/plain') + ';charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+  }
+  function esc(v) {
+    return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  /* Правки 4-й колонки: значения полей (пишутся сами) — уходят в отчёт. */
+  function editRows() {
+    var rows = [];
+    [].slice.call(document.querySelectorAll('.edit__input')).forEach(function (f) {
+      var tr = f.closest('tr');
+      if (!tr) return;
+      var td = tr.querySelectorAll('td');
+      rows.push({
+        id: f.getAttribute('data-id'),
+        what: td[0] ? td[0].textContent.trim() : '',
+        desktop: td[1] ? td[1].textContent.trim() : '',
+        mobile: td[2] ? td[2].textContent.trim() : '',
+        value: f.value
+      });
+    });
+    return rows;
+  }
+  function buildXls() {
+    var rows = '';
+    [].slice.call(document.querySelectorAll('.screens__item[data-pat]')).forEach(function (it) {
+      var e = entry(it.getAttribute('data-pat'));
+      rows += '<tr><td>' + esc(it.querySelector('.item__t').textContent.trim()) + '</td><td>' +
+        esc(e.st ? LABEL[e.st] : 'Не рассмотрено') + '</td><td>' + esc((e.note || '').replace(/\n/g, ' ')) +
+        '</td><td>' + (e.st === 'accepted' ? 'да' : '—') + '</td></tr>';
+    });
+    var er = '';
+    editRows().forEach(function (r) {
+      er += '<tr><td>' + esc(r.what) + '</td><td>' + esc(r.desktop) + '</td><td>' + esc(r.mobile) +
+        '</td><td>' + esc(r.value) + '</td></tr>';
+    });
+    return '<html xmlns:o="urn:schemas-microsoft-com:office:office" ' +
+      'xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+      '<head><meta charset="utf-8"><meta name="ProgId" content="Excel.Sheet"><style>' +
+      'table{border-collapse:collapse;font-family:Calibri,Arial,sans-serif;font-size:11pt}' +
+      'th,td{border:1px solid #c9d1dc;padding:4px 8px;vertical-align:top;text-align:left}' +
+      'th{background:#eef3f9;font-weight:bold}h2{font-family:Calibri,Arial,sans-serif}</style></head><body>' +
+      '<h2>Компонент: ' + esc(document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : SLUG) +
+      ' · ' + new Date().toLocaleString('ru-RU') + '</h2>' +
+      '<table><tr><th>Паттерн</th><th>Решение</th><th>Свой комментарий</th><th>Одобрен</th></tr>' + rows + '</table>' +
+      '<h2>Правки по компоненту (4-я колонка)</h2>' +
+      '<table><tr><th>Что</th><th>Desktop</th><th>Mobile (рекомендованные)</th><th>Правка (значение)</th></tr>' + er + '</table>' +
+      '</body></html>';
+  }
+  document.addEventListener('click', function (ev) {
+    var t = ev.target;
+    var st = t.closest ? t.closest('.review__btn[data-st]') : null;
+    if (st && st.closest('[data-note]')) {
+      var id = st.getAttribute('data-pat');
+      var cur = entry(id);
+      REVIEW[id] = { st: (cur.st === st.getAttribute('data-st') ? '' : st.getAttribute('data-st')), note: cur.note || '' };
+      saveReview(); paint(); return;
+    }
+    var rp = t.closest ? t.closest('[data-reset-patterns]') : null;
+    if (rp) { resetPatterns(); return; }
+    var pc = t.closest ? t.closest('[data-pat-clear]') : null;
+    if (pc) {
+      var pid = pc.getAttribute('data-pat-clear');
+      delete REVIEW[pid];
+      delete SEEN[pid];
+      saveReview(); saveSeen();
+      var nb = noteOfScore() ? noteOfScore().querySelector('.review__comment') : null;
+      if (nb) { nb.value = ''; nb.__touched = false; }
+      paint();
+      return;
+    }
+    var item = t.closest ? t.closest('.screens__item[data-pat]') : null;
+    if (item) {
+      SEEN[item.getAttribute('data-pat')] = 1;
+      saveSeen();
+      setTimeout(function () { paint(); }, 0);
+      return;
+    }
+    var list = document.querySelector('[data-rev-json-list]');
+    if (list && !list.hidden && !t.closest('.json-menu')) list.hidden = true;
+  });
+  /* Отчёт и перенос решений запускает оболочка (кнопки стоят в меню компонентов):
+     она присылает сообщение, страница делает работу и отвечает текстом для строки-подсказки. */
+  function exportXls() { download(SLUG + '.' + (PERSON || 'гость') + '.xls', buildXls(), 'application/vnd.ms-excel'); return 'Отчёт xls скачан (' + (PERSON || 'гость') + ')'; }
+  /* Файл решений одного человека: из таких файлов потом собирается сводная таблица. */
+  function payload() {
+    return {
+      version: 2, round: ROUND, component: SLUG,
+      componentName: document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : SLUG,
+      person: PERSON || 'гость', savedAt: new Date().toISOString(),
+      decisions: REVIEW, seen: SEEN, edits: EDITS
+    };
+  }
+  var K_RE = /^rec-(review|seen|edits)-(.+)-v1(:.*)?$/;
+  function suffix() { return PERSON ? ':' + PERSON : ''; }
+  function normDecisions(src) {
+    var out = {};
+    Object.keys(src || {}).forEach(function (k) {
+      var v = src[k] || {}, o = {};
+      if (v.st === 'accepted' || v.st === 'later' || v.st === 'rejected') o.st = v.st;
+      if (typeof v.note === 'string' && v.note) o.note = v.note;
+      if (o.st || o.note) out[k] = o;
+    });
+    return out;
+  }
+  function normSeen(src) {
+    var out = {};
+    Object.keys(src || {}).forEach(function (k) { if (src[k]) out[k] = 1; });
+    return out;
+  }
+  function normEdits(src) {
+    var out = {};
+    Object.keys(src || {}).forEach(function (k) { if (src[k] && src[k].value !== undefined) out[k] = src[k]; });
+    return out;
+  }
+  /* Все компоненты, по которым у текущего человека что-то есть: ключи хранилища
+     собираем сами, страницы других компонентов для этого не нужны. */
+  function layerOfAll() {
+    var comps = {}, want = suffix(), i, k, m, s2;
+    try {
+      for (i = 0; i < localStorage.length; i++) {
+        k = localStorage.key(i) || '';
+        m = k.match(K_RE);
+        if (!m || (m[3] || '') !== want) continue;
+        s2 = m[2];
+        comps[s2] = comps[s2] || { decisions: {}, seen: {}, edits: {} };
+        try { comps[s2][m[1] === 'review' ? 'decisions' : m[1]] = JSON.parse(localStorage.getItem(k) || '{}') || {}; } catch (e) {}
+      }
+    } catch (e) {}
+    if (!comps[SLUG]) comps[SLUG] = { decisions: REVIEW, seen: SEEN, edits: EDITS };
+    comps[SLUG].componentName = compName();
+    return comps;
+  }
+  function exportJson() {
+    var who = PERSON || 'гость';
+    download(SLUG + '.' + who + '.json', JSON.stringify(payload(), null, 2), 'application/json');
+    return 'Мои решения (' + who + ') по компоненту «' + compName() + '» скачаны файлом';
+  }
+  function exportJsonAll() {
+    var who = PERSON || 'гость', comps = layerOfAll();
+    download('rec-review-all.' + who + '.json', JSON.stringify({
+      version: 3, kind: 'rec-review-all', round: ROUND, person: who,
+      savedAt: new Date().toISOString(), components: comps
+    }, null, 2), 'application/json');
+    return 'Решения (' + who + ') по всем компонентам (' + Object.keys(comps).length + ') скачаны файлом';
+  }
+  /* Загрузка файла: один компонент или сразу все. Кладём в слой ТЕКУЩЕГО человека —
+     так чужой (или свой прежний) файл становится основой, которую можно править точечно. */
+  function importAll(data) {
+    var comps = data.components || {}, want = suffix(), n = 0;
+    Object.keys(comps).forEach(function (s2) {
+      var c = comps[s2] || {};
+      try {
+        localStorage.setItem('rec-review-' + s2 + '-v1' + want, JSON.stringify(normDecisions(c.decisions)));
+        localStorage.setItem('rec-seen-' + s2 + '-v1' + want, JSON.stringify(normSeen(c.seen)));
+        localStorage.setItem('rec-edits-' + s2 + '-v1' + want, JSON.stringify(normEdits(c.edits)));
+        n++;
+      } catch (e) {}
+    });
+    loadAll(); paint();
+    return 'Загружено компонентов: ' + n + ' (слой ' + (PERSON || 'без имени') + ', автор файла: ' + (data.person || '—') + ')';
+  }
+  /* Положить свои решения в репозиторий: сервер пишет _audit/rec/review/<компонент>.<человек>.json.
+     Если страница открыта не через сервер (file://), предложим скачать файл. */
+  function saveToRepo() {
+    if (typeof fetch !== 'function') { exportJsonAll(); return Promise.resolve('Сервер недоступен — файл скачан'); }
+    var who = PERSON || 'гость', comps = layerOfAll(), slugs = Object.keys(comps);
+    var jobs = slugs.map(function (s2) {
+      var c = comps[s2];
+      return fetch('/__rec-review', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          version: 3, round: ROUND, component: s2, componentName: c.componentName || s2,
+          person: who, savedAt: new Date().toISOString(),
+          decisions: c.decisions, seen: c.seen, edits: c.edits
+        })
+      }).then(function (r) { return r.json(); });
+    });
+    return Promise.all(jobs).then(function (res) {
+      var ok = res.filter(function (r) { return r && r.ok; }).length;
+      if (!ok) throw new Error('сервер отказал');
+      var first = (res.filter(function (r) { return r && r.path; })[0] || {}).path || '';
+      return 'Мои решения (' + who + ') записаны: файлов ' + ok + ' из ' + slugs.length +
+             (first ? ', например ' + first : '');
+    }, function () { exportJsonAll(); return 'Сервер не принял — файл скачан'; });
+  }
+  function importJson(text) {
+    var data = JSON.parse(text);
+    if (data && data.components) return importAll(data);
+    REVIEW = normDecisions(data.decisions);
+    EDITS = normEdits(data.edits);
+    SEEN = normSeen(data.seen);
+    saveReview(); saveEdits(); saveSeen(); paint();
+    return 'Решения по компоненту «' + compName() + '» загружены из файла' + (data.person ? ' (автор файла: ' + data.person + ')' : '');
+  }
+  /* Оценки всех паттернов компонента: статусы, комментарии и отметки просмотра.
+     Значения колонки «Правка» — отдельная работа, их не трогаем. */
+  function resetPatterns() {
+    if (!confirm('Сбросить оценки всех паттернов компонента «' + compName() + '»' + (PERSON ? ' (' + PERSON + ')' : '') +
+                 '? Статусы, комментарии и отметки «просмотрено» очистятся. Значения колонки «Правка» останутся.')) return '';
+    REVIEW = {}; SEEN = {};
+    saveReview(); saveSeen();
+    var ta = noteOfScore() ? noteOfScore().querySelector('.review__comment') : null;
+    if (ta) { ta.value = ''; ta.__touched = false; }
+    paint();
+    return 'Оценки паттернов компонента «' + compName() + '» сброшены';
+  }
+  /* Значения колонки «Правка»: поля возвращаются к рекомендованным, живой просмотр чистится. */
+  function resetEdits() {
+    if (!confirm('Сбросить значения колонки «Правка» по компоненту «' + compName() + '»' + (PERSON ? ' (' + PERSON + ')' : '') +
+                 '? Поля вернутся к рекомендованным значениям. Оценки паттернов и комментарии останутся.')) return '';
+    EDITS = {};
+    saveEdits();
+    [].slice.call(document.querySelectorAll('.edit__input')).forEach(function (f) {
+      f.value = f.getAttribute('value') || '';
+      f.__touched = false;
+    });
+    var live = document.getElementById('live');
+    if (live) live.textContent = '';
+    paint();
+    return 'Значения «Правка» по компоненту «' + compName() + '» сброшены';
+  }
+  function setPerson(name) {
+    PERSON = String(name || '').trim();
+    try { localStorage.setItem('rec-person', PERSON); } catch (e) {}
+    loadAll();
+    var ta = noteOfScore() ? noteOfScore().querySelector('.review__comment') : null;
+    if (ta) ta.__touched = false;
+    paint();
+    return PERSON ? 'Решения ' + PERSON : 'Решения без имени';
+  }
+  window.addEventListener('message', function (ev) {
+    var d = ev.data || {};
+    if (d.ds !== 'review') return;
+    if (d.person !== undefined && d.person !== PERSON) {
+      PERSON = String(d.person || '').trim();
+      try { localStorage.setItem('rec-person', PERSON); } catch (e) {}
+      loadAll();
+      var ta0 = noteOfScore() ? noteOfScore().querySelector('.review__comment') : null;
+      if (ta0) ta0.__touched = false;
+      paint();
+    }
+    function done(text) {
+      if (!text) return;
+      try { parent.postMessage({ ds: 'review-done', kind: d.kind, text: text }, '*'); } catch (e) {}
+    }
+    try {
+      if (d.kind === 'xls') done(exportXls());
+      else if (d.kind === 'json') done(exportJson());
+      else if (d.kind === 'json-all') done(exportJsonAll());
+      else if (d.kind === 'import-text') done(importJson(d.text || '{}'));
+      else if (d.kind === 'reset') done(resetEdits());
+      else if (d.kind === 'person') done(setPerson(d.person));
+      else if (d.kind === 'save-repo') saveToRepo().then(done, function (e) { done('Не получилось: ' + e.message); });
+    } catch (e) { done('Не получилось: ' + e.message); }
+  });
+  document.addEventListener('input', function (ev) {
+    var t = ev.target;
+    if (!t || !t.classList) return;
+    if (t.classList.contains('review__comment')) {
+      t.__touched = true;
+      var block = t.closest('.review__comment-block');
+      mark(block ? block.querySelector('[data-cmt-state]') : null, false);
+      clearTimeout(t.__t);
+      t.__t = setTimeout(function () { commitComment(block); }, 700);
+      return;
+    }
+    if (t.classList.contains('edit__input')) {
+      mark(document.querySelector('[data-edits-state]'), false);
+      clearTimeout(tmr.edits);
+      tmr.edits = setTimeout(commitEdits, 700);
+    }
+  });
+  /* Уход из поля (blur не всплывает — слушаем на перехвате): пишем сразу, без паузы. */
+  document.addEventListener('blur', function (ev) {
+    var t = ev.target;
+    if (!t || !t.classList) return;
+    if (t.classList.contains('review__comment')) {
+      clearTimeout(t.__t);
+      commitComment(t.closest('.review__comment-block'));
+      return;
+    }
+    if (t.classList.contains('edit__input')) { clearTimeout(tmr.edits); commitEdits(); }
+  }, true);
+  var active = document.querySelector('.screens__item--active[data-pat]');
+  if (active) { SEEN[active.getAttribute('data-pat')] = 1; saveSeen(); }
+  paint();
+})();
+</script>
+<script>
+/* Складные карточки: «Почему так», «Итог», «Общее для всех компонентов».
+   Заголовок нажимается, состояние запоминается (по умолчанию свёрнуто). */
+(function () {
+  function setFold(c, open) {
+    c.classList.toggle('is-collapsed', !open);
+    var h = c.querySelector('.card__head');
+    if (h) h.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  [].slice.call(document.querySelectorAll('.card[data-fold]')).forEach(function (c) {
+    var id = 'rec-fold:' + c.getAttribute('data-fold'), saved = null;
+    try { saved = localStorage.getItem(id); } catch (e) {}
+    setFold(c, saved === null ? false : saved === '1');
+    var head = c.querySelector('.card__head');
+    if (!head) return;
+    function toggle() {
+      var open = c.classList.contains('is-collapsed');
+      setFold(c, open);
+      try { localStorage.setItem(id, open ? '1' : '0'); } catch (e) {}
+    }
+    head.addEventListener('click', toggle);
+    head.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

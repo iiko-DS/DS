@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input number — Desktop и Mobile</title>
+<link rel="stylesheet" href="../../../iiko-ds-web/font.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/tokens.css?v=1789456848">
+<link rel="stylesheet" href="../../modes.css?v=1789456848">
+<link rel="stylesheet" href="../../components/index.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/styles.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/index.css?v=1789456848">
+<!-- Автоген не подключил эти четыре файла в агрегаторе библиотеки — без них
+     Checkbox и Radio рисуются системным контролом браузера (13 × 13 вместо
+     маркера 20 × 20). Подключаем их явно на странице; библиотека не правится. -->
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Checkbox_DS/checkbox.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Checkbox_DS/checkbox-icons.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Radio-Button_DS/radio.css?v=1789456848">
+<link rel="stylesheet" href="../../../iiko-ds-web/components/Radio-Button_DS/radio-icons.css?v=1789456848">
+<link rel="stylesheet" href="rec.css?v=1789456848">
+<style id="live"></style>   <!-- сюда попадают правки из колонки «Правка» -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<div class="wrap">
+  <p class="crumbs"><a href="index.html#input-number">← Все компоненты</a></p>
+  <h1>Input number</h1>
+  <p class="desc">Числовое поле: количество с шагом «+/−». Числа наследуются от поля ввода — отдельного компонента нет ни на одной платформе.</p>
+  <p class="cat"><b>Только размеры</b> · выше поле и крупнее кнопки «+/−»; цифровая клавиатура — правило разметки</p>
+
+  <div class="compare">
+<div class="panel" data-mode="desktop"><div class="panel__head"><span class="panel__title">Desktop</span><span class="panel__sub">поле 48 px</span></div><div class="panel__body"><div class="ex"><p class="ex__title">Поле с «+/−»</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-input-number-but-icon"><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div></div><div class="ex"><p class="ex__title">С подписью</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-input-number-but-icon"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div></div><div class="ex"><p class="ex__title">Недоступное</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-input-number-but-icon ds-input-number-but-icon--disabled"><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame"><input type="text" inputmode="numeric" value="0" disabled style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div></div></div></div>
+<div class="panel" data-mode="mobile"><div class="panel__head"><span class="panel__title">Mobile</span><span class="panel__sub">поле 56 px, кнопки 40 × 40</span></div><div class="panel__body"><div class="ex"><p class="ex__title">Поле с «+/−»</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-input-number-but-icon"><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div></div><div class="ex"><p class="ex__title">С подписью</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-input-number-but-icon"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div></div><div class="ex"><p class="ex__title">Недоступное</p><div class="ex__row ex__row--col"><div class="ex__inner"><div class="ds-input-number-but-icon ds-input-number-but-icon--disabled"><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame"><input type="text" inputmode="numeric" value="0" disabled style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div></div></div></div>
+  </div>
+
+<div class="card">
+    <h2>На экране</h2>
+    <div class="screens">
+      <div class="screens__menu" role="tablist"><div class="review__progress" data-rev-progress></div><button class="menu__reset" type="button" data-reset-patterns title="Сбросить оценки всех паттернов этого компонента: статусы, комментарии и отметки просмотра. Значения колонки «Правка» останутся"><span class="material-icons">restart_alt</span>Сбросить оценки паттернов</button><button class="screens__item screens__item--active" type="button" role="tab" aria-selected="true" data-view="base">Основные</button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-0" data-pat="pat-input-number-0"><span class="item__t">Степпер или цифровая клавиатура</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-1" data-pat="pat-input-number-1"><span class="item__t">Большие изменения — не степпер</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-2" data-pat="pat-input-number-2"><span class="item__t">Кнопки «+» и «−» под палец</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-3" data-pat="pat-input-number-3"><span class="item__t">Клавиатура, стрелки и прокрутка</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-4" data-pat="pat-input-number-4"><span class="item__t">Формат числа: единицы и разряды</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-5" data-pat="pat-input-number-5"><span class="item__t">Ошибка, подсказка и состояния</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-6" data-pat="pat-input-number-6"><span class="item__t">Шаг и границы видны сразу</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-7" data-pat="pat-input-number-7"><span class="item__t">Значение видно рядом со степпером</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-8" data-pat="pat-input-number-8"><span class="item__t">Шаг настраивается, в том числе дробный</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-9" data-pat="pat-input-number-9"><span class="item__t">Цифровая клавиатура в числовом поле</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-10" data-pat="pat-input-number-10"><span class="item__t">Поле молча приводит введённое число к шагу и диапазону</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-11" data-pat="pat-input-number-11"><span class="item__t">Нет удержания кнопки: 12 порций — 12 тапов</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-12" data-pat="pat-input-number-12"><span class="item__t">Три степпера в строке — непонятно, что к чему относится</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button><button class="screens__item" type="button" role="tab" aria-selected="false" data-view="pat-input-number-13" data-pat="pat-input-number-13"><span class="item__t">Пустое поле и ноль означают разное, а выглядят одинаково</span><span class="item__st"></span><span class="item__cm" title="Есть комментарий"><span class="material-icons">chat_bubble_outline</span></span></button></div>
+      <div class="screens__stage"><div class="phones"><div class="phones__item"><div class="phone"><div class="phone__screen" data-mode="mobile"><div class="phone__status"><span>9:41</span><span class="phone__ic"><span class="material-icons">signal_cellular_alt</span><span class="material-icons">wifi</span><span class="material-icons">battery_full</span></span></div><div class="phone__head"><span class="material-icons">arrow_back</span><span class="phone__title">Новый заказ</span><span class="material-icons">more_vert</span></div><div class="phone__body"><div class="ds-list-container"><div class="ds-list-container__item"><div class="ds-list-container__element-left"><span class="ds-list-item__icon"><span class="material-icons" style="font-size:24px">restaurant</span></span></div><div class="ds-list-container__content"><span class="ds-list-item__label-up">Кухня</span><span class="ds-list-item__text">Стейк рибай</span></div><div class="ds-list-container__element-right"><span class="ds-list-item__label-down">1 480 ₽</span></div></div><div class="ds-list-container__item"><div class="ds-list-container__element-left"><span class="ds-list-item__icon"><span class="material-icons" style="font-size:24px">icecream</span></span></div><div class="ds-list-container__content"><span class="ds-list-item__label-up">Десерт</span><span class="ds-list-item__text">Тирамису</span></div><div class="ds-list-container__element-right"><span class="ds-list-item__label-down">480 ₽</span></div></div></div><div class="ds-input-number-but-icon"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div><div class="phone__foot" data-buttons="sheet"><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined" type="button"><span class="ds-btn__label">Отмена</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Добавить</span></button></div><div class="phone__scrim"></div><div class="phone__sheet"><p class="phone__sheet-title">Изменить количество</p><p class="phone__sheet-text">Стейк рибай · 1 480 ₽</p><div class="ds-list-container"><div class="ds-list-container__item"><div class="ds-list-container__element-left"><span class="ds-list-item__icon"><span class="material-icons" style="font-size:24px">restaurant</span></span></div><div class="ds-list-container__content"><span class="ds-list-item__label-up">Порции</span><span class="ds-list-item__text">4</span></div></div><div class="ds-list-container__item"><div class="ds-list-container__element-left"><span class="ds-list-item__icon"><span class="material-icons" style="font-size:24px">payments</span></span></div><div class="ds-list-container__content"><span class="ds-list-item__label-up">Цена позиции</span><span class="ds-list-item__text">1 480 ₽</span></div></div></div><div class="phone__actions" data-buttons="screen"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Готово</span></button><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" type="button"><span class="ds-btn__label">Отмена</span></button></div></div></div></div><p class="phone__caption">Счётчик в теле заказа: поле со значением и кнопки «+/−»</p></div><div class="phones__item"><div class="phone"><div class="phone__screen" data-mode="mobile" data-preview="edit"><div class="phone__status"><span>9:41</span><span class="phone__ic"><span class="material-icons">signal_cellular_alt</span><span class="material-icons">wifi</span><span class="material-icons">battery_full</span></span></div><div class="phone__head"><span class="material-icons">arrow_back</span><span class="phone__title">Новый заказ</span><span class="material-icons">more_vert</span></div><div class="phone__body"><div class="ds-list-container"><div class="ds-list-container__item"><div class="ds-list-container__element-left"><span class="ds-list-item__icon"><span class="material-icons" style="font-size:24px">restaurant</span></span></div><div class="ds-list-container__content"><span class="ds-list-item__label-up">Кухня</span><span class="ds-list-item__text">Стейк рибай</span></div><div class="ds-list-container__element-right"><span class="ds-list-item__label-down">1 480 ₽</span></div></div><div class="ds-list-container__item"><div class="ds-list-container__element-left"><span class="ds-list-item__icon"><span class="material-icons" style="font-size:24px">icecream</span></span></div><div class="ds-list-container__content"><span class="ds-list-item__label-up">Десерт</span><span class="ds-list-item__text">Тирамису</span></div><div class="ds-list-container__element-right"><span class="ds-list-item__label-down">480 ₽</span></div></div></div><div class="ds-input-number-but-icon"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div><div class="phone__foot" data-buttons="sheet"><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--outlined" type="button"><span class="ds-btn__label">Отмена</span></button><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Добавить</span></button></div><div class="phone__scrim"></div><div class="phone__sheet"><p class="phone__sheet-title">Изменить количество</p><p class="phone__sheet-text">Стейк рибай · 1 480 ₽</p><div class="ds-list-container"><div class="ds-list-container__item"><div class="ds-list-container__element-left"><span class="ds-list-item__icon"><span class="material-icons" style="font-size:24px">restaurant</span></span></div><div class="ds-list-container__content"><span class="ds-list-item__label-up">Порции</span><span class="ds-list-item__text">4</span></div></div><div class="ds-list-container__item"><div class="ds-list-container__element-left"><span class="ds-list-item__icon"><span class="material-icons" style="font-size:24px">payments</span></span></div><div class="ds-list-container__content"><span class="ds-list-item__label-up">Цена позиции</span><span class="ds-list-item__text">1 480 ₽</span></div></div></div><div class="phone__actions" data-buttons="screen"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" type="button"><span class="ds-btn__label">Готово</span></button><button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" type="button"><span class="ds-btn__label">Отмена</span></button></div></div></div></div><p class="phone__caption">Тот же экран, с правками из таблицы справа</p></div></div></div>
+    </div>
+    <div class="screens__note" data-note></div>
+    <div class="screens__sets" hidden><div data-set="pat-input-number-0" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Степпер или цифровая клавиатура</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-0"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-0"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-0"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-0" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Значение 4 набирается одним тапом по «+» — это дешевле, чем стирать и вводить цифру с клавиатуры (NN/g, Carbon).</p><ul class="list"><li>Что происходит: набрать число с клавиатуры на телефоне дороже одного тапа: пользователь выделяет значение, стирает, вводит новое и закрывает клавиатуру — всё это на маленькой цели в узком поле.</li><li>Что делать нам: для малых значений (гости, количество порций) по умолчанию давать степпер, а цифровую клавиатуру оставлять вторым способом ввода.</li></ul><p class="plat__src">Источники: Nielsen Norman Group · Design Guidelines for Input Steppers (https://www.nngroup.com/articles/input-steppers) · IBM Carbon · Number input (https://carbondesignsystem.com/components/number-input/usage)</p><div class="review__comment-block" data-pat="pat-input-number-0"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-1" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container" style="width:100%"><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="50" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">От 1 до 50 — значение вводится числом, а не 49 тапами по «+»</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container" style="width:100%"><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="50" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">От 1 до 50 — значение вводится числом, а не 49 тапами по «+»</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container" style="width:100%"><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="50" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">От 1 до 50 — значение вводится числом, а не 49 тапами по «+»</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Большие изменения — не степпер</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-1"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-1"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-1"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-1" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Диапазон 1–50 передан обычным числовым полем: сорок девять тапов по «+» заменены одним вводом — степпер для больших изменений не подходит.</p><ul class="list"><li>Что происходит: чтобы задать 50 из 1, придётся тапнуть десятки раз: на мобиле это худший способ ввода, и пользователь бросает поле с неверным значением.</li><li>Что делать нам: если диапазон шире ~20 значений или значение непредсказуемо, ставить обычное поле с числовой клавиатурой, а степпер — только как дополнение рядом с ним.</li></ul><p class="plat__src">Источники: Nielsen Norman Group · Design Guidelines for Input Steppers (https://www.nngroup.com/articles/input-steppers) · IBM Carbon · Number input (https://carbondesignsystem.com/components/number-input/usage) · Apple HIG · Steppers (https://developer.apple.com/design/human-interface-guidelines/steppers)</p><div class="review__comment-block" data-pat="pat-input-number-1"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-2" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container" style="gap:8px"><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container" style="gap:8px"><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container" style="gap:8px"><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Кнопки «+» и «−» под палец</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-2"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-2"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-2"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-2" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Кнопки «+» и «−» — цели 48 × 48 px с зазором 8 px до поля: горизонтальный степпер вместо узких кнопок вплотную к полю (NN/g: 1 × 1 см, HIG: 44 × 44 pt).</p><ul class="list"><li>Что происходит: две узкие кнопки, стоящие вплотную к полю, набираются не с первого раза, особенно при быстром повторном тапе для набора нескольких единиц.</li><li>Что делать нам: делать горизонтальный степпер, где каждая кнопка — цель 48×48 px, между «−», полем и «+» есть зазор; вертикальные «+» и «−» столбиком на мобиле не применять.</li></ul><p class="plat__src">Источники: Nielsen Norman Group · Design Guidelines for Input Steppers (https://www.nngroup.com/articles/input-steppers) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)</p><div class="review__comment-block" data-pat="pat-input-number-2"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-3" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div><div style="height:216px;background:#F5F5F5;border-radius:8px;display:flex;justify-content:flex-end;align-items:flex-start;padding:8px"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--text" type="button" style="width:auto"><span class="ds-btn__label">Готово</span></button></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div><div style="height:216px;background:#F5F5F5;border-radius:8px;display:flex;justify-content:flex-end;align-items:flex-start;padding:8px"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--text" type="button" style="width:auto"><span class="ds-btn__label">Готово</span></button></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div><div style="height:216px;background:#F5F5F5;border-radius:8px;display:flex;justify-content:flex-end;align-items:flex-start;padding:8px"><button class="ds-btn ds-btn--m ds-btn--accent ds-btn--text" type="button" style="width:auto"><span class="ds-btn__label">Готово</span></button></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Клавиатура, стрелки и прокрутка</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-3"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-3"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-3"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-3" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Поле со степпером и inputmode numeric стоит над клавиатурой, «+/−» не уезжают под неё: под клавиатуру отведено 216 px из 667 px, ввод закрывает «Готово».</p><ul class="list"><li>Что происходит: поле без настроек открывает то алфавитную, то числовую клавиатуру, а стрелки «вверх/вниз» и прокрутка колесом, привычные на десктопе, на телефоне недоступны — остаётся только ручной набор.</li><li>Что делать нам: задавать inputmode numeric и type number, сохранять работу стрелок Up/Down, а кнопки «+/−» дублировать как способ ввода — они не должны уезжать под клавиатуру.</li></ul><p class="plat__src">Источники: Material Web · text-field.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/text-field.md) · Apple HIG · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields) · IBM Carbon · Number input (https://carbondesignsystem.com/components/number-input/usage) · Ant Design · InputNumber (https://ant.design/components/input-number/)</p><div class="review__comment-block" data-pat="pat-input-number-3"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-4" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Сумма заказа</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="1 500 ₽" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Единицы — суффиксом в поле, разделитель разрядов — из локали</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Сумма заказа</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="1 500 ₽" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Единицы — суффиксом в поле, разделитель разрядов — из локали</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Сумма заказа</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="1 500 ₽" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Единицы — суффиксом в поле, разделитель разрядов — из локали</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Формат числа: единицы и разряды</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-4"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-4"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-4"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-4" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Единицы показаны суффиксом в самом поле («1 500 ₽»), разряды разделены по локали: голое «1500» не говорит, рубли это, граммы или проценты.</p><ul class="list"><li>Что происходит: в поле остаётся голое «1500», и на мобиле непонятно, это рубли, граммы или проценты; разделитель разрядов в разных локалях разный, и значение читается по-разному.</li><li>Что делать нам: выводить единицы суффиксом внутри поля (₽, %, г), разделитель разрядов брать из локали, а не хардкодить; формат дублировать в helper-тексте под полем.</li></ul><p class="plat__src">Источники: Material Web · text-field.md (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/text-field.md) · Apple HIG · Text fields (https://developer.apple.com/design/human-interface-guidelines/text-fields)</p><div class="review__comment-block" data-pat="pat-input-number-4"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-5" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">&#8203;</span></div><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1;border:1px solid #FF5252"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">error_outline</span></span><input type="text" inputmode="numeric" value="0" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block;color:#FF5252">Введите число от 1 до 50</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">&#8203;</span></div><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1;border:1px solid #FF5252"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">error_outline</span></span><input type="text" inputmode="numeric" value="0" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block;color:#FF5252">Введите число от 1 до 50</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">&#8203;</span></div><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1;border:1px solid #FF5252"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">error_outline</span></span><input type="text" inputmode="numeric" value="0" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block;color:#FF5252">Введите число от 1 до 50</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Ошибка, подсказка и состояния</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-5"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-5"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-5"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-5" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Строка состояния зарезервирована под 16 px в обоих случаях: при ошибке появляются рамка, иконка и текст, а высота поля не меняется и disabled не сдвигает размеры.</p><ul class="list"><li>Что происходит: при ошибке строка подсказки исчезает или добавляется новая, поле «прыгает» по высоте, и на мобиле вместе с ним уезжают кнопки формы.</li><li>Что делать нам: резервировать строку состояния (16 px), при ошибке показывать три индикатора, высоту поля не менять; disabled-состояние не должно менять размеры поля.</li></ul><p class="plat__src">Источники: IBM Carbon · Number input (https://carbondesignsystem.com/components/number-input/usage) · Material Web · _md-sys-typescale.scss (https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-typescale.scss)</p><div class="review__comment-block" data-pat="pat-input-number-5"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-6" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="50" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button" style="opacity:0.38"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">От 1 до 50, шаг 1: предел достигнут, «+» недоступен</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="50" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button" style="opacity:0.38"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">От 1 до 50, шаг 1: предел достигнут, «+» недоступен</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="50" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button" style="opacity:0.38"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">От 1 до 50, шаг 1: предел достигнут, «+» недоступен</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Шаг и границы видны сразу</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-6"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-6"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-6"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-6" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Значение 50 — верхняя граница: кнопка «+» стала серой и недоступной, а диапазон и шаг подписаны под полем (NN/g, кейс Expedia).</p><ul class="list"><li>Что происходит: в поле с диапазоном 1–50 пользователь жмёт «+» и не понимает, когда кнопка перестанет работать: предел нигде не написан, а после отказа кнопки значение выглядит сломанным.</li><li>Что делать нам: подписывать шаг и диапазон helper-текстом под полем («от 1 до 50, шаг 1»), а при достижении предела делать кнопку серой и недоступной для нажатия.</li></ul><p class="plat__src">Источники: Nielsen Norman Group · Design Guidelines for Input Steppers (https://www.nngroup.com/articles/input-steppers/)</p><div class="review__comment-block" data-pat="pat-input-number-6"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-7" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Значение 4 видно в поле: сам степпер значение не показывает</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Значение 4 видно в поле: сам степпер значение не показывает</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="4" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Значение 4 видно в поле: сам степпер значение не показывает</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Значение видно рядом со степпером</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-7"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-7"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-7"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-7" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Степпер и поле со значением 4 стоят рядом: кнопка значение не показывает, поэтому оно всегда видно в поле (Apple HIG, Steppers).</p><ul class="list"><li>Что происходит: степпер ставят без числового поля — рядом только название параметра, и после тапов пользователь не понимает, какое значение выставил и что именно меняется.</li><li>Что делать нам: степпер в мобильном ДС всегда идёт парой с полем, где видно текущее значение; отдельный степпер без значения не выпускаем.</li></ul><p class="plat__src">Источники: Apple Human Interface Guidelines · Steppers (https://developer.apple.com/design/human-interface-guidelines/steppers)</p><div class="review__comment-block" data-pat="pat-input-number-7"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-8" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Порции</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="decimal" value="1,5" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Шаг 0,5: значение может быть дробным</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Порции</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="decimal" value="1,5" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Шаг 0,5: значение может быть дробным</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Порции</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="decimal" value="1,5" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Шаг 0,5: значение может быть дробным</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Шаг настраивается, в том числе дробный</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-8"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-8"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-8"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-8" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Шаг 0,5 — значение 1,5 набрано двумя нажатиями: шаг задан параметром и может быть дробным (Ant Design, `step`).</p><ul class="list"><li>Что происходит: шаг «+» жёстко зашит в единицу, и там, где значение меняется по 0,5 (порции, вес, литры), степпер либо бесполезен, либо ошибается на каждом тапе.</li><li>Что делать нам: в мобильном ДС шаг степпера задавать параметром (в том числе 0,5 и 0,1), а сами кнопки «+/−» оставлять включаемыми: части полей они не нужны.</li></ul><p class="plat__src">Источники: Ant Design · InputNumber, controls / step (https://raw.githubusercontent.com/ant-design/ant-design/master/components/input-number/index.en-US.md)</p><div class="review__comment-block" data-pat="pat-input-number-8"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-9" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">inputmode numeric: открывается цифровая клавиатура</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">inputmode numeric: открывается цифровая клавиатура</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">inputmode numeric: открывается цифровая клавиатура</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Цифровая клавиатура в числовом поле</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-9"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-9"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-9"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-9" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Числовое поле с inputmode=&quot;numeric&quot;: открывается цифровая клавиатура — этого не делает 54% мобильных сайтов (Baymard).</p><ul class="list"><li>Что происходит: числовое поле открывает буквенную клавиатуру, и цифры приходится искать в третьем ряду: на телефоне это самая частая причина опечаток в количестве и суммах.</li><li>Что делать нам: у числового поля всегда inputmode numeric (для дробных — decimal) и type number; в мобильном слое ДС это обязательное свойство компонента, а не пожелание.</li></ul><p class="plat__src">Источники: Baymard Institute · &#x27;Touch Keyboard&#x27; Implementations (https://baymard.com/blog/mobile-touch-keyboards)</p><div class="review__comment-block" data-pat="pat-input-number-9"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-10" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1;border:1px solid #FF5252"><input type="text" inputmode="decimal" value="3,5" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block;color:#FF5252">Кратно 1: допустимо 3 или 4 — значение не меняем молча</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1;border:1px solid #FF5252"><input type="text" inputmode="decimal" value="3,5" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block;color:#FF5252">Кратно 1: допустимо 3 или 4 — значение не меняем молча</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1;border:1px solid #FF5252"><input type="text" inputmode="decimal" value="3,5" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block;color:#FF5252">Кратно 1: допустимо 3 или 4 — значение не меняем молча</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Поле молча приводит введённое число к шагу и диапазону</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-10"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-10"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-10"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-10" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Значение 3,5 не подменяется молча: поле осталось таким, каким его ввели, а под ним сообщение о кратности и допустимые границы.</p><ul class="list"><li>Что происходит: Пользователь вводит 3,5 порции или 500 гостей, уходит с поля — значение молча становится 4 или 50. Ни подписи, ни ошибки: человек уверен, что ввёл одно, а в заказе стоит другое.</li><li>Что делать нам: Если значение вне диапазона или не кратно шагу — не исправлять молча, а показать сообщение под полем («Кратко 1 шт: 3 или 4») и допустимые границы в helper-тексте.</li></ul><p class="plat__src">Источники: Ant Design InputNumber; IBM Carbon Number input; NN/g Design Guidelines for Input Steppers (https://raw.githubusercontent.com/ant-design/ant-design/master/components/input-number/index.en-US.md)</p><div class="review__comment-block" data-pat="pat-input-number-10"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-11" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Долгое нажатие «+» ускоряет набор: 12 порций — не 12 отдельных тапов</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Долгое нажатие «+» ускоряет набор: 12 порций — не 12 отдельных тапов</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="12" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button" style="width:48px;height:48px;justify-content:center"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">Долгое нажатие «+» ускоряет набор: 12 порций — не 12 отдельных тапов</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Нет удержания кнопки: 12 порций — 12 тапов</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-11"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-11"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-11"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-11" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Кнопки «+» и «−» по 48 × 48 px, а долгое нажатие меняет значение непрерывно: поле остаётся для точного числа.</p><ul class="list"><li>Что происходит: Чтобы поставить количество 12, пользователь тапает «+» двенадцать раз по цели 32 px; при быстром повторном тапе палец срывается на «−».</li><li>Что делать нам: Долгое нажатие на «+»/«−» = непрерывное изменение с ускорением (мобильный аналог Shift-click); плюс поле ввода остаётся для точного значения.</li></ul><p class="plat__src">Источники: NN/g, Design Guidelines for Input Steppers — nngroup.com/articles/input-steppers; Apple HIG, Steppers (https://www.nngroup.com/articles/input-steppers/)</p><div class="review__comment-block" data-pat="pat-input-number-11"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-12" data-kind="body"><div data-part="screen"><div class="pat__phone"><div style="display:flex;flex-direction:column;gap:12px"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Гостей</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="2" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Скидка, %</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="10" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div></div><div data-part="sheet"><div class="pat__phone"><div style="display:flex;flex-direction:column;gap:12px"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Гостей</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="2" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Скидка, %</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="10" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div></div><div data-part="body"><div class="pat__phone"><div style="display:flex;flex-direction:column;gap:12px"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Гостей</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="2" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Скидка, %</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="10" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div></div></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Три степпера в строке — непонятно, что к чему относится</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-12"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-12"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-12"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-12" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">У каждого степпера своя подпись и своё значение в своей строке: «Гостей 2» и «Скидка 10 %» не перепутать.</p><ul class="list"><li>Что происходит: В карточке заказа рядом стоят «порций», «гостей» и «скидка»: у каждого свои «+» и «−» без подписи значения, и пользователь меняет не то число, думая, что правит количество.</li><li>Что делать нам: Степпер всегда в одной строке с подписью и значением («Гостей 2 −/+»), не более одного степпера в видимой строке; для нескольких чисел — разные строки или поле ввода с цифровой клавиатурой.</li></ul><p class="plat__src">Источники: Apple HIG, Steppers — developer.apple.com/tutorials/data/design/human-interface-guidelines/steppers.json; NN/g, Input Steppers (https://developer.apple.com/tutorials/data/design/human-interface-guidelines/steppers.json)</p><div class="review__comment-block" data-pat="pat-input-number-12"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div><div data-set="pat-input-number-13" data-kind="body"><div data-part="screen"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="1" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">По умолчанию 1: пустого поля в заказе не бывает</span></div></div></div><div data-part="sheet"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="1" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">По умолчанию 1: пустого поля в заказе не бывает</span></div></div></div><div data-part="body"><div class="pat__phone"><div class="ds-input-number-but-icon" style="width:100%"><span class="ds-input-number-but-icon__label">Количество порций</span><div class="ds-input-number-but-icon__container"><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_less</span></span></span><div class="ds-input-number__frame" style="flex:1"><input type="text" inputmode="numeric" value="1" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;width:100%"></div><span class="ds-input-number-but-icon__button"><span class="ds-input-number-but-icon__icon"><span class="material-icons" style="font-size:24px">expand_more</span></span></span></div><span class="ds-input-number-but-icon__support-text" style="font-size:12px;line-height:16px;display:block">По умолчанию 1: пустого поля в заказе не бывает</span></div></div></div><div data-part="note"><div class="screens__note-head"><h3 class="screens__note-title">Пустое поле и ноль означают разное, а выглядят одинаково</h3><span class="review__row"><button class="review__btn" type="button" data-st="accepted" data-pat="pat-input-number-13"><span class="material-icons">check_circle</span>Одобряем</button><button class="review__btn" type="button" data-st="later" data-pat="pat-input-number-13"><span class="material-icons">schedule</span>Отложить</button><button class="review__btn" type="button" data-st="rejected" data-pat="pat-input-number-13"><span class="material-icons">cancel</span>Не подходит</button><span class="review__sep"></span><button class="review__btn review__btn--clear" type="button" data-pat-clear="pat-input-number-13" title="Убрать мою оценку, комментарий и отметку просмотра у этого паттерна"><span class="material-icons">restart_alt</span>Сбросить</button></span></div><p class="pat__ex-note">Количество приходит со значением по умолчанию (1), а не пустым полем: «не указано» и «ноль» больше не выглядят одинаково.</p><ul class="list"><li>Что происходит: Количество оставили пустым (или «0»), а на кухню уходит «0 порций»; на телефоне разницы между «не указано» и «ноль» не видно, и заказ уходит с нулём.</li><li>Что делать нам: Числовое поле всегда имеет значение по умолчанию (для количества — 1), пустое состояние не допускать; при нуле — предупреждение под полем.</li></ul><p class="plat__src">Источники: IBM Carbon, Number input (usage) — raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/number-input/usage.mdx (https://raw.githubusercontent.com/carbon-design-system/carbon-website/src/pages/components/number-input/usage.mdx)</p><div class="review__comment-block" data-pat="pat-input-number-13"><p class="review__comment-label">Свой комментарий</p><textarea class="review__comment" rows="3" placeholder="Что дополнить или почему паттерн не подходит…"></textarea><div class="review__comment-actions"><span class="review__saved" data-cmt-state title="Комментарий сохраняется сам"></span></div></div></div></div></div>
+  </div>
+
+  <div class="card">
+    <h2>Что меняется на мобиле</h2>
+    <table><tr><th>Что</th><th>Desktop</th><th>Mobile<br><span class="th-sub">рекомендованные</span></th><th class="edit__head"><span>Правка</span><span class="review__saved" data-edits-state title="Значения сохраняются сами"></span></th></tr><tr><td>Высота поля</td><td>48 px (паддинги 12)</td><td>56 px (паддинги 16) — как у поля M</td><td class="edit"><input class="edit__input" type="number" step="1" value="56" data-id="height" data-sel=".ds-input-number__frame" data-css="min-height:@px" aria-label="Высота поля"><input class="edit__input" type="number" step="1" value="16" data-id="pad" data-sel=".ds-input-number__frame" data-css="padding:@px" aria-label="Высота поля"></td></tr><tr><td>Кнопки «+/−»</td><td>Button icon M, 36 × 36</td><td>40 × 40 — по правилам Button icon, плюс тач-зона 48</td><td class="edit"><input class="edit__input" type="number" step="1" value="40" data-id="size-w" data-sel=".ds-input-number-but-icon__button" data-css="width:@px" aria-label="Кнопки «+/−»"><input class="edit__input" type="number" step="1" value="40" data-id="size-h" data-sel=".ds-input-number-but-icon__button" data-css="height:@px" aria-label="Кнопки «+/−»"><input class="edit__input" type="number" step="1" value="48" data-id="touch" data-sel=".ds-input-number-but-icon__button" data-css="min-width:@px; min-height:@px" aria-label="Кнопки «+/−»"></td></tr><tr><td>Кегль ввода</td><td>16 / 24</td><td>16 / 24 px — тот же</td><td class="edit"></td></tr><tr><td>Клавиатура</td><td>обычная</td><td>цифровая: inputmode=&quot;numeric&quot;; type=&quot;number&quot; — только там, где нужны браузерные стрелки</td><td class="edit"></td></tr><tr><td>Цвета, радиус, состояния</td><td>фон #F8F9FC, рамка 1 px, радиус 12</td><td>фон #F8F9FC, рамка 1 px, радиус 12 px — стилевые токены общие</td><td class="edit"></td></tr></table><p class="point" style="margin-top:10px">Правка применяется к правому экрану в блоке «На экране». Левый — значения как рекомендовано для мобилы.</p>
+    <p class="point" style="margin-top:10px">Единственное, что добавляется в разметку, — <code>inputmode</code>: на телефоне сразу открывается цифровая клавиатура. Кнопки «+/−» — инстансы Button icon, их размер на мобиле меняется в его режиме, а не здесь.</p>
+  </div>
+
+  <div class="card" data-fold="input-number-why">
+    <div class="card__head" role="button" tabindex="0" aria-expanded="true">
+      <h2>Почему так</h2><span class="material-icons card__chev">expand_more</span>
+    </div>
+    <div class="card__body">
+      <p class="point">Отдельного компонента «числовое поле» нет ни в MD3, ни в Angular Material, ни в iOS HIG: все три используют обычное текстовое поле (<code>type="number"</code> или text field с number formatter). Поэтому числа наследуются от поля: MD3 — 56 dp с паддингами 16 и кеглем ввода 16; Angular — <code>form-field-container-height</code> 56 при density 0 (шкала до 36 — это плотности). Apple даёт кегль 17 pt для числового ввода и тач-зону 44 pt, а инкремент-кнопки «+/−» есть только у него (Steppers): в MD3 и Angular Material такого контрола нет — там цифры вводит клавиатура. Размеров, специфичных именно для числового поля, нет ни на одной платформе.</p>
+    </div>
+  </div>
+
+  <div class="card" data-fold="input-number-result">
+    <div class="card__head" role="button" tabindex="0" aria-expanded="true">
+      <h2>Итог</h2><span class="material-icons card__chev">expand_more</span>
+    </div>
+    <div class="card__body">
+      <ul class="list"><li>Поле 56 px — то же значение, что у любого поля M (MD3 56 dp, Angular 56 при density 0).</li><li>Кнопки «+/−» 40 × 40 с тач-зоной 48 — растут автоматически: это Button icon размера M.</li><li>Цифровая клавиатура — единственное изменение не про размеры: <code>inputmode</code> в разметке.</li><li><b>Не решено:</b> инкремент-кнопки «+/−» — не платформенный паттерн (только Apple Steppers); у MD3 и Angular Material такого контрола нет. Оставляем как есть, но фиксируем.</li></ul>
+    </div>
+  </div>
+<div class="card">
+  <h2>Найдено в ДС (в библиотеке не правим)</h2>
+  <p><b>box-sizing у кадров и строк.</b> В библиотеке нет <code>box-sizing: border-box</code>, поэтому высота из токена/числа складывалась с паддингами: кадр поля 48 px показывался как 74, кадр textarea 76 как 94, строка списка 68 как 84. В прототипах ДС это лечат на странице (<code>.js-select .ds-select-form__input-frame{box-sizing:border-box;height:48px}</code>) — в каркасе страниц повторено то же для всех таких классов. Библиотеку не правим.</p>
+</div>
+</div>
+<script>
+/* Поля «Правка»: введённое число применяется к компоненту во ВТОРОМ экране блока
+   «На экране» (он помечен data-preview="edit"); первый экран остаётся со
+   значениями как рекомендовано — их и сравниваем. Правило пишется в
+   <style id="live">, поэтому работает и для псевдоэлементов (тач-зона).
+   В шаблоне поля «@» заменяется на введённое число. Пока поле не тронуто,
+   правило не пишется — экраны остаются как есть. */
+(function () {
+  var live = document.getElementById('live');
+  var fields = [].slice.call(document.querySelectorAll('.edit__input'));
+  if (!live || !fields.length) return;
+  var byId = {};
+  fields.forEach(function (f) { if (f.getAttribute('data-id')) byId[f.getAttribute('data-id')] = f; });
+  function rebuild() {
+    var rules = [];
+    fields.forEach(function (f) {
+      if (!f.__touched) return;
+      var v = f.value === '' ? f.getAttribute('value') : f.value;
+      rules.push('[data-mode="mobile"][data-preview="edit"].phone__screen ' + f.getAttribute('data-sel') +
+                 '{' + f.getAttribute('data-css').split('@').join(v) + '}');
+    });
+    live.textContent = rules.join(String.fromCharCode(10));
+  }
+  /* Связанное значение пересчитывается по линейной формуле t = a * v + b
+     (например высота 40 → паддинг 0.5 * 40 - 10 = 10) и сразу видно в поле. */
+  function syncFields(f) {
+    var target = f.getAttribute('data-sync-field');
+    if (!target || !byId[target]) return;
+    var a = parseFloat(f.getAttribute('data-sync-a'));
+    var b = parseFloat(f.getAttribute('data-sync-b'));
+    var v = parseFloat(f.value);
+    if (isNaN(a) || isNaN(v)) return;
+    var t = byId[target];
+    t.value = Math.round((a * v + b) * 100) / 100;
+    t.__touched = true;
+  }
+  fields.forEach(function (f) {
+    f.addEventListener('input', function () {
+      f.__touched = true;
+      syncFields(f);
+      rebuild();
+    });
+  });
+})();
+/* Меню блока «На экране»: «Основные» — дефолтные кнопки на экранах, пункт паттерна —
+   кнопки из его примера (и текст этого паттерна под экранами). Меняем только места
+   с data-buttons и текст; оба экрана получают одно и то же, а правки из 4-й колонки
+   остаются только на правом экране. */
+(function () {
+  var items = [].slice.call(document.querySelectorAll('.screens__item'));
+  if (!items.length) return;
+  var slots = [].slice.call(document.querySelectorAll('[data-buttons]'));
+  var note = document.querySelector('[data-note]');
+  var base = slots.map(function (s) { return s.innerHTML; });
+  var baseNote = note ? note.innerHTML : '';
+  /* У компонентов с примерами-состояниями (галочки, списки, диалоги) кнопок в примере нет:
+     там показываем пример вместо тела экрана — в теле одна вариация компонента, в шторке
+     другая, и шторку не трогаем: компонент должен быть виден в обоих местах. */
+  var bodies = [].slice.call(document.querySelectorAll('.phone__body'));
+  var baseBodies = bodies.map(function (b) { return b.innerHTML; });
+  /* Режим на каждый паттерн свой: он записан в наборе (data-kind). Запасной вариант —
+     если пример-состояние, а тел экранов нет, показываем в кнопках. */
+  var useBody = false;
+  function setMode(kind) { useBody = (kind === 'body'); }
+  function showBody(html) {
+    bodies.forEach(function (b, i) { b.innerHTML = (html === undefined || html === null || html === '') ? baseBodies[i] : html; });
+  }
+  var sets = {}, kinds = {};
+  [].slice.call(document.querySelectorAll('.screens__sets [data-set]')).forEach(function (set) {
+    var parts = {};
+    [].slice.call(set.querySelectorAll('[data-part]')).forEach(function (p) {
+      parts[p.getAttribute('data-part')] = p.innerHTML;
+    });
+    sets[set.getAttribute('data-set')] = parts;
+    kinds[set.getAttribute('data-set')] = set.getAttribute('data-kind') || 'slot';
+  });
+  items.forEach(function (it) {
+    it.addEventListener('click', function () {
+      var set = sets[it.getAttribute('data-view')];
+      items.forEach(function (o) {
+        var on = o === it;
+        o.classList.toggle('screens__item--active', on);
+        o.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      setMode(set ? kinds[it.getAttribute('data-view')] : '');
+      slots.forEach(function (slot, i) {
+        if (useBody) return;
+        var kind = slot.getAttribute('data-buttons');
+        slot.innerHTML = (set && set[kind] !== undefined) ? set[kind] : base[i];
+      });
+      if (note) note.innerHTML = (set && set.note !== undefined) ? set.note : baseNote;
+      showBody(useBody ? (set ? set.body : '') : '');
+    });
+  });
+})();
+/* Открыта внутри оболочки (или любого фрейма) — сообщаем родителю свою высоту и
+   убираем свой нижний отступ. Под file:// оболочка не может заглянуть в этот
+   документ (Chrome считает каждый файл отдельным origin), поэтому высоту она
+   получает сообщением, а не замером. Открытая отдельной вкладкой страница ведёт
+   себя как раньше: ничего не гасит и никому не сообщает. */
+(function () {
+  if (window.parent === window) return;
+  var SLUG = 'input-number';
+  function tame() {
+    var crumb = document.querySelector('.crumbs');
+    if (crumb) crumb.style.display = 'none';
+    if (document.body) document.body.style.paddingBottom = '0';
+    var wrap = document.querySelector('.wrap');
+    if (wrap && wrap.lastElementChild) wrap.lastElementChild.style.marginBottom = '0';
+    /* Свои полосы прокрутки гасим сами: пока страница показывает свою полосу,
+       её ширина 15 px сужает текст, высота считается «с полосой», фрейм
+       подстраивается под неё — и под блоком пояснений остаётся лишний отступ
+       (замер под file://: 69 px вместо 17). Под http то же самое делала оболочка,
+       но она не может заглянуть в документ под file://. */
+    document.documentElement.style.overflow = 'hidden';
+    if (document.body) document.body.style.overflow = 'hidden';
+  }
+  function report() {
+    tame();
+    var wrap = document.querySelector('.wrap');
+    var last = wrap ? wrap.lastElementChild : null;
+    /* Высоту берём только по низу последнего блока. documentElement.scrollHeight
+       тут не годится: он никогда не меньше окна фрейма, поэтому после первой же
+       перестраховки фрейм оставался на 52 px выше содержимого и под блоком
+       пояснений вырастал лишний отступ (замер под file://: 69 px вместо 17). */
+    var bottom = last ? Math.ceil(last.getBoundingClientRect().bottom + (window.scrollY || 0))
+                      : Math.ceil(document.documentElement.scrollHeight);
+    try {
+      parent.postMessage({ ds: 'page-height', slug: SLUG, height: bottom,
+                           full: Math.ceil(document.documentElement.scrollHeight) }, '*');
+    } catch (e) {}
+  }
+  window.addEventListener('load', report);
+  window.addEventListener('resize', report);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(report);
+  [0, 120, 400, 1000, 2000, 4000].forEach(function (t) { setTimeout(report, t); });
+  if (window.ResizeObserver) { try { new ResizeObserver(report).observe(document.body); } catch (e) {} }
+})();
+/* Курсор мыши на мобильных экранах заменён кружком, имитирующим касание пальцем:
+   он идёт за указателем внутри телефона, при нажатии становится плотнее. На тач-
+   устройствах не включается (там настоящий палец). Размер — 44 px. */
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  [].slice.call(document.querySelectorAll('.phone__screen')).forEach(function (screen) {
+    var dot = document.createElement('div');
+    dot.className = 'phone__touch';
+    screen.appendChild(dot);
+    function place(e) {
+      var r = screen.getBoundingClientRect();
+      dot.style.left = (e.clientX - r.left) + 'px';
+      dot.style.top = (e.clientY - r.top) + 'px';
+      dot.style.display = 'block';
+    }
+    screen.addEventListener('pointermove', place);
+    screen.addEventListener('pointerover', place);
+    screen.addEventListener('pointerleave', function () { dot.style.display = 'none'; });
+    screen.addEventListener('pointerdown', function () { dot.classList.add('phone__touch--press'); });
+    screen.addEventListener('pointerup', function () { dot.classList.remove('phone__touch--press'); });
+  });
+})();
+/* ── Ревью страницы: статусы паттернов, свой комментарий, отметки в меню, «просмотрено»
+   и отчёт. Механизм тот же, что в KDS (iiko-ds-prototypes/KDS/ux-proposals.html):
+   решения лежат в localStorage, меню показывает статусы, отчёт скачивается файлом.
+   Ключи хранилища — по компоненту (SLUG). ── */
+(function () {
+  var SLUG = 'input-number';
+  var ROUND = 1;                      /* номер круга ревью: новый круг — новые ключи */
+  var LABEL = { accepted: 'Одобряем', later: 'Отложить', rejected: 'Не подходит' };
+  var ICON = { accepted: 'check_circle', later: 'schedule', rejected: 'cancel' };
+  /* Кто смотрит: у каждого человека свои решения, комментарии, правки и отметки просмотра
+     (имя выбирается в меню компонентов). Один человек — один файл решений, поэтому мнения
+     четырёх дизайнеров и двух ответственных не затирают друг друга. */
+  var PERSON = '';
+  try { PERSON = localStorage.getItem('rec-person') || ''; } catch (e) { PERSON = ''; }
+  function keyOf(what) { return 'rec-' + what + '-' + SLUG + '-v1' + (PERSON ? ':' + PERSON : ''); }
+  var REVIEW = {}, SEEN = {}, EDITS = {};
+  function loadAll() {
+    try { REVIEW = JSON.parse(localStorage.getItem(keyOf('review')) || '{}') || {}; } catch (e) { REVIEW = {}; }
+    try { SEEN = JSON.parse(localStorage.getItem(keyOf('seen')) || '{}') || {}; } catch (e) { SEEN = {}; }
+    try { EDITS = JSON.parse(localStorage.getItem(keyOf('edits')) || '{}') || {}; } catch (e) { EDITS = {}; }
+  }
+  loadAll();
+  function saveReview() { try { localStorage.setItem(keyOf('review'), JSON.stringify(REVIEW)); } catch (e) {} }
+  function saveSeen() { try { localStorage.setItem(keyOf('seen'), JSON.stringify(SEEN)); } catch (e) {} }
+  function saveEdits() { try { localStorage.setItem(keyOf('edits'), JSON.stringify(EDITS)); } catch (e) {} }
+  function entry(id) { return REVIEW[id] || {}; }
+  function compName() { return document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : SLUG; }
+  function noteOfScore() { return document.querySelector('[data-note]'); }
+  function activePat() {
+    var it = document.querySelector('.screens__item--active[data-pat]');
+    return it ? it.getAttribute('data-pat') : '';
+  }
+  /* Меню: иконка статуса, метка комментария, отметка «просмотрено», строка прогресса. */
+  function paintMenu() {
+    var n = { accepted: 0, later: 0, rejected: 0 }, seen = 0, total = 0;
+    [].slice.call(document.querySelectorAll('.screens__item[data-pat]')).forEach(function (it) {
+      var id = it.getAttribute('data-pat'), e = entry(id);
+      total++;
+      if (SEEN[id]) { seen++; it.classList.add('is-viewed'); } else { it.classList.remove('is-viewed'); }
+      var st = it.querySelector('.item__st');
+      if (st) {
+        st.className = 'item__st' + (e.st ? ' is-' + e.st : '');
+        st.innerHTML = e.st ? '<span class="material-icons">' + ICON[e.st] + '</span>' : '';
+      }
+      var cm = it.querySelector('.item__cm');
+      if (cm) cm.style.display = e.note ? '' : 'none';
+      if (e.st) n[e.st]++;
+    });
+    var pr = document.querySelector('[data-rev-progress]');
+    if (pr) pr.innerHTML = 'Просмотрено <b>' + seen + '/' + total + '</b> · ' +
+      '<span class="is-ok"><span class="material-icons">check_circle</span> ' + n.accepted + '</span> · ' +
+      '<span class="is-later"><span class="material-icons">schedule</span> ' + n.later + '</span> · ' +
+      '<span class="is-no"><span class="material-icons">cancel</span> ' + n.rejected + '</span>';
+  }
+  /* Текст паттерна: подсветка выбранного статуса и сохранённый комментарий. */
+  function paintNote() {
+    var note = noteOfScore();
+    if (!note) return;
+    var id = activePat(), e = entry(id);
+    [].slice.call(note.querySelectorAll('.review__btn[data-st]')).forEach(function (b) {
+      b.classList.toggle('is-on', b.getAttribute('data-st') === e.st);
+    });
+    var ta = note.querySelector('.review__comment');
+    if (ta && !ta.__touched) ta.value = e.note || '';
+  }
+  function paint() { paintMenu(); paintNote(); showStates(); postSummary(); }
+  /* Сводка для меню оболочки: сколько паттернов просмотрено и что решено.
+     Идёт с задержкой, чтобы частые перерисовки не спамили родителя. */
+  var sumT = null;
+  function postSummary() {
+    if (sumT) return;
+    sumT = setTimeout(function () {
+      sumT = null;
+      var n = { accepted: 0, later: 0, rejected: 0 }, seen = 0, total = 0;
+      [].slice.call(document.querySelectorAll('.screens__item[data-pat]')).forEach(function (it) {
+        var id = it.getAttribute('data-pat'), e = entry(id);
+        total++;
+        if (SEEN[id]) seen++;
+        if (e.st) n[e.st]++;
+      });
+      try {
+        parent.postMessage({ ds: 'rec-summary', slug: SLUG, total: total, seen: seen,
+                             accepted: n.accepted, later: n.later, rejected: n.rejected }, '*');
+      } catch (e) {}
+    }, 400);
+  }
+  /* Кнопок сохранения нет: и комментарий, и значения колонки «Правка» пишутся сами —
+     через короткую паузу после ввода и сразу при уходе из поля. Пометка «Сохранено»
+     тихо стоит рядом и подсвечивается зелёным в момент записи. */
+  var tmr = {};
+  function mark(el, on) {
+    if (!el) return;
+    el.textContent = on ? 'Сохранено' : '';
+    el.classList.toggle('is-on', !!on);
+    if (!on) return;
+    clearTimeout(el.__t);
+    el.__t = setTimeout(function () { el.classList.remove('is-on'); }, 1800);
+  }
+  function commitComment(block) {
+    if (!block) return;
+    var pid = block.getAttribute('data-pat');
+    var ta = block.querySelector('.review__comment');
+    var e = entry(pid), v = ta ? ta.value.trim() : '';
+    if ((e.note || '') !== v) {
+      REVIEW[pid] = { st: e.st || '', note: v };
+      saveReview(); paintMenu();
+    }
+    mark(block.querySelector('[data-cmt-state]'), true);
+  }
+  function commitEdits() {
+    editRows().forEach(function (r) { EDITS[r.id] = { value: r.value, at: new Date().toISOString() }; });
+    saveEdits();
+    mark(document.querySelector('[data-edits-state]'), true);
+  }
+  function showStates() {
+    var block = noteOfScore() ? noteOfScore().querySelector('.review__comment-block') : null;
+    if (block) mark(block.querySelector('[data-cmt-state]'), true);
+    mark(document.querySelector('[data-edits-state]'), true);
+  }
+  function download(name, text, mime) {
+    var blob = new Blob([text], { type: (mime || 'text/plain') + ';charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+  }
+  function esc(v) {
+    return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  /* Правки 4-й колонки: значения полей (пишутся сами) — уходят в отчёт. */
+  function editRows() {
+    var rows = [];
+    [].slice.call(document.querySelectorAll('.edit__input')).forEach(function (f) {
+      var tr = f.closest('tr');
+      if (!tr) return;
+      var td = tr.querySelectorAll('td');
+      rows.push({
+        id: f.getAttribute('data-id'),
+        what: td[0] ? td[0].textContent.trim() : '',
+        desktop: td[1] ? td[1].textContent.trim() : '',
+        mobile: td[2] ? td[2].textContent.trim() : '',
+        value: f.value
+      });
+    });
+    return rows;
+  }
+  function buildXls() {
+    var rows = '';
+    [].slice.call(document.querySelectorAll('.screens__item[data-pat]')).forEach(function (it) {
+      var e = entry(it.getAttribute('data-pat'));
+      rows += '<tr><td>' + esc(it.querySelector('.item__t').textContent.trim()) + '</td><td>' +
+        esc(e.st ? LABEL[e.st] : 'Не рассмотрено') + '</td><td>' + esc((e.note || '').replace(/\n/g, ' ')) +
+        '</td><td>' + (e.st === 'accepted' ? 'да' : '—') + '</td></tr>';
+    });
+    var er = '';
+    editRows().forEach(function (r) {
+      er += '<tr><td>' + esc(r.what) + '</td><td>' + esc(r.desktop) + '</td><td>' + esc(r.mobile) +
+        '</td><td>' + esc(r.value) + '</td></tr>';
+    });
+    return '<html xmlns:o="urn:schemas-microsoft-com:office:office" ' +
+      'xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+      '<head><meta charset="utf-8"><meta name="ProgId" content="Excel.Sheet"><style>' +
+      'table{border-collapse:collapse;font-family:Calibri,Arial,sans-serif;font-size:11pt}' +
+      'th,td{border:1px solid #c9d1dc;padding:4px 8px;vertical-align:top;text-align:left}' +
+      'th{background:#eef3f9;font-weight:bold}h2{font-family:Calibri,Arial,sans-serif}</style></head><body>' +
+      '<h2>Компонент: ' + esc(document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : SLUG) +
+      ' · ' + new Date().toLocaleString('ru-RU') + '</h2>' +
+      '<table><tr><th>Паттерн</th><th>Решение</th><th>Свой комментарий</th><th>Одобрен</th></tr>' + rows + '</table>' +
+      '<h2>Правки по компоненту (4-я колонка)</h2>' +
+      '<table><tr><th>Что</th><th>Desktop</th><th>Mobile (рекомендованные)</th><th>Правка (значение)</th></tr>' + er + '</table>' +
+      '</body></html>';
+  }
+  document.addEventListener('click', function (ev) {
+    var t = ev.target;
+    var st = t.closest ? t.closest('.review__btn[data-st]') : null;
+    if (st && st.closest('[data-note]')) {
+      var id = st.getAttribute('data-pat');
+      var cur = entry(id);
+      REVIEW[id] = { st: (cur.st === st.getAttribute('data-st') ? '' : st.getAttribute('data-st')), note: cur.note || '' };
+      saveReview(); paint(); return;
+    }
+    var rp = t.closest ? t.closest('[data-reset-patterns]') : null;
+    if (rp) { resetPatterns(); return; }
+    var pc = t.closest ? t.closest('[data-pat-clear]') : null;
+    if (pc) {
+      var pid = pc.getAttribute('data-pat-clear');
+      delete REVIEW[pid];
+      delete SEEN[pid];
+      saveReview(); saveSeen();
+      var nb = noteOfScore() ? noteOfScore().querySelector('.review__comment') : null;
+      if (nb) { nb.value = ''; nb.__touched = false; }
+      paint();
+      return;
+    }
+    var item = t.closest ? t.closest('.screens__item[data-pat]') : null;
+    if (item) {
+      SEEN[item.getAttribute('data-pat')] = 1;
+      saveSeen();
+      setTimeout(function () { paint(); }, 0);
+      return;
+    }
+    var list = document.querySelector('[data-rev-json-list]');
+    if (list && !list.hidden && !t.closest('.json-menu')) list.hidden = true;
+  });
+  /* Отчёт и перенос решений запускает оболочка (кнопки стоят в меню компонентов):
+     она присылает сообщение, страница делает работу и отвечает текстом для строки-подсказки. */
+  function exportXls() { download(SLUG + '.' + (PERSON || 'гость') + '.xls', buildXls(), 'application/vnd.ms-excel'); return 'Отчёт xls скачан (' + (PERSON || 'гость') + ')'; }
+  /* Файл решений одного человека: из таких файлов потом собирается сводная таблица. */
+  function payload() {
+    return {
+      version: 2, round: ROUND, component: SLUG,
+      componentName: document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : SLUG,
+      person: PERSON || 'гость', savedAt: new Date().toISOString(),
+      decisions: REVIEW, seen: SEEN, edits: EDITS
+    };
+  }
+  var K_RE = /^rec-(review|seen|edits)-(.+)-v1(:.*)?$/;
+  function suffix() { return PERSON ? ':' + PERSON : ''; }
+  function normDecisions(src) {
+    var out = {};
+    Object.keys(src || {}).forEach(function (k) {
+      var v = src[k] || {}, o = {};
+      if (v.st === 'accepted' || v.st === 'later' || v.st === 'rejected') o.st = v.st;
+      if (typeof v.note === 'string' && v.note) o.note = v.note;
+      if (o.st || o.note) out[k] = o;
+    });
+    return out;
+  }
+  function normSeen(src) {
+    var out = {};
+    Object.keys(src || {}).forEach(function (k) { if (src[k]) out[k] = 1; });
+    return out;
+  }
+  function normEdits(src) {
+    var out = {};
+    Object.keys(src || {}).forEach(function (k) { if (src[k] && src[k].value !== undefined) out[k] = src[k]; });
+    return out;
+  }
+  /* Все компоненты, по которым у текущего человека что-то есть: ключи хранилища
+     собираем сами, страницы других компонентов для этого не нужны. */
+  function layerOfAll() {
+    var comps = {}, want = suffix(), i, k, m, s2;
+    try {
+      for (i = 0; i < localStorage.length; i++) {
+        k = localStorage.key(i) || '';
+        m = k.match(K_RE);
+        if (!m || (m[3] || '') !== want) continue;
+        s2 = m[2];
+        comps[s2] = comps[s2] || { decisions: {}, seen: {}, edits: {} };
+        try { comps[s2][m[1] === 'review' ? 'decisions' : m[1]] = JSON.parse(localStorage.getItem(k) || '{}') || {}; } catch (e) {}
+      }
+    } catch (e) {}
+    if (!comps[SLUG]) comps[SLUG] = { decisions: REVIEW, seen: SEEN, edits: EDITS };
+    comps[SLUG].componentName = compName();
+    return comps;
+  }
+  function exportJson() {
+    var who = PERSON || 'гость';
+    download(SLUG + '.' + who + '.json', JSON.stringify(payload(), null, 2), 'application/json');
+    return 'Мои решения (' + who + ') по компоненту «' + compName() + '» скачаны файлом';
+  }
+  function exportJsonAll() {
+    var who = PERSON || 'гость', comps = layerOfAll();
+    download('rec-review-all.' + who + '.json', JSON.stringify({
+      version: 3, kind: 'rec-review-all', round: ROUND, person: who,
+      savedAt: new Date().toISOString(), components: comps
+    }, null, 2), 'application/json');
+    return 'Решения (' + who + ') по всем компонентам (' + Object.keys(comps).length + ') скачаны файлом';
+  }
+  /* Загрузка файла: один компонент или сразу все. Кладём в слой ТЕКУЩЕГО человека —
+     так чужой (или свой прежний) файл становится основой, которую можно править точечно. */
+  function importAll(data) {
+    var comps = data.components || {}, want = suffix(), n = 0;
+    Object.keys(comps).forEach(function (s2) {
+      var c = comps[s2] || {};
+      try {
+        localStorage.setItem('rec-review-' + s2 + '-v1' + want, JSON.stringify(normDecisions(c.decisions)));
+        localStorage.setItem('rec-seen-' + s2 + '-v1' + want, JSON.stringify(normSeen(c.seen)));
+        localStorage.setItem('rec-edits-' + s2 + '-v1' + want, JSON.stringify(normEdits(c.edits)));
+        n++;
+      } catch (e) {}
+    });
+    loadAll(); paint();
+    return 'Загружено компонентов: ' + n + ' (слой ' + (PERSON || 'без имени') + ', автор файла: ' + (data.person || '—') + ')';
+  }
+  /* Положить свои решения в репозиторий: сервер пишет _audit/rec/review/<компонент>.<человек>.json.
+     Если страница открыта не через сервер (file://), предложим скачать файл. */
+  function saveToRepo() {
+    if (typeof fetch !== 'function') { exportJsonAll(); return Promise.resolve('Сервер недоступен — файл скачан'); }
+    var who = PERSON || 'гость', comps = layerOfAll(), slugs = Object.keys(comps);
+    var jobs = slugs.map(function (s2) {
+      var c = comps[s2];
+      return fetch('/__rec-review', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          version: 3, round: ROUND, component: s2, componentName: c.componentName || s2,
+          person: who, savedAt: new Date().toISOString(),
+          decisions: c.decisions, seen: c.seen, edits: c.edits
+        })
+      }).then(function (r) { return r.json(); });
+    });
+    return Promise.all(jobs).then(function (res) {
+      var ok = res.filter(function (r) { return r && r.ok; }).length;
+      if (!ok) throw new Error('сервер отказал');
+      var first = (res.filter(function (r) { return r && r.path; })[0] || {}).path || '';
+      return 'Мои решения (' + who + ') записаны: файлов ' + ok + ' из ' + slugs.length +
+             (first ? ', например ' + first : '');
+    }, function () { exportJsonAll(); return 'Сервер не принял — файл скачан'; });
+  }
+  function importJson(text) {
+    var data = JSON.parse(text);
+    if (data && data.components) return importAll(data);
+    REVIEW = normDecisions(data.decisions);
+    EDITS = normEdits(data.edits);
+    SEEN = normSeen(data.seen);
+    saveReview(); saveEdits(); saveSeen(); paint();
+    return 'Решения по компоненту «' + compName() + '» загружены из файла' + (data.person ? ' (автор файла: ' + data.person + ')' : '');
+  }
+  /* Оценки всех паттернов компонента: статусы, комментарии и отметки просмотра.
+     Значения колонки «Правка» — отдельная работа, их не трогаем. */
+  function resetPatterns() {
+    if (!confirm('Сбросить оценки всех паттернов компонента «' + compName() + '»' + (PERSON ? ' (' + PERSON + ')' : '') +
+                 '? Статусы, комментарии и отметки «просмотрено» очистятся. Значения колонки «Правка» останутся.')) return '';
+    REVIEW = {}; SEEN = {};
+    saveReview(); saveSeen();
+    var ta = noteOfScore() ? noteOfScore().querySelector('.review__comment') : null;
+    if (ta) { ta.value = ''; ta.__touched = false; }
+    paint();
+    return 'Оценки паттернов компонента «' + compName() + '» сброшены';
+  }
+  /* Значения колонки «Правка»: поля возвращаются к рекомендованным, живой просмотр чистится. */
+  function resetEdits() {
+    if (!confirm('Сбросить значения колонки «Правка» по компоненту «' + compName() + '»' + (PERSON ? ' (' + PERSON + ')' : '') +
+                 '? Поля вернутся к рекомендованным значениям. Оценки паттернов и комментарии останутся.')) return '';
+    EDITS = {};
+    saveEdits();
+    [].slice.call(document.querySelectorAll('.edit__input')).forEach(function (f) {
+      f.value = f.getAttribute('value') || '';
+      f.__touched = false;
+    });
+    var live = document.getElementById('live');
+    if (live) live.textContent = '';
+    paint();
+    return 'Значения «Правка» по компоненту «' + compName() + '» сброшены';
+  }
+  function setPerson(name) {
+    PERSON = String(name || '').trim();
+    try { localStorage.setItem('rec-person', PERSON); } catch (e) {}
+    loadAll();
+    var ta = noteOfScore() ? noteOfScore().querySelector('.review__comment') : null;
+    if (ta) ta.__touched = false;
+    paint();
+    return PERSON ? 'Решения ' + PERSON : 'Решения без имени';
+  }
+  window.addEventListener('message', function (ev) {
+    var d = ev.data || {};
+    if (d.ds !== 'review') return;
+    if (d.person !== undefined && d.person !== PERSON) {
+      PERSON = String(d.person || '').trim();
+      try { localStorage.setItem('rec-person', PERSON); } catch (e) {}
+      loadAll();
+      var ta0 = noteOfScore() ? noteOfScore().querySelector('.review__comment') : null;
+      if (ta0) ta0.__touched = false;
+      paint();
+    }
+    function done(text) {
+      if (!text) return;
+      try { parent.postMessage({ ds: 'review-done', kind: d.kind, text: text }, '*'); } catch (e) {}
+    }
+    try {
+      if (d.kind === 'xls') done(exportXls());
+      else if (d.kind === 'json') done(exportJson());
+      else if (d.kind === 'json-all') done(exportJsonAll());
+      else if (d.kind === 'import-text') done(importJson(d.text || '{}'));
+      else if (d.kind === 'reset') done(resetEdits());
+      else if (d.kind === 'person') done(setPerson(d.person));
+      else if (d.kind === 'save-repo') saveToRepo().then(done, function (e) { done('Не получилось: ' + e.message); });
+    } catch (e) { done('Не получилось: ' + e.message); }
+  });
+  document.addEventListener('input', function (ev) {
+    var t = ev.target;
+    if (!t || !t.classList) return;
+    if (t.classList.contains('review__comment')) {
+      t.__touched = true;
+      var block = t.closest('.review__comment-block');
+      mark(block ? block.querySelector('[data-cmt-state]') : null, false);
+      clearTimeout(t.__t);
+      t.__t = setTimeout(function () { commitComment(block); }, 700);
+      return;
+    }
+    if (t.classList.contains('edit__input')) {
+      mark(document.querySelector('[data-edits-state]'), false);
+      clearTimeout(tmr.edits);
+      tmr.edits = setTimeout(commitEdits, 700);
+    }
+  });
+  /* Уход из поля (blur не всплывает — слушаем на перехвате): пишем сразу, без паузы. */
+  document.addEventListener('blur', function (ev) {
+    var t = ev.target;
+    if (!t || !t.classList) return;
+    if (t.classList.contains('review__comment')) {
+      clearTimeout(t.__t);
+      commitComment(t.closest('.review__comment-block'));
+      return;
+    }
+    if (t.classList.contains('edit__input')) { clearTimeout(tmr.edits); commitEdits(); }
+  }, true);
+  var active = document.querySelector('.screens__item--active[data-pat]');
+  if (active) { SEEN[active.getAttribute('data-pat')] = 1; saveSeen(); }
+  paint();
+})();
+</script>
+<script>
+/* Складные карточки: «Почему так», «Итог», «Общее для всех компонентов».
+   Заголовок нажимается, состояние запоминается (по умолчанию свёрнуто). */
+(function () {
+  function setFold(c, open) {
+    c.classList.toggle('is-collapsed', !open);
+    var h = c.querySelector('.card__head');
+    if (h) h.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  [].slice.call(document.querySelectorAll('.card[data-fold]')).forEach(function (c) {
+    var id = 'rec-fold:' + c.getAttribute('data-fold'), saved = null;
+    try { saved = localStorage.getItem(id); } catch (e) {}
+    setFold(c, saved === null ? false : saved === '1');
+    var head = c.querySelector('.card__head');
+    if (!head) return;
+    function toggle() {
+      var open = c.classList.contains('is-collapsed');
+      setFold(c, open);
+      try { localStorage.setItem(id, open ? '1' : '0'); } catch (e) {}
+    }
+    head.addEventListener('click', toggle);
+    head.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
