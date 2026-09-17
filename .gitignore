@@ -14,3 +14,24 @@
 # ── Мусор Python и кэши ──
 __pycache__/
 *.pyc
+
+# ── Рабочий мусор: пробы, снимки, бэкапы ──
+_crops/
+_probe.*
+*.log
+*.tmp
+*.bak
+*.orig
+*.rej
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Сырьё, из которого собираются platform/*.json (пересобирается скриптами _src) ──
+_audit/platform/_raw/
+
+
+# ── Мобильный слой: пока ведём локально, в репозиторий не выгружаем ──
+/iiko-ds-mobile/

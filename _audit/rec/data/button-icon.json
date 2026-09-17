@@ -1,334 +1,334 @@
 {
- "slug": "button-icon",
- "component": "Button icon",
- "ds_page": "Button-Icon_DS",
- "desc_ru": "Кнопка с одной иконкой без подписи: действия в строках таблиц, шапках блоков, панелях инструментов.",
- "category_ru": "Только размеры",
- "category_note_ru": "состав и поведение те же, отличаются размеры",
- "summary_ru": "На мобиле иконка-кнопка любого размера — 40 × 40 (дефолт MD3), плюс тач-зона 48. Десктопные 36 / 28 / 24 поднимаются до 40. Иконка внутри без изменений.",
- "panels": {
-  "desktop": {
-   "sub_ru": "кнопка 36 × 36 px"
+  "slug": "button-icon",
+  "component": "Button icon",
+  "ds_page": "Button-Icon_DS",
+  "desc_ru": "Кнопка с одной иконкой без подписи: действия в строках таблиц, шапках блоков, панелях инструментов.",
+  "category_ru": "Только размеры",
+  "category_note_ru": "состав и поведение те же, отличаются размеры",
+  "summary_ru": "На мобиле иконка-кнопка любого размера — 40 × 40 (дефолт MD3), плюс тач-зона 48. Десктопные 36 / 28 / 24 поднимаются до 40. Иконка внутри без изменений.",
+  "panels": {
+    "desktop": {
+      "sub_ru": "кнопка 36 × 36 px"
+    },
+    "mobile": {
+      "sub_ru": "кнопка 40 × 40 px"
+    }
   },
-  "mobile": {
-   "sub_ru": "кнопка 40 × 40 px"
-  }
- },
- "changes": [
-  {
-   "what": "Размер кнопки",
-   "desktop": "36 × 36 px",
-   "mobile": "40 × 40 px",
-   "edit": [
+  "changes": [
     {
-     "id": "width",
-     "v": 40,
-     "sel": ".ds-btn-icon",
-     "css": "width:@px"
+      "what": "Размер кнопки",
+      "desktop": "36 × 36 px",
+      "mobile": "40 × 40 px",
+      "edit": [
+        {
+          "id": "width",
+          "v": 40,
+          "sel": ".ds-btn-icon",
+          "css": "width:@px"
+        },
+        {
+          "id": "height",
+          "v": 40,
+          "sel": ".ds-btn-icon",
+          "css": "min-height:@px",
+          "sync": {
+            "field": "pad-v",
+            "a": 0.5,
+            "b": -10
+          }
+        }
+      ]
     },
     {
-     "id": "height",
-     "v": 40,
-     "sel": ".ds-btn-icon",
-     "css": "height:@px",
-     "sync": {
-      "field": "pad-v",
-      "a": 0.5,
-      "b": -10
-     }
-    }
-   ]
-  },
-  {
-   "what": "Паддинги (верт. / гор.)",
-   "desktop": "8 / 8",
-   "mobile": "10 / 10",
-   "edit": [
-    {
-     "id": "pad-v",
-     "v": 10,
-     "sel": ".ds-btn-icon",
-     "css": "padding-top:@px; padding-bottom:@px",
-     "sync": {
-      "field": "height",
-      "a": 2,
-      "b": 20
-     }
+      "what": "Паддинги (верт. / гор.)",
+      "desktop": "8 / 8",
+      "mobile": "10 / 10",
+      "edit": [
+        {
+          "id": "pad-v",
+          "v": 10,
+          "sel": ".ds-btn-icon",
+          "css": "padding-top:@px; padding-bottom:@px",
+          "sync": {
+            "field": "height",
+            "a": 2,
+            "b": 20
+          }
+        },
+        {
+          "id": "pad-h",
+          "v": 10,
+          "sel": ".ds-btn-icon",
+          "css": "padding-left:@px; padding-right:@px"
+        }
+      ]
     },
     {
-     "id": "pad-h",
-     "v": 10,
-     "sel": ".ds-btn-icon",
-     "css": "padding-left:@px; padding-right:@px"
-    }
-   ]
-  },
-  {
-   "what": "Тач-зона нажатия",
-   "desktop": "по контуру кнопки",
-   "mobile": "48 px — MD3 max(48px,100%), Angular icon-button-touch-target 48",
-   "edit": [
-    {
-     "id": "touch",
-     "v": 48,
-     "sel": ".ds-btn-icon::after",
-     "css": "min-width:@px; min-height:@px"
-    }
-   ]
-  },
-  {
-   "what": "Иконка",
-   "desktop": "20 px",
-   "mobile": "20 px — без изменений",
-   "edit": [
-    {
-     "id": "icon",
-     "v": 20,
-     "sel": ".ds-btn-icon__icon",
-     "css": "width:@px; height:@px"
-    }
-   ]
-  },
-  {
-   "what": "Зона нажатия",
-   "desktop": "по кнопке (36 × 36)",
-   "mobile": "48 × 48 px отдельным слоем; кнопка не растягивается",
-   "edit": [
-    {
-     "id": "layer-w",
-     "v": 48,
-     "sel": ".ds-btn-icon::after",
-     "css": "width:@px"
+      "what": "Тач-зона нажатия",
+      "desktop": "по контуру кнопки",
+      "mobile": "48 px — MD3 max(48px,100%), Angular icon-button-touch-target 48",
+      "edit": [
+        {
+          "id": "touch",
+          "v": 48,
+          "sel": ".ds-btn-icon::after",
+          "css": "min-width:@px; min-height:@px"
+        }
+      ]
     },
     {
-     "id": "layer-h",
-     "v": 48,
-     "sel": ".ds-btn-icon::after",
-     "css": "height:@px"
+      "what": "Иконка",
+      "desktop": "20 px",
+      "mobile": "20 px — без изменений",
+      "edit": [
+        {
+          "id": "icon",
+          "v": 20,
+          "sel": ".ds-btn-icon__icon",
+          "css": "width:@px; height:@px"
+        }
+      ]
+    },
+    {
+      "what": "Зона нажатия",
+      "desktop": "по кнопке (36 × 36)",
+      "mobile": "48 × 48 px отдельным слоем; кнопка не растягивается",
+      "edit": [
+        {
+          "id": "layer-w",
+          "v": 48,
+          "sel": ".ds-btn-icon::after",
+          "css": "width:@px"
+        },
+        {
+          "id": "layer-h",
+          "v": 48,
+          "sel": ".ds-btn-icon::after",
+          "css": "height:@px"
+        }
+      ]
+    },
+    {
+      "what": "Наведение (hover)",
+      "desktop": "есть — подсветка при наведении курсора",
+      "mobile": "нет — на телефоне только нажатие (press)"
+    },
+    {
+      "what": "Размеры",
+      "desktop": "M (36), S (28), XS (24)",
+      "mobile": "только M (40)"
+    },
+    {
+      "what": "Стили, типы, состояния",
+      "desktop": "Accent / Neutral / Positive / Negative / Warning · Filled / Outlined / Text",
+      "mobile": "те же"
     }
-   ]
-  },
-  {
-   "what": "Наведение (hover)",
-   "desktop": "есть — подсветка при наведении курсора",
-   "mobile": "нет — на телефоне только нажатие (press)"
-  },
-  {
-   "what": "Размеры",
-   "desktop": "M (36), S (28), XS (24)",
-   "mobile": "только M (40)"
-  },
-  {
-   "what": "Стили, типы, состояния",
-   "desktop": "Accent / Neutral / Positive / Negative / Warning · Filled / Outlined / Text",
-   "mobile": "те же"
-  }
- ],
- "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Остальное не меняется: та же группа иконка-кнопок в панели инструментов, те же состояния disabled и loading. Обязательным остаётся правило платформ: у кнопки без подписи должна быть осмысленная текстовая метка (aria-label) — иначе действие непонятно скринридеру.</p>",
- "why_ru": "Палец вместо курсора. Material Design 3 и Angular Material дают для иконка-кнопки один размер — 40 × 40 px, и отдельную зону нажатия 48 × 48 px; iOS просит хит-регион не меньше 44 × 44 pt. Кнопок меньше 40 px платформы не описывают: у Angular их плотные варианты (32, 28, 24 px) идут только вместе с отключённой зоной нажатия. Поэтому на мобиле остаётся M — 40 px, а вокруг мелких кнопок делается отдельная зона нажатия, сама кнопка не растягивается. Состояние «при наведении» на телефоне не показывают — там есть только нажатие.",
- "why_sources": [],
- "result_html": "<ul class=\"list\"><li>На мобиле контейнер у всех размеров 40 × 40 — это дефолт MD3 (<code>--md-filled-icon-button-container-width/height: 40px</code>) и Angular при density 0.</li><li>Плотные 28 и 24 несовместимы с платформами: Angular описывает их только вместе с выключенным тач-таргетом (при density ≤ −2 <code>icon-button-touch-target-display: none</code>) — на мобиле такие размеры не берём.</li><li>Тач-зона 48 × 48 — невидимый слой: MD3 <code>max(48px, 100%)</code>, Angular <code>icon-button-touch-target-size: 48px</code>, хит-регион iOS 44 перекрывается.</li><li>Иконка внутри своя по размеру: 20 (M, S) и 16 (XS) — не менялась.</li></ul>",
- "examples": [
-  {
-   "title_ru": "Основные действия",
-   "html": "<button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Добавить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button>"
-  },
-  {
-   "title_ru": "Состояния",
-   "html": "<button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--negative ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--outlined\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Добавить\" disabled><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button>"
-  },
-  {
-   "title_ru": "Группа в панели инструментов",
-   "html": "<span class=\"ds-btn-icon-group\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Добавить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button></span>"
-  },
-  {
-   "title_ru": "Размеры: M, S и XS",
-   "html": "<div style=\"display:flex;gap:16px;align-items:center;flex-wrap:wrap\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"M\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"S\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--xs ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"XS\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></div>",
-   "stack": true
-  }
- ],
- "found_html": "<ul class=\"list\"><li>У Button icon блок состояний стоит в файле <b>выше</b> блока «Стиль × Тип» (<code>button-icon.css</code>: <code>:disabled</code> — строки 62–79, <code>--accent.ds-btn-icon--filled</code> — с 93-й). Специфичность у обоих правил одинаковая (0,2,0), поэтому по порядку побеждает стиль: замер 12.09.2026 — недоступная кнопка <code>background #448AFF</code>, <code>color #FFFFFF</code>, то есть не отличается от активной. У Button те же правила стоят в конце файла и состояние работает. Внутри панелей каркас возвращает состояниям их токены; библиотека не правится.</li></ul>",
- "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"arrow_back\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">arrow_back</span></span></button><span class=\"phone__title\">Заказы</span><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"search\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">search</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"more_vert\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">more_vert</span></span></button></div><div class=\"phone__body\"><div class=\"phone__chips\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Все</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Открытые</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Закрытые</span></div></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 4</span><span class=\"ds-list-item__text\">Стейк рибай · 1 480 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:20</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">local_bar</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 12</span><span class=\"ds-list-item__text\">Лимонад · 320 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">11:05</span></div></div></div></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Действия</p><p class=\"phone__sheet-text\">Иконка-кнопки встают в строку</p><div class=\"phone__row\">Правка позиции</div><div class=\"phone__row\">Добавление позиции</div><div class=\"phone__row\">Удаление позиции</div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div></div></div></div><p class=\"phone__caption\">Навигация в шапке: возврат, поиск и меню — иконка-кнопки; в шторке те же строки без них</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"arrow_back\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">arrow_back</span></span></button><span class=\"phone__title\">Заказы</span><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"search\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">search</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"more_vert\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">more_vert</span></span></button></div><div class=\"phone__body\"><div class=\"phone__chips\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Все</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Открытые</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Закрытые</span></div></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 4</span><span class=\"ds-list-item__text\">Стейк рибай · 1 480 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:20</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">local_bar</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 12</span><span class=\"ds-list-item__text\">Лимонад · 320 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">11:05</span></div></div></div></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Действия</p><p class=\"phone__sheet-text\">Иконка-кнопки встают в строку</p><div class=\"phone__row\">Правка позиции</div><div class=\"phone__row\">Добавление позиции</div><div class=\"phone__row\">Удаление позиции</div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
- "platform_notes_ru": [
-  {
-   "title": "Material",
-   "items": [
-    "Контейнер 40 × 40 dp и иконка 24 dp — сходятся MD3 и Angular Material (Angular: icon-button-icon-size: 24px, форма corner-full).",
-    "Тач-таргет 48 dp задан явно: Material Web — «height: max(48px, 100%); width: max(48px, 100%)», Angular — icon-button-touch-target-size: 48px (только на плотностях 0 и −1).",
-    "Размерная шкала MD3 (XS 32 / S 40 / M 56 / L 96 / XL 136 dp) есть только в токенах и не выбирается ни в одном веб- или Angular-API.",
-    "Плотности Angular −4 и −5 (32 / 24 dp) выключают тач-таргет целиком — как мобильный размер их брать нельзя (button-icon.json)."
-   ]
-  },
-  {
-   "title": "iOS HIG",
-   "items": [
-    "Компонента «icon button» в HIG нет: ближайший — image button (иконка или символ без текста).",
-    "Числа: хит-регион 44 × 44 pt (в visionOS 60 × 60), паддинг вокруг картинки ≈ 10 px (macOS). Высота контейнера не задана.",
-    "Иконка без текста обязана иметь осмысленную подпись — отсюда обязательный aria-label (Angular: «If a toggle contains only an icon, you should specify a meaningful label via aria-label»)."
-   ]
-  }
- ],
- "logic_ru": [
-  "40 — это размер контейнера, а не тач-цель: 40 и 48 — разные числа, и увеличивать надо второе, не растягивая саму иконку.",
-  "Меньше 40 на телефоне не годится: палец шире иконки, а Angular на плотностях −2…−5 гасит тач-таргет вообще.",
-  "Иконку в шапке и в строке списка проверяем отдельно: в шапке она часть навигации, в строке — действие над объектом, отступы вокруг разные.",
-  "Кнопка без подписи существует только для скринридера — если aria-label нет, для незрячего её нет вообще.",
-  "В ряду иконки-кнопки ставим не ближе 8 px друг к другу: при контейнере 40 px тач-слои 48 уже перекрываются."
- ],
- "patterns_ru": [
-  {
-   "title": "Иконка без подписи должна читаться однозначно",
-   "items": [
-    "Что происходит: смысл иконки неочевиден («три точки», «звёздочка», «фильтр»), подписи нет, и пользователь не знает, что произойдёт после нажатия.",
-    "Что делают системы: IBM Carbon: «In an icon only button, that has no label, the icon must accurately represent what the button does.»; Apple HIG называет такой элемент image button — «An image button appears in a view and displays an image, symbol, or icon.»",
-    "Что делать нам: разрешать только иконки из утверждённого набора ДС, требовать aria-label и подпись-подсказку при долгом нажатии; «⋯» в ДС всегда означает «остальные действия»."
-   ],
-   "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Остальные действия: удалить, печать, отправить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_horiz</span></span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">more_horiz</span><span class=\"ds-btn__label\">Ещё</span></button></div>",
-   "example_ru": "Разрешены только однозначные иконки: «карандаш» — правка, «⋯» — остальные действия, у каждой есть aria-label; если смысл не читается, та же иконка идёт с подписью."
-  },
-  {
-   "title": "Контейнер 40 px, а палец — 48 px",
-   "items": [
-    "Что происходит: иконка-кнопка 40×40 в шапке стоит вплотную к соседней, и тапы попадают не туда, особенно при работе одной рукой.",
-    "Что делают системы: в MD3 state layer 40 px и иконка 24 px, но тач-цель больше — «height: max(48px, 100%); width: max(48px, 100%);»; Angular Material: «icon-button-touch-target-size: 48px»; Apple: «a button needs a hit region of at least 44x44 pt — in visionOS, 60x60 pt».",
-    "Что делать нам: контейнер 40 px, тач-зона 48 px, паддинг между иконками не меньше 8 px; в плотных таблицах не опускать зону ниже 44 px."
-   ],
-   "src": "Источники: Material Design 3 · Icon button (https://raw.githubusercontent.com/material-components/material-web/main/iconbutton/internal/_shared.scss) · Angular Material · Icon button tokens (https://raw.githubusercontent.com/angular/components/main/src/material/button/_m3-icon-button.scss) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Добавить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button></span></div>",
-   "example_ru": "Контейнер иконки 40 px, зона нажатия — пунктир 48 × 48, между иконками 20 px: тап одной рукой попадает в нужную."
-  },
-  {
-   "title": "Плотность уменьшает и цель тоже",
-   "items": [
-    "Что происходит: чтобы «всё влезло», в шапке включают компактную плотность, иконка-кнопка становится 32 px, и по ней перестаёт попадать палец.",
-    "Что делают системы: Angular Material даёт шкалу плотности «icon-button-state-layer-size: list.nth((40px, 36px, 32px, 28px, 24px, 24px), $index)» и предупреждает: «The size caps out at 24px, because anything lower will be smaller than the icon.»",
-    "Что делать нам: разрешить плотности только 40 / 36 / 32 px и всегда держать тач-зону 48 px; в мобильном режиме плотность не применять вовсе."
-   ],
-   "src": "Источники: Angular Material · Icon button tokens (https://raw.githubusercontent.com/angular/components/main/src/material/button/_m3-icon-button.scss) · Material Design 3 · Icon button (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon-button.md)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"flex-direction:column;align-items:stretch\"><div class=\"pat__phone-row\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Правка, 40 px\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Правка, 36 px\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--xs ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Правка, 32 px\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></span></div></div>",
-   "example_ru": "Плотности 40 / 36 / 32 px, а зона нажатия у всех трёх 48 × 48: ниже 24 px иконка уже не читается, в мобильном режиме плотность не применяем."
-  },
-  {
-   "title": "Сколько иконок в шапке",
-   "items": [
-    "Что происходит: в шапке пять иконок, они наезжают друг на друга и на заголовок, и непонятно, какое действие главное.",
-    "Что делают системы: Carbon: «Each page should have only one primary button. Any remaining calls to action should be represented as lower emphasis buttons.»; Apple советует кнопки в тулбаре оформлять отдельным элементом тулбара, а не набором иконок подряд.",
-    "Что делать нам: в шапке максимум две иконки-кнопки (одно действие плюс «⋯»), остальное — под «⋯» или в шторке; иконка-кнопка не заменяет главную кнопку формы."
-   ],
-   "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Фильтр\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_list</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Остальные действия: печать, отменить, отправить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></div>",
-   "example_ru": "В шапке максимум две иконки — одно действие плюс «⋯»: пять иконок подряд наезжают друг на друга и на заголовок."
-  },
-  {
-   "title": "Состояние «включено» и загрузка",
-   "items": [
-    "Что происходит: переключённое состояние показывают только цветом, а во время загрузки иконка превращается в спиннер другого размера и кнопка «прыгает».",
-    "Что делают системы: в MD3 состояние переключается атрибутом у той же кнопки — «toggle-состояние через атрибут toggle + слот slot=selected»; Apple: «You can configure an image button to behave like a push button, toggle, or pop-up button.»",
-    "Что делать нам: включённое состояние — заливка плюс aria-pressed, а не только цвет; загрузка — в контейнере того же размера, кнопка блокируется и её состояние объявляется текстом «Загрузка»."
-   ],
-   "src": "Источники: Material Design 3 · Icon button (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon-button.md) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Избранное, включено\" aria-pressed=\"true\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">star</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Загрузка\" disabled><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">refresh</span></span></button></div>",
-   "example_ru": "Включённое состояние — заливка плюс aria-pressed, во время загрузки иконка недоступна (имя «Загрузка»): контейнер того же размера 40 px, кнопка не прыгает."
-  },
-  {
-   "title": "Иконка без подписи читается однозначно",
-   "items": [
-    "Что происходит: иконка «карандаш» на 375 px означает то правку, то «составить заказ», подписи нет, и человек не знает, что произойдёт после тапа.",
-    "Что делают системы: IBM Carbon требует однозначности: «In an icon only button, that has no label, the icon must accurately represent what the button does.»",
-    "Что делать нам: допускаем только иконочные кнопки из утверждённого набора ДС, у каждой обязательное доступное имя (aria-label); спорный смысл получает кнопку с подписью."
-   ],
-   "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё: остальные действия\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></div>",
-   "example_ru": "Только однозначные иконки из набора ДС: «карандаш» — правка, «корзина» — удаление, «⋯» — остальное, у каждой есть aria-label."
-  },
-  {
-   "title": "Иконочные кнопки — редкость",
-   "items": [
-    "Что происходит: на одном экране пять иконок без текста, и человек не помнит их значений — особенно в шапке и в строке списка.",
-    "Что делают системы: IBM Carbon, опираясь на исследование Wiedenbeck (1999), просит не увлекаться: «Icon only buttons should be used sparingly. “For most situations, users learn correct interpretations better with text alone than with icons alone.”»",
-    "Что делать нам: иконочными оставляем 1–2 действия с общеизвестным смыслом (закрыть, ещё, избранное), остальным в шапке и в списках даём подпись."
-   ],
-   "src": "Источники: IBM Carbon · Button, по исследованию Wiedenbeck (1999) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
-   "example_html": "<div class=\"pat__phone\"><div class=\"pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button></div><div class=\"pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">edit</span><span class=\"ds-btn__label\">Редактировать</span></button></div></div>",
-   "example_ru": "Две иконки-кнопки в строке и та же правка кнопкой с подписью: где смысл не очевиден, подпись обязательна."
-  },
-  {
-   "title": "Иконка 24 внутри цели 48",
-   "items": [
-    "Что происходит: рисунок иконки 24 px, и человек целится ровно в него — при работе одной рукой тап уходит в соседний элемент.",
-    "Что делают системы: справочник Google по доступности Android описывает это так: «An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target.»",
-    "Что делать нам: рисунок остаётся 24 px, а нажимаемая область — 48 × 48 dp / 44 × 44 pt за счёт паддинга контейнера; между соседними иконками не меньше 8 px."
-   ],
-   "src": "Источники: Google Android Accessibility · Touch target size (https://support.google.com/accessibility/android/answer/7101858)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Добавить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button></span></div>",
-   "example_ru": "Рисунок иконки 24 px внутри зоны нажатия 48 × 48 (пунктир): палец попадает в кнопку, а не в соседнюю."
-  },
-  {
-   "title": "Мелкий крестик не нажать",
-   "items": [
-    "Что происходит: у подсказки крестик-закрытие нарисован мелким, а рядом стоит основное действие — промах по крестику попадает в соседнюю кнопку.",
-    "Что делают системы: разбор NN/g приводит это на примере Instagram для iOS: «For example, on Instagram, the buttons to dismiss a follow suggestion were too small (only 2mm — 0.08in — wide), so even though they are far enough from the Follow buttons (about 2mm of spacing — the often-recommended minimum), they are still hard to select.»",
-    "Что делать нам: у закрывающей иконки цель не меньше 48 px, между ней и соседним действием минимум 8 px, компактные размеры S и XS для крестика на телефоне не берём."
-   ],
-   "src": "Источники: Nielsen Norman Group · Touch Targets on Touchscreens, кейс Instagram для iOS (https://www.nngroup.com/articles/touch-target-size/)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Закрыть подсказку\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\" style=\"flex:0 0 auto\"><span class=\"ds-btn__label\">Подписаться</span></button></div>",
-   "example_ru": "Крестик получает зону 48 × 48 и отступ от «Подписаться»: как в разборе Instagram, 2 мм на палец не хватает."
-  },
-  {
-   "title": "Подсказка обязательна для иконки",
-   "items": [
-    "Что происходит: иконочная кнопка без подписи и без подсказки — значение угадывается, а на тач-экране hover-подсказки нет вовсе.",
-    "Что делают системы: IBM Carbon настаивает на подсказке всегда: «Regardless of how recognizable an icon may or may not be, or whether that action lies within the universal actions list, a tooltip is always required with text explaining what the icon button would do if clicked.»",
-    "Что делать нам: у каждой иконочной кнопки — доступное имя и текст подсказки (в ДС это aria-label плюс title), причём на мобиле текст должен быть доступен и без наведения."
-   ],
-   "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Печать пречека\" title=\"Печать пречека\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Отправить заказ\" title=\"Отправить заказ\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">send</span></span></button></span></div>",
-   "example_ru": "У иконочных кнопок есть и title, и aria-label: что произойдёт по нажатию, понятно и без наведения."
-  },
-  {
-   "title": "Иконка молчит для скринридера",
-   "items": [
-    "Что происходит: иконочная кнопка объявляется скринридером без имени — просто «кнопка», и незрячий пользователь не знает, что она делает.",
-    "Что делают системы: Angular Material формулирует это про иконки: «Similar to an `<img>` element, an icon alone does not convey any useful information for a screen-reader user.»",
-    "Что делать нам: имя задаём на самой кнопке (aria-label), а не только на рисунке; декоративную иконку внутри кнопки с подписью скрываем от скринридера как aria-hidden."
-   ],
-   "src": "Источники: Angular Material · Icon (https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Фильтр\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_list</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\" style=\"flex:0 0 auto\"><span class=\"ds-btn__icon material-icons\">filter_list</span><span class=\"ds-btn__label\">Фильтр</span></button></div>",
-   "example_ru": "Слева — иконочная кнопка с именем «Фильтр», справа — та же функция с видимой подписью: без aria-label скринридер читает просто «кнопка»."
-  },
-  {
-   "title": "Иконка без фона: куда попадать",
-   "items": [
-    "Что происходит: в шапке иконочные кнопки без подложки («карандаш», «⋯»), видимый размер 24 px, границы нажатия ничем не показаны; палец бьёт в промежуток между иконками, и ничего не происходит.",
-    "Что делают системы: Apple описывает image button — «An image button's edges define its clickable area even when they aren't visible. Including padding ensures that a click registers correctly even if it's not precisely within the image.»",
-    "Что делать нам: у иконочной кнопки в ДС жёсткая цель 48 × 48 px даже при прозрачном фоне, зазор между соседними кнопками не меньше 8 px, а при нажатии появляется заливка-подложка — тогда видно, что тап попал."
-   ],
-   "src": "Источники: Apple HIG · Buttons (image buttons) (https://developer.apple.com/design/human-interface-guidelines/buttons)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Избранное, включено\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">star</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё действие\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span></div>",
-   "example_ru": "У иконочной кнопки без подложки цель всё равно 48 × 48 (пунктир) с зазором 8 px, а на нажатие отвечает заливка — видно, что тап попал."
-  },
-  {
-   "title": "Кнопки в шапке уезжают при прокрутке",
-   "items": [
-    "Что происходит: при прокрутке большая шапка сворачивается в компактную, иконочные кнопки съезжают на 30–50 px; человек, привыкший к их месту, попадает пальцем в другую иконку или в заголовок.",
-    "Что делают системы: Apple делает это осознанным приёмом и описывает его как ориентир для человека — «By default, a large title transitions to a standard title as people begin scrolling the content, and transitions back to large when people scroll to the top, reminding them of their current location.»",
-    "Что делать нам: на экранах с действиями в шапке высоту шапки не меняем при скролле — либо фиксированная шапка, либо первым уезжает заголовок, а иконки остаются в той же точке; «разъезжающуюся» большую шапку в мобильном слое не используем."
-   ],
-   "src": "Источники: Apple HIG · Toolbars (https://developer.apple.com/design/human-interface-guidelines/toolbars)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:space-between\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Назад\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_back</span></span></button></span><span style=\"font:500 16px Roboto\">Заказы смены</span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Остальные действия\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span></div>",
-   "example_ru": "Шапка фиксированной высоты: при прокрутке иконки остаются на своих местах, а не съезжают на 30–50 px вместе с большой шапкой."
-  },
-  {
-   "title": "Свайп от края вместо «назад»",
-   "items": [
-    "Что происходит: видимую кнопку «назад» убрали, оставив системный свайп от левого края; в той же зоне начинается полоса чипов или карусель, и жест то возвращает назад, то прокручивает содержимое.",
-    "Что делают системы: Apple требует оставлять видимую кнопку — «people expect to find a Back button in a top toolbar that lets them return to the previous view with a single tap», и добавляет жест только как ускорение: «many apps also offer a shortcut gesture — such as swiping from the side of a window or touchscreen — while continuing to provide the Back button.»",
-    "Что делать нам: иконочная кнопка «назад» остаётся в шапке всегда, свайп от края — только ускорение; интерактив (чипы, вкладки, карусель) не ставим в 20 px от левого края, иначе жест конфликтует."
-   ],
-   "src": "Источники: Apple HIG · Gestures (https://developer.apple.com/design/human-interface-guidelines/gestures)",
-   "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:space-between\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Назад\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_back</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div>",
-   "example_ru": "Кнопка «назад» остаётся видимой в шапке, свайп от края — только ускорение; прокручиваемого ряда в 20 px от левого края нет."
-  }
- ]
+  ],
+  "behaviour_html": "<p class=\"point\" style=\"margin-top:10px\">Остальное не меняется: та же группа иконка-кнопок в панели инструментов, те же состояния disabled и loading. Обязательным остаётся правило платформ: у кнопки без подписи должна быть осмысленная текстовая метка (aria-label) — иначе действие непонятно скринридеру.</p>",
+  "why_ru": "Палец вместо курсора. Material Design 3 и Angular Material дают для иконка-кнопки один размер — 40 × 40 px, и отдельную зону нажатия 48 × 48 px; iOS просит хит-регион не меньше 44 × 44 pt. Кнопок меньше 40 px платформы не описывают: у Angular их плотные варианты (32, 28, 24 px) идут только вместе с отключённой зоной нажатия. Поэтому на мобиле остаётся M — 40 px, а вокруг мелких кнопок делается отдельная зона нажатия, сама кнопка не растягивается. Состояние «при наведении» на телефоне не показывают — там есть только нажатие.",
+  "why_sources": [],
+  "result_html": "<ul class=\"list\"><li>На мобиле контейнер у всех размеров 40 × 40 — это дефолт MD3 (<code>--md-filled-icon-button-container-width/height: 40px</code>) и Angular при density 0.</li><li>Плотные 28 и 24 несовместимы с платформами: Angular описывает их только вместе с выключенным тач-таргетом (при density ≤ −2 <code>icon-button-touch-target-display: none</code>) — на мобиле такие размеры не берём.</li><li>Тач-зона 48 × 48 — невидимый слой: MD3 <code>max(48px, 100%)</code>, Angular <code>icon-button-touch-target-size: 48px</code>, хит-регион iOS 44 перекрывается.</li><li>Иконка внутри своя по размеру: 20 (M, S) и 16 (XS) — не менялась.</li></ul>",
+  "examples": [
+    {
+      "title_ru": "Основные действия",
+      "html": "<button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Добавить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button>"
+    },
+    {
+      "title_ru": "Состояния",
+      "html": "<button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--negative ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--outlined\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Добавить\" disabled><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button>"
+    },
+    {
+      "title_ru": "Группа в панели инструментов",
+      "html": "<span class=\"ds-btn-icon-group\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Добавить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button></span>"
+    },
+    {
+      "title_ru": "Размеры: M, S и XS",
+      "html": "<div style=\"display:flex;gap:16px;align-items:center;flex-wrap:wrap\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"M\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"S\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--xs ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"XS\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></div>",
+      "stack": true
+    }
+  ],
+  "found_html": "<ul class=\"list\"><li>У Button icon блок состояний стоит в файле <b>выше</b> блока «Стиль × Тип» (<code>button-icon.css</code>: <code>:disabled</code> — строки 62–79, <code>--accent.ds-btn-icon--filled</code> — с 93-й). Специфичность у обоих правил одинаковая (0,2,0), поэтому по порядку побеждает стиль: замер 12.09.2026 — недоступная кнопка <code>background #448AFF</code>, <code>color #FFFFFF</code>, то есть не отличается от активной. У Button те же правила стоят в конце файла и состояние работает. Внутри панелей каркас возвращает состояниям их токены; библиотека не правится.</li></ul>",
+  "preview_html": "<div class=\"phones\"><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"arrow_back\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">arrow_back</span></span></button><span class=\"phone__title\">Заказы</span><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"search\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">search</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"more_vert\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">more_vert</span></span></button></div><div class=\"phone__body\"><div class=\"phone__chips\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Все</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Открытые</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Закрытые</span></div></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 4</span><span class=\"ds-list-item__text\">Стейк рибай · 1 480 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:20</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">local_bar</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 12</span><span class=\"ds-list-item__text\">Лимонад · 320 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">11:05</span></div></div></div></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Действия</p><p class=\"phone__sheet-text\">Иконка-кнопки встают в строку</p><div class=\"phone__row\">Правка позиции</div><div class=\"phone__row\">Добавление позиции</div><div class=\"phone__row\">Удаление позиции</div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div></div></div></div><p class=\"phone__caption\">Навигация в шапке: возврат, поиск и меню — иконка-кнопки; в шторке те же строки без них</p></div><div class=\"phones__item\"><div class=\"phone\"><div class=\"phone__screen\" data-mode=\"mobile\"><div class=\"phone__status\"><span>9:41</span><span class=\"phone__ic\"><span class=\"material-icons\">signal_cellular_alt</span><span class=\"material-icons\">wifi</span><span class=\"material-icons\">battery_full</span></span></div><div class=\"phone__head\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"arrow_back\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">arrow_back</span></span></button><span class=\"phone__title\">Заказы</span><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"search\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">search</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"more_vert\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:20px\">more_vert</span></span></button></div><div class=\"phone__body\"><div class=\"phone__chips\"><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Все</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Открытые</span></div><div class=\"ds-chips ds-chips--outlined\"><span class=\"ds-chips__label\">Закрытые</span></div></div><div class=\"ds-list-container\"><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">restaurant</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 4</span><span class=\"ds-list-item__text\">Стейк рибай · 1 480 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">12:20</span></div></div><div class=\"ds-list-container__item\"><div class=\"ds-list-container__element-left\"><span class=\"ds-list-item__icon\"><span class=\"material-icons\" style=\"font-size:24px\">local_bar</span></span></div><div class=\"ds-list-container__content\"><span class=\"ds-list-item__label-up\">Стол 12</span><span class=\"ds-list-item__text\">Лимонад · 320 ₽</span></div><div class=\"ds-list-container__element-right\"><span class=\"ds-list-item__label-down\">11:05</span></div></div></div></div><div class=\"phone__scrim\"></div><div class=\"phone__sheet\"><p class=\"phone__sheet-title\">Действия</p><p class=\"phone__sheet-text\">Иконка-кнопки встают в строку</p><div class=\"phone__row\">Правка позиции</div><div class=\"phone__row\">Добавление позиции</div><div class=\"phone__row\">Удаление позиции</div><div class=\"phone__actions\"><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div></div></div></div><p class=\"phone__caption\">Тот же экран, с правками из таблицы справа</p></div></div>",
+  "platform_notes_ru": [
+    {
+      "title": "Material",
+      "items": [
+        "Контейнер 40 × 40 dp и иконка 24 dp — сходятся MD3 и Angular Material (Angular: icon-button-icon-size: 24px, форма corner-full).",
+        "Тач-таргет 48 dp задан явно: Material Web — «height: max(48px, 100%); width: max(48px, 100%)», Angular — icon-button-touch-target-size: 48px (только на плотностях 0 и −1).",
+        "Размерная шкала MD3 (XS 32 / S 40 / M 56 / L 96 / XL 136 dp) есть только в токенах и не выбирается ни в одном веб- или Angular-API.",
+        "Плотности Angular −4 и −5 (32 / 24 dp) выключают тач-таргет целиком — как мобильный размер их брать нельзя (button-icon.json)."
+      ]
+    },
+    {
+      "title": "iOS HIG",
+      "items": [
+        "Компонента «icon button» в HIG нет: ближайший — image button (иконка или символ без текста).",
+        "Числа: хит-регион 44 × 44 pt (в visionOS 60 × 60), паддинг вокруг картинки ≈ 10 px (macOS). Высота контейнера не задана.",
+        "Иконка без текста обязана иметь осмысленную подпись — отсюда обязательный aria-label (Angular: «If a toggle contains only an icon, you should specify a meaningful label via aria-label»)."
+      ]
+    }
+  ],
+  "logic_ru": [
+    "40 — это размер контейнера, а не тач-цель: 40 и 48 — разные числа, и увеличивать надо второе, не растягивая саму иконку.",
+    "Меньше 40 на телефоне не годится: палец шире иконки, а Angular на плотностях −2…−5 гасит тач-таргет вообще.",
+    "Иконку в шапке и в строке списка проверяем отдельно: в шапке она часть навигации, в строке — действие над объектом, отступы вокруг разные.",
+    "Кнопка без подписи существует только для скринридера — если aria-label нет, для незрячего её нет вообще.",
+    "В ряду иконки-кнопки ставим не ближе 8 px друг к другу: при контейнере 40 px тач-слои 48 уже перекрываются."
+  ],
+  "patterns_ru": [
+    {
+      "title": "Иконка без подписи должна читаться однозначно",
+      "items": [
+        "Что происходит: смысл иконки неочевиден («три точки», «звёздочка», «фильтр»), подписи нет, и пользователь не знает, что произойдёт после нажатия.",
+        "Что делают системы: IBM Carbon: «In an icon only button, that has no label, the icon must accurately represent what the button does.»; Apple HIG называет такой элемент image button — «An image button appears in a view and displays an image, symbol, or icon.»",
+        "Что делать нам: разрешать только иконки из утверждённого набора ДС, требовать aria-label и подпись-подсказку при долгом нажатии; «⋯» в ДС всегда означает «остальные действия»."
+      ],
+      "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Остальные действия: удалить, печать, отправить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_horiz</span></span></button><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">more_horiz</span><span class=\"ds-btn__label\">Ещё</span></button></div>",
+      "example_ru": "Разрешены только однозначные иконки: «карандаш» — правка, «⋯» — остальные действия, у каждой есть aria-label; если смысл не читается, та же иконка идёт с подписью."
+    },
+    {
+      "title": "Контейнер 40 px, а палец — 48 px",
+      "items": [
+        "Что происходит: иконка-кнопка 40×40 в шапке стоит вплотную к соседней, и тапы попадают не туда, особенно при работе одной рукой.",
+        "Что делают системы: в MD3 state layer 40 px и иконка 24 px, но тач-цель больше — «height: max(48px, 100%); width: max(48px, 100%);»; Angular Material: «icon-button-touch-target-size: 48px»; Apple: «a button needs a hit region of at least 44x44 pt — in visionOS, 60x60 pt».",
+        "Что делать нам: контейнер 40 px, тач-зона 48 px, паддинг между иконками не меньше 8 px; в плотных таблицах не опускать зону ниже 44 px."
+      ],
+      "src": "Источники: Material Design 3 · Icon button (https://raw.githubusercontent.com/material-components/material-web/main/iconbutton/internal/_shared.scss) · Angular Material · Icon button tokens (https://raw.githubusercontent.com/angular/components/main/src/material/button/_m3-icon-button.scss) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Добавить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button></span></div>",
+      "example_ru": "Контейнер иконки 40 px, зона нажатия — пунктир 48 × 48, между иконками 20 px: тап одной рукой попадает в нужную."
+    },
+    {
+      "title": "Плотность уменьшает и цель тоже",
+      "items": [
+        "Что происходит: чтобы «всё влезло», в шапке включают компактную плотность, иконка-кнопка становится 32 px, и по ней перестаёт попадать палец.",
+        "Что делают системы: Angular Material даёт шкалу плотности «icon-button-state-layer-size: list.nth((40px, 36px, 32px, 28px, 24px, 24px), $index)» и предупреждает: «The size caps out at 24px, because anything lower will be smaller than the icon.»",
+        "Что делать нам: разрешить плотности только 40 / 36 / 32 px и всегда держать тач-зону 48 px; в мобильном режиме плотность не применять вовсе."
+      ],
+      "src": "Источники: Angular Material · Icon button tokens (https://raw.githubusercontent.com/angular/components/main/src/material/button/_m3-icon-button.scss) · Material Design 3 · Icon button (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon-button.md)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"flex-direction:column;align-items:stretch\"><div class=\"pat__phone-row\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Правка, 40 px\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Правка, 36 px\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--xs ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Правка, 32 px\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button></span></div></div>",
+      "example_ru": "Плотности 40 / 36 / 32 px, а зона нажатия у всех трёх 48 × 48: ниже 24 px иконка уже не читается, в мобильном режиме плотность не применяем."
+    },
+    {
+      "title": "Сколько иконок в шапке",
+      "items": [
+        "Что происходит: в шапке пять иконок, они наезжают друг на друга и на заголовок, и непонятно, какое действие главное.",
+        "Что делают системы: Carbon: «Each page should have only one primary button. Any remaining calls to action should be represented as lower emphasis buttons.»; Apple советует кнопки в тулбаре оформлять отдельным элементом тулбара, а не набором иконок подряд.",
+        "Что делать нам: в шапке максимум две иконки-кнопки (одно действие плюс «⋯»), остальное — под «⋯» или в шторке; иконка-кнопка не заменяет главную кнопку формы."
+      ],
+      "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Фильтр\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_list</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Остальные действия: печать, отменить, отправить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></div>",
+      "example_ru": "В шапке максимум две иконки — одно действие плюс «⋯»: пять иконок подряд наезжают друг на друга и на заголовок."
+    },
+    {
+      "title": "Состояние «включено» и загрузка",
+      "items": [
+        "Что происходит: переключённое состояние показывают только цветом, а во время загрузки иконка превращается в спиннер другого размера и кнопка «прыгает».",
+        "Что делают системы: в MD3 состояние переключается атрибутом у той же кнопки — «toggle-состояние через атрибут toggle + слот slot=selected»; Apple: «You can configure an image button to behave like a push button, toggle, or pop-up button.»",
+        "Что делать нам: включённое состояние — заливка плюс aria-pressed, а не только цвет; загрузка — в контейнере того же размера, кнопка блокируется и её состояние объявляется текстом «Загрузка»."
+      ],
+      "src": "Источники: Material Design 3 · Icon button (https://raw.githubusercontent.com/material-components/material-web/main/docs/components/icon-button.md) · Apple HIG · Buttons (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Избранное, включено\" aria-pressed=\"true\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">star</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Загрузка\" disabled><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">refresh</span></span></button></div>",
+      "example_ru": "Включённое состояние — заливка плюс aria-pressed, во время загрузки иконка недоступна (имя «Загрузка»): контейнер того же размера 40 px, кнопка не прыгает."
+    },
+    {
+      "title": "Иконка без подписи читается однозначно",
+      "items": [
+        "Что происходит: иконка «карандаш» на 375 px означает то правку, то «составить заказ», подписи нет, и человек не знает, что произойдёт после тапа.",
+        "Что делают системы: IBM Carbon требует однозначности: «In an icon only button, that has no label, the icon must accurately represent what the button does.»",
+        "Что делать нам: допускаем только иконочные кнопки из утверждённого набора ДС, у каждой обязательное доступное имя (aria-label); спорный смысл получает кнопку с подписью."
+      ],
+      "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё: остальные действия\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></div>",
+      "example_ru": "Только однозначные иконки из набора ДС: «карандаш» — правка, «корзина» — удаление, «⋯» — остальное, у каждой есть aria-label."
+    },
+    {
+      "title": "Иконочные кнопки — редкость",
+      "items": [
+        "Что происходит: на одном экране пять иконок без текста, и человек не помнит их значений — особенно в шапке и в строке списка.",
+        "Что делают системы: IBM Carbon, опираясь на исследование Wiedenbeck (1999), просит не увлекаться: «Icon only buttons should be used sparingly. “For most situations, users learn correct interpretations better with text alone than with icons alone.”»",
+        "Что делать нам: иконочными оставляем 1–2 действия с общеизвестным смыслом (закрыть, ещё, избранное), остальным в шапке и в списках даём подпись."
+      ],
+      "src": "Источники: IBM Carbon · Button, по исследованию Wiedenbeck (1999) (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
+      "example_html": "<div class=\"pat__phone\"><div class=\"pat__phone-row\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Редактировать\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">edit</span></span></button><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Удалить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">delete</span></span></button></div><div class=\"pat__phone-row\"><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__icon material-icons\">edit</span><span class=\"ds-btn__label\">Редактировать</span></button></div></div>",
+      "example_ru": "Две иконки-кнопки в строке и та же правка кнопкой с подписью: где смысл не очевиден, подпись обязательна."
+    },
+    {
+      "title": "Иконка 24 внутри цели 48",
+      "items": [
+        "Что происходит: рисунок иконки 24 px, и человек целится ровно в него — при работе одной рукой тап уходит в соседний элемент.",
+        "Что делают системы: справочник Google по доступности Android описывает это так: «An element like an icon may appear to be 24x24dp but the padding surrounding it comprises the full 48x48dp touch target.»",
+        "Что делать нам: рисунок остаётся 24 px, а нажимаемая область — 48 × 48 dp / 44 × 44 pt за счёт паддинга контейнера; между соседними иконками не меньше 8 px."
+      ],
+      "src": "Источники: Google Android Accessibility · Touch target size (https://support.google.com/accessibility/android/answer/7101858)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Добавить\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">add</span></span></button></span></div>",
+      "example_ru": "Рисунок иконки 24 px внутри зоны нажатия 48 × 48 (пунктир): палец попадает в кнопку, а не в соседнюю."
+    },
+    {
+      "title": "Мелкий крестик не нажать",
+      "items": [
+        "Что происходит: у подсказки крестик-закрытие нарисован мелким, а рядом стоит основное действие — промах по крестику попадает в соседнюю кнопку.",
+        "Что делают системы: разбор NN/g приводит это на примере Instagram для iOS: «For example, on Instagram, the buttons to dismiss a follow suggestion were too small (only 2mm — 0.08in — wide), so even though they are far enough from the Follow buttons (about 2mm of spacing — the often-recommended minimum), they are still hard to select.»",
+        "Что делать нам: у закрывающей иконки цель не меньше 48 px, между ней и соседним действием минимум 8 px, компактные размеры S и XS для крестика на телефоне не берём."
+      ],
+      "src": "Источники: Nielsen Norman Group · Touch Targets on Touchscreens, кейс Instagram для iOS (https://www.nngroup.com/articles/touch-target-size/)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Закрыть подсказку\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">close</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--accent ds-btn--filled\" type=\"button\" style=\"flex:0 0 auto\"><span class=\"ds-btn__label\">Подписаться</span></button></div>",
+      "example_ru": "Крестик получает зону 48 × 48 и отступ от «Подписаться»: как в разборе Instagram, 2 мм на палец не хватает."
+    },
+    {
+      "title": "Подсказка обязательна для иконки",
+      "items": [
+        "Что происходит: иконочная кнопка без подписи и без подсказки — значение угадывается, а на тач-экране hover-подсказки нет вовсе.",
+        "Что делают системы: IBM Carbon настаивает на подсказке всегда: «Regardless of how recognizable an icon may or may not be, or whether that action lies within the universal actions list, a tooltip is always required with text explaining what the icon button would do if clicked.»",
+        "Что делать нам: у каждой иконочной кнопки — доступное имя и текст подсказки (в ДС это aria-label плюс title), причём на мобиле текст должен быть доступен и без наведения."
+      ],
+      "src": "Источники: IBM Carbon · Button (https://raw.githubusercontent.com/carbon-design-system/carbon-website/main/src/pages/components/button/usage.mdx)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Печать пречека\" title=\"Печать пречека\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">print</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Отправить заказ\" title=\"Отправить заказ\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">send</span></span></button></span></div>",
+      "example_ru": "У иконочных кнопок есть и title, и aria-label: что произойдёт по нажатию, понятно и без наведения."
+    },
+    {
+      "title": "Иконка молчит для скринридера",
+      "items": [
+        "Что происходит: иконочная кнопка объявляется скринридером без имени — просто «кнопка», и незрячий пользователь не знает, что она делает.",
+        "Что делают системы: Angular Material формулирует это про иконки: «Similar to an `<img>` element, an icon alone does not convey any useful information for a screen-reader user.»",
+        "Что делать нам: имя задаём на самой кнопке (aria-label), а не только на рисунке; декоративную иконку внутри кнопки с подписью скрываем от скринридера как aria-hidden."
+      ],
+      "src": "Источники: Angular Material · Icon (https://raw.githubusercontent.com/angular/components/main/src/material/icon/icon.md)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Фильтр\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">filter_list</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\" style=\"flex:0 0 auto\"><span class=\"ds-btn__icon material-icons\">filter_list</span><span class=\"ds-btn__label\">Фильтр</span></button></div>",
+      "example_ru": "Слева — иконочная кнопка с именем «Фильтр», справа — та же функция с видимой подписью: без aria-label скринридер читает просто «кнопка»."
+    },
+    {
+      "title": "Иконка без фона: куда попадать",
+      "items": [
+        "Что происходит: в шапке иконочные кнопки без подложки («карандаш», «⋯»), видимый размер 24 px, границы нажатия ничем не показаны; палец бьёт в промежуток между иконками, и ничего не происходит.",
+        "Что делают системы: Apple описывает image button — «An image button's edges define its clickable area even when they aren't visible. Including padding ensures that a click registers correctly even if it's not precisely within the image.»",
+        "Что делать нам: у иконочной кнопки в ДС жёсткая цель 48 × 48 px даже при прозрачном фоне, зазор между соседними кнопками не меньше 8 px, а при нажатии появляется заливка-подложка — тогда видно, что тап попал."
+      ],
+      "src": "Источники: Apple HIG · Buttons (image buttons) (https://developer.apple.com/design/human-interface-guidelines/buttons)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:flex-start\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled\" type=\"button\" aria-label=\"Избранное, включено\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">star</span></span></button></span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Ещё действие\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span></div>",
+      "example_ru": "У иконочной кнопки без подложки цель всё равно 48 × 48 (пунктир) с зазором 8 px, а на нажатие отвечает заливка — видно, что тап попал."
+    },
+    {
+      "title": "Кнопки в шапке уезжают при прокрутке",
+      "items": [
+        "Что происходит: при прокрутке большая шапка сворачивается в компактную, иконочные кнопки съезжают на 30–50 px; человек, привыкший к их месту, попадает пальцем в другую иконку или в заголовок.",
+        "Что делают системы: Apple делает это осознанным приёмом и описывает его как ориентир для человека — «By default, a large title transitions to a standard title as people begin scrolling the content, and transitions back to large when people scroll to the top, reminding them of their current location.»",
+        "Что делать нам: на экранах с действиями в шапке высоту шапки не меняем при скролле — либо фиксированная шапка, либо первым уезжает заголовок, а иконки остаются в той же точке; «разъезжающуюся» большую шапку в мобильном слое не используем."
+      ],
+      "src": "Источники: Apple HIG · Toolbars (https://developer.apple.com/design/human-interface-guidelines/toolbars)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:space-between\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Назад\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_back</span></span></button></span><span style=\"font:500 16px Roboto\">Заказы смены</span><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Остальные действия\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">more_vert</span></span></button></span></div>",
+      "example_ru": "Шапка фиксированной высоты: при прокрутке иконки остаются на своих местах, а не съезжают на 30–50 px вместе с большой шапкой."
+    },
+    {
+      "title": "Свайп от края вместо «назад»",
+      "items": [
+        "Что происходит: видимую кнопку «назад» убрали, оставив системный свайп от левого края; в той же зоне начинается полоса чипов или карусель, и жест то возвращает назад, то прокручивает содержимое.",
+        "Что делают системы: Apple требует оставлять видимую кнопку — «people expect to find a Back button in a top toolbar that lets them return to the previous view with a single tap», и добавляет жест только как ускорение: «many apps also offer a shortcut gesture — such as swiping from the side of a window or touchscreen — while continuing to provide the Back button.»",
+        "Что делать нам: иконочная кнопка «назад» остаётся в шапке всегда, свайп от края — только ускорение; интерактив (чипы, вкладки, карусель) не ставим в 20 px от левого края, иначе жест конфликтует."
+      ],
+      "src": "Источники: Apple HIG · Gestures (https://developer.apple.com/design/human-interface-guidelines/gestures)",
+      "example_html": "<div class=\"pat__phone pat__phone-row\" style=\"justify-content:space-between\"><span class=\"pat__hit\"><button class=\"ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text\" type=\"button\" aria-label=\"Назад\"><span class=\"ds-btn-icon__icon\"><span class=\"material-icons\" style=\"font-size:24px\">arrow_back</span></span></button></span><button class=\"ds-btn ds-btn--m ds-btn--neutral ds-btn--text\" type=\"button\"><span class=\"ds-btn__label\">Готово</span></button></div>",
+      "example_ru": "Кнопка «назад» остаётся видимой в шапке, свайп от края — только ускорение; прокручиваемого ряда в 20 px от левого края нет."
+    }
+  ]
 }
