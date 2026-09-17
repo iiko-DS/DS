@@ -28,7 +28,7 @@
 4. [Компоненты](#компоненты)
    - [Каталог компонентов Figma](#каталог-компонентов-figma-все-106)
    - [Карта классов CSS-библиотеки](#карта-классов-css-библиотеки)
-5. [Иконки](#иконки-svg-вектор)
+5. [Иконки](#иконки-google-material-icons)
 6. [Полные CSS-стили всех компонентов](#полные-css-стили-всех-компонентов)
 7. [Чек-лист соответствия ДС](#чек-лист-соответствия-дс)
 ## Общие правила
@@ -36,11 +36,11 @@
 0. **⛔ НЕ ГАДАТЬ (закон над законом).** Права гадать нет. Каждое значение (ширина, цвет, размер, шрифт, иконка, состояние) берётся ТОЛЬКО из источника — код макета (`mockup.md`) + этот спек. Нет значения/компонента в источнике → СТОП, СПРОСИТЬ и предложить замену из ДС. «Свериться, а не гадать» = действие ДО правки, не фраза; сказать «сверюсь» и угадать = нарушение.
 0. **Приоритет ДС над референсом (главное правило).** Референс (скриншот, макет, описание) задаёт **структуру, состав блоков и тексты**. Внешний вид берётся **только из этой дизайн-системы**. Если компонент на референсе отличается от ДС (другой цвет, радиус, высота, шрифт, самодельная панель) — использовать компонент ДС, а не копировать референс. Ничего не подгонять «на глаз» под картинку: размеры, отступы, типографика — только из токенов и параметров компонентов ниже. Если подходящего компонента в ДС нет — взять ближайший из каталога и явно пометить это в результате.
 
-**ЗАКОН №1 (никогда не нарушать): компоненты — ТОЛЬКО из ДС.** Есть ДС-компонент (ds-card, ds-stepper, ds-expansion-panel/group/content, ds-table-header/content-row/cell, ds-list-item, ds-search, ds-btn, ds-input, ds-banner, ds-tabs, ds-slide-toggle, ds-input-number) → использовать ЕГО, **НЕ рисовать свой класс**. Свои классы допускаются **только** для каркаса/лейаута, у которого нет ДС-компонента (page/grid/modal/toolbar/footer). Нет ДС-компонента или иконки в наборе → **остановиться, СПРОСИТЬ и ПРЕДЛОЖИТЬ замену из ДС**; если замены нет — только тогда рисовать своё, строго в рамках ДС (токены), ничего не выдумывать и не подбирать «похожее».
+**ЗАКОН №1 (никогда не нарушать): компоненты — ТОЛЬКО из ДС.** Есть ДС-компонент (ds-card, ds-stepper, ds-expansion-panel/group/content, ds-table-header/content-row/cell, ds-list-item, ds-search, ds-btn, ds-input, ds-banner, ds-tabs, ds-slide-toggle, ds-input-number) → использовать ЕГО, **НЕ рисовать свой класс**. Свои классы допускаются **только** для каркаса/лейаута, у которого нет ДС-компонента (page/grid/modal/toolbar/footer). Нет ДС-компонента → **остановиться, СПРОСИТЬ и ПРЕДЛОЖИТЬ замену из ДС**; если замены нет — только тогда рисовать своё, строго в рамках ДС (токены), ничего не выдумывать и не подбирать «похожее». Иконки берём из Google Material Icons (раздел «Иконки»).
 1. **Никаких хардкодов.** Цвета, радиусы, отступы, размеры и шрифты — только через токены `var(--ds-*)`.
 2. **Классы компонентов** — префикс `ds-`: `ds-btn`, `ds-input`, `ds-checkbox`, `ds-radio`, `ds-badge`. Модификаторы через `--`: `ds-btn--m`, `ds-btn--accent`, `ds-btn--filled`.
 3. **Шрифт** — Roboto 400/500 (размеры, веса, letter-spacing — из токенов типографики).
-4. **Иконки** — SVG-вектор 20×20 (не шрифт, не PNG), цвет наследуется `currentColor`.
+4. **Иконки** — Google Material Icons, вставляются по имени (`<span class="material-icons">имя</span>`), цвет наследуется `currentColor`. Обязательного списка нет — берём из каталога Google (раздел «Иконки»); исключение — бренд-иконка iiko (SVG).
 5. **Состояния** — нативные: hover/press через CSS, disabled через атрибут, error через класс `--error`.
 6. **Компонентные токены** — использовать специфичные для компонента (`--ds-color-button-*`, `--ds-color-checkbox-*`), а не общие (`--ds-color-text-*`, `--ds-color-icon-*`).
 
@@ -88,7 +88,7 @@
 готовыми; каркас только расставляет их. Никаких `style="..."` в разметке.
 
 **Шаг 6. Собирать в правильном порядке.** Сначала скелет зон и порядок блоков (пустые контейнеры) →
-затем компоненты сверху вниз → затем иконки (SVG-вектор) и состояния → в конце отступы и выравнивание.
+затем компоненты сверху вниз → затем иконки (Material Icons по имени) и состояния → в конце отступы и выравнивание.
 Так дефекты видны сразу, а не всплывают в конце.
 
 **Шаг 7. Ничего не добавлять от себя.** В прототипе только то, что есть в задании: не тащить слоты
@@ -102,7 +102,7 @@
 
 **Типичные ошибки, за которые вёрстку возвращают:** свои классы вместо классов ДС; отдельные элементы
 вместо группового компонента при двух и более однотипных; `style="..."` в разметке;
-иконки шрифтом вместо SVG; подгонка размеров «на глаз» под картинку; переопределение стилей компонента;
+подгонка размеров «на глаз» под картинку; переопределение стилей компонента;
 свой класс рядом с уже существующим в ДС; блоки, которых не было в задании.
 
 ## Токены
@@ -335,7 +335,7 @@
 ```html
 <div class="ds-arrow">
   <div class="ds-arrow__drop-down"></div>
-  <span class="ds-arrow__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-arrow__icon"><!-- иконка: material-icons по имени --></span>
 </div>
 ```
 <details><summary>CSS компонента</summary>
@@ -392,7 +392,7 @@
 ```html
 <div class="ds-arrow-list">
   <div class="ds-arrow-list__drop-down"></div>
-  <span class="ds-arrow-list__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-arrow-list__icon"><!-- иконка: material-icons по имени --></span>
 </div>
 ```
 <details><summary>CSS компонента</summary>
@@ -449,7 +449,7 @@
 ```html
 <div class="ds-arrow-menu">
   <div class="ds-arrow-menu__drop-down"></div>
-  <span class="ds-arrow-menu__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-arrow-menu__icon"><!-- иконка: material-icons по имени --></span>
 </div>
 ```
 <details><summary>CSS компонента</summary>
@@ -506,7 +506,7 @@
 ```html
 <div class="ds-arrow-select">
   <div class="ds-arrow-select__drop-down"></div>
-  <span class="ds-arrow-select__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-arrow-select__icon"><!-- иконка: material-icons по имени --></span>
 </div>
 ```
 <details><summary>CSS компонента</summary>
@@ -570,7 +570,7 @@ Variant=Empty — значение не выбрано; Populated — значе
 
 ```html
 <div class="ds-autocomplete-form ds-autocomplete-form--disabled">
-  <span class="ds-autocomplete-form__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-autocomplete-form__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-autocomplete-form__input"></div>
   <div class="ds-autocomplete-form__input-frame"></div>
   <span class="ds-autocomplete-form__label">Текст</span>
@@ -799,7 +799,7 @@ Size=M, S, XS — по плотности интерфейса: M в форма�
 
 ```html
 <div class="ds-button-toggle ds-button-toggle--filled">
-  <span class="ds-button-toggle__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-button-toggle__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-button-toggle__label">Текст</span>
 </div>
 ```
@@ -969,7 +969,7 @@ Variant=Normal / Error / Disable — обычный, с ошибкой (support-
 ```html
 <div class="ds-checkbox-label ds-checkbox-label--disable">
   <div class="ds-checkbox-label__form"></div>
-  <span class="ds-checkbox-label__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-checkbox-label__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-checkbox-label__label">Текст</span>
   <div class="ds-checkbox-label__left"></div>
   <div class="ds-checkbox-label__right"></div>
@@ -1111,7 +1111,7 @@ Size=M — основной; S — плотные панели и строки �
   <div class="ds-chips__chip-container"></div>
   <div class="ds-chips__chip-text"></div>
   <div class="ds-chips__close"></div>
-  <span class="ds-chips__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-chips__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-chips__icon-size"></div>
   <span class="ds-chips__label">Текст</span>
 </div>
@@ -1266,7 +1266,7 @@ Size=M — основной; S — плотные панели и строки �
 
 ```html
 <div class="ds-chips-group ds-chips-group--s">
-  <span class="ds-chips-group__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-chips-group__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-chips-group__label">Текст</span>
 </div>
 ```
@@ -1340,7 +1340,7 @@ Size=M — основной; S — плотные формы и панели.
   <div class="ds-chips-input__content"></div>
   <div class="ds-chips-input__frame"></div>
   <span class="ds-chips-input__hint">Текст</span>
-  <span class="ds-chips-input__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-chips-input__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-chips-input__label">Текст</span>
   <span class="ds-chips-input__support">Текст</span>
   <span class="ds-chips-input__text">Текст</span>
@@ -1460,7 +1460,7 @@ _Описание компонента в Figma отсутствует._
   <div class="ds-chips-input-2__content"></div>
   <div class="ds-chips-input-2__frame"></div>
   <span class="ds-chips-input-2__hint">Текст</span>
-  <span class="ds-chips-input-2__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-chips-input-2__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-chips-input-2__label">Текст</span>
   <span class="ds-chips-input-2__support">Текст</span>
   <span class="ds-chips-input-2__text">Текст</span>
@@ -1577,7 +1577,7 @@ _Описание компонента в Figma отсутствует._
 ```html
 <div class="ds-chips-input-cell ds-chips-input-cell--disabled">
   <div class="ds-chips-input-cell__frame"></div>
-  <span class="ds-chips-input-cell__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-chips-input-cell__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-chips-input-cell__label">Текст</span>
   <span class="ds-chips-input-cell__support">Текст</span>
 </div>
@@ -1670,7 +1670,7 @@ _Описание компонента в Figma отсутствует._
 
 ```html
 <div class="ds-control-arrow-button ds-control-arrow-button--s">
-  <span class="ds-control-arrow-button__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-control-arrow-button__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-control-arrow-button__icon-size"></div>
 </div>
 ```
@@ -1737,7 +1737,7 @@ _Описание компонента в Figma отсутствует._
   <div class="ds-control-panel__button-icon"></div>
   <div class="ds-control-panel__button-icon-group"></div>
   <div class="ds-control-panel__elements"></div>
-  <span class="ds-control-panel__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-control-panel__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-control-panel__label">Текст</span>
   <div class="ds-control-panel__month"></div>
 </div>
@@ -1851,7 +1851,7 @@ _Описание компонента в Figma отсутствует._
 <div class="ds-control-panel-2 ds-control-panel-2--control">
   <div class="ds-control-panel-2__button-icon-group"></div>
   <div class="ds-control-panel-2__elements"></div>
-  <span class="ds-control-panel-2__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-control-panel-2__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-control-panel-2__label">Текст</span>
   <div class="ds-control-panel-2__month"></div>
 </div>
@@ -1957,7 +1957,7 @@ Type=Year — выбор года.
   <div class="ds-datepicker__control-panel"></div>
   <div class="ds-datepicker__divider"></div>
   <div class="ds-datepicker__elements"></div>
-  <span class="ds-datepicker__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-datepicker__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-datepicker__label">Текст</span>
   <div class="ds-datepicker__week-6"></div>
 </div>
@@ -2060,7 +2060,7 @@ Type=Year — выбор года.
 ```html
 <div class="ds-dialog-content">
   <div class="ds-dialog-content__background"></div>
-  <span class="ds-dialog-content__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-dialog-content__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-dialog-content__label">Текст</span>
   <div class="ds-dialog-content__scroll"></div>
 </div>
@@ -2134,7 +2134,7 @@ Type=Year — выбор года.
   <div class="ds-dialog-footer__action"></div>
   <div class="ds-dialog-footer__button"></div>
   <div class="ds-dialog-footer__divider"></div>
-  <span class="ds-dialog-footer__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-dialog-footer__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-dialog-footer__label">Текст</span>
 </div>
 ```
@@ -2219,7 +2219,7 @@ Type=Year — выбор года.
 <div class="ds-dialog-header ds-dialog-header--text">
   <div class="ds-dialog-header__description"></div>
   <div class="ds-dialog-header__divider"></div>
-  <span class="ds-dialog-header__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-dialog-header__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-dialog-header__label">Текст</span>
   <div class="ds-dialog-header__title-container"></div>
 </div>
@@ -2309,7 +2309,7 @@ Type=Year — выбор года.
   <div class="ds-dialog-view__divider"></div>
   <div class="ds-dialog-view__footer"></div>
   <div class="ds-dialog-view__header"></div>
-  <span class="ds-dialog-view__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-dialog-view__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-dialog-view__label">Текст</span>
   <div class="ds-dialog-view__scroll"></div>
 </div>
@@ -2435,7 +2435,7 @@ Size=M, L — по длине и толщине линии.
 
 ```html
 <div class="ds-element ds-element--checkbox">
-  <span class="ds-element__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-element__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-element__image-size"></div>
   <span class="ds-element__label">Текст</span>
 </div>
@@ -2608,7 +2608,7 @@ Size=M, L — по длине и толщине линии.
 
 ```html
 <div class="ds-element-left">
-  <span class="ds-element-left__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-element-left__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-element-left__info"></div>
 </div>
 ```
@@ -2675,7 +2675,7 @@ Size=M, L — по длине и толщине линии.
 
 ```html
 <div class="ds-element-menu ds-element-menu--checkbox">
-  <span class="ds-element-menu__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-element-menu__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-element-menu__image-size"></div>
   <span class="ds-element-menu__label">Текст</span>
 </div>
@@ -2779,7 +2779,7 @@ Size=M, L — по длине и толщине линии.
 
 ```html
 <div class="ds-element-select ds-element-select--checkbox">
-  <span class="ds-element-select__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-element-select__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-element-select__image-size"></div>
   <span class="ds-element-select__label">Текст</span>
 </div>
@@ -2875,7 +2875,7 @@ Size=M, L — по длине и толщине линии.
 
 ```html
 <div class="ds-element-sidenav ds-element-sidenav--avatar">
-  <span class="ds-element-sidenav__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-element-sidenav__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-element-sidenav__keyboard-arrow-left"></div>
   <span class="ds-element-sidenav__label">Текст</span>
 </div>
@@ -2964,7 +2964,7 @@ Content=Counter — маркер с номером шага.
 
 ```html
 <div class="ds-element-step ds-element-step--counter">
-  <span class="ds-element-step__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-element-step__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-element-step__icon-size"></div>
   <div class="ds-element-step__info"></div>
   <span class="ds-element-step__label">Текст</span>
@@ -3561,11 +3561,11 @@ Orientation — сторона, с которой подсказка выход�
 
 ```html
 <div class="ds-hint-container ds-hint-container--default">
-  <span class="ds-hint-container__arrow"><!-- SVG-иконка ДС --></span>
+  <span class="ds-hint-container__arrow"><!-- иконка: material-icons по имени --></span>
   <div class="ds-hint-container__content"></div>
   <div class="ds-hint-container__footer"></div>
   <div class="ds-hint-container__header"></div>
-  <span class="ds-hint-container__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-hint-container__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-hint-container__label">Текст</span>
 </div>
 ```
@@ -3679,7 +3679,7 @@ Orientation — сторона, с которой подсказка выход�
   <div class="ds-hint-content__block"></div>
   <div class="ds-hint-content__clear"></div>
   <div class="ds-hint-content__close"></div>
-  <span class="ds-hint-content__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-hint-content__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-hint-content__icon-size"></div>
   <div class="ds-hint-content__info"></div>
   <span class="ds-hint-content__label">Текст</span>
@@ -3779,7 +3779,7 @@ Orientation — сторона, с которой подсказка выход�
 ```html
 <div class="ds-hint-footer ds-hint-footer--default">
   <div class="ds-hint-footer__button-group"></div>
-  <span class="ds-hint-footer__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-hint-footer__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-hint-footer__label">Текст</span>
 </div>
 ```
@@ -3871,7 +3871,7 @@ Orientation — сторона, с которой подсказка выход�
 <div class="ds-hint-header ds-hint-header--error">
   <div class="ds-hint-header__clear"></div>
   <div class="ds-hint-header__close"></div>
-  <span class="ds-hint-header__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-hint-header__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-hint-header__icon-size"></div>
   <div class="ds-hint-header__info"></div>
   <span class="ds-hint-header__label">Текст</span>
@@ -3985,7 +3985,7 @@ Orientation — сторона, с которой подсказка выход�
 
 ```html
 <div class="ds-icon-group ds-icon-group--4x">
-  <span class="ds-icon-group__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-icon-group__icon"><!-- иконка: material-icons по имени --></span>
 </div>
 ```
 <details><summary>CSS компонента</summary>
@@ -4078,7 +4078,7 @@ State: Default, Hover, Focus, Focus+Placeholder, Focus+Value, Error, Error+Hover
 ```html
 <div class="ds-input-cell ds-input-cell--disabled">
   <div class="ds-input-cell__frame"></div>
-  <span class="ds-input-cell__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-input-cell__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-input-cell__label">Текст</span>
   <span class="ds-input-cell__support">Текст</span>
 </div>
@@ -4173,7 +4173,7 @@ State: Default, Hover, Focus, Focus+Placeholder, Focus+Value, Error, Error+Hover
 ```html
 <div class="ds-input-datepicker ds-input-datepicker--empty">
   <div class="ds-input-datepicker__frame"></div>
-  <span class="ds-input-datepicker__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-input-datepicker__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-input-datepicker__label">Текст</span>
   <span class="ds-input-datepicker__support">Текст</span>
 </div>
@@ -4268,7 +4268,7 @@ Size=M — основной; S и XS — плотные формы, панели
 ```html
 <div class="ds-input-number ds-input-number--disabled">
   <div class="ds-input-number__frame"></div>
-  <span class="ds-input-number__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-input-number__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-input-number__label">Текст</span>
   <span class="ds-input-number__support">Текст</span>
 </div>
@@ -4383,7 +4383,7 @@ _Описание компонента в Figma отсутствует._
 <div class="ds-input-number-but-icon">
   <div class="ds-input-number-but-icon__button"></div>
   <div class="ds-input-number-but-icon__container"></div>
-  <span class="ds-input-number-but-icon__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-input-number-but-icon__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-input-number-but-icon__label">Текст</span>
   <div class="ds-input-number-but-icon__support-text"></div>
   <span class="ds-input-number-but-icon__text">Текст</span>
@@ -4479,7 +4479,7 @@ _Описание компонента в Figma отсутствует._
 ```html
 <div class="ds-input-timepicker ds-input-timepicker--empty">
   <div class="ds-input-timepicker__frame"></div>
-  <span class="ds-input-timepicker__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-input-timepicker__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-input-timepicker__label">Текст</span>
   <span class="ds-input-timepicker__support">Текст</span>
 </div>
@@ -4565,9 +4565,9 @@ _Описание компонента в Figma отсутствует._
 <div class="ds-list-container ds-list-container--container">
   <div class="ds-list-container__content"></div>
   <div class="ds-list-container__divider"></div>
-  <span class="ds-list-container__element-left"><!-- SVG-иконка ДС --></span>
-  <span class="ds-list-container__element-right"><!-- SVG-иконка ДС --></span>
-  <span class="ds-list-container__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-list-container__element-left"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-list-container__element-right"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-list-container__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-list-container__item"></div>
   <span class="ds-list-container__label">Текст</span>
   <div class="ds-list-container__scroll"></div>
@@ -4676,9 +4676,9 @@ _Описание компонента в Figma отсутствует._
 <div class="ds-list-item ds-list-item--disabled">
   <div class="ds-list-item__checkbox"></div>
   <div class="ds-list-item__content"></div>
-  <span class="ds-list-item__element-left"><!-- SVG-иконка ДС --></span>
-  <span class="ds-list-item__element-right"><!-- SVG-иконка ДС --></span>
-  <span class="ds-list-item__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-list-item__element-left"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-list-item__element-right"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-list-item__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-list-item__icon-size"></div>
   <span class="ds-list-item__label">Текст</span>
   <div class="ds-list-item__label-down"></div>
@@ -4908,9 +4908,9 @@ Style=Main — основной; Inverse — инверсный для тёмн�
   <div class="ds-menu-container__button-group"></div>
   <div class="ds-menu-container__content"></div>
   <div class="ds-menu-container__divider"></div>
-  <span class="ds-menu-container__element-left"><!-- SVG-иконка ДС --></span>
-  <span class="ds-menu-container__element-right"><!-- SVG-иконка ДС --></span>
-  <span class="ds-menu-container__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-menu-container__element-left"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-menu-container__element-right"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-menu-container__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-menu-container__label">Текст</span>
   <div class="ds-menu-container__scroll"></div>
   <div class="ds-menu-container__search"></div>
@@ -5036,9 +5036,9 @@ Style=Main — основной; Inverse — инверсный для тёмн�
 <div class="ds-menu-item ds-menu-item--disabled">
   <div class="ds-menu-item__checkbox"></div>
   <div class="ds-menu-item__content"></div>
-  <span class="ds-menu-item__element-left"><!-- SVG-иконка ДС --></span>
-  <span class="ds-menu-item__element-right"><!-- SVG-иконка ДС --></span>
-  <span class="ds-menu-item__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-menu-item__element-left"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-menu-item__element-right"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-menu-item__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-menu-item__icon-size"></div>
   <span class="ds-menu-item__label">Текст</span>
   <div class="ds-menu-item__label-down"></div>
@@ -5271,7 +5271,7 @@ Variant=Normal / Error / Disable — обычный, с ошибкой, недо
 ```html
 <div class="ds-radio-button-label ds-radio-button-label--disable">
   <div class="ds-radio-button-label__form"></div>
-  <span class="ds-radio-button-label__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-radio-button-label__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-radio-button-label__label">Текст</span>
   <div class="ds-radio-button-label__left"></div>
   <div class="ds-radio-button-label__right"></div>
@@ -5472,7 +5472,7 @@ Size=M, S — по толщине полосы под размер блока.
 ```html
 <div class="ds-scroll-tabs ds-scroll-tabs--left">
   <div class="ds-scroll-tabs__button-icon"></div>
-  <span class="ds-scroll-tabs__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-scroll-tabs__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-scroll-tabs__icon-size"></div>
 </div>
 ```
@@ -5556,7 +5556,7 @@ Size=M — основной; S — панели и шапки блоков; XS �
 ```html
 <div class="ds-search ds-search--disabled">
   <div class="ds-search__divider"></div>
-  <span class="ds-search__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-search__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-search__icon-size"></div>
   <span class="ds-search__label">Текст</span>
   <div class="ds-search__right-icon"></div>
@@ -5693,9 +5693,9 @@ Size=M — основной; S — панели и шапки блоков; XS �
   <div class="ds-select-container__button-group"></div>
   <div class="ds-select-container__content"></div>
   <div class="ds-select-container__divider"></div>
-  <span class="ds-select-container__element-left"><!-- SVG-иконка ДС --></span>
-  <span class="ds-select-container__element-right"><!-- SVG-иконка ДС --></span>
-  <span class="ds-select-container__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-select-container__element-left"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-select-container__element-right"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-select-container__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-select-container__label">Текст</span>
   <div class="ds-select-container__scroll"></div>
   <div class="ds-select-container__search"></div>
@@ -5826,7 +5826,7 @@ Size=M — основной; S — панели и шапки блоков; XS �
 
 ```html
 <div class="ds-select-cell ds-select-cell--disabled">
-  <span class="ds-select-cell__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-select-cell__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-select-cell__input"></div>
   <div class="ds-select-cell__input-frame"></div>
   <span class="ds-select-cell__label">Текст</span>
@@ -5937,7 +5937,7 @@ Size=M — основной; S и XS — плотные формы и табли
 
 ```html
 <div class="ds-select-form ds-select-form--disabled">
-  <span class="ds-select-form__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-select-form__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-select-form__input"></div>
   <div class="ds-select-form__input-frame"></div>
   <span class="ds-select-form__label">Текст</span>
@@ -6065,9 +6065,9 @@ Size=M — основной; S и XS — плотные формы и табли
 ```html
 <div class="ds-select-item ds-select-item--disabled">
   <div class="ds-select-item__content"></div>
-  <span class="ds-select-item__element-left"><!-- SVG-иконка ДС --></span>
-  <span class="ds-select-item__element-right"><!-- SVG-иконка ДС --></span>
-  <span class="ds-select-item__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-select-item__element-left"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-select-item__element-right"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-select-item__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-select-item__icon-size"></div>
   <span class="ds-select-item__label">Текст</span>
   <div class="ds-select-item__label-down"></div>
@@ -6219,7 +6219,7 @@ Size=M — основной; S и XS — плотные формы и табли
 <div class="ds-sidenav-control ds-sidenav-control--collapsed">
   <div class="ds-sidenav-control__content"></div>
   <div class="ds-sidenav-control__divider"></div>
-  <span class="ds-sidenav-control__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-sidenav-control__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-sidenav-control__icon-size"></div>
   <span class="ds-sidenav-control__label">Текст</span>
 </div>
@@ -6428,7 +6428,7 @@ Size=M — основной; S и XS — плотные формы и табли
 ```html
 <div class="ds-sidenav-header ds-sidenav-header--l1">
   <div class="ds-sidenav-header__close"></div>
-  <span class="ds-sidenav-header__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-sidenav-header__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-sidenav-header__icon-size"></div>
   <span class="ds-sidenav-header__label">Текст</span>
   <div class="ds-sidenav-header__logo-iiko"></div>
@@ -6670,8 +6670,8 @@ Mode=Dark — на светлых экранах; Light — на тёмных.
   <div class="ds-snackbar__body"></div>
   <div class="ds-snackbar__button"></div>
   <div class="ds-snackbar__content"></div>
-  <span class="ds-snackbar__element-right"><!-- SVG-иконка ДС --></span>
-  <span class="ds-snackbar__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-snackbar__element-right"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-snackbar__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-snackbar__label">Текст</span>
   <div class="ds-snackbar__progress"></div>
 </div>
@@ -6837,9 +6837,9 @@ Type=Filled — с подложкой, заметный. Type=Text — толь�
 ```html
 <div class="ds-status ds-status--accent">
   <div class="ds-status__content"></div>
-  <span class="ds-status__element-left"><!-- SVG-иконка ДС --></span>
-  <span class="ds-status__element-right"><!-- SVG-иконка ДС --></span>
-  <span class="ds-status__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-status__element-left"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-status__element-right"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-status__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-status__info"></div>
   <span class="ds-status__label">Текст</span>
 </div>
@@ -7122,7 +7122,7 @@ Lvl=1 — основной уровень; Lvl=2 — вложенный.
 ```html
 <div class="ds-table-chips-input ds-table-chips-input--default">
   <div class="ds-table-chips-input__frame"></div>
-  <span class="ds-table-chips-input__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-table-chips-input__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-table-chips-input__label">Текст</span>
   <span class="ds-table-chips-input__support">Текст</span>
 </div>
@@ -7226,7 +7226,7 @@ Lvl=1 — основной уровень; Lvl=2 — вложенный.
 ```html
 <div class="ds-table-content-cell ds-table-content-cell--disabled">
   <div class="ds-table-content-cell__element"></div>
-  <span class="ds-table-content-cell__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-table-content-cell__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-table-content-cell__label">Текст</span>
   <div class="ds-table-content-cell__text-ui"></div>
 </div>
@@ -7441,7 +7441,7 @@ Lvl=1 — основной уровень; Lvl=2 — вложенный.
 ```html
 <div class="ds-table-header-cell ds-table-header-cell--disabled">
   <div class="ds-table-header-cell__element"></div>
-  <span class="ds-table-header-cell__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-table-header-cell__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-table-header-cell__label">Текст</span>
   <div class="ds-table-header-cell__text-ui"></div>
 </div>
@@ -7596,9 +7596,9 @@ Content=Text — с текстом; Icon — только иконки, когд
 <div class="ds-text-ui ds-text-ui--disabled">
   <div class="ds-text-ui__checkbox"></div>
   <div class="ds-text-ui__content"></div>
-  <span class="ds-text-ui__element-left"><!-- SVG-иконка ДС --></span>
-  <span class="ds-text-ui__element-right"><!-- SVG-иконка ДС --></span>
-  <span class="ds-text-ui__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-text-ui__element-left"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-text-ui__element-right"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-text-ui__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-text-ui__icon-size"></div>
   <span class="ds-text-ui__label">Текст</span>
   <div class="ds-text-ui__label-down"></div>
@@ -7739,10 +7739,10 @@ Variant=Empty — поле без текста; Populated — с введённ�
 
 ```html
 <div class="ds-textarea ds-textarea--disabled">
-  <span class="ds-textarea__element-left"><!-- SVG-иконка ДС --></span>
-  <span class="ds-textarea__element-right"><!-- SVG-иконка ДС --></span>
+  <span class="ds-textarea__element-left"><!-- иконка: material-icons по имени --></span>
+  <span class="ds-textarea__element-right"><!-- иконка: material-icons по имени --></span>
   <span class="ds-textarea__hint">Текст</span>
-  <span class="ds-textarea__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-textarea__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-textarea__input-content"></div>
   <div class="ds-textarea__input-frame"></div>
   <span class="ds-textarea__label">Текст</span>
@@ -7893,7 +7893,7 @@ Type=Time grid — сетка значений, когда нужен быстр
 ```html
 <div class="ds-timepicker ds-timepicker--time-grid">
   <div class="ds-timepicker__control-panel"></div>
-  <span class="ds-timepicker__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-timepicker__icon"><!-- иконка: material-icons по имени --></span>
   <span class="ds-timepicker__label">Текст</span>
   <div class="ds-timepicker__scroll"></div>
 </div>
@@ -7983,7 +7983,7 @@ For icon=On — с местом под иконку у ветки; Off — бе�
 
 ```html
 <div class="ds-tree ds-tree--2">
-  <span class="ds-tree__icon"><!-- SVG-иконка ДС --></span>
+  <span class="ds-tree__icon"><!-- иконка: material-icons по имени --></span>
   <div class="ds-tree__item"></div>
   <div class="ds-tree__separator-stroke"></div>
 </div>
@@ -8276,47 +8276,11 @@ For icon=On — с местом под иконку у ветки; Off — бе�
 ```
 Иконку вставляйте туда, где ей место: внутрь `.ds-btn__icon` / `.ds-btn-icon__icon` / `.ds-input__icon`.
 
-> Если нужной иконки нет ниже — берите любую из стандартного набора Google Material (это тот же набор, что в ДС), но лучше согласовать выбор с дизайн-системой. Имя может незначительно отличаться от DS (например `schedule_time` → `schedule`, `arrow_left/right` → `arrow_back/forward`) — используйте подходящее из Material.
+Иконки берём **любые из Google Material Icons** — обязательного списка имён нет.
+Каталог с именами (отсюда подставляем имя): https://fonts.google.com/icons
+Как устроены иконки в Material: https://m3.material.io/styles/icons/overview
 
-### Иконки в наборе (по имени)
-
-| Имя | Назначение |
-|---|---|
-| `account_circle` | Профиль пользователя |
-| `add` | Создать / добавить |
-| `apps` | Меню приложений |
-| `arrow_back` | Назад |
-| `arrow_drop_down` | Раскрыть список |
-| `arrow_drop_up` | Свернуть список |
-| `arrow_forward` | Вперёд |
-| `arrow_left` | Влево |
-| `arrow_right` | Вправо |
-| `attach_money` | Денежное значение |
-| `check_box` | Чекбокс выбран |
-| `check_box_outline_blank` | Чекбокс не выбран |
-| `close` | Закрыть / сбросить |
-| `date_range` | Выбор даты (Datepicker) |
-| `help` | Справка |
-| `indeterminate_check_box` | Чекбокс частично выбран |
-| `info` | Подсказка / информация |
-| `keyboard_arrow_down` | Раскрыть |
-| `keyboard_arrow_left` | Предыдущий |
-| `keyboard_arrow_right` | Следующий |
-| `keyboard_arrow_up` | Свернуть |
-| `logo-iiko` | Логотип iiko |
-| `menu` | Гамбургер-меню |
-| `notifications` | Уведомления |
-| `open_in_new` | Открыть в новой вкладке |
-| `radio_button_checked` | Радио выбрано |
-| `radio_button_unchecked` | Радио не выбрано |
-| `remove` | Убрать / минус |
-| `schedule` | Время / календарь |
-| `schedule_time` | Выбор времени (Timepicker) |
-| `search` | Поиск |
-| `search_off` | Поиск без результата |
-| `unfold_less` | Свернуть всё |
-| `unfold_more` | Развернуть всё |
-| `warning` | Предупреждение / внимание |
+Имена в файле иконок ДС совпадают с Google Material (например `schedule_time` → `schedule`, `arrow_left/right` → `arrow_back/forward`) — подбираем подходящее имя из каталога. Размер иконки — как у иконочного слота компонента: обычно 20 px (`Icon size/Size 5x`); где слот задаёт 16 (например Button icon XS) — оставляем 16 по токену компонента.
 
 ### Бренд-иконка iiko (SVG, не Material)
 
@@ -8329,13 +8293,15 @@ For icon=On — с местом под иконку у ветки; Off — бе�
 
 Весь CSS дизайн-системы в одном месте: токены задаются через `tokens.css`, стили компонентов — ниже. При сборке прототипа **скопируйте этот CSS в `<style>` своего прототипа** (или сохраните как `components.css` и подключите `<link rel="stylesheet" href="components.css">`).
 
-### font.css (шрифт Roboto — из Google Fonts)
+### Шрифт Roboto — из Google Fonts (онлайн)
 
-Roboto 400/500 подключается из **Google Fonts** (у исполнителя есть интернет — не вшиваем base64, чтобы не раздувать файл):
+Все прототипы работают онлайн — офлайн-подключения шрифта нет. Roboto 400/500 берём из **Google Fonts**:
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 ```
+
+В прототипах можно и одним файлом ДС: `iiko-ds-web/font.css` — он делает тот же `@import` Google Fonts.
 
 Подключать первым — иначе метрики (14/20, 16/24) поедут на системном шрифте. `font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif`.
 
@@ -17327,7 +17293,7 @@ Roboto 400/500 подключается из **Google Fonts** (у исполни
 - [ ] Все цвета, размеры, радиусы — только `var(--ds-*)`, без хардкода
 - [ ] Кнопки: класс `ds-btn` + размер (`--xs/--s/--m`) + стиль (`--accent/--neutral/--positive/--negative/--warning`) + тип (`--filled/--outlined/--text`)
 - [ ] Одна accent-кнопка на область, negative — экономно
-- [ ] Иконки — SVG 20×20 внутри `.ds-btn__icon` / `.ds-input__icon`, цвет через `currentColor`
+- [ ] Иконки — Material Icons по имени внутри `.ds-btn__icon` / `.ds-btn-icon__icon` / `.ds-input__icon`, цвет через `currentColor`
 - [ ] Input: размер из набора M/S/XS, лейбл только у M
 - [ ] Checkbox/Radio: иконки-глифы 20×20, цвета из компонентных токенов
 - [ ] Badge: Counter или Point, стиль из 4 вариантов
