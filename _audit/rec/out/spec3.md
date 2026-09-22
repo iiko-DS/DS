@@ -1,6 +1,6 @@
 # Задание 3: правки владельца к блоку «На экране» (после задания 2)
 
-Основа — `out\SPEC2.md`. Ниже только изменения; всё остальное из SPEC2 в силе.
+Основа — `out\spec2.md`. Ниже только изменения; всё остальное из spec2 в силе.
 
 **Эталон — страница Checkbox** (`_audit\rec\data\checkbox.json`, страница
 `http://127.0.0.1:8899/iiko-ds-mobile/prototypes/recommendations/checkbox.html`).
