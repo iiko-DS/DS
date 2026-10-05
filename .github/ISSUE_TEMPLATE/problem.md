@@ -20,7 +20,7 @@ assignees: ""
 
 **Где смотреть**
 
-<!-- Путь к странице: components-mobile/prototypes/recommendations/<файл>.html или файл прототипа в Prototypes/ -->
+<!-- Путь к файлу: страница или прототип в репозитории Prototypes -->
 
 **Скриншот**
 

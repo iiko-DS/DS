@@ -16,7 +16,7 @@
    компактных экранов. Это отдельный компонент: если в приложении 3–5 пунктов,
    на телефоне правильнее нижняя навигация, а не drawer.
 
-   Источники: _audit/platform/sidenav.json.
+   Источники: сводка по платформам (вне репозитория).
    Подключение: components-mobile/components/index.css
    ============================================================ */
 
@@ -42,7 +42,7 @@
    MD3 navigation drawer: active-indicator-height 56px — то есть строка пункта
    56 px; тач-минимум 48 px (MD3 touch-target-size, Angular touch-target-size)
    отдаём уровням 2–3.
-   Источники: _audit/platform/sidenav.json (md3.sizes[2].quote), touch_target_quote. */
+   Источники: сводка по платформам (вне репозитория; md3.sizes[2].quote, touch_target_quote). */
 [data-mode="mobile"] .ds-sidenav-item--l1 {
   min-height: 56px;
 }

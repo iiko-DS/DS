@@ -1,4 +1,0 @@
--- CLIPPED: 0
--- OVERLAP: 0
--- VOID: 0
--- STATE: 0

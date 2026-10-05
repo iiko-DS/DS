@@ -2,7 +2,7 @@
    iiko DS Mobile — Stepper: вертикальный вариант
    Источник раскладки: components-mobile/desktop-to-mobile-plan.md, группа C
    «Структура» («горизонтальный ряд шагов не помещается») +
-   _audit/platform/stepper.json: единственная платформа с мастером —
+   сводка по платформам (вне репозитория): единственная платформа с мастером —
    Angular Material, и его документация прямо просит вертикальный степпер
    на маленьких экранах («Prefer vertical steppers when building for small
    screen sizes, as horizontal steppers typically take up significantly more
@@ -69,7 +69,7 @@
    задан высотой ($header-height: 72px, минимум $header-minimum-height: 42px,
    плотностная шкала 72 → 68 → 64 → 60 → 42). 48 — ориентир Material для
    тач-зоны из плана; 42 у Angular — минимум, ниже которого опускать нельзя.
-   Источники: _audit/platform/stepper.json. */
+   Источники: сводка по платформам (вне репозитория). */
 .ds-stepper.ds-stepper--vertical .ds-step {
   min-height: 48px;
   align-items: center;                /* маркер и текст по центру строки */

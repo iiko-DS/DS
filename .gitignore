@@ -28,6 +28,3 @@ _probe.*
 Thumbs.db
 desktop.ini
 
-# ── Сырьё, из которого собираются platform/*.json (пересобирается скриптами _src) ──
-_audit/platform/_raw/
-
