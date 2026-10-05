@@ -18,7 +18,7 @@
    В Angular Material отдельного компонента поиска нет вовсе: это mat-form-field
    с input по стилям поля и autocomplete для подсказок.
 
-   Источники: _audit/platform/search.json.
+   Источники: рекомендации платформ.
    Подключение: components-mobile/components/index.css
    ============================================================ */
 

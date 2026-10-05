@@ -17,12 +17,12 @@ python --version
 
 ## 2. Склонировать репозитории в одну папку
 
-Создать папку, например `DS`, и склонировать в неё репозиторий `DS` целиком: генератор страниц и папки слоёв ДС лежат вместе и ищут друг друга по именам — менять имена `components-web`/`components-mobile` нельзя. Репозиторий `Prototypes` — отдельно, рядом.
+Создать папку, например `DS`, и склонировать в неё репозиторий `DS` целиком: обе папки слоёв ДС лежат вместе — на их имена по относительным путям ссылаются прототипы, менять их нельзя. Репозиторий `Prototypes` — отдельно, рядом.
 
 В GitHub Desktop: `File → Clone repository → GitHub.com` — склонировать `DS` (в папку `DS`), `Prototypes` — рядом с ней:
 
 ```
-iiko-DS/DS                   ДС целиком: генератор, данные, serve.py + папки components-web и components-mobile
+iiko-DS/DS                   ДС целиком: папки компонентов components-web и components-mobile, connect.js
 iiko-DS/Prototypes           прототипы и база знаний (рядом с папкой DS)
 ```
 
@@ -36,31 +36,23 @@ iiko-DS/Prototypes           прототипы и база знаний (ряд
 DS/
 ├── components-web/                ← папки внутри репозитория DS
 ├── components-mobile/
-└── _audit/, serve.py, readme.md   ← остальное содержимое DS
+└── connect.js, fixes.md, readme.md   ← остальное содержимое DS
 ```
 
-## 3. Запустить
+## 3. Обновить базу
 
 В папке `DS` открыть терминал и выполнить:
 
 ```
-python doctor.py    # проверка: всё ли на месте
-python start.py     # собрать страницы и открыть сервер
+python pull.py      # забрать свежий main из репозиториев DS и Prototypes
 ```
 
-Сервер напечатает адрес, откройте его в браузере:
-
-```
-http://127.0.0.1:8899/components-mobile/prototypes/recommendations/index.html
-```
-
-Это список всех компонентов. Остановить сервер — `Ctrl+C` в терминале.
+Пример живой страницы-прототипа — `Prototypes/demo-connect.html`: ДС подключается одной строкой, стили, шапка и меню приходят сами (подробности — [`prototyping-guide/как-работать-с-ДС.md`](https://github.com/iiko-DS/Prototypes/blob/main/prototyping-guide/как-работать-с-ДС.md)).
 
 ## 4. Что дальше
 
 - **Правила работы, рецепты и скиллы для ИИ-агентов** — в отдельной базе знаний: `https://github.com/iiko-DS/Prototypes/tree/main/prototyping-guide`.
 - **Свои пробы делай в отдельной ветке.** В GitHub Desktop: `Current Branch → New Branch`, например `ivan/badge-fix`. В своей ветке можно делать что угодно, общий `main` у остальных не ломается.
 - **Получилось и стоит взять всем** — `Push origin`, затем `Create Pull Request` в `main`. Это и есть «вместе перенести важное».
-- **Правки данных** — в `_audit/rec/data/<компонент>.json`, после правки пересобрать: `python start.py`. Сами страницы не правим, они генерируются.
-- **Обновить базу** — `python pull.py` (забирает свежий `main` из репозиториев DS).
+- **Обновить базу** — `python pull.py` (забирает свежий `main` из репозиториев DS и Prototypes).
 - **Нашёл проблему** — заводи Issue в репозитории `DS`, там есть форма «Проблема на странице».

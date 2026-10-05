@@ -85,10 +85,9 @@ def main():
         print("Нужно внимание:")
         for p in problems:
             print("  -", p)
-        print("\nПодробнее — python doctor.py")
+        print("\nПодробнее — в readme.md")
     else:
         print("Оба репозитория на актуальном main.")
-        print("Если правил данные — пересобери страницы: python start.py")
 
 
 if __name__ == "__main__":
