@@ -21,7 +21,7 @@
    стилевое решение ДС, а не размер режима).
 
    Источники: _audit/platform/snackbar.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-snackbar,

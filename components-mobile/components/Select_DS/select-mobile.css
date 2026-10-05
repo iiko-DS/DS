@@ -22,7 +22,7 @@
    диалогам»). В iOS HIG селекта нет — его роль делят Picker и Pop-up button.
 
    Источники: _audit/platform/select.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-select-container {

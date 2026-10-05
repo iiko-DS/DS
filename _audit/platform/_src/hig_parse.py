@@ -1,6 +1,6 @@
 import json, os, re, sys
 
-os.chdir(os.path.expanduser("~/GitHub/DS/_audit/platform/_src/hig"))
+os.chdir(os.path.expanduser("~/GitHub/iiko-DS/DS/_audit/platform/_src/hig"))
 
 def flat(x, out=None):
     if out is None:

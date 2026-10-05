@@ -1,6 +1,6 @@
 import json, os
 
-OUT = os.path.expanduser("~/GitHub/DS/_audit/platform")
+OUT = os.path.expanduser("~/GitHub/iiko-DS/DS/_audit/platform")
 os.makedirs(OUT, exist_ok=True)
 
 MW = "https://raw.githubusercontent.com/material-components/material-web/main/"

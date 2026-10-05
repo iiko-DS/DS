@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
-cd "$HOME/GitHub/DS/_audit/platform/_src"
+cd "$HOME/GitHub/iiko-DS/DS/_audit/platform/_src"
 UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 for p in "tokens/_md-comp-card.scss" "tokens/_md-comp-data-table.scss" "tokens/_md-comp-expansion-panel.scss" "tokens/_md-comp-tree.scss" \
          "tokens/versions/v0_192/_md-comp-card.scss" "tokens/versions/v0_192/_md-comp-data-table.scss" ; do

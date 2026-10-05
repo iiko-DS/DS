@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
-cd "$HOME/GitHub/DS/_audit/platform/_src"
+cd "$HOME/GitHub/iiko-DS/DS/_audit/platform/_src"
 UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 echo "== m3 slug probes =="
 for p in components/tree components/data-table components/table components/accordion components/cards components/lists; do

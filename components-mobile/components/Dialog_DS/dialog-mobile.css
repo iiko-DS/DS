@@ -21,7 +21,7 @@
    нажатия и лимит в три кнопки (это же правило есть и у Apple для алертов).
 
    Источники: _audit/platform/dialog.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-dialog-view,

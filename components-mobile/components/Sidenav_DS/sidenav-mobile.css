@@ -17,12 +17,12 @@
    на телефоне правильнее нижняя навигация, а не drawer.
 
    Источники: _audit/platform/sidenav.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 /* Специфичность: у базовых правил ДС тоже два класса
    (`.ds-sidenav-item--l1.ds-sidenav-item--expanded` = 0,2,0), а мобильный слой
-   подключается ПЕРЕД iiko-ds-web/components/index.css — при равной
+   подключается ПЕРЕД components-web/components/index.css — при равной
    специфичности базовое правило перебило бы это. Поэтому поднимаем до 0,3,0. */
 [data-mode="mobile"] .ds-sidenav-view,
 [data-mode="mobile"] .ds-sidenav-header,

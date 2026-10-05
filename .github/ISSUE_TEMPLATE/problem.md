@@ -20,7 +20,7 @@ assignees: ""
 
 **Где смотреть**
 
-<!-- Путь к странице: iiko-ds-mobile/prototypes/recommendations/<файл>.html или файл прототипа в iiko-ds-prototypes/ -->
+<!-- Путь к странице: components-mobile/prototypes/recommendations/<файл>.html или файл прототипа в Prototypes/ -->
 
 **Скриншот**
 

@@ -15,7 +15,7 @@
 
    Источники: _audit/platform/chips.json, _audit/platform/chips-input.json
    (iOS HIG компонента не имеет — страница /chips отдаёт 404).
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-chips {

@@ -20,7 +20,7 @@
    шапка заодно становится полноценной строкой для нажатия.
 
    Источники: _audit/platform/expansion-panel.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-expansion__header {

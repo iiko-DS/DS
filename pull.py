@@ -5,7 +5,7 @@
 
   python pull.py
 
-Что делает: забирает свежий main из организации по каждому из репозиториев в папке DS.
+Что делает: забирает свежий main из организации — в репозитории DS (эта папка) и в репозитории Prototypes (соседняя папка).
 Если в репозитории лежат незакоммиченные правки или ты сидишь в своей ветке —
 сообщает об этом и ничего не трогает, чтобы не потерять работу.
 """
@@ -14,9 +14,8 @@ import subprocess
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPOS = [
-    ("iiko-ds (корень)", HERE),
-    ("iiko-ds-web", os.path.join(HERE, "iiko-ds-web")),
-    ("iiko-ds-mobile", os.path.join(HERE, "iiko-ds-mobile")),
+    ("DS (корень)", HERE),
+    ("Prototypes (рядом)", os.path.normpath(os.path.join(HERE, "..", "Prototypes"))),
 ]
 
 
@@ -88,7 +87,7 @@ def main():
             print("  -", p)
         print("\nПодробнее — python doctor.py")
     else:
-        print("Все четыре репозитория на актуальном main.")
+        print("Оба репозитория на актуальном main.")
         print("Если правил данные — пересобери страницы: python start.py")
 
 

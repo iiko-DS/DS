@@ -19,7 +19,7 @@
    с input по стилям поля и autocomplete для подсказок.
 
    Источники: _audit/platform/search.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-search {

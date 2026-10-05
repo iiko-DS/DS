@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
-cd "$HOME/GitHub/DS/_audit/platform/_src"
+cd "$HOME/GitHub/iiko-DS/DS/_audit/platform/_src"
 UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
 curl -s -m 60 -A "$UA" -o hig_common.js "https://developer.apple.com/tutorials/js/chunk-common.233ff197.js"

@@ -83,7 +83,7 @@ def main():
     handler = functools.partial(NoCacheHandler, directory=ROOT)
     with http.server.ThreadingHTTPServer(("127.0.0.1", PORT), handler) as httpd:
         print("Сервер без кэша: http://127.0.0.1:%d/  (корень %s)" % (PORT, ROOT))
-        print("Страницы: http://127.0.0.1:%d/iiko-ds-mobile/prototypes/recommendations/index.html" % PORT)
+        print("Страницы: http://127.0.0.1:%d/components-mobile/prototypes/recommendations/index.html" % PORT)
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:

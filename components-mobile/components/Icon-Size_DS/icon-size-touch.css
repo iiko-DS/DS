@@ -19,7 +19,7 @@
    Иконок меньше 16 нет ни у одной платформы; тач-зон меньше 28 — тоже.
 
    Источники: _audit/platform/icon-size.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-arrow,

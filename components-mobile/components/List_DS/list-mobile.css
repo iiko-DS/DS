@@ -20,7 +20,7 @@
    three-line, поэтому наши двухстрочные строки на мобиле берут 72.
 
    Источники: _audit/platform/list.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-list-item,

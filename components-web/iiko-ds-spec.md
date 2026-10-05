@@ -4,7 +4,7 @@
 
 Скопируйте строку ниже и отправьте своему ИИ (Hermes, ChatGPT, Claude, Copilot — любому):
 
-> **Собери прототип по дизайн-системе iiko, используя этот файл: https://anders7rusk.github.io/iiko-ds-web/iiko-ds-spec.md**
+> **Собери прототип по дизайн-системе iiko, используя этот файл: https://github.com/iiko-DS/DS/blob/main/components-web/iiko-ds-spec.md**
 
 Дальше просто опишите экран словами или приложите скриншот/макет. ИИ прочитает этот файл и соберёт прототип на компонентах ДС: возьмёт классы из [карты классов](#карта-классов-css-библиотеки), стили — из раздела [Полные CSS-стили](#полные-css-стили-всех-компонентов), значения — из таблиц токенов. **Скачивать ничего не нужно — всё внутри этого файла.**
 
@@ -8142,10 +8142,10 @@ For icon=On — с местом под иконку у ветки; Off — бе�
 
 **Весь нужный CSS уже в этом файле** — ничего скачивать не нужно. Если собираете прототип в отдельной странице на GitHub Pages, подключите CSS по прямой ссылке (или возьмите из раздела «Полные CSS-стили всех компонентов»):\n
 ```html
-<link rel="stylesheet" href="https://anders7rusk.github.io/iiko-ds-web/tokens.css">
-<link rel="stylesheet" href="https://anders7rusk.github.io/iiko-ds-web/components/Button_DS/button.css">
-<link rel="stylesheet" href="https://anders7rusk.github.io/iiko-ds-web/components/Form-Field-Input_DS/input.css">
-<link rel="stylesheet" href="https://anders7rusk.github.io/iiko-ds-web/components/index.css">
+<link rel="stylesheet" href="https://iiko-ds.github.io/DS/components-web/tokens.css">
+<link rel="stylesheet" href="https://iiko-ds.github.io/DS/components-web/components/Button_DS/button.css">
+<link rel="stylesheet" href="https://iiko-ds.github.io/DS/components-web/components/Form-Field-Input_DS/input.css">
+<link rel="stylesheet" href="https://iiko-ds.github.io/DS/components-web/components/index.css">
 ```
 
 | Компонент | Класс | Модификаторы |
@@ -8301,7 +8301,7 @@ For icon=On — с местом под иконку у ветки; Off — бе�
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 ```
 
-В прототипах можно и одним файлом ДС: `iiko-ds-web/font.css` — он делает тот же `@import` Google Fonts.
+В прототипах можно и одним файлом ДС: `components-web/font.css` — он делает тот же `@import` Google Fonts.
 
 Подключать первым — иначе метрики (14/20, 16/24) поедут на системном шрифте. `font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif`.
 

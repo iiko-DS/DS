@@ -21,7 +21,7 @@
    обвязку (паддинг ячейки 16, высоты 56/52/52) даёт Angular Material.
 
    Источники: _audit/platform/table.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-table-header-row,
