@@ -58,7 +58,7 @@ http://127.0.0.1:8899/components-mobile/prototypes/recommendations/index.html
 
 ## 4. Что дальше
 
-- **Правила работы, рецепты и скиллы для ИИ-агентов** — в отдельной базе знаний: `https://github.com/iiko-DS/Prototypes/tree/main/iiko-ds-prototyping-guide`.
+- **Правила работы, рецепты и скиллы для ИИ-агентов** — в отдельной базе знаний: `https://github.com/iiko-DS/Prototypes/tree/main/prototyping-guide`.
 - **Свои пробы делай в отдельной ветке.** В GitHub Desktop: `Current Branch → New Branch`, например `ivan/badge-fix`. В своей ветке можно делать что угодно, общий `main` у остальных не ломается.
 - **Получилось и стоит взять всем** — `Push origin`, затем `Create Pull Request` в `main`. Это и есть «вместе перенести важное».
 - **Правки данных** — в `_audit/rec/data/<компонент>.json`, после правки пересобрать: `python start.py`. Сами страницы не правим, они генерируются.
