@@ -5,8 +5,8 @@
 
   python doctor.py
 
-Проверяет: версию Python, наличие четырёх репозиториев рядом, адреса их origin,
-собраны ли страницы. Ничего не меняет — только смотрит и говорит, что делать.
+Проверяет: версию Python, наличие репозиториев рядом (iiko-ds, iiko-ds-web, iiko-ds-mobile),
+адреса их origin, собраны ли страницы. Ничего не меняет — только смотрит и говорит, что делать.
 """
 import os
 import subprocess
@@ -14,7 +14,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ORG = "iiko-DS"
-SIBLINGS = ["iiko-ds-web", "iiko-ds-mobile", "iiko-ds-prototypes"]
+SIBLINGS = ["iiko-ds-web", "iiko-ds-mobile"]
 PAGES = os.path.join(HERE, "iiko-ds-mobile", "prototypes", "recommendations")
 
 ok, warn, bad = "  ок   ", "  ...  ", "  !!!  "
@@ -50,7 +50,7 @@ else:
     say(bad, "запускать надо из корня папки DS: рядом должны лежать serve.py и папка _audit")
     problems.append("запустить doctor.py из корня папки DS")
 
-# 3. Четыре репозитория и их адреса
+# 3. Репозитории рядом и их адреса
 for name in ["(корень iiko-ds)"] + SIBLINGS:
     path = HERE if name.startswith("(") else os.path.join(HERE, name)
     label = "iiko-ds" if name.startswith("(") else name
