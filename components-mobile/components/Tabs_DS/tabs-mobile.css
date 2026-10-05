@@ -13,7 +13,7 @@
       выбираем прокрутку, стрелки прокрутки ДС остаются для десктопа.
 
    Источники: _audit/platform/tabs.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-tab,

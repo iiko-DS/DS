@@ -7,10 +7,8 @@
 .env.*
 *.local
 
-# ── Вложенные репозитории: у них свой git (iiko-ds-web, iiko-ds-mobile, iiko-ds-prototypes) ──
-/iiko-ds-web/
-/iiko-ds-mobile/
-/iiko-ds-prototypes/
+# ── components-web и components-mobile — обычные папки внутри этого репозитория
+#    (не отдельные репозитории), игнорировать нечего ──
 
 # ── Мусор Python и кэши ──
 __pycache__/

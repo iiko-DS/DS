@@ -1,7 +1,7 @@
 import json, os, re, urllib.request
 
-SRC = os.path.expanduser("~/GitHub/DS/_audit/platform/_src")
-OUT = os.path.expanduser("~/GitHub/DS/_audit/platform")
+SRC = os.path.expanduser("~/GitHub/iiko-DS/DS/_audit/platform/_src")
+OUT = os.path.expanduser("~/GitHub/iiko-DS/DS/_audit/platform")
 os.chdir(SRC)
 
 # make sure the last cited file exists

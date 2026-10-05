@@ -18,7 +18,7 @@
    равна полю. Поэтому числа строки и паддингов берём оттуда.
 
    Источники: _audit/platform/autocomplete.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-autocomplete-form {

@@ -16,7 +16,7 @@
    Общее правило Apple 44 x 44 pt тоже перекрывается 48.
 
    Источники: _audit/platform/tree.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-tree,

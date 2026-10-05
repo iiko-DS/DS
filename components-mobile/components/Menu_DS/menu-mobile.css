@@ -21,7 +21,7 @@
    мобиле Material сам предлагает шторку снизу как альтернативу меню.
 
    Источники: _audit/platform/menu.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-menu-container,

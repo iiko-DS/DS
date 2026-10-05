@@ -11,7 +11,7 @@
      · Angular Material: mat-slide-toggle — тот же трек, тач-таргет 48;
      · iOS HIG: чисел не даёт (switch только как строка списка).
 
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-slide-toggle,

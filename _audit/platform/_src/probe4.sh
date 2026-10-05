@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
-cd "$HOME/GitHub/DS/_audit/platform/_src"
+cd "$HOME/GitHub/iiko-DS/DS/_audit/platform/_src"
 echo "== tutorials/data mentions =="
 grep -o -E '.{70}tutorials/data.{70}' hig_index.js hig_common.js | head -10
 echo "== hig mentions =="

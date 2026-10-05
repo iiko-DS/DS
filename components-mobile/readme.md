@@ -1,15 +1,15 @@
-# iiko-ds-mobile
+# components-mobile
 
-Мобильный слой дизайн-системы iiko: всё, что относится к планшету и телефону.
+Папка внутри репозитория `DS`. Мобильный слой дизайн-системы iiko: всё, что относится к планшету и телефону.
 
 ## Структура
 
 ```
-iiko-ds-mobile/
+components-mobile/
 ├── modes.css                  ось режима (размер): [data-mode="mobile"]
-├── components/                только CSS компонентов (как в iiko-ds-web)
+├── components/                только CSS компонентов (как в components-web)
 │   └── index.css              агрегатор мобильного слоя
-├── prototypes/                страницы-прототипы (как в iiko-ds-prototypes)
+├── prototypes/                страницы-прототипы (как в Prototypes)
 │   ├── button-modes.html      демо: Desktop и Mobile рядом + замеры из браузера
 │   └── recommendations/       собираются генератором, в репозиторий не коммитятся
 ├── desktop-to-mobile-plan.md  план перевода компонентов ДС на мобилу
@@ -20,26 +20,28 @@ iiko-ds-mobile/
 └── mobile-block-schemes.md    схемы процесса
 ```
 
-Правило структуры то же, что в `iiko-ds-web`: один компонент — одна папка
+Правило структуры то же, что в `components-web`: один компонент — одна папка
 `components/<Имя>_DS/`. Здесь лежат только те файлы, которые существуют
 **на мобиле иначе**: структурные `*_mob`-компоненты (другая раскладка или
 состав — шторка снизу, липкий футер, вертикальная группа кнопок).
 
 ## Что здесь НЕ дублируется
 
-- **База токенов.** Она одна — `iiko-ds-web/tokens.css` (1743 переменные из
+- **База токенов.** Она одна — `components-web/tokens.css` (1743 переменные из
   Figma). Копия в этом репозитории разошлась бы с оригиналом при первом же
   обновлении ДС.
 - **Компоненты, которые на мобиле отличаются только размерами** (Button,
-  Input, Toggle, List и т. д.). Это те же файлы в `iiko-ds-web/components/`;
+  Input, Toggle, List и т. д.). Это те же файлы в `components-web/components/`;
   мобильные размеры для них задаёт `modes.css`. Так же устроена и Figma:
   режим `Mobile` создаётся **у коллекции переменных**, а не у компонента.
 
-## Как этот репозиторий лежит рядом с остальными
+## Как эта папка лежит внутри DS
 
-Клонируется в ту же папку, что `iiko-ds-web`, `iiko-ds-prototypes` и `_audit` —
-страницы и генератор подключают соседние папки относительными путями, имена папок
-менять нельзя. Порядок клонирования и первые команды — в README корневого
+`components-web`, `components-mobile` и `_audit` — папки одного репозитория `DS`:
+страницы и генератор ходят друг к другу относительными путями, имена папок менять
+нельзя. Клонируется и обновляется всё это сразу вместе с `DS`. Прототипы экранов —
+отдельный репозиторий `Prototypes` рядом с папкой `DS`. Порядок клонирования и первые
+команды — в readme репозитория `DS`.
 репозитория `iiko-ds`.
 
 `prototypes/recommendations/` — **вывод генератора**, а не исходники: страницы
@@ -50,11 +52,11 @@ iiko-ds-mobile/
 ## Как подключить
 
 ```html
-<link rel="stylesheet" href="../iiko-ds-web/font.css">
-<link rel="stylesheet" href="../iiko-ds-web/tokens.css">
-<link rel="stylesheet" href="../iiko-ds-mobile/modes.css">             <!-- ось размера -->
-<link rel="stylesheet" href="../iiko-ds-mobile/components/index.css">  <!-- мобильные *_mob -->
-<link rel="stylesheet" href="../iiko-ds-web/components/index.css">
+<link rel="stylesheet" href="../components-web/font.css">
+<link rel="stylesheet" href="../components-web/tokens.css">
+<link rel="stylesheet" href="../components-mobile/modes.css">             <!-- ось размера -->
+<link rel="stylesheet" href="../components-mobile/components/index.css">  <!-- мобильные *_mob -->
+<link rel="stylesheet" href="../components-web/components/index.css">
 ```
 и на корне экрана — атрибут режима:
 

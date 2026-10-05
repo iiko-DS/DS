@@ -21,7 +21,7 @@
    с кнопками Apple не описывает.
 
    Источники: _audit/platform/tooltip.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-hint-container,

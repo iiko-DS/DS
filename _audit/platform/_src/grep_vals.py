@@ -1,6 +1,6 @@
 import re, os
 
-os.chdir(os.path.expanduser("~/GitHub/DS/_audit/platform/_src"))
+os.chdir(os.path.expanduser("~/GitHub/iiko-DS/DS/_audit/platform/_src"))
 
 def show(fn, pattern, ctx=0, limit=40):
     print("=====", fn.replace("_", "-"))

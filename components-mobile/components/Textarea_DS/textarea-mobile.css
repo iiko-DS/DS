@@ -24,7 +24,7 @@
    мобиле фиксируем только минимум (3 строки), а не высоту.
 
    Источники: _audit/platform/textarea.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-textarea__input-frame {

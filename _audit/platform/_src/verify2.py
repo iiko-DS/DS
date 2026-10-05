@@ -1,6 +1,6 @@
 import json, os, re, urllib.request
 
-SRC = os.path.expanduser("~/GitHub/DS/_audit/platform/_src")
+SRC = os.path.expanduser("~/GitHub/iiko-DS/DS/_audit/platform/_src")
 os.chdir(SRC)
 
 

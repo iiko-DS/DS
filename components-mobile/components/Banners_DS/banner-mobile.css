@@ -19,7 +19,7 @@
    оба текстовые, dismissive слева, confirming справа».
 
    Источники: _audit/platform/banners.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-banner {

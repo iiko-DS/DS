@@ -1,5 +1,5 @@
 /* ============================================================
-   iiko-ds-mobile — агрегатор мобильного слоя
+   components-mobile — агрегатор мобильного слоя
    ============================================================
 
    Что здесь лежит
@@ -11,24 +11,24 @@
 
    Чего здесь НЕТ и почему
    -----------------------
-   Общей базы токенов и общих компонентов. База одна — iiko-ds-web/tokens.css,
+   Общей базы токенов и общих компонентов. База одна — components-web/tokens.css,
    компоненты, которые на мобиле отличаются ТОЛЬКО размерами, — те же самые
-   файлы в iiko-ds-web/components/. Мобильные размеры для них задаёт
+   файлы в components-web/components/. Мобильные размеры для них задаёт
    modes.css (ось режима `data-mode="mobile"`). Копии этих файлов не нужны:
    с копиями режим перестанет каскадиться во вложенные компоненты, а любое
    обновление ДС придётся править в двух местах.
 
    Подключение мобильного слоя (порядок обязателен)
    ------------------------------------------------
-     <link rel="stylesheet" href="../iiko-ds-web/font.css">
-     <link rel="stylesheet" href="../iiko-ds-web/tokens.css">
-     <link rel="stylesheet" href="../iiko-ds-mobile/modes.css">      ← ось размера
-     <link rel="stylesheet" href="../iiko-ds-mobile/components/index.css">  ← этот файл
-     <link rel="stylesheet" href="../iiko-ds-web/components/index.css">
+     <link rel="stylesheet" href="../components-web/font.css">
+     <link rel="stylesheet" href="../components-web/tokens.css">
+     <link rel="stylesheet" href="../components-mobile/modes.css">      ← ось размера
+     <link rel="stylesheet" href="../components-mobile/components/index.css">  ← этот файл
+     <link rel="stylesheet" href="../components-web/components/index.css">
      плюс на корне: <html data-mode="mobile">
 
    Пока мобильных компонентов нет — файл пустой, но он есть, чтобы структура
-   совпадала с iiko-ds-web и мобильный слой подключался одной строкой.
+   совпадала с components-web и мобильный слой подключался одной строкой.
    ============================================================ */
 
 /* @import "Button_DS/button-group-mob.css";  — пример для будущих *_mob-компонентов */

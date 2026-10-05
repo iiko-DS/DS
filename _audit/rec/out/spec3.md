@@ -43,7 +43,7 @@
 ## 5. Проверка
 
 ```
-cd C:\Users\asukharev\GitHub\DS\_audit\rec
+cd C:\Users\asukharev\GitHub\iiko-DS\DS\_audit\rec
 python checks\check-patch.py <slug>
 ```
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
-cd "$HOME/GitHub/DS/_audit/platform/_src"
+cd "$HOME/GitHub/iiko-DS/DS/_audit/platform/_src"
 UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 echo "== HIG outline/table phrase check =="
 grep -o -E ".{80}outline view instead of a table view.{80}" hig/lists-and-tables.json | head -2

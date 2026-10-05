@@ -21,7 +21,7 @@
    стиль — без чисел, пригодных для нашей сетки.
 
    Источники: _audit/platform/datepicker.json.
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-datepicker {

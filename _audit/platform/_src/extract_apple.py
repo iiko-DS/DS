@@ -1,6 +1,6 @@
 import json, re, os, urllib.request
 
-os.chdir(os.path.expanduser("~/GitHub/DS/_audit/platform/_src"))
+os.chdir(os.path.expanduser("~/GitHub/iiko-DS/DS/_audit/platform/_src"))
 
 def text_of(path):
     raw = open(path, encoding="utf-8", errors="replace").read()

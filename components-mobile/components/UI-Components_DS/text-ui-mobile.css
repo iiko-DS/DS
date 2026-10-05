@@ -20,7 +20,7 @@
 
    Источники: _audit/platform/text-field.json (правило 16 px), desktop-to-mobile-plan.md
    («UI: text-ui» — «мобильная шкала типографики: крупнее базовый текст»).
-   Подключение: iiko-ds-mobile/components/index.css
+   Подключение: components-mobile/components/index.css
    ============================================================ */
 
 [data-mode="mobile"] .ds-text-ui,

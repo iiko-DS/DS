@@ -1,12 +1,12 @@
 # Задание: доделать страницы рекомендаций iiko DS
 
 Страницы генерируются из данных:
-`C:\Users\asukharev\GitHub\DS\_audit\rec\data\<slug>.json` → `_audit\rec\build.py` →
+`C:\Users\asukharev\GitHub\iiko-DS\DS\_audit\rec\data\<slug>.json` → `_audit\rec\build.py` →
 `iiko-ds-mobile\prototypes\recommendations\<slug>.html`.
 
-**Эталон** (сделан и принят владельцем): `C:\Users\asukharev\GitHub\DS\_audit\rec\data\button.json`.
+**Эталон** (сделан и принят владельцем): `C:\Users\asukharev\GitHub\iiko-DS\DS\_audit\rec\data\button.json`.
 Открой его и повторяй структуру дословно. Разметка экранов собирается хелперами
-`C:\Users\asukharev\GitHub\DS\_audit\rec\mock.py`.
+`C:\Users\asukharev\GitHub\iiko-DS\DS\_audit\rec\mock.py`.
 
 ## Что писать
 
@@ -75,13 +75,13 @@
 «риск», «не рекомендуется»), в скобках — источник.
 
 Источники (числа брать только оттуда, ничего не выдумывать):
-- `C:\Users\asukharev\GitHub\DS\_audit\platform\<slug>.json` — ключи `platforms.md3`,
+- `C:\Users\asukharev\GitHub\iiko-DS\DS\_audit\platform\<slug>.json` — ключи `platforms.md3`,
   `platforms.angular`, `platforms.apple` (числа + цитаты + ссылки), `not_recommended_ru`,
   `verdict_ru`. Имя файла может отличаться от slug: `radio` → `radio-button.json`,
   `hint-tooltip` → `tooltip.json`, `form-field` → `text-field.json`,
   `table-2-lvl` → `table.json`, `snackbar` → `snackbar.json` / `toast.json`,
   `text-ui` → ближайший из имеющихся.
-- `C:\Users\asukharev\GitHub\DS\_audit\rec\data-tech\<slug>.json` — если есть.
+- `C:\Users\asukharev\GitHub\iiko-DS\DS\_audit\rec\data-tech\<slug>.json` — если есть.
 - Строки `changes` этой же страницы (`data/<slug>.json`) — мобильные значения ДС.
 
 Пример колонки Material для Button: «Держать подписи короткими именно ради одной
@@ -97,7 +97,7 @@
 Собирается хелперами `mock.py`:
 
 ```python
-import sys; sys.path.insert(0, r"C:\Users\asukharev\GitHub\DS\_audit\rec")
+import sys; sys.path.insert(0, r"C:\Users\asukharev\GitHub\iiko-DS\DS\_audit\rec")
 from mock import *
 html = phones(
     screen(status() + head("Новый заказ") + body(search() + lst([...])) + foot(btn("Отмена"), btn("Создать")),

@@ -1,6 +1,6 @@
 # Задание 2: пересборка страниц рекомендаций — 2 экрана + цифры вместо «то же»
 
-Проект: `C:\Users\asukharev\GitHub\DS`. Страницы собираются из
+Проект: `C:\Users\asukharev\GitHub\iiko-DS\DS`. Страницы собираются из
 `_audit\rec\data\<slug>.json` генератором `_audit\rec\build.py`.
 Образец готовой страницы: **checkbox** — его `preview_html` уже переделан, смотри
 `_audit\rec\data\checkbox.json` и страницу
@@ -69,7 +69,7 @@
 Запусти по каждому своему компоненту:
 
 ```
-cd C:\Users\asukharev\GitHub\DS\_audit\rec
+cd C:\Users\asukharev\GitHub\iiko-DS\DS\_audit\rec
 python checks\check-patch.py <slug>
 ```
 

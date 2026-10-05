@@ -34,7 +34,7 @@ Button: `http://127.0.0.1:8899/iiko-ds-mobile/prototypes/recommendations/button.
 ## Проверка
 
 ```
-cd C:\Users\asukharev\GitHub\DS\_audit\rec
+cd C:\Users\asukharev\GitHub\iiko-DS\DS\_audit\rec
 python checks\check-patch.py <slug>
 ```
 
