@@ -61,12 +61,12 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Textarea">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="textarea">Textarea</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Textarea (набор 57759:23094, 13 вариантов) -->
+  <div class="panel" data-vpanel="textarea" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Variant=Populated — состояния (подпись «Label» + значение, поддержка «Support text» / «Hint text»)</div>
       <div class="snap-grid" style="grid-template-columns: repeat(4, max-content);">
@@ -200,8 +200,8 @@
     <p class="snap-note">Пометки для ревью: (а) состав варианта с канвы: кадр 250×76 (пад 4/12/12/12), подпись «Label» 16 (12/16), значение 24, элементы left/right 20, внутренний Scroll 64×8 в Focus+Value и Disable (при переполнении), поддержка 250×16 («Support text» + «Hint text» — два слота по половине ширины); (б) css выгрузки не покрывает подпись 12/16, цвета Focus/Error рамки и подписей, раскладку поддержки — собрано обвязкой (пробел ДС, журнал №125); (в) Disable: фон #F5F5F5, рамка #EBEBEB, все тексты #9E9E9E; (г) в вариантах есть слоты Element left/right (пустые в канве); (д) элементов «(Examples)» на канве нет — вкладка «Примеры» справочная. Журнал №125.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example (справочная вкладка — блока примеров на канве нет) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Примеры</div>
       <p class="snap-note" style="margin-top: 8px;">⚠ На канве страницы «Textarea_DS» есть блок «Textarea (Examples)», но он содержит только шапку (контента нет — в работе). Поэтому вкладка носит справочный характер: пример появления Textarea внутри формы есть в примерах «Chips Input (примеры)» — «Заполненная форма» (Input + Textarea + Select form + Chips Input); при появлении кадров примеры будут собраны. Журнал №125.</p>

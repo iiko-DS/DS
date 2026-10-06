@@ -62,12 +62,12 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Autocomplete">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="autocomplete-form">Autocomplete form</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Autocomplete form (набор 57759:28983, 10 вариантов) -->
+  <div class="panel" data-vpanel="autocomplete-form" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Variant=Empty — состояния (подпись-плейсхолдер «Label»)</div>
       <div class="snap-grid" style="grid-template-columns: repeat(5, max-content);">
@@ -132,8 +132,8 @@
     <p class="snap-note">Пометки для ревью: (а) набор — 10 вариантов (Empty/Populated × Default/Hover/Focus/Focus+Value/Error/Disable), 250×48; на канве состояния собраны инстансами «Input» (Form-Field-Input), css выгрузки не покрывает подпись 12/16 и цвета Focus/Error — обвязка стенда; (б) Empty — подпись-плейсхолдер 16/24 #616161; (в) Error — подпись «Label *»; (г) hover для Populated на канве без смены фона рамки. Журнал №128.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: «Autocomplete (Examples)» (Basic pattern, default, error, disable) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Basic pattern — ввод по буквам + список с заголовками («Title 1/2», «Item text …»)</div>
       <div class="snap-row" style="margin-top: 12px;">

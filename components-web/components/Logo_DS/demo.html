@@ -29,6 +29,7 @@
   .demo-bar { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-bottom: 1px solid var(--ds-color-stroke-default, #e0e0e0); font-size: 13px; }
   .demo-bar__title { font-weight: 500; margin-right: 8px; }
   .view { padding: 24px; }
+  .view .ds-tabs { margin-bottom: 24px; }
   .panel { width: fit-content; max-width: 1920px; box-sizing: border-box; padding: 32px; border: 1px solid var(--ds-color-stroke-default, #e0e0e0); background: #fff; }
   .snap-cap { font-size: 12px; line-height: 16px; color: var(--ds-color-text-secondary, #616161); margin: 0; }
   .snap-note { font-size: 12px; line-height: 16px; color: var(--ds-color-text-secondary, #616161); margin: 28px 0 0; max-width: 980px; }
@@ -52,7 +53,14 @@
   <span>наборы Figma: Logo iiko (55332-19892, 4) · Logo Syrve (56079-771, 4) · пример: Frame 1 (58413-192)</span>
 </div>
 <div class="view">
-  <div class="panel">
+  <div class="ds-tabs" role="tablist" aria-label="Logo">
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="iiko">Logo iiko</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="syrve">Logo syrve</button>
+  </div>
+
+  <!-- 2. Logo iiko (набор 55332:19892) -->
+  <div class="panel" data-vpanel="iiko" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Logo iiko — Size × Style (набор 55332:19892)</div>
       <div class="snap-row">
@@ -177,6 +185,10 @@ fill="white"/> <path d="M48.6869 9.87015H30.3395C29.7484 9.87015 29.2692 10.3458
       </div>
     </div>
 
+  </div>
+
+  <!-- 3. Logo syrve (набор 56079:771) -->
+  <div class="panel" data-vpanel="syrve" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Logo Syrve — Size × Style (набор 56079:771)</div>
       <div class="snap-row">
@@ -307,6 +319,10 @@ fill="#00052A"/> </svg></span></div>
       </div>
     </div>
 
+  </div>
+
+  <!-- 1. Basic example: Frame 1 (58413:192, 200×200) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Пример канвы: Frame 1 (58413:192, 200×200) — Logo iiko Full/Main по центру</div>
       <div class="snap-frame1">
@@ -348,5 +364,21 @@ fill="#FF5252"/> <path d="M48.6869 9.87015H30.3395C29.7484 9.87015 29.2692 10.34
     <p class="snap-note">Пометки для ревью: (а) векторы всех 8 вариантов вставлены инлайн точными путями из Figma (экспорт вариантов; без defs/клипов — clip-прямоугольник совпадает с артбордом); (б) в css у логотипов нет классов размеров/стилей (только корень и __vector) — вариант задаётся разметкой/ассетом; фоны артбордов выгрузки (белый у iiko-корня/вектора, #00062b у syrve-вектора) сняты в fixes.css п. 27 — иначе под лого рисуются прямоугольники, а у syrve тёмные глифы на своём же фоне не видны; (в) Style=Inverse показан на светлой плашке — как артборд набора; в продукте белые лого применяются на тёмном фоне (сайд-нав — logo-iiko-white.svg); у syrve Inverse белые элементы с тёмно-синими акцентами — на светлом фоне читается фрагментарно (так же и в наборе); (г) в организмах лого приходит отдельными svg-файлами (app-sidenav: logo-iiko.svg, logo-iiko-white.svg, logo-iiko-mark.svg; app-header: logo-iiko.svg) — стенд показывает вектор из Figma; (д) цвета: iiko Main #FF5252, syrve #00062B, Inverse — белые (у iiko Small Inverse знак — белый круг с красной плетёнкой). Журнал №118.</p>
   </div>
 </div>
+
+<script>
+  /* табы стенда */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.ds-tab[data-vtab]'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('[data-vpanel]'));
+  tabs.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      tabs.forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('ds-tab--active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panels.forEach(function (p) { p.hidden = p.getAttribute('data-vpanel') !== btn.getAttribute('data-vtab'); });
+    });
+  });
+</script>
 </body>
 </html>

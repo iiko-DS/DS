@@ -72,12 +72,12 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Chips Input">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="chips-input">Chips Input</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Chips Input (набор 52916:14539, 16 вариантов) -->
+  <div class="panel" data-vpanel="chips-input" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Size=M — состояния (подпись «Label» + чип + ввод + Element right; поддержка «Support text»/«Hint text»)</div>
       <div class="snap-grid" style="grid-template-columns: repeat(4, max-content);">
@@ -234,8 +234,8 @@
     <p class="snap-note">Пометки для ревью: (а) состав M-варианта по канве: кадр 280×64, подпись «Label» 16, строка [чип 116×32 + ввод 90×24 + Element right 20], поддержка 16; S — 280×36 без подписи; (б) css выгрузки (chips-input.css) не покрывает подпись 12/16, цвета Focus/Error, поле ввода, фон Element right — собрано обвязкой (пробел ДС, журнал №126); (в) в css два класса — `.ds-chips-input` и `.ds-chips-input-2` (пад 12, гэп 8) — на стенде используется первый (пад 4/12/8/12); `.ds-chips-input-2` остаётся без применения — решить в ДС; (г) у чипа в поле есть слоты: текст + закрыть (левый слот-иконка в варианте с чипом не показан, в примерах — «Chips с аватарами»); (д) состояния Hover/Error+Hover заморожены стенд-классами; (е) фон Element right на канве — прозрачный (белые плашки служебных слоёв). Журнал №126.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: «Поведение» (2304×2983) + «Примеры» (1298×928) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">«Поведение» — сценарии канвы (тексты дословно)</div>
       <div class="snap-row" style="margin-top: 12px;">

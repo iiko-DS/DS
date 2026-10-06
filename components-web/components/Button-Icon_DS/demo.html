@@ -53,12 +53,12 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Button icon">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="button-icon">Button icon</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="button-icon-group">Button icon group</button>
   </div>
 
-  <!-- 1. Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 1. Button icon (набор 17123:81299, 153 варианта) -->
+  <div class="panel" data-vpanel="button-icon" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Size=M (36×36, иконка 20, радиус 8) — Style=Neutral, все состояния (hover/press живые + заморожены; Disable и Loading — как на канве)</div>
       <div class="snap-h3" style="margin-top: 8px;">Type=Filled</div>
@@ -157,8 +157,8 @@
     <p class="snap-note">Пометки для ревью: (а) матрица зеркалит набор (153 варианта): у Neutral показаны все состояния Filled/Outlined/Text, у цветных стилей — Default + живые hover/press; (б) Loading собран по канве: подложка #EBEBEB, спиннер 24 (svg из Figma: кольцо #E0E0E0 + дуга #448AFF), иконка #9E9E9E под спиннером; в css у кнопок спиннера нет (как у Button, №40) — при необходимости встроить; (в) Disable — встроенные стили (фон #EBEBEB, иконка #9E9E9E); (г) hover/press у Neutral заморожены стенд-классами через токены; (д) у XS иконка 16. Журнал №123.</p>
   </div>
 
-  <!-- 2. Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 2. Button icon group (состав из ДС; блоков примеров на канве нет) -->
+  <div class="panel" data-vpanel="button-icon-group" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Группы (Button icon group — Orientation=Horizontally / Vertically, гэп 8; состав из ДС)</div>
       <div class="snap-row" style="margin-top: 12px;">

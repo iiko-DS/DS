@@ -60,12 +60,15 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Stepper">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="step">Step</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="stepper-line">Stepper line</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="stepper-button">Stepper button</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="element-step">Element step</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Step (набор 54624:2882, 12 вариантов) -->
+  <div class="panel" data-vpanel="step" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Step — Background On/Off × состояния (подложка #FAFAFA r8; Selected #F5F9FF + рамка; Error #FFF8F8; Disable #9E9E9E)</div>
       <div class="snap-grid" style="grid-template-columns: repeat(6, max-content);">
@@ -108,6 +111,10 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 3. Stepper line (4 варианта) -->
+  <div class="panel" data-vpanel="stepper-line" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Stepper line — 4 варианта (Step On: стрелки между шагами; Step Off: разделитель 8×1 #616161; в линии — фоны пройденных)</div>
       <div class="snap-col" style="margin-top: 12px; gap: 16px;">
@@ -145,6 +152,10 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 4. Stepper button (12 вариантов) -->
+  <div class="panel" data-vpanel="stepper-button" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Stepper button (Type × Position × Content: [счётчик «N из M»] + кнопки; Text — ds-btn M, Icon — 36 с обводкой accent)</div>
       <div class="snap-row" style="margin-top: 8px;">
@@ -166,6 +177,10 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 5. Element step (12 вариантов) -->
+  <div class="panel" data-vpanel="element-step" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Element step — Icon size / Counter × состояния (24; selected — #448AFF / Badge accent)</div>
       <div class="snap-row" style="margin-top: 8px; align-items:center;">
@@ -181,8 +196,8 @@
     <p class="snap-note">Пометки для ревью: (а) Step: подложка #FAFAFA r8 (Background=On), min-height 32 (On) / 24 (Off), гэп 8, [иконка/номер 24][текст 14/20]; Selected — #F5F9FF + рамка #448AFF, текст/иконка accent; Error — фон #FFF8F8 и текст #FF5252; Disable — #9E9E9E; (б) в css Error-фон и фоны «пройденных» шагов (#F5F9FF/#F0F5FF) не заданы — обвязка стенда (решить в ДС); (в) Hover/Press заморожены; (г) Stepper line: Step=On — стрелки keyboard_arrow_right 24 (тексты «Step 1» в наборе), Step=Off — `ds-stepper__divider` 8×1 #616161; (д) Stepper button: счётчик «1 из 6» 14/500, Type Filled — заливка accent, Outlined — обводка accent (Text — ds-btn M, Icon — кнопки 36); (е) Element step Counter — Badge 24 (accent при selected). Журнал №134.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: примеры канвы (онбординг; тексты дословно) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Примеры (онбординг из канвы; тексты дословно)</div>
       <div class="snap-row" style="margin-top: 12px;">
