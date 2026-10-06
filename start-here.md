@@ -47,7 +47,7 @@ DS/
 python pull.py      # забрать свежий main из репозиториев DS и Prototypes
 ```
 
-Пример живой страницы-прототипа — `Prototypes/demo-connect.html`: ДС подключается одной строкой, стили, шапка и меню приходят сами (подробности — [`prototyping-guide/как-работать-с-ДС.md`](https://github.com/iiko-DS/Prototypes/blob/main/prototyping-guide/как-работать-с-ДС.md)).
+Пример живой страницы-прототипа — `Prototypes/demo-connect.html`: ДС подключается одной строкой, стили, шапка и меню приходят сами (подробности — [`prototyping-guide/подключение-ds.md`](https://github.com/iiko-DS/Prototypes/blob/main/prototyping-guide/подключение-ds.md)).
 
 ## 4. Что дальше
 
