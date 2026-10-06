@@ -2657,6 +2657,45 @@ Lvl=1 — основной уровень; Lvl=2 — вложенный.
 </div>
 ```
 
+#### Как собрать таблицу целиком (Table)
+Любая таблица собирается из полос и ячеек этого семейства, сверху вниз: шапка → строки → подстрока 2-го уровня → футер (если есть итоги). Правила:
+
+- **Шапка**: полоса `ds-table-header-row`, внутри — только ячейки `ds-table-header-cell` (текст — `__label`). Рамку, фон и скругление несёт полоса; ячейка прозрачна и без рамки. В выгрузке рамка/фон есть у обеих (двойные швы — известный пробел №1, обход в `fixes.css` п. 22). Закрепление при прокрутке — `position: sticky` на полосе шапки (обвязка страницы).
+- **Строки**: полоса `ds-table-content-row`, внутри — ячейки `ds-table-content-cell`. Текст ячейки — `__label`; контролы (чекбокс, статус, кнопка) — в слот `__element` (внутрь — Element cell или сам компонент). Состояния полосы: `:hover` — в css; `--zebra` (чередование фона) и `--selected` (выделение записи) — классы из `fixes.css` п. 22 (в выгрузке только токены `--ds-color-table-row-content-*`).
+- **Ширина колонок** задаётся на ячейках (свои классы обвязки, напр. `w-280`); порядок ячеек в строке = порядок колонок в шапке.
+- **Ячейка-ссылка** — `ds-table-content-cell--link` (Accent; классы `--link`/`--focus`/`--edit`/`--error` — `fixes.css` п. 22, в ДС пока нет — №3). Пустое значение — прочерк «—» текстом (State=Null).
+- **2-й уровень** (состав блюда, позиции документа): подстрока `ds-table-2-lvl--table-row-2-lvl` из подъячеек `ds-table-2-lvl--table-cell-2-lvl`; подъячейка — две полосы `ds-table-2-lvl__header-row` подряд (верх — 1 ячейка, низ — 2). Css — `UI-Components_DS/table-2-lvl.css`.
+- **Футер**: `ds-table-footer` одним блоком под строками (итоги по колонкам).
+- ⚠️ В выгрузке полосы свёрстаны колонкой (`flex-direction: column`) — без обхода `fixes.css` п. 22 строку из ячеек не собрать (пробел №4, чинится в ДС).
+
+Скелет разметки (шапка + строка + подстрока):
+
+```html
+<div class="w-table">
+  <div class="ds-table-header-row">
+    <div class="ds-table-header-cell w-c1"><span class="ds-table-header-cell__label">Колонка 1</span></div>
+    <div class="ds-table-header-cell w-c2"><span class="ds-table-header-cell__label">Колонка 2</span></div>
+  </div>
+  <div class="ds-table-content-row">
+    <div class="ds-table-content-cell w-c1"><span class="ds-table-content-cell__label">Значение</span></div>
+    <div class="ds-table-content-cell w-c2"><span class="ds-table-content-cell__label">Значение</span></div>
+  </div>
+  <div class="ds-table-2-lvl ds-table-2-lvl--table-row-2-lvl">
+    <div class="ds-table-2-lvl ds-table-2-lvl--table-cell-2-lvl w-c1">
+      <div class="ds-table-2-lvl__header-row">
+        <div class="ds-table-header-cell"><span class="ds-table-header-cell__label">Деталь</span></div>
+      </div>
+      <div class="ds-table-2-lvl__header-row">
+        <div class="ds-table-header-cell"><span class="ds-table-header-cell__label">Значение</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="ds-table-content-row ds-table-content-row--zebra">…</div>
+</div>
+```
+
+Живой пример полной сборки — демо-стенд `components/Table_DS/demo.html` (вкладка «Пример сборки»).
+
 #### Tabs `[54854:3052]` — 4 вариантов
 **Описание и рекомендации по применению:**
 Вкладки — переключение разделов одного экрана без перезагрузки: «Общие», «Товары», «История».  

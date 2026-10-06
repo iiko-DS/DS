@@ -364,3 +364,35 @@
 /* у подписей шапки нет сброса margin: UA-отступы <p> (16+16 на каждую) раздували шапку 116→180;
    в макете строки 24 без отступов (зазор задаёт gap 8) */
 .ds-card__label-up, .ds-card__label-down { margin: 0; }
+
+/* 22. Table (канва «🟡Table_DS»; демо-стенд Table_DS/demo.html; журнал №109). Полосы строк в выгрузке
+   свёрстаны колонкой (table-header-row.css / table-content-row.css: flex-direction: column), у подъячейки
+   2 уровня — то же в .ds-table-2-lvl__header-row; в Figma полоса — горизонтальный ряд ячеек (в вариантах
+   6×81, слоты Header/Content), строку из ячеек не собрать (журнал №4) — развёртка возвращена.
+   Шапка: рамку и фон рисуют и полоса, и ячейка (швы двойные, фон дважды — журнал №1); в Figma владелец —
+   полоса (ячейка прозрачна, без рамки; скрин варианта 53593:10988), у полосы не было clip — прямоугольные
+   ячейки перекрывали скругление 8 — добавлен overflow: hidden.
+   Состояния строк Zebra/Selected и ячеек Link/Focus/Edit/Error в css не реализованы (токены table-* в
+   tokens.css есть) — собраны по значениям узлов: Link — Accent (как Text UI/Link), Focus/Edit — Stroke/Accent,
+   Error — Stroke/Negative. Zebra/Selected — фон строки (Table surfase). */
+.ds-table-header-row, .ds-table-content-row, .ds-table-2-lvl__header-row { flex-direction: row; }
+.ds-table-header-row { overflow: hidden; }
+.ds-table-header-cell { background: none; border: none; }
+.ds-table-content-row--zebra { background: var(--ds-color-table-row-content-zebra-background, #f5f5f5); }
+.ds-table-content-row--selected { background: var(--ds-color-table-row-content-selected-background, #ebebeb); }
+.ds-table-content-cell--link .ds-table-content-cell__label { color: var(--ds-color-text-ui-link-text-color, #448aff); }
+.ds-table-content-cell--focus { border: var(--ds-table-cell-content-focus-border-size, 1px) solid var(--ds-color-table-cell-content-focus-border-color, #448aff); }
+.ds-table-content-cell--edit { border: var(--ds-table-cell-content-edit-border-size, 1px) solid var(--ds-color-table-cell-content-edit-border-color, #448aff); }
+.ds-table-content-cell--error { border: var(--ds-table-cell-content-error-border-size, 1px) solid var(--ds-color-table-cell-content-error-border-color, #ff5252); }
+
+/* 23. Banners (стенд Banners_DS/demo.html; журнал №113). Style=Tip в css отсутствует (в наборе 54367:2566
+   вариант есть): по узлу 59827:5322 — граница 1px dashed, паттерн [2,2], цвет — токен Banners/Border color
+   (= Stroke/Accent), фон #F5F9FF (у узла привязан к переменной Figma «Banners/Tip/Background», в tokens.css
+   её нет — хардкод с пометкой), скругление 12 — как у остальных стилей. Браузерный dashed аппроксимирует
+   Figma-паттерн [2,2]. */
+.ds-banner--tip { background: #f5f9ff; border: var(--ds-stroke-0-25x, 1px) dashed var(--ds-color-banners-border-color, #448aff); }
+
+/* 24. Chips (стенд Chips_DS/demo.html; журнал №112). У текста чипа (`.ds-chips__chip-text`) в выгрузке
+   фон задан токеном цвета текста — текст рисуется тёмной плашкой (тот же класс артефакта, что у Select item
+   №37, Text UI №88, List №94). Снято. */
+.ds-chips__chip-text { background: none; }
