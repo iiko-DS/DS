@@ -1,8 +1,9 @@
 /* ============================================================
    iiko DS — токены, сгенерированы напрямую из Figma Variables
-   Файл: Iiko Web DS (New) · выгрузка 2026-09-01
-   Переменных: 1743 в 10 коллекциях
-   Источник: плагин iiko DS — Variables Export → ds-variables.json
+   Файл: Iiko Web DS (New) · выгрузка 2026-10-06
+   Переменных: 1738 в 10 коллекциях
+   Источник: плагин iiko DS — Variables Export → ds-full.json
+   Изменения 06.10: Card-значения; +Select/Background, +Paginator; Divider-набор → «Совместимость»
    ============================================================ */
 
 :root {
@@ -422,7 +423,7 @@
   --ds-color-brand-contrast-4-dark: var(--ds-palette-contrast-4-950);   /* Brand/Contrast-4/Dark */
   --ds-color-icon-primary-light: var(--ds-color-brand-neutral-neutral);   /* Icon/Primary light */
 
-  /* ── Component (1346) ─────────────────────────── */
+  /* ── Component (1341) ─────────────────────────── */
   --ds-color-button-accent-filled-default-background: var(--ds-color-button-accent-default);   /* Button/Accent/Filled/Default/Background */
   --ds-color-button-accent-filled-default-text-color: var(--ds-color-text-inversive);   /* Button/Accent/Filled/Default/Text color */
   --ds-color-button-accent-filled-default-icon-color: var(--ds-color-icon-inversive);   /* Button/Accent/Filled/Default/Icon color */
@@ -937,7 +938,6 @@
   --ds-color-dialog-content-text-color: var(--ds-color-text-secondary);   /* Dialog/Content/Text color */
   --ds-table-cell-text-size: var(--ds-typography-body-font-size-s);   /* Table cell/Text size */
   --ds-table-cell-text-weight: var(--ds-typography-font-weight-regular);   /* Table cell/Text weight */
-  --ds-divider-size-m: var(--ds-stroke-0-25x);   /* Divider/Size M */
   --ds-color-table-cell-header-background: var(--ds-color-table-surfase-default-transparent);   /* Table cell/Header/Background */
   --ds-color-table-cell-content-default-background: var(--ds-color-table-surfase-default-transparent);   /* Table cell/Content/Default/Background */
   --ds-color-table-cell-content-hover-border-color: var(--ds-color-stroke-hover);   /* Table cell/Content/Hover/Border color */
@@ -952,10 +952,7 @@
   --ds-color-table-cell-content-disable-text-color: var(--ds-color-text-disable);   /* Table cell/Content/Disable/Text Color */
   --ds-color-table-cell-header-hover-background: var(--ds-palette-accent-5);   /* Table cell/Header/Hover/Background */
   --ds-color-table-cell-header-disable-background: var(--ds-color-table-surfase-head);   /* Table cell/Header/Disable/Background */
-  --ds-color-divider-solid-lite-color: var(--ds-color-stroke-default);   /* Divider/Solid/Lite/Color */
   --ds-color-divider-solid-default-color: var(--ds-color-stroke-default);   /* Divider/Solid/Default/Color */
-  --ds-color-divider-solid-hover-color: var(--ds-color-stroke-accent);   /* Divider/Solid/Hover/Color */
-  --ds-color-divider-dashed-default-color: var(--ds-color-stroke-default);   /* Divider/Dashed/Default/Color */
   --ds-color-table-cell-header-disable-icon-color: var(--ds-color-icon-disable);   /* Table cell/Header/Disable/Icon color */
   --ds-color-table-row-content-selected-background: var(--ds-color-table-surfase-selected);   /* Table row/Content/Selected/Background */
   --ds-color-table-cell-content-hover-background: var(--ds-color-table-surfase-hover);   /* Table cell/Content/Hover/Background */
@@ -970,7 +967,7 @@
   --ds-dialog-content-pad-bottom: var(--ds-space-2x);   /* Dialog/Content/Pad bottom */
   --ds-button-group-gap: var(--ds-space-2x);   /* Button group/Gap */
   --ds-color-backdrop-background: var(--ds-palette-neutral-900);   /* Backdrop/Background */
-  --ds-card-header-pad-top: var(--ds-space-6x);   /* Card/Header/Pad top */
+  --ds-card-header-pad-top: var(--ds-space-4x);   /* Card/Header/Pad top */
   --ds-card-header-pad-bottom: var(--ds-space-2x);   /* Card/Header/Pad bottom */
   --ds-card-header-gap: var(--ds-space-2x);   /* Card/Header/Gap */
   --ds-card-header-title-size: var(--ds-typography-font-size-5x);   /* Card/Header/Title size */
@@ -980,18 +977,18 @@
   --ds-card-header-desc-weight: var(--ds-typography-font-weight-regular);   /* Card/Header/Desc weight */
   --ds-color-card-header-desc-color: var(--ds-color-text-secondary);   /* Card/Header/Desc color */
   --ds-card-content-gap: var(--ds-space-2x);   /* Card/Content/Gap */
-  --ds-card-content-pad-top: var(--ds-space-2x);   /* Card/Content/Pad top */
-  --ds-card-content-pad-bottom: var(--ds-space-2x);   /* Card/Content/Pad bottom */
+  --ds-card-content-pad-top: var(--ds-space-3x);   /* Card/Content/Pad top */
+  --ds-card-content-pad-bottom: var(--ds-space-3x);   /* Card/Content/Pad bottom */
   --ds-card-content-title-size: var(--ds-typography-font-size-4x);   /* Card/Content/Title size */
   --ds-card-content-title-weight: var(--ds-typography-font-weight-medium);   /* Card/Content/Title weight */
   --ds-color-card-content-title-color: var(--ds-color-text-primary);   /* Card/Content/Title color */
   --ds-card-content-text-size: var(--ds-typography-font-size-4x);   /* Card/Content/Text size */
   --ds-card-content-text-weight: var(--ds-typography-font-weight-medium);   /* Card/Content/Text weight */
   --ds-color-card-content-text-color: var(--ds-color-text-secondary);   /* Card/Content/Text color */
-  --ds-card-footer-pad-top: var(--ds-space-4x);   /* Card/Footer/Pad top */
+  --ds-card-footer-pad-top: var(--ds-space-2x);   /* Card/Footer/Pad top */
   --ds-card-footer-pad-bottom: var(--ds-space-4x);   /* Card/Footer/Pad bottom */
-  --ds-card-pad-left: var(--ds-space-6x);   /* Card/Pad left */
-  --ds-card-pad-right: var(--ds-space-6x);   /* Card/Pad right */
+  --ds-card-pad-left: var(--ds-space-4x);   /* Card/Pad left */
+  --ds-card-pad-right: var(--ds-space-4x);   /* Card/Pad right */
   --ds-card-border-radius: var(--ds-radius-2x);   /* Card/Border radius */
   --ds-color-card-background: var(--ds-color-shapes-default);   /* Card/Background */
   --ds-checkbox-icon-size: var(--ds-icon-size-size-5x);   /* Checkbox/Icon size */
@@ -1182,7 +1179,6 @@
   --ds-color-input-number-control-disable-icon-color: var(--ds-color-icon-disable);   /* Input number/Control/Disable/Icon color */
   --ds-color-tab-active-hover-background: var(--ds-color-shapes-hover);   /* Tab/Active/Hover/Background */
   --ds-color-tab-active-press-background: var(--ds-color-shapes-press);   /* Tab/Active/Press/Background */
-  --ds-divider-size-l: var(--ds-stroke-0-5x);   /* Divider/Size L */
   --ds-color-tab-active-default-background: var(--ds-color-shapes-default-transparent);   /* Tab/Active/Default/Background */
   --ds-hint-header-pad-left: var(--ds-space-3x);   /* Hint/Header/Pad left */
   --ds-hint-header-pad-right: var(--ds-space-3x);   /* Hint/Header/Pad right */
@@ -1239,9 +1235,7 @@
   --ds-color-list-item-negative-label-text-color: var(--ds-color-text-negative);   /* List item/Negative/Label text color */
   --ds-color-list-item-negative-text-color: var(--ds-color-text-negative);   /* List item/Negative/Text color */
   --ds-color-list-item-selected-icon-color: var(--ds-color-icon-accent);   /* List item/Selected/Icon color */
-  --ds-color-divider-solid-selected-color: var(--ds-color-stroke-accent);   /* Divider/Solid/Selected/Color */
   --ds-color-tab-disable-divider: var(--ds-color-stroke-disable);   /* Tab/Disable/Divider */
-  --ds-color-divider-solid-disable-color: var(--ds-color-stroke-disable);   /* Divider/Solid/Disable/Color */
   --ds-tabs-gap: var(--ds-space-0);   /* Tabs/Gap */
   --ds-search-s-size-pad-left: var(--ds-space-3x);   /* Search/S size/Pad left */
   --ds-search-s-size-pad-right: var(--ds-space-3x);   /* Search/S size/Pad right */
@@ -1357,8 +1351,6 @@
   --ds-tab-lvv-2-pad-left: var(--ds-space-3x);   /* Tab/Lvv 2/Pad left */
   --ds-tab-lvv-2-pad-right: var(--ds-space-3x);   /* Tab/Lvv 2/Pad right */
   --ds-tab-lvv-2-pad-top: var(--ds-space-1x);   /* Tab/Lvv 2/Pad top */
-  --ds-color-divider-dashed-selected-color: var(--ds-color-stroke-accent);   /* Divider/Dashed/Selected/Color */
-  --ds-color-divider-dashed-disable-color: var(--ds-color-stroke-disable);   /* Divider/Dashed/Disable/Color */
   --ds-tab-lvv-2-text-weight: var(--ds-typography-font-weight-regular);   /* Tab/Lvv 2/Text weight */
   --ds-sidenav-header-pad-bottom: var(--ds-space-3x);   /* Sidenav/Header/Pad bottom */
   --ds-sidenav-header-pad-top: var(--ds-space-3x);   /* Sidenav/Header/Pad top */
@@ -1613,6 +1605,7 @@
   --ds-color-snackbar-single-dark-text-color: var(--ds-color-text-inversive);   /* Snackbar/Single/Dark/Text color */
   --ds-color-snackbar-single-light-background: var(--ds-color-surface-default);   /* Snackbar/Single/Light/Background */
   --ds-color-snackbar-single-light-text-color: var(--ds-color-text-primary);   /* Snackbar/Single/Light/Text color */
+  --ds-color-select-background: var(--ds-color-surface-default);   /* Select/Background */
   --ds-select-item-gap: var(--ds-space-2x);   /* Select item/Gap */
   --ds-select-item-text-size: var(--ds-typography-body-font-size-s);   /* Select item/Text size */
   --ds-color-select-item-text-color: var(--ds-color-text-primary);   /* Select item/Text color */
@@ -1770,7 +1763,23 @@
   --ds-color-timepicker-time-grid-border-color: var(--ds-color-stroke-default);   /* Timepicker/Time grid/Border color */
   --ds-timepicker-time-line-component: Select (Container);   /* Timepicker/Time line/Component */
 
-  /* ── Совместимость: токены прежнего набора (140) ── */
+  /* Paginator (добавлено выгрузкой 06.10) */
+  --ds-paginator-gap: var(--ds-space-8x);   /* Paginator/Gap */
+  --ds-paginator-paginator-elipsis-gap: var(--ds-space-1x);   /* Paginator/Paginator elipsis/Gap */
+  --ds-paginator-gap-page-size: var(--ds-space-2x);   /* Paginator/Gap Page size */
+
+  /* ── Совместимость: токены прежнего набора (149) ──
+     Divider-набор (Size M/L и цвета состояний Solid/Dashed) в выгрузке 06.10 в Figma отсутствует;
+     используется Divider_DS/divider.css — оставлен до решения по компоненту Divider. */
+  --ds-divider-size-m: var(--ds-stroke-0-25x);   /* Divider/Size M */
+  --ds-divider-size-l: var(--ds-stroke-0-5x);   /* Divider/Size L */
+  --ds-color-divider-solid-lite-color: var(--ds-color-stroke-default);   /* Divider/Solid/Lite/Color */
+  --ds-color-divider-solid-hover-color: var(--ds-color-stroke-accent);   /* Divider/Solid/Hover/Color */
+  --ds-color-divider-solid-selected-color: var(--ds-color-stroke-accent);   /* Divider/Solid/Selected/Color */
+  --ds-color-divider-solid-disable-color: var(--ds-color-stroke-disable);   /* Divider/Solid/Disable/Color */
+  --ds-color-divider-dashed-default-color: var(--ds-color-stroke-default);   /* Divider/Dashed/Default/Color */
+  --ds-color-divider-dashed-selected-color: var(--ds-color-stroke-accent);   /* Divider/Dashed/Selected/Color */
+  --ds-color-divider-dashed-disable-color: var(--ds-color-stroke-disable);   /* Divider/Dashed/Disable/Color */
   --ds-color-chips-input-background-support: rgba(255, 255, 255, 0.0);
   --ds-color-chips-input-default-action-text-color: #616161;
   --ds-color-chips-input-default-background: #f8f9fc;
