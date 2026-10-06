@@ -43,7 +43,7 @@
 Вручную (без подключателя):
 
 ```html
-<link rel="stylesheet" href="../DS/organisms/app-header/app-header.css?v=19">
+<link rel="stylesheet" href="../DS/organisms/app-header/app-header.css?v=21">
 <script src="../DS/organisms/app-header/app-header.js?v=20" defer></script>
 ```
 

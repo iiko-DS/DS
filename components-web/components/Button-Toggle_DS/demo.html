@@ -39,7 +39,8 @@
   .snap-row { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; }
   .snap-col { display: flex; flex-direction: column; gap: 10px; }
   .snap-ex-caption { font-size: 14px; line-height: 28px; color: var(--ds-color-text-primary, #333333); margin: 0; }
-  .snap-bt-cell { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+  /* матрица набора — как в эталонных стендах (заголовки столбцов + метки строк) */
+  .snap-grid { display: grid; column-gap: 24px; row-gap: 12px; align-items: center; justify-items: start; }
   /* filled-тип: выбранный сегмент = акцентный контент на белом */
   .ds-btn.snap-seg-sel .ds-btn__label { color: var(--ds-color-button-icon-accent-filled-default-background, #448aff); }
   .ds-btn-icon.snap-seg-sel .ds-btn-icon__icon { color: var(--ds-color-button-icon-accent-filled-default-background, #448aff); }
@@ -61,109 +62,81 @@
   <!-- 2. Button toggle (набор 17039:71554, 12 вариантов) -->
   <div class="panel" data-vpanel="button-toggle" role="tabpanel" hidden>
     <div class="snap-sect">
-      <div class="snap-cap snap-sect__title">Button toggle — набор, 12 вариантов (Size × Type × Content; сегменты «Button» / «Button icon»; клик переключает выбор)</div>
+      <div class="snap-cap snap-sect__title">Button toggle — 12 вариантов (Size × Type × Content); клик переключает выбор</div>
 
       <div class="snap-h3" style="margin-top: 8px;">Content=Text</div>
-      <div class="snap-row">
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=M · Type=Filled (выбранный — акцентная надпись)</span>
-          <div class="ds-button-toggle ds-button-toggle--filled ds-button-toggle--text" data-bt="filled">
+      <div class="snap-grid" style="grid-template-columns: max-content max-content max-content;">
+        <span class="snap-cap"></span><span class="snap-cap">Filled</span><span class="snap-cap">Outlined</span>
+        <span class="snap-cap">M</span>
+        <div class="ds-button-toggle ds-button-toggle--filled ds-button-toggle--text" data-bt="filled">
             <button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text snap-seg-sel" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
-          </div>
         </div>
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=M · Type=Outlined (выбранный — акцентная заливка)</span>
-          <div class="ds-button-toggle ds-button-toggle--outlined ds-button-toggle--text" data-bt="outlined">
+        <div class="ds-button-toggle ds-button-toggle--outlined ds-button-toggle--text" data-bt="outlined">
             <button class="ds-btn ds-btn--m ds-btn--accent ds-btn--filled" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--m ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
-          </div>
         </div>
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=S · Type=Filled</span>
-          <div class="ds-button-toggle ds-button-toggle--s ds-button-toggle--filled ds-button-toggle--text" data-bt="filled">
+        <span class="snap-cap">S</span>
+        <div class="ds-button-toggle ds-button-toggle--s ds-button-toggle--filled ds-button-toggle--text" data-bt="filled">
             <button class="ds-btn ds-btn--s ds-btn--neutral ds-btn--text snap-seg-sel" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--s ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--s ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
-          </div>
         </div>
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=S · Type=Outlined</span>
-          <div class="ds-button-toggle ds-button-toggle--s ds-button-toggle--outlined ds-button-toggle--text" data-bt="outlined">
+        <div class="ds-button-toggle ds-button-toggle--s ds-button-toggle--outlined ds-button-toggle--text" data-bt="outlined">
             <button class="ds-btn ds-btn--s ds-btn--accent ds-btn--filled" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--s ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--s ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
-          </div>
         </div>
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=XS · Type=Filled</span>
-          <div class="ds-button-toggle ds-button-toggle--xs ds-button-toggle--filled ds-button-toggle--text" data-bt="filled">
+        <span class="snap-cap">XS</span>
+        <div class="ds-button-toggle ds-button-toggle--xs ds-button-toggle--filled ds-button-toggle--text" data-bt="filled">
             <button class="ds-btn ds-btn--xs ds-btn--neutral ds-btn--text snap-seg-sel" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--xs ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--xs ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
-          </div>
         </div>
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=XS · Type=Outlined</span>
-          <div class="ds-button-toggle ds-button-toggle--xs ds-button-toggle--outlined ds-button-toggle--text" data-bt="outlined">
+        <div class="ds-button-toggle ds-button-toggle--xs ds-button-toggle--outlined ds-button-toggle--text" data-bt="outlined">
             <button class="ds-btn ds-btn--xs ds-btn--accent ds-btn--filled" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--xs ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
             <button class="ds-btn ds-btn--xs ds-btn--neutral ds-btn--text" data-seg><span class="ds-btn__label">Button</span></button>
-          </div>
         </div>
       </div>
 
-      <div class="snap-h3">Content=Icon (сегменты «Button icon», иконка add)</div>
-      <div class="snap-row">
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=M · Type=Filled</span>
-          <div class="ds-button-toggle ds-button-toggle--filled ds-button-toggle--icon" data-bt="filled">
+      <div class="snap-h3">Content=Icon</div>
+      <div class="snap-grid" style="grid-template-columns: max-content max-content max-content;">
+        <span class="snap-cap"></span><span class="snap-cap">Filled</span><span class="snap-cap">Outlined</span>
+        <span class="snap-cap">M</span>
+        <div class="ds-button-toggle ds-button-toggle--filled ds-button-toggle--icon" data-bt="filled">
             <button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text snap-seg-sel" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
-          </div>
         </div>
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=M · Type=Outlined</span>
-          <div class="ds-button-toggle ds-button-toggle--outlined ds-button-toggle--icon" data-bt="outlined">
+        <div class="ds-button-toggle ds-button-toggle--outlined ds-button-toggle--icon" data-bt="outlined">
             <button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--accent ds-btn-icon--filled" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
-          </div>
         </div>
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=S · Type=Filled</span>
-          <div class="ds-button-toggle ds-button-toggle--s ds-button-toggle--filled ds-button-toggle--icon" data-bt="filled">
+        <span class="snap-cap">S</span>
+        <div class="ds-button-toggle ds-button-toggle--s ds-button-toggle--filled ds-button-toggle--icon" data-bt="filled">
             <button class="ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text snap-seg-sel" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
-          </div>
         </div>
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=S · Type=Outlined</span>
-          <div class="ds-button-toggle ds-button-toggle--s ds-button-toggle--outlined ds-button-toggle--icon" data-bt="outlined">
+        <div class="ds-button-toggle ds-button-toggle--s ds-button-toggle--outlined ds-button-toggle--icon" data-bt="outlined">
             <button class="ds-btn-icon ds-btn-icon--s ds-btn-icon--accent ds-btn-icon--filled" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
-          </div>
         </div>
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=XS · Type=Filled</span>
-          <div class="ds-button-toggle ds-button-toggle--xs ds-button-toggle--filled ds-button-toggle--icon" data-bt="filled">
+        <span class="snap-cap">XS</span>
+        <div class="ds-button-toggle ds-button-toggle--xs ds-button-toggle--filled ds-button-toggle--icon" data-bt="filled">
             <button class="ds-btn-icon ds-btn-icon--xs ds-btn-icon--neutral ds-btn-icon--text snap-seg-sel" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 16 16" fill="currentColor"><use href="#ic-add-16"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--xs ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 16 16" fill="currentColor"><use href="#ic-add-16"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--xs ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 16 16" fill="currentColor"><use href="#ic-add-16"/></svg></span></button>
-          </div>
         </div>
-        <div class="snap-bt-cell">
-          <span class="snap-cap">Size=XS · Type=Outlined</span>
-          <div class="ds-button-toggle ds-button-toggle--xs ds-button-toggle--outlined ds-button-toggle--icon" data-bt="outlined">
+        <div class="ds-button-toggle ds-button-toggle--xs ds-button-toggle--outlined ds-button-toggle--icon" data-bt="outlined">
             <button class="ds-btn-icon ds-btn-icon--xs ds-btn-icon--accent ds-btn-icon--filled" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 16 16" fill="currentColor"><use href="#ic-add-16"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--xs ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 16 16" fill="currentColor"><use href="#ic-add-16"/></svg></span></button>
             <button class="ds-btn-icon ds-btn-icon--xs ds-btn-icon--neutral ds-btn-icon--text" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 16 16" fill="currentColor"><use href="#ic-add-16"/></svg></span></button>
-          </div>
         </div>
       </div>
     </div>
@@ -174,7 +147,7 @@
   <!-- 1. Basic example: «Button toggle (Examples)» (53553:42223) + UX-примеры (61875:1992) -->
   <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
-      <div class="snap-cap snap-sect__title">Примеры «Button toggle (Examples)» (сегменты «Button» / «Button icon»; клик переключает)</div>
+      <p class="snap-cap" style="margin-bottom:16px;">Basic example: кликайте по сегментам — выбор переключается</p>
       <div class="snap-row">
         <div class="snap-col">
           <p class="snap-ex-caption">Single selection</p>
@@ -217,6 +190,7 @@
             <button class="ds-btn-icon ds-btn-icon--m ds-btn-icon--neutral ds-btn-icon--text snap-seg-sel" data-seg><span class="ds-btn-icon__icon"><svg viewBox="0 0 20 20" fill="currentColor"><use href="#ic-add"/></svg></span></button>
           </div>
         </div>
+
         <div class="snap-col">
           <p class="snap-ex-caption">Single selection &amp; disable</p>
           <div class="ds-button-toggle ds-button-toggle--outlined ds-button-toggle--text" data-bt="outlined">
