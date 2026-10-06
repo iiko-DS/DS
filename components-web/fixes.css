@@ -428,3 +428,26 @@
    на тёмном фоне, а #00062b делает тёмные глифы syrve Main невидимыми (прямоугольник вместо словомарки).
    Снято. */
 .ds-logo-iiko, .ds-logo-iiko__vector, .ds-logo-syrve, .ds-logo-syrve__vector { background: none; }
+
+/* 28. Checkbox/Radio label (демо-стенды Checkbox_DS и Radio-Button_DS; журнал №119, №120).
+   (а) Цвета иконок в лейблах: в выгрузке у `.ds-checkbox-label__icon` / `.ds-radio-button-label__icon`
+   нет пер-вариантных цветов (в Figma: normal-selected/inderterminate — Accent, error — Negative,
+   disable-selected — нейтральный) — иконки наследовали серый цвет текста.
+   (б) У Radio текст лежит на классе-артефакте `.ds-radio-button-label__цвет-и-палитра` (имя из текста
+   слоя — тoт же артефакт генератора, что №24/37/88) с протекающим фоном = цветом текста — снято.
+   (в) У Radio error-support в выгрузке потомковый селектор (`.ds-radio--error .ds-radio__support`),
+   а в разметке support — сиблинг (как у checkbox) — добавлен сиблинг-селектор. */
+.ds-checkbox-label--normal.ds-checkbox-label--selected .ds-checkbox-label__icon,
+.ds-checkbox-label--normal.ds-checkbox-label--inderterminate .ds-checkbox-label__icon { color: var(--ds-color-checkbox-normal-selected-icon-color, #448aff); }
+.ds-checkbox-label--error .ds-checkbox-label__icon { color: var(--ds-color-checkbox-error-deselected-icon-color, #ff5252); }
+.ds-checkbox-label--disable.ds-checkbox-label--selected .ds-checkbox-label__icon { color: var(--ds-color-checkbox-disable-selected-icon-color, #9e9e9e); }
+.ds-radio-button-label--normal.ds-radio-button-label--selected .ds-radio-button-label__icon { color: var(--ds-color-radio-button-label-normal-selected-icon-color, #448aff); }
+.ds-radio-button-label--error .ds-radio-button-label__icon { color: var(--ds-color-radio-button-label-error-icon-color, #ff5252); }
+.ds-radio-button-label--disable.ds-radio-button-label--selected .ds-radio-button-label__icon { color: var(--ds-color-radio-button-label-disable-selected-icon-color, #9e9e9e); }
+.ds-radio-button-label__цвет-и-палитра { background: none; }
+.ds-radio--error ~ .ds-radio__support { color: var(--ds-color-text-negative, #ff5252); }
+/* (г) support-текст лейблов: тот же артефакт «фон = цвет текста» (`.ds-*-label__support-text`),
+   плюс цвета по вариантам (в Figma: Normal #616161, Error #FF5252, Disable #9E9E9E — в css был только серый). */
+.ds-checkbox-label__support-text, .ds-radio-button-label__support-text { background: none; }
+.ds-checkbox-label--error .ds-checkbox-label__support-text, .ds-radio-button-label--error .ds-radio-button-label__support-text { color: var(--ds-color-text-negative, #ff5252); }
+.ds-checkbox-label--disable .ds-checkbox-label__support-text, .ds-radio-button-label--disable .ds-radio-button-label__support-text { color: var(--ds-paint-text-disable, #9e9e9e); }
