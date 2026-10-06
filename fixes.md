@@ -607,6 +607,12 @@ Balsamiq, текстовое описание) — прототип всегда
 133. **Демо-стенд Expansion panel (`Expansion-Panel_DS/demo.html`) собран; наблюдения при сборке** — страница «Expansion panel_DS» (52937:1328): Expansion panel (12: Default/Info × Off/On × Default/Hover/Press/Disable; шапка h44 пад 12/16 r12 гэп 8; стрелка поворачивается), Expansion content (2: Padding on/off), Expansion group panel (2) + примеры («На что влияет выбор складов» + «Подробнее», «Дерево акций», «Общие параметры» с периодами «с 01.05.2025 по 01.06.2025» / «Пн, Вт, Ср, Чт, Сб, Вс»). Наблюдение: в Figma у Variant=Default фон шапки #F8F9FC, в css — #FFFFFF — решить в ДС; панели на стенде живые (клик). (Фигма + CSS) 
     · Статус: открыт.
 
+134. **Демо-стенд Stepper (`Stepper_DS/demo.html`) собран; наблюдения при сборке** — страница «Stepper_DS» (54624:2882): Step (12: Background On/Off × Default/Hover/Press/Selected/Error/Disable; подложка #FAFAFA r8, Selected #F5F9FF + рамка #448AFF, Error #FFF8F8, Disable #9E9E9E; состав [иконка/номер 24][текст 14]), Stepper line (4: Step On — стрелки keyboard_arrow_right 24, Step Off — разделитель 8×1 #616161; в линиях шаги с фонами #FAFAFA/#F5F9FF/#F0F5FF/#F5F9FF+рамка/#FFF8F8), Stepper button (12: Filled/Outlined × First/Middle/Last × Text/Icon; счётчик «1 из 6» 14/500); Element step (12: Icon size/Counter; Counter — Badge 24 accent) + примеры (9981×7188 — онбординг: «Концепция», «Название и адрес», «Меню», «Тип кухни»…, «Далее»). Наблюдения: фоны Error (#FFF8F8) и «пройденных» шагов (#F5F9FF/#F0F5FF) в css не заданы — обвязка стенда (решить в ДС); Stepper button собирается из ds-btn/Button icon. (Фигма + CSS)
+    · Статус: открыт.
+
+135. **Демо-стенд Tree (`Tree_DS/demo.html`) собран; наблюдения при сборке** — страница «🟡 Tree_DS» (56227:19988): Tree item (5: End/End-long/Middle/Middle-long/Start — сепараторы-линии #D7D8D9, каркас 24×44), Tree (8: Level 2/3 × End/Middle × For icon On/Off) + 2 фрейма списков (List item 388×36 со стрелками раскрытия / иконками папок) + Menu (Container) 400×406. ⚠ Компонент черновой: на канве пометки «https://material.angular.dev/components/tree/examples», «Вариант 1: для таблицы», «Вариант 2: для списков», «Это скопированный компонент из моего прошлого проекта» — стиль может отличаться от ДС; в css только каркас (height 44, паддинг 11, линии). Стенд собран по данным канвы, ждёт доработки компонента. (Фигма + CSS)
+    · Статус: открыт.
+
 ## Открытые вопросы (не баги ДС)
 
 - Мобильные сетки месяцев/дней: отдельного решения нет — в прототипе ряды переносятся;
