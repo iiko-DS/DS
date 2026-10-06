@@ -54,12 +54,12 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Button Toggle">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="button-toggle">Button toggle</button>
   </div>
 
-  <!-- 1. Набор (12 вариантов) -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Button toggle (набор 17039:71554, 12 вариантов) -->
+  <div class="panel" data-vpanel="button-toggle" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Button toggle — набор, 12 вариантов (Size × Type × Content; сегменты «Button» / «Button icon»; клик переключает выбор)</div>
 
@@ -171,8 +171,8 @@
     <p class="snap-note">Пометки для ревью: (а) логика набора зафиксирована с канвы: Type=Filled — фон контейнера и сегментов белый, выбранный сегмент показан АКЦЕНТНЫМ КОНТЕНТОМ (надпись/иконка); Type=Outlined — контейнер с рамкой, выбранный сегмент с акцентной заливкой; в css у `.ds-button-toggle--filled` базовый цвет надписи уже акцентный — уточнить, это ли имелось в виду (решить в ДС); (б) сегменты — реальные Button/Button icon (ds-btn / ds-btn-icon), клик переключает выбор (одиночный); (в) размеры сегментов M 36 / S 28 / XS 24 (у XS иконка 16); (г) у Filled-набора сегменты белые без рамок — фон = контейнер; д) состояния сегментов (hover/press) живые из Button. Журнал №121.</p>
   </div>
 
-  <!-- 2. Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: «Button toggle (Examples)» (53553:42223) + UX-примеры (61875:1992) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Примеры «Button toggle (Examples)» (сегменты «Button» / «Button icon»; клик переключает)</div>
       <div class="snap-row">

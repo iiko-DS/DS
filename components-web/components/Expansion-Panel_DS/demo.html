@@ -55,12 +55,14 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Expansion panel">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="expansion-panel">Expansion panel</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="expansion-content">Expansion content</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="expansion-group">Expansion group panel</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Expansion panel (набор 52937:1328, 12 вариантов; Variant=Default и Variant=Info) -->
+  <div class="panel" data-vpanel="expansion-panel" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Expansion panel — Variant=Default: Collaps Off / On × состояния (клик по шапке раскрывает)</div>
       <div class="snap-row" style="margin-top: 12px;">
@@ -113,7 +115,7 @@
     </div>
 
     <div class="snap-sect">
-      <div class="snap-cap snap-sect__title">Variant=Info (пунктирная акцентная рамка, фон #F5F9FF), Expansion content (Padding on/off) и группа</div>
+      <div class="snap-cap snap-sect__title">Variant=Info (пунктирная акцентная рамка, фон #F5F9FF) — Off / On (живые)</div>
       <div class="snap-row" style="margin-top: 12px;">
         <div class="snap-col"><span class="snap-cap">Info · Off / On (живые)</span>
           <div class="ds-expansion ds-expansion--info snap-exp" data-exp>
@@ -132,6 +134,14 @@
             <div class="ds-expansion__content">Это Slot. В блоке контента может быть всё что угодно</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Expansion content — Padding=on (16) / Padding=off (0) -->
+  <div class="panel" data-vpanel="expansion-content" role="tabpanel" hidden>
+    <div class="snap-sect">
+      <div class="snap-row">
         <div class="snap-col"><span class="snap-cap">Expansion content — Padding=on (16) / Padding=off (0)</span>
           <div class="ds-expansion-content" style="width:597px;background:#f8f9fc;border:1px dashed #e0e0e0;">
             <span class="ds-expansion-content__label">Это Slot. В блоке контента может быть всё что угодно (padding on)</span>
@@ -140,6 +150,14 @@
             <span class="ds-expansion-content__label">Тот же контент с padding off</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Expansion group panel — Collaps -->
+  <div class="panel" data-vpanel="expansion-group" role="tabpanel" hidden>
+    <div class="snap-sect">
+      <div class="snap-row">
         <div class="snap-col"><span class="snap-cap">Expansion group panel — Collaps (часть открыта)</span>
           <div style="display:flex;flex-direction:column;gap:8px;width:597px;">
             <div class="ds-expansion ds-expansion--open" data-exp>
@@ -159,8 +177,8 @@
     <p class="snap-note">Пометки для ревью: (а) шапка по канве: h44, паддинг 12/16, r12, гэп 8; слева — группа [стрелка keyboard_arrow_down + info], справа — info; тексты-заглушки «Title text»; (б) в Figma у Variant=Default фон шапки #F8F9FC, в css — #FFFFFF (на стенде css; решить в ДС); (в) Variant=Info — пунктир accent + #F5F9FF (в css есть); (г) Collapse/Expand — состояние, стрелка поворачивается на 180° (css-анимация, клик живой); (д) Disable — рамка #EBEBEB, фон #F5F5F5, тексты #9E9E9E. Журнал №133.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: «Expansion (Examples)» — тексты дословно; панели живые -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Примеры канвы (тексты дословно; панели живые)</div>
       <div class="snap-row" style="margin-top: 12px;">

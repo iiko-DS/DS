@@ -65,12 +65,15 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Menu">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="menu-container">Menu (Container)</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="menu-item">Menu item</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="element-menu">Element menu</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="arrow-menu">Arrow menu</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Menu (Container) — состав: Search + Title menu + Divider + пункты + Divider + Button group -->
+  <div class="panel" data-vpanel="menu-container" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Menu (Container) — состав: Search + Title menu + Divider + пункты + Divider + Button group</div>
       <div class="snap-row" style="margin-top: 12px;">
@@ -91,6 +94,10 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 3. Menu item — 7 состояний -->
+  <div class="panel" data-vpanel="menu-item" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Menu item — 7 состояний (Default/Hover/Press/Negative/Selected/Back selected/Disable; в css есть только hover/press/disable)</div>
       <div class="snap-row" style="margin-top: 8px;">
@@ -104,6 +111,10 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 4. Element menu — 8 вариантов контента -->
+  <div class="panel" data-vpanel="element-menu" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Element menu — 8 вариантов контента (в строке меню)</div>
       <div class="snap-row" style="margin-top: 8px; align-items: center;">
@@ -118,6 +129,10 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 5. Arrow menu — стрелки -->
+  <div class="panel" data-vpanel="arrow-menu" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Arrow menu — стрелки (в наборе 13; показаны доступные глифы)</div>
       <div class="snap-row" style="margin-top: 8px; align-items:center;">
@@ -135,8 +150,8 @@
     <p class="snap-note">Пометки для ревью: (а) в css Menu item состояния Selected/Negative/Back selected отсутствуют (только hover/press/disable) — на стенде собраны обвязкой по смыслу (подложка accent-10/текст accent, negative #FF5252) — сверить с Figma и решить в ДС; (б) высоты пунктов внутри контейнера на канве не детализированы (слот) — строки 36 обвязкой; (в) Element menu — элементы из своих компонентов (Checkbox/Radio/Slide toggle из ДС); Image size показан круглым плейсхолдером (аватар/картинка — ассет); (г) Counter — по Badge (accent); (д) Search в контейнере — ds-search--s; (е) «Menu item» из набора — 258×68 (по css), компактные меню в примерах — строки меньшей высоты. Журнал №131.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: сценарии канвы (тексты дословно) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Сценарии канвы (тексты дословно; меню собраны строками обвязки)</div>
       <div class="snap-row" style="margin-top: 12px;">

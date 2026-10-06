@@ -54,13 +54,15 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Hint">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="hint-container">Hint container</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="hint-content">Hint content</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="hint-header">Hint header</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="hint-footer">Hint footer</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Hint container (набор «Hint container», 10): Size=Complex, Orientation Default/Up/Down/Right/Left -->
+  <div class="panel" data-vpanel="hint-container" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Hint container, Size=Complex — состав: header (заголовок + close) + content (info + две строки + close) + footer (кнопки)</div>
       <div class="snap-row" style="margin-top: 12px;">
@@ -103,8 +105,12 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 3. Hint content (2 варианта: Group content / Single content) -->
+  <div class="panel" data-vpanel="hint-content" role="tabpanel" hidden>
     <div class="snap-sect">
-      <div class="snap-cap snap-sect__title">Hint content (2 варианта) и Hint header (5 стилей)</div>
+      <div class="snap-cap snap-sect__title">Hint content (2 варианта): Group content / Single content</div>
       <div class="snap-row" style="margin-top: 8px;">
         <div class="snap-col"><span class="snap-cap">Content=Group content ([info][2 строки][close])</span>
           <div class="ds-hint-content ds-hint-content--group-content snap-hint">
@@ -119,6 +125,15 @@
             <span class="snap-hint-close"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#ic-close-20"/></svg></span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Hint header (5 стилей) -->
+  <div class="panel" data-vpanel="hint-header" role="tabpanel" hidden>
+    <div class="snap-sect">
+      <div class="snap-cap snap-sect__title">Hint header (5 стилей)</div>
+      <div class="snap-row">
         <div class="snap-col"><span class="snap-cap">Hint header — 5 стилей (Neutral/Primary/Secondary/Warning/Error); в css цвет не разнесён</span>
           <div class="snap-hint" style="display:flex;flex-direction:column;gap:6px;">
             <div class="ds-hint-header ds-hint-header--neutral" style="border-radius:8px 8px 0 0;"><span class="ds-hint-header__title">Neutral</span></div>
@@ -131,6 +146,10 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 5. Hint footer (кнопки на тёмном фоне) -->
+  <div class="panel" data-vpanel="hint-footer" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Hint footer (кнопки на тёмном фоне; артефакт-класс текста — fixes п. 30)</div>
       <div class="ds-hint-footer snap-hint" style="border-radius:0 0 8px 8px;">
@@ -141,8 +160,8 @@
     <p class="snap-note">Пометки для ревью: (а) фон контейнера #424242, текст белый; шапка — паддинг 8/12/4 гэп 8 (заголовок 14/20 medium); контент — 8/12: [info 20][блок текста 12/16][close 20]; футер — 16/12/12 гэп 12: [текст][кнопки]; (б) стрелка-указатель (`ds-hint-container__arrow`, высота 4) в css — полоса без формы; в канве у контейнера стрелка отдельным слоем (не воспроизводим); (в) цвет стилей Hint header в css одинаковый белый (пер-стилевые цвета не разнесены) — решить в ДС; (г) у `.ds-hint-footer__цвет-и-палитра` (второй артефакт-класс с русским именем) протекал фон = цвет текста — снято в fixes п. 30; (д) в канве страницы — сравнение с MD3 Rich Tooltip и iOS Popover (мобильная тема, вне веба). Журнал №132.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: примеры канвы (Basic single hint + сборка) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Примеры канвы</div>
       <div class="snap-row" style="margin-top: 12px;">

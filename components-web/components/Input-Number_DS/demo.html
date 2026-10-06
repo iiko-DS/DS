@@ -79,12 +79,13 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Input number">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="input-number">Input number</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="input-number-but-icon">Input number_but icon</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Input number (набор 17193:84749, 29 вариантов) -->
+  <div class="panel" data-vpanel="input-number" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Size=M, Variant=Populated — состояния (подпись Label + значение «0 000 ₽» + стрелки/close)</div>
       <div class="snap-grid" style="grid-template-columns: repeat(4, max-content);">
@@ -195,6 +196,10 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 3. Input number_but icon (составной степпер [−][поле][+]) -->
+  <div class="panel" data-vpanel="input-number-but-icon" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Size=S (162×36) и Size=XS (123×28) — Variant=No label up: составной степпер «Input number_but icon» ([−][поле][+])</div>
       <div class="snap-row" style="margin-top: 8px;">
@@ -227,8 +232,8 @@
     <p class="snap-note">Пометки для ревью: (а) в Figma M-вариант собран из инстансов «Input» (Form-Field-Input) + «Element right» (close + Control arrow button 20×36: кнопки 20×17 #EBEBEB, глиф 12); css выгрузки (input-number.css) не покрывает подпись 12/16, цвета Focus/Error и фон кнопок стрелок — на стенде добавлено обвязкой (решить в ДС, журнал №124); (б) у M Populated стрелки показаны у Default; в Focus появляется close (20×20); (в) Empty — только подпись-плейсхолдер 16/24 #616161; (г) Disable: фон #F5F5F5, рамка #EBEBEB, тексты #9E9E9E; (д) S/XS (No label up) — это отдельный составной компонент «Input number_but icon»: [−][поле][+], где «минус» серый, «плюс» белый с тенью 01dp; (е) состояния Hover/Error+Hover заморожены стенд-классами; (ж) курсор ввода в Focus не рисуем (статика канвы). Журнал №124.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: «Input number (Examples)» (7 групп) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-row">
         <div class="snap-col">

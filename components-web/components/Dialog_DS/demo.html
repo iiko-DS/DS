@@ -73,12 +73,15 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Dialog">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="dialog-view">Dialog view</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="dialog-header">Dialog header</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="dialog-footer">Dialog footer</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="picture">Picture</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Dialog view (набор 52952:1284; полный состав: header + content + footer; 500×364 r12) -->
+  <div class="panel" data-vpanel="dialog-view" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Dialog view (полный состав: header + content + footer; 500×364 r12)</div>
       <div class="snap-row" style="margin-top: 12px;">
@@ -106,8 +109,11 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 3. Dialog header (2 варианта: Type=Text / Type=Picture) -->
+  <div class="panel" data-vpanel="dialog-header" role="tabpanel" hidden>
     <div class="snap-sect">
-      <div class="snap-cap snap-sect__title">Dialog header · Dialog footer · Picture</div>
       <div class="snap-row" style="margin-top: 12px;">
         <div class="snap-col"><span class="snap-cap">Dialog header Type=Text (заголовок + описание + Divider)</span>
           <div class="ds-dialog-header" style="width:500px;">
@@ -118,12 +124,28 @@
             <div class="snap-dlg-divider"></div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Dialog footer (Divider + Action 68 + Button) -->
+  <div class="panel" data-vpanel="dialog-footer" role="tabpanel" hidden>
+    <div class="snap-sect">
+      <div class="snap-row">
         <div class="snap-col"><span class="snap-cap">Dialog footer (Divider + Action 68 + Button)</span>
           <div class="ds-dialog-footer" style="width:500px;">
             <div class="snap-dlg-divider"></div>
             <div class="snap-dlg-footer"><button class="snap-btn snap-btn--accent">Подробнее</button></div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Picture (446×189; кроп-слот 173 пунктир) -->
+  <div class="panel" data-vpanel="picture" role="tabpanel" hidden>
+    <div class="snap-sect">
+      <div class="snap-row">
         <div class="snap-col"><span class="snap-cap">Picture (446×189; кроп-слот 173 пунктир)</span>
           <div class="ds-picture">
             <div class="ds-picture__crop" style="align-items:center;justify-content:center;"><span class="snap-cap">Picture</span></div>
@@ -134,8 +156,8 @@
     <p class="snap-note">Пометки для ревью: (а) состав по канве: шапка (Title 20/28 + close 24 + описание 16/24 + Divider 1px #E0E0E0), контент (блоки: Title 16/24 medium + текст 14/20), Scroll 204×12 (bg #FAFAFA, ползунок #D6D6D6); футер (Divider + Action 68: паддинг 16/24, кнопка M); (б) паддинги шапки/контента на канве — обвязка (в css классов паддингов нет): использованы 24 по бокам, шапка 24/12, компакт-шапка 16/24 (высота 60 — как в примерах); (в) Picture — кроп-слот с пунктирной рамкой #9E9E9E на фоне #F8F9FC; (г) служебная пометка канвы «слетели хедеры, поправить» — к дизайну компонента не относится. Журнал №129.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: «Примеры» (4785×1650; 16 инстансов + сцена с Backdrop) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Примеры сценариев (тексты дословно из канвы)</div>
       <div class="snap-row" style="margin-top: 12px;">

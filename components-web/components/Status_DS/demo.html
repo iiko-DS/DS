@@ -112,12 +112,12 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Status">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="status">Status</button>
   </div>
 
-  <!-- 1. Набор: Style × Type -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Status: Style × Type -->
+  <div class="panel" data-vpanel="status" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Type=Filled (116×24; слоты Element left/right включены — как в вариантах набора)</div>
       <div class="snap-cells">
@@ -149,8 +149,8 @@
     <p class="snap-note">Пометки для ревью: (а) в вариантах набора включены ОБА слота (Element left/right — BOOLEAN, по умолчанию on) — на стенде показано как в наборе; в примерах слоты выключены, кроме сценария «Статусы с иконками» (ниже); (б) иконка слота во всех стилях — глиф «info» 13×13 цветом Icon/Primary #616161 (как в узлах) — спрайт, fill задан на самом svg; (в) цвет подписи = цвет стиля (корень статуса), плашки служебных слоёв выгрузки (.ds-status__info белым, .ds-status__content фоном в цвет текста) сняты в fixes п. 26 — там же про жёсткий нейтральный цвет подписи; (г) Filled — пад 4/6, r8, рамки нет; Text — пад 0; (д) мобильный сет «Status_mob» и сравнение с MD3/iOS — вне веба, не воспроизводим. Журнал №116.</p>
   </div>
 
-  <!-- 2. Примеры: сценарии «Status (UX Examples)» -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: сценарии «Status (UX Examples)» -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-h2">Статусы в таблице заказов</div>
       <div class="snap-sub">Текстовые статусы (Type=Text) в таблице накладных на поставку. Цвет текста передаёт текущий этап обработки — от создания до завершения.</div>
