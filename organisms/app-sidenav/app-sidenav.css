@@ -5,8 +5,8 @@
    Поведение и данные — app-sidenav.js (макеты DS «Взаимодействие с меню» 59160:36140 и «Адаптив» 59193:17635).
 
    Подключение (одинаковое на всех страницах, см. app-sidenav/readme.md):
-     <link rel="stylesheet" href="app-sidenav/app-sidenav.css?v=14">
-     <script src="app-sidenav/app-sidenav.js?v=12" defer></script>
+     <link rel="stylesheet" href="app-sidenav/app-sidenav.css?v=15">
+     <script src="app-sidenav/app-sidenav.js?v=13" defer></script>
    Страница подключает ДС (font/tokens/styles/components/index/fixes) и Material Icons; если что-то
    забыли — скрипт дострахует (кроме мобильного слоя: меню десктопное).
 
@@ -144,12 +144,15 @@ body.device-desktop:not(.ui-clean) .panel.app-snav-on .app-snav {
    пока открытие L2 = вход в раздел, состояния совпадают; класса состояния в ДС нет — пробел ДС №66) */
 .app-snav__item--open.ds-sidenav-item--l1 { background: var(--ds-color-sidenav-item-l1-background-selected, #4b626d); }
 
-/* стрелка наведения у разделов с L2: раскрытое меню — справа по строке */
-.app-snav__arrow {
+/* стрелка наведения у разделов с L2: раскрытое меню — справа по строке.
+   Селектор привязан к пункту (.app-snav__item): общий класс .material-icons приходит в
+   каскаде ПОЗЖЕ css организмов и при равной специфичности перебивал display/font-size —
+   стрелка висела в потоке 24px, и строки прыгали 44↔48 на ховере. */
+.app-snav__item .app-snav__arrow {
   display: none;
   flex: none;
   color: var(--ds-color-sidenav-item-l1-element-right, #ffffff);
-  font-size: 20px;
+  font-size: var(--ds-icon-size-size-5x, 20px);
   line-height: 1;
 }
 .app-snav--l1expanded .app-snav__item[data-l2]:hover .app-snav__arrow { display: flex; }

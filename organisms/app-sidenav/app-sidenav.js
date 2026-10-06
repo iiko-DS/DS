@@ -149,7 +149,8 @@
     h += '<div class="ds-sidenav-control ds-sidenav-control--expanded app-snav__control" role="button" tabindex="0"' +
            ' aria-label="Свернуть или развернуть меню">' +
            '<span class="ds-sidenav-control__content">' +
-             '<span class="app-snav__collapse"><span class="ds-icon-size ds-icon-size--4x ds-icon-size--state"><span class="material-icons" aria-hidden="true">chevron_left</span></span></span>' +
+             /* шеврон сворачивания — без ховер-подложки: иконка внутри строки-кнопки, подложка — только самостоятельным иконкам-триггерам (№99) */
+             '<span class="app-snav__collapse"><span class="ds-icon-size ds-icon-size--4x"><span class="material-icons" aria-hidden="true">chevron_left</span></span></span>' +
              '<span class="ds-sidenav-control__label">Свернуть меню</span>' +
            '</span>' +
            '<span class="app-snav__divider"></span>' +
