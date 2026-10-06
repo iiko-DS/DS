@@ -59,7 +59,7 @@
     'components-web/fixes.css'
   ];
   if (FLAGS.mobile) CSS.push('components-mobile/modes.css', 'components-mobile/components/index.css');
-  if (FLAGS.header) CSS.push('organisms/app-right-panel/app-right-panel.css?v=2', 'organisms/app-header/app-header.css?v=19');
+  if (FLAGS.header) CSS.push('organisms/app-right-panel/app-right-panel.css?v=2', 'organisms/app-header/app-header.css?v=21');
   if (FLAGS.sidenav) CSS.push('organisms/app-sidenav/app-sidenav.css?v=15');
 
   var JS = [];
