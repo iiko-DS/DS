@@ -396,3 +396,35 @@
    фон задан токеном цвета текста — текст рисуется тёмной плашкой (тот же класс артефакта, что у Select item
    №37, Text UI №88, List №94). Снято. */
 .ds-chips__chip-text { background: none; }
+
+/* 25. Scroll (канва «Scroll_DS»; демо-стенд Scroll_DS/demo.html; журнал №117). По узлам набора 53615:15339:
+   Size=M — полоса 180×8 в кадре 184×12 (пад 2), ползунок 96×8; Size=S — кадр 64×8, полоса 60×4, ползунок 24×4;
+   ховер: фон-подложка #EBEBEB и ползунок #9E9E9E, у S фон не темнеет (переменная «Scroll/Background» = #ffffff00 —
+   прозрачный; в css на оба размера одна переменная фона #FAFAFA). В css: `--s` задан шириной 8px (ошибка
+   выгрузки: 8 — это высота полосы, ширина S — 64), у ползунка нет ховер-цвета, а ховер красил корень
+   (прямоугольник без радиуса вокруг полосы — в Figma меняется сама подложка-трек). Длина ползунка (96/24) —
+   артворк набора, в контексте позиция/длина зависит от прокрутки (обвязка/JS) — в css не задаём. */
+.ds-scroll--s { width: 64px; }
+.ds-scroll--s .ds-scroll__background { background: transparent; }
+.ds-scroll--s .ds-scroll__knob { height: 4px; }
+.ds-scroll--first:hover, .ds-scroll--middle:hover, .ds-scroll--last:hover { background: none; }
+.ds-scroll--first:hover .ds-scroll__background, .ds-scroll--middle:hover .ds-scroll__background, .ds-scroll--last:hover .ds-scroll__background { background: var(--ds-color-scroll-hover-background, #ebebeb); }
+.ds-scroll--s:hover .ds-scroll__background { background: transparent; }
+.ds-scroll:hover .ds-scroll__knob { background: var(--ds-color-scroll-hover-knob-color, #9e9e9e); }
+
+/* 26. Status (канва «Status_DS»; демо-стенд Status_DS/demo.html; журнал №116). Артефакты выгрузки (тот же класс,
+   что у Select item №37, Text UI №88, Chips №24): служебные слои красят себя фоном — `.ds-status__info` белым,
+   `.ds-status__content` фоном в цвет текста; в Figma подложек нет. Плюс `.ds-status__label` и `.ds-status__content`
+   жёстко красились нейтральным токеном — пер-стилевые цвета (акцент/позитив/…) не доходили до подписи; в Figma
+   цвет подписи = цвет стиля (корень статуса уже несёт пер-стилевой color). Иконки слота — Icon/Primary
+   (#616161) во всех стилях, как в наборе. */
+.ds-status__info { background: none; }
+.ds-status__content { background: none; color: inherit; }
+.ds-status__label { color: inherit; }
+
+/* 27. Logo (стенд Logo_DS/demo.html; журнал №118). У корня/вектора в выгрузке стоят ФОНЫ АРТБОРДОВ:
+   белый у iiko (`.ds-logo-iiko`, `__vector`) и тёмно-синий #00062b у syrve (`__vector`). В вариантах набора
+   заливок нет (fill invisible), лого-глифы несут собственные цвета: белый бокс iiko виден при использовании
+   на тёмном фоне, а #00062b делает тёмные глифы syrve Main невидимыми (прямоугольник вместо словомарки).
+   Снято. */
+.ds-logo-iiko, .ds-logo-iiko__vector, .ds-logo-syrve, .ds-logo-syrve__vector { background: none; }
