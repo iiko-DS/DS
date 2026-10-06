@@ -56,12 +56,13 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Tree">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="tree-item">Tree item</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="tree">Tree</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Tree item (5 вариантов) -->
+  <div class="panel" data-vpanel="tree-item" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Tree item — 5 вариантов (сепараторы-линии #D7D8D9; каркас 24×44)</div>
       <div class="snap-row" style="margin-top: 12px; align-items: flex-end;">
@@ -83,6 +84,10 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 3. Tree (8 вариантов) -->
+  <div class="panel" data-vpanel="tree" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Tree — 8 вариантов (Level 2/3 × Mode End/Middle × For icon On/Off): композиции сепараторов</div>
       <div class="snap-row" style="margin-top: 12px;">
@@ -108,8 +113,8 @@
     <p class="snap-note">Пометки для ревью: (а) ⚠ страница помечена жёлтой меткой (в проработке), на канве — пометки «https://material.angular.dev/components/tree/examples», «Вариант 1: для таблицы», «Вариант 2: для списков», «Это скопированный компонент из моего прошлого проекта» — компонент черновой, референс Material Angular; (б) в css у ds-tree/ds-tree-item — только каркас: height 44, паддинг 11, линии `--separator-stroke` #D7D8D9, модификаторы --end/--middle/--start; поведение/цвета узлов не определены; (в) сепараторы на стенде нарисованы схемами по данным канвы (штрихи того же цвета). Журнал №135.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: примеры канвы (Frame 1000001654 и 1000001655; строки 388×36) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Примеры канвы: списки с раскрытием (Frame 1000001654 и 1000001655; строки 388×36)</div>
       <div class="snap-row" style="margin-top: 12px;">

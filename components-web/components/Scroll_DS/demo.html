@@ -73,12 +73,12 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Scroll">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="scroll">Scroll</button>
   </div>
 
-  <!-- 1. Набор: Size × Position × State -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Scroll: Size × Position × State -->
+  <div class="panel" data-vpanel="scroll" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Size=M (кадр 184×12; полоса 180×8, ползунок 96×8)</div>
       <div class="snap-col">
@@ -126,8 +126,8 @@
     <p class="snap-note">Пометки для ревью: (а) ховер живой (fixes п. 25: подложка #EBEBEB и ползунок #9E9E9E; у S фон не темнеет — по наборам); правая колонка каждого ряда — заморозка состояния стендом; (б) в css `--s` задан шириной 8px — это ошибка выгрузки (8 — высота полосы; ширина S = 64), исправлено в fixes п. 25; у ползунка не было ховер-цвета, а ховер красил корень-прямоугольник — поправлено там же; (в) позиции First/Middle/Last в css не выражены (в наборе ползунок стоит на x=0/42/84 при паддинге 2 — выравнивание выходит за паддинг); на стенде выровнено по подложке-треку, расхождение до 2–4px — решить в ДС; (г) в наборе Position=Middle/Last отличаются только положением ползунка (ткань полосы та же); длина ползунка и позиция в контексте зависят от прокрутки — это обвязка/JS, css даёт только вид. Журнал №117.</p>
   </div>
 
-  <!-- 2. Примеры: «Скролл и разделители» -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: «Скролл и разделители» -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Скролл и разделители (блок канвы 60006:13882) — правило: разделители живут вместе со скроллом</div>
       <div class="snap-row" style="gap: 64px;">

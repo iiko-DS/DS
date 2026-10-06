@@ -65,12 +65,13 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Snackbar">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="snackbar">Snackbar</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="element-left">Element left</button>
   </div>
 
-  <!-- Набор -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Snackbar (набор 54373:2203, 4 варианта) -->
+  <div class="panel" data-vpanel="snackbar" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Snackbar — 4 варианта (Type × Mode; Single: [info][текст][кнопка][close] + Progress)</div>
       <div class="snap-row" style="margin-top: 12px;">
@@ -129,6 +130,10 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- 3. Element left (5 стилей) -->
+  <div class="panel" data-vpanel="element-left" role="tabpanel" hidden>
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Element left — 5 стилей (глиф info 20; цвета — токенами стилей)</div>
       <div class="snap-row" style="margin-top: 8px; align-items:center;">
@@ -142,8 +147,8 @@
     <p class="snap-note">Пометки для ревью: (а) Single 370×56 (r8) + Progress 4px #448AFF снизу; Complex 370×108: title 20 + description 16 + Bottom actions (Button group 28); тексты-заглушки «Snackbar title with link» / «Snackbar description with link»; (б) в css Complex-dark ширина 232px, у Light 370 — на канве оба 370 (на стенде 370, обвязка) — сверить/решить в ДС; (в) `.ds-snackbar__label` в css жёстко белый — Light-варианты обойдены фиксом п. 4 (color inherit); (г) Element left: стили различаются цветом глифа (цвета взяты токенами icon/*; точные значения сверить по канве); (д) кнопка внутри Single — по канве Button с белым фоном/акцентным лейблом (на стенде — заливка accent с белым текстом — уточнить по канве). Журнал №130.</p>
   </div>
 
-  <!-- Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: сцены из канвы (тексты дословно) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Сцены из канвы (тексты дословно)</div>
       <div class="snap-row" style="margin-top: 12px;">

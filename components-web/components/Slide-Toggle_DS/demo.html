@@ -35,6 +35,8 @@
   .snap-sect__title { font-weight: 500; margin: 0 0 12px; }
   .snap-grid { display: grid; gap: 16px 48px; align-items: start; }
   .snap-grid--3 { grid-template-columns: repeat(3, max-content); }
+  /* матрица набора — как в эталонных стендах (голые заголовки столбцов + метки строк) */
+  .snap-grid--matrix { column-gap: 32px; row-gap: 12px; align-items: center; justify-items: start; }
   .snap-cell { display: flex; flex-direction: column; gap: 6px; }
   .snap-row { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; }
   .snap-col { display: flex; flex-direction: column; gap: 10px; }
@@ -53,40 +55,32 @@
 </div>
 <div class="view">
   <div class="ds-tabs" role="tablist" aria-label="Slide toggle">
-    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="sets">Набор</button>
-    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="examples">Примеры</button>
+    <button class="ds-tab ds-tab--active" role="tab" aria-selected="true" data-vtab="basic">Basic example</button>
+    <button class="ds-tab" role="tab" aria-selected="false" data-vtab="slide-toggle">Slide toggle</button>
   </div>
 
-  <!-- 1. Набор (6 вариантов) -->
-  <div class="panel" data-vpanel="sets" role="tabpanel">
+  <!-- 2. Slide toggle (набор 52887:2592, 6 вариантов) -->
+  <div class="panel" data-vpanel="slide-toggle" role="tabpanel" hidden>
     <div class="snap-sect">
-      <div class="snap-cap snap-sect__title">Slide toggle — 6 вариантов (Active × State; состав варианта — трек + подпись «Title», как на канве; переключатели живые)</div>
-      <div class="snap-grid snap-grid--3">
-        <div class="snap-cell"><span class="snap-cap">Active=Off · State=Default</span>
-          <label class="ds-slide-toggle"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox"><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
-        </div>
-        <div class="snap-cell"><span class="snap-cap">Active=On · State=Default</span>
-          <label class="ds-slide-toggle"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox" checked><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
-        </div>
-        <div class="snap-cell"><span class="snap-cap">Active=Off · State=Hover (#757575, заморожен)</span>
-          <label class="ds-slide-toggle snap-st-hover"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox"><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
-        </div>
-        <div class="snap-cell"><span class="snap-cap">Active=On · State=Hover (#3969D5, заморожен)</span>
-          <label class="ds-slide-toggle snap-st-hover"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox" checked><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
-        </div>
-        <div class="snap-cell"><span class="snap-cap">Active=Off · State=Disable</span>
-          <label class="ds-slide-toggle ds-slide-toggle--disabled"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox" disabled><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
-        </div>
-        <div class="snap-cell"><span class="snap-cap">Active=On · State=Disable</span>
-          <label class="ds-slide-toggle ds-slide-toggle--disabled"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox" checked disabled><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
-        </div>
+      <div class="snap-cap snap-sect__title">Slide toggle — 6 вариантов (Active × State); клик переключает</div>
+      <div class="snap-grid snap-grid--matrix" style="grid-template-columns: max-content max-content max-content;">
+        <span class="snap-cap"></span><span class="snap-cap">Off</span><span class="snap-cap">On</span>
+        <span class="snap-cap">Default</span>
+        <label class="ds-slide-toggle"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox"><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
+        <label class="ds-slide-toggle"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox" checked><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
+        <span class="snap-cap">Hover</span>
+        <label class="ds-slide-toggle snap-st-hover"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox"><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
+        <label class="ds-slide-toggle snap-st-hover"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox" checked><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
+        <span class="snap-cap">Disable</span>
+        <label class="ds-slide-toggle ds-slide-toggle--disabled"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox" disabled><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
+        <label class="ds-slide-toggle ds-slide-toggle--disabled"><span class="ds-slide-toggle__row"><input class="ds-slide-toggle__input" type="checkbox" checked disabled><span class="ds-slide-toggle__track"></span><span class="ds-slide-toggle__title">Title</span></span></label>
       </div>
     </div>
     <p class="snap-note">Пометки для ревью: (а) трек 34×20, радиус 12, кружок 16×16 (внутри 2px), сдвиг 14px — как в css; (б) у Disable оба состояния — фон #E0E0E0 (в css у выбранного свой токен — совпадает по виду); подпись #9E9E9E; (в) hover-цвета заморожены стенд-классом (в компоненте они на :hover); (г) в наборе подпись у всех вариантов — «Title». Журнал №122.</p>
   </div>
 
-  <!-- 2. Примеры -->
-  <div class="panel" data-vpanel="examples" role="tabpanel" hidden>
+  <!-- 1. Basic example: «Slide toggle (Examples)» (58203:3452) + контент-блок (58247:1474) -->
+  <div class="panel" data-vpanel="basic" role="tabpanel">
     <div class="snap-sect">
       <div class="snap-cap snap-sect__title">Примеры «Slide toggle (Examples)» (5 групп; кликабельно)</div>
       <div class="snap-row">
