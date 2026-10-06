@@ -507,8 +507,8 @@
       next.innerHTML = '<span class="ds-btn-icon__icon"><span class="material-icons" aria-hidden="true">chevron_right</span></span>';
       prev.addEventListener('click', function () { var i = currentStep(steps); if (i > 0) goStep(i - 1); });
       next.addEventListener('click', function () { var i = currentStep(steps); if (i >= 0 && i < steps.length - 1) goStep(i + 1); });
-      sec.insertBefore(prev, stepsSel.sel);   /* стрелки — парой перед селектом (по запросу) */
-      sec.insertBefore(next, stepsSel.sel);
+      sec.insertBefore(prev, countEl);   /* стрелки — между заголовком Экраны и счётчиком 1/3 */
+      sec.insertBefore(next, countEl);
       bar.appendChild(sec);
       S.stepsEls = { steps: steps, prev: prev, next: next };
       if (S.sections.steps === false) sec.hidden = true;
