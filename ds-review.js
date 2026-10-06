@@ -485,20 +485,12 @@
     var cur = currentStep(steps);
     if (steps.length >= 2) {
       bar.appendChild(el('span', 'dsr-grow'));
-      var sec = el('span', 'dsr-sec');
+      /* блок «Экраны» — дивами, отступы явные: [лейбл] →8→ [группа: ‹ →4→ 1/3 →4→ ›] →8→ [селект] */
+      var sec = el('div', 'dsr-sec');
       sec.appendChild(el('span', 'dsr-lbl', 'Экраны:'));
-      var countEl = el('span', 'dsr-count');             /* счётчик «3 / 11» — сразу после «Экраны:» */
+      var stepsNav = el('div', 'dsr-steps');             /* группа «шагов»: стрелки, счётчик, форм-селект — внутри 4 */
+      var countEl = el('span', 'dsr-count');             /* счётчик «1/3» — между стрелками */
       countEl.setAttribute('aria-label', 'Счётчик экранов');
-      sec.appendChild(countEl);
-      S.countEl = countEl;
-      var stepsSel = mkSelect({
-        cls: 'dsr-sel--steps',
-        aria: 'Экраны прототипа',
-        items: steps.map(function (st, i) { return { label: st.title || ('Экран ' + (i + 1)), hint: st.hint || '' }; }),
-        onPick: function (i) { goStep(i); }
-      });
-      sec.appendChild(stepsSel.sel);
-      S.selEls = stepsSel;
       var prev = el('button', 'ds-btn-icon ds-btn-icon--s ds-btn-icon--neutral ds-btn-icon--text');
       prev.type = 'button'; prev.title = 'Предыдущий экран (←)'; prev.setAttribute('aria-label', 'Предыдущий экран');
       prev.innerHTML = '<span class="ds-btn-icon__icon"><span class="material-icons" aria-hidden="true">chevron_left</span></span>';
@@ -507,8 +499,19 @@
       next.innerHTML = '<span class="ds-btn-icon__icon"><span class="material-icons" aria-hidden="true">chevron_right</span></span>';
       prev.addEventListener('click', function () { var i = currentStep(steps); if (i > 0) goStep(i - 1); });
       next.addEventListener('click', function () { var i = currentStep(steps); if (i >= 0 && i < steps.length - 1) goStep(i + 1); });
-      sec.insertBefore(prev, countEl);   /* стрелки — между заголовком Экраны и счётчиком 1/3 */
-      sec.insertBefore(next, countEl);
+      stepsNav.appendChild(prev);
+      stepsNav.appendChild(countEl);
+      stepsNav.appendChild(next);
+      sec.appendChild(stepsNav);
+      S.countEl = countEl;
+      var stepsSel = mkSelect({
+        cls: 'dsr-sel--steps',
+        aria: 'Экраны прототипа',
+        items: steps.map(function (st, i) { return { label: st.title || ('Экран ' + (i + 1)), hint: st.hint || '' }; }),
+        onPick: function (i) { goStep(i); }
+      });
+      sec.appendChild(stepsSel.sel);   /* селект — сестрица группы: от › до него 8 (gap секции) */
+      S.selEls = stepsSel;
       bar.appendChild(sec);
       S.stepsEls = { steps: steps, prev: prev, next: next };
       if (S.sections.steps === false) sec.hidden = true;

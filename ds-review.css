@@ -38,10 +38,12 @@ body.dsr-page .panel { background: var(--ds-color-surface-default, #ffffff); }
   font-weight: var(--ds-typography-font-weight-medium, 500);
   color: var(--ds-color-text-secondary, #616161);
 }
-.dsr-sec { display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; }   /* внутри группы — 8 */
+.dsr-sec { display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; }   /* блок бара: лейбл → шаги → селект — по 8 */
+/* «шаги»: ‹ 1/3 › — группа; внутри (стрелки ↔ счётчик) — 4; до селекта — 8 (gap блока, селект снаружи) */
+.dsr-steps { display: inline-flex; align-items: center; gap: 4px; flex: 0 0 auto; }
 .dsr-grow { flex: 1 1 auto; min-width: 8px; }
 .dsr-lbl { color: var(--ds-color-text-secondary, #616161); }
-/* счётчик экранов «3 / 11» — сразу после заголовка «Экраны:» */
+/* счётчик экранов «1/3» — между стрелками ‹ ›; отступы задаёт .dsr-steps (4) */
 .dsr-count { color: var(--ds-color-text-primary, #333333); font-variant-numeric: tabular-nums; }
 
 /* Селекты панели (шаги, размер) — компонент ДС Select (S); список раскрывается под полем.
@@ -49,8 +51,6 @@ body.dsr-page .panel { background: var(--ds-color-surface-default, #ffffff); }
    обвязка задаёт ширину через контейнер, а список и пункты тянет по полю:
    шаги — 420 (имя целиком), размер — 96 (1440/768/375). */
 .dsr-sel { position: relative; display: inline-flex; flex: 0 0 auto; }
-/* стрелки — между заголовком Экраны и счётчиком 1/3; селект-поле — следующий, до формы 4 (8 − 4) */
-.dsr-sel--steps { margin: 0 -4px; }
 .dsr-sel .ds-select-form { width: 100%; }
 /* селекты панели: размер XS (28), а поведение и оформление — как у обычного S
    (заливка, рамка по кругу, состояния), радиус — 12 */
