@@ -5,7 +5,7 @@
    Поведение и данные — app-sidenav.js (макеты DS «Взаимодействие с меню» 59160:36140 и «Адаптив» 59193:17635).
 
    Подключение (одинаковое на всех страницах, см. app-sidenav/readme.md):
-     <link rel="stylesheet" href="app-sidenav/app-sidenav.css?v=13">
+     <link rel="stylesheet" href="app-sidenav/app-sidenav.css?v=14">
      <script src="app-sidenav/app-sidenav.js?v=12" defer></script>
    Страница подключает ДС (font/tokens/styles/components/index/fixes) и Material Icons; если что-то
    забыли — скрипт дострахует (кроме мобильного слоя: меню десктопное).
@@ -178,6 +178,10 @@ body.device-desktop:not(.ui-clean) .panel.app-snav-on .app-snav {
   white-space: nowrap;
   z-index: 9;
   pointer-events: none;
+  /* Шрифт: ds-hint-content__label сам семейство не задаёт (оно на обёртке ds-hint-content,
+     которую пилюля намеренно не использует — в ДС контейнер 250px, №61), поэтому текст
+     падал в системный Times. Стек — как в компоненте Hint-Tooltip. */
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 .app-snav__hint.is-on { display: flex; }
 .app-snav__hint .ds-hint-content__label { color: var(--ds-color-hint-content-text-color, #ffffff); }
