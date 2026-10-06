@@ -33,8 +33,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
 
 <!-- боковое меню: css + js из дизайн-системы (DS/organisms/app-sidenav), версия общая для всех страниц -->
-<link rel="stylesheet" href="../DS/organisms/app-sidenav/app-sidenav.css?v=14">
-<script src="../DS/organisms/app-sidenav/app-sidenav.js?v=12" defer></script>
+<link rel="stylesheet" href="../DS/organisms/app-sidenav/app-sidenav.css?v=15">
+<script src="../DS/organisms/app-sidenav/app-sidenav.js?v=13" defer></script>
 ```
 
 Страховка: если какие-то из подключений ДС/иконок забыты — скрипт достроит их сам

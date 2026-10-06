@@ -57,11 +57,11 @@
   ];
   if (FLAGS.mobile) CSS.push('components-mobile/modes.css', 'components-mobile/components/index.css');
   if (FLAGS.header) CSS.push('organisms/app-right-panel/app-right-panel.css?v=2', 'organisms/app-header/app-header.css?v=19');
-  if (FLAGS.sidenav) CSS.push('organisms/app-sidenav/app-sidenav.css?v=14');
+  if (FLAGS.sidenav) CSS.push('organisms/app-sidenav/app-sidenav.css?v=15');
 
   var JS = [];
   if (FLAGS.header) JS.push('organisms/app-right-panel/app-right-panel.js?v=1', 'organisms/app-header/app-header.js?v=20');
-  if (FLAGS.sidenav) JS.push('organisms/app-sidenav/app-sidenav.js?v=12');
+  if (FLAGS.sidenav) JS.push('organisms/app-sidenav/app-sidenav.js?v=13');
 
   var MOL = [];
   if (FLAGS.molecules) {
