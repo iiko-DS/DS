@@ -53,6 +53,9 @@
     'components-web/components/index.css',
     'components-web/components/Checkbox_DS/checkbox.css',
     'components-web/components/Checkbox_DS/checkbox-icons.css',
+    /* Radio: в index.css файлы Radio-Button_DS не подключены (пробел выгрузки ДС №108) — тянем явно, как checkbox */
+    'components-web/components/Radio-Button_DS/radio.css',
+    'components-web/components/Radio-Button_DS/radio-icons.css',
     'components-web/fixes.css'
   ];
   if (FLAGS.mobile) CSS.push('components-mobile/modes.css', 'components-mobile/components/index.css');
