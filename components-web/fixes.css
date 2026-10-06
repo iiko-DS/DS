@@ -451,3 +451,13 @@
 .ds-checkbox-label__support-text, .ds-radio-button-label__support-text { background: none; }
 .ds-checkbox-label--error .ds-checkbox-label__support-text, .ds-radio-button-label--error .ds-radio-button-label__support-text { color: var(--ds-color-text-negative, #ff5252); }
 .ds-checkbox-label--disable .ds-checkbox-label__support-text, .ds-radio-button-label--disable .ds-radio-button-label__support-text { color: var(--ds-paint-text-disable, #9e9e9e); }
+
+/* 29. Input number / Textarea / Chips Input (демо-стенды батча C; журнал №124–126). Пробелы выгрузки:
+   (а) у support-текста «Input number_but icon» фон = цвет текста (тот же артефакт, что п. 24) — снят;
+   (б) у `.ds-input-number__label` / `.ds-textarea__label` жёсткий #333 — цвета состояний Empty/Disable
+   (токены форм-поля) не доходили до значения; добавлены inherit-правила для этих состояний. */
+.ds-input-number-but-icon__support-text { background: none; }
+.ds-input-number--disabled .ds-input-number__label { color: inherit; }
+.ds-input-number--empty .ds-input-number__label { color: inherit; }
+.ds-textarea--disabled .ds-textarea__label { color: inherit; }
+.ds-textarea--empty .ds-textarea__label { color: inherit; }
