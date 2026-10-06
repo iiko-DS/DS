@@ -461,3 +461,7 @@
 .ds-input-number--empty .ds-input-number__label { color: inherit; }
 .ds-textarea--disabled .ds-textarea__label { color: inherit; }
 .ds-textarea--empty .ds-textarea__label { color: inherit; }
+
+/* 30. Hint footer (демо-стенд Hint-Tooltip_DS; журнал №132). У `.ds-hint-footer__цвет-и-палитра`
+   (второй артефакт-класс с русским именем после radio-лейбла, №120) фон = цвет текста — снят. */
+.ds-hint-footer__цвет-и-палитра { background: none; }
