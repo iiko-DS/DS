@@ -3,6 +3,10 @@
 
    ПОДКЛЮЧЕНИЕ (одна строка, после connect.js):
      <script src="../DS/ds-review.js" defer></script>
+   ДЕМО-СТЕНДЫ КОМПОНЕНТОВ — режим «только подсказки» (панель ревью и серая подложка
+   не создаются; кнопка «Подсказки ДС · N» встаёт в [data-hints-host], метки и всплывашки —
+   те же, что в панели):
+     <script src="../../../ds-review.js" data-hints-only data-registry="layouts.js" defer></script>
    Скрипт сам подтягивает ds-review.css (лежит рядом) и — если он есть — реестр
    `layouts.js` РЯДОМ СО СТРАНИЦЕЙ (другой путь можно задать атрибутом data-registry).
 
@@ -721,10 +725,34 @@
     s.onerror = function () { S.registry = null; cb(); };                /* нет реестра — работаем без него */
     document.head.appendChild(s);
   }
+  /* ── Режим «только подсказки» (data-hints-only) — для демо-стендов компонентов ──
+     Панель ревью и серая подложка не создаются; кнопка «Подсказки ДС · N» встаёт
+     в [data-hints-host] (иначе — в body), метки/всплывашки — те же, что в панели
+     (номер метки — пункт журнала DS/fixes.md). Маркеры скрытых мест прячутся сами. */
+  function buildHintsOnly() {
+    var hints = (S.registry && (S.registry['подсказки'] || S.registry.hints)) || [];
+    if (!hints.length) return;
+    var host = document.querySelector('[data-hints-host]') || document.body;
+    var hb = el('button', 'ds-btn ds-btn--s ds-btn--neutral ds-btn--outlined dsr-hints-btn', 'Подсказки ДС · ' + hints.length);
+    hb.type = 'button';
+    hb.title = 'Номерные метки находок (номер — пункт журнала DS/fixes.md) — показать/скрыть';
+    hb.addEventListener('click', function () { setHints(!S.hintsOn); });
+    host.appendChild(hb);
+    S.hintsEls = { btn: hb, hints: hints };
+    /* после кликов (в т.ч. переключения вкладок) метки пересчитываются — синхронно,
+       без requestAnimationFrame: в фоновой вкладке raf не срабатывает.
+       Слушатель — в фазе всплытия: обработчик вкладки уже переключил панели. */
+    document.addEventListener('click', function () {
+      if (!S.hintsOn || !S.layer) return;
+      layoutHints();
+    });
+    if (S.hintsOn) setHints(true);
+  }
   function init() {
     if (!document.body) { document.addEventListener('DOMContentLoaded', init); return; }
     addCss();
-    loadRegistry(function () { build(); });
+    var hintsOnly = !!(cs && cs.hasAttribute('data-hints-only'));
+    loadRegistry(function () { if (hintsOnly) buildHintsOnly(); else build(); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
