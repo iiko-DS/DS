@@ -44,8 +44,8 @@
 ## Подключение
 
 ```html
-<link rel="stylesheet" href="../DS/organisms/header-content/header-content.css?v=1">
-<script src="../DS/organisms/header-content/header-content.js?v=1" defer></script>
+<link rel="stylesheet" href="../DS/organisms/app-header-content/header-content.css?v=1">
+<script src="../DS/organisms/app-header-content/header-content.js?v=1" defer></script>
 ```
 
 Страницы-прототипы подключают организм по этим путям (через `../DS/connect.js` он не приходит —

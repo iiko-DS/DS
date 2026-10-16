@@ -62,8 +62,8 @@
 ## Подключение
 
 ```html
-<link rel="stylesheet" href="../DS/organisms/page-footer/page-footer.css?v=2">
-<script src="../DS/organisms/page-footer/page-footer.js?v=2" defer></script>
+<link rel="stylesheet" href="../DS/organisms/app-page-footer/page-footer.css?v=2">
+<script src="../DS/organisms/app-page-footer/page-footer.js?v=2" defer></script>
 ```
 
 Ассеты считаются от расположения скрипта — разметка работает с любой страницы

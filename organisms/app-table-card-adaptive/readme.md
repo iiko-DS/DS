@@ -113,8 +113,8 @@
 ## Подключение
 
 ```html
-<link rel="stylesheet" href="../DS/organisms/table-card-adaptive/table-card-adaptive.css?v=2">
-<script src="../DS/organisms/table-card-adaptive/table-card-adaptive.js?v=2" defer></script>
+<link rel="stylesheet" href="../DS/organisms/app-table-card-adaptive/table-card-adaptive.css?v=2">
+<script src="../DS/organisms/app-table-card-adaptive/table-card-adaptive.js?v=2" defer></script>
 ```
 
 Для карточки с чекбоксом страница дополнительно подключает чекбокс ДС (в
